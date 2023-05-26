@@ -1,0 +1,194 @@
+@import '@fontsource/montserrat/400';
+@import '@fontsource/montserrat/500';
+@import '@fontsource/montserrat/600';
+@import '@fontsource/montserrat/700';
+@import '@fontsource/montserrat/900';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.safe-viewport {
+  @apply w-full max-w-[1760px] mx-auto px-10 3xl:px-0;
+}
+
+
+body {
+  color: #262626;
+}
+
+.svg-black {
+  filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(13deg) brightness(98%) contrast(105%);
+}
+
+/* #232323 */
+.svg-black-100 {
+  filter: invert(15%) sepia(2%) saturate(3%) hue-rotate(347deg) brightness(103%) contrast(101%);
+}
+
+/* #fff */
+.svg-white {
+  filter: invert(100%) sepia(1%) saturate(7500%) hue-rotate(92deg) brightness(114%) contrast(117%);
+}
+
+.svg-primary {
+  filter: invert(97%) sepia(57%) saturate(1234%) hue-rotate(19deg) brightness(108%) contrast(95%);
+}
+
+.svg-secondary {
+  filter: invert(29%) sepia(79%) saturate(3185%) hue-rotate(249deg) brightness(97%) contrast(100%);
+}
+
+.svg-gray-400 {
+  filter: invert(68%) sepia(18%) saturate(266%) hue-rotate(174deg) brightness(97%) contrast(93%);
+}
+
+/**
+ * Page Home
+ */
+
+.section-heading {
+  @apply font-black text-center mb-16;
+  line-height: 150%;
+  font-size: 3.5rem;
+}
+
+/* .section-features */
+
+.feature-highlight-item {
+  @apply p-5 rounded-l-xl w-full;
+}
+
+.feature-highlight-item.active,
+.feature-highlight-item:hover {
+  @apply bg-primary;
+}
+
+.feature-highlight-item summary {
+  @apply list-none cursor-pointer text-base text-blackAlpha-400 transition-all flex flex-row gap-2.5 items-center;
+}
+
+.feature-highlight-item summary .icon {
+  @apply opacity-10;
+}
+
+.feature-highlight-item.active summary,
+.feature-highlight-item:hover summary {
+  @apply text-[#272727] font-bold;
+}
+
+.feature-highlight-item.active summary .icon,
+.feature-highlight-item:hover summary .icon {
+  @apply opacity-100;
+}
+
+.feature-highlight-item .body {
+  @apply w-full pl-[42px];
+}
+
+.feature-highlight-item p {
+  @apply py-2.5 text-sm text-blackAlpha-700 max-w-xl;
+}
+
+/* .section-blueprints */
+
+.blueprint-details {
+  @apply rounded-lg px-7 py-6;
+  background-color: #AEE120;
+}
+
+.blueprint-details.active,
+.blueprint-details:hover {
+  @apply bg-white;
+}
+
+.blueprint-details summary {
+  @apply text-xl font-black uppercase text-white list-none transition-all cursor-pointer;
+}
+
+.blueprint-details.active summary,
+.blueprint-details:hover summary
+{
+  @apply text-black;
+}
+
+.blueprint-details .body {
+  @apply my-5 text-blackAlpha-700 text-sm;
+}
+
+/* .section-chat-with-us */
+
+.section-chat-with-us {
+  @apply flex flex-col gap-12;
+}
+
+.section-chat-with-us .body {
+  @apply flex flex-row gap-10;
+}
+
+.section-chat-with-us .body ul {
+  @apply flex flex-row gap-10;
+}
+
+.section-chat-with-us .body ul li {
+  @apply rounded-full overflow-hidden border-4 border-solid border-white h-44 w-44 relative;
+}
+
+/* .section-bento */
+
+.bento-trustless-mev {
+  grid-area: 1 / 1 / 3 / 3;
+}
+
+.bento-sequencer-for-layer2 {
+  grid-area: 2 / 3 / 4 / 5;
+}
+
+.bento-decentralized-scientific-computation {
+  grid-area: 3 / 5 / 5 / 6;
+}
+
+.bento-account-abstraction {
+  grid-area: 3 / 1 / 5 / 3;
+}
+
+.bento-web3-ai {
+  grid-area: 4 / 3 / 6 / 5;
+}
+
+.bento-decentralized-api {
+  grid-area: 5 / 1/ 7 / 3;
+}
+
+.bento-join-research-community {
+  grid-area: 6 / 3 / 8 / 5;
+}
+
+.bento-distributed-computation {
+  grid-area: 5 / 5 / 7 / 6;
+}
+
+/*  */
+
+.code-viewer {
+  @apply border border-solid border-blackAlpha-200 bg-[#EEF0F4] rounded-[20px] px-6 py-5;
+  box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+  height: 440px;
+}
+
+
+/* .section-subscription */
+
+.section-subscription {
+  background: linear-gradient(to right, #262626 59.22%, #f3f3f3 50%);
+}
+
+.quote {
+  @apply text-[3.5rem] font-black leading-[4.25rem];
+}
+
+.quote::before, .quote::after {
+  content: '"';
+  @apply text-[3.5rem] font-black leading-[4.25rem] block;
+}
