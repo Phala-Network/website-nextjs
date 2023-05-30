@@ -1,14 +1,17 @@
 import type { ReactNode } from 'react'
 
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 import { cn } from '@/lib/utils'
 import Details from '@/components/Details'
 
+import './home.css'
+
 
 function SiteNavItem({ children, className, ...props }: React.HTMLProps<HTMLAnchorElement>) {
   return (
-    <a {...props} className={cn(className, 'text-base font-normal hover:border-b hover:border-solid hover:border-b-[#262626]')}>
+    <a {...props} className={cn(className, 'btn-link')}>
       {children}
     </a>
   )
@@ -76,7 +79,7 @@ function Stats({ children, name }: { children: ReactNode, name: string }) {
 
 function SectionHero() {
   return (
-    <section className={cn("relative max-h-screen w-full")}>
+    <section className={cn("relative max-h-screen w-full", "section-hero")}>
       <div className={cn("background", "absolute top-0 left-0 w-full min-h-full z-[-1] select-none pointer-events-none")}>
         <Image src="/home/bg-first-screen.jpg" alt="" fill className="aspect-[3840/1980] object-cover" />
       </div>
@@ -148,14 +151,14 @@ function SectionHero() {
                   height={65}
                 />
               </div>
-              <a href="#" className={cn("flex flex-row gap-2")}>
-                <span className={cn("text-sm")}>View All Supported Networks</span>
+              <a href="#" className={cn("flex flex-row gap-2", "btn-view-all")}>
+                <span className={cn("btn-link", "text-sm")}>View All Supported Networks</span>
                 <Image
                   src="/icons/right-arrow.svg"
                   alt=""
-                  className="svg-secondary"
-                  width={16}
-                  height={16}
+                  className="svg-secondary icon"
+                  width={13}
+                  height={13}
                 />
               </a>
             </div>
@@ -977,6 +980,10 @@ function SectionFooter() {
 }
 
 // END: Section Footer
+
+export const metadata: Metadata = {
+  title: 'Phala Network',
+}
 
 export default function Home() {
   return (

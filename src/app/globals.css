@@ -44,6 +44,31 @@ body {
   filter: invert(68%) sepia(18%) saturate(266%) hue-rotate(174deg) brightness(97%) contrast(93%);
 }
 
+/* General Components */
+
+.btn-link {
+  @apply text-base font-normal inline-block relative;
+}
+
+.btn-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #262626;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.btn-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
 /**
  * Page Home
  */
