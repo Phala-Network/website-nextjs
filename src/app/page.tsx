@@ -911,7 +911,7 @@ function LinkList({ children }: { children: ReactNode }) {
 function LinkListItem({ children, className, ...props }: React.HTMLProps<HTMLAnchorElement>) {
   return (
     <li>
-      <a {...props} className={cn(className, 'text-base text-white')}>
+      <a {...props} className={cn(className, 'btn-link')}>
         {children}
       </a>
     </li>
@@ -920,7 +920,7 @@ function LinkListItem({ children, className, ...props }: React.HTMLProps<HTMLAnc
 
 function SectionFooter() {
   return (
-    <footer className={cn("bg-[#1c1c1c] text-white pt-16 pb-24 flex flex-col gap-20")}>
+    <footer className={cn("page-footer", "bg-[#1c1c1c] text-white pt-16 pb-24 flex flex-col gap-20")}>
       <div className={cn("safe-viewport")}>
         {/* Row No.1 */}
         <div className={cn("grid grid-cols-4")}>

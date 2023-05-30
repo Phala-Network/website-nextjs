@@ -68,6 +68,17 @@ body {
   transform-origin: bottom left;
 }
 
+.page-footer .btn-link {
+  @apply text-base text-gray-200 transition-all;
+}
+
+.page-footer .btn-link:hover {
+  @apply text-white;
+}
+
+.page-footer .btn-link::after {
+  background-color: #fff;
+}
 
 /**
  * Page Home
