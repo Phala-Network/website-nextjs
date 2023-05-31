@@ -79,7 +79,7 @@ function Stats({ children, name }: { children: ReactNode, name: string }) {
 
 function SectionHero() {
   return (
-    <section className={cn("relative max-h-screen w-full", "section-hero")}>
+    <section id="section-hero" className={cn("relative max-h-screen w-full", "section-hero")}>
       <div className={cn("background", "absolute top-0 left-0 w-full min-h-full z-[-1] select-none pointer-events-none")}>
         <Image src="/home/bg-first-screen.jpg" alt="" fill className="aspect-[3840/1980] object-cover" />
       </div>
@@ -197,7 +197,7 @@ function FeatureHighlight({ idx, iconUrl, summary, children }: { idx: number, ic
 
 function SectionFeatures() {
   return (
-    <section className={cn("relative h-screen")}>
+    <section id="section-features" className={cn("relative h-screen")}>
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
       <div className={cn("safe-viewport", "flex flex-col h-full justify-end pb-16")}>
         <div className={cn("grid grid-cols-2 w-full")}>
@@ -260,7 +260,7 @@ function SectionFeatures() {
 
 function SectionPitchIntro() {
   return (
-    <div className="relative h-screen">
+    <section id="section-pitch-intro" className="relative h-screen">
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
       <div className={cn("absolute top-[33%] right-0 h-[57%] w-[67.45vw] bg-primary rounded-l-[48px] -z-[9]")} />
       <div className="safe-viewport flex flex-row items-center h-full gap-16">
@@ -298,7 +298,7 @@ function SectionPitchIntro() {
           />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -344,7 +344,7 @@ function BlueprintCard({ title, children, illustration, live }: { title: string,
 
 function SectionPitchAccelerate() {
   return (
-    <div className="relative">
+    <section id="section-pitch-accelerate" className="relative">
       <DotBackground dotColor="#6b3eca" bgColor="#7f4af0" />
       <div className="safe-viewport">
         <header className="pt-[27.78vh]">
@@ -490,7 +490,7 @@ function SectionPitchAccelerate() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -507,13 +507,9 @@ function BlueprintDetails({ idx, summary, live, children }: { idx: number, summa
   )
 }
 
-//
-// Section Pitch Innovate
-//
-
 function SectionPitchInnovate() {
   return (
-    <div className="relative">
+    <section id="section-pitch-innovate" className="relative">
       <DotBackground dotColor="#afd153" bgColor="#d0f964" />
       <div className="safe-viewport">
         <div className={cn("pt-[245px] py-[156px] grid grid-cols-12")}>
@@ -677,7 +673,7 @@ assert_eq!(response.status_code, 200);
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -697,7 +693,7 @@ function BentoCell({ children, className, ...props }: React.HTMLProps<HTMLDivEle
 
 function SectionPitchPioneer() {
   return (
-    <div className="relative pt-[210px] pb-[156px]">
+    <section id="section-pitch-pionner" className="relative pt-[210px] pb-[156px]">
       <DotBackground dotColor="#2b2b2b" bgColor="#333" />
       <div className="safe-viewport flex flex-col gap-32 items-center justify-center">
         <header className={cn("w-full flex flex-col items-end")}>
@@ -768,7 +764,7 @@ function SectionPitchPioneer() {
           </div>
         </main>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -780,7 +776,7 @@ function SectionPitchPioneer() {
 
 function SectionHowItWorks() {
   return (
-    <section className={cn("safe-viewport py-32")}>
+    <section id="section-how-it-works" className={cn("safe-viewport py-32")}>
       <h2 className="section-heading mb-16">
         How It Works
       </h2>
@@ -834,7 +830,7 @@ function PostCard({ title, intro }: { title: string, intro: string }) {
 
 function SectionHighlights() {
   return (
-    <section className={cn("safe-viewport", "py-32")}>
+    <section id="section-highlights" className={cn("safe-viewport", "py-32")}>
       <h2 className="section-heading">Today's Highlights</h2>
       <div className={cn("grid grid-cols-3 gap-8")}>
         <PostCard
@@ -867,7 +863,7 @@ function SectionHighlights() {
 
 function SectionSubscription() {
   return (
-    <section className="section-subscription">
+    <section id="section-subscription" className="section-subscription">
       <form className={cn("safe-viewport text-white py-16")}>
         <legend className={cn("mb-16 uppercase text-4xl font-black max-w-3xl")}>Get the latest Phala Content Straight To Your Inbox.</legend>
         <div className={cn("max-w-3xl flex flex-row gap-6")}>
