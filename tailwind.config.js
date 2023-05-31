@@ -624,13 +624,15 @@ module.exports = {
       //
       // @TODO: container
       //
-
-      // From origin template.
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        
+      gridTemplateColumns: {
+        '24': 'repeat(24, minmax(0, 1fr))',
       },
+
+      gridTemplateRows: {
+        '24': 'repeat(24, minmax(0, 1fr))',
+      },
+
     }, // END: extend
   },
   plugins: [
