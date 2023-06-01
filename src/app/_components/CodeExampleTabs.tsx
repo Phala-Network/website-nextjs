@@ -19,7 +19,7 @@ export function CodeExampleTab({ idx, children }: {
     <li>
       <button
         className={cn(
-          "btn btn-lg border border-solid text-black uppercase text-xs",
+          "btn btn-lg border border-solid text-black uppercase text-xs whitespace-nowrap",
           current === idx ? 'bg-primary border-primary' : 'bg-white border-[#CBD5E0]',
         )}
         onClick={() => setCurrent(idx)}

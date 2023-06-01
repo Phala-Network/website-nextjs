@@ -57,9 +57,9 @@ export function ShowCaseTabPanel({ idx, title, src, tags, href, children }: {
         <header className={"flex flex-col gap-2"}>
           <h3 className={cn("text-2xl font-black uppercase")}>{title}</h3>
           {tags && tags.length > 0 ? (
-            <ul className={cn("flex flex-row gap-4")}>
+            <ul className={cn("flex flex-row gap-4 flex-wrap")}>
               {tags.map((tag, idx) => (
-                <li key={idx} className={cn("text-secondary text-xs uppercase px-6 py-2.5 bg-gray-100 rounded-[6px]")}>{tag}</li>
+                <li key={idx} className={cn("text-secondary text-xs uppercase px-6 py-2.5 bg-gray-100 rounded-[6px] whitespace-nowrap")}>{tag}</li>
               ))}
             </ul>
           ) : null}
