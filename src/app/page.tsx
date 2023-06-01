@@ -45,7 +45,7 @@ function SiteNav() {
           <Image
             src="/icons/right-arrow.svg"
             alt=""
-            className="svg-primary"
+            className="svg-primary untanglable"
             width={16}
             height={16}
           />
@@ -84,7 +84,7 @@ function Stats({ children, name }: { children: ReactNode, name: string }) {
 function SectionHero() {
   return (
     <section id="section-hero" className={cn("relative max-h-screen w-full", "section-hero")}>
-      <div className={cn("background", "absolute top-0 left-0 w-full min-h-full z-[-1] select-none pointer-events-none")}>
+      <div className={cn("background", "absolute top-0 left-0 w-full min-h-full z-[-1] untanglable")}>
         <Image src="/home/bg-first-screen.jpg" alt="" fill className="aspect-[3840/1980] object-cover" />
       </div>
       <div className={cn("flex flex-col h-screen justify-between items-center")}>
@@ -112,7 +112,7 @@ function SectionHero() {
               <Image
                 src="/icons/gear.svg"
                 alt=""
-                className="svg-black mr-2.5 motion-safe:animate-spin"
+                className="svg-black mr-2.5 motion-safe:animate-spin untanglable"
                 width={37}
                 height={37}
               />
@@ -160,7 +160,7 @@ function SectionHero() {
                 <Image
                   src="/icons/right-arrow.svg"
                   alt=""
-                  className="svg-secondary icon"
+                  className="svg-secondary icon untanglable"
                   width={13}
                   height={13}
                 />
@@ -188,7 +188,7 @@ function FeatureHighlight({ idx, iconUrl, summary, children }: { idx: number, ic
           alt=""
           width={32}
           height={32}
-          className="icon"
+          className="icon untanglable"
         />
         {summary}
       </summary>
@@ -243,7 +243,7 @@ function SectionFeatures() {
               fill
               sizes="100%"
               alt=""
-              className="object-fill"
+              className="object-fill untanglable"
             />
           </div>
         </div>
@@ -272,7 +272,7 @@ function SectionPitchIntro() {
           <div className={cn("flex flex-row gap-6 items-center -ml-24")}>
             <Image
               src="/icons/long-right-arrow.svg"
-              className="svg-secondary"
+              className="svg-secondary untanglable"
               alt=""
               width={234}
               height={101}
@@ -287,14 +287,14 @@ function SectionPitchIntro() {
             alt=""
             width={292}
             height={419}
-            className="rounded-3xl overflow-hidden absolute left-[260px] top-[-100px] z-20"
+            className="rounded-3xl overflow-hidden absolute left-[260px] top-[-100px] z-20 untanglable"
           />
           <Image
             src="/home/experience-back.jpg"
             alt=""
             width={292}
             height={419}
-            className="rounded-3xl overflow-hidden absolute left-0 top-[100px] z-10"
+            className="rounded-3xl overflow-hidden absolute left-0 top-[100px] z-10 untanglable"
           />
         </div>
       </div>
@@ -310,20 +310,20 @@ function SectionPitchIntro() {
 
 function BlueprintCard({ title, children, illustration, live }: { title: string, children: ReactNode, illustration?: string, live?: boolean }) {
   return (
-    <div className="w-full aspect-[526/270] bg-[#333] rounded-xl overflow-hidden bg-[rgba(0,0 0,0.8)] p-8 relative">
+    <div className="w-full bg-[#333] rounded-xl overflow-hidden bg-[rgba(0,0 0,0.8)] p-8 relative">
       <div className="flex flex-col justify-between h-full z-10 relative max-w-[60%]">
         <div className="flex flex-col gap-6">
           <h4 className={cn("text-2xl text-white font-black uppercase")}>{title}</h4>
-          <div className={cn("text-base text-whiteAlpha-700 leading-normal")}>{children}</div>
+          <div className={cn("text-sm text-whiteAlpha-700 leading-normal")}>{children}</div>
         </div>
         {live ? (
-          <div className={cn("flex flex-row items-center gap-3.5")}>
+          <div className={cn("flex flex-row items-center gap-3.5 mt-6")}>
             <Image
               src="/icons/gear.svg"
               alt=""
               width={32}
               height={32}
-              className={cn("svg-primary")}
+              className={cn("svg-primary untanglable")}
             />
             <span className={cn("text-primary text-base font-extrabold")}>LIVE !</span>
           </div>
@@ -335,7 +335,7 @@ function BlueprintCard({ title, children, illustration, live }: { title: string,
           alt=""
           width={250}
           height={250}
-          className={cn("absolute top-[25%] right-[-1%] z-0 opacity-50")}
+          className={cn("absolute top-[25%] right-[-1%] z-0 opacity-50 untanglable")}
         />
       ) : null}
     </div>
@@ -369,7 +369,7 @@ function SectionPitchAccelerate() {
         )}>
           <div className="w-full flex flex-row h-[620px]">
             <div className={cn("rounded-3xl overflow-hidden flex flex-row bg-white")}>
-              <div className={cn("aspect-[879/620] relative w-[74%]")}>
+              <div className={cn("aspect-[879/620] relative w-[70%]")}>
                 <NoCodeWizardStepPreview
                   idx={0}
                   src="https://picsum.photos/id/1/879/620"
@@ -387,7 +387,7 @@ function SectionPitchAccelerate() {
                   src="https://picsum.photos/id/20/879/620"
                 />
               </div>
-              <div className="flex flex-col justify-between px-8 py-10 w-[26%]">
+              <div className="flex flex-col justify-between px-8 py-10 w-[30%]">
                 <NoCodeWizardStepDetails idx={0} summary="Pick">
                   <p>Discover the perfect solution for your needs with our marketplace of blueprints. These community-contributed, ready-to-deploy blueprints offer a quick way to integrate offchain capabilities into your smart contracts.</p>
                 </NoCodeWizardStepDetails>
@@ -422,7 +422,7 @@ function SectionPitchAccelerate() {
 
         <div className={cn(
           "row-start-4 xl:col-start-3 xl:col-span-17 3xl:col-start-5 3xl:col-span-17",
-          "w-[74%]",
+          "w-[70%]",
           "mt-8"
         )}>
           <a href="" className="flex-row flex items-center text-white rounded-xl bg-[#6C37C9] py-5 px-10">
@@ -513,19 +513,19 @@ function SectionPitchAccelerate() {
         </div>
         {/* END: row-5 */}
 
-        <div className={cn("row-start-1 row-span-3 xl:col-start-8 xl:col-span-11", "pt-20 xl:pt-[17.325rem]", "-z-10 select-none pointer-events-none text-white")}>
+        <div className={cn("row-start-1 row-span-3 xl:col-start-8 xl:col-span-11", "pt-20 xl:pt-[17.325rem]", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 681 290" fill="transparent">
             <path d="M0.5 5.5H613C647.794 5.5 676 33.7061 676 68.5V289.5" stroke="currentColor" stroke-width="10" />
           </svg>
         </div>
 
-        <div className={cn("row-start-4 row-span-3 xl:col-start-4 xl:col-span-15 3xl:col-start-5 3xl:col-span-14", "-mt-4", "-z-10 select-none pointer-events-none text-white")}>
+        <div className={cn("row-start-4 row-span-3 xl:col-start-4 xl:col-span-15 3xl:col-start-5 3xl:col-span-14", "-mt-4", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 936 279" fill="transparent">
             <path d="M931 0.5V127C931 161.794 902.794 190 868 190H68.5C33.7061 190 5.5 218.206 5.5 253V278.5" stroke="currentColor" stroke-width="10" />
           </svg>
         </div>
 
-        <div className={cn("row-start-6 xl:col-start-5 xl:col-span-4 3xl:col-start-5 3xl:col-span-6", "-mt-4 3xl:-mt-24", "-z-10 select-none pointer-events-none text-white")}>
+        <div className={cn("row-start-6 xl:col-start-5 xl:col-span-4 3xl:col-start-5 3xl:col-span-6", "-mt-4 3xl:-mt-24", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 330 205" fill="transparent">
             <path d="M5 0V109C5 143.794 33.2061 172 68 172H324.5" stroke="currentColor" stroke-width="10"/>
             <path d="M299.002 199.003L323.589 174.416C324.37 173.635 324.37 172.369 323.589 171.587L299.002 147" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
@@ -555,7 +555,7 @@ function SectionPitchInnovate() {
           <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-10 bg-white inline-block">Innovate</h2>
           <p className="font-medium text-[2rem] text-black mt-10">Full power, full control. Empower your ideas.</p>
 
-          <div className={cn("absolute top-[234px] left-[204px] 3xl:left-[296px]", "w-full h-full", "-z-10 select-none pointer-events-none text-white")}>
+          <div className={cn("absolute top-[234px] left-[204px] 3xl:left-[296px]", "w-full h-full", "-z-10 untanglable text-white")}>
             <svg viewBox="0 0 2000 323" fill="transparent">
               <path stroke="currentColor" stroke-width="10" d="M 356 5 L 2000 5"/>
               <path stroke="currentColor" stroke-width="10" d="M 356.5 5 L 68.5 5 C 33.7061 5 5.5 33.206116 5.5 68 L 5.5 323"/>
@@ -672,7 +672,7 @@ self.env().ext().cache_get(b"key");
         </div>
 
         <div className={cn(
-          "row-start-4 xl:col-start-2 xl:col-span-18 3xl:col-start-3 3xl:col-span-20",
+          "row-start-4 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
           "flex flex-row gap-6"
         )}>
           <ul className={cn("max-w-md flex flex-col gap-5")}>
@@ -698,7 +698,7 @@ self.env().ext().cache_get(b"key");
                   alt=""
                   width={50}
                   height={128}
-                  className="svg-white"
+                  className="svg-white untanglable"
                 />
               </div>
               <div className={cn("text-white font-black flex flex-col gap-6 leading-none")}>
@@ -773,22 +773,22 @@ self.env().ext().cache_get(b"key");
           </header>
           <div className="body">
             <ul>
-              <li><Image src="/home/avatar-h4x.jpg" alt="Hang" fill /></li>
-              <li><Image src="/home/avatar-shelven.jpg" alt="Shelven" fill /></li>
-              <li><Image src="/home/avatar-dan.jpg" alt="Dan" fill /></li>
-              <li><Image src="/home/avatar-zoe.jpg" alt="Zoe" fill /></li>
+              <li><Image src="/home/avatar-h4x.jpg" alt="Hang" fill className="untanglable" /></li>
+              <li><Image src="/home/avatar-shelven.jpg" alt="Shelven" fill className="untanglable" /></li>
+              <li><Image src="/home/avatar-dan.jpg" alt="Dan" fill className="untanglable" /></li>
+              <li><Image src="/home/avatar-zoe.jpg" alt="Zoe" fill className="untanglable" /></li>
             </ul>
             <span className={cn("text-4xl font-normal leading-normal uppercase text-black whitespace-nowrap mt-4 ml-4 3xl:ml-8")}>Chat Now!</span>
           </div>
         </div>
 
-        <div className={cn("row-start-3 xl:col-start-4 xl:col-span-14 3xl:col-start-5 3xl:col-span-16", "-mt-4 -mb-4", "-z-10 select-none pointer-events-none text-white")}>
+        <div className={cn("row-start-3 xl:col-start-4 xl:col-span-14 3xl:col-start-5 3xl:col-span-16", "-mt-4 -mb-4", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 1209 266" fill="transparent" xmlns="http://www.w3.org/2000/svg">
             <path d="M5.5 0V113.5C5.5 148.294 33.7061 176.5 68.5 176.5H1140.5C1175.29 176.5 1203.5 204.706 1203.5 239.5V266" stroke="currentColor" stroke-width="10"/>
           </svg>
         </div>
 
-        <div className={cn("row-start-5 row-span-2 xl:col-start-14 xl:col-span-5 3xl:col-start-16", "-mt-4 ml-2 3xl:-mt-12", "-z-10 select-none pointer-events-none text-white")}>
+        <div className={cn("row-start-5 row-span-2 xl:col-start-14 xl:col-span-5 3xl:col-start-16", "-mt-4 ml-2 3xl:-mt-12", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 470 622" fill="transparent">
           <path d="M464.5 0V527C464.5 561.794 436.294 590 401.5 590H10.5" stroke="currentColor" stroke-width="10"/>
           <path d="M31.002 564L6.41445 588.587C5.63341 589.369 5.6334 590.635 6.41445 591.416L31.0019 616.003" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
