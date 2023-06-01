@@ -349,20 +349,19 @@ function SectionPitchAccelerate() {
       <div className={cn(
         "safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24"
       )}>
-        <div className={cn(
-          "row-start-1 xl:col-start-2 xl:col-span-7 3xl:col-start-4",
-          "pt-20 xl:pt-60",
-        )}>
+        <div className={cn("row-start-1 xl:col-start-2 xl:col-span-7 3xl:col-start-4", "pt-20 xl:pt-60")}>
           <h2 className={cn("text-[3.5rem] inline-block font-black uppercase rounded-3xl px-14 bg-white")}>
             Accelerate
           </h2>
         </div>
+        {/* END: row-1 */}
 
         <p className={cn(
           "row-start-2 xl:col-start-3 xl:col-span-16 3xl:col-start-5",
           "mt-8",
           "font-medium text-[2rem] text-white"
         )}>Scale your idea with prebuilt blueprints in minutes</p>
+        {/* END: row-2 */}
 
         <div className={cn(
           "row-start-3 xl:col-start-3 xl:col-span-17 3xl:col-start-5 3xl:col-span-17",
@@ -494,7 +493,7 @@ function SectionPitchAccelerate() {
         <div className={cn(
           "row-start-6 xl:col-start-9 xl:col-span-10 3xl:col-start-12 3xl:col-span-10"
         )}>
-          <div className={cn("py-32 w-full")}>
+          <div className={cn("pt-20 pb-32 w-full")}>
             <div className="flex flex-col gap-10">
               <h3 className="uppercase text-white text-[56px] font-black">Inspire<br /> the next blueprint</h3>
               <div>
@@ -513,6 +512,26 @@ function SectionPitchAccelerate() {
           </div>
         </div>
         {/* END: row-5 */}
+
+        <div className={cn("row-start-1 row-span-3 xl:col-start-8 xl:col-span-11", "pt-20 xl:pt-[17.325rem]", "-z-10 select-none pointer-events-none text-white")}>
+          <svg viewBox="0 0 681 290" fill="transparent">
+            <path d="M0.5 5.5H613C647.794 5.5 676 33.7061 676 68.5V289.5" stroke="currentColor" stroke-width="10" />
+          </svg>
+        </div>
+
+        <div className={cn("row-start-4 row-span-3 xl:col-start-4 xl:col-span-15 3xl:col-start-5 3xl:col-span-14", "-mt-4", "-z-10 select-none pointer-events-none text-white")}>
+          <svg viewBox="0 0 936 279" fill="transparent">
+            <path d="M931 0.5V127C931 161.794 902.794 190 868 190H68.5C33.7061 190 5.5 218.206 5.5 253V278.5" stroke="currentColor" stroke-width="10" />
+          </svg>
+        </div>
+
+        <div className={cn("row-start-6 xl:col-start-5 xl:col-span-4 3xl:col-start-5 3xl:col-span-6", "-mt-4 3xl:-mt-24", "-z-10 select-none pointer-events-none text-white")}>
+          <svg viewBox="0 0 330 205" fill="transparent">
+            <path d="M5 0V109C5 143.794 33.2061 172 68 172H324.5" stroke="currentColor" stroke-width="10"/>
+            <path d="M299.002 199.003L323.589 174.416C324.37 173.635 324.37 172.369 323.589 171.587L299.002 147" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+        </div>
+
       </div>
     </section>
   )
@@ -522,27 +541,35 @@ function SectionPitchAccelerate() {
 
 function SectionPitchInnovate() {
   return (
-    <section id="section-pitch-innovate" className="relative">
+    <section id="section-pitch-innovate" className="relative z-0">
       <DotBackground dotColor="#afd153" bgColor="#d0f964" />
       <div className={cn(
-        "safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24"
+        "safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24",
+        "overflow-hidden"
       )}>
         <header className={cn(
           "row-start-1 xl:col-span-20 3xl:col-span-24",
-          "py-[156px]",
-          "flex flex-col items-center w-full"
+          "pt-[156px] pb-[20px]",
+          "flex flex-col items-center w-full relative"
         )}>
           <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-10 bg-white inline-block">Innovate</h2>
           <p className="font-medium text-[2rem] text-black mt-10">Full power, full control. Empower your ideas.</p>
+
+          <div className={cn("absolute top-[234px] left-[204px] 3xl:left-[296px]", "w-full h-full", "-z-10 select-none pointer-events-none text-white")}>
+            <svg viewBox="0 0 2000 323" fill="transparent">
+              <path stroke="currentColor" stroke-width="10" d="M 356 5 L 2000 5"/>
+              <path stroke="currentColor" stroke-width="10" d="M 356.5 5 L 68.5 5 C 33.7061 5 5.5 33.206116 5.5 68 L 5.5 323"/>
+            </svg>
+          </div>
         </header>
         
         <div className={cn(
-          "row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-3 3xl:col-span-20",
+          "row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
           "rounded-3xl bg-white overflow-hidden px-20 py-12"
         )}>
           <h4 className={cn("text-4xl font-black text-blackAlpha-900 uppercase text-center mx-auto")}>Access the unique functionalities in Phat Contract</h4>
           <div className={cn("py-14")}>
-            <ul className="flex flex-row gap-2.5">
+            <ul className="flex flex-row flex-wrap gap-2.5">
               <CodeExampleTab idx={0}>HTTP Request</CodeExampleTab>
               <CodeExampleTab idx={1}>Cross-Chain Integration</CodeExampleTab>
               <CodeExampleTab idx={2}>Off-Chain Rollup</CodeExampleTab>
@@ -639,7 +666,7 @@ self.env().ext().cache_get(b"key");
 
         <div className={cn(
           "row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10 3xl:col-span-6",
-          "mt-16 mb-36"
+          "mt-6 mb-22"
         )}>
           <a href="" className="btn btn-xl w-full justify-center bg-secondary text-white uppercase">Docs</a>
         </div>
@@ -732,16 +759,16 @@ self.env().ext().cache_get(b"key");
 
         <div className={cn(
           "row-start-5 xl:col-start-7 xl:col-span-8 3xl:col-start-9 3xl:col-span-8",
-          "mt-16"
+          "mt-8"
         )}>
           <a href="" className="btn btn-xl w-full justify-center bg-secondary text-white font-bold uppercase">Explore awesome-phat-contract</a>
         </div>
 
         <div className={cn(
           "row-start-6 xl:col-start-2 xl:col-span-11 3xl:col-start-5 3xl:col-span-11",
-          "section-chat-with-us py-40"
+          "section-chat-with-us pt-6 pb-40 3xl:-ml-8"
         )}>
-          <header className={cn("text-5xl font-black uppercase leading-normal")}>
+          <header className={cn("text-4xl font-black uppercase leading-normal")}>
             <h3>Develop and explore<br /> your ideas with us</h3>
           </header>
           <div className="body">
@@ -751,8 +778,21 @@ self.env().ext().cache_get(b"key");
               <li><Image src="/home/avatar-dan.jpg" alt="Dan" fill /></li>
               <li><Image src="/home/avatar-zoe.jpg" alt="Zoe" fill /></li>
             </ul>
-            <span className={cn("text-4xl font-normal leading-normal uppercase text-black whitespace-nowrap")}>Chat Now!</span>
+            <span className={cn("text-4xl font-normal leading-normal uppercase text-black whitespace-nowrap mt-4 ml-4 3xl:ml-8")}>Chat Now!</span>
           </div>
+        </div>
+
+        <div className={cn("row-start-3 xl:col-start-4 xl:col-span-14 3xl:col-start-5 3xl:col-span-16", "-mt-4 -mb-4", "-z-10 select-none pointer-events-none text-white")}>
+          <svg viewBox="0 0 1209 266" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.5 0V113.5C5.5 148.294 33.7061 176.5 68.5 176.5H1140.5C1175.29 176.5 1203.5 204.706 1203.5 239.5V266" stroke="currentColor" stroke-width="10"/>
+          </svg>
+        </div>
+
+        <div className={cn("row-start-5 row-span-2 xl:col-start-14 xl:col-span-5 3xl:col-start-16", "-mt-4 ml-2 3xl:-mt-12", "-z-10 select-none pointer-events-none text-white")}>
+          <svg viewBox="0 0 470 622" fill="transparent">
+          <path d="M464.5 0V527C464.5 561.794 436.294 590 401.5 590H10.5" stroke="currentColor" stroke-width="10"/>
+          <path d="M31.002 564L6.41445 588.587C5.63341 589.369 5.6334 590.635 6.41445 591.416L31.0019 616.003" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+          </svg>
         </div>
       </div>
     </section>
@@ -775,13 +815,14 @@ function BentoCell({ children, className, ...props }: React.HTMLProps<HTMLDivEle
 
 function SectionPitchPioneer() {
   return (
-    <section id="section-pitch-pionner" className="relative pt-[210px] pb-[156px]">
+    <section id="section-pitch-pionner" className="relative pb-[156px]">
       <DotBackground dotColor="#2b2b2b" bgColor="#333" />
       <div className={cn(
         "safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24"
       )}>
         <header className={cn(
           "row-start-1 xl:col-end-20 xl:col-span-13 3xl:col-end-22 3xl:col-span-12",
+          "mt-[210px]",
           "w-full flex flex-col items-end"
         )}>
           <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-4 bg-white inline-block">Pionner</h2>
@@ -852,6 +893,13 @@ function SectionPitchPioneer() {
             </div>
           </div>
         </aside>
+
+        <div className={cn("row-start-1 row-span-2 xl:col-start-1 xl:col-span-full 3xl:col-start-3 3xl:col-span-20", "-z-10 -mt-8 3xl:-mt-12", "text-white")}>
+          <svg viewBox="0 0 1526 840" fill="transparent">
+            <path stroke="currentColor" stroke-width="10" d="M 5 -17 L 5 258.125 C 5 303.067261 48.889664 339.5 103.030174 339.5 L 1449 339.5"/>
+            <path stroke="currentColor" stroke-width="10" d="M 1448.5 339 L 1458 339 C 1492.790039 339 1521 367.4953 1521 402.646149 L 1521 767.853821 C 1521 803.0047 1492.790039 831.5 1458 831.5 L 1448.5 831.5"/>
+          </svg>
+        </div>
       </div>
     </section>
   )
