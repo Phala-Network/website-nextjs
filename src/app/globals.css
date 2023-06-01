@@ -1,8 +1,4 @@
-@import '@fontsource/montserrat/400';
-@import '@fontsource/montserrat/500';
-@import '@fontsource/montserrat/600';
-@import '@fontsource/montserrat/700';
-@import '@fontsource/montserrat/900';
+@import '@fontsource/montserrat/latin.css';
 
 @tailwind base;
 @tailwind components;
@@ -206,12 +202,6 @@ body {
 }
 
 /*  */
-
-.code-viewer {
-  @apply border border-solid border-blackAlpha-200 bg-[#EEF0F4] rounded-[20px] px-6 py-5;
-  box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
-  height: 440px;
-}
 
 
 /* .section-subscription */
