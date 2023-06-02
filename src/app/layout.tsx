@@ -1,3 +1,5 @@
+import SiteNav from '@/components/SiteNav'
+import SiteFooter from '@/components/SiteFooter'
 import './globals.css'
 
 export default function RootLayout({
@@ -7,7 +9,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SiteNav />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   )
 }
