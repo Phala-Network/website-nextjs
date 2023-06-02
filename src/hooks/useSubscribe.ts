@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { atom,  useSetAtom, useAtomValue } from 'jotai';
+import { useCallback, useEffect } from 'react';
+import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai';
 
 // Poorman's Either
 export type SendPostFormResult = { succeed: true; message: string } | { succeed: false; error: string };
@@ -13,10 +13,6 @@ const sendPostFormRequest = async (portalId: string, formId: string, email: stri
     fields: [{ name: 'email', value: email }]
   };
   try {
-    // gtag('event', 'subscribe', {
-    //   event_category: 'form',
-    //   event_label: 'subscribe',
-    // })
     const resp = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`, {
       method: 'POST',
       headers: {
@@ -26,11 +22,6 @@ const sendPostFormRequest = async (portalId: string, formId: string, email: stri
     });
     if (resp.status === 200) {
       const body = await resp.json();
-      // gtag('event', 'subscribe', {
-      //   event_category: 'form',
-      //   event_label: 'subscribe',
-      //   value: 1,
-      // })
       return { succeed: true, message: body.inlineMessage };
     }
     if (resp.status === 400) {
@@ -92,8 +83,8 @@ export const useSubscribe = function (portalId: string, formId: string) {
   const isLoading = useAtomValue(loadingAtom);
   const message = useAtomValue(messageAtom);
   const error = useAtomValue(errorAtom);
-  const isSucceed = useAtomValue(isSucceedAtom);
-  const isError = useAtomValue(isErrorAtom);
+  const [isSucceed, setIsSucceed] = useAtom(isSucceedAtom);
+  const [isError, setIsError] = useAtom(isErrorAtom);
 
   useEffect(() => {
     setPortalId(portalId);
@@ -103,5 +94,10 @@ export const useSubscribe = function (portalId: string, formId: string) {
     setFormId(formId);
   }, [setFormId, formId]);
 
-  return { setEmail, onSubmit, isLoading, message, error, isSucceed, isError };
+  const dismiss = useCallback(() => {
+    setIsError(false)
+    setIsSucceed(false)
+  }, [setIsError, setIsSucceed])
+
+  return { setEmail, onSubmit, isLoading, message, error, isSucceed, isError, dismiss };
 };
