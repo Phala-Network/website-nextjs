@@ -15,7 +15,7 @@ export default function SubscribeForm() {
     '0b071cad-c7bd-44dd-9f2d-e1a822e2e1cf'
   )
   return (
-    <div className={cn("row-start-1 col-span-full xl:col-start-2 xl:col-span-10 3xl:col-start-4")}>
+    <div className={cn("row-start-1 col-span-full xl:col-start-2 xl:col-span-12 3xl:col-start-4 px-10 bg-[#262626]")}>
       <form
         className={cn("text-white py-16")}
         onSubmit={ev => {

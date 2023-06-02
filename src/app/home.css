@@ -141,7 +141,13 @@
 /* .section-subscription */
 
 .section-subscription {
-  background: linear-gradient(to right, #262626 59.22%, #f3f3f3 50%);
+  background: #262626;
+}
+
+@media (min-width: 80rem) {
+  .section-subscription {
+    background-image: linear-gradient(to right, #262626 50%, #f3f3f3 50%);
+  }
 }
 
 .quote {
