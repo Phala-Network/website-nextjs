@@ -7,6 +7,8 @@ import * as R from 'ramda'
 import hls from 'highlight.js/lib/core'
 import 'highlight.js/styles/github.css'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { AnimatePresence, motion } from "framer-motion"
+import { FiCheck } from 'react-icons/fi'
 
 import { cn } from '@/lib/utils'
 
@@ -61,21 +63,47 @@ export function CodeExampleCodeViewer({ idx, children }: {
               setTimeout(() => setCopied(false), 2500)
             }}
           >
-            <button>
-              <Image
-                src="/icons/copy.svg"
-                width={20}
-                height={20}
-                alt=""
-                className="svg-gray-400"
-              />
+            <button className="relative w-6 h-6">
+              <AnimatePresence mode="sync">
+                <motion.span
+                  key="copy"
+                  className="absolute left-0 top-0"
+                  initial={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.25 }}
+                  animate={{ opacity: copied ? 0 : 1, scale: copied ? 0 : 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Image
+                    src="/icons/copy.svg"
+                    className="svg-gray-400"
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
+                </motion.span>
+                <motion.span
+                  key="check"
+                  className="absolute left-0 top-0"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: copied ? 1 : 0, scale: copied ? 1 : 0 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                >
+                  <FiCheck className="text-green-500 h-6 w-6" />
+                </motion.span>
+              </AnimatePresence>
             </button>
           </CopyToClipboard>
-          {copied ? (<span className="text-xs text-gray-400">Copied!</span>) : null}
+          <motion.span
+            className="text-xs text-gray-400"
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: copied ? 1 : 0, width: copied ? 'auto' : 0 }}
+          >
+            Copied!
+          </motion.span>
         </div>
       </header>
       <main className="py-4 px-0.5">
-        <div className={cn("font-mono text-xs whitespace-pre-wrap")} dangerouslySetInnerHTML={{ __html: hls.highlight(children, { language: 'rust' }).value }} />
+        <div className={cn("font-mono text-xs whitespace-pre-wrap")} dangerouslySetInnerHTML={{ __html: hls.highlight(trimed, { language: 'rust' }).value }} />
       </main>
     </div>
   )
