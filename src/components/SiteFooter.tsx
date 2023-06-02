@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 
@@ -17,10 +18,19 @@ function LinkList({ children }: { children: ReactNode }) {
   )
 }
 
-function LinkListItem({ children, className, ...props }: React.HTMLProps<HTMLAnchorElement>) {
+function LinkListItem({ children, className, href, ...props }: React.HTMLProps<HTMLAnchorElement>) {
+  if (href?.startsWith('/')) {
+    return (
+      <li>
+        <Link href={href} className={cn(className, 'btn-link')}>
+          {children}
+        </Link>
+      </li>
+    )
+  }
   return (
     <li>
-      <a target="_blank" rel="noopener" {...props} className={cn(className, 'btn-link')}>
+      <a target="_blank" rel="noopener" {...props} href={href} className={cn(className, 'btn-link')}>
         {children}
       </a>
     </li>

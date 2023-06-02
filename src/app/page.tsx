@@ -1,12 +1,11 @@
-import type { ReactNode } from 'react'
+import { type ReactNode } from 'react'
+import { type Metadata } from 'next'
 
-import { Metadata } from 'next'
 import Image from 'next/image'
 
 import { cn } from '@/lib/utils'
 import Details from '@/components/Details'
-import SiteNav from '@/components/SiteNav'
-import SiteFooter from '@/components/SiteFooter'
+import DotBackground from '@/components/DotBackground'
 
 import { currentFeatureHighlightAtom } from './_atoms'
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
@@ -14,19 +13,6 @@ import { CodeExampleTab, CodeExampleCodeViewer, CodeExampleDescription } from '.
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import './home.css'
 
-
-function DotBackground({ dotColor, bgColor }: { dotColor: string, bgColor: string }) {
-  return (
-    <div
-      className="absolute inset-0 -z-10 h-full w-full cursor-none pointer-events-none"
-      style={{
-        backgroundColor: bgColor,
-        backgroundImage: `radial-gradient(${dotColor} 2px, ${bgColor} 2px)`,
-        backgroundSize: '56px 56px',
-      }}
-    />
-  )
-}
 
 //
 // Section Hero
@@ -48,9 +34,8 @@ function SectionHero() {
         <Image src="/home/bg-first-screen.jpg" alt="" fill className="aspect-[3840/1980] object-cover" />
       </div>
       <div className={cn("flex flex-col h-screen justify-between items-center")}>
-        <div className={cn("w-full")}>
-          <SiteNav />
-        </div>
+        {/* Temporary placeholder */}
+        <div className={cn("w-full")} />
 
         <div className={cn("uppercase text-center flex flex-col gap-16 justify-center")}>
           <header>
@@ -1044,7 +1029,6 @@ export default function Home() {
       <SectionHowItWorks />
       <SectionHighlights />
       <SectionSubscription />
-      <SiteFooter />
     </>
   )
 }
