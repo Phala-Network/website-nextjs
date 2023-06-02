@@ -5,6 +5,8 @@ import Image from 'next/image'
 
 import { cn } from '@/lib/utils'
 import Details from '@/components/Details'
+import SiteNav from '@/components/SiteNav'
+import SiteFooter from '@/components/SiteFooter'
 
 import { currentFeatureHighlightAtom } from './_atoms'
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
@@ -12,48 +14,6 @@ import { CodeExampleTab, CodeExampleCodeViewer, CodeExampleDescription } from '.
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import './home.css'
 
-
-function SiteNavItem({ children, className, ...props }: React.HTMLProps<HTMLAnchorElement>) {
-  return (
-    <a {...props} className={cn(className, 'btn-link')}>
-      {children}
-    </a>
-  )
-}
-
-function SiteNav() {
-  return (
-    <div className={cn("site-nav safe-viewport", "flex flex-row items-center justify-between py-6")}>
-      <Image
-        src="/logo.svg"
-        alt="Phala Logo"
-        className="svg-black-100"
-        width={156}
-        height={44}
-        priority
-      />
-      <nav className={cn("flex flex-row gap-[3.75rem]")}>
-        <SiteNavItem href="#">Developers</SiteNavItem>
-        <SiteNavItem href="#">Compute Providers</SiteNavItem>
-        <SiteNavItem href="#">Products</SiteNavItem>
-        <SiteNavItem href="#">PHA Token</SiteNavItem>
-        <SiteNavItem href="#">Participate</SiteNavItem>
-      </nav>
-      <div className="w-full max-w-[9.375rem]">
-        <a href="#" className={cn("btn bg-blackAlpha-800 text-sm text-primary py-3 px-5 w-full flex flex-row justify-between items-center")}>
-          <span>APP</span>
-          <Image
-            src="/icons/right-arrow.svg"
-            alt=""
-            className="svg-primary untanglable"
-            width={16}
-            height={16}
-          />
-        </a>
-      </div>
-    </div>
-  )
-}
 
 function DotBackground({ dotColor, bgColor }: { dotColor: string, bgColor: string }) {
   return (
@@ -101,8 +61,8 @@ function SectionHero() {
             </h3>
           </header>
           <div className={cn("flex flex-row gap-5 mx-auto")}>
-            <a className={cn("btn btn-xl text-base bg-[#CDFA50] text-black")} href="">Let's Build!</a>
-            <a className={cn("btn btn-xl text-base bg-white text-black")} href=""> Join Community</a>
+            <a className={cn("btn btn-xl text-base bg-[#CDFA50] text-black")} href="https://docs.phala.network/v1/developers/phat-contract" target="_blank" rel="noopener">Let's Build!</a>
+            <a className={cn("btn btn-xl text-base bg-white text-black")} href="https://discord.com/invite/phala" target="_blank" rel="noopener">Join Community</a>
           </div>
         </div>
 
@@ -155,7 +115,12 @@ function SectionHero() {
                   height={65}
                 />
               </div>
-              <a href="#" className={cn("flex flex-row gap-2", "btn-view-all")}>
+              <a
+                href="https://docs.phala.network/v1/developers/phat-contract/features"
+                className={cn("flex flex-row gap-2", "btn-view-all")}
+                target="_blank"
+                rel="noopener"
+              >
                 <span className={cn("btn-link", "text-sm")}>View All Supported Networks</span>
                 <Image
                   src="/icons/right-arrow.svg"
@@ -425,7 +390,7 @@ function SectionPitchAccelerate() {
           "w-[70%]",
           "mt-8"
         )}>
-          <a href="" className="flex-row flex items-center text-white rounded-xl bg-[#6C37C9] py-5 px-10">
+          <a href="https://bricks.phala.network" className="flex-row flex items-center text-white rounded-xl bg-[#6C37C9] py-5 px-10" target="_blank" rel="noopener">
             <span className="text-lg font-bold uppercase">Get your own lens api oracle now</span>
             <Image
               src="/icons/right-arrow.svg"
@@ -476,7 +441,7 @@ function SectionPitchAccelerate() {
                 Check if some file is actually stored on Arweave is your smart contract.
               </BlueprintCard>
             </div>
-            <a href="" className={cn("btn btn-lg bg-primary mt-10 text-lg font-bold uppercase flex flex-row items-center py-5 px-10")}>
+            <a href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints" className={cn("btn btn-lg bg-primary mt-10 text-lg font-bold uppercase flex flex-row items-center py-5 px-10")} target="_blank" rel="noopener">
               Learn about blueprints
               <Image
                 src="/icons/right-arrow.svg"
@@ -497,7 +462,7 @@ function SectionPitchAccelerate() {
             <div className="flex flex-col gap-10">
               <h3 className="uppercase text-white text-[56px] font-black">Inspire<br /> the next blueprint</h3>
               <div>
-                <a href="" className="btn btn-xl bg-primary text-black uppercase">
+                <a href="https://github.com/Phala-Network/phala-blueprint-proposals" className="btn btn-xl bg-primary text-black uppercase" target="_blank" rel="noopener">
                   Propose now
                   <Image
                     src="/icons/right-arrow.svg"
@@ -668,7 +633,14 @@ self.env().ext().cache_get(b"key");
           "row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10 3xl:col-span-6",
           "mt-6 mb-22"
         )}>
-          <a href="" className="btn btn-xl w-full justify-center bg-secondary text-white uppercase">Docs</a>
+          <a
+            href="https://docs.phala.network/v1/developers/phat-contract"
+            className="btn btn-xl w-full justify-center bg-secondary text-white uppercase"
+            target="_blank"
+            rel="noopener"
+          >
+            Docs
+          </a>
         </div>
 
         <div className={cn(
@@ -701,10 +673,15 @@ self.env().ext().cache_get(b"key");
                   className="svg-white untanglable"
                 />
               </div>
-              <div className={cn("text-white font-black flex flex-col gap-6 leading-none")}>
+              <a
+                href="https://docs.phala.network/v1/developers/phat-contract/builders-program"
+                className={cn("text-white font-black flex flex-col gap-6 leading-none")}
+                target="_blank"
+                rel="noopener"
+              >
                 <div className={cn("text-[3.5rem]")}>$50K</div>
                 <div className={cn("uppercase text-xl")}>for innovators</div>
-              </div>
+              </a>
             </div>
           </ul>
           <div className="flex-1">
@@ -761,7 +738,14 @@ self.env().ext().cache_get(b"key");
           "row-start-5 xl:col-start-7 xl:col-span-8 3xl:col-start-9 3xl:col-span-8",
           "mt-8"
         )}>
-          <a href="" className="btn btn-xl w-full justify-center bg-secondary text-white font-bold uppercase">Explore awesome-phat-contract</a>
+          <a
+            href="https://github.com/Phala-Network/awesome-phat-contracts"
+            className="btn btn-xl w-full justify-center bg-secondary text-white font-bold uppercase"
+            target="_blank"
+            rel="noopener"
+          >
+            Explore awesome-phat-contract
+          </a>
         </div>
 
         <div className={cn(
@@ -778,7 +762,14 @@ self.env().ext().cache_get(b"key");
               <li><Image src="/home/avatar-dan.jpg" alt="Dan" fill className="untanglable" /></li>
               <li><Image src="/home/avatar-zoe.jpg" alt="Zoe" fill className="untanglable" /></li>
             </ul>
-            <span className={cn("text-4xl font-normal leading-normal uppercase text-black whitespace-nowrap mt-4 ml-4 3xl:ml-8")}>Chat Now!</span>
+            <a
+              className={cn("text-4xl font-normal leading-normal uppercase text-black whitespace-nowrap mt-4 ml-4 3xl:ml-8")}
+              href="https://discord.com/channels/697726436211163147/1098183647720394772"
+              target="_blank"
+              rel="noopener"
+            >
+              Chat Now!
+            </a>
           </div>
         </div>
 
@@ -937,7 +928,12 @@ function SectionHowItWorks() {
           <div className={cn("mx-auto rounded-3xl aspect-[1360/760] bg-gray-200")} />
         </div>
         <div className={cn("row-start-5 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
-          <a href="" className={cn("btn btn-lg w-full justify-center bg-primary text-black uppercase")}>
+          <a
+            href="https://docs.phala.network/v1/compute-providers/basic-info"
+            className={cn("btn btn-lg w-full justify-center bg-primary text-black uppercase")}
+            target="_blank"
+            rel="noopener"
+          >
             Provide Compute
           </a>
         </div>
@@ -985,7 +981,12 @@ function SectionHighlights() {
           />
         </div>
         <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
-          <a href="" className={cn("btn btn-lg w-full justify-center bg-primary text-black uppercase")}>
+          <a
+            href="https://medium.com/phala-network"
+            className={cn("btn btn-lg w-full justify-center bg-primary text-black uppercase")}
+            target="_blank"
+            rel="noopener"
+          >
             Discover More
           </a>
         </div>
@@ -1027,137 +1028,6 @@ function SectionSubscription() {
 
 // END: Section Subscription
 
-//
-// Section Footer
-//
-
-function LinkListHeading({ children }: { children: ReactNode }) {
-  return (
-    <h4 className={cn("uppercase font-black text-2xl mb-5")}>
-      {children}
-    </h4>
-  )
-}
-
-function LinkList({ children }: { children: ReactNode }) {
-  return (
-    <ul className={cn("mb-10 flex flex-col gap-2.5")}>{children}</ul>
-  )
-}
-
-function LinkListItem({ children, className, ...props }: React.HTMLProps<HTMLAnchorElement>) {
-  return (
-    <li>
-      <a {...props} className={cn(className, 'btn-link')}>
-        {children}
-      </a>
-    </li>
-  )
-}
-
-function SectionFooter() {
-  return (
-    <footer className={cn("page-footer", "bg-[#1c1c1c] text-white pt-16 pb-24")}>
-      {/* Row No.1 */}
-      <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
-        <div className={cn("row-start-1 xl:col-start-2 xl:col-span-3 3xl:col-start-4")}>
-          <div>
-            <LinkListHeading>Developers</LinkListHeading>
-            <LinkList>
-              <LinkListItem href="">Docs</LinkListItem>
-              <LinkListItem href="">GitHub</LinkListItem>
-              <LinkListItem href="">Builders Program</LinkListItem>
-              <LinkListItem href="">Using Blueprints</LinkListItem>
-              <LinkListItem href="">Using Raw Phat Contract</LinkListItem>
-              <LinkListItem href="">Tutorials</LinkListItem>
-              <LinkListItem href="">Worker Operators</LinkListItem>
-              <LinkListItem href="">Bug Bounty Program</LinkListItem>
-            </LinkList>
-          </div>
-          <div>
-            <LinkListHeading>Use Cases</LinkListHeading>
-            <LinkList>
-              <LinkListItem href="">Automation</LinkListItem>
-              <LinkListItem href="">Oracles</LinkListItem>
-              <LinkListItem href="">Data Encryption</LinkListItem>
-            </LinkList>
-          </div>
-        </div>
-        <div className={cn("row-start-1 xl:col-start-7 xl:col-span-3 3xl:col-start-9")}>
-          <div>
-            <LinkListHeading>Blueprints</LinkListHeading>
-            <LinkList>
-              <LinkListItem href="">Lens API Oracle</LinkListItem>
-            </LinkList>
-          </div>
-          <div>
-            <LinkListHeading>Resources</LinkListHeading>
-            <LinkList>
-              <LinkListItem href="">Whitepaper</LinkListItem>
-              <LinkListItem href="">Case Studies</LinkListItem>
-              <LinkListItem href="">Blog</LinkListItem>
-              <LinkListItem href="">Staking</LinkListItem>
-              <LinkListItem href="">FAQs</LinkListItem>
-              <LinkListItem href="">Tokenomics</LinkListItem>
-              <LinkListItem href="">What is Phala Network?</LinkListItem>
-              <LinkListItem href="">What is Phat Contract?</LinkListItem>
-              <LinkListItem href="">What are Blueprints?</LinkListItem>
-            </LinkList>
-          </div>
-        </div>
-        <div className={cn("row-start-1 xl:col-start-12 xl:col-span-3 3xl:col-start-14")}>
-          <div>
-            <LinkListHeading>Hashforest</LinkListHeading>
-            <LinkList>
-              <LinkListItem href="">Team</LinkListItem>
-              <LinkListItem href="">Careers</LinkListItem>
-              <LinkListItem href="">Brand Assets</LinkListItem>
-            </LinkList>
-          </div>
-          <div>
-            <LinkListHeading>Community</LinkListHeading>
-            <LinkList>
-              <LinkListItem href="">Events</LinkListItem>
-              <LinkListItem href="">Become an Ambassador</LinkListItem>
-            </LinkList>
-          </div>
-        </div>
-        <div className={cn("row-start-1 xl:col-start-17 xl:col-span-3 3xl:col-start-19")}>
-          <div>
-            <LinkListHeading>Social</LinkListHeading>
-            <LinkList>
-              <LinkListItem href="">Twitter</LinkListItem>
-              <LinkListItem href="">Discord</LinkListItem>
-              <LinkListItem href="">Telegram</LinkListItem>
-              <LinkListItem href="">YouTube</LinkListItem>
-              <LinkListItem href="">Lenster</LinkListItem>
-              <LinkListItem href="">Lenstube</LinkListItem>
-            </LinkList>
-          </div>
-        </div>
-        <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-row items-center justify-between")}>
-          <Image
-            src="/logo.svg"
-            alt="Phala Logo"
-            className="svg-white"
-            width={156}
-            height={44}
-            priority
-          />
-          <div className={cn("uppercase flex flex-row gap-36 text-base font-semibold")}>
-            <a href="">EN</a>
-            <a href="">Privacy Policy</a>
-            <a href="">Terms of Use</a>
-            <a href="">Responsible Disclosure</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
-}
-
-// END: Section Footer
-
 export const metadata: Metadata = {
   title: 'Phala Network',
 }
@@ -1174,7 +1044,7 @@ export default function Home() {
       <SectionHowItWorks />
       <SectionHighlights />
       <SectionSubscription />
-      <SectionFooter />
+      <SiteFooter />
     </>
   )
 }
