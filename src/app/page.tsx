@@ -465,20 +465,20 @@ function SectionPitchAccelerate() {
 
         <div className={cn("row-start-1 row-span-3 xl:col-start-8 xl:col-span-11", "pt-20 xl:pt-[17.325rem]", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 681 290" fill="transparent">
-            <path d="M0.5 5.5H613C647.794 5.5 676 33.7061 676 68.5V289.5" stroke="currentColor" stroke-width="10" />
+            <path d="M0.5 5.5H613C647.794 5.5 676 33.7061 676 68.5V289.5" stroke="currentColor" strokeWidth="10" />
           </svg>
         </div>
 
         <div className={cn("row-start-4 row-span-3 xl:col-start-4 xl:col-span-15 3xl:col-start-5 3xl:col-span-14", "-mt-4", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 936 279" fill="transparent">
-            <path d="M931 0.5V127C931 161.794 902.794 190 868 190H68.5C33.7061 190 5.5 218.206 5.5 253V278.5" stroke="currentColor" stroke-width="10" />
+            <path d="M931 0.5V127C931 161.794 902.794 190 868 190H68.5C33.7061 190 5.5 218.206 5.5 253V278.5" stroke="currentColor" strokeWidth="10" />
           </svg>
         </div>
 
         <div className={cn("row-start-6 xl:col-start-5 xl:col-span-4 3xl:col-start-5 3xl:col-span-6", "-mt-4 3xl:-mt-24", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 330 205" fill="transparent">
-            <path d="M5 0V109C5 143.794 33.2061 172 68 172H324.5" stroke="currentColor" stroke-width="10"/>
-            <path d="M299.002 199.003L323.589 174.416C324.37 173.635 324.37 172.369 323.589 171.587L299.002 147" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+            <path d="M5 0V109C5 143.794 33.2061 172 68 172H324.5" stroke="currentColor" strokeWidth="10"/>
+            <path d="M299.002 199.003L323.589 174.416C324.37 173.635 324.37 172.369 323.589 171.587L299.002 147" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
           </svg>
         </div>
 
@@ -507,8 +507,8 @@ function SectionPitchInnovate() {
 
           <div className={cn("absolute top-[234px] left-[204px] 3xl:left-[296px]", "w-full h-full", "-z-10 untanglable text-white")}>
             <svg viewBox="0 0 2000 323" fill="transparent">
-              <path stroke="currentColor" stroke-width="10" d="M 356 5 L 2000 5"/>
-              <path stroke="currentColor" stroke-width="10" d="M 356.5 5 L 68.5 5 C 33.7061 5 5.5 33.206116 5.5 68 L 5.5 323"/>
+              <path stroke="currentColor" strokeWidth="10" d="M 356 5 L 2000 5"/>
+              <path stroke="currentColor" strokeWidth="10" d="M 356.5 5 L 68.5 5 C 33.7061 5 5.5 33.206116 5.5 68 L 5.5 323"/>
             </svg>
           </div>
         </header>
@@ -760,14 +760,14 @@ self.env().ext().cache_get(b"key");
 
         <div className={cn("row-start-3 xl:col-start-4 xl:col-span-14 3xl:col-start-5 3xl:col-span-16", "-mt-4 -mb-4", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 1209 266" fill="transparent" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.5 0V113.5C5.5 148.294 33.7061 176.5 68.5 176.5H1140.5C1175.29 176.5 1203.5 204.706 1203.5 239.5V266" stroke="currentColor" stroke-width="10"/>
+            <path d="M5.5 0V113.5C5.5 148.294 33.7061 176.5 68.5 176.5H1140.5C1175.29 176.5 1203.5 204.706 1203.5 239.5V266" stroke="currentColor" strokeWidth="10"/>
           </svg>
         </div>
 
         <div className={cn("row-start-5 row-span-2 xl:col-start-14 xl:col-span-5 3xl:col-start-16", "-mt-4 ml-2 3xl:-mt-12", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 470 622" fill="transparent">
-          <path d="M464.5 0V527C464.5 561.794 436.294 590 401.5 590H10.5" stroke="currentColor" stroke-width="10"/>
-          <path d="M31.002 564L6.41445 588.587C5.63341 589.369 5.6334 590.635 6.41445 591.416L31.0019 616.003" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+          <path d="M464.5 0V527C464.5 561.794 436.294 590 401.5 590H10.5" stroke="currentColor" strokeWidth="10"/>
+          <path d="M31.002 564L6.41445 588.587C5.63341 589.369 5.6334 590.635 6.41445 591.416L31.0019 616.003" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
           </svg>
         </div>
       </div>
@@ -872,8 +872,8 @@ function SectionPitchPioneer() {
 
         <div className={cn("row-start-1 row-span-2 xl:col-start-1 xl:col-span-full 3xl:col-start-3 3xl:col-span-20", "-z-10 -mt-8 3xl:-mt-12", "text-white")}>
           <svg viewBox="0 0 1526 840" fill="transparent">
-            <path stroke="currentColor" stroke-width="10" d="M 5 -17 L 5 258.125 C 5 303.067261 48.889664 339.5 103.030174 339.5 L 1449 339.5"/>
-            <path stroke="currentColor" stroke-width="10" d="M 1448.5 339 L 1458 339 C 1492.790039 339 1521 367.4953 1521 402.646149 L 1521 767.853821 C 1521 803.0047 1492.790039 831.5 1458 831.5 L 1448.5 831.5"/>
+            <path stroke="currentColor" strokeWidth="10" d="M 5 -17 L 5 258.125 C 5 303.067261 48.889664 339.5 103.030174 339.5 L 1449 339.5"/>
+            <path stroke="currentColor" strokeWidth="10" d="M 1448.5 339 L 1458 339 C 1492.790039 339 1521 367.4953 1521 402.646149 L 1521 767.853821 C 1521 803.0047 1492.790039 831.5 1458 831.5 L 1448.5 831.5"/>
           </svg>
         </div>
       </div>
