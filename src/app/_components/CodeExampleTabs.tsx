@@ -1,12 +1,17 @@
 'use client';
 
-import React, { type ReactNode } from 'react'
+import React, { type ReactNode, useState } from 'react'
 import Image from 'next/image'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import * as R from 'ramda'
+import hls from 'highlight.js/lib/core'
+import 'highlight.js/styles/github.css'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import { cn } from '@/lib/utils'
 
+// FIXME maybe we can move this part to server-side.
+hls.registerLanguage('rust', require('highlight.js/lib/languages/rust'))
 
 export const activeCodeExampleAtom = atom(0)
 
@@ -35,6 +40,8 @@ export function CodeExampleCodeViewer({ idx, children }: {
   children: string
 }) {
   const current = useAtomValue(activeCodeExampleAtom)
+  const trimed = R.trim(children)
+  const [copied, setCopied] = useState(false)
   if (idx !== current) {
     return null
   }
@@ -46,18 +53,29 @@ export function CodeExampleCodeViewer({ idx, children }: {
           <div className={cn("rounded-full bg-[#D9D9D9] w-4 h-4")} />
           <div className={cn("rounded-full bg-[#D9D9D9] w-4 h-4")} />
         </div>
-        <button>
-          <Image
-            src="/icons/copy.svg"
-            width={24}
-            height={24}
-            alt=""
-            className="svg-gray-400"
-          />
-        </button>
+        <div className="flex flex-row gap-1 items-center">
+          <CopyToClipboard
+            text={trimed}
+            onCopy={() => {
+              setCopied(true)
+              setTimeout(() => setCopied(false), 2500)
+            }}
+          >
+            <button>
+              <Image
+                src="/icons/copy.svg"
+                width={20}
+                height={20}
+                alt=""
+                className="svg-gray-400"
+              />
+            </button>
+          </CopyToClipboard>
+          {copied ? (<span className="text-xs text-gray-400">Copied!</span>) : null}
+        </div>
       </header>
-      <main className="py-8 px-0.5">
-        <pre className={cn("font-mono text-xs whitespace-pre-wrap")}>{R.trim(children)}</pre>
+      <main className="py-4 px-0.5">
+        <div className={cn("font-mono text-xs whitespace-pre-wrap")} dangerouslySetInnerHTML={{ __html: hls.highlight(children, { language: 'rust' }).value }} />
       </main>
     </div>
   )
