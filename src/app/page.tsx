@@ -11,6 +11,7 @@ import { currentFeatureHighlightAtom } from './_atoms'
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer, CodeExampleDescription } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
+import SubscribeForm from './_components/SubscribeForm'
 import './home.css'
 
 
@@ -837,7 +838,7 @@ function SectionPitchPioneer() {
 
         <aside className={cn("row-start-2 xl:col-end-20 xl:col-span-7 3xl:col-end-22", "w-full")}>
           <h3 className="text-4xl text-white">Areas of interest</h3>
-          <div className={cn("bg-blackAlpha-500 rounded-5xl py-8 px-10 text-white")}>
+          <div className={cn("bg-blackAlpha-500 rounded-5xl py-8 px-10 text-white h-full")}>
             <div className={cn("flex flex-col justify-between")}>
               <h4 className={cn("text-2xl font-black")}>Trustless MEV</h4>
               <div className={cn("flex flex-col gap-2.5 leading-normal text-base pt-8 pb-10")}>
@@ -852,7 +853,7 @@ function SectionPitchPioneer() {
                 </p>
               </div>
             </div>
-            <div className={cn("border-t border-solid border-whiteAlpha-700 mt-4")}>
+            <div className={cn("border-t border-solid border-whiteAlpha-700 mt-4 hidden")}>
               <h3 className={cn("text-2xl font-bold leading-normal py-8")}>We help you build your future.<br />Share your vision:</h3>
               <form className="flex flex-col gap-2.5">
                 <div className="flex flex-row gap-2.5">
@@ -990,22 +991,7 @@ function SectionSubscription() {
   return (
     <section id="section-subscription" className="section-subscription">
       <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
-        <form className={cn("row-start-1 col-span-full xl:col-start-2 xl:col-span-10 3xl:col-start-4", "text-white py-16")}>
-          <legend className={cn("mb-16 uppercase text-4xl font-black max-w-3xl")}>Get the latest Phala Content Straight To Your Inbox.</legend>
-          <div className={cn("max-w-3xl flex flex-row gap-6")}>
-            <input className={cn("flex-1 rounded border border-solid border-whiteAlpha-500 bg-transparent py-2.5 px-5")} />
-            <button type="submit" className={cn("btn btn-lg bg-primary text-black uppercase")}>Subscribe Now</button>
-          </div>
-          <div className={cn("mt-6")}>
-            <label>
-              <input
-                className={cn("mr-3")}
-                type="checkbox"
-              />
-              Yes, I agree to receive email communications from Phala
-            </label>
-          </div>
-        </form>
+        <SubscribeForm />
       </div>
     </section>
   )
