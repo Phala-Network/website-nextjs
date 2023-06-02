@@ -2,6 +2,7 @@ import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
 
 import Image from 'next/image'
+import { VscCommentDiscussion } from 'react-icons/vsc'
 
 import { cn } from '@/lib/utils'
 import Details from '@/components/Details'
@@ -11,6 +12,7 @@ import { currentFeatureHighlightAtom } from './_atoms'
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer, CodeExampleDescription } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
+import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
 import SubscribeForm from './_components/SubscribeForm'
 import './home.css'
 
@@ -782,14 +784,6 @@ self.env().ext().cache_get(b"key");
 // Section Pitch Pionner
 //
 
-function BentoCell({ children, className, ...props }: React.HTMLProps<HTMLDivElement>) {
-  return (
-    <div {...props} className={cn("rounded-xl bg-blackAlpha-800 p-6 w-56 h-56", className)}>
-      {children}
-    </div>
-  )
-}
-
 function SectionPitchPioneer() {
   return (
     <section id="section-pitch-pionner" className="relative pb-[156px]">
@@ -808,51 +802,49 @@ function SectionPitchPioneer() {
 
         <main className={cn("row-start-2 xl:col-start-2 xl:col-span-10 3xl:col-start-4 3xl:col-span-10")}>
           <div className={cn("grid grid-cols-6 grid-rows-8 gap-3", "text-white text-xl font-extrabold uppercase leading-normal")}>
-            <BentoCell className="bento-trustless-mev">
+            <AreaOfInterestTab idx={0} className="bento-trustless-mev">
               <h4>Trustless MEV</h4>
-            </BentoCell>
-            <BentoCell className="bento-sequencer-for-layer2">
+            </AreaOfInterestTab>
+            <AreaOfInterestTab idx={1} className="bento-sequencer-for-layer2">
               <h4>Sequencer For Layer2</h4>
-            </BentoCell>
-            <BentoCell className="bento-decentralized-scientific-computation">
+            </AreaOfInterestTab>
+            <AreaOfInterestTab idx={2} className="bento-decentralized-scientific-computation">
               <h4>Decentralized Scientific Computation</h4>
-            </BentoCell>
-            <BentoCell className="bento-account-abstraction">
+            </AreaOfInterestTab>
+            <AreaOfInterestTab idx={3} className="bento-account-abstraction">
               <h4>Account Abstraction</h4>
-            </BentoCell>
-            <BentoCell className="bento-web3-ai">
+            </AreaOfInterestTab>
+            <AreaOfInterestTab idx={4} className="bento-web3-ai">
               <h4>Web3 AI</h4>
-            </BentoCell>
-            <BentoCell className="bento-decentralized-api">
+            </AreaOfInterestTab>
+            <AreaOfInterestTab idx={5} className="bento-decentralized-api">
               <h4>Decentralized API</h4>
-            </BentoCell>
-            <a href="#" className={cn("bento-join-research-community", "rounded-xl bg-secondary p-6 w-56 h-56 flex flex-col gap-3.5")}>
+            </AreaOfInterestTab>
+            <a href="#" className={cn("bento-join-research-community", "rounded-xl bg-secondary p-6 w-56 h-56 flex flex-col gap-3.5 items-center")}>
               <span>Join research community</span>
-              <div className={cn("rounded-full w-28 h-28 bg-gray-200")} />
+              <VscCommentDiscussion className="w-28 h-28 text-gray-200" />
             </a>
-            <BentoCell className="bento-distributed-computation">
+            <AreaOfInterestTab idx={6} className="bento-distributed-computation">
               <h4>Distributed Computation</h4>
-            </BentoCell>
+            </AreaOfInterestTab>
           </div>
         </main>
 
         <aside className={cn("row-start-2 xl:col-end-20 xl:col-span-7 3xl:col-end-22", "w-full")}>
           <h3 className="text-4xl text-white">Areas of interest</h3>
           <div className={cn("bg-blackAlpha-500 rounded-5xl py-8 px-10 text-white h-full")}>
-            <div className={cn("flex flex-col justify-between")}>
-              <h4 className={cn("text-2xl font-black")}>Trustless MEV</h4>
-              <div className={cn("flex flex-col gap-2.5 leading-normal text-base pt-8 pb-10")}>
-                <p>
-                  According to the Messari Report, 80% of the Ethereum blocks are built by MEV.
-                </p>
-                <p>
-                  However, currently the MEV stack still depends on trusted service providers like Flashbot. A research direction is to use Secure Enclave (e.g. Intel SGX) to minimize the trust.
-                </p>
-                <p>
-                  Phala Network is an offchain compute network powered by Secure Enclaves. It's possible to build the MEV core stack in Phala Network's technology to minimize the trust assuptions.
-                </p>
-              </div>
-            </div>
+            <AreaOfInterestTabPanel idx={0} title="Trustless MEV">
+              <p>
+                According to the Messari Report, 80% of the Ethereum blocks are built by MEV.
+              </p>
+              <p>
+                However, currently the MEV stack still depends on trusted service providers like Flashbot. A research direction is to use Secure Enclave (e.g. Intel SGX) to minimize the trust.
+              </p>
+              <p>
+                Phala Network is an offchain compute network powered by Secure Enclaves. It's possible to build the MEV core stack in Phala Network's technology to minimize the trust assuptions.
+              </p>
+            </AreaOfInterestTabPanel>
+
             <div className={cn("border-t border-solid border-whiteAlpha-700 mt-4 hidden")}>
               <h3 className={cn("text-2xl font-bold leading-normal py-8")}>We help you build your future.<br />Share your vision:</h3>
               <form className="flex flex-col gap-2.5">
