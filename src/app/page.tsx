@@ -926,12 +926,19 @@ function SectionHowItWorks() {
 // Section Highlights
 //
 
-function PostCard({ title, intro }: { title: string, intro: string }) {
+function PostCard({ src, href, title, intro }: { src: string, href: string, title: string, intro: string }) {
   return (
     <article className="flex flex-col gap-6">
-      <div className={cn("bg-gray-200 rounded-4xl w-full aspect-[8/5]")}>
-      </div>
-      <header className={cn("text-xl font-bold")}>{title}</header>
+      <a href={href} className={cn("block bg-gray-200 rounded-4xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5]")} target="_blank" rel="noopener">
+        <img
+          src={src}
+          alt=""
+          className={cn("object-fit w-full h-full")}
+        />
+      </a>
+      <header className={cn("text-xl font-bold")}>
+        <a href={href}>{title}</a>
+      </header>
       <div>
         <p className={cn("text-sm")}>{intro}</p>
       </div>
@@ -946,16 +953,22 @@ function SectionHighlights() {
         <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-row gap-4")}>
           <PostCard
-            title="Heading 1 - This is a heading that can stretch over two lines"
-            intro="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, "
+            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2NcnOQftkoD04bkeuZ8oaA.jpeg"
+            href="https://medium.com/phala-network/phala-monthly-newsletter-may-2023-a92d03965cc8"
+            title="Phala Monthly Newsletter: May 2023"
+            intro="May has been an action-packed month for Phala! Read more about what we worked on this past month."
           />
           <PostCard
-            title="Heading 1 - This is a heading that can stretch over two lines"
-            intro="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, "
+            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*DjcDv3NibNPMSSTonr_aKg.jpeg"
+            href=" https://medium.com/phala-network/phala-monthly-newsletter-april-2023-ea1afc7c6be7"
+            title="Phala Monthly Newsletter: April 2023"
+            intro="Dive in what happened in Phala Ecosystem in the month of April!"
           />
           <PostCard
-            title="Heading 1 - This is a heading that can stretch over two lines"
-            intro="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, "
+            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*398XH6BwltFUasR5sMO4xg.png"
+            href="https://medium.com/phala-network/phala-monthly-newsletter-march-2023-469a7ccfa2db"
+            title="Phala Monthly Newsletter: March 2023"
+            intro="Dive in what happened in Phala Ecosystem in the month of March!"
           />
         </div>
         <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
