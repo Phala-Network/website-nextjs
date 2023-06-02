@@ -5,7 +5,7 @@ import DotBackground from '@/components/DotBackground'
 import './style.css'
 
 export const metadata: Metadata = {
-  title: 'Roadmap - Phala Network',
+  title: 'Roadmap | Phala Network',
 }
 
 export default function Page() {
