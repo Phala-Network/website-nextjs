@@ -9,6 +9,20 @@ const nextConfig = {
         pathname: '/**',
       }
     ]
+  },
+  async redirects() {
+    return [
+      {
+        source: '/en/:path*',
+        destination: '/:path*',
+        permanent: false
+      },
+      {
+        source: '/cn/:path*',
+        destination: '/:path*',
+        permanent: false
+      },
+    ]
   }
 }
 

@@ -1,4 +1,5 @@
 import { type Metadata } from 'next'
+import Image from 'next/image'
 import { FaDiscord } from 'react-icons/fa'
 
 import { cn } from '@/lib/utils'
@@ -6,7 +7,7 @@ import SubscribeForm from './_components/SubscribeForm'
 
 
 export const metadata: Metadata = {
-  title: 'Roadmap - Phala Network',
+  title: 'Phat Contract | Phala Network',
 }
 
 function HeroScreen() {
@@ -140,19 +141,24 @@ function ShowCaseNoCode() {
         <div
           className={cn(
             "isolate overflow-hidden card-filled bg-gray-800 border-gray-600 px-16 py-16 gap-x-16 gap-y-0",
-            "flex flex-col lg:flex-row-reverse"
+            "grid grid-cols-1 lg:grid-cols-2"
+            // "flex flex-col lg:flex-row-reverse"
           )}
         >
-          <img
-            src="/images/phat-contract-integration.png"
-            alt="Product screenshot"
-            className="w-full lg:w-1/2"
+          <div
+            className="w-full relative lg:col-start-2 lg:row-start-1"
             style={{
               height: 'auto',
               aspectRatio: '558 / 611'
             }}
-          />
-          <div className="mt-10 lg:my-20">
+          >
+            <Image
+              src="/illustrations/phat-contract/integration.png"
+              alt="Product screenshot"
+              fill
+            />
+          </div>
+          <div className="mt-10 lg:my-20 lg:col-start-1 lg:row-start-1">
             <h2 className="heading-lg text-white">
               Simplify Your Development Process with Our No-Code Tool
             </h2>
