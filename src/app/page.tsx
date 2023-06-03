@@ -2,7 +2,7 @@ import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
 
 import Image from 'next/image'
-import { VscCommentDiscussion } from 'react-icons/vsc'
+import { VscCommentDiscussion, VscNote } from 'react-icons/vsc'
 
 import { cn } from '@/lib/utils'
 import Details from '@/components/Details'
@@ -10,7 +10,7 @@ import DotBackground from '@/components/DotBackground'
 
 import { currentFeatureHighlightAtom } from './_atoms'
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
-import { CodeExampleTab, CodeExampleCodeViewer, CodeExampleDescription } from './_components/CodeExampleTabs'
+import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
 import SubscribeForm from './_components/SubscribeForm'
@@ -41,21 +41,25 @@ function SectionHero() {
         <div className={cn("w-full")} />
 
         <div className={cn("uppercase text-center flex flex-col gap-16 justify-center")}>
-          <header>
+          <header className={cn("px-10")}>
             <h2 className={cn("text-4xl font-normal text-[#222] leading-10 mb-2.5")}>Computation as it's meant to be</h2>
             <h3 className={cn("text-2xl font-black")}>
               On-Chain verification.
               Off-Chain <span className={cn("text-[#8544F6]")}>Capability.</span>
             </h3>
           </header>
-          <div className={cn("flex flex-row gap-5 mx-auto")}>
-            <a className={cn("btn btn-xl text-base bg-[#CDFA50] text-black")} href="https://docs.phala.network/v1/developers/phat-contract" target="_blank" rel="noopener">Let's Build!</a>
-            <a className={cn("btn btn-xl text-base bg-white text-black")} href="https://discord.com/invite/phala" target="_blank" rel="noopener">Join Community</a>
+          <div className={cn("flex flex-col xl:flex-row gap-5 mx-auto")}>
+            <a className={cn("btn btn-xl text-base btn-primary justify-center")} href="https://docs.phala.network/v1/developers/phat-contract" target="_blank" rel="noopener">
+              Let's Build!
+            </a>
+            <a className={cn("btn btn-xl text-base btn-secondary justify-center")} href="https://discord.com/invite/phala" target="_blank" rel="noopener">
+              Join Community
+            </a>
           </div>
         </div>
 
-        <div className={cn("safe-viewport", "mb-6")}>
-          <div className={cn("flex flex-row justify-between")}>
+        <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24", "mb-6")}>
+          <div className={cn("flex flex-col items-center gap-5 lg:flex-row lg:justify-between", "xl:col-start-2 xl:col-span-18 3xl:col-start-1 3xl:col-span-full")}>
             <div className="flex flex-row gap-5 items-center">
               <Image
                 src="/icons/gear.svg"
@@ -64,41 +68,43 @@ function SectionHero() {
                 width={37}
                 height={37}
               />
-              <Stats name="Online Workers">23.3k</Stats>
-              <Stats name="Compute">161k vCPU</Stats>
-              <Stats name="Cross-Chain TX">123,242</Stats>
-              <Stats name="TX">2,341,223</Stats>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <Stats name="Online Workers">23.3k</Stats>
+                <Stats name="Compute">161k vCPU</Stats>
+                <Stats name="Cross-Chain TX">123,242</Stats>
+                <Stats name="TX">2,341,223</Stats>
+              </div>
             </div>
 
             <div className="flex flex-col gap-2 items-end">
               <div className="flex flex-row gap-5">
                 <Image
-                  src="/home/logo1.png"
-                  alt=""
+                  src="/home/Ethereum.png"
+                  alt="Ethereum"
                   width={65}
                   height={65}
                 />
                 <Image
-                  src="/home/logo2.png"
-                  alt=""
+                  src="/home/Bnbchain.png"
+                  alt="Bnbchain"
                   width={65}
                   height={65}
                 />
                 <Image
-                  src="/home/logo3.png"
-                  alt=""
+                  src="/home/Moonbean.png"
+                  alt="Moonbean"
                   width={65}
                   height={65}
                 />
                 <Image
-                  src="/home/logo4.png"
-                  alt=""
+                  src="/home/Arbittrum.png"
+                  alt="Arbittrum"
                   width={65}
                   height={65}
                 />
                 <Image
-                  src="/home/logo5.png"
-                  alt=""
+                  src="/home/Astar.png"
+                  alt="Astar"
                   width={65}
                   height={65}
                 />
@@ -635,11 +641,12 @@ self.env().ext().cache_get(b"key");
         )}>
           <a
             href="https://docs.phala.network/v1/developers/phat-contract"
-            className="btn btn-xl w-full justify-center bg-secondary text-white uppercase"
+            className="btn btn-xl btn-third btn-center-icon w-full uppercase"
             target="_blank"
             rel="noopener"
           >
             Docs
+            <VscNote className="icon h-7 w-7 mt-0.5" />
           </a>
         </div>
 

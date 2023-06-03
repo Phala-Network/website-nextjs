@@ -219,6 +219,7 @@ function buttonComponents({ addComponents, theme }) {
         display: 'inline-flex',
         flexDirection: 'row',
         rowGap: '0.25rem',
+        textRendering: 'optimizelegibility',
       },
     },
     {
@@ -266,8 +267,104 @@ function buttonComponents({ addComponents, theme }) {
         },
       },
     },
+    {
+      [`.btn-primary`]: {
+        borderRadius: theme('borderRadius.xl'),
+        backgroundColor: '#CDFA50',
+        color: '#000',
+        transitionProperty: 'background-color,transform',
+        transitionTimingFunction: 'linear',
+        transitionDuration: '0.3s',
+        willChange: 'background-color,transform',
+        '&:hover': {
+          backgroundColor: '#E0FF8A',
+          transform: 'scale(0.95)',
+          transitionDuration: '0.3s',
+          transitionTimingFunction: 'ease-in-out',
+        },
+        '&:active': {
+          backgroundColor: '#9ECB22',
+        },
+      },
+
+      [`.btn-secondary`]: {
+        borderRadius: theme('borderRadius.xl'),
+        backgroundColor: '#fff',
+        color: '#000',
+        transitionProperty: 'background-color,transform,color',
+        transitionTimingFunction: 'linear',
+        transitionDuration: '0.3s',
+        willChange: 'background-color,transform',
+        '&:hover': {
+          backgroundColor: '#DFDFDF',
+          transform: 'scale(0.95)',
+          transitionDuration: '0.3s',
+          transitionTimingFunction: 'ease-in-out',
+        },
+        '&:active': {
+          backgroundColor: '#4B4B4B',
+          color: '#fff',
+        },
+      },
+
+      [`.btn-third`]: {
+        borderRadius: theme('borderRadius.xl'),
+        backgroundColor: '#8544F6',
+        color: '#fff',
+        transitionProperty: 'background-color,transform,color',
+        transitionTimingFunction: 'linear',
+        transitionDuration: '0.3s',
+        willChange: 'background-color,transform',
+        '&:hover': {
+          backgroundColor: '#A774FF',
+          transform: 'scale(0.95)',
+          transitionDuration: '0.3s',
+          transitionTimingFunction: 'ease-in-out',
+        },
+        '&:active': {
+          backgroundColor: '#5E34A8',
+          color: '#fff',
+        },
+      },
+
+      [`.btn-primary.btn-reverse`]: {
+        borderRadius: theme('borderRadius.md'),
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        color: '#CDFA50',
+      },
+
+      [`.btn-aside-icon`]: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        '& .icon': {
+          'transitionProperty': 'transform',
+          'transitionTimingFunction': 'cubic-bezier(.52,.47,.92,.25)',
+          'transitionDuration': '250ms',
+          'willChange': 'transform',
+          transform: 'scale(1)',
+        },
+        '&:hover .icon': {
+          transform: 'scale(1.20)',
+        },
+      },
+
+      [`.btn-center-icon`]: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        '& .icon': {
+          marginLeft: '1.25rem',
+        },
+      },
+    },
   ]
   for (let color in colors) {
+    if (color === 'primary' || color === 'secondary') {
+      continue
+    }
     buttons.push({
       [`.btn-${color}`]: {
         backgroundColor: colors[color]['400'],
@@ -660,6 +757,7 @@ module.exports = {
         'span-22': 'span 22 / span 22',
         'span-23': 'span 23 / span 23',
         'span-24': 'span 24 / span 24',
+        'span-25': 'span 25 / span 25',
       },
 
       gridColumn: {
@@ -687,6 +785,7 @@ module.exports = {
         'span-22': 'span 22 / span 22',
         'span-23': 'span 23 / span 23',
         'span-24': 'span 24 / span 24',
+        'span-25': 'span 25 / span 25',
       },
 
       gridColumnStart: {
@@ -714,6 +813,7 @@ module.exports = {
         '22': '22',
         '23': '23',
         '24': '24',
+        '25': '25',
       },
 
       gridColumnEnd: {
@@ -741,6 +841,7 @@ module.exports = {
         '22': '22',
         '23': '23',
         '24': '24',
+        '25': '25',
       },
 
     }, // END: extend
