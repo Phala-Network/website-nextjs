@@ -15,7 +15,11 @@ export function AreaOfInterestTab({ idx, className, children }: AreaOfInterestTa
   const [current, setCurrent] = useAtom(activeAreaOfInterestAtom)
   return (
     <button
-      className={cn("rounded-xl bg-blackAlpha-800 p-6 w-56 h-56", current === idx ? 'active' : '', className)}
+      className={cn(
+        "rounded-xl p-6 w-56 h-56 transition-all",
+        current === idx ? 'active bg-[#CDFA50] text-black' : 'bg-blackAlpha-800 ',
+        className
+      )}
       onClick={() => setCurrent(idx)}
     >
       {children}

@@ -178,14 +178,14 @@ function SectionFeatures() {
                   Phala Network doesn’t just offer unparalleled on-chain connectivity; it also bridges the gap between the off-chain world and smart contracts. The ability to send HTTP/HTTPS requests directly from your smart contracts is now at your fingertips. Take your dapp to the next level by integrating cutting-edge Web3 protocols and various Web2 API, creating a perfect fusion of old and new, on-chain and off-chain.
                 </p>
               </FeatureHighlight>
-              <FeatureHighlight idx={2} iconUrl="/icons/features-auto-graph.svg" summary="High performance like on the cloud">
+              <FeatureHighlight idx={2} iconUrl="/icons/features-auto-graph.svg" summary="Advanced flexibility and performance">
                 <p>
                   By offloading the computation off-chain, you don’t have to worry about costly transaction fees or network latency that hinders your progress. Experience real-time, off-chain computation at its finest, allowing you to focus on enhancing your dapp’s functionality and user experience. Run arbitrarily complex logic without any constraints, all at an affordable cost.
                 </p>
               </FeatureHighlight>
               <FeatureHighlight idx={3} iconUrl="/icons/features-rocket.svg" summary="Computation is always verifiable">
                 <p>
-                  Phala Network is designed with multiple layers of security guarantees to provide fully verifiable computation. Our network is backed by numerous decentralized workers and a significant amount of staked tokens. Phat Contracts are protected by both hardware Secure Enclaves and cryptographic evidence published and verified on the Phala blockchain, seamlessly extending blockchain-level security to the off-chain realm.
+                  Phala Network is designed with multiple layers of security guarantees to provide fully verifiable computation. The network is backed by numerous decentralized workers and a significant amount of staked tokens. Phat Contracts are protected by both hardware Secure Enclaves and cryptographic evidence published and verified on the Phala blockchain, seamlessly extending blockchain-level security to the off-chain realm.
                 </p>
               </FeatureHighlight>
             </div>
@@ -261,12 +261,21 @@ function SectionPitchIntro() {
 // Section Pitch Accelerate
 //
 
-function BlueprintCard({ title, children, illustration, live }: { title: string, children: ReactNode, illustration?: string, live?: boolean }) {
+function BlueprintCard({ title, children, tags, illustration, live }: { title: string, children: ReactNode, tags?: string[], illustration?: string, live?: boolean }) {
   return (
-    <div className="w-full bg-[#333] rounded-xl overflow-hidden bg-[rgba(0,0 0,0.8)] p-8 relative">
-      <div className="flex flex-col justify-between h-full z-10 relative max-w-[60%]">
+    <div className="blueprint-card">
+      <div className="flex flex-col justify-between h-full z-10 relative">
         <div className="flex flex-col gap-6">
           <h4 className={cn("text-2xl text-white font-black uppercase")}>{title}</h4>
+          {tags && tags.length ? (
+          <ul className={"flex flex-row flex-wrap gap-2"}>
+            {tags.map((tag, idx) => (
+              <li key={idx}>
+                <span className={"text-secondary text-xs uppercase px-6 py-1.5 bg-gray-100 rounded-[6px] whitespace-nowrap"}>{tag}</span>
+              </li>
+            ))}
+          </ul>
+          ) : null}
           <div className={cn("text-sm text-whiteAlpha-700 leading-normal")}>{children}</div>
         </div>
         {live ? (
@@ -288,7 +297,7 @@ function BlueprintCard({ title, children, illustration, live }: { title: string,
           alt=""
           width={250}
           height={250}
-          className={cn("absolute top-[25%] right-[-1%] z-0 opacity-50 untanglable")}
+          className={cn("img", "absolute top-[25%] right-[-1%] z-0 opacity-25 untanglable")}
         />
       ) : null}
     </div>
@@ -402,31 +411,40 @@ function SectionPitchAccelerate() {
               <BlueprintCard
                 title="Lens API Oracle"
                 illustration="/home/blueprint-lens-api-oracle.png"
+                tags={["Polygon", "EVM", "Lens"]}
                 live
               >
-                A social oracle allowing a smart contract to read data from Lens API, including user profile stats like followers, posts, comments, and post stats like collects, mirrors, and replies. Compatible with Polygon and any EVM blockchain.
+                Deploy a custom social oracle to integrate Lens API data into your smart contracts, providing access to user profile statistics such as followers, posts, comments, and post metrics like collections, mirrors, and replies.
               </BlueprintCard>
               <BlueprintCard
-                title="Lens Cross Post Bot"
+                title="Lens Social Sync Bot"
+                tags={["Lens", "Twitter"]}
               >
-                A bot to mirrow your posts on Twitter, Facebook, and other social media to your Lens profile automatically.
+                Effortlessly sync your social media content across Twitter, Facebook, and more with this easy-to-deploy bot that automatically mirrors your posts to your Lens profile in minutes.
               </BlueprintCard>
               <BlueprintCard
-                title="Lens Referral System"
+                title="Referral Oracle"
+                tags={["Ethereum", "EVM", "Substrate", "Lens"]}
               >
+                Deploy a referral system pluggable into your Dapp in minutes, boost your reachability. Utilize the SDK to generate referral links for your audience and monitor user traffic. Easily integrates with blockchain accounts and Lens profiles, with data queryable by monetization smart contracts.
               </BlueprintCard>
               <BlueprintCard
-                title="Cross-chain Contract Read"
+                title="The Graph Oracle"
+                tags={["The Graph", "Ethereum", "Substrate", "EVM"]}
               >
+                Deploy your custom oracle for instant access to all the Subgraphs from The Graph protocol, enabling multi-chain data retrieval and aggregation in your smart contracts.
               </BlueprintCard>
               <BlueprintCard
-                title="Arweave Storage Proof"
+                title="Conditional Gated Data"
+                tags={["Ethereum", "EVM", "Substrate", "IPFS", "Arweave"]}
               >
+                Deploy a customized token gate or conditional decryption gateway to manage access to your on-chain or off-chain data. Facilitate secure data sharing on decentralized social, exclusive NFT content, and more.
               </BlueprintCard>
               <BlueprintCard
-                title="Push Notification"
+                title="On-chain ChatGPT Agent"
+                tags={["AI", "Ethereum", "EVM", "Substrate"]}
               >
-                Check if some file is actually stored on Arweave is your smart contract.
+                Integrate your smart contract with a customized ChatGPT oracle for intelligent automation. Monitor blockchain events and initiate user-driven actions, create content on decentralized social platforms, and unlock more automated capabilities.
               </BlueprintCard>
             </div>
             <a href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints" className={cn("btn btn-lg bg-primary mt-10 text-lg font-bold uppercase flex flex-row items-center py-5 px-10")} target="_blank" rel="noopener">
@@ -522,26 +540,25 @@ function SectionPitchInnovate() {
         )}>
           <h4 className={cn("text-4xl font-black text-blackAlpha-900 uppercase text-center mx-auto")}>Access the unique functionalities in Phat Contract</h4>
           <div className={cn("py-14")}>
-            <ul className="flex flex-row flex-wrap gap-2.5">
+            <ul className="flex flex-row flex-wrap gap-2.5 justify-center">
               <CodeExampleTab idx={0}>HTTP Request</CodeExampleTab>
               <CodeExampleTab idx={1}>Cross-Chain Integration</CodeExampleTab>
-              <CodeExampleTab idx={2}>Off-Chain Rollup</CodeExampleTab>
+              <CodeExampleTab idx={2}>OffChain Rollup</CodeExampleTab>
               <CodeExampleTab idx={3}>Automation</CodeExampleTab>
-              <CodeExampleTab idx={4}>Confidentiality (deal with API keys & private keys)</CodeExampleTab>
-              <CodeExampleTab idx={5}>High Performance Computation</CodeExampleTab>
+              <CodeExampleTab idx={4}>Secret Managment</CodeExampleTab>
+              <CodeExampleTab idx={5}>High performance computation</CodeExampleTab>
             </ul>
           </div>
-          <div className={cn("flex flex-row gap-10")}>
-            <div className={cn("w-[75%]", "flex flex-col gap-6")}>
-              <CodeExampleCodeViewer idx={0}>
+          <div className={cn("flex flex-col gap-8 w-full items-center")}>
+            <CodeExampleCodeViewer idx={0}>
 {`
 // Send HTTP(s) requests from your Phat Contract
 let headers = vec![("X-Foo".into(), "Bar".into())];
 let response = http_get!("https://example.com/", headers);
 assert_eq!(response.status_code, 200);
 `}
-              </CodeExampleCodeViewer>
-              <CodeExampleCodeViewer idx={1}>
+            </CodeExampleCodeViewer>
+            <CodeExampleCodeViewer idx={1}>
 {`
 // Sign and send transaction to EVM blockchains with pink-web3
 erc20_contract.signed_call(
@@ -551,33 +568,36 @@ erc20_contract.signed_call(
 	key_pair,
 )
 `}
-              </CodeExampleCodeViewer>
-              <CodeExampleCodeViewer idx={2}>
+            </CodeExampleCodeViewer>
+            <CodeExampleCodeViewer idx={2}>
 {`
 // Receive requests and answer with responses in Phat Contract
 if let Some(request) = client.session().pop().unwrap() {
-    let response: Vec<u8> = // ... Create your response based on the request ...
-    client.action(Action::Reply(response));
+  let response: Vec<u8> = // ... Create your response based on the request ...
+  client.action(Action::Reply(response));
 }
 `}
-              </CodeExampleCodeViewer>
-              <CodeExampleCodeViewer idx={2}>
+            </CodeExampleCodeViewer>
+            <CodeExampleCodeViewer idx={2}>
 {`
 // Send a request to your Phat Contract
 bytes request = abi.encode(1000, "polkadot/usd");
 uint256 reqId = _pushMessage(request);
 // Receive a response from your Phat Contract
 function _onMessageReceived(bytes calldata response) internal override {
-    emit MsgReceived(response);
+  emit MsgReceived(response);
 }
 `}
-              </CodeExampleCodeViewer>
-              <CodeExampleCodeViewer idx={3}>
+            </CodeExampleCodeViewer>
+            <CodeExampleCodeViewer idx={3}>
 {`
-// TODO
+// Register \`poll()\` in the Phat Bricks scheduler to automate your contract
+fn poll(&self) -> Result<()> {
+    self.something_automated()
+}
 `}
-              </CodeExampleCodeViewer>
-              <CodeExampleCodeViewer idx={4}>
+            </CodeExampleCodeViewer>
+            <CodeExampleCodeViewer idx={4}>
 {`
 // Contract storage is private by default
 struct Contract {
@@ -592,8 +612,8 @@ fn get_key(&self) -> Result<Vec<u8>> {
 	self.private_key
 }
 `}
-              </CodeExampleCodeViewer>
-              <CodeExampleCodeViewer idx={5}>
+            </CodeExampleCodeViewer>
+            <CodeExampleCodeViewer idx={5}>
 {`
 // Parse JSON objects
 let object: PriceResponse = pink_json::from_str(&json);
@@ -605,15 +625,7 @@ let signature = signing::sign(message, &privkey, SigType::Ecdsa);
 self.env().ext().cache_put(b"key", b"value");
 self.env().ext().cache_get(b"key");
 `}
-              </CodeExampleCodeViewer>
-            </div>
-            <div className={cn("w-[25%]")}>
-              <CodeExampleDescription idx={0}>
-                <p>With access to HTTP request, you unlock a whole new world of dAPP possibilities.</p> 
-                <p>HTTPs requests are sent from the secure environment so that nobody can manipulate the content or forge the request.</p>
-                <p>It enables direct operation to read & write to other blockchains as well as Web2 APIs.</p>
-              </CodeExampleDescription>
-            </div>
+            </CodeExampleCodeViewer>
           </div>
         </div>
 
@@ -637,19 +649,10 @@ self.env().ext().cache_get(b"key");
         )}>
           <ul className={cn("max-w-md flex flex-col gap-5")}>
             <ShowCaseTab idx={0} summary="Cross-chain DEX aggregator">
-              <p>TODO</p>
             </ShowCaseTab>
             <ShowCaseTab idx={1} summary="Self-owned Oracles">
-              <p>TODO</p>
             </ShowCaseTab>
-            <ShowCaseTab idx={2} summary="Trading Bot">
-              <p>TODO</p>
-            </ShowCaseTab>
-            <ShowCaseTab idx={3} summary="DAO-Controlled Web2 Services">
-              <p>TODO</p>
-            </ShowCaseTab>
-            <ShowCaseTab idx={4} summary="Trustless Ranking System">
-              <p>TODO</p>
+            <ShowCaseTab idx={2} summary="Contract Controlled Web2 Service">
             </ShowCaseTab>
             <div className={cn("flex-1 rounded-lg px-7 py-6 bg-secondary flex flex-row items-center justify-center gap-14")}>
               <div>
@@ -676,7 +679,7 @@ self.env().ext().cache_get(b"key");
             <ShowCaseTabPanel
               idx={0}
               title="Cross-chain DEX aggregator"
-              src="https://picsum.photos/id/22/946/487"
+              src="/home/case-cross-chain-dex-aggregator.jpg"
               tags={["Cross-Chain Integration", "Automation", "HTTP Request"]}
               href="#"
             >
@@ -686,38 +689,22 @@ self.env().ext().cache_get(b"key");
             <ShowCaseTabPanel
               idx={1}
               title="Self-owned Oracles"
-              src="https://picsum.photos/id/23/946/487"
-              tags={["HTTP Request", "Off-Chain Rollup", "Automation", "Secret Management"]}
+              src="/home/case-self-owned-oracles.jpg"
+              tags={["Offchain Rollup", "Automation", "HTTP Request", "Secret Management"]}
               href="#"
             >
-              <p>TODO</p>
+              <p>Deploy a self-sovereign oracle that runs forever. Phat Contract provides an easy way to build customized oracle. This enables any smart contract to access a wide range of data from both on and off-chain data sources.</p>
+              <p>Phat Contract’s HTTP request functionality permits the contract to access any API via the internet. To obtain data from other blockchains, simply connect to node RPC and indexers. API keys are securely managed within Phat Contract, allowing access to not only public APIs but also private ones. Offchain Rollup is utilized to connect the oracle to smart contracts deployed across all supported blockchains.</p>
             </ShowCaseTabPanel>
             <ShowCaseTabPanel
               idx={2}
-              title="Trading Bot"
-              src="https://picsum.photos/id/26/946/487"
-              tags={["Cross-chain Integration", "Automation", "High Performance Compute"]}
+              title="Contract Controlled Web2 Service"
+              src="/home/case-contract-controlled-web2-service.jpg"
+              tags={["HTTP Request", "Secret Management", "High Performance Computation"]}
               href="#"
             >
-              <p>TODO</p>
-            </ShowCaseTabPanel>
-            <ShowCaseTabPanel
-              idx={3}
-              title="DAO controlled Web2 Services"
-              src="https://picsum.photos/id/29/946/487"
-              tags={["HTTP Request", "Cross-chain Integration", "Automation"]}
-              href="#"
-            >
-              <p>TODO</p>
-            </ShowCaseTabPanel>
-            <ShowCaseTabPanel
-              idx={4}
-              title="Trustless Ranking System"
-              src="https://picsum.photos/id/30/946/487"
-              tags={["Cross-chain Integration", "High Performance Compute"]}
-              href="#"
-            >
-              <p>TODO</p>
+              <p>Minimize trust when utilizing Web2 services by transferring account ownership from human administrators to Phat Contract. This approach effectively allows any Web2 service to be controlled by your smart contract, eliminating the need for trust in the account owner. This pattern makes every feature lacking in Web3 immediately available to your dApp, enabling use cases such as trust-minimized AI training, big data analytics, CDN, and more.</p>
+              <p>To delegate control of Web2 services exclusively to Phat Contract, it must manage API keys and login credentials. With secret management capabilities, Phat Contract can securely store and use secrets. It can access Web2 services via HTTP requests, incorporating complex compute logic such as JSON parsing and JWT generation within the Phat Contract itself.</p>
             </ShowCaseTabPanel>
           </div>
         </div>
@@ -802,30 +789,33 @@ function SectionPitchPioneer() {
 
         <main className={cn("row-start-2 xl:col-start-2 xl:col-span-10 3xl:col-start-4 3xl:col-span-10")}>
           <div className={cn("grid grid-cols-6 grid-rows-8 gap-3", "text-white text-xl font-extrabold uppercase leading-normal")}>
-            <AreaOfInterestTab idx={0} className="bento-trustless-mev">
+            <AreaOfInterestTab idx={0} className="bento-1">
               <h4>Trustless MEV</h4>
             </AreaOfInterestTab>
-            <AreaOfInterestTab idx={1} className="bento-sequencer-for-layer2">
-              <h4>Sequencer For Layer2</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={2} className="bento-decentralized-scientific-computation">
-              <h4>Decentralized Scientific Computation</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={3} className="bento-account-abstraction">
+            <AreaOfInterestTab idx={1} className="bento-2">
               <h4>Account Abstraction</h4>
             </AreaOfInterestTab>
-            <AreaOfInterestTab idx={4} className="bento-web3-ai">
-              <h4>Web3 AI</h4>
+            <AreaOfInterestTab idx={2} className="bento-3">
+              <h4>L2 Sequencer</h4>
             </AreaOfInterestTab>
-            <AreaOfInterestTab idx={5} className="bento-decentralized-api">
+            <AreaOfInterestTab idx={3} className="bento-4">
               <h4>Decentralized API</h4>
             </AreaOfInterestTab>
-            <a href="#" className={cn("bento-join-research-community", "rounded-xl bg-secondary p-6 w-56 h-56 flex flex-col gap-3.5 items-center")}>
+            <AreaOfInterestTab idx={4} className="bento-5">
+              <h4>Web3 AI</h4>
+            </AreaOfInterestTab>
+            <AreaOfInterestTab idx={5} className="bento-6">
+              <h4>Distributed Computing</h4>
+            </AreaOfInterestTab>
+            <a href="#" className={cn("bento-7", "rounded-xl bg-secondary p-6 w-56 h-56 flex flex-col gap-3.5 items-center")}>
               <span>Join research community</span>
               <VscCommentDiscussion className="w-28 h-28 text-gray-200" />
             </a>
-            <AreaOfInterestTab idx={6} className="bento-distributed-computation">
-              <h4>Distributed Computation</h4>
+            <AreaOfInterestTab idx={6} className="bento-8">
+              <h4>Gateway & CDN</h4>
+            </AreaOfInterestTab>
+            <AreaOfInterestTab idx={7} className="bento-9">
+              <h4>Relayers & Validators</h4>
             </AreaOfInterestTab>
           </div>
         </main>
@@ -834,15 +824,38 @@ function SectionPitchPioneer() {
           <h3 className="text-4xl text-white">Areas of interest</h3>
           <div className={cn("bg-blackAlpha-500 rounded-5xl py-8 px-10 text-white h-full")}>
             <AreaOfInterestTabPanel idx={0} title="Trustless MEV">
-              <p>
-                According to the Messari Report, 80% of the Ethereum blocks are built by MEV.
-              </p>
-              <p>
-                However, currently the MEV stack still depends on trusted service providers like Flashbot. A research direction is to use Secure Enclave (e.g. Intel SGX) to minimize the trust.
-              </p>
-              <p>
-                Phala Network is an offchain compute network powered by Secure Enclaves. It's possible to build the MEV core stack in Phala Network's technology to minimize the trust assuptions.
-              </p>
+              <p>Trustless MEV refers to the concept of eliminating reliance on trusted service providers, such as Flashbot, in the Miner Extractable Value (MEV) ecosystem. Currently, 80% of Ethereum blocks are built by MEV, but the existing MEV stack depends on these trusted providers.</p>
+              <p>The problem with this approach is that it creates a single point of trust in the MEV ecosystem. Researchers have suggested using Secure Enclaves, like Intel SGX, to minimize this trust dependency.</p>
+              <p>Phala Network, an off-chain compute network powered by Secure Enclaves, can be utilized to build the MEV core stack with minimal trust assumptions. This enables a more secure and trustless MEV ecosystem for developers and users alike.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={1} title="Account Abstraction">
+              <p>Account Abstraction is the idea of using smart contract wallets as first-class citizens instead of Externally Owned Accounts (EOAs), alongside a reliable transaction relaying infrastructure. This allows third parties to execute transactions on behalf of users, enabling features such as wallet recovery and batched transactions.</p>
+              <p>However, adoption of smart contract wallets has been limited due to the lack of a common standard for interaction between smart contracts and dApps. This results in users still relying on their EOAs for transactions.</p>
+              <p>Phala Network’s Phat Contract allows developers to create seamless user experiences by enabling registration via social accounts or gasless dApp usage. It also allows developers to sponsor transactions on behalf of users, eliminating the need for users to worry about gas fees.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={2} title="L2 Sequencer">
+              <p>Layer 2 solutions aim to scale applications by handling transactions off the Ethereum Mainnet (Layer 1) while maintaining the decentralized security of the Mainnet. However, rollups, a popular Layer 2 solution, introduce issues like monopoly pricing, censorship, and fragmented liquidity between rollups.</p>
+              <p>Phala Network can provide a scalable and secure solution by leveraging its high-performance and confidentiality features. This enables developers to create application-tailored rollups that are fast, reliable, and maintain the composability of the Ethereum ecosystem.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={3} title="Decentralized API">
+              <p>Decentralized APIs can enhance the trustworthiness of various services, such as Infura, Graph, Alchemy, and RPC APIs. Phala Network enables the aggregation of API services or RPC services with trustless algorithms, providing use cases like verifiable RPC aggregator switchers and trustless CDN management programs.</p>
+              <p>This allows developers to secure their websites, APIs, and Internet applications while maintaining a decentralized and trustless environment.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={4} title="Web3 AI">
+            <p>Web3 AI refers to the integration of decentralized AI systems with blockchain technology. This enables distributed model training, ensuring data privacy while benefiting from diverse data sources. It also allows for collaborative model development, where multiple parties can work on AI models without sharing sensitive data.</p>
+            <p>Phala Network can facilitate the development of Web3 AI systems by providing a secure and transparent platform for AI model training, updates, and access. Smart contracts on Phala Network can ensure adherence to predefined rules and agreements, while the immutable nature of the blockchain provides an auditable record of these processes.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={5} title="Distributed Computing">
+              <p>Distributed computing enables multiple computers to work together to solve complex problems, making a computer network appear as a powerful single computer. It can be used to encrypt large volumes of data, solve complex equations, and render high-quality animations.</p>
+              <p>Phala Network offers fast, cost-efficient, and secure computation by running jobs where data is generated and stored. It can streamline existing workflows without extensive rewriting by running arbitrary Docker containers and WebAssembly (wasm) images as tasks.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={6} title="Gateway & CDN">
+              <p>Centralized CDN services can lead to issues like single points of failure, data leaks, and centralized control. Phala Network provides a decentralized content and application delivery network that accelerates the delivery of Web3 content and apps.</p>
+              <p>By connecting with decentralized storage services like IPFS, Filecoin, and Arweave, Phala Network can create a transparent, content-addressable, and publicly available CDN. This ensures a trustless, censorship-resistant, and open-source environment for content delivery.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={7} title="Relayers & Validators">
+              <p>The relay model for cross-chain transactions abstracts data verification into a consensus problem at the relay layer. A relay chain is developed for interoperability, with relay nodes deployed in each blockchain network to monitor and synchronize transaction data.</p>
+              <p>Phala Network can help developers build inter-chain-native dApps with efficient liquidity utilization, coherent application logic, and shared states with cross-chain verifications. This eliminates the need for multiple isolated smart contract deployments on different blockchains, streamlining the development process.</p>
             </AreaOfInterestTabPanel>
 
             <div className={cn("border-t border-solid border-whiteAlpha-700 mt-4 hidden")}>
