@@ -13,7 +13,7 @@ export function ShowCaseTab({ idx, summary, live, children }: {
   idx: number
   summary: string
   live?: boolean
-  children: ReactNode
+  children?: ReactNode
 }) {
   return (
     <li>
@@ -23,9 +23,11 @@ export function ShowCaseTab({ idx, summary, live, children }: {
         theIdxAtom={activeShowCaseAtom}
       >
         <summary>{summary}</summary>
+        {children ? (
         <div className="body">
           {children}
         </div>
+        ) : null}
       </Details>
     </li>
   )

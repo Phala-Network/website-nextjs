@@ -9,7 +9,7 @@
 }
 
 .code-viewer {
-  @apply border border-solid border-blackAlpha-200 bg-[#EEF0F4] rounded-[20px] px-6 py-5;
+  @apply border border-solid border-blackAlpha-200 bg-[#EEF0F4] rounded-[20px] px-6 py-5 w-8/12;
   box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
   max-height: 440px;
 }
@@ -103,40 +103,60 @@
 
 /* .section-bento */
 
-.bento-trustless-mev {
+.bento-1 {
   grid-area: 1 / 1 / 3 / 3;
 }
 
-.bento-sequencer-for-layer2 {
+.bento-2 {
   grid-area: 2 / 3 / 4 / 5;
 }
 
-.bento-decentralized-scientific-computation {
-  grid-area: 3 / 5 / 5 / 6;
+.bento-3 {
+  grid-area: 1 / 5 / 5 / 6;
 }
 
-.bento-account-abstraction {
+.bento-4 {
   grid-area: 3 / 1 / 5 / 3;
 }
 
-.bento-web3-ai {
+.bento-5 {
   grid-area: 4 / 3 / 6 / 5;
 }
 
-.bento-decentralized-api {
+.bento-6 {
   grid-area: 5 / 1/ 7 / 3;
 }
 
-.bento-join-research-community {
+.bento-7 {
   grid-area: 6 / 3 / 8 / 5;
 }
 
-.bento-distributed-computation {
+.bento-8 {
   grid-area: 5 / 5 / 7 / 6;
+}
+
+.bento-9 {
+  grid-area: 3 / 5 / 7 / 6;
 }
 
 /*  */
 
+.blueprint-card {
+  @apply w-full rounded-xl overflow-hidden p-8 relative transition-all brightness-90;
+  background: #333;
+}
+
+.blueprint-card:hover {
+  @apply brightness-125;
+}
+
+.blueprint-card .img {
+  @apply transition-all;
+
+}
+.blueprint-card:hover .img {
+  @apply -rotate-12;
+}
 
 /* .section-subscription */
 
