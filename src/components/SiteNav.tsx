@@ -20,8 +20,12 @@ function SiteNavItem({ children, className, ...props }: HTMLProps<HTMLAnchorElem
 export default function SiteNav() {
   return (
     <nav className="w-full absolute z-30">
-      <div className={cn("site-nav safe-viewport", "flex flex-row items-center justify-between py-6")}>
-        <Link href="/">
+      <div className={cn(
+        "site-nav safe-viewport",
+        "grid gap-4 grid-cols-3 xl:grid-cols-20 3xl:grid-cols-24 grid-rows-1",
+        "py-6"
+      )}>
+        <Link href="/" className="xl:col-span-3 xl:col-start-2 3xl:col-start-1 row-start-1 flex flex-row items-center">
           <Image
             src="/logo.svg"
             alt="Phala Logo"
@@ -31,16 +35,27 @@ export default function SiteNav() {
             priority
           />
         </Link>
-        <nav className={cn("flex flex-row gap-[3.75rem]")}>
+        <nav className={cn(
+          "invisible xl:visible xl:col-start-5 xl:col-span-12 3xl:col-start-7 3xl:col-span-13 row-start-1",
+          "flex flex-row items-center justify-between w-full px-16"
+        )}>
           <SiteNavItem href="https://docs.phala.network/v1/developers/phat-contract" target="_blank" rel="noopener">Developers</SiteNavItem>
           <SiteNavItem href="https://docs.phala.network/v1/compute-providers/basic-info/introduction" target="_blank" rel="noopener">Compute Providers</SiteNavItem>
           <SiteNavItem href="https://docs.phala.network/v1/pha-token/delegation" target="_blank" rel="noopener">PHA Token</SiteNavItem>
           <SiteNavItem href="https://linktr.ee/phalanetwork" target="_blank" rel="noopener">Participate</SiteNavItem>
         </nav>
-        <div className="w-full max-w-[9.375rem]">
+        <div
+          className={cn(
+            "xl:col-span-3 xl:col-end-20 3xl:col-end-25 row-start-1",
+            "flex flex-row justify-end w-full",
+          )}
+        >
           <a
             href="https://app.phala.network/"
-            className={cn("btn bg-blackAlpha-800 text-sm text-primary py-3 px-5 w-full flex flex-row justify-between items-center")}
+            className={cn(
+              "w-full max-w-[9.375rem]",
+              "btn btn-primary btn-reverse btn-sm btn-aside-icon"
+            )}
             target="_blank"
             rel="noopener"
           >
@@ -48,9 +63,9 @@ export default function SiteNav() {
             <Image
               src="/icons/right-arrow.svg"
               alt=""
-              className="svg-primary untanglable"
-              width={16}
-              height={16}
+              className="svg-primary icon"
+              width={14}
+              height={14}
             />
           </a>
         </div>
