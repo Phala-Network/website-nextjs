@@ -38,7 +38,7 @@ export function ShowCaseTabPanel({ idx, title, src, tags, href, children }: {
   title: string
   src: string
   tags?: string[]
-  href: string
+  href?: string
   children: ReactNode
 }) {
   const current = useAtomValue(activeShowCaseAtom)
@@ -70,6 +70,7 @@ export function ShowCaseTabPanel({ idx, title, src, tags, href, children }: {
           {children}
         </main>
         <footer>
+          {href ? (
           <a href={href} className={cn("btn bg-secondary text-white uppercase inline-flex flex-row justify-between px-5 py-3 w-[16rem]")}>
             <span className={"text-lg font-bold"}>Try Now</span>
             <Image
@@ -80,6 +81,7 @@ export function ShowCaseTabPanel({ idx, title, src, tags, href, children }: {
               className={cn("svg-white")}
             />
           </a>
+          ) : null}
         </footer>
       </div>
     </div>

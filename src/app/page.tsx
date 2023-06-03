@@ -388,7 +388,7 @@ function SectionPitchAccelerate() {
           "mt-8"
         )}>
           <a href="https://bricks.phala.network" className="flex-row flex items-center text-white rounded-xl bg-[#6C37C9] py-5 px-10" target="_blank" rel="noopener">
-            <span className="text-lg font-bold uppercase">Get your own lens api oracle now</span>
+            <span className="text-lg font-bold uppercase">Get your own LensAPI oracle now</span>
             <Image
               src="/icons/right-arrow.svg"
               alt=""
@@ -409,12 +409,12 @@ function SectionPitchAccelerate() {
             </header>
             <div className={cn("grid grid-cols-2 gap-5")}>
               <BlueprintCard
-                title="Lens API Oracle"
+                title="LensAPI Oracle"
                 illustration="/home/blueprint-lens-api-oracle.png"
                 tags={["Polygon", "EVM", "Lens"]}
                 live
               >
-                Deploy a custom social oracle to integrate Lens API data into your smart contracts, providing access to user profile statistics such as followers, posts, comments, and post metrics like collections, mirrors, and replies.
+                Deploy a custom social oracle to integrate LensAPI data into your smart contracts, providing access to user profile statistics such as followers, posts, comments, and post metrics like collections, mirrors, and replies.
               </BlueprintCard>
               <BlueprintCard
                 title="Lens Social Sync Bot"
@@ -681,7 +681,6 @@ self.env().ext().cache_get(b"key");
               title="Cross-chain DEX aggregator"
               src="/home/case-cross-chain-dex-aggregator.jpg"
               tags={["Cross-Chain Integration", "Automation", "HTTP Request"]}
-              href="#"
             >
               <p>By utilizing Phat Contract, developers can create a cross-chain DEX aggregator that enables users to swap tokens between various blockchains while ensuring the best possible price and minimal slippage in one-click.</p>
               <p>This solution employs Phat Contract to automatically search for the most efficient routes across DEXs and bridges. Then the Phat Contract initiates the necessary transactions on the target blockchains, executing swap and bridge operations on the user’s behalf. Transaction execution is further streamlined by automated schedulers and monitoring by indexers. To retrieve the status of these transactions, developers can query the indexers through HTTP requests.</p>
@@ -691,7 +690,6 @@ self.env().ext().cache_get(b"key");
               title="Self-owned Oracles"
               src="/home/case-self-owned-oracles.jpg"
               tags={["Offchain Rollup", "Automation", "HTTP Request", "Secret Management"]}
-              href="#"
             >
               <p>Deploy a self-sovereign oracle that runs forever. Phat Contract provides an easy way to build customized oracle. This enables any smart contract to access a wide range of data from both on and off-chain data sources.</p>
               <p>Phat Contract’s HTTP request functionality permits the contract to access any API via the internet. To obtain data from other blockchains, simply connect to node RPC and indexers. API keys are securely managed within Phat Contract, allowing access to not only public APIs but also private ones. Offchain Rollup is utilized to connect the oracle to smart contracts deployed across all supported blockchains.</p>
@@ -701,7 +699,6 @@ self.env().ext().cache_get(b"key");
               title="Contract Controlled Web2 Service"
               src="/home/case-contract-controlled-web2-service.jpg"
               tags={["HTTP Request", "Secret Management", "High Performance Computation"]}
-              href="#"
             >
               <p>Minimize trust when utilizing Web2 services by transferring account ownership from human administrators to Phat Contract. This approach effectively allows any Web2 service to be controlled by your smart contract, eliminating the need for trust in the account owner. This pattern makes every feature lacking in Web3 immediately available to your dApp, enabling use cases such as trust-minimized AI training, big data analytics, CDN, and more.</p>
               <p>To delegate control of Web2 services exclusively to Phat Contract, it must manage API keys and login credentials. With secret management capabilities, Phat Contract can securely store and use secrets. It can access Web2 services via HTTP requests, incorporating complex compute logic such as JSON parsing and JWT generation within the Phat Contract itself.</p>
@@ -737,14 +734,16 @@ self.env().ext().cache_get(b"key");
               <li><Image src="/home/avatar-dan.jpg" alt="Dan" fill className="untanglable" /></li>
               <li><Image src="/home/avatar-zoe.jpg" alt="Zoe" fill className="untanglable" /></li>
             </ul>
-            <a
-              className={cn("text-4xl font-normal leading-normal uppercase text-black whitespace-nowrap mt-4 ml-4 3xl:ml-8")}
-              href="https://discord.com/channels/697726436211163147/1098183647720394772"
-              target="_blank"
-              rel="noopener"
-            >
-              Chat Now!
-            </a>
+            <div>
+              <a
+                className={cn("text-4xl font-normal leading-normal uppercase text-black whitespace-nowrap mt-4 ml-4 3xl:ml-8 btn-link")}
+                href="https://discord.com/channels/697726436211163147/1098183647720394772"
+                target="_blank"
+                rel="noopener"
+              >
+                Chat Now!
+              </a>
+            </div>
           </div>
         </div>
 
@@ -807,7 +806,7 @@ function SectionPitchPioneer() {
             <AreaOfInterestTab idx={5} className="bento-6">
               <h4>Distributed Computing</h4>
             </AreaOfInterestTab>
-            <a href="#" className={cn("bento-7", "rounded-xl bg-secondary p-6 w-56 h-56 flex flex-col gap-3.5 items-center")}>
+            <a href="https://discord.com/channels/697726436211163147/1114400898408521778" className={cn("bento-7", "rounded-xl bg-secondary p-6 w-56 h-56 flex flex-col gap-3.5 items-center")}>
               <span>Join research community</span>
               <VscCommentDiscussion className="w-28 h-28 text-gray-200" />
             </a>
@@ -904,7 +903,7 @@ function SectionHowItWorks() {
           <div className={cn("rounded-3xl aspect-[1360/760] bg-gray-200")} />
         </div>
         <blockquote className={cn("row-start-3 xl:col-start-2 xl:col-span-9 3xl:col-start-4 3xl:col-span-9 mt-40 mb-16", "quote")}>
-          <p>BY THE PEOPPLE.</p>
+          <p>BY THE PEOPLE.</p>
           <p>FOR THE PEOPLE.</p>
         </blockquote>
         <div className={cn("row-start-3 xl:col-end-20 xl:col-span-9 3xl:col-end-22", "mt-40 mb-16 px-12 py-14 bg-primary rounded-3xl max-w-[44.75rem]")}>

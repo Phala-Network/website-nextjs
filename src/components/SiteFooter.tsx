@@ -59,7 +59,7 @@ export default function SiteFooter() {
           <div>
             <LinkListHeading>Blueprints</LinkListHeading>
             <LinkList>
-              <LinkListItem href="https://bricks.phala.network/">Lens API Oracle</LinkListItem>
+              <LinkListItem href="https://bricks.phala.network/">LensAPI Oracle</LinkListItem>
             </LinkList>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function SiteFooter() {
             <LinkListHeading>Resources</LinkListHeading>
             <LinkList>
               <LinkListItem href="https://app.phala.network">Phala App</LinkListItem>
-              <LinkListItem href="https://files.phala.network/phala-paper.pdf">Whitepaper</LinkListItem>
+              <LinkListItem href="https://github.com/Phala-Network/Whitepaper/tree/master/pdf">Whitepaper</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/pha-token/delegation/delegate-to-stakepool">Staking</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/pay-for-cloud-service">Tokenomics</LinkListItem>
               <LinkListItem href="https://docs.phala.network/">What is Phala Network?</LinkListItem>
@@ -76,6 +76,7 @@ export default function SiteFooter() {
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/builders-program">What are Blueprints?</LinkListItem>
               <LinkListItem href="/roadmap">Roadmap</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/growth-program">Ambassador Program</LinkListItem>
+              <LinkListItem href="https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq">Media Kit</LinkListItem>
             </LinkList>
           </div>
         </div>
@@ -87,8 +88,8 @@ export default function SiteFooter() {
               <LinkListItem href="https://discord.com/invite/phala">Discord</LinkListItem>
               <LinkListItem href="https://t.me/phalanetwork">Telegram</LinkListItem>
               <LinkListItem href="https://www.youtube.com/channel/UCzm2tq2-1geDURldGCG6rpA">YouTube</LinkListItem>
-              <LinkListItem href="">Lenster</LinkListItem>
-              <LinkListItem href="">Lenstube</LinkListItem>
+              <LinkListItem href="https://lenster.xyz/u/yourfather">Lenster</LinkListItem>
+              <LinkListItem href="https://lenstube.xyz/channel/yourfather.lens">Lenstube</LinkListItem>
             </LinkList>
           </div>
         </div>
