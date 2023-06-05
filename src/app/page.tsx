@@ -38,9 +38,11 @@ function Stats({ children, name }: { children: ReactNode, name: string }) {
 function SectionHero() {
   return (
     <section id="section-hero" className={cn("relative max-h-screen w-full", "section-hero")}>
-      <div className={cn("background", "absolute top-0 left-0 w-full min-h-full z-[-1] untanglable")}>
-        <Image src="/home/bg-first-screen.jpg" alt="" fill className="aspect-[3840/1980] object-cover relative z-[1]" />
-        <video className="object-fill -mt-[4.3rem] relative z-[2]" autoPlay muted loop>
+      <div className={cn("background", "absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden")}>
+        <video
+          className="object-cover aspect-[3840/1980] h-full min-w-full"
+          autoPlay muted loop
+        >
           <source src="https://nft-assets.phala.world/network/bg20230605.mp4" type="video/mp4" />
           <source src="https://nft-assets.phala.world/network/bg20230605.webm" type="video/webm" />
         </video>
