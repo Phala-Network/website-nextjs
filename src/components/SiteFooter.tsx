@@ -52,7 +52,6 @@ export default function SiteFooter() {
               <LinkListItem href="https://phat.phala.network/">Native Phat Contract App</LinkListItem>
               <LinkListItem href="https://bricks.phala.network/?source=foot-bricks-app">Bricks App</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/use-cases">Use Cases</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info">Become a Compute Provider</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/phala-bounty-tracker">Bug Bounty Program</LinkListItem>
             </LinkList>
           </div>
@@ -76,6 +75,7 @@ export default function SiteFooter() {
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract">What is Phat Contract?</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints">What are Blueprints?</LinkListItem>
               <LinkListItem href="/roadmap">Roadmap</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info">Become a Compute Provider</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/growth-program">Ambassador Program</LinkListItem>
               <LinkListItem href="https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq">Media Kit</LinkListItem>
             </LinkList>
