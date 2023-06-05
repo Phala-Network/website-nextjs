@@ -52,7 +52,6 @@ export default function SiteFooter() {
               <LinkListItem href="https://phat.phala.network/">Native Phat Contract App</LinkListItem>
               <LinkListItem href="https://bricks.phala.network/?source=foot-bricks-app">Bricks App</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/use-cases">Use Cases</LinkListItem>
-              <LinkListItem href="https://github.com/Phala-Network/phala-bounty-tracker">Bug Bounty Program</LinkListItem>
             </LinkList>
           </div>
           <div>
