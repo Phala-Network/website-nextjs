@@ -93,6 +93,15 @@ export default function SiteFooter() {
               <LinkListItem href="https://lenstube.xyz/channel/yourfather.lens">Lenstube</LinkListItem>
             </LinkList>
           </div>
+          <div>
+              <LinkListHeading>Blockchains</LinkListHeading>
+              <LinkList>
+                  <LinkListItem href="https://phala.subscan.io/">Phala Explorer</LinkListItem>
+                  <LinkListItem href="https://khala.subscan.io/">Khala Explorer</LinkListItem>
+                  <LinkListItem href="https://phala.subsquare.io/">Phala Governance</LinkListItem>
+                  <LinkListItem href="https://khala.subsquare.io/">Khala Governance</LinkListItem>
+              </LinkList>
+          </div>
         </div>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-row items-center justify-between")}>
           <Image
