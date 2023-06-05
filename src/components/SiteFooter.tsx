@@ -74,7 +74,7 @@ export default function SiteFooter() {
               <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info/worker-rewards">Tokenomics - Earn</LinkListItem>
               <LinkListItem href="https://docs.phala.network/">What is Phala Network?</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract">What is Phat Contract?</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/builders-program">What are Blueprints?</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints">What are Blueprints?</LinkListItem>
               <LinkListItem href="/roadmap">Roadmap</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/growth-program">Ambassador Program</LinkListItem>
               <LinkListItem href="https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq">Media Kit</LinkListItem>
