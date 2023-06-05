@@ -543,11 +543,19 @@ function SectionPitchInnovate() {
         "safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24",
         "overflow-hidden"
       )}>
-        <header className={cn(
-          "row-start-1 xl:col-span-20 3xl:col-span-24",
-          "pt-44 pb-[20px]",
-          "flex flex-col items-center w-full relative"
-        )}>
+        <header
+          className={cn(
+            "row-start-1 xl:col-span-20 3xl:col-span-24",
+            "pt-44 pb-[20px] relative top-4",
+            "flex flex-col items-center w-full relative",
+          )}
+          style={{
+            backgroundImage: 'url("/home/bg-innovate-01.png")',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+          }}
+        >
           <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-4 bg-white inline-block">Innovate</h2>
           <p className="font-medium text-[2rem] text-black mt-10">Full power, Full control. Empower your ideas.</p>
 
@@ -654,10 +662,13 @@ self.env().ext().cache_get(b"key");
           </div>
         </div>
 
-        <div className={cn(
-          "row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10 3xl:col-span-6",
-          "mt-6 mb-22"
-        )}>
+        <div
+          className={cn(
+            "row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10 3xl:col-span-6",
+            "mt-6 mb-22",
+            "relative"
+          )}
+        >
           <a
             href="https://docs.phala.network/v1/developers/phat-contract"
             className="btn btn-xl btn-third btn-center-icon w-full uppercase"
@@ -667,6 +678,13 @@ self.env().ext().cache_get(b"key");
             Docs
             <VscNote className="icon h-7 w-7 mt-0.5" />
           </a>
+          <div
+            className={cn(
+              "absolute top-[-100%] right-[-150%] w-[30vw] aspect-square -z-[1]"
+            )}
+          >
+            <img src="/home/bg-gear.png" alt="" />
+          </div>
         </div>
 
         <div className={cn(
@@ -812,11 +830,18 @@ function SectionPitchPioneer() {
           className={cn(
             "row-start-1 xl:col-end-20 xl:col-span-13 3xl:col-end-22 3xl:col-span-12",
             "mt-[14rem]",
-            "w-full flex flex-col items-end justify-center"
+            "w-full flex flex-col items-end justify-center relative"
           )}
         >
           <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-4 bg-white inline-block">Pioneer</h2>
           <p className="font-medium text-[2rem] text-white mt-6">Work with us on cutting edge research</p>
+          <div
+            className={cn(
+              "absolute top-[-5vw] left-[15vw] 3xl:left-[5vw] w-[30vw] aspect-square -z-[1]"
+            )}
+          >
+            <img src="/home/bg-gear.png" alt="" />
+          </div>
         </header>
 
         <main className={cn("row-start-2 xl:col-start-2 xl:col-span-10 3xl:col-start-4 3xl:col-span-10 mt-32")}>
