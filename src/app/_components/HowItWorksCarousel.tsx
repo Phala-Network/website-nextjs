@@ -64,77 +64,115 @@ export const HowItWorksCarousel = () => {
   }
 
   return (
-    <div className={cn("flex flex-row rounded-3xl aspect-[1360/760] bg-gray-200 w-full overflow-hidden relative")}>
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.div
-          key={page}
-          className={cn("aspect-[1360/760] bg-gray-200 w-full absolute")}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 }
-          }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={1}
-          onDragEnd={(e, { offset, velocity }) => {
-            const swipe = swipePower(offset.x, velocity.x);
+    <div className="rounded-3xl overflow-hidden">
+      <div className={cn("flex flex-row aspect-[1360/760] bg-gray-200 w-full relative")}>
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={page}
+            className={cn("aspect-[1360/760] bg-gray-200 w-full absolute")}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 }
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
 
-            if (swipe < -swipeConfidenceThreshold) {
-              paginate(1);
-            } else if (swipe > swipeConfidenceThreshold) {
-              paginate(-1);
-            }
-          }}
-        >
-          <Image
-            src={images[imageIndex]}
-            fill
-            alt=""
-          />
-        </motion.div>
-      </AnimatePresence>
-      <button
-        className={cn(
-          "absolute top-[50%] right-8 bg-white text-brand z-10 btn-animated opacity-40 hover:bg-whiteAlpha-700 hover:opacity-100",
-          "w-10 h-10 rounded-full flex justify-center items-center -mt-10"
-        )}
-        onClick={() => paginate(1)}
-      >
-        <GrNext className={cn("h-4 w-4")} />
-      </button>
-      <button
-        className={cn(
-          "absolute top-[50%] left-8 bg-white text-brand z-10 btn-animated opacity-40 hover:bg-whiteAlpha-700 hover:opacity-100",
-          "w-10 h-10 rounded-full flex justify-center items-center -mt-10"
-        )}
-        onClick={() => paginate(-1)}
-      >
-        <GrPrevious className={cn("h-4 w-4")} />
-      </button>
-      <div className={cn(
-        "absolute bottom-0 w-full flex flex-row justify-center items-center space-x-2 pb-4 z-10"
-      )}>
-        {images.map((_, i) => (
-          <button
-            key={i}
-            className={cn(
-              "w-10 h-10 rounded-full flex justify-center items-center transition-all",
-              "hover:bg-whiteAlpha-700"
-            )}
-            onClick={() => setPage(p => [i, p[0] < i ? 1 : -1])}
+              if (swipe < -swipeConfidenceThreshold) {
+                paginate(1);
+              } else if (swipe > swipeConfidenceThreshold) {
+                paginate(-1);
+              }
+            }}
           >
-            {i === page ? (
-              <RxDotFilled className={cn("h-10 w-10 text-secondary")} />
-            ) : (
-              <RxDot className={cn("h-10 w-10 text-secondary")} />
-            )}
-          </button>
-        ))}
+            <Image
+              src={images[imageIndex]}
+              fill
+              alt=""
+            />
+          </motion.div>
+        </AnimatePresence>
+        <button
+          className={cn(
+            "absolute top-[50%] right-8 bg-white text-brand z-10 btn-animated opacity-40 hover:bg-whiteAlpha-700 hover:opacity-100",
+            "w-10 h-10 rounded-full flex justify-center items-center -mt-10"
+          )}
+          onClick={() => paginate(1)}
+        >
+          <GrNext className={cn("h-4 w-4")} />
+        </button>
+        <button
+          className={cn(
+            "absolute top-[50%] left-8 bg-white text-brand z-10 btn-animated opacity-40 hover:bg-whiteAlpha-700 hover:opacity-100",
+            "w-10 h-10 rounded-full flex justify-center items-center -mt-10"
+          )}
+          onClick={() => paginate(-1)}
+        >
+          <GrPrevious className={cn("h-4 w-4")} />
+        </button>
+      </div>
+      <div className={("bg-blackAlpha-800 px-20 py-10")}>
+        <h3 className="text-3xl text-white uppercase mb-5">
+          {page === 0 ? (<span>Correctness</span>) : null}
+          {page === 1 ? (<span>Replicated</span>) : null}
+          {page === 2 ? (<span>Confidentiality</span>) : null}
+        </h3>
+        <div className="text-whiteAlpha-700 min-h-[7ch]">
+          {page === 0 ? (
+            <p>Phat Contracts are deployed to the blockchain and assigned to the off-chain workers, running inside Secure Enclaves. Anyone can check the signed transactions and Secure Enclave remote attestation to verify that the executed code is the one published on the blockchain.</p>
+          ) : null}
+          {page === 1 ? (
+            <p>Phat Contracts are deployed to one or more workers, grouped as a Cluster. The contracts in the same cluster are replicated to further guarantee the availability. Thanks to the redundancy by the Cluster design, the developer can further validate the states across the workers to add another layer of security.</p>
+          ) : null}
+          {page === 2 ? (
+            <>
+              <p>Phala Network implemented end-to-end encryption during the full Phat Contract lifecycle. Secure Enclave acts as a two-way sandbox that encrypts input, output, and internet access, protecting the secrets in the enclave against software and hardware level attack.</p>
+              <p>Gatekeepers is introduced as a key management node to ensure the availability and the confidentiality of the secrets, powered by MPC.</p>
+            </>
+          ) : null}
+        </div>
+        <ul className="mt-10 flex flex-row gap-2.5">
+          <li>
+            <button
+              className={cn(
+                "btn btn-lg rounded-lg text-left w-52",
+                page === 0 ? "btn-primary font-medium" : "btn-secondary text-blackAlpha-500"
+              )}
+              onClick={() => setPage(p => [0, p[0] < 0 ? 1 : -1])}
+            >
+              Correctness
+            </button>
+          </li>
+          <li>
+            <button
+              className={cn(
+                "btn btn-lg rounded-lg text-left w-52",
+                page === 1 ? "btn-primary font-medium" : "btn-secondary text-blackAlpha-500"
+              )}
+              onClick={() => setPage(p => [1, p[0] < 1 ? 1 : -1])}
+            >
+              Replicated
+            </button>
+          </li>
+          <li>
+            <button
+              className={cn(
+                "btn btn-lg rounded-lg text-left w-52",
+                page === 2 ? "btn-primary font-medium" : "btn-secondary text-blackAlpha-500"
+              )}
+              onClick={() => setPage(p => [2, p[0] < 2 ? 1 : -1])}
+            >
+              Confidentiality
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   )

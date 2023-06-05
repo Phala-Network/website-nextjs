@@ -559,6 +559,16 @@ function SectionPitchAccelerate() {
 
 // END: Section Pitch Accelerate
 
+function Avatar({ src, name }: { src: string, name: string }) {
+  return (
+    <div
+      className={"rounded-full overflow-hidden border-4 border-solid border-white h-32 w-32 relative"}
+    >
+      <Image src={src} alt={name} fill className="untanglable" />
+    </div>
+  )
+}
+
 function SectionPitchInnovate() {
   return (
     <section id="section-pitch-innovate" className="relative z-0">
@@ -774,27 +784,32 @@ self.env().ext().cache_get(b"key");
         </div>
 
         <div className={cn(
-          "row-start-6 xl:col-start-2 xl:col-span-11 3xl:col-start-5 3xl:col-span-11",
-          "section-chat-with-us pt-48 pb-48 3xl:-ml-8"
+          "row-start-6 xl:col-start-3 xl:col-span-12 3xl:col-start-6",
+          "section-chat-with-us pt-72 pb-48 3xl:pt-64"
         )}>
-          <header className={cn("text-3xl font-medium uppercase leading-normal")}>
-            <h3>Develop and explore your ideas with us</h3>
-          </header>
-          <div className="body">
-            <ul>
-              <li><Image src="/home/avatar-h4x.jpg" alt="Hang" fill className="untanglable" /></li>
-              <li><Image src="/home/avatar-shelven.jpg" alt="Shelven" fill className="untanglable" /></li>
-              <li><Image src="/home/avatar-dan.jpg" alt="Dan" fill className="untanglable" /></li>
-              <li><Image src="/home/avatar-zoe.jpg" alt="Zoe" fill className="untanglable" /></li>
+          <div className="flex flex-row gap-10">
+            <ul className="flex flex-row relative">
+              <li className="relative -right-24 z-[3]"><Avatar src="/home/avatar-h4x.jpg" name="Hang" /></li>
+              <li className="relative -right-16 z-[2]"><Avatar src="/home/avatar-zoe.jpg" name="Zoe" /></li>
+              <li className="relative -right-8 z-[1]"><Avatar src="/home/avatar-dan.jpg" name="Dan" /></li>
+              <li><Avatar src="/home/avatar-shelven.jpg" name="Shelven" /></li>
             </ul>
-            <div>
+            <div className="flex flex-col gap-2.5">
+              <h4 className="font-extrabold text-2xl uppercase">Develop and explore your ideas with us</h4>
               <a
-                className={cn("text-3xl font-normal leading-normal uppercase text-black whitespace-nowrap btn-link")}
                 href="https://discord.com/channels/697726436211163147/1098183647720394772"
+                className="btn btn-lg btn-third btn-center-icon justify-between uppercase"
                 target="_blank"
                 rel="noopener"
               >
                 Chat Now!
+                <Image
+                  src="/icons/right-arrow.svg"
+                  alt=""
+                  className="svg-white icon"
+                  width={16}
+                  height={16}
+                />
               </a>
             </div>
           </div>
@@ -806,10 +821,9 @@ self.env().ext().cache_get(b"key");
           </svg>
         </div>
 
-        <div className={cn("row-start-5 row-span-2 xl:col-start-13 xl:col-span-5 3xl:col-start-16", "-mt-7 ml-2 3xl:-mt-12", "-z-10 untanglable text-white")}>
-          <svg viewBox="0 0 470 622" fill="transparent">
-          <path d="M464.5 0V527C464.5 561.794 436.294 590 401.5 590H10.5" stroke="currentColor" strokeWidth="10"/>
-          <path d="M31.002 564L6.41445 588.587C5.63341 589.369 5.6334 590.635 6.41445 591.416L31.0019 616.003" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
+        <div className={cn("row-start-5 row-span-2 xl:col-start-15 xl:col-span-3 3xl:col-start-18", "-mt-7 ml-2 3xl:-mt-12", "-z-10 untanglable text-white")}>
+          <svg viewBox="0 0 192 484" fill="none">
+            <path d="M187 0V388.5C187 423.294 158.794 451.5 124 451.5H7.82843C6.04662 451.5 5.15428 453.654 6.41421 454.914L31 479.5" stroke="currentColor" stroke-width="10"/>
           </svg>
         </div>
       </div>
@@ -861,7 +875,15 @@ function SectionPitchPioneer() {
             <AreaOfInterestTab idx={5} className="bento-6">
               <h4>Distributed Computing</h4>
             </AreaOfInterestTab>
-            <a href="https://discord.com/channels/697726436211163147/1114400898408521778" className={cn("bento-7", "rounded-xl bg-secondary p-6 w-56 h-56 flex flex-col gap-3.5 items-center")}>
+            <a
+              href="https://discord.com/channels/697726436211163147/1114400898408521778"
+              target="_blank"
+              rel="noopener"
+              className={cn(
+                "bento-7",
+                "rounded-xl btn-third p-6 w-full aspect-square flex flex-col gap-3.5 items-center text-center",
+              )}
+            >
               <span>Join research community</span>
               <VscCommentDiscussion className="w-28 h-28 text-gray-200" />
             </a>
