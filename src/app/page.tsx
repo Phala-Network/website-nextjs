@@ -54,7 +54,10 @@ function SectionHero() {
             </h3>
           </header>
           <div className={cn("flex flex-col xl:flex-row gap-5 mx-auto")}>
-            <a className={cn("btn btn-xl text-base btn-primary justify-center")} href="https://docs.phala.network/v1/developers/phat-contract" target="_blank" rel="noopener">
+            <a
+              className={cn("btn btn-xl text-base btn-primary justify-center")}
+              href="#section-features"
+            >
               Let's Build!
             </a>
             <a className={cn("btn btn-xl text-base btn-secondary justify-center")} href="https://discord.com/invite/phala" target="_blank" rel="noopener">
@@ -74,10 +77,10 @@ function SectionHero() {
                 height={37}
               />
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <Stats name="Online Workers">23.3k</Stats>
-                <Stats name="Compute">161k vCPU</Stats>
-                <Stats name="Cross-Chain TX">123,242</Stats>
-                <Stats name="TX">2,341,223</Stats>
+                <Stats name="Online Workers">26,551</Stats>
+                <Stats name="Compute">19,1715 vCPU</Stats>
+                <Stats name="Cross-Chain TX">7,538</Stats>
+                <Stats name="TX">69,622,067</Stats>
               </div>
             </div>
 
@@ -701,26 +704,29 @@ self.env().ext().cache_get(b"key");
             </ShowCaseTab>
             <ShowCaseTab idx={2} summary="Contract Controlled Web2 Service">
             </ShowCaseTab>
-            <div className={cn("flex-1 rounded-lg px-7 py-6 bg-secondary flex flex-row items-center justify-center gap-14")}>
-              <div>
+            <a
+              className={cn(
+                "rounded-lg px-5 py-10 bg-gray-800 flex flex-row items-center justify-center gap-14 relative",
+                "btn-animated transition-all hover:bg-phat-400"
+              )}
+              href="https://docs.phala.network/v1/developers/phat-contract/builders-program"
+              target="_blank"
+              rel="noopener"
+            >
+              <div className="absolute left-5 z-0">
                 <Image
-                  src="/icons/excalmatory-mark.svg"
+                  src="/home/btn-bg-builders-program.png"
                   alt=""
-                  width={50}
-                  height={128}
-                  className="svg-white untanglable"
+                  width={275}
+                  height={133}
+                  className="untanglable"
                 />
               </div>
-              <a
-                href="https://docs.phala.network/v1/developers/phat-contract/builders-program"
-                className={cn("text-white font-black flex flex-col gap-6 leading-none")}
-                target="_blank"
-                rel="noopener"
-              >
+              <div className={cn("text-white font-black flex flex-col gap-6 leading-none z-10 relative ml-28")}>
                 <div className={cn("text-[3.5rem]")}>$50K</div>
                 <div className={cn("uppercase text-xl")}>for innovators</div>
-              </a>
-            </div>
+              </div>
+            </a>
           </ul>
           <div className="flex-1">
             <ShowCaseTabPanel
