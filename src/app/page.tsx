@@ -1,15 +1,11 @@
 import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
 
-import Image from 'next/image'
-import Link from 'next/link'
 import { VscCommentDiscussion, VscNote } from 'react-icons/vsc'
 
 import { cn } from '@/lib/utils'
-import Details from '@/components/Details'
 import DotBackground from '@/components/DotBackground'
 
-import { currentFeatureHighlightAtom } from './_atoms'
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
@@ -75,12 +71,10 @@ function SectionHero() {
         <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24", "mb-6")}>
           <div className={cn("flex flex-col items-center gap-5 lg:flex-row lg:justify-between", "xl:col-start-2 xl:col-span-18 3xl:col-start-1 3xl:col-span-full")}>
             <div className="flex flex-row gap-5 items-center">
-              <Image
+              <img
                 src="/icons/gear.svg"
                 alt=""
-                className="svg-black mr-2.5 motion-safe:animate-spin untanglable"
-                width={37}
-                height={37}
+                className="svg-black mr-2.5 motion-safe:animate-spin untanglable w-9 h-9"
               />
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <Stats name="Online Workers">26,551</Stats>
@@ -92,35 +86,30 @@ function SectionHero() {
 
             <div className="flex flex-col gap-2 items-end">
               <div className="flex flex-row gap-5">
-                <Image
+                <img
                   src="/home/Ethereum.png"
                   alt="Ethereum"
-                  width={65}
-                  height={65}
+                  className="w-16 h-16"
                 />
-                <Image
+                <img
                   src="/home/Bnbchain.png"
                   alt="Bnbchain"
-                  width={65}
-                  height={65}
+                  className="w-16 h-16"
                 />
-                <Image
+                <img
                   src="/home/Moonbean.png"
                   alt="Moonbean"
-                  width={65}
-                  height={65}
+                  className="w-16 h-16"
                 />
-                <Image
+                <img
                   src="/home/Arbittrum.png"
                   alt="Arbittrum"
-                  width={65}
-                  height={65}
+                  className="w-16 h-16"
                 />
-                <Image
+                <img
                   src="/home/Astar.png"
                   alt="Astar"
-                  width={65}
-                  height={65}
+                  className="w-16 h-16"
                 />
               </div>
               <a
@@ -130,12 +119,10 @@ function SectionHero() {
                 rel="noopener"
               >
                 <span className={cn("btn-link", "text-sm")}>View All Supported Networks</span>
-                <Image
+                <img
                   src="/icons/right-arrow.svg"
                   alt=""
-                  className="svg-secondary icon untanglable"
-                  width={13}
-                  height={13}
+                  className="svg-secondary icon untanglable h-3 w-3"
                 />
               </a>
             </div>
@@ -151,26 +138,6 @@ function SectionHero() {
 //
 // Section Features
 //
-
-function FeatureHighlight({ idx, iconUrl, summary, children }: { idx: number, iconUrl: string, summary: string, children: ReactNode }) {
-  return (
-    <Details className={cn("feature-highlight-item")} idx={idx} theIdxAtom={currentFeatureHighlightAtom}>
-      <summary>
-        <Image
-          src={iconUrl}
-          alt=""
-          width={32}
-          height={32}
-          className="icon untanglable"
-        />
-        {summary}
-      </summary>
-      <div className="body">
-        {children}
-      </div>
-    </Details>
-  )
-}
 
 function SectionFeatures() {
   return (
@@ -261,14 +228,14 @@ function SectionPitchIntro() {
         </header>
         <div className={cn("hidden xl:row-start-1 xl:col-end-19 xl:col-span-6 3xl:col-end-21 xl:flex flex-col justify-center")}>
           <div className="relative w-[300px] h-[420px]">
-            <Image
+            <img
               src="/home/experience-back.jpg"
               alt=""
               width={292}
               height={419}
               className="rounded-3xl overflow-hidden absolute left-[260px] top-[-80px] z-10 untanglable"
             />
-            <Image
+            <img
               src="/home/experience-front.jpg"
               alt=""
               width={292}
@@ -312,23 +279,19 @@ function BlueprintCard({ title, children, href, tags, illustration, live }: { ti
         {live ? (
           href ? (
             <a href={href} className={cn("flex flex-row items-center gap-3.5 mt-6")} target="_blank" rel="noopener">
-              <Image
+              <img
                 src="/icons/gear.svg"
                 alt=""
-                width={32}
-                height={32}
-                className={cn("svg-primary untanglable")}
+                className={cn("svg-primary untanglable w-8 h-8")}
               />
               <span className={cn("text-primary text-base font-extrabold")}>LIVE !</span>
             </a>
           ) : (
             <div className={cn("flex flex-row items-center gap-3.5 mt-6")}>
-              <Image
+              <img
                 src="/icons/gear.svg"
                 alt=""
-                width={32}
-                height={32}
-                className={cn("svg-primary untanglable")}
+                className={cn("svg-primary untanglable w-8 h-8")}
               />
               <span className={cn("text-primary text-base font-extrabold")}>LIVE !</span>
             </div>
@@ -336,12 +299,10 @@ function BlueprintCard({ title, children, href, tags, illustration, live }: { ti
         ) : null}
       </div>
       {illustration ? (
-        <Image
+        <img
           src={illustration}
           alt=""
-          width={250}
-          height={250}
-          className={cn("img", "absolute top-[25%] right-[-1%] z-0 opacity-25 untanglable")}
+          className={cn("img", "absolute top-[25%] right-[-1%] z-0 opacity-25 untanglable w-64 h-64")}
         />
       ) : null}
     </div>
@@ -433,12 +394,10 @@ function SectionPitchAccelerate() {
         )}>
           <a href="https://bricks.phala.network" className="btn btn-third flex-row w-full bg-[#6C37C9] py-5 px-10" target="_blank" rel="noopener">
             <span className="text-lg font-bold uppercase">Get your own LensAPI oracle now</span>
-            <Image
+            <img
               src="/icons/right-arrow.svg"
               alt=""
-              className="svg-white ml-5 inline-block"
-              width={24}
-              height={24}
+              className="svg-white ml-5 inline-block w-6 h-6"
               />
           </a>
         </div>
@@ -499,12 +458,10 @@ function SectionPitchAccelerate() {
               rel="noopener"
             >
               Learn about blueprints
-              <Image
+              <img
                 src="/icons/right-arrow.svg"
                 alt=""
-                className="svg-black ml-5 inline-block"
-                width={24}
-                height={24}
+                className="svg-black ml-5 inline-block w-6 h-6"
                 />
             </a>
           </div>
@@ -525,12 +482,10 @@ function SectionPitchAccelerate() {
                   rel="noopener"
                 >
                   Propose now
-                  <Image
+                  <img
                     src="/icons/right-arrow.svg"
                     alt=""
-                    className="svg-black ml-5 icon"
-                    width={16}
-                    height={16}
+                    className="svg-black ml-5 icon w-4 h-4"
                   />
                 </a>
               </div>
@@ -570,7 +525,7 @@ function Avatar({ src, name }: { src: string, name: string }) {
     <div
       className={"rounded-full overflow-hidden border-4 border-solid border-white h-32 w-32 relative"}
     >
-      <Image src={src} alt={name} fill className="untanglable" />
+      <img src={src} alt={name} className="untanglable" />
     </div>
   )
 }
@@ -730,7 +685,7 @@ self.env().ext().cache_get(b"key");
               rel="noopener"
             >
               <div className="absolute left-5 z-0">
-                <Image
+                <img
                   src="/home/btn-bg-builders-program.png"
                   alt=""
                   width={275}
@@ -809,12 +764,10 @@ self.env().ext().cache_get(b"key");
                 rel="noopener"
               >
                 Chat Now!
-                <Image
+                <img
                   src="/icons/right-arrow.svg"
                   alt=""
-                  className="svg-white icon"
-                  width={16}
-                  height={16}
+                  className="svg-white icon w-4 h-4"
                 />
               </a>
             </div>
@@ -1001,9 +954,8 @@ function SectionHowItWorks() {
         </div>
         <div className={cn("row-start-4 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
           <div className={cn("mx-auto rounded-3xl aspect-[1360/760] bg-gray-200 relative overflow-hidden")}>
-            <Image
+            <img
               src="/home/global-network.jpg"
-              fill
               alt=""
             />
           </div>

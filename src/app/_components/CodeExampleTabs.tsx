@@ -1,7 +1,6 @@
 'use client';
 
 import React, { type ReactNode, useState } from 'react'
-import Image from 'next/image'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import * as R from 'ramda'
 import hls from 'highlight.js/lib/core'
@@ -73,11 +72,9 @@ export function CodeExampleCodeViewer({ idx, children }: {
                   animate={{ opacity: copied ? 0 : 1, scale: copied ? 0 : 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <Image
+                  <img
                     src="/icons/copy.svg"
-                    className="svg-gray-400"
-                    width={20}
-                    height={20}
+                    className="svg-gray-400 h-5 w-5"
                     alt=""
                   />
                 </motion.span>
