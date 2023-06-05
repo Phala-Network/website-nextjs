@@ -104,7 +104,7 @@ export default function SiteFooter() {
             priority
           />
           <div className={cn("uppercase flex flex-row gap-36 text-base font-semibold")}>
-            <a className="btn-link" href="https://nft-assets.phala.world/network/Phala-Network-Responsible-Disclosure.pdf">Responsible Disclosure</a>
+            <a className="btn-link" href="https://github.com/Phala-Network/phala-blockchain/blob/master/docs/responsible-disclosure.md">Responsible Disclosure</a>
           </div>
         </div>
       </div>
