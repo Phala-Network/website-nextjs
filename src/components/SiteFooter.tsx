@@ -66,13 +66,13 @@ export default function SiteFooter() {
             <LinkListHeading>Resources</LinkListHeading>
             <LinkList>
               <LinkListItem href="https://app.phala.network">Phala App</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/">What is Phala Network?</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract">What is Phat Contract?</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints">What are Blueprints?</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/Whitepaper/tree/master/pdf">Whitepaper</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/pha-token/delegation/delegate-to-stakepool">Staking</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/pay-for-cloud-service">Tokenomics - Utility</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info/worker-rewards">Tokenomics - Earn</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/">What is Phala Network?</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract">What is Phat Contract?</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints">What are Blueprints?</LinkListItem>
               <LinkListItem href="/roadmap">Roadmap</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info">Become a Compute Provider</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/growth-program">Ambassador Program</LinkListItem>
