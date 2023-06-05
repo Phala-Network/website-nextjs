@@ -59,6 +59,13 @@ export default function SiteFooter() {
             <LinkList>
               <LinkListItem href="https://bricks.phala.network/">LensAPI Oracle</LinkListItem>
             </LinkList>
+            <div>
+                <LinkListHeading>Other Products</LinkListHeading>
+                <LinkList>
+                    <LinkListItem href="https://subbridge.io">SubBridge</LinkListItem>
+                    <LinkListItem href="https://phala.world">PhalaWorld</LinkListItem>
+                </LinkList>
+            </div>
           </div>
         </div>
         <div className={cn("row-start-1 xl:col-start-7 xl:col-span-5 3xl:col-start-11")}>
