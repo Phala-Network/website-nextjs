@@ -97,24 +97,6 @@
   @apply my-5 text-blackAlpha-700 text-sm;
 }
 
-/* .section-chat-with-us */
-
-.section-chat-with-us {
-  @apply flex flex-col gap-4;
-}
-
-.section-chat-with-us .body {
-  @apply flex flex-row gap-4 items-center;
-}
-
-.section-chat-with-us .body ul {
-  @apply flex flex-row gap-4;
-}
-
-.section-chat-with-us .body ul li {
-  @apply rounded-full overflow-hidden border-4 border-solid border-white h-32 w-32 relative;
-}
-
 /* .section-bento */
 
 .bento-1 {
