@@ -122,7 +122,7 @@ function SectionHero() {
                 />
               </div>
               <a
-                href="https://docs.phala.network/v1/developers/phat-contract/features"
+                href="https://docs.phala.network/v1/developers/phat-contract/supported-chains"
                 className={cn("flex flex-row gap-2", "btn-view-all")}
                 target="_blank"
                 rel="noopener"
@@ -587,7 +587,7 @@ function SectionPitchInnovate() {
           "flex flex-col items-center w-full relative"
         )}>
           <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-4 bg-white inline-block">Innovate</h2>
-          <p className="font-medium text-[2rem] text-black mt-10">Full power, full control. Empower your ideas.</p>
+          <p className="font-medium text-[2rem] text-black mt-10">Full power, Full control. Empower your ideas.</p>
 
           <div className={cn("absolute top-[234px] left-[204px] 3xl:left-[296px]", "w-full h-full", "-z-10 untanglable text-white")}>
             <svg viewBox="0 0 2000 323" fill="transparent">
@@ -983,11 +983,17 @@ function SectionHowItWorks() {
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
           <HowItWorksCarousel />
         </div>
-        <blockquote className={cn("row-start-3 xl:col-start-2 xl:col-span-9 3xl:col-start-4 3xl:col-span-9 mt-40 mb-16 pr-4", "quote")}>
-          <p>A Decentralized Off-chain Compute Infrastructure like no other.</p>
+        <blockquote
+          className={cn(
+            "row-start-3 xl:col-start-2 xl:col-span-9 3xl:col-start-4 3xl:col-span-9 mt-40 mb-16 pr-4 flex flex-col justify-center",
+            "quote"
+          )}
+        >
+          <p>By the people.</p>
+          <p>For the people.</p>
         </blockquote>
         <div className={cn("row-start-3 xl:col-end-20 xl:col-span-9 3xl:col-end-22", "mt-40 mb-16 px-12 py-14 bg-primary rounded-3xl max-w-[44.75rem]")}>
-          <p className={cn("text-3xl font-normal leading-normal uppercase")}>A Decentralised compute cloud like no other.</p>
+          <p className={cn("text-3xl font-normal leading-normal uppercase")}>A Decentralized Off-chain Compute Infrastructure like no other.</p>
           <p className={cn("text-2xl font-light mb-4")}>Secured by</p>
           <StatsCard />
         </div>
