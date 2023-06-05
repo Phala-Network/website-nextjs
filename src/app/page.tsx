@@ -66,7 +66,7 @@ function SectionHero() {
             >
               Let's Build!
             </a>
-            <a className={cn("btn btn-xl text-base btn-secondary justify-center")} href="https://discord.com/invite/phala" target="_blank" rel="noopener">
+            <a className={cn("btn btn-xl text-base btn-secondary justify-center")} href="https://discord.gg/gZjZuVHXtm" target="_blank" rel="noopener">
               Join Community
             </a>
           </div>
@@ -803,7 +803,7 @@ self.env().ext().cache_get(b"key");
             <div className="flex flex-col gap-2.5">
               <h4 className="font-extrabold text-2xl uppercase">Develop and explore your ideas with us</h4>
               <a
-                href="https://discord.com/channels/697726436211163147/1098183647720394772"
+                href="https://discord.gg/2cvTKmF9uh"
                 className="btn btn-lg btn-third btn-center-icon justify-between uppercase"
                 target="_blank"
                 rel="noopener"
@@ -882,7 +882,7 @@ function SectionPitchPioneer() {
               <h4>Distributed Computing</h4>
             </AreaOfInterestTab>
             <a
-              href="https://discord.com/channels/697726436211163147/1114400898408521778"
+              href="https://discord.gg/fKuFDPj2Zh"
               target="_blank"
               rel="noopener"
               className={cn(
