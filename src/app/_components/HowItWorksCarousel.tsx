@@ -3,9 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { wrap } from 'popmotion'
-import Image from 'next/image'
 import { GrPrevious, GrNext } from 'react-icons/gr'
-import { RxDot, RxDotFilled } from 'react-icons/rx'
 
 import { cn } from '@/lib/utils'
 
@@ -92,9 +90,9 @@ export const HowItWorksCarousel = () => {
               }
             }}
           >
-            <Image
+            <img
               src={images[imageIndex]}
-              fill
+              className="w-full h-full"
               alt=""
             />
           </motion.div>
