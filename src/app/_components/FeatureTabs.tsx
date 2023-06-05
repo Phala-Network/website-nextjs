@@ -56,9 +56,9 @@ export function FeatureTabPanels({ children }: { children: ReactNode }) {
       ref={ref}
       className={cn(
         "feature-tab-panels",
-        "xl:col-start-13 xl:col-span-7 2xl:col-start-11 2xl:col-span-9 3xl:col-start-13 3xl:col-span-12",
+        "xl:col-start-11 xl:col-span-7 2xl:col-start-11 2xl:col-span-9 3xl:col-start-13 3xl:col-span-12",
         "ml-4 2xl:ml-0",
-        "4xl:absolute 4xl:left-[50vw] 4xl:w-[45vw]",
+        "absolute w-[60vw] xl:w-[45vw]",
         "aspect-[834/782]",
         "hidden xl:block rounded-5xl bg-gray-200 relative overflow-hidden"
       )}

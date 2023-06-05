@@ -144,7 +144,12 @@ function SectionFeatures() {
     <section id="section-features" className={cn("relative lg:h-screen flex items-center")}>
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
       <div className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24 grid-rows-7")}>
-        <div className={cn("col-start-1 col-span-full xl:col-span-12 2xl:col-span-10 3xl:col-start-3 3xl:col-span-10", "flex flex-col justify-between 4xl:gap-20", "py-8 3xl:py-16")}>
+        <div
+          className={cn(
+            "col-start-1 col-span-full xl:col-span-10 2xl:col-span-10 3xl:col-start-3 3xl:col-span-10",
+            "flex flex-col justify-center gap-5 4xl:gap-20", "py-8 3xl:py-16"
+          )}
+        >
           <header className={cn("flex flex-col gap-5", "ml-12 mb-6 2xl:mb-4")}>
             <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
             <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
