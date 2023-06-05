@@ -1,7 +1,6 @@
 'use client';
 
 import React, { type ReactNode } from 'react'
-import Image from 'next/image'
 import { atom, useAtom, useAtomValue } from 'jotai'
 
 import { cn } from '@/lib/utils'
@@ -45,9 +44,8 @@ export function NoCodeWizardStepDetails({ idx, summary, children }: { idx: numbe
 export function NoCodeWizardStepPreview({ idx, alt = '', src }: { idx: number, alt?: string, src: string }) {
   const current = useAtomValue(noCodeWizardStepAtom)
   return (
-    <Image
+    <img
       src={src}
-      fill
       alt={alt}
       className={cn(
         "pointer-events-none select-none bg-gray-100",

@@ -1,11 +1,9 @@
 'use client';
 
 import React, { type ReactNode } from 'react'
-import Image from 'next/image'
 import { atom, useAtom, useAtomValue } from 'jotai'
 
 import { cn } from '@/lib/utils'
-import Details from '@/components/Details'
 
 export const activeAreaOfInterestAtom = atom(0)
 

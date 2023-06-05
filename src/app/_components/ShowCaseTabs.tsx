@@ -48,11 +48,9 @@ export function ShowCaseTabPanel({ idx, title, src, tags, href, children }: {
   return (
     <div className={cn("rounded-3xl overflow-hidden bg-white")}>
       <div className={cn("aspect-[946/487] bg-[#cecece] relative")}>
-        <Image
+        <img
           src={src}
           alt={title}
-          sizes="100%"
-          fill
         />
       </div>
       <div className={cn("px-12 py-8")}>
@@ -73,12 +71,10 @@ export function ShowCaseTabPanel({ idx, title, src, tags, href, children }: {
           {href ? (
           <a href={href} className={cn("btn bg-secondary text-white uppercase inline-flex flex-row justify-between px-5 py-3 w-[16rem]")}>
             <span className={"text-lg font-bold"}>Try Now</span>
-            <Image
+            <img
               src="/icons/right-arrow.svg"
               alt=""
-              width={16}
-              height={16}
-              className={cn("svg-white")}
+              className={cn("svg-white h-4 w-4")}
             />
           </a>
           ) : null}

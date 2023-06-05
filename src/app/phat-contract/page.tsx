@@ -1,5 +1,4 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
 import { FaDiscord } from 'react-icons/fa'
 
 import { cn } from '@/lib/utils'
@@ -142,7 +141,6 @@ function ShowCaseNoCode() {
           className={cn(
             "isolate overflow-hidden card-filled bg-gray-800 border-gray-600 px-16 py-16 gap-x-16 gap-y-0",
             "grid grid-cols-1 lg:grid-cols-2"
-            // "flex flex-col lg:flex-row-reverse"
           )}
         >
           <div
@@ -152,10 +150,9 @@ function ShowCaseNoCode() {
               aspectRatio: '558 / 611'
             }}
           >
-            <Image
+            <img
               src="/illustrations/phat-contract/integration.png"
               alt="Product screenshot"
-              fill
             />
           </div>
           <div className="mt-10 lg:my-20 lg:col-start-1 lg:row-start-1">
