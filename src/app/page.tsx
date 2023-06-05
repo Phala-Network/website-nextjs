@@ -39,7 +39,11 @@ function SectionHero() {
   return (
     <section id="section-hero" className={cn("relative max-h-screen w-full", "section-hero")}>
       <div className={cn("background", "absolute top-0 left-0 w-full min-h-full z-[-1] untanglable")}>
-        <Image src="/home/bg-first-screen.jpg" alt="" fill className="aspect-[3840/1980] object-cover" />
+        <Image src="/home/bg-first-screen.jpg" alt="" fill className="aspect-[3840/1980] object-cover relative z-[1]" />
+        <video className="object-fill -mt-[4.3rem] relative z-[2]" autoPlay muted loop>
+          <source src="https://nft-assets.phala.world/network/bg20230605.mp4" type="video/mp4" />
+          <source src="https://nft-assets.phala.world/network/bg20230605.webm" type="video/webm" />
+        </video>
       </div>
       <div className={cn("flex flex-col h-screen justify-between items-center")}>
         {/* Temporary placeholder */}
@@ -823,7 +827,7 @@ self.env().ext().cache_get(b"key");
 
         <div className={cn("row-start-5 row-span-2 xl:col-start-15 xl:col-span-3 3xl:col-start-18", "-mt-7 ml-2 3xl:-mt-12", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 192 484" fill="none">
-            <path d="M187 0V388.5C187 423.294 158.794 451.5 124 451.5H7.82843C6.04662 451.5 5.15428 453.654 6.41421 454.914L31 479.5" stroke="currentColor" stroke-width="10"/>
+            <path d="M187 0V388.5C187 423.294 158.794 451.5 124 451.5H7.82843C6.04662 451.5 5.15428 453.654 6.41421 454.914L31 479.5" stroke="currentColor" strokeWidth="10"/>
           </svg>
         </div>
       </div>
