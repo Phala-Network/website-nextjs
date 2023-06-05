@@ -79,7 +79,7 @@ export default function SiteFooter() {
               <LinkListItem href="https://docs.phala.network/v1/pha-token/delegation/delegate-to-stakepool">What is PHA staking?</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/pay-for-cloud-service">Tokenomics - Utility</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info/worker-rewards">Tokenomics - Earn</LinkListItem>
-              <LinkListItem href="https://github.com/Phala-Network/Whitepaper/tree/master/pdf">Whitepaper</LinkListItem>
+              <LinkListItem href="https://github.com/Phala-Network/Whitepaper/tree/master/pdf/phala-paper.pdf">Whitepaper</LinkListItem>
               <LinkListItem href="/roadmap">Roadmap</LinkListItem>
               <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info">Become a Compute Provider</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/growth-program">Ambassador Program</LinkListItem>
