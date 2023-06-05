@@ -2,6 +2,7 @@ import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { VscCommentDiscussion, VscNote } from 'react-icons/vsc'
 
 import { cn } from '@/lib/utils'
@@ -17,6 +18,7 @@ import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator } fr
 import SubscribeForm from './_components/SubscribeForm'
 import { Advantages } from './_components/Advantages'
 import { HowItWorksCarousel } from './_components/HowItWorksCarousel'
+import { StatsCard } from './_components/StatsCard'
 import './home.css'
 
 
@@ -163,11 +165,11 @@ function FeatureHighlight({ idx, iconUrl, summary, children }: { idx: number, ic
 
 function SectionFeatures() {
   return (
-    <section id="section-features" className={cn("relative xl:h-screen flex items-center")}>
+    <section id="section-features" className={cn("relative lg:h-screen flex items-center")}>
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
       <div className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24 grid-rows-7")}>
         <div className={cn("col-start-1 col-span-full xl:col-span-12 2xl:col-span-10 3xl:col-start-3 3xl:col-span-10", "flex flex-col justify-between 4xl:gap-20", "py-8 3xl:py-16")}>
-          <header className={cn("flex flex-col gap-5", "ml-12 mb-6 2xl:mb-0")}>
+          <header className={cn("flex flex-col gap-5", "ml-12 mb-6 2xl:mb-4")}>
             <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
             <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
           </header>
@@ -175,21 +177,21 @@ function SectionFeatures() {
             <div className={cn("col-start-2 col-span-9 row-start-1")}>
               <FeatureTab idx={1} iconUrl="/icons/features-compare.svg" summary="Connect your smart contract anywhere">
                 <p>
-                  No matter if your smart contracts are on Ethereum or Substrate, our universal compatibility ensures connection flexibility like never before, enabling your smart contracts to access a wide range of features regardless of their hosting blockchain. Phala’s Phat Contracts make it possible to extend the capabilities of your smart contracts without the need for a bridge or an extra layer.
+                  No matter if your smart contracts are on Ethereum or Substrate, our universal compatibility ensures connection flexibility like never before, enabling your smart contracts to access a wide range of features regardless of the blockchain they are hosted on. Phala’s Phat Contracts make it possible to extend the capabilities of your smart contracts without the need for a bridge or an extra layer.
                 </p>
               </FeatureTab>
             </div>
             <div className={cn("col-start-2 col-span-9 row-start-2")}>
               <FeatureTab idx={2} iconUrl="/icons/features-all-out.svg" summary="Seamless access to the Internet">
                 <p>
-                  Phala Network doesn’t just offer unparalleled on-chain connectivity; it also bridges the gap between the off-chain world and smart contracts. The ability to send HTTP/HTTPS requests directly from your smart contracts is now at your fingertips. Take your dapp to the next level by integrating cutting-edge Web3 protocols and various Web2 API, creating a perfect fusion of old and new, on-chain and off-chain.
+                  Phala Network doesn’t just offer unparalleled on-chain connectivity; it also bridges the gap between the off-chain world and smart contracts. The ability to send HTTP/HTTPS requests directly from your smart contracts is now at your fingertips. Take your dApp to the next level by integrating cutting-edge Web3 protocols and various Web2 API, creating a perfect fusion of old and new, on-chain and off-chain.
                 </p>
               </FeatureTab>
             </div>
             <div className={cn("col-start-2 col-span-9 row-start-3")}>
               <FeatureTab idx={3} iconUrl="/icons/features-auto-graph.svg" summary="Advanced flexibility and performance">
                 <p>
-                  By offloading the computation off-chain, you don’t have to worry about costly transaction fees or network latency that hinders your progress. Experience real-time, off-chain computation at its finest, allowing you to focus on enhancing your dapp’s functionality and user experience. Run arbitrarily complex logic without any constraints, all at an affordable cost.
+                  By offloading the computation off-chain, you don’t have to worry about costly transaction fees or network latency that hinders your progress. Experience real-time, off-chain computation at its finest, allowing you to focus on enhancing your dApp’s functionality and user experience. Run arbitrarily complex logic without any constraints, all at an affordable cost.
                 </p>
               </FeatureTab>
             </div>
@@ -277,17 +279,21 @@ function SectionPitchIntro() {
 // Section Pitch Accelerate
 //
 
-function BlueprintCard({ title, children, tags, illustration, live }: { title: string, children: ReactNode, tags?: string[], illustration?: string, live?: boolean }) {
+function BlueprintCard({ title, children, href, tags, illustration, live }: { title: string, children: ReactNode, href?: string, tags?: string[], illustration?: string, live?: boolean }) {
   return (
     <div className="blueprint-card">
       <div className="flex flex-col justify-between h-full z-10 relative">
         <div className="flex flex-col gap-6">
-          <h4 className={cn("text-2xl text-white font-black uppercase")}>{title}</h4>
+          {href ? (
+            <a href={href} className={cn("text-2xl text-white font-black uppercase hover:text-primary")} target="_blank" rel="noopener">{title}</a>
+          ) : (
+            <h4 className={cn("text-2xl text-white font-black uppercase")}>{title}</h4>
+          )}
           {tags && tags.length ? (
           <ul className={"flex flex-row flex-wrap gap-2"}>
             {tags.map((tag, idx) => (
               <li key={idx}>
-                <span className={"text-secondary text-xs uppercase px-6 py-1.5 bg-gray-100 rounded-[6px] whitespace-nowrap"}>{tag}</span>
+                <span className={"text-secondary text-xs uppercase px-2.5 py-1 bg-gray-100 rounded-[6px] whitespace-nowrap"}>{tag}</span>
               </li>
             ))}
           </ul>
@@ -295,16 +301,29 @@ function BlueprintCard({ title, children, tags, illustration, live }: { title: s
           <div className={cn("text-sm text-whiteAlpha-700 leading-normal")}>{children}</div>
         </div>
         {live ? (
-          <div className={cn("flex flex-row items-center gap-3.5 mt-6")}>
-            <Image
-              src="/icons/gear.svg"
-              alt=""
-              width={32}
-              height={32}
-              className={cn("svg-primary untanglable")}
-            />
-            <span className={cn("text-primary text-base font-extrabold")}>LIVE !</span>
-          </div>
+          href ? (
+            <a href={href} className={cn("flex flex-row items-center gap-3.5 mt-6")} target="_blank" rel="noopener">
+              <Image
+                src="/icons/gear.svg"
+                alt=""
+                width={32}
+                height={32}
+                className={cn("svg-primary untanglable")}
+              />
+              <span className={cn("text-primary text-base font-extrabold")}>LIVE !</span>
+            </a>
+          ) : (
+            <div className={cn("flex flex-row items-center gap-3.5 mt-6")}>
+              <Image
+                src="/icons/gear.svg"
+                alt=""
+                width={32}
+                height={32}
+                className={cn("svg-primary untanglable")}
+              />
+              <span className={cn("text-primary text-base font-extrabold")}>LIVE !</span>
+            </div>
+          )
         ) : null}
       </div>
       {illustration ? (
@@ -327,8 +346,8 @@ function SectionPitchAccelerate() {
       <div className={cn(
         "safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24"
       )}>
-        <div className={cn("row-start-1 xl:col-start-2 xl:col-span-7 3xl:col-start-4", "pt-20 xl:pt-60")}>
-          <h2 className={cn("text-[3.5rem] inline-block font-black uppercase rounded-3xl px-14 bg-white")}>
+        <div className={cn("row-start-1 xl:col-start-2 xl:col-span-7 3xl:col-start-4", "pt-20 xl:pt-56")}>
+          <h2 className={cn("text-[3.5rem] inline-block font-black uppercase rounded-3xl px-16 py-4 bg-white")}>
             Accelerate
           </h2>
         </div>
@@ -367,16 +386,16 @@ function SectionPitchAccelerate() {
               </div>
               <div className="flex flex-col justify-between px-8 py-10 w-[30%]">
                 <NoCodeWizardStepDetails idx={0} summary="Pick">
-                  <p>Discover the perfect solution for your needs with our marketplace of blueprints. These community-contributed, ready-to-deploy blueprints offer a quick way to integrate offchain capabilities into your smart contracts.</p>
+                  <p>Discover the perfect solution for your needs with our marketplace of blueprints. These community-contributed, ready-to-deploy blueprints offer a quick way to integrate off-chain capabilities into your smart contracts.</p>
                 </NoCodeWizardStepDetails>
                 <NoCodeWizardStepDetails idx={1} summary="Customize">
                   <p>Blueprints are designed to tackle common challenges developers frequently encounter. With just a few clicks, effortlessly adjust the configuration to tailor the blueprint to your specific requirements.</p>
                 </NoCodeWizardStepDetails>
                 <NoCodeWizardStepDetails idx={2} summary="Deploy">
-                  <p>Easily deploy the customized blueprint as your own Phat Contract on the Phala Network. Experience the power of offchain capabilities integrated into your DApp within seconds.</p>
+                  <p>Easily deploy the customized blueprint as your own Phat Contract on the Phala Network. Experience the power of off-chain capabilities integrated into your DApp within seconds.</p>
                 </NoCodeWizardStepDetails>
                 <NoCodeWizardStepDetails idx={3} summary="Integrate">
-                  <p>Seamlessly interact with your newly deployed Phat Contract from your smart contracts or frontend using familiar programming languages. Enjoy a streamlined process that enhances your DApp’s functionality with minimal effort.</p>
+                  <p>Seamlessly interact with your newly deployed Phat Contract from your smart contracts or frontend using familiar programming languages. Enjoy a streamlined process that enhances your dApp’s functionality with minimal effort.</p>
                 </NoCodeWizardStepDetails>
                 <ul className="flex flex-col gap-2.5">
                   <li>
@@ -403,7 +422,7 @@ function SectionPitchAccelerate() {
           "w-[70%]",
           "mt-8"
         )}>
-          <a href="https://bricks.phala.network" className="flex-row flex items-center text-white rounded-xl bg-[#6C37C9] py-5 px-10" target="_blank" rel="noopener">
+          <a href="https://bricks.phala.network" className="btn btn-third flex-row w-full bg-[#6C37C9] py-5 px-10" target="_blank" rel="noopener">
             <span className="text-lg font-bold uppercase">Get your own LensAPI oracle now</span>
             <Image
               src="/icons/right-arrow.svg"
@@ -428,6 +447,7 @@ function SectionPitchAccelerate() {
                 title="LensAPI Oracle"
                 illustration="/home/blueprint-lens-api-oracle.png"
                 tags={["Polygon", "EVM", "Lens"]}
+                href="https://bricks.phala.network"
                 live
               >
                 Deploy a custom social oracle to integrate LensAPI data into your smart contracts, providing access to user profile statistics such as followers, posts, comments, and post metrics like collections, mirrors, and replies.
@@ -463,7 +483,12 @@ function SectionPitchAccelerate() {
                 Integrate your smart contract with a customized ChatGPT oracle for intelligent automation. Monitor blockchain events and initiate user-driven actions, create content on decentralized social platforms, and unlock more automated capabilities.
               </BlueprintCard>
             </div>
-            <a href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints" className={cn("btn btn-lg bg-primary mt-10 text-lg font-bold uppercase flex flex-row items-center py-5 px-10")} target="_blank" rel="noopener">
+            <a
+              href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints"
+              className={cn("btn btn-primary btn-lg mt-10 font-bold uppercase w-full py-5 px-10")}
+              target="_blank"
+              rel="noopener"
+            >
               Learn about blueprints
               <Image
                 src="/icons/right-arrow.svg"
@@ -484,12 +509,17 @@ function SectionPitchAccelerate() {
             <div className="flex flex-col gap-10">
               <h3 className="uppercase text-white text-[56px] font-black">Inspire<br /> the next blueprint</h3>
               <div>
-                <a href="https://github.com/Phala-Network/phala-blueprint-proposals" className="btn btn-xl bg-primary text-black uppercase" target="_blank" rel="noopener">
+                <a
+                  href="https://github.com/Phala-Network/phala-blueprint-proposals"
+                  className="btn btn-primary btn-center-icon btn-xl uppercase inline-flex"
+                  target="_blank"
+                  rel="noopener"
+                >
                   Propose now
                   <Image
                     src="/icons/right-arrow.svg"
                     alt=""
-                    className="svg-black ml-5"
+                    className="svg-black ml-5 icon"
                     width={16}
                     height={16}
                   />
@@ -536,10 +566,10 @@ function SectionPitchInnovate() {
       )}>
         <header className={cn(
           "row-start-1 xl:col-span-20 3xl:col-span-24",
-          "pt-[156px] pb-[20px]",
+          "pt-44 pb-[20px]",
           "flex flex-col items-center w-full relative"
         )}>
-          <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-10 bg-white inline-block">Innovate</h2>
+          <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-4 bg-white inline-block">Innovate</h2>
           <p className="font-medium text-[2rem] text-black mt-10">Full power, full control. Empower your ideas.</p>
 
           <div className={cn("absolute top-[234px] left-[204px] 3xl:left-[296px]", "w-full h-full", "-z-10 untanglable text-white")}>
@@ -554,12 +584,12 @@ function SectionPitchInnovate() {
           "row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
           "rounded-3xl bg-white overflow-hidden px-20 py-12"
         )}>
-          <h4 className={cn("text-4xl font-black text-blackAlpha-900 uppercase text-center mx-auto")}>Access the unique functionalities in Phat Contract</h4>
+          <h4 className={cn("text-4xl font-black text-blackAlpha-900 uppercase text-center mx-auto")}>Access the unique functionalities of Phat Contract</h4>
           <div className={cn("py-14")}>
             <ul className="flex flex-row flex-wrap gap-2.5 justify-center">
               <CodeExampleTab idx={0}>HTTP Request</CodeExampleTab>
               <CodeExampleTab idx={1}>Cross-Chain Integration</CodeExampleTab>
-              <CodeExampleTab idx={2}>OffChain Rollup</CodeExampleTab>
+              <CodeExampleTab idx={2}>Off-Chain Rollup</CodeExampleTab>
               <CodeExampleTab idx={3}>Automation</CodeExampleTab>
               <CodeExampleTab idx={4}>Secret Managment</CodeExampleTab>
               <CodeExampleTab idx={5}>High performance computation</CodeExampleTab>
@@ -706,10 +736,10 @@ self.env().ext().cache_get(b"key");
               idx={1}
               title="Self-owned Oracles"
               src="/home/case-self-owned-oracles.jpg"
-              tags={["Offchain Rollup", "Automation", "HTTP Request", "Secret Management"]}
+              tags={["Off-chain Rollup", "Automation", "HTTP Request", "Secret Management"]}
             >
-              <p>Deploy a self-sovereign oracle that runs forever. Phat Contract provides an easy way to build customized oracle. This enables any smart contract to access a wide range of data from both on and off-chain data sources.</p>
-              <p>Phat Contract’s HTTP request functionality permits the contract to access any API via the internet. To obtain data from other blockchains, simply connect to node RPC and indexers. API keys are securely managed within Phat Contract, allowing access to not only public APIs but also private ones. Offchain Rollup is utilized to connect the oracle to smart contracts deployed across all supported blockchains.</p>
+              <p>Phat Contract provides an easy way to build a customized oracle. This enables any smart contract to access a wide range of data from both on and off-chain data sources.</p>
+              <p>Phat Contract’s HTTP request functionality permits the contract to access any API via the internet. To obtain data from other blockchains, simply connect to  RPC node’s and indexers. API keys are securely managed within Phat Contract, allowing access to not only public APIs but also private ones. Off-chain Rollup</p>
             </ShowCaseTabPanel>
             <ShowCaseTabPanel
               idx={2}
@@ -729,20 +759,20 @@ self.env().ext().cache_get(b"key");
         )}>
           <a
             href="https://github.com/Phala-Network/awesome-phat-contracts"
-            className="btn btn-xl w-full justify-center bg-secondary text-white font-bold uppercase"
+            className="btn btn-xl btn-third w-full justify-center font-bold uppercase"
             target="_blank"
             rel="noopener"
           >
-            Explore awesome-phat-contract
+            Explore Awesome Phat Contract
           </a>
         </div>
 
         <div className={cn(
           "row-start-6 xl:col-start-2 xl:col-span-11 3xl:col-start-5 3xl:col-span-11",
-          "section-chat-with-us pt-6 pb-40 3xl:-ml-8"
+          "section-chat-with-us pt-48 pb-48 3xl:-ml-8"
         )}>
-          <header className={cn("text-4xl font-black uppercase leading-normal")}>
-            <h3>Develop and explore<br /> your ideas with us</h3>
+          <header className={cn("text-3xl font-medium uppercase leading-normal")}>
+            <h3>Develop and explore your ideas with us</h3>
           </header>
           <div className="body">
             <ul>
@@ -753,7 +783,7 @@ self.env().ext().cache_get(b"key");
             </ul>
             <div>
               <a
-                className={cn("text-4xl font-normal leading-normal uppercase text-black whitespace-nowrap mt-4 ml-4 3xl:ml-8 btn-link")}
+                className={cn("text-3xl font-normal leading-normal uppercase text-black whitespace-nowrap btn-link")}
                 href="https://discord.com/channels/697726436211163147/1098183647720394772"
                 target="_blank"
                 rel="noopener"
@@ -770,7 +800,7 @@ self.env().ext().cache_get(b"key");
           </svg>
         </div>
 
-        <div className={cn("row-start-5 row-span-2 xl:col-start-14 xl:col-span-5 3xl:col-start-16", "-mt-4 ml-2 3xl:-mt-12", "-z-10 untanglable text-white")}>
+        <div className={cn("row-start-5 row-span-2 xl:col-start-13 xl:col-span-5 3xl:col-start-16", "-mt-7 ml-2 3xl:-mt-12", "-z-10 untanglable text-white")}>
           <svg viewBox="0 0 470 622" fill="transparent">
           <path d="M464.5 0V527C464.5 561.794 436.294 590 401.5 590H10.5" stroke="currentColor" strokeWidth="10"/>
           <path d="M31.002 564L6.41445 588.587C5.63341 589.369 5.6334 590.635 6.41445 591.416L31.0019 616.003" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
@@ -794,16 +824,18 @@ function SectionPitchPioneer() {
       <div className={cn(
         "safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24"
       )}>
-        <header className={cn(
-          "row-start-1 xl:col-end-20 xl:col-span-13 3xl:col-end-22 3xl:col-span-12",
-          "mt-[210px]",
-          "w-full flex flex-col items-end"
-        )}>
-          <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-4 bg-white inline-block">Pionner</h2>
-          <p className="font-medium text-[2rem] text-white mt-10">Work with us on cutting edge research</p>
+        <header
+          className={cn(
+            "row-start-1 xl:col-end-20 xl:col-span-13 3xl:col-end-22 3xl:col-span-12",
+            "mt-[14rem]",
+            "w-full flex flex-col items-end justify-center"
+          )}
+        >
+          <h2 className="text-[3.5rem] font-black uppercase rounded-3xl px-16 py-4 bg-white inline-block">Pioneer</h2>
+          <p className="font-medium text-[2rem] text-white mt-6">Work with us on cutting edge research</p>
         </header>
 
-        <main className={cn("row-start-2 xl:col-start-2 xl:col-span-10 3xl:col-start-4 3xl:col-span-10")}>
+        <main className={cn("row-start-2 xl:col-start-2 xl:col-span-10 3xl:col-start-4 3xl:col-span-10 mt-32")}>
           <div className={cn("grid grid-cols-6 grid-rows-8 gap-3", "text-white text-xl font-extrabold uppercase leading-normal")}>
             <AreaOfInterestTab idx={0} className="bento-1">
               <h4>Trustless MEV</h4>
@@ -836,8 +868,8 @@ function SectionPitchPioneer() {
           </div>
         </main>
 
-        <aside className={cn("row-start-2 xl:col-end-20 xl:col-span-7 3xl:col-end-22", "w-full")}>
-          <h3 className="text-4xl text-white">Areas of interest</h3>
+        <aside className={cn("row-start-2 xl:col-end-20 xl:col-span-7 3xl:col-end-22 mt-8", "w-full")}>
+          <h3 className="text-3xl text-white font-extrabold mx-2 my-6 uppercase">Area of Interest</h3>
           <div className={cn("bg-blackAlpha-500 rounded-5xl py-8 px-10 text-white h-full")}>
             <AreaOfInterestTabPanel idx={0} title="Trustless MEV">
               <p>Trustless MEV refers to the concept of eliminating reliance on trusted service providers, such as Flashbot, in the Miner Extractable Value (MEV) ecosystem. Currently, 80% of Ethereum blocks are built by MEV, but the existing MEV stack depends on these trusted providers.</p>
@@ -863,7 +895,7 @@ function SectionPitchPioneer() {
             </AreaOfInterestTabPanel>
             <AreaOfInterestTabPanel idx={5} title="Distributed Computing">
               <p>Distributed computing enables multiple computers to work together to solve complex problems, making a computer network appear as a powerful single computer. It can be used to encrypt large volumes of data, solve complex equations, and render high-quality animations.</p>
-              <p>Phala Network offers fast, cost-efficient, and secure computation by running jobs where data is generated and stored. It can streamline existing workflows without extensive rewriting by running arbitrary Docker containers and WebAssembly (wasm) images as tasks.</p>
+              <p>Phala Network offers fast, cost-efficient, and secure computation by running jobs where data is generated and stored. It can streamline existing workflows without extensive rewriting by running arbitrary Docker containers and WebAssembly (WASM) images as tasks.</p>
             </AreaOfInterestTabPanel>
             <AreaOfInterestTabPanel idx={6} title="Gateway & CDN">
               <p>Centralized CDN services can lead to issues like single points of failure, data leaks, and centralized control. Phala Network provides a decentralized content and application delivery network that accelerates the delivery of Web3 content and apps.</p>
@@ -917,26 +949,15 @@ function SectionHowItWorks() {
           How It Works
         </h2>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
-          {/* <div className={cn("rounded-3xl aspect-[1360/760] bg-gray-200 w-full relative overflow-hidden")}> */}
-          {/*   <Image */}
-          {/*     src="/home/how-it-works-01.jpg" */}
-          {/*     fill */}
-          {/*     alt="" */}
-          {/*   /> */}
-          {/* </div> */}
           <HowItWorksCarousel />
         </div>
-        <blockquote className={cn("row-start-3 xl:col-start-2 xl:col-span-9 3xl:col-start-4 3xl:col-span-9 mt-40 mb-16", "quote")}>
-          <p>BY THE PEOPLE.</p>
-          <p>FOR THE PEOPLE.</p>
+        <blockquote className={cn("row-start-3 xl:col-start-2 xl:col-span-9 3xl:col-start-4 3xl:col-span-9 mt-40 mb-16 pr-4", "quote")}>
+          <p>A Decentralized Off-chain Compute Infrastructure like no other.</p>
         </blockquote>
         <div className={cn("row-start-3 xl:col-end-20 xl:col-span-9 3xl:col-end-22", "mt-40 mb-16 px-12 py-14 bg-primary rounded-3xl max-w-[44.75rem]")}>
           <p className={cn("text-3xl font-normal leading-normal uppercase")}>A Decentralised compute cloud like no other.</p>
           <p className={cn("text-2xl font-light mb-4")}>Secured by</p>
-          <div className={cn("flex flex-row gap-9")}>
-            <Stats name="Computers">12,320</Stats>
-            <Stats name="$PHA">12,320</Stats>
-          </div>
+          <StatsCard />
         </div>
         <div className={cn("row-start-4 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
           <div className={cn("mx-auto rounded-3xl aspect-[1360/760] bg-gray-200 relative overflow-hidden")}>
@@ -950,7 +971,7 @@ function SectionHowItWorks() {
         <div className={cn("row-start-5 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
           <a
             href="https://docs.phala.network/v1/compute-providers/basic-info"
-            className={cn("btn btn-lg w-full justify-center bg-primary text-black uppercase")}
+            className={cn("btn btn-lg btn-primary w-full justify-center text-black uppercase")}
             target="_blank"
             rel="noopener"
           >
@@ -971,15 +992,20 @@ function SectionHowItWorks() {
 function PostCard({ src, href, title, intro }: { src: string, href: string, title: string, intro: string }) {
   return (
     <article className="flex flex-col gap-6">
-      <a href={href} className={cn("block bg-gray-200 rounded-4xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5]")} target="_blank" rel="noopener">
+      <a
+        href={href}
+        className={cn("block bg-gray-200 rounded-4xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5] transition-all hover:scale-[0.98]")}
+        target="_blank"
+        rel="noopener"
+      >
         <img
           src={src}
           alt=""
           className={cn("object-fit w-full h-full")}
         />
       </a>
-      <header className={cn("text-xl font-bold")}>
-        <a href={href}>{title}</a>
+      <header>
+        <a href={href} className="btn-link text-xl font-bold">{title}</a>
       </header>
       <div>
         <p className={cn("text-sm")}>{intro}</p>
@@ -1016,7 +1042,7 @@ function SectionHighlights() {
         <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
           <a
             href="https://medium.com/phala-network"
-            className={cn("btn btn-lg w-full justify-center bg-primary text-black uppercase")}
+            className={cn("btn btn-lg w-full justify-center btn-primary text-black uppercase")}
             target="_blank"
             rel="noopener"
           >

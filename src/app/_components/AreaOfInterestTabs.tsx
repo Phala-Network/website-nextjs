@@ -16,8 +16,8 @@ export function AreaOfInterestTab({ idx, className, children }: AreaOfInterestTa
   return (
     <button
       className={cn(
-        "rounded-xl p-6 w-56 h-56 transition-all",
-        current === idx ? 'active bg-[#CDFA50] text-black' : 'bg-blackAlpha-800 ',
+        "rounded-xl p-6 w-full aspect-square transition-all",
+        current === idx ? 'active bg-[#CDFA50] text-black hover:bg-[#E0FF8A]' : 'bg-blackAlpha-800 hover:bg-blackAlpha-600',
         className
       )}
       onClick={() => setCurrent(idx)}
