@@ -84,7 +84,7 @@ function SectionHero() {
               />
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <Stats name="Online Workers">26,551</Stats>
-                <Stats name="Compute">19,1715 vCPU</Stats>
+                <Stats name="Compute">191,715 vCPU</Stats>
                 <Stats name="Cross-Chain TX">7,538</Stats>
                 <Stats name="TX">69,622,067</Stats>
               </div>
