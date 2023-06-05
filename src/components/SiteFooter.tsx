@@ -89,6 +89,22 @@ export default function SiteFooter() {
         </div>
         <div className={cn("row-start-1 xl:col-start-12 xl:col-span-5 3xl:col-start-16")}>
           <div>
+            <LinkListHeading>Phala</LinkListHeading>
+            <LinkList>
+              <LinkListItem href="https://phala.subscan.io/">Phala Explorer</LinkListItem>
+              <LinkListItem href="https://phala.subsquare.io/">Phala Governance</LinkListItem>
+            </LinkList>
+          </div>
+          <div>
+            <LinkListHeading>Khala</LinkListHeading>
+            <LinkList>
+              <LinkListItem href="https://khala.subscan.io/">Khala Explorer</LinkListItem>
+              <LinkListItem href="https://khala.subsquare.io/">Khala Governance</LinkListItem>
+            </LinkList>
+          </div>
+        </div>
+        <div className={cn("row-start-1 xl:col-start-17 xl:col-span-5 3xl:col-start-21")}>
+          <div>
             <LinkListHeading>Social</LinkListHeading>
             <LinkList>
               <LinkListItem href="https://twitter.com/PhalaNetwork">Twitter</LinkListItem>
@@ -98,15 +114,6 @@ export default function SiteFooter() {
               <LinkListItem href="https://lenster.xyz/u/yourfather">Lenster</LinkListItem>
               <LinkListItem href="https://lenstube.xyz/channel/yourfather.lens">Lenstube</LinkListItem>
             </LinkList>
-          </div>
-          <div>
-              <LinkListHeading>Blockchains</LinkListHeading>
-              <LinkList>
-                  <LinkListItem href="https://phala.subscan.io/">Phala Explorer</LinkListItem>
-                  <LinkListItem href="https://khala.subscan.io/">Khala Explorer</LinkListItem>
-                  <LinkListItem href="https://phala.subsquare.io/">Phala Governance</LinkListItem>
-                  <LinkListItem href="https://khala.subsquare.io/">Khala Governance</LinkListItem>
-              </LinkList>
           </div>
         </div>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-row items-center justify-between")}>
