@@ -268,6 +268,17 @@ function buttonComponents({ addComponents, theme }) {
       },
     },
     {
+      ['.btn-animated']: {
+        transitionProperty: 'background-color,color,transform',
+        transitionTimingFunction: 'linear',
+        transitionDuration: '0.25s',
+        willChange: 'background-color,color,transform',
+        '&:hover': {
+          transform: 'scale(0.95)',
+          transitionDuration: '0.25s',
+          transitionTimingFunction: 'ease-in-out',
+        },
+      },
       [`.btn-primary`]: {
         borderRadius: theme('borderRadius.xl'),
         backgroundColor: '#CDFA50',

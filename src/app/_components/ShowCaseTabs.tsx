@@ -2,7 +2,7 @@
 
 import React, { type ReactNode } from 'react'
 import Image from 'next/image'
-import { atom, useAtom, useAtomValue } from 'jotai'
+import { atom, useAtomValue } from 'jotai'
 
 import { cn } from '@/lib/utils'
 import Details from '@/components/Details'

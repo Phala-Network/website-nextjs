@@ -22,10 +22,6 @@
 
 /* .section-features */
 
-.feature-highlight-item {
-  @apply p-5 rounded-l-xl w-full;
-}
-
 .feature-highlight-item.active,
 .feature-highlight-item:hover {
   @apply bg-primary;
@@ -55,6 +51,24 @@
 
 .feature-highlight-item p {
   @apply py-2.5 text-sm text-blackAlpha-700 max-w-xl;
+}
+
+.feature-tab-panels {
+  width: 38vw;
+  top: calc((100vh - 45vw / 834 * 782) / 2);
+}
+
+@media (min-width: 80rem) {
+  .feature-tab-panels {
+    width: auto;
+    top: auto;
+  }
+}
+
+@media (min-width: 160rem) {
+  .feature-tab-panels {
+    top: calc((100vh - 45vw / 834 * 782) / 2);
+  }
 }
 
 /* .section-blueprints */
@@ -178,3 +192,4 @@
   content: '"';
   @apply text-[3.5rem] font-black leading-[4.25rem] block;
 }
+

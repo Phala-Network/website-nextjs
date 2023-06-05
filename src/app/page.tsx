@@ -13,7 +13,10 @@ import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPrevi
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
+import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator } from './_components/FeatureTabs'
 import SubscribeForm from './_components/SubscribeForm'
+import { Advantages } from './_components/Advantages'
+import { HowItWorksCarousel } from './_components/HowItWorksCarousel'
 import './home.css'
 
 
@@ -40,12 +43,12 @@ function SectionHero() {
         {/* Temporary placeholder */}
         <div className={cn("w-full")} />
 
-        <div className={cn("uppercase text-center flex flex-col gap-16 justify-center")}>
+        <div className={cn("uppercase text-center flex flex-col gap-16 justify-center w-full")}>
           <header className={cn("px-10")}>
             <h2 className={cn("text-4xl font-normal text-[#222] leading-10 mb-2.5")}>Computation as it's meant to be</h2>
-            <h3 className={cn("text-2xl font-black")}>
+            <h3 className={cn("text-2xl font-extrabold flex flex-row justify-center w-full")}>
               On-Chain verification.
-              Off-Chain <span className={cn("text-[#8544F6]")}>Capability.</span>
+              Off-Chain <Advantages />
             </h3>
           </header>
           <div className={cn("flex flex-col xl:flex-row gap-5 mx-auto")}>
@@ -160,52 +163,59 @@ function FeatureHighlight({ idx, iconUrl, summary, children }: { idx: number, ic
 
 function SectionFeatures() {
   return (
-    <section id="section-features" className={cn("relative h-screen")}>
+    <section id="section-features" className={cn("relative xl:h-screen flex items-center")}>
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
-      <div className={cn("safe-viewport", "grid grid-cols-1 w-full h-full")}>
-        <header className={cn("col-start-1 row-start-1 flex flex-col gap-5 pt-[14vh]")}>
-          <h2 className={cn("font-extrabold text-5xl uppercase")}>Smart Contracts.</h2>
-          <h3 className={cn("text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
-          <p className={cn("text-base text-blackAlpha-700")}>Phat Contract is the offchain program running on Phala Network.</p>
-        </header>
-        <div className={cn("col-start-1 row-start-1 flex flex-row items-end h-full py-14")}>
-          <div className={cn("flex flex-row gap-10 mb-8")}>
-            <div className={cn("flex flex-col")}>
-              <div className={cn("w-1.5 rounded-lg bg-blackAlpha-100 flex-1")} />
-            </div>
-            <div className="flex-1 flex flex-col gap-1">
-              <FeatureHighlight idx={0} iconUrl="/icons/features-compare.svg" summary="Connect your smart contract anywhere">
+      <div className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24 grid-rows-7")}>
+        <div className={cn("col-start-1 col-span-full xl:col-span-12 2xl:col-span-10 3xl:col-start-3 3xl:col-span-10", "flex flex-col justify-between 4xl:gap-20", "py-8 3xl:py-16")}>
+          <header className={cn("flex flex-col gap-5", "ml-12 mb-6 2xl:mb-0")}>
+            <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
+            <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
+          </header>
+          <main className={cn("grid grid-cols-10 grid-rows-7 gap-1")} style={{"gridAutoRows": "fit-content(1em)"}}>
+            <div className={cn("col-start-2 col-span-9 row-start-1")}>
+              <FeatureTab idx={1} iconUrl="/icons/features-compare.svg" summary="Connect your smart contract anywhere">
                 <p>
                   No matter if your smart contracts are on Ethereum or Substrate, our universal compatibility ensures connection flexibility like never before, enabling your smart contracts to access a wide range of features regardless of their hosting blockchain. Phala’s Phat Contracts make it possible to extend the capabilities of your smart contracts without the need for a bridge or an extra layer.
                 </p>
-              </FeatureHighlight>
-              <FeatureHighlight idx={1} iconUrl="/icons/features-all-out.svg" summary="Seamless access to the Internet">
+              </FeatureTab>
+            </div>
+            <div className={cn("col-start-2 col-span-9 row-start-2")}>
+              <FeatureTab idx={2} iconUrl="/icons/features-all-out.svg" summary="Seamless access to the Internet">
                 <p>
                   Phala Network doesn’t just offer unparalleled on-chain connectivity; it also bridges the gap between the off-chain world and smart contracts. The ability to send HTTP/HTTPS requests directly from your smart contracts is now at your fingertips. Take your dapp to the next level by integrating cutting-edge Web3 protocols and various Web2 API, creating a perfect fusion of old and new, on-chain and off-chain.
                 </p>
-              </FeatureHighlight>
-              <FeatureHighlight idx={2} iconUrl="/icons/features-auto-graph.svg" summary="Advanced flexibility and performance">
+              </FeatureTab>
+            </div>
+            <div className={cn("col-start-2 col-span-9 row-start-3")}>
+              <FeatureTab idx={3} iconUrl="/icons/features-auto-graph.svg" summary="Advanced flexibility and performance">
                 <p>
                   By offloading the computation off-chain, you don’t have to worry about costly transaction fees or network latency that hinders your progress. Experience real-time, off-chain computation at its finest, allowing you to focus on enhancing your dapp’s functionality and user experience. Run arbitrarily complex logic without any constraints, all at an affordable cost.
                 </p>
-              </FeatureHighlight>
-              <FeatureHighlight idx={3} iconUrl="/icons/features-rocket.svg" summary="Computation is always verifiable">
+              </FeatureTab>
+            </div>
+            <div className={cn("col-start-2 col-span-9 row-start-4")}>
+              <FeatureTab idx={4} iconUrl="/icons/features-rocket.svg" summary="Computation is always verifiable">
                 <p>
                   Phala Network is designed with multiple layers of security guarantees to provide fully verifiable computation. The network is backed by numerous decentralized workers and a significant amount of staked tokens. Phat Contracts are protected by both hardware Secure Enclaves and cryptographic evidence published and verified on the Phala blockchain, seamlessly extending blockchain-level security to the off-chain realm.
                 </p>
-              </FeatureHighlight>
+              </FeatureTab>
             </div>
-          </div>
-          <div className={cn("block rounded-5xl bg-gray-200 aspect-[834/782] relative overflow-hidden w-[56%]")}>
-            <Image
-              src="/home/features.jpg"
-              fill
-              sizes="100%"
-              alt=""
-              className="object-fill untanglable"
-            />
-          </div>
+
+            {/* Progress bar */}
+            <div className={cn("col-start-1 row-start-1 row-span-7 flex justify-end pr-6")}>
+              <div className={cn("w-2 h-full bg-blackAlpha-100 rounded")} />
+            </div>
+            <FeatureTabIndicator />
+          </main>
         </div>
+
+        <FeatureTabPanels>
+          <FeatureTabPanel src="/home/highlight01.jpg" />
+          <FeatureTabPanel src="/home/highlight02.jpg" />
+          <FeatureTabPanel src="/home/highlight03.jpg" />
+          <FeatureTabPanel src="/home/highlight04.jpg" />
+          <FeatureTabPanel src="/home/highlight05.jpg" />
+        </FeatureTabPanels>
       </div>
     </section>
   )
@@ -222,39 +232,39 @@ function SectionPitchIntro() {
     <section id="section-pitch-intro" className="relative h-screen">
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
       <div className={cn("absolute top-[33%] right-0 h-[57%] w-[67.45vw] bg-primary rounded-l-[48px] -z-[9]")} />
-      <div className="safe-viewport flex flex-row items-center h-full gap-16">
-        <header className={cn("flex flex-col gap-6 z-10 max-w-[50vw]")}>
+      <div className={cn("safe-viewport", "h-full", "grid grid-cols-20 grid-rows-1 3xl:grid-cols-24 xl:gap-4")}>
+        <header className={cn("xl:col-start-2 xl:col-span-11 xl:row-start-1 3xl:col-start-4", "flex flex-col gap-6 justify-center z-30 max-w-[50vw]")}>
           <div className={cn("text-[2.625rem]")}>FROM</div>
           <div>
-            <h3 className={cn("text-[5.625rem] font-extrabold text-white bg-black tracking-tight rounded-3xl inline-flex px-14")}>NO CODE</h3>
+            <h3 className={cn("text-[5.625rem] font-extrabold text-white bg-black whitespace-nowrap tracking-tight rounded-3xl inline-flex px-14")}>NO CODE</h3>
           </div>
-          <div className={cn("flex flex-row gap-6 items-center -ml-24")}>
-            <Image
-              src="/icons/long-right-arrow.svg"
-              className="svg-secondary untanglable"
-              alt=""
-              width={234}
-              height={101}
-            />
+          <div className={cn("flex flex-row gap-6 items-center")}>
+            <div className={cn("text-[#8544F6]")}>
+              <svg viewBox="0 0 133 97" fill="none" style={{width: 134, height: 100}}>
+                <path d="M88.8093 2.48389C86.3556 0.012666 82.3587 0.0126662 79.905 2.48388C77.4773 4.92887 77.4755 8.87413 79.901 11.3213L110.494 42.1875H6.3125C2.8262 42.1875 0 45.0137 0 48.5C0 51.9863 2.8262 54.8125 6.3125 54.8125H110.494L79.901 85.6787C77.4755 88.1259 77.4773 92.0711 79.905 94.5161C82.3587 96.9873 86.3556 96.9873 88.8093 94.5161L130.302 52.7276C132.625 50.3879 132.625 46.6121 130.302 44.2724L88.8093 2.48389Z" fill="currentColor" />
+              </svg>
+            </div>
             <h3 className="text-[5.625rem] font-extrabold text-white bg-black whitespace-nowrap tracking-tight rounded-3xl inline-flex px-14">FULL CODE</h3>
           </div>
-          <h4 className="text-[2.625rem] uppercase ml-[160px]">We got you <span className="font-black">covered</span>.</h4>
+          <h4 className="text-[2.625rem] uppercase ml-[160px] whitespace-nowrap">We got you <span className="font-black">covered</span>.</h4>
         </header>
-        <div className="relative w-[300px] h-[420px]">
-          <Image
-            src="/home/experience-front.jpg"
-            alt=""
-            width={292}
-            height={419}
-            className="rounded-3xl overflow-hidden absolute left-[260px] top-[-100px] z-20 untanglable"
-          />
-          <Image
-            src="/home/experience-back.jpg"
-            alt=""
-            width={292}
-            height={419}
-            className="rounded-3xl overflow-hidden absolute left-0 top-[100px] z-10 untanglable"
-          />
+        <div className={cn("hidden xl:row-start-1 xl:col-end-19 xl:col-span-6 3xl:col-end-21 xl:flex flex-col justify-center")}>
+          <div className="relative w-[300px] h-[420px]">
+            <Image
+              src="/home/experience-back.jpg"
+              alt=""
+              width={292}
+              height={419}
+              className="rounded-3xl overflow-hidden absolute left-[260px] top-[-80px] z-10 untanglable"
+            />
+            <Image
+              src="/home/experience-front.jpg"
+              alt=""
+              width={292}
+              height={419}
+              className="rounded-3xl overflow-hidden absolute left-0 top-[20px] z-20 untanglable"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -340,19 +350,19 @@ function SectionPitchAccelerate() {
               <div className={cn("aspect-[879/620] relative w-[70%]")}>
                 <NoCodeWizardStepPreview
                   idx={0}
-                  src="https://picsum.photos/id/1/879/620"
+                  src="/home/nocode-workflow-01-pick.jpg"
                 />
                 <NoCodeWizardStepPreview
                   idx={1}
-                  src="https://picsum.photos/id/10/879/620"
+                  src="/home/nocode-workflow-02-customize.jpg"
                 />
                 <NoCodeWizardStepPreview
                   idx={2}
-                  src="https://picsum.photos/id/16/879/620"
+                  src="/home/nocode-workflow-03-deploy.jpg"
                 />
                 <NoCodeWizardStepPreview
                   idx={3}
-                  src="https://picsum.photos/id/20/879/620"
+                  src="/home/nocode-workflow-04-integrate.jpg"
                 />
               </div>
               <div className="flex flex-col justify-between px-8 py-10 w-[30%]">
@@ -907,7 +917,14 @@ function SectionHowItWorks() {
           How It Works
         </h2>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
-          <div className={cn("rounded-3xl aspect-[1360/760] bg-gray-200")} />
+          {/* <div className={cn("rounded-3xl aspect-[1360/760] bg-gray-200 w-full relative overflow-hidden")}> */}
+          {/*   <Image */}
+          {/*     src="/home/how-it-works-01.jpg" */}
+          {/*     fill */}
+          {/*     alt="" */}
+          {/*   /> */}
+          {/* </div> */}
+          <HowItWorksCarousel />
         </div>
         <blockquote className={cn("row-start-3 xl:col-start-2 xl:col-span-9 3xl:col-start-4 3xl:col-span-9 mt-40 mb-16", "quote")}>
           <p>BY THE PEOPLE.</p>
@@ -922,7 +939,13 @@ function SectionHowItWorks() {
           </div>
         </div>
         <div className={cn("row-start-4 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
-          <div className={cn("mx-auto rounded-3xl aspect-[1360/760] bg-gray-200")} />
+          <div className={cn("mx-auto rounded-3xl aspect-[1360/760] bg-gray-200 relative overflow-hidden")}>
+            <Image
+              src="/home/global-network.jpg"
+              fill
+              alt=""
+            />
+          </div>
         </div>
         <div className={cn("row-start-5 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
           <a
