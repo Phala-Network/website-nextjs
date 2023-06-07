@@ -43,32 +43,33 @@ export default function SiteNav() {
           <SiteNavItem href="https://docs.phala.network/v1/compute-providers/basic-info/introduction" target="_blank" rel="noopener">Compute Providers</SiteNavItem>
           <SiteNavItem href="https://docs.phala.network/v1/pha-token/delegation" target="_blank" rel="noopener">PHA Token</SiteNavItem>
           <SiteNavItem href="https://linktr.ee/phalanetwork" target="_blank" rel="noopener">Participate</SiteNavItem>
+          <SiteNavItem href="https://app.phala.network" target="_blank" rel="noopener">Earn</SiteNavItem>
         </nav>
-        <div
-          className={cn(
-            "xl:col-span-3 xl:col-end-20 3xl:col-end-25 row-start-1",
-            "flex flex-row justify-end w-full",
-          )}
-        >
-          <a
-            href="https://app.phala.network/"
-            className={cn(
-              "w-full max-w-[9.375rem]",
-              "btn btn-secondary btn-reverse btn-sm btn-aside-icon"
-            )}
-            target="_blank"
-            rel="noopener"
-          >
-            <span>Earn</span>
-            <Image
-              src="/icons/right-arrow.svg"
-              alt=""
-              className="svg-secondary icon"
-              width={14}
-              height={14}
-            />
-          </a>
-        </div>
+        {/* <div */}
+        {/*   className={cn( */}
+        {/*     "xl:col-span-3 xl:col-end-20 3xl:col-end-25 row-start-1", */}
+        {/*     "flex flex-row justify-end w-full", */}
+        {/*   )} */}
+        {/* > */}
+        {/*   <a */}
+        {/*     href="https://app.phala.network/" */}
+        {/*     className={cn( */}
+        {/*       "w-full max-w-[9.375rem]", */}
+        {/*       "btn btn-link inline-flex btn-reverse btn-sm btn-aside-icon" */}
+        {/*     )} */}
+        {/*     target="_blank" */}
+        {/*     rel="noopener" */}
+        {/*   > */}
+        {/*     <span>Earn</span> */}
+        {/*     <Image */}
+        {/*       src="/icons/right-arrow.svg" */}
+        {/*       alt="" */}
+        {/*       className="svg-secondary icon" */}
+        {/*       width={14} */}
+        {/*       height={14} */}
+        {/*     /> */}
+        {/*   </a> */}
+        {/* </div> */}
       </div>
     </nav>
   )
