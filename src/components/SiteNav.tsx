@@ -54,16 +54,16 @@ export default function SiteNav() {
             href="https://app.phala.network/"
             className={cn(
               "w-full max-w-[9.375rem]",
-              "btn btn-primary btn-reverse btn-sm btn-aside-icon"
+              "btn btn-secondary btn-reverse btn-sm btn-aside-icon"
             )}
             target="_blank"
             rel="noopener"
           >
-            <span>APP</span>
+            <span>Earn</span>
             <Image
               src="/icons/right-arrow.svg"
               alt=""
-              className="svg-primary icon"
+              className="svg-secondary icon"
               width={14}
               height={14}
             />
