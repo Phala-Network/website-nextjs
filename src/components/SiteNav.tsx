@@ -39,9 +39,9 @@ export default function SiteNav() {
           "invisible xl:visible xl:col-start-5 xl:col-span-12 3xl:col-start-7 3xl:col-span-13 row-start-1",
           "flex flex-row items-center justify-between w-full px-16"
         )}>
-          <SiteNavItem href="https://docs.phala.network/v1/developers/phat-contract" target="_blank" rel="noopener">Developers</SiteNavItem>
-          <SiteNavItem href="https://docs.phala.network/v1/compute-providers/basic-info/introduction" target="_blank" rel="noopener">Compute Providers</SiteNavItem>
-          <SiteNavItem href="https://docs.phala.network/v1/pha-token/delegation" target="_blank" rel="noopener">PHA Token</SiteNavItem>
+          <SiteNavItem href="https://docs.phala.network/developers/phat-contract" target="_blank" rel="noopener">Developers</SiteNavItem>
+          <SiteNavItem href="https://docs.phala.network/compute-providers/basic-info/introduction" target="_blank" rel="noopener">Compute Providers</SiteNavItem>
+          <SiteNavItem href="https://docs.phala.network/pha-token/delegation" target="_blank" rel="noopener">PHA Token</SiteNavItem>
           <SiteNavItem href="https://linktr.ee/phalanetwork" target="_blank" rel="noopener">Participate</SiteNavItem>
           <SiteNavItem href="https://app.phala.network" target="_blank" rel="noopener">Earn</SiteNavItem>
         </nav>
