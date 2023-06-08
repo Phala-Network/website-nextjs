@@ -113,7 +113,7 @@ function SectionHero() {
                 />
               </div>
               <a
-                href="https://docs.phala.network/v1/developers/phat-contract/supported-chains"
+                href="https://docs.phala.network/developers/phat-contract/supported-chains"
                 className={cn("flex flex-row gap-2", "btn-view-all")}
                 target="_blank"
                 rel="noopener"
@@ -457,7 +457,7 @@ function SectionPitchAccelerate() {
               </BlueprintCard>
             </div>
             <a
-              href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints"
+              href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints"
               className={cn("btn btn-primary btn-lg mt-10 font-bold uppercase w-full py-5 px-10")}
               target="_blank"
               rel="noopener"

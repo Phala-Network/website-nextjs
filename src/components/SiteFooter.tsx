@@ -48,10 +48,10 @@ export default function SiteFooter() {
             <LinkList>
               <LinkListItem href="https://docs.phala.network/">Docs</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/">GitHub</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/builders-program">Builders Program</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/developers/phat-contract/builders-program">Builders Program</LinkListItem>
               <LinkListItem href="https://phat.phala.network/">Native Phat Contract App</LinkListItem>
               <LinkListItem href="https://bricks.phala.network/?source=foot-bricks-app">Bricks App</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/use-cases">Use Cases</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/developers/phat-contract/use-cases">Use Cases</LinkListItem>
             </LinkList>
           </div>
           <div>
@@ -74,14 +74,14 @@ export default function SiteFooter() {
             <LinkList>
               <LinkListItem href="https://app.phala.network">Phala App</LinkListItem>
               <LinkListItem href="https://docs.phala.network/">What is Phala Network?</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract">What is Phat Contract?</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/bricks-and-blueprints">What are Blueprints?</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/pha-token/delegation/delegate-to-stakepool">What is PHA staking?</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/developers/phat-contract/pay-for-cloud-service">Tokenomics - Utility</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info/worker-rewards">Tokenomics - Earn</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/developers/phat-contract">What is Phat Contract?</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints">What are Blueprints?</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/pha-token/delegation/delegate-to-stakepool">What is PHA staking?</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/developers/phat-contract/pay-for-cloud-service">Tokenomics - Utility</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/compute-providers/basic-info/worker-rewards">Tokenomics - Earn</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/Whitepaper/tree/master/pdf/phala-paper.pdf">Whitepaper</LinkListItem>
               <LinkListItem href="/roadmap">Roadmap</LinkListItem>
-              <LinkListItem href="https://docs.phala.network/v1/compute-providers/basic-info">Become a Compute Provider</LinkListItem>
+              <LinkListItem href="https://docs.phala.network/compute-providers/basic-info">Become a Compute Provider</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/growth-program">Ambassador Program</LinkListItem>
               <LinkListItem href="https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq">Media Kit</LinkListItem>
             </LinkList>
