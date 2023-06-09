@@ -42,7 +42,7 @@ export default function SiteNav() {
           <SiteNavItem href="https://docs.phala.network/developers/phat-contract" target="_blank" rel="noopener">Developers</SiteNavItem>
           <SiteNavItem href="https://docs.phala.network/compute-providers/basic-info/introduction" target="_blank" rel="noopener">Compute Providers</SiteNavItem>
           <SiteNavItem href="https://docs.phala.network/pha-token/introduction" target="_blank" rel="noopener">PHA Token</SiteNavItem>
-          <SiteNavItem href="https://linktr.ee/phalanetwork" target="_blank" rel="noopener">Participate</SiteNavItem>
+          <SiteNavItem href="https://linktr.ee/phalanetwork" target="_blank" rel="noopener">Connect</SiteNavItem>
           <SiteNavItem href="https://app.phala.network" target="_blank" rel="noopener">Earn</SiteNavItem>
         </nav>
         {/* <div */}
