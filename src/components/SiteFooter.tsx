@@ -57,7 +57,7 @@ export default function SiteFooter() {
           <div>
             <LinkListHeading>Blueprints</LinkListHeading>
             <LinkList>
-              <LinkListItem href="https://bricks.phala.network/">LensAPI Oracle</LinkListItem>
+              <LinkListItem href="https://bricks.phala.network/?source=footer-LensAPI-Oracle">LensAPI Oracle</LinkListItem>
             </LinkList>
             <div>
                 <LinkListHeading>Other Products</LinkListHeading>
