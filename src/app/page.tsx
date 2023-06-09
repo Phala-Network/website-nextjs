@@ -457,7 +457,7 @@ function SectionPitchAccelerate() {
               </BlueprintCard>
             </div>
             <a
-              href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints"
+              href="https://bricks.phala.network"
               className={cn("btn btn-primary btn-lg mt-10 font-bold uppercase w-full py-5 px-10")}
               target="_blank"
               rel="noopener"
