@@ -57,7 +57,7 @@ export default function SiteFooter() {
           <div>
             <LinkListHeading>Blueprints</LinkListHeading>
             <LinkList>
-              <LinkListItem href="https://bricks.phala.network/">LensAPI Oracle</LinkListItem>
+              <LinkListItem href="https://bricks.phala.network/?source=footer-LensAPI-Oracle">LensAPI Oracle</LinkListItem>
             </LinkList>
             <div>
                 <LinkListHeading>Other Products</LinkListHeading>
@@ -84,6 +84,7 @@ export default function SiteFooter() {
               <LinkListItem href="https://docs.phala.network/compute-providers/basic-info">Become a Compute Provider</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/growth-program">Ambassador Program</LinkListItem>
               <LinkListItem href="https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq">Media Kit</LinkListItem>
+              <LinkListItem href="https://wellfound.com/company/phala-network">Career</LinkListItem>
             </LinkList>
           </div>
         </div>
@@ -113,6 +114,7 @@ export default function SiteFooter() {
               <LinkListItem href="https://www.youtube.com/@PhalaNetwork">YouTube</LinkListItem>
               <LinkListItem href="https://lenster.xyz/u/yourfather">Lenster</LinkListItem>
               <LinkListItem href="https://lenstube.xyz/channel/yourfather.lens">Lenstube</LinkListItem>
+              <LinkListItem href="https://forum.phala.network/">Forum</LinkListItem>
             </LinkList>
           </div>
         </div>

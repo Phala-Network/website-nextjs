@@ -397,7 +397,7 @@ function SectionPitchAccelerate() {
           "w-[70%]",
           "mt-8"
         )}>
-          <a href="https://bricks.phala.network" className="btn btn-third flex-row w-full bg-[#6C37C9] py-5 px-10" target="_blank" rel="noopener">
+          <a href="https://bricks.phala.network/?source=get-your-own" className="btn btn-third flex-row w-full bg-[#6C37C9] py-5 px-10" target="_blank" rel="noopener">
             <span className="text-lg font-bold uppercase">Get your own LensAPI oracle now</span>
             <img
               src="/icons/right-arrow.svg"
@@ -420,7 +420,7 @@ function SectionPitchAccelerate() {
                 title="LensAPI Oracle"
                 illustration="/home/blueprint-lens-api-oracle.png"
                 tags={["Polygon", "EVM", "Lens"]}
-                href="https://bricks.phala.network"
+                href="https://bricks.phala.network/?source=blueprint-card-LensAPI-Oracle"
                 live
               >
                 Deploy a custom social oracle to integrate LensAPI data into your smart contracts, providing access to user profile statistics such as followers, posts, comments, and post metrics like collections, mirrors, and replies.
@@ -457,7 +457,7 @@ function SectionPitchAccelerate() {
               </BlueprintCard>
             </div>
             <a
-              href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints"
+              href="https://bricks.phala.network"
               className={cn("btn btn-primary btn-lg mt-10 font-bold uppercase w-full py-5 px-10")}
               target="_blank"
               rel="noopener"
@@ -992,7 +992,7 @@ function SectionHowItWorks() {
         </div>
         <div className={cn("row-start-5 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
           <a
-            href="https://docs.phala.network/v1/compute-providers/basic-info"
+            href="https://app.phala.network/"
             className={cn("btn btn-lg btn-primary w-full justify-center text-black uppercase")}
             target="_blank"
             rel="noopener"
