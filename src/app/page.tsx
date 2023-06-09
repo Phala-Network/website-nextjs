@@ -992,7 +992,7 @@ function SectionHowItWorks() {
         </div>
         <div className={cn("row-start-5 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
           <a
-            href="https://docs.phala.network/v1/compute-providers/basic-info"
+            href="https://app.phala.network/"
             className={cn("btn btn-lg btn-primary w-full justify-center text-black uppercase")}
             target="_blank"
             rel="noopener"
