@@ -113,6 +113,7 @@ export default function SiteFooter() {
               <LinkListItem href="https://www.youtube.com/@PhalaNetwork">YouTube</LinkListItem>
               <LinkListItem href="https://lenster.xyz/u/yourfather">Lenster</LinkListItem>
               <LinkListItem href="https://lenstube.xyz/channel/yourfather.lens">Lenstube</LinkListItem>
+              <LinkListItem href="https://forum.phala.network/">Forum</LinkListItem>
             </LinkList>
           </div>
         </div>
