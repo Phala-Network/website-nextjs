@@ -84,6 +84,7 @@ export default function SiteFooter() {
               <LinkListItem href="https://docs.phala.network/compute-providers/basic-info">Become a Compute Provider</LinkListItem>
               <LinkListItem href="https://github.com/Phala-Network/growth-program">Ambassador Program</LinkListItem>
               <LinkListItem href="https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq">Media Kit</LinkListItem>
+              <LinkListItem href="https://wellfound.com/company/phala-network">Career</LinkListItem>
             </LinkList>
           </div>
         </div>
