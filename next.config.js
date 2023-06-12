@@ -23,6 +23,11 @@ const nextConfig = {
         permanent: false
       },
       {
+        source: '/zh',
+        destination: '/',
+        permanent: false
+      },
+      {
         source: '/en/phat-contract',
         destination: '/',
         permanent: false
@@ -34,6 +39,11 @@ const nextConfig = {
       },
       {
         source: '/cn/:path*',
+        destination: '/:path*',
+        permanent: false
+      },
+      {
+        source: '/zh/:path*',
         destination: '/:path*',
         permanent: false
       },
