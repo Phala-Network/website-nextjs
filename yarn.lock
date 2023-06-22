@@ -366,6 +366,11 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
+figma-squircle@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/figma-squircle/-/figma-squircle-0.3.0.tgz#f9ad82ea6c3eb06b7a2e6b4ac01729dd4abbb76a"
+  integrity sha512-E75UbUSJyqJ+3Zzn68La0/tXvxtJDDmaivh5q+FC7+z4PoLHbzshMIbT8WtfvUafF4JAzbyT7RsOQbqmGxlMrA==
+
 fill-range@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"
