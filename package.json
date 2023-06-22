@@ -15,6 +15,7 @@
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "clsx": "^1.2.1",
+    "figma-squircle": "^0.3.0",
     "framer-motion": "^10.12.16",
     "highlight.js": "^11.8.0",
     "jotai": "^2.1.0",
