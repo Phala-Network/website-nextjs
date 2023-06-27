@@ -8,6 +8,7 @@ export interface SquircleProps {
   cornerRadius?: number
   fill?: string
   shadow?: string | string[]
+  updateDelay?: number
   as?: string | ComponentType
   children?: ReactNode
 }
@@ -17,6 +18,7 @@ export default function Squircle({
   cornerSmoothing = 0.6,
   fill = '#fff',
   shadow,
+  updateDelay,
   as,
   children,
   ...props
@@ -28,7 +30,9 @@ export default function Squircle({
     if (ref.current && ref.current.parentNode) {
       const resize = async () => {
         if (ref.current) {
-          await new Promise(resolve => setTimeout(resolve, 250))
+          if (updateDelay) {
+            await new Promise(resolve => setTimeout(resolve, updateDelay))
+          }
           const boundingClientRect = ref.current.getBoundingClientRect()
           const { width, height } = boundingClientRect
           if (width === 0 || height === 0) {
@@ -65,7 +69,7 @@ export default function Squircle({
         }
       }
     }
-  }, [ref, cornerRadius, cornerSmoothing, setDots])
+  }, [ref, cornerRadius, cornerSmoothing, setDots, updateDelay])
 
   let svgStyle: Record<string, string> = {}
   if (dots && shadow) {
