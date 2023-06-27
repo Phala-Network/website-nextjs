@@ -84,6 +84,7 @@ export default function Squircle({
     props,
     [
       <div
+        key='squircle'
         ref={ref}
         className={cn("absolute -z-10 left-0 right-0 top-0 bottom-0 w-full h-full untanglable")}
         style={{
