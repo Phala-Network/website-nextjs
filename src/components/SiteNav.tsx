@@ -90,7 +90,7 @@ function Logo() {
   return (
     <Link
       href="/"
-      className={cn("flex gap-5 items-center h-[4rem] p-1",  "col-span-1 col-start-1 xl:col-span-3 xl:col-start-2 3xl:col-start-3 row-start-1")}
+      className={cn("flex gap-5 items-center h-[4rem] p-1",  "col-span-1 col-start-1 lg:col-span-4 lg:col-start-2 xl:col-span-3 xl:col-start-2 3xl:col-start-3 row-start-1")}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -267,7 +267,7 @@ const expandedMenuAtom = atom(0)
 function Hamburger() {
   const [isExpanded, setIsExpanded] = useAtom(drawerMenuVisibleAtom)
   return (
-    <div className={cn("col-span-1 col-start-2 row-start-1 xl:hidden", "flex items-center justify-end", "mr-5")}>
+    <div className={cn("col-span-1 col-start-2 row-start-1 lg:hidden", "flex items-center justify-end", "mr-5")}>
       <button
         className={cn("site-hamjurger-menu", isExpanded && "opened")}
         onClick={() => setIsExpanded(i => !i)}
@@ -476,12 +476,12 @@ function SiteNav() {
         <div
           className={cn(
             "safe-viewport",
-            "grid gap-4 grid-cols-2 xl:grid-cols-20 3xl:grid-cols-24 grid-rows-1",
+            "grid gap-4 grid-cols-2 lg:grid-cols-20 3xl:grid-cols-24 grid-rows-1",
             "py-6",
           )}
         >
           <Squircle
-            className={cn("w-full relative h-[4rem] untanglable", "col-start-1 col-span-full xl:col-span-18 xl:col-start-2 3xl:col-start-3 row-start-1")}
+            className={cn("w-full relative h-[4rem] untanglable", "col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-3 3xl:col-span-20 row-start-1")}
             shadow={[
               '0px 10px 15px rgba(0, 0, 0, 0.1)',
               '0px 4px 6px rgba(0, 0, 0, 0.05)'
@@ -492,7 +492,7 @@ function SiteNav() {
 
           <Hamburger />
 
-          <ul className="hidden xl:flex xl:items-center xl:gap-4 xl:h-[4rem] xl:col-start-6 xl:col-span-14 3xl:col-start-7 row-start-1">
+          <ul className="hidden lg:flex lg:items-center lg:gap-4 lg:h-[4rem] lg:col-start-6 lg:col-span-14 3xl:col-start-7 row-start-1">
             <SiteNavItem dropdownTarget="developers">Developers</SiteNavItem>
             <SiteNavItem dropdownTarget="compute-providers">Compute Providers</SiteNavItem>
             <SiteNavItem dropdownTarget="pha-token">PHA Token</SiteNavItem>
