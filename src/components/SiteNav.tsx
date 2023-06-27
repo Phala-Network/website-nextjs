@@ -1,10 +1,13 @@
 'use client';
 
-import { type HTMLProps, type ReactNode, useState } from 'react'
+import { type ReactNode, useState, useMemo } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
-import { atom, useAtom, useAtomValue } from 'jotai'
+import { atom, useAtom, useAtomValue, useSetAtom } from 'jotai'
+import { atomWithReducer, selectAtom } from 'jotai/utils'
+import { useHover } from 'react-aria'
+import * as R from 'ramda'
 import { BsDiscord, BsTwitter } from 'react-icons/bs'
 import { BiDetail } from 'react-icons/bi'
 import { MdCodeOff, MdCode, MdAssignment, MdAssignmentInd } from 'react-icons/md'
@@ -13,7 +16,7 @@ import { IoServer, IoNewspaperSharp, IoChatbubbleEllipses } from 'react-icons/io
 import './SiteNav.css'
 
 import Squircle from './Squircle'
-import { AnimatedDetails } from './Details';
+import { AnimatedDetails } from './Details'
 
 
 function IconCompute({ className }: { className?: string }) {
@@ -82,7 +85,6 @@ const LogoVariants = {
   }
 }
 
-
 function Logo() {
   const [isHover, setIsHover] = useState(false)
   return (
@@ -111,27 +113,128 @@ function Logo() {
   )
 }
 
-function SiteNavItem({ children }: { children: ReactNode }) {
-  const [isHover, setIsHover] = useState(false)
+//
+// Dropdown Menu: for desktop / screen
+//
+
+const openedDropdownMenuAtom = atomWithReducer({}, (
+  rec: Record<string, { isOpened: boolean, x: number, y: number }>,
+  action: { slug: string, type: 'opened' | 'closed', x: number, y: number }
+) => {
+  const { slug, type, x, y } = action
+  const keys = R.uniq(R.concat(R.keys(rec), [slug]))
+  return R.fromPairs(R.map(
+    k => [
+      k, { isOpened: k === slug ? (type === 'opened' ) : false, x, y }
+    ],
+    keys
+  ))
+})
+
+function useDropdownMenuState(slug: string) {
+  return useAtomValue(useMemo(() => selectAtom(
+    openedDropdownMenuAtom,
+    rec => rec[slug] || { isOpened: false, x: 0, y: 0 }
+  ), [slug]))
+}
+
+function SiteNavItem({
+  dropdownTarget,
+  children
+}: {
+  dropdownTarget: string
+  children: ReactNode
+}) {
+  const setOpenedDropdown = useSetAtom(openedDropdownMenuAtom)
+  const { hoverProps, isHovered } = useHover({
+    onHoverStart: (ev) => {
+      const rect = ev.target.getBoundingClientRect()
+      setOpenedDropdown({
+        slug: dropdownTarget,
+        type: 'opened',
+        x: rect.x,
+        y: rect.y + rect.height
+      })
+    },
+    onHoverEnd: (ev) => {
+      // console.log('on hover end', dropdownTarget, ev)
+      // setOpenedDropdown({ slug: dropdownTarget, 'type': 'closed' })
+    }
+  })
   return (
     <li className="relative h-[3rem] flex items-center cursor-pointer">
       <span
         className={cn('px-8 py-4 transition-all text-blackAlpha-700')}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
+        {...hoverProps}
       >
         {children}
       </span>
       <motion.div
         className="untanglable"
         initial={{ opacity: 0 }}
-        animate={{ opacity: isHover ? 1 : 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
       >
-      <Squircle cornerRadius={28} height={48} fill="rgba(0, 0, 0, 0.06)" />
+      <Squircle cornerRadius={28} fill="rgba(0, 0, 0, 0.06)" />
       </motion.div>
     </li>
   )
 }
+
+function DropdownMenu({
+  slug,
+  featured,
+  children,
+}: {
+  slug: string
+  featured?: ReactNode
+  children: ReactNode
+}) {
+  const state = useDropdownMenuState(slug)
+  const minWidth = featured ? 630 : 340
+  return (
+    <motion.div
+      className={cn(
+        "comp-dropdown-menu",
+        "fixed left-40 w-[22rem] min-h-[200px] z-40 overflow-hidden",
+        "flex flex-row",
+        !state.isOpened && 'untanglable',
+      )}
+      style={{ left: state.x || 0, top: state.y + 18, minWidth }}
+      initial={{ height: 0, scale: 0, opacity: 0 }}
+      animate={{
+        height: state.isOpened ? 'auto' : 0,
+        scale: state.isOpened ? 1 : 0,
+        opacity: state.isOpened ? 1 : 0,
+      }}
+      transition={{ duration: 0.20 }}
+    >
+      {featured ? (
+        <>
+          <Squircle
+            className={cn("w-2/5")}
+            fill="#CDFA50"
+          >
+            {featured}
+          </Squircle>
+        </>
+      ) : null}
+      <Squircle
+        as="ul"
+        className={cn(
+          "flex flex-col gap-1.5 p-5 relative",
+          featured ? "w-3/5" : "w-full"
+        )}
+        fill="#fff"
+      >
+        {children}
+      </Squircle>
+    </motion.div>
+  )
+}
+
+//
+// Drawer Menu: for Mobile / small screen.
+//
 
 const drawerMenuVisibleAtom = atom(false)
 
@@ -212,7 +315,7 @@ function DrawerMenu() {
                 title="Docs"
                 icon={<BiDetail className={cn("h-5 w-5 text-black")} />}
               >
-                <p>Create powerful decentralized  applications with Phat Contracts</p>
+                <p>Create powerful decentralized applications with Phat Contracts</p>
               </DrawerMenuItem>
               <DrawerMenuItem
                 href="https://bricks.phala.network"
@@ -292,7 +395,7 @@ function DrawerMenu() {
                 <p>Follow and dive into the Phala Community</p>
                 <div className="flex flex-row gap-2">
                   <Link
-                    href="#"
+                    href="https://discord.com/invite/phala"
                     className={cn(
                       "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
                     )}
@@ -300,7 +403,7 @@ function DrawerMenu() {
                     <BsDiscord className={cn("w-8 h-6 text-[#5562EA]")} />
                   </Link>
                   <Link
-                    href="#"
+                    href="https://twitter.com/PhalaNetwork"
                     className={cn(
                       "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
                     )}>
@@ -353,27 +456,159 @@ function SiteNav() {
             "py-6",
           )}
         >
-          <div className={cn("w-full relative h-[4rem] untanglable", "col-start-1 col-span-full xl:col-span-18 xl:col-start-2 3xl:col-start-3 row-start-1")}>
-            <Squircle
-              height={64}
-              style={{
-                filter: 'drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.05))'
-              }}
-            />
-          </div>
+          <Squircle
+            className={cn("w-full relative h-[4rem] untanglable", "col-start-1 col-span-full xl:col-span-18 xl:col-start-2 3xl:col-start-3 row-start-1")}
+            shadow={[
+              '0px 10px 15px rgba(0, 0, 0, 0.1)',
+              '0px 4px 6px rgba(0, 0, 0, 0.05)'
+            ]}
+          />
 
           <Logo />
 
           <Hamburger />
 
           <ul className="hidden xl:flex xl:items-center xl:gap-4 xl:h-[4rem] xl:col-start-6 xl:col-span-14 3xl:col-start-7 row-start-1">
-            <SiteNavItem>Developers</SiteNavItem>
-            <SiteNavItem>Compute Providers</SiteNavItem>
-            <SiteNavItem>PHA Token</SiteNavItem>
+            <SiteNavItem dropdownTarget="developers">Developers</SiteNavItem>
+            <SiteNavItem dropdownTarget="compute-providers">Compute Providers</SiteNavItem>
+            <SiteNavItem dropdownTarget="pha-token">PHA Token</SiteNavItem>
           </ul>
         </div>
       </nav>
+
       <DrawerMenu />
+
+      <DropdownMenu
+        slug="developers"
+        featured={(
+          <div className={cn("flex flex-col justify-between w-full h-full py-7 px-5")}>
+            <div className={cn("flex flex-col gap-2.5")}>
+              <span className={cn("h-6 w-6 py-1")}>
+                <BiDetail className={cn("h-5 w-5 text-black")} />
+              </span>
+              <h4 className="text-sm text-[#323233] font-medium">Docs</h4>
+              <div className={cn("text-xs text-[#5A5A5C]")}>
+                <p>Create powerful decentralized applications with Phat Contracts</p>
+              </div>
+            </div>
+            <Link href="#">Try Now!</Link>
+          </div>
+        )}
+      >
+        <DrawerMenuItem
+          href="https://bricks.phala.network"
+          title="No-Code"
+          icon={<MdCodeOff className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>A no code toolkit to plug together Phat Contracts</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="https://phat.phala.network/"
+          title="Native Code"
+          icon={<MdCode className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Create your own Phat Brick and earn!</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="https://docs.phala.network/developers/phat-contract/builders-program"
+          title="Builders Program"
+          icon={<IoServer className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Receive grants and technical guidance to bring your idea to life with Phat Contract</p>
+        </DrawerMenuItem>
+      </DropdownMenu>
+
+      <DropdownMenu slug="compute-providers">
+        <DrawerMenuItem
+          href="https://docs.phala.network/compute-providers/basic-info"
+          title="Compute to Earn"
+          icon={<IconCompute className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Provide hardware to the network and earn rewards!</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="https://app.phala.network/khala"
+          title="Stake"
+          icon={<IconStake className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Help secure the network and earn yield by staking your PHA</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="#"
+          title="Govern"
+          icon={<MdAssignment className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Take an active part in deciding the future direction of off-chain compute</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="https://subbridge.io/"
+          title="Bridge"
+          icon={<IconBridge className={cn("h-4 w-4 ml-0.5 text-black")} />}
+        >
+          <p>Bring tokens to and from the Phala Blockchain with SubBridge</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="https://docs.phala.network/introduction/readme"
+          title="Learn"
+          icon={<IconLearn className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Explore the architecture and power of Phala Network</p>
+        </DrawerMenuItem>
+      </DropdownMenu>
+
+      <DropdownMenu slug="pha-token">
+        <DrawerMenuItem
+          href="https://medium.com/phala-network"
+          title="News"
+          icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Stay up-to-date with all things Phala</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          title="Connect"
+          icon={<IoChatbubbleEllipses className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Follow and dive into the Phala Community</p>
+          <div className="flex flex-row gap-2">
+            <Link
+              href="https://discord.com/invite/phala"
+              className={cn(
+                "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
+              )}
+            >
+              <BsDiscord className={cn("w-8 h-6 text-[#5562EA]")} />
+            </Link>
+            <Link
+              href="https://twitter.com/PhalaNetwork"
+              className={cn(
+                "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
+              )}>
+              <BsTwitter className={cn("w-7 h-6 text-[#3397DB]")} />
+            </Link>
+          </div>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="https://github.com/Phala-Network/growth-program"
+          title="Ambassador Program"
+          icon={<MdAssignmentInd className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Become a community leader and earn rewards</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="https://phala.world"
+          title="PhalaWorld"
+          icon={<IconPhalaWorld className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Gamified, on-chain representation of your contributions to Phala</p>
+        </DrawerMenuItem>
+        <DrawerMenuItem
+          href="https://wellfound.com/company/phala-network"
+          title="Jobs"
+          icon={<IconJobs className={cn("h-5 w-5 text-black")} />}
+        >
+          <p>Help build the decentralized web</p>
+        </DrawerMenuItem>
+      </DropdownMenu>
     </>
   )
 }
