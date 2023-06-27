@@ -3,7 +3,7 @@
 import { type ReactNode, useState, useMemo } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { motion } from 'framer-motion'
+import { type MotionProps, motion } from 'framer-motion'
 import { atom, useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { atomWithReducer, selectAtom } from 'jotai/utils'
 import { useHover } from 'react-aria'
@@ -118,17 +118,28 @@ function Logo() {
 //
 
 const openedDropdownMenuAtom = atomWithReducer({}, (
-  rec: Record<string, { isOpened: boolean, x: number, y: number }>,
-  action: { slug: string, type: 'opened' | 'closed', x: number, y: number }
+  rec: Record<string, { isOpened: boolean, x: number, y: number, trigger?: string }>,
+  action: { slug: string, type: 'opened' | 'closed' | 'focus' | 'blur', x?: number, y?: number }
 ) => {
-  const { slug, type, x, y } = action
+  const { slug, type } = action
   const keys = R.uniq(R.concat(R.keys(rec), [slug]))
-  return R.fromPairs(R.map(
-    k => [
-      k, { isOpened: k === slug ? (type === 'opened' ) : false, x, y }
-    ],
-    keys
-  ))
+  return R.fromPairs(R.map(k => {
+    const prev = (rec[k] || { x: 0, y: 0 })
+    const x = action.x === undefined ? prev.x : action.x
+    const y = action.y === undefined ? prev.y : action.y
+    const updated = R.mergeLeft({ x, y }, prev)
+    if (type === 'opened' || type === 'focus') {
+      updated.isOpened = (k === slug)
+      updated.trigger = type
+    } else if (type === 'closed' && updated.trigger !== 'focus' && k === slug) {
+      updated.isOpened = false
+      updated.trigger = type
+    } else if (type === 'blur') {
+      updated.isOpened = false
+      updated.trigger = type
+    }
+    return [k, updated]
+  }, keys))
 })
 
 function useDropdownMenuState(slug: string) {
@@ -147,8 +158,8 @@ function SiteNavItem({
 }) {
   const setOpenedDropdown = useSetAtom(openedDropdownMenuAtom)
   const { hoverProps, isHovered } = useHover({
-    onHoverStart: (ev) => {
-      const rect = ev.target.getBoundingClientRect()
+    onHoverStart: ({ target }) => {
+      const rect = target.getBoundingClientRect()
       setOpenedDropdown({
         slug: dropdownTarget,
         type: 'opened',
@@ -156,9 +167,10 @@ function SiteNavItem({
         y: rect.y + rect.height
       })
     },
-    onHoverEnd: (ev) => {
-      // console.log('on hover end', dropdownTarget, ev)
-      // setOpenedDropdown({ slug: dropdownTarget, 'type': 'closed' })
+    onHoverEnd: () => {
+      setTimeout(() => {
+        setOpenedDropdown({ slug: dropdownTarget, 'type': 'closed' })
+      }, 250)
     }
   })
   return (
@@ -189,10 +201,20 @@ function DropdownMenu({
   featured?: ReactNode
   children: ReactNode
 }) {
+  const setOpenedDropdown = useSetAtom(openedDropdownMenuAtom)
   const state = useDropdownMenuState(slug)
   const minWidth = featured ? 630 : 340
+  const { hoverProps } = useHover({
+    onHoverStart: () => {
+      setOpenedDropdown({ slug, type: 'focus' })
+    },
+    onHoverEnd: () => {
+      setOpenedDropdown({ slug, type: 'blur' })
+    }
+  })
   return (
     <motion.div
+      {...(hoverProps as MotionProps)}
       className={cn(
         "comp-dropdown-menu",
         "fixed left-40 w-[22rem] min-h-[200px] z-40 overflow-hidden",
