@@ -10,7 +10,7 @@ import { useHover } from 'react-aria'
 import * as R from 'ramda'
 import { BsDiscord, BsTwitter } from 'react-icons/bs'
 import { BiDetail } from 'react-icons/bi'
-import { MdCodeOff, MdCode, MdAssignment, MdAssignmentInd } from 'react-icons/md'
+import { MdCodeOff, MdCode, MdAssignment, MdAssignmentInd, MdArrowForward } from 'react-icons/md'
 import { IoServer, IoNewspaperSharp, IoChatbubbleEllipses } from 'react-icons/io5'
 
 import './SiteNav.css'
@@ -477,16 +477,36 @@ function MenuItem({ href, title, icon, children }: {
   icon?: ReactNode
   children: ReactNode
 }) {
+  const { hoverProps, isHovered } = useHover({})
   return (
-    <li className={cn("py-1.5 px-2.5")}>
+    <li className={cn("py-1.5 px-2.5")} {...hoverProps}>
       {href ? (
-        <Link href={href} className={cn("flex flex-row gap-2.5 w-full")}>
+        <Link href={href} className={cn(
+          "flex flex-row gap-2.5 w-full",
+        )}>
           <span className={cn("h-6 w-6 py-1")}>
             {icon}
           </span>
           <div className={cn("flex-grow w-full")}>
-            <h4 className="text-sm text-[#323233] font-medium">{title}</h4>
-            <div className={cn("text-xs text-[#5A5A5C]")}>
+            <h4 className={cn(
+                "text-sm lg:text-base font-medium inline-flex flex-row items-center",
+                isHovered ? 'text-phalaPurple-500' : 'text-black-800'
+              )}
+            >
+              {title}
+              <motion.span
+                initial={{ x: 8 }}
+                animate={{ x: isHovered ? 16 : 8 }}
+              >
+                <MdArrowForward />
+              </motion.span>
+            </h4>
+            <div
+              className={cn(
+                "text-xs lg:text-sm",
+                isHovered ? 'text-phalaPurple-400' : 'text-black-700'
+              )}
+            >
               {children}
             </div>
           </div>
@@ -555,12 +575,21 @@ function SiteNav() {
               <span className={cn("h-6 w-6 py-1")}>
                 <BiDetail className={cn("h-5 w-5 text-black")} />
               </span>
-              <h4 className="text-sm text-[#323233] font-medium">Docs</h4>
-              <div className={cn("text-xs text-[#5A5A5C]")}>
+              <h4 className="text-base text-[#323233] font-medium">Docs</h4>
+              <div className={cn("text-sm text-[#5A5A5C]")}>
                 <p>Create powerful decentralized applications with Phat Contracts</p>
               </div>
             </div>
-            <Link href="#">Try Now!</Link>
+            <Link
+              href="https://docs.phala.network/"
+              className={cn(
+                "text-sm font-semibold text-black hover:text-phalaPurple-500",
+                "inline-flex flex-row items-center"
+              )}
+            >
+              Try Now!
+              <MdArrowForward className={cn("ml-1.5")} />
+            </Link>
           </div>
         )}
       >
@@ -637,12 +666,13 @@ function SiteNav() {
           title="Connect"
           icon={<IoChatbubbleEllipses className={cn("h-5 w-5 text-black")} />}
         >
-          <p>Follow and dive into the Phala Community</p>
-          <div className="flex flex-row gap-2">
+          <p className="text-sm">Follow and dive into the Phala Community</p>
+          <div className="flex flex-row gap-2 mt-2">
             <Link
               href="https://discord.com/invite/phala"
               className={cn(
                 "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
+                "transition-all hover:bg-black-50 hover:shadow-md",
               )}
             >
               <BsDiscord className={cn("w-8 h-6 text-[#5562EA]")} />
@@ -651,6 +681,7 @@ function SiteNav() {
               href="https://twitter.com/PhalaNetwork"
               className={cn(
                 "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
+                "transition-all hover:bg-black-50 hover:shadow-md",
               )}>
               <BsTwitter className={cn("w-7 h-6 text-[#3397DB]")} />
             </Link>
