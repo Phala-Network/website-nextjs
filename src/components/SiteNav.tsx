@@ -213,6 +213,7 @@ function DropdownMenu({
           <Squircle
             className={cn("w-2/5")}
             fill="#CDFA50"
+            updateDelay={210}
           >
             {featured}
           </Squircle>
@@ -225,6 +226,7 @@ function DropdownMenu({
           featured ? "w-3/5" : "w-full"
         )}
         fill="#fff"
+        updateDelay={210}
       >
         {children}
       </Squircle>
