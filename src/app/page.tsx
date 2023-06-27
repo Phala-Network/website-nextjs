@@ -4,6 +4,7 @@ import { type Metadata } from 'next'
 import { VscCommentDiscussion, VscNote } from 'react-icons/vsc'
 
 import { cn } from '@/lib/utils'
+import { ComputationMeta, getComputationMeta } from '@/lib/computationMeta'
 import DotBackground from '@/components/DotBackground'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
@@ -31,7 +32,9 @@ function Stats({ children, name }: { children: ReactNode, name: string }) {
   )
 }
 
-function SectionHero() {
+function SectionHero({data}: {data: ComputationMeta}) {
+  const {onlineWorkers, vCpu, crossChainTx, tx} = data
+
   return (
     <section id="section-hero" className={cn("relative max-h-screen w-full", "section-hero")}>
       <div className={cn("background", "absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden")}>
@@ -77,10 +80,16 @@ function SectionHero() {
                 className="svg-black mr-2.5 motion-safe:animate-spin untanglable w-9 h-9"
               />
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <Stats name="Online Workers">26,551</Stats>
-                <Stats name="Compute">191,715 vCPU</Stats>
-                <Stats name="Cross-Chain TX">7,538</Stats>
-                <Stats name="TX">69,622,067</Stats>
+                <Stats name="Online Workers">
+                  {onlineWorkers.toLocaleString('en-US')}
+                </Stats>
+                <Stats name="Compute">
+                  {vCpu.toLocaleString('en-US')} vCPU
+                </Stats>
+                <Stats name="Cross-Chain TX">
+                  {crossChainTx.toLocaleString('en-US')}
+                </Stats>
+                <Stats name="TX">{tx.toLocaleString('en-US')}</Stats>
               </div>
             </div>
 
@@ -1101,10 +1110,11 @@ export const metadata: Metadata = {
   title: 'Phala Network',
 }
 
-export default function Home() {
+export default async function Home() {
+  const computationMeta = await getComputationMeta()
   return (
     <>
-      <SectionHero />
+      <SectionHero data={computationMeta} />
       <SectionFeatures />
       <SectionPitchIntro />
       <SectionPitchAccelerate />
