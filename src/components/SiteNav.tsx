@@ -119,10 +119,10 @@ function Logo() {
 
 const openedDropdownMenuAtom = atomWithReducer({}, (
   rec: Record<string, { isOpened: boolean, x: number, y: number, trigger?: string }>,
-  action: { slug: string, type: 'opened' | 'closed' | 'focus' | 'blur', x?: number, y?: number }
+  action: { slug: string, type: 'opened' | 'closed' | 'focus' | 'blur' | 'toggle', x?: number, y?: number }
 ) => {
   const { slug, type } = action
-  const keys = R.uniq(R.concat(R.keys(rec), [slug]))
+  const keys = slug === '' ? R.keys(rec) : R.uniq(R.concat(R.keys(rec), [slug]))
   return R.fromPairs(R.map(k => {
     const prev = (rec[k] || { x: 0, y: 0 })
     const x = action.x === undefined ? prev.x : action.x
@@ -130,6 +130,13 @@ const openedDropdownMenuAtom = atomWithReducer({}, (
     const updated = R.mergeLeft({ x, y }, prev)
     if (type === 'opened' || type === 'focus') {
       updated.isOpened = (k === slug)
+      updated.trigger = type
+    } else if (type === 'toggle') {
+      if (k === slug && updated.isOpened) {
+        updated.isOpened = false
+      } else {
+        updated.isOpened = (k === slug)
+      }
       updated.trigger = type
     } else if (type === 'closed' && updated.trigger !== 'focus' && k === slug) {
       updated.isOpened = false
@@ -148,6 +155,11 @@ function useDropdownMenuState(slug: string) {
     rec => rec[slug] || { isOpened: false, x: 0, y: 0 }
   ), [slug]))
 }
+
+const isAllDropdownMenuClosedAtom = atom(get => {
+  const curr = R.all(R.equals(false), R.map(([k, v]) => v.isOpened, R.toPairs(get(openedDropdownMenuAtom))))
+  return curr
+})
 
 function SiteNavItem({
   dropdownTarget,
@@ -169,25 +181,35 @@ function SiteNavItem({
     },
     onHoverEnd: () => {
       setTimeout(() => {
-        setOpenedDropdown({ slug: dropdownTarget, 'type': 'closed' })
+        setOpenedDropdown({ slug: dropdownTarget, type: 'closed' })
       }, 250)
     }
   })
   return (
     <li className="relative h-[3rem] flex items-center cursor-pointer">
-      <span
-        className={cn('px-8 py-4 transition-all text-blackAlpha-700')}
+      <button
         {...hoverProps}
+        onClick={({ target }) => {
+          const rect = (target as HTMLElement).getBoundingClientRect()
+          setOpenedDropdown({
+            slug: dropdownTarget,
+            type: 'toggle',
+            x: rect.x,
+            y: rect.y + rect.height
+          })
+        }}
       >
-        {children}
-      </span>
-      <motion.div
-        className="untanglable"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-      >
-      <Squircle cornerRadius={28} fill="rgba(0, 0, 0, 0.06)" />
-      </motion.div>
+        <span className={cn('px-8 py-4 transition-all text-blackAlpha-700 untanglable')}>
+          {children}
+        </span>
+        <motion.div
+          className="untanglable"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+        >
+        <Squircle cornerRadius={28} fill="rgba(0, 0, 0, 0.06)" />
+        </motion.div>
+      </button>
     </li>
   )
 }
@@ -221,7 +243,7 @@ function DropdownMenu({
         "flex flex-row",
         !state.isOpened && 'untanglable',
       )}
-      style={{ left: state.x || 0, top: state.y + 18, minWidth }}
+      style={{ left: state.x || 0, top: state.y + 38, minWidth }}
       initial={{ height: 0, scale: 0, opacity: 0 }}
       animate={{
         height: state.isOpened ? 'auto' : 0,
@@ -253,6 +275,24 @@ function DropdownMenu({
         {children}
       </Squircle>
     </motion.div>
+  )
+}
+
+function DropdownOverlay() {
+  const setOpenedDropdown = useSetAtom(openedDropdownMenuAtom)
+  const isAllDropdownMenuClosed = useAtomValue(isAllDropdownMenuClosedAtom)
+  return (
+    <div
+      className={cn(
+        "fixed top-0 left-0 right-0 bottom-0 z-20",
+        isAllDropdownMenuClosed && 'untanglable',
+      )}
+      onClick={() => {
+        if (!isAllDropdownMenuClosed) {
+          setOpenedDropdown({ slug: '', type: 'blur' })
+        }
+      }}
+    />
   )
 }
 
@@ -501,6 +541,7 @@ function SiteNav() {
       </nav>
 
       <DrawerMenu />
+      <DropdownOverlay />
 
       <DropdownMenu
         slug="developers"
