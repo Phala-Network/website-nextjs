@@ -1,11 +1,7 @@
 @tailwind utilities;
 
-.section-hero .btn-view-all .icon {
-  @apply transition-all scale-100;
-}
-
-.section-hero .btn-view-all:hover .icon {
-  scale: 1.15;
+.section-hero .btn-view-all {
+  text-shadow: #fff 1px 0 10px;
 }
 
 .code-viewer {

@@ -90,7 +90,7 @@ function Logo() {
   return (
     <Link
       href="/"
-      className={cn("flex gap-5 items-center h-[4rem] p-1",  "col-span-1 col-start-1 lg:col-span-4 lg:col-start-2 xl:col-span-3 xl:col-start-2 3xl:col-start-3 row-start-1")}
+      className={cn("flex gap-5 items-center h-[4rem] p-1",  "col-span-1 col-start-1 lg:col-span-4 lg:col-start-2 xl:col-span-3 xl:col-start-2 3xl:col-start-4 row-start-1")}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -523,7 +523,7 @@ function MenuItem({ href, title, icon, children }: {
 function SiteNav() {
   return (
     <>
-      <nav className="site-nav w-full absolute z-30">
+      <nav className="site-nav w-full fixed z-30">
         <div
           className={cn(
             "safe-viewport",
@@ -532,7 +532,7 @@ function SiteNav() {
           )}
         >
           <Squircle
-            className={cn("w-full relative h-[4rem] untanglable", "col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-3 3xl:col-span-20 row-start-1")}
+            className={cn("w-full relative h-[4rem] untanglable", "col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18 row-start-1")}
             shadow={[
               '0px 10px 15px rgba(0, 0, 0, 0.1)',
               '0px 4px 6px rgba(0, 0, 0, 0.05)'

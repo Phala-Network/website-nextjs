@@ -10,9 +10,9 @@ const words = [
   ['Performance', '#ED67D7'],
   ['HTTP', '#F24E7F'],
   ['Automation', '#FFA14A'],
-  ['Compute', '#CDFA50'],
+  ['Compute', '#86F000'],
   ['Potential', '#448BF6'],
-  ['Interoperability', '#44F6CB'],
+  ['Interoperability', '#00E9B1'],
 ]
 
 export function Advantages() {
