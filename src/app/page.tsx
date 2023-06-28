@@ -1,11 +1,13 @@
 import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
 
+import Link from 'next/link'
 import { VscCommentDiscussion, VscNote } from 'react-icons/vsc'
+import { MdArrowForward } from 'react-icons/md'
 
 import { cn } from '@/lib/utils'
-import { ComputationMeta, getComputationMeta } from '@/lib/computationMeta'
 import DotBackground from '@/components/DotBackground'
+import Squircle from '@/components/Squircle'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
@@ -16,6 +18,7 @@ import SubscribeForm from './_components/SubscribeForm'
 import { Advantages } from './_components/Advantages'
 import { HowItWorksCarousel } from './_components/HowItWorksCarousel'
 import { StatsCard } from './_components/StatsCard'
+import { RealtimeStats } from './_components/RealtimeStats'
 import './home.css'
 
 
@@ -23,18 +26,58 @@ import './home.css'
 // Section Hero
 //
 
-function Stats({ children, name }: { children: ReactNode, name: string }) {
+function SupportedChains() {
   return (
-    <div>
-      <h4 className={cn("text-lg font-semibold")}>{children}</h4>
-      <div className={cn("text-sm text-blackAlpha-700")}>{name}</div>
+    <div className={cn("supported-chains", "flex flex-col-reverse lg:flex-col gap-2 items-end w-full")}>
+      <Link
+        href="https://docs.phala.network/developers/phat-contract/supported-chains"
+        className={cn("flex flex-row gap-2 items-center", "btn-view-all btn-with-arrow")}
+        target="_blank"
+        rel="noopener"
+      >
+        <span className={cn("text-xs lg:text-base font-semibold")}>View All Supported Networks</span>
+        <MdArrowForward className="untanglable text-phalaPurple-500 h-5 w-5 arrow" />
+      </Link>
+      <Squircle
+        className="flex flex-row justify-between gap-5 px-5 py-1 lg:py-0.5 w-full lg:w-auto"
+        cornerRadius={32}
+        fill="rgba(255, 255, 255, 0.64)"
+        shadow={[
+          '0px 10px 15px rgba(0, 0, 0, 0.1)',
+          '0px 4px 6px rgba(0, 0, 0, 0.05)'
+        ]}
+      >
+        <img
+          src="/home/Ethereum.png"
+          alt="Ethereum"
+          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
+        />
+        <img
+          src="/home/Bnbchain.png"
+          alt="Bnbchain"
+          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
+        />
+        <img
+          src="/home/Moonbean.png"
+          alt="Moonbean"
+          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
+        />
+        <img
+          src="/home/Arbittrum.png"
+          alt="Arbittrum"
+          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
+        />
+        <img
+          src="/home/Astar.png"
+          alt="Astar"
+          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
+        />
+      </Squircle>
     </div>
   )
 }
 
-function SectionHero({data}: {data: ComputationMeta}) {
-  const {onlineWorkers, vCpu, crossChainTx, tx} = data
-
+function SectionHero() {
   return (
     <section id="section-hero" className={cn("relative max-h-screen w-full", "section-hero")}>
       <div className={cn("background", "absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden")}>
@@ -47,15 +90,15 @@ function SectionHero({data}: {data: ComputationMeta}) {
         </video>
       </div>
       <div className={cn("flex flex-col h-screen justify-between items-center")}>
-        {/* Temporary placeholder */}
-        <div className={cn("w-full")} />
-
         <div className={cn("uppercase text-center flex flex-col gap-16 justify-center w-full")}>
           <header className={cn("px-10")}>
             <h2 className={cn("text-4xl font-normal text-[#222] leading-10 mb-2.5")}>Computation as it's meant to be</h2>
-            <h3 className={cn("text-2xl font-extrabold flex flex-row justify-center w-full")}>
-              On-Chain verification.
-              Off-Chain <Advantages />
+            <h3 className={cn(
+              "text-lg lg:text-2xl font-extrabold w-full",
+              "flex flex-col lg:flex-row justify-center"
+            )}>
+              <span>On-Chain verification.</span>
+              <span className="inline-flex">Off-Chain <Advantages /></span>
             </h3>
           </header>
           <div className={cn("flex flex-col xl:flex-row gap-5 mx-auto")}>
@@ -72,69 +115,14 @@ function SectionHero({data}: {data: ComputationMeta}) {
         </div>
 
         <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24", "mb-6")}>
-          <div className={cn("flex flex-col items-center gap-5 lg:flex-row lg:justify-between", "xl:col-start-2 xl:col-span-18 3xl:col-start-1 3xl:col-span-full")}>
-            <div className="flex flex-row gap-5 items-center">
-              <img
-                src="/icons/gear.svg"
-                alt=""
-                className="svg-black mr-2.5 motion-safe:animate-spin untanglable w-9 h-9"
-              />
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <Stats name="Online Workers">
-                  {onlineWorkers.toLocaleString('en-US')}
-                </Stats>
-                <Stats name="Compute">
-                  {vCpu.toLocaleString('en-US')} vCPU
-                </Stats>
-                <Stats name="Cross-Chain TX">
-                  {crossChainTx.toLocaleString('en-US')}
-                </Stats>
-                <Stats name="TX">{tx.toLocaleString('en-US')}</Stats>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 items-end">
-              <div className="flex flex-row gap-5">
-                <img
-                  src="/home/Ethereum.png"
-                  alt="Ethereum"
-                  className="w-16 h-16"
-                />
-                <img
-                  src="/home/Bnbchain.png"
-                  alt="Bnbchain"
-                  className="w-16 h-16"
-                />
-                <img
-                  src="/home/Moonbean.png"
-                  alt="Moonbean"
-                  className="w-16 h-16"
-                />
-                <img
-                  src="/home/Arbittrum.png"
-                  alt="Arbittrum"
-                  className="w-16 h-16"
-                />
-                <img
-                  src="/home/Astar.png"
-                  alt="Astar"
-                  className="w-16 h-16"
-                />
-              </div>
-              <a
-                href="https://docs.phala.network/developers/phat-contract/supported-chains"
-                className={cn("flex flex-row gap-2", "btn-view-all")}
-                target="_blank"
-                rel="noopener"
-              >
-                <span className={cn("btn-link", "text-sm")}>View All Supported Networks</span>
-                <img
-                  src="/icons/right-arrow.svg"
-                  alt=""
-                  className="svg-secondary icon untanglable h-3 w-3"
-                />
-              </a>
-            </div>
+          <div
+            className={cn(
+              "xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+              "flex flex-col items-end gap-2.5 lg:gap-5 lg:flex-row lg:justify-between",
+            )}
+          >
+            <RealtimeStats />
+            <SupportedChains />
           </div>
         </div>
       </div>
@@ -1111,18 +1099,17 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const computationMeta = await getComputationMeta()
   return (
     <>
-      <SectionHero data={computationMeta} />
-      <SectionFeatures />
-      <SectionPitchIntro />
-      <SectionPitchAccelerate />
-      <SectionPitchInnovate />
-      <SectionPitchPioneer />
-      <SectionHowItWorks />
-      <SectionHighlights />
-      <SectionSubscription />
+      <SectionHero />
+      {/* <SectionFeatures /> */}
+      {/* <SectionPitchIntro /> */}
+      {/* <SectionPitchAccelerate /> */}
+      {/* <SectionPitchInnovate /> */}
+      {/* <SectionPitchPioneer /> */}
+      {/* <SectionHowItWorks /> */}
+      {/* <SectionHighlights /> */}
+      {/* <SectionSubscription /> */}
     </>
   )
 }
