@@ -48,6 +48,13 @@ export default function Squircle({
         }
       }
 
+      const parentNode = ref.current.parentNode as HTMLElement
+      const computedStyle = getComputedStyle(parentNode)
+      if (computedStyle.position === 'static') {
+        parentNode.style.position = 'relative'
+        parentNode.style.zIndex = '0'
+      }
+
       resize()
 
       window.addEventListener('resize', resize, false)
@@ -78,6 +85,10 @@ export default function Squircle({
     }
     svgStyle.filter = shadow.map(i => `drop-shadow(${i})`).join(' ')
   }
+
+  // if (!props.style) {
+  //   props.style = { position: 'relative', zIndex: 0 }
+  // }
 
   return createElement(
     as ? as : 'div',
