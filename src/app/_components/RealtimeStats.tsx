@@ -26,7 +26,7 @@ export function RealtimeStats() {
         className="svg-black mr-2.5 motion-safe:animate-spin untanglable w-9 h-9 invisible lg:visible lg:ml-6"
       />
       <Squircle
-        className="grid grid-cols-4 gap-1.5 lg:gap-4 px-4 py-1 lg:px-8 lg:py-2.5"
+        className="grid grid-cols-4 gap-1.5 lg:gap-4 px-4 pt-0.5 pb-1.5 lg:px-8 lg:py-2.5"
         cornerRadius={32}
         fill="rgba(255, 255, 255, 0.64)"
         shadow={[
