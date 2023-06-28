@@ -367,7 +367,7 @@ function DrawerMenu() {
                 icon={<IoChatbubbleEllipses className={cn("h-5 w-5 text-black")} />}
               >
                 <p>Follow and dive into the Phala Community</p>
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-row gap-2 mt-2">
                   <Link
                     href="https://discord.com/invite/phala"
                     className={cn(
@@ -446,6 +446,7 @@ function SiteNavItem({
     <li className="relative h-[3rem] flex items-center cursor-pointer">
       <button
         {...hoverProps}
+        className={cn("w-full h-full")}
         onClick={({ target }) => {
           const rect = (target as HTMLElement).getBoundingClientRect()
           setOpenedDropdown({
@@ -477,36 +478,22 @@ function MenuItem({ href, title, icon, children }: {
   icon?: ReactNode
   children: ReactNode
 }) {
-  const { hoverProps, isHovered } = useHover({})
   return (
-    <li className={cn("py-1.5 px-2.5")} {...hoverProps}>
+    <li className={cn("py-1.5 px-2.5")}>
       {href ? (
         <Link href={href} className={cn(
+          "site-nav-menu-item btn-with-arrow",
           "flex flex-row gap-2.5 w-full",
         )}>
           <span className={cn("h-6 w-6 py-1")}>
             {icon}
           </span>
           <div className={cn("flex-grow w-full")}>
-            <h4 className={cn(
-                "text-sm lg:text-base font-medium inline-flex flex-row items-center",
-                isHovered ? 'text-phalaPurple-500' : 'text-black-800'
-              )}
-            >
+            <h4 className="heading">
               {title}
-              <motion.span
-                initial={{ x: 8 }}
-                animate={{ x: isHovered ? 16 : 8 }}
-              >
-                <MdArrowForward />
-              </motion.span>
+              <MdArrowForward className="arrow" />
             </h4>
-            <div
-              className={cn(
-                "text-xs lg:text-sm",
-                isHovered ? 'text-phalaPurple-400' : 'text-black-700'
-              )}
-            >
+            <div className="body">
               {children}
             </div>
           </div>
@@ -583,12 +570,12 @@ function SiteNav() {
             <Link
               href="https://docs.phala.network/"
               className={cn(
+                "btn-with-arrow",
                 "text-sm font-semibold text-black hover:text-phalaPurple-500",
-                "inline-flex flex-row items-center"
               )}
             >
               Try Now!
-              <MdArrowForward className={cn("ml-1.5")} />
+              <MdArrowForward className="arrow" />
             </Link>
           </div>
         )}

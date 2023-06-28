@@ -1,3 +1,5 @@
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 .site-hamjurger-menu .menu {
@@ -66,4 +68,24 @@
 
 .site-nav-drawer details summary::-webkit-details-marker {
   display:none;
+}
+
+@layer components {
+  .site-nav-menu-item .heading {
+    @apply text-sm lg:text-base font-medium inline-flex flex-row items-center;
+    @apply text-black-800;
+  }
+
+  .site-nav-menu-item .body {
+    @apply text-xs lg:text-sm;
+    @apply text-black-700;
+  }
+
+  .site-nav-menu-item:hover .heading {
+    @apply text-phalaPurple-500;
+  }
+
+  .site-nav-menu-item:hover .body {
+    @apply text-phalaPurple-400;
+  }
 }

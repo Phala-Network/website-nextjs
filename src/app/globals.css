@@ -93,3 +93,16 @@ body {
 .page-footer .btn-link::after {
   background-color: #fff;
 }
+
+
+.btn-with-arrow {
+  @apply inline-flex flex-row items-center;
+}
+
+.btn-with-arrow .arrow {
+  @apply transition-all ml-1.5;
+}
+
+.btn-with-arrow:hover .arrow {
+  @apply translate-x-2;
+}
