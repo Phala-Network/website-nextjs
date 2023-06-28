@@ -187,10 +187,9 @@ function DropdownMenu({
       className={cn(
         "comp-dropdown-menu",
         "fixed left-40 w-[22rem] min-h-[200px] z-40 overflow-hidden",
-        "flex flex-row",
         !state.isOpened && 'untanglable',
       )}
-      style={{ left: state.x || 0, top: state.y + 38, minWidth }}
+      style={{ left: state.x || 0, top: state.y + 20, minWidth }}
       initial={{ height: 0, scale: 0, opacity: 0 }}
       animate={{
         height: state.isOpened ? 'auto' : 0,
@@ -202,25 +201,39 @@ function DropdownMenu({
       {featured ? (
         <>
           <Squircle
-            className={cn("w-2/5")}
+            className={cn("w-full flex flex-row")}
             fill="#CDFA50"
             updateDelay={210}
           >
-            {featured}
+            <div className="w-2/5">
+              {featured}
+            </div>
+            <Squircle
+              as="ul"
+              className={cn(
+                "flex flex-col gap-1.5 p-5 relative",
+                featured ? "w-3/5" : "w-full"
+              )}
+              fill="#fff"
+              updateDelay={210}
+            >
+              {children}
+            </Squircle>
           </Squircle>
         </>
-      ) : null}
-      <Squircle
-        as="ul"
-        className={cn(
-          "flex flex-col gap-1.5 p-5 relative",
-          featured ? "w-3/5" : "w-full"
-        )}
-        fill="#fff"
-        updateDelay={210}
-      >
-        {children}
-      </Squircle>
+      ) : (
+        <Squircle
+          as="ul"
+          className={cn(
+            "flex flex-col gap-1.5 p-5 relative",
+            featured ? "w-3/5" : "w-full"
+          )}
+          fill="#fff"
+          updateDelay={210}
+        >
+          {children}
+        </Squircle>
+      )}
     </motion.div>
   )
 }
@@ -444,9 +457,11 @@ function SiteNavItem({
   })
   return (
     <li className="relative h-[3rem] flex items-center cursor-pointer">
-      <button
+      <Squircle
         {...hoverProps}
         className={cn("w-full h-full")}
+        cornerRadius={28}
+        fill={isHovered ? "rgba(0, 0, 0, 0.06)" : "rgba(0, 0, 0, 0)"}
         onClick={({ target }) => {
           const rect = (target as HTMLElement).getBoundingClientRect()
           setOpenedDropdown({
@@ -457,17 +472,10 @@ function SiteNavItem({
           })
         }}
       >
-        <span className={cn('px-8 py-4 transition-all text-blackAlpha-700 untanglable')}>
+        <span className={cn('px-8 py-4 transition-all text-blackAlpha-700 untanglable h-full flex items-center')}>
           {children}
         </span>
-        <motion.div
-          className="untanglable"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-        >
-        <Squircle cornerRadius={28} fill="rgba(0, 0, 0, 0.06)" />
-        </motion.div>
-      </button>
+      </Squircle>
     </li>
   )
 }
