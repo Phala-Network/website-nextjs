@@ -102,7 +102,7 @@ function SectionHero() {
           </h2>
           <h3 className={cn(
             "text-lg lg:text-2xl font-extrabold w-full",
-            "flex flex-col lg:flex-row justify-center items-center text-center"
+            "flex flex-col lg:flex-row lg:gap-2 justify-center items-center text-center"
           )}>
             <span>On-Chain verification.</span>
             <span className="inline-flex">Off-Chain <Advantages /></span>
