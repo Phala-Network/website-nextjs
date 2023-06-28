@@ -28,7 +28,7 @@ import './home.css'
 
 function SupportedChains() {
   return (
-    <div className={cn("supported-chains", "flex flex-col-reverse lg:flex-col gap-2 items-end w-full")}>
+    <div className={cn("supported-chains", "flex flex-col-reverse lg:flex-col gap-1 lg:gap-2 items-end w-full")}>
       <Link
         href="https://docs.phala.network/developers/phat-contract/supported-chains"
         className={cn("flex flex-row gap-2 items-center", "btn-view-all btn-with-arrow")}
@@ -79,51 +79,68 @@ function SupportedChains() {
 
 function SectionHero() {
   return (
-    <section id="section-hero" className={cn("relative max-h-screen w-full", "section-hero")}>
+    <section id="section-hero" className={cn("section-hero section-slide")}>
       <div className={cn("background", "absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden")}>
         <video
           className="object-cover aspect-[3840/1980] h-full min-w-full"
-          autoPlay muted loop
+          autoPlay muted loop playsInline
         >
           <source src="https://nft-assets.phala.world/network/bg20230605.mp4" type="video/mp4" />
           <source src="https://nft-assets.phala.world/network/bg20230605.webm" type="video/webm" />
         </video>
       </div>
-      <div className={cn("flex flex-col h-screen justify-between items-center")}>
-        <div className={cn("uppercase text-center flex flex-col gap-16 justify-center w-full")}>
-          <header className={cn("px-10")}>
-            <h2 className={cn("text-4xl font-normal text-[#222] leading-10 mb-2.5")}>Computation as it's meant to be</h2>
-            <h3 className={cn(
-              "text-lg lg:text-2xl font-extrabold w-full",
-              "flex flex-col lg:flex-row justify-center"
-            )}>
-              <span>On-Chain verification.</span>
-              <span className="inline-flex">Off-Chain <Advantages /></span>
-            </h3>
-          </header>
-          <div className={cn("flex flex-col xl:flex-row gap-5 mx-auto")}>
-            <a
-              className={cn("btn btn-xl text-base btn-primary justify-center")}
-              href="#section-features"
-            >
-              Let's Build!
-            </a>
-            <a className={cn("btn btn-xl text-base btn-secondary justify-center")} href="https://discord.gg/gZjZuVHXtm" target="_blank" rel="noopener">
-              Join Community
-            </a>
-          </div>
-        </div>
 
-        <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24", "mb-6")}>
-          <div
-            className={cn(
-              "xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
-              "flex flex-col items-end gap-2.5 lg:gap-5 lg:flex-row lg:justify-between",
-            )}
+      <div
+        className={cn(
+          "flex flex-col h-screen justify-center items-center",
+          "uppercase text-center flex flex-col gap-4 lg:gap-16 justify-center w-full",
+        )}
+      >
+        <header>
+          <h2 className={cn("text-2xl lg:text-4xl font-normal text-[#222] leading-8 lg:leading-10 tracking-wider mb-2.5 px-12")}>
+            Computation as it's meant to be
+          </h2>
+          <h3 className={cn(
+            "text-lg lg:text-2xl font-extrabold w-full",
+            "flex flex-col lg:flex-row justify-center items-center text-center"
+          )}>
+            <span>On-Chain verification.</span>
+            <span className="inline-flex">Off-Chain <Advantages /></span>
+          </h3>
+        </header>
+        <div className={cn("flex flex-col xl:flex-row gap-2.5 lg:gap-5 mx-auto")}>
+          <a
+            className={cn("btn btn-xl text-sm lg:text-base btn-primary justify-center")}
+            href="#section-features"
           >
-            <RealtimeStats />
-            <SupportedChains />
-          </div>
+            Let's Build!
+          </a>
+          <a
+            className={cn("btn btn-xl text-sm lg:text-base btn-secondary justify-center")}
+            href="https://discord.gg/gZjZuVHXtm"
+            target="_blank"
+            rel="noopener"
+          >
+            Join Community
+          </a>
+        </div>
+      </div>
+
+      <div
+        className={cn(
+          "safe-viewport",
+          "absolute right-0 bottom-0 lg:bottom-5 w-full grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24",
+          "mb-6"
+        )}
+      >
+        <div
+          className={cn(
+            "xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+            "flex flex-col items-end gap-2 lg:gap-5 lg:flex-row lg:justify-between",
+          )}
+        >
+          <RealtimeStats />
+          <SupportedChains />
         </div>
       </div>
     </section>
@@ -1096,6 +1113,7 @@ function SectionSubscription() {
 
 export const metadata: Metadata = {
   title: 'Phala Network',
+  themeColor: 'rgba(232, 233, 234, 1)',
 }
 
 export default async function Home() {
