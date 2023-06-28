@@ -1,7 +1,8 @@
 @tailwind utilities;
 
-.section-hero .btn-view-all {
-  text-shadow: #fff 1px 0 10px;
+.section-slide {
+  @apply relative h-screen w-screen;
+  max-height: fill-available;
 }
 
 .code-viewer {
@@ -14,6 +15,12 @@
   @apply font-black text-center mb-16;
   line-height: 150%;
   font-size: 3.5rem;
+}
+
+/* .section-hero */
+
+.section-hero .btn-view-all span {
+  text-shadow: #fff 1px 1px 10px;
 }
 
 /* .section-features */
