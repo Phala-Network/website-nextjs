@@ -23,6 +23,10 @@
   text-shadow: #fff 1px 1px 10px;
 }
 
+.section-hero .advantages {
+  text-shadow: #fff 1px 1px 15px;
+}
+
 /* .section-features */
 
 .feature-highlight-item.active,
