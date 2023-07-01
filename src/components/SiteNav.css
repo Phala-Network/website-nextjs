@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.site-hamjurger-menu .menu {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+  outline: none;
+}
+.site-hamjurger-menu .line {
+  fill: none;
+  stroke: #828285;
+  stroke-width: 6;
+  transition: stroke-dasharray 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-hamjurger-menu .line1 {
+  stroke-dasharray: 60 207;
+}
+.site-hamjurger-menu .line2 {
+  stroke-dasharray: 60 60;
+}
+.site-hamjurger-menu .line3 {
+  stroke-dasharray: 60 207;
+}
+
+.site-hamjurger-menu.opened .line1 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+}
+.site-hamjurger-menu.opened .line2 {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
+}
+.site-hamjurger-menu.opened .line3 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+}
+
+
+/*
+ * Site Nav Drawer
+ */
+
+.site-nav-drawer {
+  @apply fixed left-0 top-0 w-screen h-screen z-40 rounded-l-5xl bg-white;
+  width: 120vw;
+  max-height: -webkit-fill-available;
+  will-change: transform;
+}
+
+.site-nav-drawer > div {
+  width: 100vw;
+}
+
+.site-nav-drawer summary {
+  @apply text-xl font-semibold;
+  color: #323233;
+}
+
+.site-nav-drawer details summary {
+  list-style: none;
+}
+
+.site-nav-drawer details summary::-webkit-details-marker {
+  display:none;
+}
+
+@layer components {
+  .site-nav-menu-item .heading {
+    @apply text-sm lg:text-base font-medium inline-flex flex-row items-center;
+    @apply text-black-800;
+  }
+
+  .site-nav-menu-item .body {
+    @apply text-xs lg:text-sm;
+    @apply text-black-700;
+  }
+
+  .site-nav-menu-item:hover .heading {
+    @apply text-phalaPurple-500;
+  }
+
+  .site-nav-menu-item:hover .body {
+    @apply text-phalaPurple-400;
+  }
+}

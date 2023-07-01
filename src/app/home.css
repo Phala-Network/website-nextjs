@@ -1,11 +1,8 @@
 @tailwind utilities;
 
-.section-hero .btn-view-all .icon {
-  @apply transition-all scale-100;
-}
-
-.section-hero .btn-view-all:hover .icon {
-  scale: 1.15;
+.section-slide {
+  @apply relative h-screen w-screen;
+  max-height: fill-available;
 }
 
 .code-viewer {
@@ -18,6 +15,16 @@
   @apply font-black text-center mb-16;
   line-height: 150%;
   font-size: 3.5rem;
+}
+
+/* .section-hero */
+
+.section-hero .btn-view-all span {
+  text-shadow: #fff 1px 1px 10px;
+}
+
+.section-hero .advantages {
+  text-shadow: #fff 1px 1px 15px;
 }
 
 /* .section-features */
@@ -152,6 +159,21 @@
 }
 .blueprint-card:hover .img {
   @apply -rotate-12;
+}
+
+/* .section-highlights */
+
+.section-highlights .post-card header {
+  min-height: calc(3rem * 1.5);
+}
+
+.section-highlights .post-card a .arrow {
+  @apply transition-all ml-1.5 relative;
+  top: -0.05rem;
+}
+
+.section-highlights .post-card a:hover .arrow {
+  @apply transition-all translate-x-2;
 }
 
 /* .section-subscription */
