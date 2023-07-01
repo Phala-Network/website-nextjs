@@ -21,7 +21,7 @@ function HeroScreen() {
           }}
         />
         <div className="mx-auto max-w-7xl px-4 py-10 sm:py-48 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-20">
-          <div className={cn('col-span-1', 'aspect-[340/117] max-w-[50%] md:max-w-[unset]')}>
+          <div className={cn('col-span-1', 'aspect-[340/117] pt-20 md:pt-0 max-w-[30%] md:max-w-[unset]')}>
             <svg viewBox="0 0 340 117" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g opacity="0.75">
               <path d="M113.405 99.4821C112.055 102.971 110.138 105.606 107.795 107.315C105.451 109.024 102.398 109.879 98.9183 109.879C93.5925 109.879 89.2609 108.099 85.9234 104.538C82.5859 100.977 80.8816 96.2776 80.8816 90.5807C80.8816 84.7413 82.5149 79.9702 85.7103 76.4808C88.9058 72.9915 93.2375 71.2112 98.5633 71.2112C102.256 71.2112 105.238 72.0657 107.582 73.7036C109.925 75.3415 111.629 77.9051 112.694 81.252L112.836 81.6793H119.014V65.0158H112.339V68.79C110.848 67.437 109.002 66.3689 106.872 65.5855C104.244 64.5886 101.262 64.0901 98.0662 64.0901C90.8231 64.0901 84.7162 66.6537 79.9585 71.6385C75.2007 76.6233 72.7864 82.9611 72.7864 90.5095C72.7864 98.129 75.2007 104.467 80.0295 109.452C84.8582 114.436 91.1072 116.929 98.5633 116.929C104.173 116.929 109.002 115.433 112.907 112.443C116.742 109.452 119.369 105.179 120.719 99.8381L120.932 99.0548H113.547L113.405 99.4821Z" fill="white"/>
@@ -43,10 +43,10 @@ function HeroScreen() {
             </svg>
           </div>
           <div className='col-span-1 md:col-span-2 md:-mt-2 flex flex-col gap-4 md:gap-6'>
-            <h1 className="heading-xl md:heading-2xl text-white tracking-tight md:-ml-1">
+            <h1 className="heading-lg md:heading-2xl text-white tracking-tight md:-ml-1">
               Smart Contracts Supercharged
             </h1>
-            <p className="text-base md:text-lg leading-8 text-white">
+            <p className="text-sm md:text-lg leading-8 text-white">
               Embrace the future of Web3 off-chain computation. Access the internet, boost performance, fully multichain, and ultimate data security, all with Phat Contract.
             </p>
             <div className="mt-4 flex flex-col gap-y-6 xl:flex-row items-start gap-x-6">
