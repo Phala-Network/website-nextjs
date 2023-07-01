@@ -553,8 +553,8 @@ function SiteNav() {
 
           <ul className="hidden lg:flex lg:items-center lg:gap-4 lg:h-[4rem] lg:col-start-6 lg:col-span-14 3xl:col-start-7 row-start-1">
             <SiteNavItem dropdownTarget="developers">Developers</SiteNavItem>
-            <SiteNavItem dropdownTarget="compute-providers">Compute Providers</SiteNavItem>
-            <SiteNavItem dropdownTarget="pha-token">PHA Token</SiteNavItem>
+            <SiteNavItem dropdownTarget="compute-providers">Network</SiteNavItem>
+            <SiteNavItem dropdownTarget="pha-token">Discover</SiteNavItem>
           </ul>
         </div>
       </nav>
