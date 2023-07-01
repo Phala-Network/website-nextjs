@@ -23,7 +23,7 @@ body {
  */
 
 .safe-viewport {
-  @apply w-full max-w-[1760px] mx-auto px-10 3xl:px-0;
+  @apply w-full max-w-[1760px] mx-auto px-9 xl:px-10 3xl:px-0;
 }
 
 
@@ -83,7 +83,7 @@ body {
 }
 
 .page-footer .btn-link {
-  @apply text-base text-gray-200 transition-all;
+  @apply text-gray-200 transition-all;
 }
 
 .page-footer .btn-link:hover {
@@ -92,4 +92,17 @@ body {
 
 .page-footer .btn-link::after {
   background-color: #fff;
+}
+
+
+.btn-with-arrow {
+  @apply inline-flex flex-row items-center;
+}
+
+.btn-with-arrow .arrow {
+  @apply transition-all ml-1.5;
+}
+
+.btn-with-arrow:hover .arrow {
+  @apply translate-x-2;
 }
