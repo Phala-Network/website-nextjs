@@ -344,7 +344,7 @@ function DrawerMenu() {
                 <p>Help secure the network and earn yield by staking your PHA</p>
               </MenuItem>
               <MenuItem
-                href="#"
+                href="https://khala.subsquare.io/"
                 title="Govern"
                 icon={<MdAssignment className={cn("h-5 w-5 text-black")} />}
               >
@@ -627,7 +627,7 @@ function SiteNav() {
           <p>Help secure the network and earn yield by staking your PHA</p>
         </MenuItem>
         <MenuItem
-          href="#"
+          href="https://khala.subsquare.io/"
           title="Govern"
           icon={<MdAssignment className={cn("h-5 w-5 text-black")} />}
         >
