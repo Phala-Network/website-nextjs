@@ -1027,10 +1027,13 @@ function SectionHowItWorks() {
 
 function PostCard({ src, href, title, intro }: { src: string, href: string, title: string, intro: string }) {
   return (
-    <article className="flex flex-col gap-6">
+    <article className={cn("post-card", "flex flex-col gap-2.5")}>
       <a
         href={href}
-        className={cn("block bg-gray-200 rounded-4xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5] transition-all hover:scale-[0.98]")}
+        className={cn(
+          "block bg-gray-200 rounded-4xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5] shadow-lg",
+          "transition-all hover:transition-all hover:shadow-md hover:scale-[0.98]",
+        )}
         target="_blank"
         rel="noopener"
       >
@@ -1040,8 +1043,16 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
           className={cn("object-fit w-full h-full")}
         />
       </a>
-      <header>
-        <a href={href} className="btn-link text-xl font-bold">{title}</a>
+      <header className="mt-2.5">
+        <a
+          href={href}
+          className={cn(
+            "text-xl font-bold hover:text-phalaPurple-500 block flex-none",
+          )}
+        >
+          <span>{title}</span>
+          <MdArrowForward className="untanglable text-phalaPurple-500 h-5 w-5 arrow inline-block" />
+        </a>
       </header>
       <div>
         <p className={cn("text-sm")}>{intro}</p>
@@ -1052,27 +1063,27 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
 
 function SectionHighlights() {
   return (
-    <section id="section-highlights" className={cn("py-32")}>
+    <section className={cn("section-highlights", "py-32")}>
       <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
         <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-row gap-4")}>
           <PostCard
-            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2NcnOQftkoD04bkeuZ8oaA.jpeg"
-            href="https://medium.com/phala-network/phala-monthly-newsletter-may-2023-a92d03965cc8"
-            title="Phala Monthly Newsletter: May 2023"
-            intro="May has been an action-packed month for Phala! Read more about what we worked on this past month."
+            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*M1FsOwECPN2ETnlG4HydvA.png"
+            href="https://medium.com/phala-network/lensapi-oracle-supercharge-your-web3-social-app-a413c936df2b"
+            title="LensAPI Oracle: Supercharge Your Web3 Social App"
+            intro="Getting started with the LensAPI Oracle in three easy steps!"
           />
           <PostCard
-            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*DjcDv3NibNPMSSTonr_aKg.jpeg"
-            href=" https://medium.com/phala-network/phala-monthly-newsletter-april-2023-ea1afc7c6be7"
-            title="Phala Monthly Newsletter: April 2023"
-            intro="Dive in what happened in Phala Ecosystem in the month of April!"
+            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*g-X-L78SPN_xcgiSpo-bIQ.png"
+            href="https://medium.com/phala-network/phat-contract-smart-contracts-now-smarter-c5e62080d7e6"
+            title="Phat Contract: Smart Contracts. Now Smarter."
+            intro="Connect your smart contract anywhere. The Web3 Builders Stack just got a major upgrade."
           />
           <PostCard
-            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*398XH6BwltFUasR5sMO4xg.png"
-            href="https://medium.com/phala-network/phala-monthly-newsletter-march-2023-469a7ccfa2db"
-            title="Phala Monthly Newsletter: March 2023"
-            intro="Dive in what happened in Phala Ecosystem in the month of March!"
+            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*5gLyKD05U637NOEqf8hw5g.png"
+            href="https://medium.com/phala-network/revolutionary-stake-to-compute-model-takes-the-stage-with-phat-contracts-latest-tokenomic-update-c9bcef4d6d83"
+            title="Revolutionary Stake-to-Compute Model Takes the Stage with Phat Contract’s Latest Tokenomic Update"
+            intro="Our novel tokenomics model, Stake-to-Compute, enables developers to rent computing power from Phala for free by staking $PHA!"
           />
         </div>
         <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
