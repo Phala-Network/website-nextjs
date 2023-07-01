@@ -1,4 +1,4 @@
-import {ComputationMeta, getComputationMeta} from '@/lib/computationMeta'
+import { type ComputationMeta } from '@/lib/computationMeta'
 import {atom, useAtomValue} from 'jotai'
 
 export const computationStatsAtom = atom<ComputationMeta>({
@@ -10,8 +10,9 @@ export const computationStatsAtom = atom<ComputationMeta>({
 
 computationStatsAtom.onMount = (set) => {
   ;(async function () {
-    const computationMeta = await getComputationMeta()
-    set(computationMeta)
+    const resp = await fetch('/api/computation-metrics')
+    const data = await resp.json()
+    set({ ...data, tx: BigInt(data.tx) })
   })()
 }
 
