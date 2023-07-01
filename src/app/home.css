@@ -161,6 +161,21 @@
   @apply -rotate-12;
 }
 
+/* .section-highlights */
+
+.section-highlights .post-card header {
+  min-height: calc(3rem * 1.5);
+}
+
+.section-highlights .post-card a .arrow {
+  @apply transition-all ml-1.5 relative;
+  top: -0.05rem;
+}
+
+.section-highlights .post-card a:hover .arrow {
+  @apply transition-all translate-x-2;
+}
+
 /* .section-subscription */
 
 .section-subscription {
