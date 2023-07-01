@@ -1120,14 +1120,14 @@ export default async function Home() {
   return (
     <>
       <SectionHero />
-      {/* <SectionFeatures /> */}
-      {/* <SectionPitchIntro /> */}
-      {/* <SectionPitchAccelerate /> */}
-      {/* <SectionPitchInnovate /> */}
-      {/* <SectionPitchPioneer /> */}
-      {/* <SectionHowItWorks /> */}
-      {/* <SectionHighlights /> */}
-      {/* <SectionSubscription /> */}
+      <SectionFeatures />
+      <SectionPitchIntro />
+      <SectionPitchAccelerate />
+      <SectionPitchInnovate />
+      <SectionPitchPioneer />
+      <SectionHowItWorks />
+      <SectionHighlights />
+      <SectionSubscription />
     </>
   )
 }
