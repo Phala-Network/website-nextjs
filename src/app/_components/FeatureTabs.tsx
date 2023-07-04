@@ -1,12 +1,40 @@
 'use client';
 
-import React, { useEffect, type ReactNode } from 'react'
-import { atom, useAtomValue } from 'jotai'
+import React, { useRef, useEffect, type ReactNode } from 'react'
+import { atom, useAtomValue, useSetAtom } from 'jotai'
+import { useScroll, useMotionValueEvent } from 'framer-motion'
 
-import { cn } from '@/lib/utils'
+import { cn, throttle } from '@/lib/utils'
 import Details from '@/components/Details'
 
 export const activeFeatureTabAtom = atom(0)
+
+export function FeatureTabsContainer({ totalTabs, className, children, style }: {
+  totalTabs: number,
+  className?: string,
+  style?: React.CSSProperties,
+  children: ReactNode,
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const setCurrent = useSetAtom(activeFeatureTabAtom)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['end', 'start']
+  })
+
+  useMotionValueEvent(scrollYProgress, 'change', throttle((value: number) => {
+    const current = Math.floor(value / (1 / totalTabs)) + 1
+    if (current <= totalTabs) {
+      setCurrent(current)
+    }
+  }, 50))
+
+  return (
+    <main ref={ref} className={className} style={style}>
+      {children}
+    </main>
+  )
+}
 
 export function FeatureTab({ idx, iconUrl, summary, children }: {
   idx: number,

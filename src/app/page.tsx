@@ -13,7 +13,7 @@ import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPrevi
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
-import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator } from './_components/FeatureTabs'
+import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator, FeatureTabsContainer } from './_components/FeatureTabs'
 import SubscribeForm from './_components/SubscribeForm'
 import { Advantages } from './_components/Advantages'
 import { HowItWorksCarousel } from './_components/HowItWorksCarousel'
@@ -168,7 +168,7 @@ function SectionFeatures() {
             <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
             <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
           </header>
-          <main className={cn("grid grid-cols-10 grid-rows-7 gap-1")} style={{"gridAutoRows": "fit-content(1em)"}}>
+          <FeatureTabsContainer className={cn("grid grid-cols-10 grid-rows-7 gap-1")} style={{"gridAutoRows": "fit-content(1em)"}} totalTabs={4}>
             <div className={cn("col-start-2 col-span-9 row-start-1")}>
               <FeatureTab idx={1} iconUrl="/icons/features-compare.svg" summary="Connect your smart contract anywhere">
                 <p>
@@ -203,7 +203,7 @@ function SectionFeatures() {
               <div className={cn("w-2 h-full bg-blackAlpha-100 rounded")} />
             </div>
             <FeatureTabIndicator />
-          </main>
+          </FeatureTabsContainer>
         </div>
 
         <FeatureTabPanels>
