@@ -34,6 +34,11 @@
   @apply bg-primary;
 }
 
+.feature-highlight-item.active p::selection {
+  @apply bg-black-900;
+  @apply text-primary;
+}
+
 .feature-highlight-item summary {
   @apply list-none cursor-pointer text-base text-blackAlpha-400 transition-all flex flex-row gap-2.5 items-center;
 }
