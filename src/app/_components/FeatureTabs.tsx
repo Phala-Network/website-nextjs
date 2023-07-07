@@ -23,8 +23,7 @@ export function FeatureScrollContainer ({ total, children }: {
     const buffer_size = 0.1
     const current_index = Math.min(Math.floor(percent / range_percent), total - 1)
     let buffer_start = current_index * range_percent
-    let buffer_end = (current_index + 1) * range_percent
-    if (percent >= buffer_start + buffer_size) {
+    if (percent >= buffer_start + buffer_size || percent <= buffer_start - buffer_size) {
       setCurrent(current_index + 1)
     }
   })
