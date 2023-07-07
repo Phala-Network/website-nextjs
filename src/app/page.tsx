@@ -13,7 +13,7 @@ import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPrevi
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
-import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator, FeatureTabsContainer } from './_components/FeatureTabs'
+import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator, FeatureScrollContainer } from './_components/FeatureTabs'
 import SubscribeForm from './_components/SubscribeForm'
 import { Advantages } from './_components/Advantages'
 import { HowItWorksCarousel } from './_components/HowItWorksCarousel'
@@ -155,20 +155,15 @@ function SectionHero() {
 
 function SectionFeatures() {
   return (
-    <section id="section-features" className={cn("relative lg:h-screen flex items-center")}>
+    <section id="section-features" className={cn("relative flex items-center")}>
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
-      <div className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24 grid-rows-7")}>
-        <div
-          className={cn(
-            "col-start-1 col-span-full xl:col-span-10 2xl:col-span-10 3xl:col-start-3 3xl:col-span-10",
-            "flex flex-col justify-center gap-5 4xl:gap-20", "py-8 3xl:py-16"
-          )}
-        >
+      <div className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-2")}>
+        <FeatureScrollContainer total={4}>
           <header className={cn("flex flex-col gap-5", "ml-12 mb-6 2xl:mb-4")}>
             <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
             <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
           </header>
-          <FeatureTabsContainer className={cn("grid grid-cols-10 grid-rows-7 gap-1")} style={{"gridAutoRows": "fit-content(1em)"}} totalTabs={4}>
+          <main className={cn("grid grid-cols-10 grid-rows-7 gap-1")} style={{"gridAutoRows": "fit-content(1em)"}}>
             <div className={cn("col-start-2 col-span-9 row-start-1")}>
               <FeatureTab idx={1} iconUrl="/icons/features-compare.svg" summary="Connect your smart contract anywhere">
                 <p>
@@ -203,16 +198,17 @@ function SectionFeatures() {
               <div className={cn("w-2 h-full bg-blackAlpha-100 rounded")} />
             </div>
             <FeatureTabIndicator />
-          </FeatureTabsContainer>
+          </main>
+        </FeatureScrollContainer>
+        <div className={cn("h-screen sticky top-0 hidden xl:flex items-center")}>
+          <FeatureTabPanels>
+            <FeatureTabPanel idx={0} src="/home/highlight01.jpg" />
+            <FeatureTabPanel idx={1} src="/home/highlight02.jpg" />
+            <FeatureTabPanel idx={2} src="/home/highlight03.jpg" />
+            <FeatureTabPanel idx={3} src="/home/highlight04.jpg" />
+            <FeatureTabPanel idx={4} src="/home/highlight05.jpg" />
+          </FeatureTabPanels>
         </div>
-
-        <FeatureTabPanels>
-          <FeatureTabPanel src="/home/highlight01.jpg" />
-          <FeatureTabPanel src="/home/highlight02.jpg" />
-          <FeatureTabPanel src="/home/highlight03.jpg" />
-          <FeatureTabPanel src="/home/highlight04.jpg" />
-          <FeatureTabPanel src="/home/highlight05.jpg" />
-        </FeatureTabPanels>
       </div>
     </section>
   )

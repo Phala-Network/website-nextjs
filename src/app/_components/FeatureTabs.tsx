@@ -1,38 +1,42 @@
 'use client';
 
-import React, { useRef, useEffect, type ReactNode } from 'react'
+import React, { useRef, type ReactNode } from 'react'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 import { useScroll, useMotionValueEvent } from 'framer-motion'
 
-import { cn, throttle } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import Details from '@/components/Details'
 
 export const activeFeatureTabAtom = atom(0)
 
-export function FeatureTabsContainer({ totalTabs, className, children, style }: {
-  totalTabs: number,
-  className?: string,
-  style?: React.CSSProperties,
+export function FeatureScrollContainer ({ total, children }: {
+  total: number,
   children: ReactNode,
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const setCurrent = useSetAtom(activeFeatureTabAtom)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['end', 'start']
   })
-
-  useMotionValueEvent(scrollYProgress, 'change', throttle((value: number) => {
-    const current = Math.floor(value / (1 / totalTabs)) + 1
-    if (current <= totalTabs) {
-      setCurrent(current)
+  useMotionValueEvent(scrollYProgress, 'change', (percent: number) => {
+    const range_percent = 1 / total
+    const buffer_size = 0.1
+    const current_index = Math.min(Math.floor(percent / range_percent), total - 1)
+    let buffer_start = current_index * range_percent
+    let buffer_end = (current_index + 1) * range_percent
+    if (percent >= buffer_start + buffer_size) {
+      setCurrent(current_index + 1)
     }
-  }, 50))
-
+  })
   return (
-    <main ref={ref} className={className} style={style}>
-      {children}
-    </main>
+    <>
+      <div className={cn("hidden xl:block pt-[30vh] pb-[50vh]")} ref={ref}>
+        {children}
+      </div>
+      <div className={cn("xl:hidden py-8")}>
+        {children}
+      </div>
+    </>
   )
 }
 
@@ -61,9 +65,10 @@ export function FeatureTab({ idx, iconUrl, summary, children }: {
   )
 }
 
-export function FeatureTabPanel({ src }: { idx?: number, src: string, children?: ReactNode }) {
+export function FeatureTabPanel({ src, idx }: { idx?: number, src: string, children?: ReactNode }) {
+  const current = useAtomValue(activeFeatureTabAtom)
   return (
-    <div className={cn("aspect-[834/782]", "relative")}>
+    <div className={cn("absolute inset-0 transition-all duration-500", idx === current ? 'opacity-100' : 'opacity-0')}>
       <img
         src={src}
         alt=""
@@ -74,26 +79,15 @@ export function FeatureTabPanel({ src }: { idx?: number, src: string, children?:
 }
 
 export function FeatureTabPanels({ children }: { children: ReactNode }) {
-  const current = useAtomValue(activeFeatureTabAtom)
-  const ref = React.useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    ref.current?.scrollTo({top: ref.current.scrollHeight / 5 * current, behavior: 'smooth'})
-  }, [current])
   return (
     <div
-      ref={ref}
       className={cn(
         "feature-tab-panels",
-        "xl:col-start-11 xl:col-span-7 2xl:col-start-11 2xl:col-span-9 3xl:col-start-13 3xl:col-span-12",
-        "ml-4 2xl:ml-0",
-        "absolute w-[60vw] xl:w-[45vw]",
-        "aspect-[834/782]",
-        "hidden xl:block rounded-5xl bg-gray-200 relative overflow-hidden"
+        "w-full aspect-[834/782]",
+        "rounded-5xl bg-gray-200 relative overflow-hidden"
       )}
     >
-      <div style={{height: '500%'}}>
-        {children}
-      </div>
+      {children}
     </div>
   )
 }
