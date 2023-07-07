@@ -20,16 +20,16 @@ export function FeatureScrollContainer ({ total, children }: {
   })
   useMotionValueEvent(scrollYProgress, 'change', (percent: number) => {
     const range_percent = 1 / total
-    const buffer_size = 0.1
+    const buffer_size = 0.05
     const current_index = Math.min(Math.floor(percent / range_percent), total - 1)
-    let buffer_start = current_index * range_percent
-    if (percent >= buffer_start + buffer_size || percent <= buffer_start - buffer_size) {
+    const buffer_start = current_index * range_percent
+    if (percent >= buffer_start + buffer_size) {
       setCurrent(current_index + 1)
     }
   })
   return (
     <>
-      <div className={cn("hidden xl:block pt-[30vh] pb-[50vh]")} ref={ref}>
+      <div className={cn("hidden xl:block pt-[40vh] pb-[50vh]")} ref={ref}>
         {children}
       </div>
       <div className={cn("xl:hidden py-8")}>
