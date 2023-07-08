@@ -101,7 +101,7 @@ function SectionHero() {
             Computation as it's meant to be
           </h2>
           <h3 className={cn(
-            "text-lg lg:text-2xl font-extrabold w-full",
+            "text-lg lg:text-2xl font-extrabold w-full max-w-[100vw] overflow-x-hidden",
             "flex flex-col lg:flex-row lg:gap-2 justify-center items-center text-center"
           )}>
             <span>On-Chain verification.</span>
