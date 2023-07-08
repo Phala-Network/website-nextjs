@@ -994,10 +994,13 @@ function SectionHowItWorks() {
         </div>
         <div className={cn("row-start-4 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
           <div className={cn("mx-auto rounded-3xl aspect-[1360/760] bg-gray-200 relative overflow-hidden")}>
-            <img
-              src="/home/global-network.jpg"
-              alt=""
-            />
+            <video
+              className="object-cover aspect-[3840/1980] h-full min-w-full"
+              autoPlay muted loop playsInline
+            >
+              <source src="https://nft-assets.phala.world/network/worldmap20230708.mp4" type="video/mp4" />
+              <source src="https://nft-assets.phala.world/network/worldmap20230708.webm" type="video/webm" />
+            </video>
           </div>
         </div>
         <div className={cn("row-start-5 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
