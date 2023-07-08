@@ -19,8 +19,8 @@ export function StatsCard() {
   const stats = useComputationStats()
   return (
     <div className={"flex flex-row gap-9"}>
-      {/* <Stats name="Computers">{formatter.format(stats.totalNodes)}</Stats> */}
-      {/* <Stats name="$PHA">{formatter.format(stats.totalValue)}</Stats> */}
+      <Stats name="Computers">{formatter.format(stats.totalNodes)}</Stats>
+      <Stats name="$PHA">{formatter.format(stats.totalValue)}</Stats>
     </div>
   )
 }
