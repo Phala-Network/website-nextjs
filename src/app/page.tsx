@@ -110,13 +110,13 @@ function SectionHero() {
         </header>
         <div className={cn("flex flex-col xl:flex-row gap-2.5 lg:gap-5 mx-auto")}>
           <a
-            className={cn("btn btn-xl text-sm lg:text-base btn-primary justify-center")}
+            className={cn("btn btn-xl text-sm font-semibold lg:text-base btn-primary justify-center")}
             href="#section-features"
           >
             Let's Build!
           </a>
           <a
-            className={cn("btn btn-xl text-sm lg:text-base btn-secondary justify-center")}
+            className={cn("btn btn-xl text-sm font-semibold lg:text-base btn-secondary justify-center")}
             href="https://discord.gg/gZjZuVHXtm"
             target="_blank"
             rel="noopener"
@@ -1030,7 +1030,7 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
       <a
         href={href}
         className={cn(
-          "block bg-gray-200 rounded-4xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5] shadow-lg",
+          "block bg-gray-200 rounded-3xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5] shadow-lg",
           "transition-all hover:transition-all hover:shadow-md hover:scale-[0.98]",
         )}
         target="_blank"
@@ -1062,10 +1062,10 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
 
 function SectionHighlights() {
   return (
-    <section className={cn("section-highlights", "py-32")}>
-      <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
+    <section className={cn("section-highlights", "py-16 lg:py-32")}>
+      <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-4 xl:grid-cols-20 3xl:grid-cols-24")}>
         <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
-        <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-row gap-4")}>
+        <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-col gap-8 lg:flex-row lg:gap-4")}>
           <PostCard
             src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*M1FsOwECPN2ETnlG4HydvA.png"
             href="https://medium.com/phala-network/lensapi-oracle-supercharge-your-web3-social-app-a413c936df2b"
@@ -1085,10 +1085,13 @@ function SectionHighlights() {
             intro="Our novel tokenomics model, Stake-to-Compute, enables developers to rent computing power from Phala for free by staking $PHA!"
           />
         </div>
-        <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
+        <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center lg:pt-32")}>
           <a
             href="https://medium.com/phala-network"
-            className={cn("btn btn-lg w-full justify-center btn-primary text-black uppercase")}
+            className={cn(
+              "btn btn-lg w-full justify-center btn-primary text-black uppercase",
+              "font-semibold text-sm lg:text-base xl:text-lg"
+            )}
             target="_blank"
             rel="noopener"
           >
