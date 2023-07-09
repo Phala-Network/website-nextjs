@@ -12,9 +12,8 @@
 }
 
 .section-heading {
-  @apply font-black text-center mb-16;
-  line-height: 150%;
-  font-size: 3.5rem;
+  @apply font-black text-center text-3xl xl:text-[3.5rem] uppercase;
+  /* line-height: 150%; */
 }
 
 /* .section-hero */
@@ -150,17 +149,25 @@
 
 /* .section-highlights */
 
-.section-highlights .post-card header {
-  min-height: calc(3rem * 1.5);
+@media (min-width: 62rem) {
+  .section-highlights .post-card header {
+    min-height: calc(3rem * 1.5);
+  }
 }
 
 .section-highlights .post-card a .arrow {
-  @apply transition-all ml-1.5 relative;
-  top: -0.05rem;
+  @apply invisible;
 }
 
-.section-highlights .post-card a:hover .arrow {
-  @apply transition-all translate-x-2;
+@media (min-width: 62rem) {
+  .section-highlights .post-card a .arrow {
+    @apply visible transition-all ml-1.5 relative;
+    top: -0.05rem;
+  }
+
+  .section-highlights .post-card a:hover .arrow {
+    @apply transition-all translate-x-2;
+  }
 }
 
 /* .section-subscription */
