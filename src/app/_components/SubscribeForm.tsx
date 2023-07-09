@@ -15,16 +15,16 @@ export default function SubscribeForm() {
     '0b071cad-c7bd-44dd-9f2d-e1a822e2e1cf'
   )
   return (
-    <div className={cn("row-start-1 col-span-full xl:col-start-2 xl:col-span-12 3xl:col-start-4 px-10 bg-[#262626]")}>
+    <div className={cn("row-start-1 col-span-full xl:col-start-2 xl:col-span-12 3xl:col-start-4 xl:px-10 bg-[#262626]")}>
       <form
-        className={cn("text-white py-16")}
+        className={cn("text-white py-16 flex flex-col gap-4")}
         onSubmit={ev => {
           ev.preventDefault()
           onSubmit()
         }}
       >
-        <legend className={cn("mb-16 uppercase text-4xl font-black max-w-3xl")}>Get the latest Phala Content Straight To Your Inbox.</legend>
-        <div className={cn("max-w-3xl flex flex-row gap-6 relative")}>
+        <legend className={cn("uppercase text-2xl xl:text-4xl font-black max-w-3xl")}>Get the latest Phala Content Straight To Your Inbox.</legend>
+        <div className={cn("max-w-3xl flex flex-col lg:flex-row gap-6 relative")}>
           <motion.div
             className={cn(
               isSucceed ? 'bg-brand-400/95' : '',
@@ -48,7 +48,8 @@ export default function SubscribeForm() {
           <button
             type="submit"
             className={cn(
-              "btn btn-lg bg-primary text-black uppercase inline-flex flex-row items-center transition-colors",
+              "btn btn-lg bg-primary text-black uppercase inline-flex flex-row items-center justify-center transition-colors",
+              "font-semibold text-sm lg:text-base xl:text-lg",
               (isLoading || !checked) ? 'bg-gray-400 text-white' : 'bg-primary text-black',
             )}
             disabled={isLoading || isError || !checked}
@@ -57,21 +58,21 @@ export default function SubscribeForm() {
               initial={{ opacity: 0, width: 0 }}
               animate={{ opacity: isLoading ? 1 : 0, width: isLoading ? 'auto' : 0 }}
               transition={{ duration: 0.2 }}
-              className={cn("mr-2")}
+              className={cn(isLoading ? "mr-2" : "")}
             >
               <ImSpinner2 className="h-5 w-5 text-brand-700 animate-spin" />
             </motion.span>
             Subscribe Now
           </button>
         </div>
-        <div className={cn("mt-6")}>
-          <label>
+        <div className={cn("text-xs leading-5 lg:text-base lg:leading-6")}>
+          <label className={cn("flex flex-row")}>
             <input
               className={cn("mr-3")}
               type="checkbox"
               onChange={ev => setChecked(ev.target.checked)}
             />
-            Yes, I agree to receive email communications from Phala
+            <span>Yes, I agree to receive email communications from Phala</span>
           </label>
         </div>
       </form>
