@@ -1063,7 +1063,7 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
 function SectionHighlights() {
   return (
     <section className={cn("section-highlights", "py-16 lg:py-32")}>
-      <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-4 xl:grid-cols-20 3xl:grid-cols-24")}>
+      <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-16 xl:grid-cols-20 3xl:grid-cols-24")}>
         <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-col gap-8 lg:flex-row lg:gap-4")}>
           <PostCard
@@ -1085,7 +1085,7 @@ function SectionHighlights() {
             intro="Our novel tokenomics model, Stake-to-Compute, enables developers to rent computing power from Phala for free by staking $PHA!"
           />
         </div>
-        <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center lg:pt-32")}>
+        <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center")}>
           <a
             href="https://medium.com/phala-network"
             className={cn(
