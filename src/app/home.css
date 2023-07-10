@@ -183,6 +183,6 @@
 }
 
 .quote {
-  @apply text-[3.5rem] font-black leading-[4.25rem];
+  @apply text-3xl xl:text-5xl font-black uppercase;
 }
 

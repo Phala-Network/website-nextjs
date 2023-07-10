@@ -101,7 +101,7 @@ function SectionHero() {
             Computation as it's meant to be
           </h2>
           <h3 className={cn(
-            "text-lg lg:text-2xl font-extrabold w-full max-w-[100vw]",
+            "text-lg lg:text-2xl font-extrabold w-full overflow-hidden",
             "flex flex-col lg:flex-row lg:gap-2 justify-center items-center text-center"
           )}>
             <span>On-Chain verification.</span>
@@ -970,32 +970,54 @@ function SectionPitchPioneer() {
 
 function SectionHowItWorks() {
   return (
-    <section id="section-how-it-works" className={cn("py-32")}>
-      <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
-        <h2 className={cn("row-start-1 xl:col-start-6 xl:col-span-10 3xl:col-start-6 3xl:col-span-14", "section-heading mb-16")}>
+    <section id="section-how-it-works" className={cn("pt-16 lg:pt-32")}>
+      <div className={cn("safe-viewport", "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
+        <h2 className={cn(
+          "row-start-1 xl:col-start-6 xl:col-span-10 3xl:col-start-6 3xl:col-span-14",
+          "hidden xl:block",
+          "section-heading"
+        )}>
           How It Works
         </h2>
-        <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
+        <div className={cn(
+          "row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+          "hidden xl:block",
+        )}>
           <HowItWorksCarousel />
         </div>
+
         <blockquote
           className={cn(
-            "row-start-3 xl:col-start-2 xl:col-span-9 3xl:col-start-4 3xl:col-span-9 mt-40 mb-16 pr-4 flex flex-col justify-center",
+            "row-start-3 col-span-1 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 flex flex-col justify-center",
+            "mt-16 text-center",
             "quote"
           )}
         >
           <p>By the people.</p>
           <p>For the people.</p>
         </blockquote>
-        <div className={cn("row-start-3 xl:col-end-20 xl:col-span-9 3xl:col-end-22", "mt-40 mb-16 px-12 py-14 bg-primary rounded-3xl max-w-[44.75rem]")}>
-          <p className={cn("text-3xl font-normal leading-normal uppercase")}>A Decentralized Off-chain Compute Infrastructure like no other.</p>
-          <p className={cn("text-2xl font-light mb-4")}>Secured by</p>
+        <div
+          className={cn(
+            "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+            "z-10 w-full flex flex-col items-center gap-3 lg:gap-6 mt-6 lg:mt-12",
+          )}
+        >
+          <h3 className={cn("text-base lg:text-3xl text-center px-8")}>A Decentralized Off-chain Compute Infrastructure like no other.</h3>
           <StatsCard />
         </div>
-        <div className={cn("row-start-4 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
-          <div className={cn("mx-auto rounded-3xl aspect-[1360/760] bg-gray-200 relative overflow-hidden")}>
+        <div className={cn(
+          "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+          "z-0 overflow-hidden rounded-3xl",
+        )}>
+          <div
+            className={cn(
+              "mx-auto xl:aspect-[1360/760] bg-gray-200 relative overflow-hidden",
+              // "min-h-[480px]",
+              "w-[280vw] -translate-x-[100vw] md:w-auto md:translate-x-0"
+            )}
+          >
             <video
-              className="object-cover aspect-[3840/1980] h-full min-w-full"
+              className={cn("object-cover aspect-[3840/1980] h-full min-w-full")}
               autoPlay muted loop playsInline
             >
               <source src="https://nft-assets.phala.world/network/worldmap20230708.mp4" type="video/mp4" />
@@ -1003,10 +1025,13 @@ function SectionHowItWorks() {
             </video>
           </div>
         </div>
-        <div className={cn("row-start-5 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
+        <div className={cn("row-start-5 col-span-full xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center")}>
           <a
             href="https://app.phala.network/"
-            className={cn("btn btn-lg btn-primary w-full justify-center text-black uppercase")}
+            className={cn(
+              "btn btn-xl btn-primary w-full justify-center text-black uppercase",
+              "font-semibold text-sm lg:text-base xl:text-lg"
+            )}
             target="_blank"
             rel="noopener"
           >
@@ -1089,7 +1114,7 @@ function SectionHighlights() {
           <a
             href="https://medium.com/phala-network"
             className={cn(
-              "btn btn-lg w-full justify-center btn-primary text-black uppercase",
+              "btn btn-xl w-full justify-center btn-primary text-black uppercase",
               "font-semibold text-sm lg:text-base xl:text-lg"
             )}
             target="_blank"
