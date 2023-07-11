@@ -226,7 +226,7 @@ function SectionPitchIntro() {
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
       <div className={cn("absolute top-[33%] right-0 h-[57%] w-[67.45vw] bg-primary rounded-l-[48px] -z-[9]")} />
       <div className={cn("safe-viewport", "h-full", "grid grid-cols-20 grid-rows-1 3xl:grid-cols-24 xl:gap-4")}>
-        <header className={cn("xl:col-start-2 xl:col-span-11 xl:row-start-1 3xl:col-start-4", "flex flex-col gap-6 justify-center z-30 max-w-[50vw]")}>
+        <header className={cn("xl:col-start-2 xl:col-span-11 xl:row-start-1 3xl:col-start-4", "flex flex-col gap-6 justify-center z-20 max-w-[50vw]")}>
           <div className={cn("text-[2.625rem]")}>FROM</div>
           <div>
             <h3 className={cn("text-[5.625rem] font-extrabold text-white bg-black whitespace-nowrap tracking-tight rounded-3xl inline-flex px-14")}>NO CODE</h3>
