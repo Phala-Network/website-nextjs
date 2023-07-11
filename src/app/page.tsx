@@ -985,7 +985,15 @@ function SectionHowItWorks() {
         )}>
           <HowItWorksCarousel />
         </div>
+      </div>
+    </section>
+  )
+}
 
+function SectionGlobalDistribution() {
+  return (
+    <section className="section-global-distribution">
+      <div className={cn("safe-viewport", "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
         <blockquote
           className={cn(
             "row-start-3 col-span-1 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 flex flex-col justify-center",
@@ -1000,6 +1008,7 @@ function SectionHowItWorks() {
           className={cn(
             "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
             "z-10 w-full flex flex-col items-center gap-3 lg:gap-6 mt-6 lg:mt-12",
+            "text-overlay"
           )}
         >
           <h3 className={cn("text-base lg:text-3xl text-center px-8")}>A Decentralized Off-chain Compute Infrastructure like no other.</h3>
@@ -1009,13 +1018,7 @@ function SectionHowItWorks() {
           "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
           "z-0 overflow-hidden rounded-3xl",
         )}>
-          <div
-            className={cn(
-              "mx-auto xl:aspect-[1360/760] bg-gray-200 relative overflow-hidden",
-              // "min-h-[480px]",
-              "w-[280vw] -translate-x-[100vw] md:w-auto md:translate-x-0"
-            )}
-          >
+          <div className="bg-video-container">
             <video
               className={cn("object-cover aspect-[3840/1980] h-full min-w-full")}
               autoPlay muted loop playsInline
@@ -1158,12 +1161,13 @@ export default async function Home() {
   return (
     <>
       <SectionHero />
-      <SectionFeatures />
-      <SectionPitchIntro />
-      <SectionPitchAccelerate />
-      <SectionPitchInnovate />
-      <SectionPitchPioneer />
-      <SectionHowItWorks />
+      {/* <SectionFeatures /> */}
+      {/* <SectionPitchIntro /> */}
+      {/* <SectionPitchAccelerate /> */}
+      {/* <SectionPitchInnovate /> */}
+      {/* <SectionPitchPioneer /> */}
+      {/* <SectionHowItWorks /> */}
+      <SectionGlobalDistribution />
       <SectionHighlights />
       <SectionSubscription />
     </>
