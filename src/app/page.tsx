@@ -129,7 +129,7 @@ function SectionHero() {
       <div
         className={cn(
           "safe-viewport",
-          "absolute right-0 bottom-0 lg:bottom-5 w-full grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24",
+          "absolute left-0 right-0 bottom-0 lg:bottom-5 grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24",
           "mb-6"
         )}
       >
