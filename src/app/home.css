@@ -163,6 +163,11 @@
 
 /* Height < Width */
 @media (min-aspect-ratio: 1/1) {
+  .section-global-distribution .bg-video-container {
+    @apply mx-auto bg-gray-200 relative overflow-hidden;
+    aspect-ratio: 3840/1980;
+  }
+
   .section-global-distribution .bg-video-container video {
     min-width: auto;
     transform: none;
