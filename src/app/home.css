@@ -152,7 +152,7 @@
 .section-global-distribution .bg-video-container {
   @apply mx-auto bg-gray-200 relative overflow-hidden;
   aspect-ratio: 3840/3960;
-  background: #eceaef;
+  background: #e7e6eb;
 
 }
 
