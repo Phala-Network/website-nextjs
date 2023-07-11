@@ -1161,12 +1161,14 @@ export default async function Home() {
   return (
     <>
       <SectionHero />
-      {/* <SectionFeatures /> */}
-      {/* <SectionPitchIntro /> */}
-      {/* <SectionPitchAccelerate /> */}
-      {/* <SectionPitchInnovate /> */}
-      {/* <SectionPitchPioneer /> */}
-      {/* <SectionHowItWorks /> */}
+      {/* TO FIX: responsive */}
+      <SectionFeatures />
+      <SectionPitchIntro />
+      <SectionPitchAccelerate />
+      <SectionPitchInnovate />
+      <SectionPitchPioneer />
+      <SectionHowItWorks />
+      {/* END: TO FIX */}
       <SectionGlobalDistribution />
       <SectionHighlights />
       <SectionSubscription />
