@@ -1011,7 +1011,7 @@ function SectionGlobalDistribution() {
             "text-overlay"
           )}
         >
-          <h3 className={cn("text-base lg:text-3xl text-center px-8")}>A Decentralized Off-chain Compute Infrastructure like no other.</h3>
+          <h3 className={cn("text-base lg:text-3xl text-center px-2.5 md:px-8")}>A Decentralized Off-chain Compute Infrastructure like no other.</h3>
           <StatsCard />
         </div>
         <div className={cn(

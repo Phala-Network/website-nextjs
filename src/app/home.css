@@ -150,14 +150,15 @@
 /* .section-global-distribution */
 
 .section-global-distribution .bg-video-container {
-  @apply mx-auto xl:aspect-[1360/760] bg-gray-200 relative overflow-hidden;
+  @apply mx-auto bg-gray-200 relative overflow-hidden;
+  aspect-ratio: 3840/3960;
   background: #eceaef;
 
 }
 
 .section-global-distribution .bg-video-container video {
   min-width: calc((100vw - 4.5rem) * 2);
-  transform: translateX(calc((100vw - 4.5rem) / 2 * -1)) translateY(28%);
+  transform: translateX(calc((100vw - 4.5rem) / 2 * -1)) translateY(25%);
 }
 
 /* Height < Width */
