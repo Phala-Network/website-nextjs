@@ -13,7 +13,7 @@ import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPrevi
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
-import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator } from './_components/FeatureTabs'
+import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator, FeatureScrollContainer } from './_components/FeatureTabs'
 import SubscribeForm from './_components/SubscribeForm'
 import { Advantages } from './_components/Advantages'
 import { HowItWorksCarousel } from './_components/HowItWorksCarousel'
@@ -101,7 +101,7 @@ function SectionHero() {
             Computation as it's meant to be
           </h2>
           <h3 className={cn(
-            "text-lg lg:text-2xl font-extrabold w-full",
+            "text-lg lg:text-2xl font-extrabold w-full overflow-hidden",
             "flex flex-col lg:flex-row lg:gap-2 justify-center items-center text-center"
           )}>
             <span>On-Chain verification.</span>
@@ -110,13 +110,13 @@ function SectionHero() {
         </header>
         <div className={cn("flex flex-col xl:flex-row gap-2.5 lg:gap-5 mx-auto")}>
           <a
-            className={cn("btn btn-xl text-sm lg:text-base btn-primary justify-center")}
+            className={cn("btn btn-xl text-sm font-semibold lg:text-base btn-primary justify-center")}
             href="#section-features"
           >
             Let's Build!
           </a>
           <a
-            className={cn("btn btn-xl text-sm lg:text-base btn-secondary justify-center")}
+            className={cn("btn btn-xl text-sm font-semibold lg:text-base btn-secondary justify-center")}
             href="https://discord.gg/gZjZuVHXtm"
             target="_blank"
             rel="noopener"
@@ -129,7 +129,7 @@ function SectionHero() {
       <div
         className={cn(
           "safe-viewport",
-          "absolute right-0 bottom-0 lg:bottom-5 w-full grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24",
+          "absolute left-0 right-0 bottom-0 lg:bottom-5 grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24",
           "mb-6"
         )}
       >
@@ -155,15 +155,10 @@ function SectionHero() {
 
 function SectionFeatures() {
   return (
-    <section id="section-features" className={cn("relative lg:h-screen flex items-center")}>
+    <section id="section-features" className={cn("relative flex items-center")}>
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
-      <div className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24 grid-rows-7")}>
-        <div
-          className={cn(
-            "col-start-1 col-span-full xl:col-span-10 2xl:col-span-10 3xl:col-start-3 3xl:col-span-10",
-            "flex flex-col justify-center gap-5 4xl:gap-20", "py-8 3xl:py-16"
-          )}
-        >
+      <div className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-2")}>
+        <FeatureScrollContainer total={4}>
           <header className={cn("flex flex-col gap-5", "ml-12 mb-6 2xl:mb-4")}>
             <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
             <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
@@ -204,15 +199,16 @@ function SectionFeatures() {
             </div>
             <FeatureTabIndicator />
           </main>
+        </FeatureScrollContainer>
+        <div className={cn("h-screen sticky top-0 hidden xl:flex items-center")}>
+          <FeatureTabPanels>
+            <FeatureTabPanel idx={0} src="/home/highlight01.jpg" />
+            <FeatureTabPanel idx={1} src="/home/highlight02.jpg" />
+            <FeatureTabPanel idx={2} src="/home/highlight03.jpg" />
+            <FeatureTabPanel idx={3} src="/home/highlight04.jpg" />
+            <FeatureTabPanel idx={4} src="/home/highlight05.jpg" />
+          </FeatureTabPanels>
         </div>
-
-        <FeatureTabPanels>
-          <FeatureTabPanel src="/home/highlight01.jpg" />
-          <FeatureTabPanel src="/home/highlight02.jpg" />
-          <FeatureTabPanel src="/home/highlight03.jpg" />
-          <FeatureTabPanel src="/home/highlight04.jpg" />
-          <FeatureTabPanel src="/home/highlight05.jpg" />
-        </FeatureTabPanels>
       </div>
     </section>
   )
@@ -230,7 +226,7 @@ function SectionPitchIntro() {
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
       <div className={cn("absolute top-[33%] right-0 h-[57%] w-[67.45vw] bg-primary rounded-l-[48px] -z-[9]")} />
       <div className={cn("safe-viewport", "h-full", "grid grid-cols-20 grid-rows-1 3xl:grid-cols-24 xl:gap-4")}>
-        <header className={cn("xl:col-start-2 xl:col-span-11 xl:row-start-1 3xl:col-start-4", "flex flex-col gap-6 justify-center z-30 max-w-[50vw]")}>
+        <header className={cn("xl:col-start-2 xl:col-span-11 xl:row-start-1 3xl:col-start-4", "flex flex-col gap-6 justify-center z-20 max-w-[50vw]")}>
           <div className={cn("text-[2.625rem]")}>FROM</div>
           <div>
             <h3 className={cn("text-[5.625rem] font-extrabold text-white bg-black whitespace-nowrap tracking-tight rounded-3xl inline-flex px-14")}>NO CODE</h3>
@@ -974,40 +970,71 @@ function SectionPitchPioneer() {
 
 function SectionHowItWorks() {
   return (
-    <section id="section-how-it-works" className={cn("py-32")}>
-      <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
-        <h2 className={cn("row-start-1 xl:col-start-6 xl:col-span-10 3xl:col-start-6 3xl:col-span-14", "section-heading mb-16")}>
+    <section id="section-how-it-works" className={cn("pt-16 lg:pt-32")}>
+      <div className={cn("safe-viewport", "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
+        <h2 className={cn(
+          "row-start-1 xl:col-start-6 xl:col-span-10 3xl:col-start-6 3xl:col-span-14",
+          "hidden xl:block",
+          "section-heading"
+        )}>
           How It Works
         </h2>
-        <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
+        <div className={cn(
+          "row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+          "hidden xl:block",
+        )}>
           <HowItWorksCarousel />
         </div>
+      </div>
+    </section>
+  )
+}
+
+function SectionGlobalDistribution() {
+  return (
+    <section className="section-global-distribution">
+      <div className={cn("safe-viewport", "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
         <blockquote
           className={cn(
-            "row-start-3 xl:col-start-2 xl:col-span-9 3xl:col-start-4 3xl:col-span-9 mt-40 mb-16 pr-4 flex flex-col justify-center",
+            "row-start-3 col-span-1 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 flex flex-col justify-center",
+            "mt-16 text-center",
             "quote"
           )}
         >
           <p>By the people.</p>
           <p>For the people.</p>
         </blockquote>
-        <div className={cn("row-start-3 xl:col-end-20 xl:col-span-9 3xl:col-end-22", "mt-40 mb-16 px-12 py-14 bg-primary rounded-3xl max-w-[44.75rem]")}>
-          <p className={cn("text-3xl font-normal leading-normal uppercase")}>A Decentralized Off-chain Compute Infrastructure like no other.</p>
-          <p className={cn("text-2xl font-light mb-4")}>Secured by</p>
+        <div
+          className={cn(
+            "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+            "z-10 w-full flex flex-col items-center gap-3 lg:gap-6 mt-6 lg:mt-12",
+            "text-overlay"
+          )}
+        >
+          <h3 className={cn("text-base lg:text-3xl text-center px-2.5 md:px-8")}>A Decentralized Off-chain Compute Infrastructure like no other.</h3>
           <StatsCard />
         </div>
-        <div className={cn("row-start-4 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18")}>
-          <div className={cn("mx-auto rounded-3xl aspect-[1360/760] bg-gray-200 relative overflow-hidden")}>
-            <img
-              src="/home/global-network.jpg"
-              alt=""
-            />
+        <div className={cn(
+          "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+          "z-0 overflow-hidden rounded-3xl",
+        )}>
+          <div className="bg-video-container">
+            <video
+              className={cn("object-cover aspect-[3840/1980] h-full min-w-full")}
+              autoPlay muted loop playsInline
+            >
+              <source src="https://nft-assets.phala.world/network/worldmap20230708.mp4" type="video/mp4" />
+              <source src="https://nft-assets.phala.world/network/worldmap20230708.webm" type="video/webm" />
+            </video>
           </div>
         </div>
-        <div className={cn("row-start-5 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
+        <div className={cn("row-start-5 col-span-full xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center")}>
           <a
             href="https://app.phala.network/"
-            className={cn("btn btn-lg btn-primary w-full justify-center text-black uppercase")}
+            className={cn(
+              "btn btn-xl btn-primary w-full justify-center text-black uppercase",
+              "font-semibold text-sm lg:text-base xl:text-lg"
+            )}
             target="_blank"
             rel="noopener"
           >
@@ -1031,7 +1058,7 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
       <a
         href={href}
         className={cn(
-          "block bg-gray-200 rounded-4xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5] shadow-lg",
+          "block bg-gray-200 rounded-3xl overflow-hidden border border-solid border-gray-50 w-full aspect-[8/5] shadow-lg",
           "transition-all hover:transition-all hover:shadow-md hover:scale-[0.98]",
         )}
         target="_blank"
@@ -1063,10 +1090,10 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
 
 function SectionHighlights() {
   return (
-    <section className={cn("section-highlights", "py-32")}>
-      <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
+    <section className={cn("section-highlights", "py-16 lg:py-32")}>
+      <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-16 xl:grid-cols-20 3xl:grid-cols-24")}>
         <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
-        <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-row gap-4")}>
+        <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-col gap-8 lg:flex-row lg:gap-4")}>
           <PostCard
             src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*M1FsOwECPN2ETnlG4HydvA.png"
             href="https://medium.com/phala-network/lensapi-oracle-supercharge-your-web3-social-app-a413c936df2b"
@@ -1086,10 +1113,13 @@ function SectionHighlights() {
             intro="Our novel tokenomics model, Stake-to-Compute, enables developers to rent computing power from Phala for free by staking $PHA!"
           />
         </div>
-        <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center pt-32")}>
+        <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center")}>
           <a
             href="https://medium.com/phala-network"
-            className={cn("btn btn-lg w-full justify-center btn-primary text-black uppercase")}
+            className={cn(
+              "btn btn-xl w-full justify-center btn-primary text-black uppercase",
+              "font-semibold text-sm lg:text-base xl:text-lg"
+            )}
             target="_blank"
             rel="noopener"
           >
@@ -1131,12 +1161,15 @@ export default async function Home() {
   return (
     <>
       <SectionHero />
+      {/* TO FIX: responsive */}
       <SectionFeatures />
       <SectionPitchIntro />
       <SectionPitchAccelerate />
       <SectionPitchInnovate />
       <SectionPitchPioneer />
       <SectionHowItWorks />
+      {/* END: TO FIX */}
+      <SectionGlobalDistribution />
       <SectionHighlights />
       <SectionSubscription />
     </>
