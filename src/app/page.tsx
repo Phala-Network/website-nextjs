@@ -8,17 +8,19 @@ import { MdArrowForward } from 'react-icons/md'
 import { cn } from '@/lib/utils'
 import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
+import SiteFooter from '@/components/SiteFooter'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
-import { FeatureTab, FeatureTabPanel, FeatureTabPanels, FeatureTabIndicator, FeatureScrollContainer } from './_components/FeatureTabs'
 import SubscribeForm from './_components/SubscribeForm'
 import { Advantages } from './_components/Advantages'
 import { HowItWorksCarousel } from './_components/HowItWorksCarousel'
 import { StatsCard } from './_components/StatsCard'
 import { RealtimeStats } from './_components/RealtimeStats'
+import { FullPageSwiper } from './_components/FullPageSwiper'
+import { FeaturePage, FixedFeaturePage } from './_components/FeaturePage'
 import './home.css'
 
 
@@ -148,73 +150,6 @@ function SectionHero() {
 }
 
 // END: Section Hero
-
-//
-// Section Features
-//
-
-function SectionFeatures() {
-  return (
-    <section id="section-features" className={cn("relative flex items-center")}>
-      <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
-      <div className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-2")}>
-        <FeatureScrollContainer total={4}>
-          <header className={cn("flex flex-col gap-5", "ml-12 mb-6 2xl:mb-4")}>
-            <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
-            <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
-          </header>
-          <main className={cn("grid grid-cols-10 grid-rows-7 gap-1")} style={{"gridAutoRows": "fit-content(1em)"}}>
-            <div className={cn("col-start-2 col-span-9 row-start-1")}>
-              <FeatureTab idx={1} iconUrl="/icons/features-compare.svg" summary="Connect your smart contract anywhere">
-                <p>
-                  No matter if your smart contracts are on Ethereum or Substrate, our universal compatibility ensures connection flexibility like never before, enabling your smart contracts to access a wide range of features regardless of the blockchain they are hosted on. Phala’s Phat Contracts make it possible to extend the capabilities of your smart contracts without the need for a bridge or an extra layer.
-                </p>
-              </FeatureTab>
-            </div>
-            <div className={cn("col-start-2 col-span-9 row-start-2")}>
-              <FeatureTab idx={2} iconUrl="/icons/features-all-out.svg" summary="Seamless access to the Internet">
-                <p>
-                  Phala Network doesn’t just offer unparalleled on-chain connectivity; it also bridges the gap between the off-chain world and smart contracts. The ability to send HTTP/HTTPS requests directly from your smart contracts is now at your fingertips. Take your dApp to the next level by integrating cutting-edge Web3 protocols and various Web2 API, creating a perfect fusion of old and new, on-chain and off-chain.
-                </p>
-              </FeatureTab>
-            </div>
-            <div className={cn("col-start-2 col-span-9 row-start-3")}>
-              <FeatureTab idx={3} iconUrl="/icons/features-auto-graph.svg" summary="Advanced flexibility and performance">
-                <p>
-                  By offloading the computation off-chain, you don’t have to worry about costly transaction fees or network latency that hinders your progress. Experience real-time, off-chain computation at its finest, allowing you to focus on enhancing your dApp’s functionality and user experience. Run arbitrarily complex logic without any constraints, all at an affordable cost.
-                </p>
-              </FeatureTab>
-            </div>
-            <div className={cn("col-start-2 col-span-9 row-start-4")}>
-              <FeatureTab idx={4} iconUrl="/icons/features-rocket.svg" summary="Computation is always verifiable">
-                <p>
-                  Phala Network is designed with multiple layers of security guarantees to provide fully verifiable computation. The network is backed by numerous decentralized workers and a significant amount of staked tokens. Phat Contracts are protected by both hardware Secure Enclaves and cryptographic evidence published and verified on the Phala blockchain, seamlessly extending blockchain-level security to the off-chain realm.
-                </p>
-              </FeatureTab>
-            </div>
-
-            {/* Progress bar */}
-            <div className={cn("col-start-1 row-start-1 row-span-7 flex justify-end pr-6")}>
-              <div className={cn("w-2 h-full bg-blackAlpha-100 rounded")} />
-            </div>
-            <FeatureTabIndicator />
-          </main>
-        </FeatureScrollContainer>
-        <div className={cn("h-screen sticky top-0 hidden xl:flex items-center")}>
-          <FeatureTabPanels>
-            <FeatureTabPanel idx={0} src="/home/highlight01.jpg" />
-            <FeatureTabPanel idx={1} src="/home/highlight02.jpg" />
-            <FeatureTabPanel idx={2} src="/home/highlight03.jpg" />
-            <FeatureTabPanel idx={3} src="/home/highlight04.jpg" />
-            <FeatureTabPanel idx={4} src="/home/highlight05.jpg" />
-          </FeatureTabPanels>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// END: Section Features
 
 //
 // Section Pitch Intro
@@ -1160,18 +1095,28 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <>
-      <SectionHero />
-      {/* TO FIX: responsive */}
-      <SectionFeatures />
-      <SectionPitchIntro />
-      <SectionPitchAccelerate />
-      <SectionPitchInnovate />
-      <SectionPitchPioneer />
-      <SectionHowItWorks />
-      {/* END: TO FIX */}
-      <SectionGlobalDistribution />
-      <SectionHighlights />
-      <SectionSubscription />
+      <FullPageSwiper freeModeIndex={6}>
+        <SectionHero />
+        <FeaturePage index={0} />
+        <FeaturePage index={1} />
+        <FeaturePage index={2} />
+        <FeaturePage index={3} />
+        <FeaturePage index={4} />
+        <div>
+          {/* TO FIX: responsive */}
+          <SectionPitchIntro />
+          <SectionPitchAccelerate />
+          <SectionPitchInnovate />
+          <SectionPitchPioneer />
+          <SectionHowItWorks />
+          {/* END: TO FIX */}
+          <SectionGlobalDistribution />
+          <SectionHighlights />
+          <SectionSubscription />
+          <SiteFooter />
+        </div>
+      </FullPageSwiper>
+      <FixedFeaturePage />
     </>
   )
 }
