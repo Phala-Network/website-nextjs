@@ -18,7 +18,7 @@ export interface ComputationMeta {
   tx: bigint
 }
 
-export async function getComputationMeta(): Promise<ComputationMeta> {
+export async function getComputationMeta(): Promise<Omit<ComputationMeta, 'tx'> & { tx: string }> {
   let data: ComputationMetaResponse = {
     phalaIdlePInstant: 28_757_250,
     phalaIdleWorkerCount: 26_551,
@@ -51,5 +51,5 @@ export async function getComputationMeta(): Promise<ComputationMeta> {
     BigInt(data.phalaSignedExtrinsicCount) +
     BigInt(data.khalaSignedExtrinsicCount)
 
-  return {onlineWorkers, vCpu, crossChainTx, tx}
+  return {onlineWorkers, vCpu, crossChainTx, tx: tx.toString()}
 }

@@ -531,7 +531,7 @@ function MenuItem({ href, title, icon, children }: {
 function SiteNav() {
   return (
     <>
-      <nav className="site-nav w-full fixed z-30">
+      <nav className="site-nav w-screen fixed z-30">
         <div
           className={cn(
             "safe-viewport",
