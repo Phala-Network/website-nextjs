@@ -1162,12 +1162,12 @@ export default async function Home() {
     <>
       <SectionHero />
       {/* TO FIX: responsive */}
-      <SectionFeatures />
-      <SectionPitchIntro />
-      <SectionPitchAccelerate />
-      <SectionPitchInnovate />
-      <SectionPitchPioneer />
-      <SectionHowItWorks />
+      {/* <SectionFeatures /> */}
+      {/* <SectionPitchIntro /> */}
+      {/* <SectionPitchAccelerate /> */}
+      {/* <SectionPitchInnovate /> */}
+      {/* <SectionPitchPioneer /> */}
+      {/* <SectionHowItWorks /> */}
       {/* END: TO FIX */}
       <SectionGlobalDistribution />
       <SectionHighlights />
