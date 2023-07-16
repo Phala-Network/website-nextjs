@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
 body {
   color: #262626;
 }

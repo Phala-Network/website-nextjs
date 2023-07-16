@@ -64,6 +64,10 @@
   @apply py-2.5 text-sm text-blackAlpha-700 max-w-xl;
 }
 
+.feature-highlight-item {
+  @apply rounded-tr-none rounded-br-none;
+}
+
 /* .section-blueprints */
 
 .blueprint-details {
