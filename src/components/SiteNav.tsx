@@ -528,10 +528,18 @@ function MenuItem({ href, title, icon, children }: {
 // add a padding to the top of the content to make sure it's not overlapped. The
 // padding is >= 96px / 6rem. 
 //
+
+export const navVisibleAtom = atom(true)
+
 function SiteNav() {
+  const navVisible = useAtomValue(navVisibleAtom)
   return (
     <>
-      <nav className="site-nav w-screen fixed z-30">
+      <nav className={cn(
+          "site-nav w-screen fixed z-30",
+          navVisible ? null : 'hide'
+        )}
+      >
         <div
           className={cn(
             "safe-viewport",
