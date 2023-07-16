@@ -1,26 +1,49 @@
 'use client';
 
-import React, { useState, useEffect, type ReactNode } from 'react'
+import React, { useState, useEffect, useMemo, type ReactNode } from 'react'
 import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react'
-import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules'
+import { FreeMode, Mousewheel } from 'swiper/modules'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
+import { useScroll, useMotionValueEvent } from 'framer-motion'
 
+import { cn } from '@/lib/utils'
 import { navVisibleAtom } from '@/components/SiteNav'
 import { featuresAtom, activeFeatureAtom, showFixedFeaturePageAtom } from './FeaturePage'
 
 type TypeSwiperClass = SwiperClass & {
   slidesGrid?: number[]
-  previousTranslate?: number 
 }
 
 export function FullPageSwiper({ children }: { children: ReactNode  }) {
   const [freeMode, setFreeMode] = useState(false)
-  const [freeModeIndex, setFreeModeIndex] = useState(1)
   const [swiper, setSwiper] = useState<TypeSwiperClass>()
+  const [swiperEnabled, setSwiperEnabled] = useState(true)
   const [currentFeature, setCurrentFeature] = useAtom(activeFeatureAtom)
   const [showFixedFeaturePage, setShowFixedFeaturePage] = useAtom(showFixedFeaturePageAtom)
-  const setNavVisible = useSetAtom(navVisibleAtom)
   const features = useAtomValue(featuresAtom)
+  const freeModeIndex = useMemo(() => features.length + 2, [features])
+  const setNavVisible = useSetAtom(navVisibleAtom)
+
+  const updateSwiperEnabled = (swiper: TypeSwiperClass) => {
+    if (swiper.width < 1280) {
+      swiper.disable()
+      setSwiperEnabled(false)
+    } else {
+      swiper.enable()
+      setSwiperEnabled(true)
+    }
+  }
+
+  const { scrollY } = useScroll()
+  const [lastScrollY, setLastScrollY] = useState(0)
+  useMotionValueEvent(scrollY, 'change', (latest: number) => {
+    if (latest > 0 && latest > lastScrollY && latest - lastScrollY > 10) {
+      setNavVisible(false)
+    } else if (latest < lastScrollY && lastScrollY - latest > 10) {
+      setNavVisible(true)
+    }
+    setLastScrollY(latest)
+  })
 
   useEffect(() => {
     if (freeModeIndex !== undefined && !freeMode && swiper && swiper.activeIndex === freeModeIndex) {
@@ -36,22 +59,22 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
 
   return (
     <Swiper
-      scrollbar={{
-        enabled: freeMode,
-      }}
+      className={cn(
+        "w-full",
+        swiperEnabled ? 'h-full' : 'h-auto touch-auto'
+      )}
       mousewheel
-      className="w-full h-full"
       speed={500}
       direction="vertical"
       slidesPerView="auto"
       onSwiper={(swiper: TypeSwiperClass) => {
         setSwiper(swiper)
-        setFreeModeIndex(swiper.width < 1280 ? 1 : features.length + 2)
+        updateSwiperEnabled(swiper)
       }}
       freeMode={{
         enabled: freeMode,
       }}
-      modules={[FreeMode, Scrollbar, Mousewheel]}
+      modules={[FreeMode, Mousewheel]}
       onSlideChangeTransitionEnd={(swiper: TypeSwiperClass) => {
         setShowFixedFeaturePage(false)
         if (swiper.activeIndex < freeModeIndex) {
@@ -71,25 +94,12 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
           setShowFixedFeaturePage(true)
         }
       }}
-      onSetTranslate={(swiper: TypeSwiperClass, translate: number) => {
-        if (swiper.width < 1280 && swiper.previousTranslate) {
-          if (swiper.previousTranslate >= translate) {
-            setNavVisible(false)
-          } else {
-            setNavVisible(true)
-          }
-        } else {
-          setNavVisible(true)
-        }
-        if (translate > -swiper.slidesGrid![freeModeIndex] && freeMode) {
+      onSetTranslate={(swiper: TypeSwiperClass) => {
+        if (swiper.translate > -swiper.slidesGrid![freeModeIndex] && freeMode) {
           setFreeMode(false)
         }
       }}
-      onResize={(swiper: TypeSwiperClass) => {
-        const newIndex = swiper.width < 1280 ? 1 : features.length + 2
-        setFreeModeIndex(newIndex)
-        setFreeMode(swiper.activeIndex >= newIndex)
-      }}
+      onResize={updateSwiperEnabled}
     >
       {React.Children.map(children, (child: ReactNode) => (
         <SwiperSlide className="h-auto">{child}</SwiperSlide>

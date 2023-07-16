@@ -91,8 +91,11 @@
 }
 
 .site-nav > div {
-  transition: transform 0.4s;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 .site-nav.hide > div {
-  transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -150%, 0);
+  opacity: 0;
 }
