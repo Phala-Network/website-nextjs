@@ -37,6 +37,9 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
   const { scrollY } = useScroll()
   const [lastScrollY, setLastScrollY] = useState(0)
   useMotionValueEvent(scrollY, 'change', (latest: number) => {
+    if (swiperEnabled) {
+      return
+    }
     if (latest > 0 && latest > lastScrollY && latest - lastScrollY > 10) {
       setNavVisible(false)
     } else if (latest < lastScrollY && lastScrollY - latest > 10) {
@@ -102,7 +105,7 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
       onResize={updateSwiperEnabled}
     >
       {React.Children.map(children, (child: ReactNode) => (
-        <SwiperSlide className="h-auto">{child}</SwiperSlide>
+        <SwiperSlide className="min-h-screen h-auto">{child}</SwiperSlide>
       ))}
     </Swiper>
   )
