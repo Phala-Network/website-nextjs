@@ -52,14 +52,16 @@ export function FeatureDetail({ idx, iconUrl, summary, children }: {
   return (
     <Details className={cn("feature-highlight-item", "p-5 w-full rounded-xl 2xl:rounded-r-none")} idx={idx} theIdxAtom={activeFeatureAtom}>
       <summary>
-        <div className={cn("relative", "h-4 w-4 2xl:h-8 2xl:w-8")}>
-          <img
-            src={iconUrl}
-            alt=""
-            className="icon untanglable w-full h-full"
-          />
+        <div>
+          <div className={cn("relative", "h-4 w-4 2xl:h-8 2xl:w-8")}>
+            <img
+              src={iconUrl}
+              alt=""
+              className="icon untanglable w-full h-full"
+            />
+          </div>
+          {summary}
         </div>
-        {summary}
       </summary>
       <div className="body">
         {children}
@@ -92,11 +94,11 @@ function FeaturePageLeft({ enableSelect = true}) {
   const features = useAtomValue(featuresAtom)
   return (
     <div className={cn("w-full h-full flex flex-col justify-center items-center gap-5")}>
-      <header className={cn(enableSelect ? "swiper-no-swiping" : "", "w-full flex-col gap-5 ml-16 hidden xl:flex")}>
+      <header className={cn(enableSelect ? "swiper-no-swiping" : "", "w-full flex-col gap-5 ml-16 flex")}>
         <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
         <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
       </header>
-      <main className={cn("swiper-no-swiping", "w-full hidden xl:grid grid-cols-10 gap-1")}>
+      <main className={cn("swiper-no-swiping", "w-full grid grid-cols-10 gap-1")}>
         {
           features.map((feature: Feature, index: number) => (
             <div className={cn("col-span-10 xl:col-start-2 xl:col-span-9")} key={index.toString()}>
@@ -107,7 +109,7 @@ function FeaturePageLeft({ enableSelect = true}) {
           ))
         }
         {/* Progress bar */}
-        <div className={cn("hidden col-start-1 row-start-1 row-span-7 xl:flex justify-end pr-6")}>
+        <div className={cn("col-start-1 row-start-1 row-span-7 flex justify-end pr-6")}>
           <div className={cn("w-2 h-full bg-blackAlpha-100 rounded")} />
         </div>
         <FeatureIndicator />
@@ -185,7 +187,7 @@ export function FeaturePage({ index }: { index: number }) {
       {/* PC Page */}
       <div className="w-full h-full hidden xl:block">
         <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
-        <div className={cn("safe-viewport flex w-full h-full flex-col xl:flex-row px-4")}>
+        <div className={cn("safe-viewport flex w-full h-full flex-row px-4")}>
           <div className={cn("w-1/2 h-full")}>
             <FeaturePageLeft />
           </div>
@@ -225,7 +227,7 @@ export function FixedFeaturePage() {
     >
       <section className={cn("hidden xl:block w-screen h-screen overflow-hidden")}>
         <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" className={cn("xl:w-1/2")} />
-        <div className={cn("safe-viewport flex w-full h-full flex-col xl:flex-row px-4")}>
+        <div className={cn("safe-viewport flex w-full h-full flex-row px-4")}>
           <div className={cn("w-1/2 h-full")}>
             <FeaturePageLeft enableSelect={false} />
           </div>

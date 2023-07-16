@@ -23,6 +23,13 @@ body {
   background: rgba(205, 250, 80, 0.5);
 }
 
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
 /**
  *
  * Helpers

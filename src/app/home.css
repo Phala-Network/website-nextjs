@@ -38,7 +38,7 @@
   @apply text-primary;
 }
 
-.feature-highlight-item summary {
+.feature-highlight-item summary > div {
   @apply list-none cursor-pointer text-base text-blackAlpha-400 transition-all flex flex-row gap-2.5 items-center;
 }
 
@@ -46,8 +46,8 @@
   @apply opacity-10;
 }
 
-.feature-highlight-item.active summary,
-.feature-highlight-item:hover summary {
+.feature-highlight-item.active summary > div,
+.feature-highlight-item:hover summary > div {
   @apply text-[#272727] font-bold;
 }
 
