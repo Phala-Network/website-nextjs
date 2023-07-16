@@ -1,6 +1,9 @@
 import Script from 'next/script'
+
 import SiteNav from '@/components/SiteNav'
-import SiteFooter from '@/components/SiteFooter'
+
+import 'swiper/css'
+import 'swiper/css/free-mode'
 import './globals.css'
 
 export default function RootLayout({
@@ -30,7 +33,6 @@ export default function RootLayout({
         ) : null}
         <SiteNav />
         {children}
-        <SiteFooter />
       </body>
     </html>
   )

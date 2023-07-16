@@ -4,8 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
 body {
   color: #262626;
+  overflow-x: hidden;
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -14,6 +21,13 @@ body {
 
 ::selection {
   background: rgba(205, 250, 80, 0.5);
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
 }
 
 /**
