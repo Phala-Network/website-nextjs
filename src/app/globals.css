@@ -12,6 +12,7 @@ body {
 
 body {
   color: #262626;
+  overflow-x: hidden;
 }
 
 ::-moz-selection { /* Code for Firefox */
