@@ -105,7 +105,7 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
       onResize={updateSwiperEnabled}
     >
       {React.Children.map(children, (child: ReactNode) => (
-        <SwiperSlide className="min-h-screen h-auto">{child}</SwiperSlide>
+        <SwiperSlide className={cn("h-auto", swiperEnabled ? 'min-h-screen ' : null)}>{child}</SwiperSlide>
       ))}
     </Swiper>
   )
