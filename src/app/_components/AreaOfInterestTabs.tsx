@@ -14,8 +14,9 @@ export function AreaOfInterestTab({ idx, className, children }: AreaOfInterestTa
   return (
     <button
       className={cn(
-        "rounded-xl p-6 w-full aspect-square transition-all",
-        current === idx ? 'active bg-[#CDFA50] text-black hover:bg-[#E0FF8A]' : 'bg-blackAlpha-800 hover:bg-blackAlpha-600',
+        "rounded-4xl p-6 w-full aspect-square transition-all border border-solid border-transparent hover:border-[#CDFA50]",
+        current === idx ? 'active bg-[#CDFA50] text-black' : 'bg-blackAlpha-800',
+        "flex flex-row text-left leading-7",
         className
       )}
       onClick={() => setCurrent(idx)}
@@ -35,8 +36,8 @@ export function AreaOfInterestTabPanel({ idx, title, children }: {
     <details open={idx === current}>
       <summary className="list-none" />
       <div className={cn("flex flex-col justify-between")}>
-        <h4 className={cn("text-2xl font-black")}>{title}</h4>
-        <div className={cn("flex flex-col gap-2.5 leading-normal text-base pt-8 pb-10")}>{children}</div>
+        <h4 className={cn("text-2xl font-black uppercase")}>{title}</h4>
+        <div className={cn("flex flex-col gap-2.5 leading-normal text-base py-5 xl:py-10")}>{children}</div>
       </div>
     </details>
   )
