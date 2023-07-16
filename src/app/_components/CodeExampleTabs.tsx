@@ -4,7 +4,7 @@ import React, { type ReactNode, useState } from 'react'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import * as R from 'ramda'
 import hls from 'highlight.js/lib/core'
-import 'highlight.js/styles/github.css'
+import 'highlight.js/styles/github-dark.css'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { AnimatePresence, motion } from "framer-motion"
 import { FiCheck } from 'react-icons/fi'
@@ -25,8 +25,8 @@ export function CodeExampleTab({ idx, children }: {
     <li>
       <button
         className={cn(
-          "btn btn-lg border border-solid text-black uppercase text-xs whitespace-nowrap",
-          current === idx ? 'bg-primary border-primary' : 'bg-white border-[#CBD5E0]',
+          "btn btn-lg border border-solid uppercase text-xs whitespace-nowrap",
+          current === idx ? 'bg-primary border-primary' : 'bg-transparent border-whiteAlpha-300 text-whiteAlpha-700',
         )}
         onClick={() => setCurrent(idx)}
       >
@@ -41,14 +41,14 @@ export function CodeExampleCodeViewer({ idx, children }: {
   children: string
 }) {
   const current = useAtomValue(activeCodeExampleAtom)
-  const trimed = R.trim(children)
+  const trimed = "  " + R.trim(children)
   const [copied, setCopied] = useState(false)
   if (idx !== current) {
     return null
   }
   return (
     <div className="code-viewer">
-      <header className="flex flex-row justify-between items-center">
+      <header className="flex flex-row justify-between items-center py-5 px-6">
         <div className={cn("flex flex-row gap-2.5")}>
           <div className={cn("rounded-full bg-[#D9D9D9] w-4 h-4")} />
           <div className={cn("rounded-full bg-[#D9D9D9] w-4 h-4")} />
@@ -66,7 +66,7 @@ export function CodeExampleCodeViewer({ idx, children }: {
               <AnimatePresence mode="sync">
                 <motion.span
                   key="copy"
-                  className="absolute left-0 top-0"
+                  className="absolute left-0 top-0.5"
                   initial={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.25 }}
                   animate={{ opacity: copied ? 0 : 1, scale: copied ? 0 : 1 }}
@@ -99,7 +99,7 @@ export function CodeExampleCodeViewer({ idx, children }: {
           </motion.span>
         </div>
       </header>
-      <main className="py-4 px-0.5">
+      <main className="py-4 px-0.5 bg-whiteAlpha-200 text-whiteAlpha-800">
         <div className={cn("font-mono text-xs whitespace-pre-wrap")} dangerouslySetInnerHTML={{ __html: hls.highlight(trimed, { language: 'rust' }).value }} />
       </main>
     </div>

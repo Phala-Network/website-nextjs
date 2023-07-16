@@ -533,7 +533,7 @@ module.exports = {
           300: '#8AD368',
           400: '#6FB74E',
           500: '#59A138',
-          600: '#438525',
+          600: '#A4C840',
           700: '#3B6727',
           800: '#325422',
           900: '#29451C',
@@ -685,9 +685,9 @@ module.exports = {
           200: '#81e6d9',
           300: '#4fd1c5',
           400: '#38b2ac',
-          500: '#319795',
+          500: '#CDFA50',
           600: '#2c7a7b',
-          700: '#285e61',
+          700: '#7B9630',
           800: '#234e52',
           900: '#1d4044',
         },
@@ -760,7 +760,7 @@ module.exports = {
         '3xl': ['1.875rem', { lineHeight: '2.25rem' }], // 1.875rem = 30px
         '4xl': ['2.25rem', { lineHeight: '2.5rem' }], // 2.25rem = 36px
         '5xl': ['3rem', { lineHeight: '1' }], // 3rem = 48px
-        '6xl': ['3.75rem', { lineHeight: '1' }], // 3.75rem = 60px
+        '6xl': ['3.5rem', { lineHeight: '1' }], // 3.5rem = 56px
         '7xl': ['4.5rem', { lineHeight: '1' }], // 4.5rem = 72px
       }, // END: fontSize
 
