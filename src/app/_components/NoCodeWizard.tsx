@@ -49,6 +49,7 @@ export function NoCodeWizardStepPreview({ idx, alt = '', src }: { idx: number, a
       alt={alt}
       className={cn(
         "pointer-events-none select-none bg-gray-100",
+        "rounded-3xl overflow-hidden",
         current === idx ? 'block' : 'hidden',
       )}
     />
