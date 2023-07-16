@@ -3,12 +3,14 @@
 import React, { useState, useEffect, type ReactNode } from 'react'
 import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react'
 import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules'
-import { useAtom, useAtomValue } from 'jotai'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 
+import { navVisibleAtom } from '@/components/SiteNav'
 import { featuresAtom, activeFeatureAtom, showFixedFeaturePageAtom } from './FeaturePage'
 
 type TypeSwiperClass = SwiperClass & {
   slidesGrid?: number[]
+  previousTranslate?: number 
 }
 
 export function FullPageSwiper({ children }: { children: ReactNode  }) {
@@ -17,6 +19,7 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
   const [swiper, setSwiper] = useState<TypeSwiperClass>()
   const [currentFeature, setCurrentFeature] = useAtom(activeFeatureAtom)
   const [showFixedFeaturePage, setShowFixedFeaturePage] = useAtom(showFixedFeaturePageAtom)
+  const setNavVisible = useSetAtom(navVisibleAtom)
   const features = useAtomValue(featuresAtom)
 
   useEffect(() => {
@@ -68,7 +71,16 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
           setShowFixedFeaturePage(true)
         }
       }}
-      onSetTranslate={(swiper: TypeSwiperClass, translate) => {
+      onSetTranslate={(swiper: TypeSwiperClass, translate: number) => {
+        if (swiper.width < 1280 && swiper.previousTranslate) {
+          if (swiper.previousTranslate >= translate) {
+            setNavVisible(false)
+          } else {
+            setNavVisible(true)
+          }
+        } else {
+          setNavVisible(true)
+        }
         if (translate > -swiper.slidesGrid![freeModeIndex] && freeMode) {
           setFreeMode(false)
         }

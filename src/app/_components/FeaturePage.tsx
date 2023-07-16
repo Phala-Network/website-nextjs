@@ -2,8 +2,6 @@
 
 import React, { type ReactNode } from 'react'
 import { atom, useAtomValue } from 'jotai'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode, Mousewheel } from 'swiper/modules'
 
 import { cn } from '@/lib/utils'
 import DotBackground from '@/components/DotBackground'
@@ -122,9 +120,13 @@ export function FeatureMobileHeadPage() {
   return (
     <div
       className={cn([
-        "flex flex-col pt-32 gap-16 xl:hidden",
+        "flex flex-col pt-44 gap-16 xl:hidden",
       ])}
     >
+      <header className={cn("swiper-no-swiping", "text-center flex flex-col gap-2")}>
+        <h2 className={cn("font-extrabold text-2xl uppercase")}>Smart Contracts.</h2>
+        <h3 className={cn("text-3xl tracking-wide uppercase")}>Now Smarter.</h3>
+      </header>
       <div className="grid grid-cols-12">
         <img
           className={cn("rounded-5xl col-start-2 col-span-10 md:col-start-4 md:col-span-6")}
@@ -132,10 +134,6 @@ export function FeatureMobileHeadPage() {
           alt=""
         />
       </div>
-      <header className={cn("swiper-no-swiping", "text-center flex flex-col gap-2")}>
-        <h2 className={cn("font-extrabold text-2xl uppercase")}>Smart Contracts.</h2>
-        <h3 className={cn("text-3xl tracking-wide uppercase")}>Now Smarter.</h3>
-      </header>
     </div>
   )
 }
@@ -151,7 +149,7 @@ export function FeatureMobileDetailPage({ index } : {
   return (
     <div
       className={cn([
-        "flex flex-col pt-16 gap-5 xl:hidden",
+        "flex flex-col pt-36 gap-10 xl:hidden",
       ])}
     >
       <div className={cn("grid grid-cols-12")}>
@@ -162,7 +160,7 @@ export function FeatureMobileDetailPage({ index } : {
         />
       </div>
       <div className={cn("swiper-no-swiping", "px-8")}>
-        <header className={cn("flex justify-center items-center")}>
+        <header className={cn("flex items-center")}>
           <div className={cn("h-8 w-8")}>
             <img
               src={iconUrl}
