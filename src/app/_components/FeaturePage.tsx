@@ -120,7 +120,7 @@ export function FeatureMobileHeadPage() {
   return (
     <div
       className={cn([
-        "flex flex-col pt-44 gap-16 xl:hidden",
+        "flex flex-col pt-16 gap-16 xl:hidden",
       ])}
     >
       <header className={cn("swiper-no-swiping", "text-center flex flex-col gap-2")}>
@@ -149,7 +149,7 @@ export function FeatureMobileDetailPage({ index } : {
   return (
     <div
       className={cn([
-        "flex flex-col pt-36 gap-10 xl:hidden",
+        "flex flex-col pt-24 gap-10 xl:hidden",
       ])}
     >
       <div className={cn("grid grid-cols-12")}>
@@ -159,7 +159,7 @@ export function FeatureMobileDetailPage({ index } : {
           alt={title}
         />
       </div>
-      <div className={cn("swiper-no-swiping", "px-8")}>
+      <div className={cn("px-8")}>
         <header className={cn("flex items-center")}>
           <div className={cn("h-8 w-8")}>
             <img
@@ -183,9 +183,9 @@ export function FeaturePage({ index }: { index: number }) {
   return (
     <section className={cn("xl:w-screen xl:h-screen overflow-hidden")}>
       {/* PC Page */}
-      <div className="w-full h-full safe-viewport hidden xl:block">
+      <div className="w-full h-full hidden xl:block">
         <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
-        <div className={cn("flex w-full h-full flex-col xl:flex-row px-4")}>
+        <div className={cn("safe-viewport flex w-full h-full flex-col xl:flex-row px-4")}>
           <div className={cn("w-1/2 h-full")}>
             <FeaturePageLeft />
           </div>
@@ -219,13 +219,13 @@ export function FixedFeaturePage() {
   return (
     <div
       className={cn([
-        "fixed inset-0 z-10",
+        "fixed top-0 left-0 w-full h-full z-10",
         show ? null : cn("hidden")
       ])}
     >
-      <section className={cn("hidden xl:block w-screen h-screen overflow-hidden safe-viewport")}>
+      <section className={cn("hidden xl:block w-screen h-screen overflow-hidden")}>
         <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" className={cn("xl:w-1/2")} />
-        <div className={cn("flex w-full h-full flex-col xl:flex-row px-4")}>
+        <div className={cn("safe-viewport flex w-full h-full flex-col xl:flex-row px-4")}>
           <div className={cn("w-1/2 h-full")}>
             <FeaturePageLeft enableSelect={false} />
           </div>

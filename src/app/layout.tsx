@@ -4,7 +4,6 @@ import SiteNav from '@/components/SiteNav'
 
 import 'swiper/css'
 import 'swiper/css/free-mode'
-import 'swiper/css/scrollbar'
 import './globals.css'
 
 export default function RootLayout({
