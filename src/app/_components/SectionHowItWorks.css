@@ -1,0 +1,6 @@
+.work-item:hover {
+  .icon {
+    opacity: 100;
+    transform: translateX(10px);
+  }
+}

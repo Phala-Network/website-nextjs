@@ -21,6 +21,7 @@ import { StatsCard } from './_components/StatsCard'
 import { RealtimeStats } from './_components/RealtimeStats'
 import { FullPageSwiper } from './_components/FullPageSwiper'
 import { FeaturePage, FixedFeaturePage } from './_components/FeaturePage'
+import { SectionHowItWorks } from './_components/SectionHowItWorks'
 import './home.css'
 
 
@@ -900,30 +901,8 @@ function SectionPitchPioneer() {
 // END: Section Pitch Pionner
 
 //
-// Section How It Works
+// Section SectionGlobalDistribution
 //
-
-function SectionHowItWorks() {
-  return (
-    <section id="section-how-it-works" className={cn("pt-16 lg:pt-32")}>
-      <div className={cn("safe-viewport", "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
-        <h2 className={cn(
-          "row-start-1 xl:col-start-6 xl:col-span-10 3xl:col-start-6 3xl:col-span-14",
-          "hidden xl:block",
-          "section-heading"
-        )}>
-          How It Works
-        </h2>
-        <div className={cn(
-          "row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
-          "hidden xl:block",
-        )}>
-          <HowItWorksCarousel />
-        </div>
-      </div>
-    </section>
-  )
-}
 
 function SectionGlobalDistribution() {
   return (
@@ -1108,8 +1087,8 @@ export default async function Home() {
           {/* <SectionPitchAccelerate /> */}
           {/* <SectionPitchInnovate /> */}
           {/* <SectionPitchPioneer /> */}
-          {/* <SectionHowItWorks /> */}
           {/* END: TO FIX */}
+          <SectionHowItWorks />
           <SectionGlobalDistribution />
           <SectionHighlights />
           <SectionSubscription />
