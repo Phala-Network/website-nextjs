@@ -40,7 +40,7 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
     if (swiperEnabled) {
       return
     }
-    if (latest > 0 && latest > lastScrollY && latest - lastScrollY > 10) {
+    if (latest > 0 && latest > lastScrollY && latest - lastScrollY > 10 && latest > window.screen.height / 2) {
       setNavVisible(false)
     } else if (latest < lastScrollY && lastScrollY - latest > 10) {
       setNavVisible(true)
@@ -56,7 +56,10 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
 
   useEffect(() => {
     if (swiper && swiper.activeIndex > 0 && swiper.activeIndex !== currentFeature + 1) {
-      swiper.slideTo(currentFeature + 1)
+      setShowFixedFeaturePage(true)
+      setTimeout(() => {
+        swiper.slideTo(currentFeature + 1)
+      }, 100)
     }
   }, [currentFeature, swiper])
 
@@ -79,7 +82,9 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
       }}
       modules={[FreeMode, Mousewheel]}
       onSlideChangeTransitionEnd={(swiper: TypeSwiperClass) => {
-        setShowFixedFeaturePage(false)
+        setTimeout(() => {
+          setShowFixedFeaturePage(false)
+        }, 100)
         if (swiper.activeIndex < freeModeIndex) {
           setCurrentFeature(swiper.activeIndex - 1)
         } else if (swiper.activeIndex === freeModeIndex) {
@@ -93,7 +98,7 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
         if (swiper.previousIndex === freeModeIndex && swiper.activeIndex === freeModeIndex - 1) {
           return
         }
-        if (swiper.activeIndex >= 1 && swiper.activeIndex < freeModeIndex && !showFixedFeaturePage) {
+        if (swiper.activeIndex >= 1 && swiper.activeIndex < freeModeIndex) {
           setShowFixedFeaturePage(true)
         }
       }}
