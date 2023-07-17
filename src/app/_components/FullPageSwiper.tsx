@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, type ReactNode } from 'react'
+import React, { useState, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react'
 import { FreeMode, Mousewheel } from 'swiper/modules'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
@@ -19,10 +19,11 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
   const [swiper, setSwiper] = useState<TypeSwiperClass>()
   const [swiperEnabled, setSwiperEnabled] = useState(true)
   const [currentFeature, setCurrentFeature] = useAtom(activeFeatureAtom)
-  const [showFixedFeaturePage, setShowFixedFeaturePage] = useAtom(showFixedFeaturePageAtom)
+  const setShowFixedFeaturePage = useSetAtom(showFixedFeaturePageAtom)
   const features = useAtomValue(featuresAtom)
   const freeModeIndex = useMemo(() => features.length + 2, [features])
   const setNavVisible = useSetAtom(navVisibleAtom)
+  const timeout = useRef<number>()
 
   const updateSwiperEnabled = (swiper: TypeSwiperClass) => {
     if (swiper.width < 1280) {
@@ -55,7 +56,7 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
   }, [freeMode, swiper])
 
   useEffect(() => {
-    if (swiper && swiper.activeIndex > 0 && swiper.activeIndex !== currentFeature + 1) {
+    if (currentFeature > 0 && swiper && swiper.activeIndex > 0 && swiper.activeIndex !== currentFeature + 1) {
       setShowFixedFeaturePage(true)
       setTimeout(() => {
         swiper.slideTo(currentFeature + 1)
@@ -82,16 +83,16 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
       }}
       modules={[FreeMode, Mousewheel]}
       onSlideChangeTransitionEnd={(swiper: TypeSwiperClass) => {
-        setTimeout(() => {
-          setShowFixedFeaturePage(false)
-        }, 100)
         if (swiper.activeIndex < freeModeIndex) {
           setCurrentFeature(swiper.activeIndex - 1)
         } else if (swiper.activeIndex === freeModeIndex) {
           setFreeMode(true)
         }
+        if (!timeout.current) {
+          setShowFixedFeaturePage(false)
+        }
       }}
-      onSlideChangeTransitionStart={(swiper: TypeSwiperClass) => {
+      onBeforeTransitionStart={(swiper: TypeSwiperClass) => {
         if (swiper.previousIndex === 0 && swiper.activeIndex === 1) {
           return
         }
@@ -100,6 +101,11 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
         }
         if (swiper.activeIndex >= 1 && swiper.activeIndex < freeModeIndex) {
           setShowFixedFeaturePage(true)
+          window.clearTimeout(timeout.current)
+          timeout.current = window.setTimeout(() => {
+            setShowFixedFeaturePage(false)
+            timeout.current = 0
+          }, 500)
         }
       }}
       onSetTranslate={(swiper: TypeSwiperClass) => {
