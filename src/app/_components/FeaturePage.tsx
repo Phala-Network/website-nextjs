@@ -98,7 +98,7 @@ function FeaturePageLeft({ enableSelect = true}) {
         <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
         <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
       </header>
-      <main className={cn("swiper-no-swiping", "w-full grid grid-cols-10 gap-1")}>
+      <main className={cn(enableSelect ? "swiper-no-swiping" : "", "w-full grid grid-cols-10 gap-1")}>
         {
           features.map((feature: Feature, index: number) => (
             <div className={cn("col-span-10 xl:col-start-2 xl:col-span-9")} key={index.toString()}>
@@ -222,7 +222,8 @@ export function FixedFeaturePage() {
     <div
       className={cn([
         "fixed top-0 left-0 w-full h-full z-10",
-        show ? null : cn("hidden")
+        "pointer-events-none",
+        show ? 'block' : 'hidden'
       ])}
     >
       <section className={cn("hidden xl:block w-screen h-screen overflow-hidden")}>
