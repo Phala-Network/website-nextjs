@@ -129,12 +129,12 @@
 /*  */
 
 .blueprint-card {
-  @apply w-full rounded-xl overflow-hidden p-8 relative transition-all brightness-90;
-  background: #333;
+  @apply w-full rounded-xl overflow-hidden p-8 relative transition-all bg-blackAlpha-200;
 }
 
 .blueprint-card:hover {
-  @apply brightness-125;
+  /* @apply brightness-125; */
+  @apply bg-phalaPurple-50;
 }
 
 .blueprint-card .img {
@@ -143,6 +143,26 @@
 }
 .blueprint-card:hover .img {
   @apply -rotate-12;
+}
+
+.blueprint-card .title {
+  @apply text-lg xl:text-xl text-blackAlpha-800 hover:text-phalaPurple-500 font-black uppercase transition-colors;
+}
+
+.blueprint-card:hover .title {
+  @apply transition-colors text-phalaPurple-500;
+}
+
+.blueprint-card .label {
+  @apply text-blackAlpha-700 bg-blackAlpha-200 text-xs uppercase px-2.5 py-1 bg-gray-100 rounded-[6px] whitespace-nowrap transition-colors;
+}
+
+.blueprint-card:hover .label {
+  @apply transition-colors text-phalaPurple-500 bg-phalaPurple-100;
+}
+
+.blueprint-card .description {
+  @apply text-sm text-blackAlpha-700 leading-normal mt-2.5;
 }
 
 /* .section-global-distribution */

@@ -191,11 +191,7 @@ function SectionPitchIntro() {
           <h4 className="bg-[#f0f0f0] rounded-tl-3xl rounded-bl-3xl font-black py-4 px-10">FULL CODE</h4>
         </div>
       </div>
-      <div
-        className={cn(
-          "flex flex-col items-center gap-1"
-        )}
-      >
+      <div className={cn("flex flex-col items-center gap-1")}>
         <div className="text-2xl lg:text-4xl">WE GOT YOU</div>
         <div className="text-5xl lg:text-[3.5rem] font-black">COVERED</div>
       </div>
@@ -224,22 +220,22 @@ function BlueprintCard({ title, children, href, tags, illustration, live }: { ti
   return (
     <div className="blueprint-card">
       <div className="flex flex-col justify-between h-full z-10 relative">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2.5">
           {href ? (
-            <a href={href} className={cn("text-2xl text-white font-black uppercase hover:text-primary")} target="_blank" rel="noopener">{title}</a>
+            <a href={href} className="title" target="_blank" rel="noopener">{title}</a>
           ) : (
-            <h4 className={cn("text-2xl text-white font-black uppercase")}>{title}</h4>
+            <h4 className="title">{title}</h4>
           )}
           {tags && tags.length ? (
           <ul className={"flex flex-row flex-wrap gap-2"}>
             {tags.map((tag, idx) => (
               <li key={idx}>
-                <span className={"text-secondary text-xs uppercase px-2.5 py-1 bg-gray-100 rounded-[6px] whitespace-nowrap"}>{tag}</span>
+                <span className="label">{tag}</span>
               </li>
             ))}
           </ul>
           ) : null}
-          <div className={cn("text-sm text-whiteAlpha-700 leading-normal")}>{children}</div>
+          <div className="description">{children}</div>
         </div>
         {live ? (
           href ? (
@@ -247,18 +243,18 @@ function BlueprintCard({ title, children, href, tags, illustration, live }: { ti
               <img
                 src="/icons/gear.svg"
                 alt=""
-                className={cn("svg-primary untanglable w-8 h-8")}
+                className={cn("untanglable w-8 h-8 opacity-80")}
               />
-              <span className={cn("text-primary text-base font-extrabold")}>LIVE !</span>
+              <span className={cn("text-blackAlpha-800 text-base font-extrabold")}>LIVE !</span>
             </a>
           ) : (
             <div className={cn("flex flex-row items-center gap-3.5 mt-6")}>
               <img
                 src="/icons/gear.svg"
                 alt=""
-                className={cn("svg-primary untanglable w-8 h-8")}
+                className={cn("untanglable w-8 h-8 opacity-80")}
               />
-              <span className={cn("text-primary text-base font-extrabold")}>LIVE !</span>
+              <span className={cn("text-blackAlpha-800 text-base font-extrabold")}>LIVE !</span>
             </div>
           )
         ) : null}
@@ -281,26 +277,38 @@ function SectionPitchAccelerate() {
         <DotBackground dotColor="#6b3eca" bgColor="transparent" />
         <div className={cn(
           "safe-viewport",
-          "grid gap-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
+          "grid gap--x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
           "pt-16 pb-24 lg:pt-32 lg:pb-52 px-0"
         )}>
           <header
             className={cn(
-              "col-span-4 col-start-2 xl:col-start-8 xl:col-span-6 3xl:col-start-10 text-white flex flex-col items-center gap-3 xl:gap-6",
+              "row-start-1 col-span-4 col-start-2 xl:col-start-8 xl:col-span-6 3xl:col-start-10 text-white flex flex-col items-center gap-3 xl:gap-6",
             )}
           >
             <h2 className="text-4xl xl:text-6xl font-black uppercase">Accelerate</h2>
             <p className={cn("text-base xl:text-2xl text-center")}>Scale your idea with prebuilt blueprints in minutes</p>
           </header>
 
+          <div
+            className="row-start-2 col-span-full flex justify-center relative mt-4 -bottom-[2px]"
+          >
+            <svg width="149" height="229" viewBox="0 0 149 229">
+              <path id="Path" fill="#ffffff" stroke="none" d="M -0.5 228 L -10 228 L -10 228 L 151 228 L 152 228 L 149.5 228 C 109.735001 228 77.5 195.764008 77.5 156 L 77.5 152 L 71.5 152 L 71.5 156 C 71.5 195.764008 39.2645 228 -0.5 228 Z"/>
+              <path id="path1" fill="#ffffff" stroke="none" d="M 85.9356 46.297104 L 60.869904 71.362793 L 57.429497 70.9991 C 54.908997 67.087097 53.804298 62.429901 54.299103 57.802597 C 54.7939 53.175293 56.858398 48.856995 60.149002 45.566406 C 63.439697 42.275696 67.758003 40.211197 72.3853 39.7164 C 77.012604 39.221603 81.669701 40.326401 85.581802 42.846893 L 85.9356 46.297104 Z"/>
+              <path id="path2" fill="#ffffff" stroke="none" d="M 88.936302 74.375305 C 85.642601 77.6642 81.321701 79.725708 76.6931 80.216705 C 72.064499 80.707611 67.407303 79.598297 63.497002 77.073502 L 63.133301 73.633102 L 88.198997 48.567398 L 91.639 48.931091 C 94.165001 52.842407 95.274002 57.5009 94.781998 62.1306 C 94.290001 66.760406 92.226997 71.081909 88.936302 74.375305 Z"/>
+              <path id="path3" fill="#ffffff" stroke="none" d="M 91.595001 42.925797 C 88.2258 39.531296 83.925201 37.212891 79.237602 36.264404 C 74.550003 35.315903 69.686401 35.7798 65.262703 37.597595 C 60.838997 39.415298 57.054298 42.505005 54.387802 46.475296 C 51.721401 50.445602 50.293301 55.117996 50.284401 59.900604 C 50.275398 64.683105 51.686001 69.360809 54.337502 73.341095 C 56.988998 77.321411 60.762199 80.425201 65.179001 82.259491 C 69.595901 84.093811 74.457703 84.575989 79.148903 83.645111 C 83.839996 82.714111 88.1493 80.411896 91.530998 77.029999 C 96.052002 72.51059 98.597 66.383499 98.609001 59.991104 C 98.621002 53.598694 96.098999 47.462097 91.595001 42.925797 Z M 90.248001 88.378296 L 83.495201 91.169998 L 79.641899 103.024994 L 69.8172 103.024994 L 65.5756 91.189606 L 58.8423 88.378296 L 49.0126 93.371796 L 47.720001 94.045197 L 40.794998 87.120102 L 46.166901 75.752106 L 43.365398 69.008911 L 31.515701 65.12619 L 31.515701 55.311203 L 43.3507 51.059906 L 46.152199 44.326599 L 40.505001 33.2043 L 47.43 26.279205 L 58.793198 31.656097 L 65.521599 28.859497 L 68.961998 18.381104 L 69.409203 17 L 79.194702 17 L 83.450897 28.844803 L 90.189003 31.636398 L 100.018997 26.647797 L 101.311996 25.979401 L 108.237 32.904495 L 102.860001 44.282303 L 105.637001 51.025497 L 117.505997 54.913101 L 117.505997 64.698608 L 105.676003 68.945007 L 102.864998 75.678406 L 108.530998 86.810501 L 101.611 93.730591 L 90.248001 88.378296 Z"/>
+              <path id="path4" fill="none" stroke="#ffffff" strokeWidth="6" d="M 131.5 60 C 131.5 91.480225 105.980232 117 74.5 117 C 43.019768 117 17.5 91.480225 17.5 60 C 17.5 28.519775 43.019768 3 74.5 3 C 105.980232 3 131.5 28.519775 131.5 60 Z"/>
+              <path id="path5" fill="none" stroke="#ffffff" strokeWidth="6" d="M 74.5 117 L 74 228"/>
+            </svg>
+          </div>
+
           {/* Steps for blueprints */}
           <div className={cn(
-            "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
-            "mt-28",
+            "row-start-3 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
           )}>
-            <div className="w-full flex flex-row xl:h-[620px]">
-              <div className={cn("rounded-3xl overflow-hidden flex flex-col xl:flex-row bg-white p-2.5 xl:p-0")}>
-                <div className={cn("xl:aspect-[879/620] relative xl:w-[70%]")}>
+            <div className="w-full flex flex-row">
+              <div className={cn("rounded-3xl overflow-hidden flex flex-col xl:flex-row bg-white p-2.5")}>
+                <div className={cn("xl:aspect-[1800/1240] relative xl:w-[70%]")}>
                   <NoCodeWizardStepPreview
                     idx={0}
                     src="/home/nocode-workflow-01-pick.jpg"
@@ -350,37 +358,76 @@ function SectionPitchAccelerate() {
             </div>
           </div>
 
+          <div className={cn(
+            "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+            "flex flex-row justify-center",
+          )}>
+            <svg width="150" height="224" viewBox="0 0 150 224" className="scale-[101%]">
+              <path id="Path" fill="#ffffff" stroke="none" d="M 110 0 L 159 0 L 159 0 L -3 0 L -3.000007 0 L 40 0 C 57.6731 0 72 14.326904 72 32 L 72 76 L 78 76 L 78 32 C 78 14.326904 92.326897 0 110 0 Z"/>
+              <path id="path1" fill="#ffffff" stroke="none" d="M 6e-05 224 L -3.00002 224 L -2 224 L 153 224 L 153 224 L 150 224 C 110.236 224 78.000099 191.764999 78.000099 152 L 78.000099 148 L 72.000099 148 L 72.000099 152 C 72.000099 191.764999 39.764599 224 6e-05 224 Z"/>
+              <path id="path2" fill="none" stroke="#ffffff" stroke-width="6" d="M 75 0 L 75 224"/>
+            </svg>
+          </div>
+
           {/* CTA: Get your own lensAPI oracle now */}
           <div className={cn(
-            "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
+            "row-start-4 col-span-full xl:col-start-7 xl:col-span-8 3xl:col-start-9",
+            "px-10"
           )}>
             <a
               href="https://bricks.phala.network/?source=get-your-own"
               target="_blank"
               rel="noopener"
               className={cn(
-                "btn btn-third flex-row w-full bg-[#6C37C9] py-5 px-10 gap-14 items-center justify-between"
+                "btn btn-third flex-row w-full bg-[#6C37C9] py-5 px-5 xl:px-10 gap-6 items-center justify-center",
+                "mt-10"
               )}
             >
               <span className="text-sm xl:text-lg font-bold uppercase">Get your own LensAPI oracle now</span>
               <img
                 src="/icons/right-arrow.svg"
                 alt=""
-                className="svg-white ml-5 inline-block w-6 h-6"
+                className="svg-white inline-block w-5 h-5"
                 />
             </a>
           </div>
 
           {/* Explore all of our blueprints */}
           <div className={cn(
-            "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18"
+            "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
           )}>
-            <div className={cn("bg-white rounded-3xl p-9 xl:p-16")}>
-              <header className={cn("mb-16 flex flex-col gap-3")}>
-                <h3 className={cn("text-4xl text-blackAlpha-900 font-black uppercase")}>Explore all of our blueprints</h3>
-                <p className={cn("text-xl text-blackAlpha-700")}>Explore the marketplace today to find your ideal blueprints, streamlining your development process.</p>
+            <div
+              className={cn(
+                "bg-white rounded-3xl p-4 xl:p-16",
+                "grid grid-cols-1 xl:grid-cols-3 gap-x-5",
+              )}
+            >
+              <header className={cn("flex flex-col gap-3 xl:gap-5 py-7")}>
+                <h3 className={cn("text-2xl xl:text-4xl text-blackAlpha-900 font-black uppercase")}>Explore all of our blueprints</h3>
+                <p className={cn("text-base xl:text-lg text-blackAlpha-700")}>Explore the marketplace today to find your ideal blueprints, streamlining your development process.</p>
+                <a
+                  href="https://bricks.phala.network"
+                  className={cn(
+                    "btn btn-third flex-row w-full py-5 px-5 xl:px-10 gap-6 items-center justify-center",
+                    "hidden xl:flex",
+                  )}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span className="font-bold uppercase">Learn about blueprints</span>
+                  <img
+                    src="/icons/right-arrow.svg"
+                    alt=""
+                    className="svg-white inline-block w-5 h-5"
+                    />
+                </a>
               </header>
-              <div className={cn("grid grid-cols-1 xl:grid-cols-2 gap-5")}>
+              <div
+                className={cn(
+                  "col-span-2",
+                  "grid grid-cols-1 xl:grid-cols-2 gap-5"
+                )}
+              >
                 <BlueprintCard
                   title="LensAPI Oracle"
                   illustration="/home/blueprint-lens-api-oracle.png"
@@ -420,43 +467,89 @@ function SectionPitchAccelerate() {
                 >
                   Integrate your smart contract with a customized ChatGPT oracle for intelligent automation. Monitor blockchain events and initiate user-driven actions, create content on decentralized social platforms, and unlock more automated capabilities.
                 </BlueprintCard>
+                <a
+                  href="https://bricks.phala.network"
+                  className={cn(
+                    "btn btn-third flex-row w-full py-5 px-5 xl:px-10 gap-6 items-center justify-center",
+                    "xl:hidden mb-5",
+                  )}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span className="font-bold uppercase">Learn about blueprints</span>
+                  <img
+                    src="/icons/right-arrow.svg"
+                    alt=""
+                    className="svg-white inline-block w-5 h-5"
+                    />
+                </a>
               </div>
-              <a
-                href="https://bricks.phala.network"
-                className={cn("btn btn-primary btn-lg mt-10 font-bold uppercase w-full py-5 px-10")}
-                target="_blank"
-                rel="noopener"
-              >
-                Learn about blueprints
-                <img
-                  src="/icons/right-arrow.svg"
-                  alt=""
-                  className="svg-black ml-5 inline-block w-6 h-6"
-                  />
-              </a>
             </div>
           </div>
-
         </div>
       </Squircle>
 
-      <div className={cn(
-        "flex flex-row justify-center items-center my-16 lg:my-32"
-        // "row-start-5 xl:col-start-9 xl:col-span-10 3xl:col-start-12 3xl:col-span-10"
-      )}>
-        <a
-          href="https://github.com/Phala-Network/phala-blueprint-proposals"
-          className="btn btn-primary btn-center-icon btn-xl uppercase inline-flex"
-          target="_blank"
-          rel="noopener"
-        >
-          Propose now
-          <img
-            src="/icons/right-arrow.svg"
-            alt=""
-            className="svg-black ml-5 icon w-4 h-4"
-          />
-        </a>
+      <div className="w-screen overflow-hidden -mt-[1px] relative">
+        <div className={cn(
+          "safe-viewport",
+          "grid gap--x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
+          "mb-44"
+        )}>
+          <div className={cn("row-start-1 col-start-1 col-span-5 xl:col-start-9 xl:col-span-3", "z-0 untanglable")}>
+            <svg width="169" height="396" viewBox="0 0 169 396">
+              <path fill="none" stroke="#7f4af0" strokeWidth="6" strokeLinecap="round" d="M 75 64 L 75 304.5 C 75 337.636993 101.862999 364.5 135 364.5 L 165.5 364.5"/>
+              <path fill="#7f4af0" stroke="none" d="M 150.003006 0 L 159 0 L 159 0 L -3 0 L -1.999991 0 L 0.04014 0 C 39.8046 0 72.0401 32.235504 72.0401 72 L 72.0401 76 L 78.003098 76 L 78.003098 72 C 78.003098 32.235504 110.238998 0 150.003006 0 Z"/>
+            </svg>
+          </div>
+
+          <div className="row-start-1 col-start-3 col-span-auto xl:col-start-11 flex flex-col justify-end h-full">
+            <div className="bg-phalaPurple-600 h-16 w-screen rounded-l-xl" />
+          </div>
+
+          <div className={cn(
+            "row-start-1 col-start-3 col-span-4 xl:col-start-11 xl:col-span-9 flex flex-col justify-end h-full",
+            "z-[1]",
+          )}>
+            <div className="text-3xl xl:text-6xl text-phalaPurple-500 font-black tracking-tight mb-10">
+              <div>INSPIRE</div>
+              <div>THE NEXT BLUEPRINT</div>
+            </div>
+            <a
+              href="https://github.com/Phala-Network/phala-blueprint-proposals"
+              className="bg-phalaPurple-500 text-white uppercase text-sm xl:text-lg flex flex-row gap-5 items-center h-16 rounded-xl px-5 xl:px-10 py-5 btn-with-arrow"
+              target="_blank"
+              rel="noopener"
+            >
+              Propose now
+              <MdArrowForward className="untanglable text-white h-5 w-5 arrow inline-block" />
+            </a>
+          </div>
+        </div>
+
+        <div className={cn(
+          // "absolute left-0 bottom-0 xl:top-[12.2rem]",
+          "absolute left-0 bottom-0",
+          "safe-viewport",
+          "grid gap--x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
+        )}>
+          <div className={cn("row-start-1 hidden xl:block xl:col-span-8 3xl:col-span-10", "z-0 untanglable")}>
+            <svg width="613" height="377" viewBox="0 0 613 377" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#cdfa50" stroke="none" d="M 463.497009 377 L 454.5 377 L 455 377 L 616 377 L 615.5 377 L 613.460022 377 C 573.695007 377 541.460022 344.765015 541.460022 305 L 541.460022 301 L 535.497009 301 L 535.497009 305 C 535.497009 344.765015 503.260986 377 463.497009 377 Z"/>
+              <path fill="none" stroke="#cdfa50" strokeWidth="6" strokeLinecap="round" d="M 3 3 L 497.439301 3 C 520.116455 3 538.5 29.786591 538.5 62.829559 L 538.5 354"/>
+            </svg>
+          </div>
+
+          <div className={cn("row-start-1 col-start-1 col-end-2 xl:hidden")}>
+            <svg width="135" height="130" viewBox="0 0 135 130" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#cdfa50" stroke="none" d="M 75 54 L 75 74 C 75 104.928001 49.928001 130 19 130 L 135 130 C 104.072006 130 79 104.928001 79 74 L 79 54 L 75 54 Z"/>
+              <path fill="none" stroke="#cdfa50" stroke-width="4" stroke-linecap="round" d="M 2 2 L 45 2 C 62.672997 2 77 16.326904 77 34 L 77 128"/>
+            </svg>
+          </div>
+
+          <div className="row-start-1 col-end-2 xl:col-end-6 flex flex-col justify-start items-end h-full z-[1]">
+            <div className="bg-[#cdfa50] h-1 xl:h-1.5 w-screen rounded-l-xl" />
+          </div>
+        </div>
       </div>
 
     </section>
