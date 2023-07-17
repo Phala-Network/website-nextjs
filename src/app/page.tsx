@@ -177,9 +177,9 @@ function SectionPitchIntro() {
             viewBox="0 0 93 63"
             fill="transparent"
           >
-            <path d="M10 31.5H84.5" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
-            <path d="M62.002 57.0034L86.5894 32.4159C87.3705 31.6349 87.3705 30.3685 86.5894 29.5875L62.002 5" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
-            <path d="M31.0017 57.0034L6.41421 32.4159C5.63317 31.6349 5.63317 30.3685 6.41421 29.5875L31.0017 5" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+            <path d="M10 31.5H84.5" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
+            <path d="M62.002 57.0034L86.5894 32.4159C87.3705 31.6349 87.3705 30.3685 86.5894 29.5875L62.002 5" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
+            <path d="M31.0017 57.0034L6.41421 32.4159C5.63317 31.6349 5.63317 30.3685 6.41421 29.5875L31.0017 5" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
           </svg>
         </div>
         <div
@@ -204,9 +204,9 @@ function SectionPitchIntro() {
           <circle cx="886" cy="22" r="12" fill="#CDFA50"/>
           <circle cx="940" cy="22" r="12" fill="#7F4af0"/>
           <circle cx="994" cy="22" r="12" fill="black"/>
-          <path d="M940 28V318.5" stroke="#7F52FA" stroke-width="4" stroke-linecap="round"/>
-          <path d="M886 33V126C886 166.317 853.317 199 813 199H2" stroke="#CDFA50" stroke-width="4" stroke-linecap="round"/>
-          <path d="M994 33V126C994 166.317 1026.68 199 1067 199H1878" stroke="black" stroke-width="4" stroke-linecap="round"/>
+          <path d="M940 28V318.5" stroke="#7F52FA" strokeWidth="4" strokeLinecap="round"/>
+          <path d="M886 33V126C886 166.317 853.317 199 813 199H2" stroke="#CDFA50" strokeWidth="4" strokeLinecap="round"/>
+          <path d="M994 33V126C994 166.317 1026.68 199 1067 199H1878" stroke="black" strokeWidth="4" strokeLinecap="round"/>
           <path d="M938 177V197C938 227.928 912.928 253 882 253H998C967.072 253 942 227.928 942 197V177H938Z" fill="#7f4af0"/>
         </svg>
       </div>
@@ -691,7 +691,7 @@ function SectionPitchInnovate() {
 
           <div className={cn(
             "row-start-5 xl:col-start-7 xl:col-span-8 3xl:col-start-9 3xl:col-span-8",
-            "mt-8"
+            "my-8",
           )}>
             <a
               href="https://github.com/Phala-Network/awesome-phat-contracts"
@@ -707,31 +707,41 @@ function SectionPitchInnovate() {
       </Squircle>
 
       <div className={cn(
+        "safe-viewport",
         "invisible xl:visible",
+        "py-20"
         // "row-start-6 xl:col-start-3 xl:col-span-12 3xl:col-start-6",
         // "section-chat-with-us pt-72 pb-48 3xl:pt-64"
       )}>
         <div className="flex flex-col gap-5 xl:gap-10">
-          <h4 className="font-extrabold text-2xl uppercase">Develop and explore your ideas with us</h4>
+          <div className="grid xl:grid-cols-20 3xl:grid-cols-24">
+            <div className="col-start-1 col-span-8 3xl:col-span-7">
+              <h4 className="text-right font-extrabold text-2xl uppercase">Develop and explore your ideas with us</h4>
+            </div>
+          </div>
           <ul className="flex flex-row relative">
             <li className="relative -right-24 z-[3]"><Avatar src="/home/avatar-h4x.jpg" name="Hang" /></li>
             <li className="relative -right-16 z-[2]"><Avatar src="/home/avatar-zoe.jpg" name="Zoe" /></li>
             <li className="relative -right-8 z-[1]"><Avatar src="/home/avatar-dan.jpg" name="Dan" /></li>
             <li><Avatar src="/home/avatar-shelven.jpg" name="Shelven" /></li>
           </ul>
-          <a
-            href="https://discord.gg/2cvTKmF9uh"
-            className="btn btn-lg btn-third btn-center-icon justify-between uppercase"
-            target="_blank"
-            rel="noopener"
-          >
-            Chat Now!
-            <img
-              src="/icons/right-arrow.svg"
-              alt=""
-              className="svg-white icon w-4 h-4"
-            />
-          </a>
+          <div className="grid xl:grid-cols-20 3xl:grid-cols-24">
+            <div className="col-start-1 col-span-8 3xl:col-span-7">
+              <a
+                href="https://discord.gg/2cvTKmF9uh"
+                className="btn btn-lg btn-third btn-center-icon justify-between uppercase"
+                target="_blank"
+                rel="noopener"
+              >
+                Chat Now!
+                <img
+                  src="/icons/right-arrow.svg"
+                  alt=""
+                  className="svg-white icon w-4 h-4"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
