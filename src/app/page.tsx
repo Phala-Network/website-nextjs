@@ -403,8 +403,8 @@ function SectionPitchAccelerate() {
               )}
             >
               <header className={cn("flex flex-col gap-3 xl:gap-5 py-7")}>
-                <h3 className={cn("text-2xl xl:text-4xl text-blackAlpha-900 font-black uppercase")}>Explore all of our blueprints</h3>
-                <p className={cn("text-base xl:text-lg text-blackAlpha-700")}>Explore the marketplace today to find your ideal blueprints, streamlining your development process.</p>
+                <h3 className={cn("text-2xl xl:text-4xl text-blackAlpha-900 font-black uppercase ml-1")}>Explore all of our blueprints</h3>
+                <p className={cn("text-base xl:text-lg text-blackAlpha-700 ml-1.5")}>Explore the marketplace today to find your ideal blueprints, streamlining your development process.</p>
                 <a
                   href="https://bricks.phala.network"
                   className={cn(
@@ -493,16 +493,24 @@ function SectionPitchAccelerate() {
         <div className={cn(
           "safe-viewport",
           "grid gap--x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
-          "mb-44"
+          "mb-36 xl:mb-44"
         )}>
-          <div className={cn("row-start-1 col-start-1 col-span-5 xl:col-start-9 xl:col-span-3", "z-0 untanglable")}>
+          <div className={cn("row-start-1 hidden xl:block xl:col-start-9 xl:col-span-3", "z-0 untanglable")}>
             <svg width="169" height="396" viewBox="0 0 169 396">
               <path fill="none" stroke="#7f4af0" strokeWidth="6" strokeLinecap="round" d="M 75 64 L 75 304.5 C 75 337.636993 101.862999 364.5 135 364.5 L 165.5 364.5"/>
               <path fill="#7f4af0" stroke="none" d="M 150.003006 0 L 159 0 L 159 0 L -3 0 L -1.999991 0 L 0.04014 0 C 39.8046 0 72.0401 32.235504 72.0401 72 L 72.0401 76 L 78.003098 76 L 78.003098 72 C 78.003098 32.235504 110.238998 0 150.003006 0 Z"/>
             </svg>
           </div>
 
-          <div className="row-start-1 col-start-3 col-span-auto xl:col-start-11 flex flex-col justify-end h-full">
+          <div className={cn("row-start-1 col-start-1 md:col-start-2 col-span-5 xl:hidden", "z-0 untanglable")}>
+            <svg width="225" height="261" viewBox="0 0 225 261">
+              <path fill="#7f52fa" stroke="none" d="M 56 76 L 56 56 C 56 25.072098 30.927898 0 0 0 L 116 0 C 85.071999 0 60 25.072098 60 56 L 60 76 L 56 76 Z"/>
+              <path fill="none" stroke="#7f52fa" stroke-width="4" d="M 58 0 L 58 207.5 C 58 222.136002 69.864502 234 84.5 234 L 84.5 234"/>
+              <path fill="none" stroke="#7f52fa" stroke-width="4" d="M 84 234 L 296.820496 234"/>
+            </svg>
+          </div>
+
+          <div className="row-start-1 col-start-3 col-span-auto xl:col-start-11 flex flex-col justify-end h-full untanglable">
             <div className="bg-phalaPurple-600 h-16 w-screen rounded-l-xl" />
           </div>
 
@@ -510,7 +518,7 @@ function SectionPitchAccelerate() {
             "row-start-1 col-start-3 col-span-4 xl:col-start-11 xl:col-span-9 flex flex-col justify-end h-full",
             "z-[1]",
           )}>
-            <div className="text-3xl xl:text-6xl text-phalaPurple-500 font-black tracking-tight mb-10">
+            <div className="text-3xl xl:text-6xl text-phalaPurple-500 font-black tracking-tight mb-10 pl-1">
               <div>INSPIRE</div>
               <div>THE NEXT BLUEPRINT</div>
             </div>
@@ -527,26 +535,26 @@ function SectionPitchAccelerate() {
         </div>
 
         <div className={cn(
-          // "absolute left-0 bottom-0 xl:top-[12.2rem]",
-          "absolute left-0 bottom-0",
+          "absolute left-0 bottom-0 xl:top-[12.2rem]",
           "safe-viewport",
           "grid gap--x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
+          "untanglable"
         )}>
-          <div className={cn("row-start-1 hidden xl:block xl:col-span-8 3xl:col-span-10", "z-0 untanglable")}>
-            <svg width="613" height="377" viewBox="0 0 613 377" xmlns="http://www.w3.org/2000/svg">
+          <div className={cn("row-start-1 hidden xl:block xl:col-start-1 xl:col-span-8 3xl:col-span-10", "z-0")}>
+            <svg width="613" height="377" viewBox="0 0 613 377">
               <path fill="#cdfa50" stroke="none" d="M 463.497009 377 L 454.5 377 L 455 377 L 616 377 L 615.5 377 L 613.460022 377 C 573.695007 377 541.460022 344.765015 541.460022 305 L 541.460022 301 L 535.497009 301 L 535.497009 305 C 535.497009 344.765015 503.260986 377 463.497009 377 Z"/>
               <path fill="none" stroke="#cdfa50" strokeWidth="6" strokeLinecap="round" d="M 3 3 L 497.439301 3 C 520.116455 3 538.5 29.786591 538.5 62.829559 L 538.5 354"/>
             </svg>
           </div>
 
-          <div className={cn("row-start-1 col-start-1 col-end-2 xl:hidden")}>
-            <svg width="135" height="130" viewBox="0 0 135 130" xmlns="http://www.w3.org/2000/svg">
+          <div className={cn("row-start-1 col-start-1 col-span-3 md:col-start-2 xl:hidden", "z-0")}>
+            <svg width="135" height="130" viewBox="0 0 135 130">
               <path fill="#cdfa50" stroke="none" d="M 75 54 L 75 74 C 75 104.928001 49.928001 130 19 130 L 135 130 C 104.072006 130 79 104.928001 79 74 L 79 54 L 75 54 Z"/>
-              <path fill="none" stroke="#cdfa50" stroke-width="4" stroke-linecap="round" d="M 2 2 L 45 2 C 62.672997 2 77 16.326904 77 34 L 77 128"/>
+              <path fill="none" stroke="#cdfa50" strokeWidth="4" strokeLinecap="round" d="M 2 2 L 45 2 C 62.672997 2 77 16.326904 77 34 L 77 128"/>
             </svg>
           </div>
 
-          <div className="row-start-1 col-end-2 xl:col-end-6 flex flex-col justify-start items-end h-full z-[1]">
+          <div className={cn("row-start-1 col-start-1 col-span-1 relative left-[-50%] md:left-0 xl:col-end-6 flex flex-col justify-start items-end h-full", "z-[1]")}>
             <div className="bg-[#cdfa50] h-1 xl:h-1.5 w-screen rounded-l-xl" />
           </div>
         </div>
