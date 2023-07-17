@@ -14,8 +14,8 @@ export function NoCodeWizardStepTrigger({ idx, children }: { idx: number, childr
   return (
     <button
       className={cn(
-        "btn btn-lg w-full text-left border border-blackAlpha-100 border-solid",
-        current === idx ? 'btn-primary font-medium' : 'btn-secondary font-light',
+        "btn btn-lg rounded w-full text-left border border-blackAlpha-100 border-solid",
+        current === idx ? 'btn-third font-medium' : 'btn-secondary font-light',
       )}
       onClick={() => setCurrent(idx)}
     >
