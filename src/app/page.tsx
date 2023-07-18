@@ -88,7 +88,7 @@ function SectionHero() {
           className="object-cover aspect-[3840/1980] h-full min-w-full"
           autoPlay muted loop playsInline
         >
-          <source src="https://nft-assets.phala.world/network/bg20230605.mp4" type="video/mp4" />
+          <source src="https://nft-assets.phala.world/network/bg20230718.mp4" type="video/mp4" />
           <source src="https://nft-assets.phala.world/network/bg20230605.webm" type="video/webm" />
         </video>
       </div>
