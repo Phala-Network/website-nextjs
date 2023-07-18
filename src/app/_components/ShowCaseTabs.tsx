@@ -2,6 +2,7 @@
 
 import React, { type ReactNode } from 'react'
 import { atom, useAtomValue } from 'jotai'
+import { useHover } from 'react-aria'
 
 import { cn } from '@/lib/utils'
 import Details from '@/components/Details'
@@ -9,27 +10,35 @@ import Squircle from '@/components/Squircle'
 
 export const activeShowCaseAtom = atom(0)
 
-export function ShowCaseTab({ idx, summary, live, children }: {
+export function ShowCaseTab({ idx, children }: {
   idx: number
-  summary: string
-  live?: boolean
   children?: ReactNode
 }) {
+  let { hoverProps, isHovered } = useHover({});
   const isActive = useAtomValue(activeShowCaseAtom) === idx
+
+  let bgColor = (function() {
+    if (isActive) {
+      if (isHovered) {
+        return '#A4C840'
+      }
+      return '#CDFA50'
+    } else {
+      if (isHovered) {
+      }
+      return '#526420'
+    }
+  })();
+
   return (
-    <li>
-      <Squircle cornerRadius={24} fill={isActive ? "#CDFA50" : "#526420"}>
+    <li {...hoverProps}>
+      <Squircle cornerRadius={24} fill={bgColor} className="transition-all">
         <Details
           className={cn("blueprint-details", "cursor-pointer")}
           idx={idx}
           theIdxAtom={activeShowCaseAtom}
         >
-          <summary>{summary}</summary>
-          {children ? (
-          <div className="body">
-            {children}
-          </div>
-          ) : null}
+          <summary className="flex flex-row gap-3.5 items-center">{children}</summary>
         </Details>
       </Squircle>
     </li>
@@ -62,7 +71,7 @@ export function ShowCaseTabPanel({ idx, title, src, tags, href, children }: {
           {tags && tags.length > 0 ? (
             <ul className={cn("flex flex-row gap-4 flex-wrap")}>
               {tags.map((tag, idx) => (
-                <li key={idx} className={cn("text-xs uppercase px-4 py-2.5 rounded-[18px] whitespace-nowrap bg-phat-700 text-phat-500")}>
+                <li key={idx} className={cn("text-xs uppercase px-4 py-2.5 rounded-[18px] whitespace-nowrap bg-teal-700 text-teal-500")}>
                   {tag}
                 </li>
               ))}
