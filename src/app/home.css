@@ -78,10 +78,14 @@
   @apply text-phat-600 ;
 }
 
-.blueprint-details.active summary,
+.blueprint-details.active summary
+{
+  @apply text-black transition-all;
+}
+
 .blueprint-details:hover summary
 {
-  @apply text-black;
+  @apply text-whiteAlpha-900 transition-all;
 }
 
 .blueprint-details .body {
