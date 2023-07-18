@@ -158,7 +158,7 @@ function SectionHero() {
 
 function SectionPitchIntro() {
   return (
-    <section className={cn('pt-16 lg:pt-32 flex flex-col gap-6 lg:gap-12')}>
+    <section className={cn("swiper-no-swiping", "pt-16 lg:pt-32 flex flex-col gap-6 lg:gap-12")}>
       <div className="text-2xl lg:text-3xl text-center">FROM</div>
       <div className={cn("flex flex-col lg:flex-row lg:items-center gap-2.5")}>
         <div
@@ -272,7 +272,7 @@ function BlueprintCard({ title, children, href, tags, illustration, live }: { ti
 
 function SectionPitchAccelerate() {
   return (
-    <section id="section-pitch-accelerate" className="relative">
+    <section id="section-pitch-accelerate" className="swiper-no-swiping relative">
       <Squircle cornerRadius={48} fill="#7f4af0">
         <DotBackground dotColor="#6b3eca" bgColor="transparent" />
         <div className={cn(
@@ -570,7 +570,7 @@ function Avatar({ src, name }: { src: string, name: string }) {
 
 function SectionPitchInnovate() {
   return (
-    <section id="section-pitch-innovate" className="relative z-0">
+    <section id="section-pitch-innovate" className="swiper-no-swiping relative z-0">
       <Squircle cornerRadius={48} fill="#d0f964">
         <DotBackground dotColor="#afd153" bgColor="transparent" />
         <div className={cn(
@@ -981,7 +981,7 @@ function SectionPitchInnovate() {
 
 function SectionPitchPioneer() {
   return (
-    <section id="section-pitch-pionner">
+    <section id="section-pitch-pionner" className="swiper-no-swiping">
       <Squircle cornerRadius={48} fill="#333">
       <DotBackground dotColor="#2b2b2b" bgColor="transparent" />
       <div className={cn(
@@ -1140,7 +1140,7 @@ function SectionPitchPioneer() {
 
 function SectionGlobalDistribution() {
   return (
-    <section className="section-global-distribution">
+    <section className="section-global-distribution swiper-no-swiping">
       <div className={cn("safe-viewport", "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
         <blockquote
           className={cn(
@@ -1238,7 +1238,7 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
 
 function SectionHighlights() {
   return (
-    <section className={cn("section-highlights", "py-16 lg:py-32")}>
+    <section className={cn("section-highlights swiper-no-swiping", "py-16 lg:py-32")}>
       <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-16 xl:grid-cols-20 3xl:grid-cols-24")}>
         <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-col gap-8 lg:flex-row lg:gap-4")}>
