@@ -29,7 +29,7 @@ export function SectionHowItWorks() {
   const works = useAtomValue(worksAtom)
   const [activeWork, setActiveWork] = useAtom(activeWorkAtom)
   return (
-    <section id="section-how-it-works">
+    <section id="section-how-it-works" className="swiper-no-swiping">
       {/* Mobile */}
       <div
         className={cn(
