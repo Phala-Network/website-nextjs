@@ -2,10 +2,7 @@ import * as React from 'react'
 import { SVGProps } from 'react'
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => {
-  const [id, setId] = React.useState('')
-  React.useEffect(() => {
-    setId(Math.random().toString(32).slice(2))
-  }, [])
+  const id = Math.random().toString(32).slice(2)
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
