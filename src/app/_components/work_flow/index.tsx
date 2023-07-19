@@ -135,7 +135,7 @@ const flow3to1 = [
   ['.flow-right-developer', { opacity: 1, y: 0 }, { at: 0.6, duration: 0.3, ease: 'easeOut' }],
 ] as any
 
-export function WorkFlow({ animation, inViewAnimation }: { animation?: string, inViewAnimation?: string }) {
+const WorkFlow = ({ animation, inViewAnimation }: { animation?: string, inViewAnimation?: string }) => {
   const [scope, animate] = useAnimate()
   const isInView = useInView(scope, { once: true })
   const runAnimation = (_animation?: string) => {
@@ -300,3 +300,5 @@ export function WorkFlow({ animation, inViewAnimation }: { animation?: string, i
     </div>
   )
 }
+
+export default WorkFlow

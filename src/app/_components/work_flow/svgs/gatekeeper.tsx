@@ -1,14 +1,18 @@
 import * as React from 'react'
 import { SVGProps } from 'react'
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+const SvgComponent = (props: SVGProps<SVGSVGElement>) => {
+  const id = Math.random().toString(32).slice(2)
+  return (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
     viewBox="0 0 144 144"
     fill="none"
     {...props}
   >
-    <g filter="url(#a)">
+      <g filter={`url(#a-${id})`}>
       <rect
         width={120}
         height={120}
@@ -31,7 +35,7 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     </g>
     <defs>
       <filter
-        id="a"
+          id={`a-${id}`}
         width={144}
         height={144}
         x={0}
@@ -82,6 +86,6 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
       </filter>
     </defs>
   </svg>
-)
+)}
 export default SvgComponent
 

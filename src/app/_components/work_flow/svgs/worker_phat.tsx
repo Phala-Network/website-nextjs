@@ -1,14 +1,16 @@
 import * as React from 'react'
 import { SVGProps } from 'react'
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+const SvgComponent = (props: SVGProps<SVGSVGElement>) => {
+  const id = Math.random().toString(32).slice(2)
+  return (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 64 58"
     fill="none"
     {...props}
   >
-    <g clipPath="url(#a)">
+    <g clipPath={`url(#a-${id})`}>
       <path
         fill="#6FB74E"
         d="M64 20.733h-2.214v15.655h2.215V20.733ZM7.949 26.877l-6.375-6.374L0 22.077l6.374 6.375L0 34.813l1.574 1.575 6.375-6.362 1.574-1.574-1.574-1.575Z"
@@ -27,11 +29,11 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
       />
     </g>
     <defs>
-      <clipPath id="a">
+      <clipPath id={`a-${id}`}>
         <path fill="#fff" d="M0 20.503h64.001v15.885H0z" />
       </clipPath>
     </defs>
   </svg>
-)
+)}
 export default SvgComponent
 
