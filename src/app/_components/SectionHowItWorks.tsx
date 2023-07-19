@@ -2,13 +2,17 @@
 
 import { useState } from 'react'
 import { atom, useAtom, useAtomValue } from 'jotai'
+import dynamic from 'next/dynamic'
 
 import { cn } from '@/lib/utils'
 import './SectionHowItWorks.css'
-import { WorkFlow } from './work_flow'
 import QuoteLine1 from './work_flow/svgs/quote_line1'
 import QuoteLine2 from './work_flow/svgs/quote_line2'
 import QuoteLine3 from './work_flow/svgs/quote_line3'
+
+const WorkFlow = dynamic(() => import('./work_flow'), {
+  ssr: false,
+})
 
 const worksAtom = atom([
   {
@@ -110,7 +114,6 @@ export function SectionHowItWorks() {
               className={cn(
                 "mt-16",
                 "grid gap-8 grid-cols-3",
-                "cursor-pointer",
               )}
             >
               {
@@ -122,6 +125,7 @@ export function SectionHowItWorks() {
                       "flex flex-col",
                       "transition-opacity duration-500",
                       "hover:opacity-100",
+                      "cursor-pointer",
                       activeWork !== index ? 'opacity-50' : null
                     )}
                     onClick={() => handleSwitch(index)}
