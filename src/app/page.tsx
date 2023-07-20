@@ -1,7 +1,6 @@
 import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
 
-import Link from 'next/link'
 import { VscCommentDiscussion } from 'react-icons/vsc'
 import { MdArrowForward, MdGraphicEq, MdFaceRetouchingNatural, MdOutlineApi } from 'react-icons/md'
 
@@ -15,141 +14,13 @@ import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExample
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
 import SubscribeForm from './_components/SubscribeForm'
-import { Advantages } from './_components/Advantages'
 import { StatsCard } from './_components/StatsCard'
-import { RealtimeStats } from './_components/RealtimeStats'
 import { FullPageSwiper } from './_components/FullPageSwiper'
 import { FeaturePage, FixedFeaturePage } from './_components/FeaturePage'
 import { SectionHowItWorks } from './_components/SectionHowItWorks'
+import { SectionHero } from './_components/SectionHero'
 import './home.css'
 
-
-//
-// Section Hero
-//
-
-function SupportedChains() {
-  return (
-    <div className={cn("supported-chains", "flex flex-col-reverse lg:flex-col gap-1 lg:gap-2 items-end w-full")}>
-      <Link
-        href="https://docs.phala.network/developers/phat-contract/supported-chains"
-        className={cn("flex flex-row gap-2 items-center", "btn-view-all btn-with-arrow")}
-        target="_blank"
-        rel="noopener"
-      >
-        <span className={cn("text-xs lg:text-base font-semibold")}>View All Supported Networks</span>
-        <MdArrowForward className="untanglable text-phalaPurple-500 h-5 w-5 arrow" />
-      </Link>
-      <Squircle
-        className="flex flex-row justify-between gap-5 px-5 py-1 lg:py-0.5 w-full lg:w-auto"
-        cornerRadius={32}
-        fill="rgba(255, 255, 255, 0.64)"
-        shadow={[
-          '0px 10px 15px rgba(0, 0, 0, 0.1)',
-          '0px 4px 6px rgba(0, 0, 0, 0.05)'
-        ]}
-      >
-        <img
-          src="/home/Ethereum.png"
-          alt="Ethereum"
-          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
-        />
-        <img
-          src="/home/Bnbchain.png"
-          alt="Bnbchain"
-          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
-        />
-        <img
-          src="/home/Moonbean.png"
-          alt="Moonbean"
-          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
-        />
-        <img
-          src="/home/Arbittrum.png"
-          alt="Arbittrum"
-          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
-        />
-        <img
-          src="/home/Astar.png"
-          alt="Astar"
-          className="w-9 h-9 lg:w-16 lg:h-16 opacity-80"
-        />
-      </Squircle>
-    </div>
-  )
-}
-
-function SectionHero() {
-  return (
-    <section id="section-hero" className={cn("section-hero section-slide")}>
-      <div className={cn("background", "absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden")}>
-        <video
-          className="object-cover aspect-[3840/1980] h-full min-w-full"
-          autoPlay muted loop playsInline
-        >
-          <source src="https://nft-assets.phala.world/network/bg20230718.mp4" type="video/mp4" />
-          <source src="https://nft-assets.phala.world/network/bg20230605.webm" type="video/webm" />
-        </video>
-      </div>
-
-      <div
-        className={cn(
-          "flex flex-col h-screen justify-center items-center",
-          "uppercase text-center flex flex-col gap-4 lg:gap-16 justify-center w-full",
-        )}
-      >
-        <header>
-          <h2 className={cn("text-2xl lg:text-4xl font-normal text-[#222] leading-8 lg:leading-10 tracking-wider mb-2.5 px-12")}>
-            Computation as it's meant to be
-          </h2>
-          <h3 className={cn(
-            "text-lg lg:text-2xl font-extrabold w-full overflow-hidden",
-            "flex flex-col lg:flex-row lg:gap-2 justify-center items-center text-center"
-          )}>
-            <span>On-Chain verification.</span>
-            <span className="inline-flex">Off-Chain <Advantages /></span>
-          </h3>
-        </header>
-        <div className={cn("flex flex-col xl:flex-row gap-2.5 lg:gap-5 mx-auto")}>
-          <a
-            className={cn("btn btn-xl text-sm font-semibold lg:text-base btn-primary justify-center")}
-            href="#section-features"
-          >
-            Let's Build!
-          </a>
-          <a
-            className={cn("btn btn-xl text-sm font-semibold lg:text-base btn-secondary justify-center")}
-            href="https://discord.gg/gZjZuVHXtm"
-            target="_blank"
-            rel="noopener"
-          >
-            Join Community
-          </a>
-        </div>
-      </div>
-
-      <div
-        className={cn(
-          "safe-viewport",
-          "absolute left-0 right-0 bottom-0 lg:bottom-5 grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24",
-          "mb-6"
-        )}
-      >
-        <div
-          className={cn(
-            "xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
-            "flex flex-col items-end gap-2 lg:gap-5 lg:flex-row lg:justify-between",
-          )}
-        >
-          <RealtimeStats />
-          <SupportedChains />
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// END: Section Hero
 
 //
 // Section Pitch Intro
@@ -157,7 +28,7 @@ function SectionHero() {
 
 function SectionPitchIntro() {
   return (
-    <section className={cn("swiper-no-swiping", "pt-16 lg:pt-32 flex flex-col gap-6 lg:gap-12")}>
+    <section className={cn("pt-16 lg:pt-32 flex flex-col gap-6 lg:gap-12")}>
       <div className="text-2xl lg:text-3xl text-center">FROM</div>
       <div className={cn("flex flex-col lg:flex-row lg:items-center gap-2.5")}>
         <div
@@ -271,7 +142,7 @@ function BlueprintCard({ title, children, href, tags, illustration, live }: { ti
 
 function SectionPitchAccelerate() {
   return (
-    <section id="section-pitch-accelerate" className="swiper-no-swiping relative">
+    <section id="section-pitch-accelerate" className="relative">
       <Squircle cornerRadius={48} fill="#7f4af0">
         <DotBackground dotColor="#6b3eca" bgColor="transparent" />
         <div className={cn(
@@ -569,7 +440,7 @@ function Avatar({ src, name }: { src: string, name: string }) {
 
 function SectionPitchInnovate() {
   return (
-    <section id="section-pitch-innovate" className="swiper-no-swiping relative z-0">
+    <section id="section-pitch-innovate" className="relative z-0">
       <Squircle cornerRadius={48} fill="#d0f964">
         <DotBackground dotColor="#afd153" bgColor="transparent" />
         <div className={cn(
@@ -980,7 +851,7 @@ function SectionPitchInnovate() {
 
 function SectionPitchPioneer() {
   return (
-    <section id="section-pitch-pionner" className="swiper-no-swiping">
+    <section id="section-pitch-pionner">
       <Squircle cornerRadius={48} fill="#333">
       <DotBackground dotColor="#2b2b2b" bgColor="transparent" />
       <div className={cn(
@@ -1139,7 +1010,7 @@ function SectionPitchPioneer() {
 
 function SectionGlobalDistribution() {
   return (
-    <section className="section-global-distribution swiper-no-swiping">
+    <section className="section-global-distribution">
       <div className={cn("safe-viewport", "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
         <blockquote
           className={cn(
@@ -1237,7 +1108,7 @@ function PostCard({ src, href, title, intro }: { src: string, href: string, titl
 
 function SectionHighlights() {
   return (
-    <section className={cn("section-highlights swiper-no-swiping", "py-16 lg:py-32")}>
+    <section className={cn("section-highlights", "py-16 lg:py-32")}>
       <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-16 xl:grid-cols-20 3xl:grid-cols-24")}>
         <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
         <div className={cn("row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4", "flex flex-col gap-8 lg:flex-row lg:gap-4")}>
