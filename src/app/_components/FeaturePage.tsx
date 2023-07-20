@@ -183,7 +183,7 @@ export function FeatureMobileDetailPage({ index } : {
 
 export function FeaturePage({ index }: { index: number }) {
   return (
-    <section className={cn("xl:w-screen xl:h-screen overflow-hidden")}>
+    <section id="section-features" className={cn("xl:w-screen xl:h-screen overflow-hidden")}>
       {/* PC Page */}
       <div className="w-full h-full hidden xl:block">
         <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
