@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { atom, useAtom, useAtomValue } from 'jotai'
+import { atomWithReducer } from 'jotai/utils'
 import dynamic from 'next/dynamic'
 import { MdArrowForward } from 'react-icons/md'
 import { motion } from 'framer-motion'
@@ -30,17 +31,16 @@ const worksAtom = atom([
   }
 ])
 
-const activeWorkAtom = atom(0)
+const animationAtom = atomWithReducer<[number, string], { next: number }>([0, ''], (prev, action) => {
+  if (action) {
+    return [action.next, `flow${prev[0] + 1}to${action.next + 1}`]
+  }
+  return [0, '']
+})
 
 export function SectionHowItWorks() {
   const works = useAtomValue(worksAtom)
-  const [activeWork, setActiveWork] = useAtom(activeWorkAtom)
-  const [animation, setAnimation] = useState('')
-
-  const handleSwitch = (next: number) => {
-    setAnimation(`flow${activeWork + 1}to${next + 1}`)
-    setActiveWork(next)
-  }
+  const [currentAnimation, setNextAnimation] = useAtom(animationAtom)
 
   return (
     <section id="section-how-it-works">
@@ -132,10 +132,10 @@ export function SectionHowItWorks() {
                         opacity: 1,
                       },
                       rest: {
-                        opacity: activeWork === index ? 1 : 0.5,
+                        opacity: currentAnimation[0] === index ? 1 : 0.5,
                       },
                     }}
-                    onClick={() => handleSwitch(index)}
+                    onClick={() => setNextAnimation({ next: index })}
                   >
                     <h3
                       className={cn(
@@ -180,7 +180,7 @@ export function SectionHowItWorks() {
                   "w-[39.81%] relative left-[1%]",
                 )}
                 animate={{
-                  opacity: activeWork === 0 ? 1 : 0.1,
+                  opacity: currentAnimation[0] === 0 ? 1 : 0.1,
                   transition: {
                     ease: 'easeOut',
                     duration: 0.5
@@ -194,7 +194,7 @@ export function SectionHowItWorks() {
                   "w-[12.27%] absolute top-0 left-[28.7%]",
                 )}
                 animate={{
-                  opacity: activeWork === 1 ? 1 : 0.1,
+                  opacity: currentAnimation[0] === 1 ? 1 : 0.1,
                   transition: {
                     ease: 'easeOut',
                     duration: 0.5
@@ -208,7 +208,7 @@ export function SectionHowItWorks() {
                   "w-[39.81%] absolute top-0 left-[28.9%]",
                 )}
                 animate={{
-                  opacity: activeWork === 2 ? 1 : 0.1,
+                  opacity: currentAnimation[0] === 2 ? 1 : 0.1,
                   transition: {
                     ease: 'easeOut',
                     duration: 0.5
@@ -218,7 +218,7 @@ export function SectionHowItWorks() {
                 <QuoteLine3 />
               </motion.div>
             </div>
-            <WorkFlow animation={animation} />
+            <WorkFlow animation={currentAnimation[1]} />
           </div>
         </div>
       </div>
