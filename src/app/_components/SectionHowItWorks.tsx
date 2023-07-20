@@ -43,7 +43,7 @@ export function SectionHowItWorks() {
   }
 
   return (
-    <section id="section-how-it-works" className="swiper-no-swiping">
+    <section id="section-how-it-works">
       {/* Mobile */}
       <div
         className={cn(

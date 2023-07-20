@@ -90,18 +90,18 @@ export function FeatureIndicator() {
   )
 }
 
-function FeaturePageLeft({ enableSelect = true}) {
+function FeaturePageLeft() {
   const features = useAtomValue(featuresAtom)
   return (
     <div className={cn("w-full h-full flex flex-col justify-center items-center gap-5")}>
-      <header className={cn(enableSelect ? "swiper-no-swiping" : "", "w-full flex-col gap-5 ml-16 flex")}>
+      <header className={cn("w-full flex-col gap-5 ml-16 flex")}>
         <h2 className={cn("font-extrabold text-2xl 2xl:text-5xl uppercase")}>Smart Contracts.</h2>
         <h3 className={cn("text-3xl 2xl:text-6xl tracking-wide uppercase")}>Now Smarter.</h3>
       </header>
-      <main className={cn(enableSelect ? "swiper-no-swiping" : "", "w-full grid grid-cols-10 gap-1")}>
+      <main className={cn("w-full grid grid-cols-10 gap-1")}>
         {
           features.map((feature: Feature, index: number) => (
-            <div className={cn("col-span-10 xl:col-start-2 xl:col-span-9")} key={index.toString()}>
+            <div className={cn("col-span-10 xl:col-start-2 xl:col-span-9")} key={`${index}`}>
               <FeatureDetail idx={index + 1} iconUrl={feature.iconUrl} summary={feature.title}>
                 <p>{feature.content}</p>
               </FeatureDetail>
@@ -125,7 +125,7 @@ export function FeatureMobileHeadPage() {
         "flex flex-col pt-16 gap-16 xl:hidden",
       ])}
     >
-      <header className={cn("swiper-no-swiping", "text-center flex flex-col gap-2")}>
+      <header className={cn("text-center flex flex-col gap-2")}>
         <h2 className={cn("font-extrabold text-2xl uppercase")}>Smart Contracts.</h2>
         <h3 className={cn("text-3xl tracking-wide uppercase")}>Now Smarter.</h3>
       </header>
@@ -230,7 +230,7 @@ export function FixedFeaturePage() {
         <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" className={cn("xl:w-1/2")} />
         <div className={cn("safe-viewport flex w-full h-full flex-row px-4")}>
           <div className={cn("w-1/2 h-full")}>
-            <FeaturePageLeft enableSelect={false} />
+            <FeaturePageLeft />
           </div>
         </div>
       </section>
