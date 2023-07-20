@@ -108,6 +108,6 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => {
         </clipPath>
       </defs>
     </svg>
-  );
-};
-export default SvgComponent;
+  )
+}
+export default SvgComponent
