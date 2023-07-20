@@ -2,6 +2,7 @@ import * as React from 'react'
 import { SVGProps } from 'react'
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => {
+  // Make sure the id is unique, even in the case of reusing components
   const id = Math.random().toString(32).slice(2)
   return (
     <svg
