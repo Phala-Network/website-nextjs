@@ -5,16 +5,16 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 534 149"
-    {...props}
     fill="none"
+    {...props}
   >
-    <circle cx={10} cy={9.5} r={9.5} fill={props.fill} />
+    <circle cx={10} cy={9.5} r={9.5} fill="#171717" />
     <path
-      fill={props.fill}
+      fill="#171717"
       d="M429.497 124H372.5v24.5H534V124h-52.5c-13.255 0-24-10.745-24-24v-6h-4.003v6c0 13.255-10.745 24-24 24Z"
     />
     <path
-      stroke={props.fill}
+      stroke="#171717"
       strokeLinecap="round"
       strokeWidth={4}
       d="M455.5 114V92c0-17.673-14.327-32-32-32h-382c-17.673 0-32-14.327-32-32V10.5"

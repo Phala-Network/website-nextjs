@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import dynamic from 'next/dynamic'
 import { MdArrowForward } from 'react-icons/md'
+import { motion } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
-import './SectionHowItWorks.css'
 import QuoteLine1 from './workflow/svgs/quote_line1'
 import QuoteLine2 from './workflow/svgs/quote_line2'
 import QuoteLine3 from './workflow/svgs/quote_line3'
@@ -119,16 +119,22 @@ export function SectionHowItWorks() {
             >
               {
                 works.map((work, index) => (
-                  <div
-                    key={index.toString()}
+                  <motion.div
+                    key={`${index}`}
                     className={cn(
-                      "work-item",
-                      "flex flex-col",
-                      "transition-opacity duration-500",
-                      "hover:opacity-100",
                       "cursor-pointer",
-                      activeWork !== index ? 'opacity-50' : null
+                      "flex flex-col",
                     )}
+                    animate="rest"
+                    whileHover="hover"
+                    variants={{
+                      hover: {
+                        opacity: 1,
+                      },
+                      rest: {
+                        opacity: activeWork === index ? 1 : 0.5,
+                      },
+                    }}
                     onClick={() => handleSwitch(index)}
                   >
                     <h3
@@ -138,40 +144,79 @@ export function SectionHowItWorks() {
                       )}
                     >
                       {work.title}
-                      <MdArrowForward
-                        className={cn(
-                          "icon",
-                          "ml-2 w-6 h-6",
-                          "transition-opacity transition-transform duration-500 opacity-0 translate-x-0",
-                        )}
-                      />
+                      <motion.div
+                        variants={{
+                          hover: {
+                            opacity: 1,
+                            x: 10,
+                            transition: {
+                              ease: 'easeOut',
+                              duration: 0.5
+                            },
+                          },
+                          rest: {
+                            opacity: 0,
+                            x: 0,
+                          }
+                        }}
+                      >
+                        <MdArrowForward
+                          className={cn(
+                            "ml-2 w-6 h-6",
+                          )}
+                        />
+                      </motion.div>
                     </h3>
                     <p className="mt-5">{work.content}</p>
-                  </div>
+                  </motion.div>
                 ))
               }
             </div>
           </div>
           <div className="col-start-2 3xl:col-start-4 col-span-18 relative">
             <div className="relative top-[2.8%] -z-10">
-              <QuoteLine1
-                fill={activeWork === 0 ? '#171717' : '#EDEDF0'}
-                className={cn("w-[39.81%] relative left-[1%]", activeWork === 0 ? 'z-10' : null)}
-              />
-              <QuoteLine2
+              <motion.div
+                className={cn(
+                  "w-[39.81%] relative left-[1%]",
+                )}
+                animate={{
+                  opacity: activeWork === 0 ? 1 : 0.1,
+                  transition: {
+                    ease: 'easeOut',
+                    duration: 0.5
+                  },
+                }}
+              >
+                <QuoteLine1 />
+              </motion.div>
+              <motion.div
                 className={cn(
                   "w-[12.27%] absolute top-0 left-[28.7%]",
-                  activeWork === 1 ? 'z-10' : null,
                 )}
-                fill={activeWork === 1 ? '#171717' : '#EDEDF0'}
-              />
-              <QuoteLine3
+                animate={{
+                  opacity: activeWork === 1 ? 1 : 0.1,
+                  transition: {
+                    ease: 'easeOut',
+                    duration: 0.5
+                  },
+                }}
+              >
+                <QuoteLine2 />
+              </motion.div>
+              <motion.div
                 className={cn(
                   "w-[39.81%] absolute top-0 left-[28.9%]",
-                  activeWork === 2 ? 'z-10' : null,
                 )}
-                fill={activeWork === 2 ? '#171717' : '#EDEDF0'}
-              />
+                animate={{
+                  opacity: activeWork === 2 ? 1 : 0.1,
+                  transition: {
+                    ease: 'easeOut',
+                    duration: 0.5
+                  },
+                }}
+              >
+                <QuoteLine3 />
+              </motion.div>
             </div>
             <WorkFlow animation={animation} />
           </div>
