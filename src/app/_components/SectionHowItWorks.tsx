@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import dynamic from 'next/dynamic'
+import { MdArrowForward } from 'react-icons/md'
 
 import { cn } from '@/lib/utils'
 import './SectionHowItWorks.css'
@@ -72,7 +73,7 @@ export function SectionHowItWorks() {
         {
           works.map((work, index) => (
             <div
-              key={index.toString()}
+              key={`${index}`}
               className="mt-10"
             >
               <h3
@@ -137,12 +138,10 @@ export function SectionHowItWorks() {
                       )}
                     >
                       {work.title}
-                      <img
-                        src="/icons/right-arrow.svg"
-                        alt=""
+                      <MdArrowForward
                         className={cn(
                           "icon",
-                          "ml-2 inline-block w-6 h-6",
+                          "ml-2 w-6 h-6",
                           "transition-opacity transition-transform duration-500 opacity-0 translate-x-0",
                         )}
                       />
