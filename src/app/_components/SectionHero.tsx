@@ -96,7 +96,7 @@ export function SectionHero() {
         <div className={cn("flex flex-col xl:flex-row gap-2.5 lg:gap-5 mx-auto")}>
           <a
             className={cn("btn btn-xl text-sm font-semibold lg:text-base btn-primary justify-center")}
-            href="#"
+            href="#section-features"
             onClick={() => swiper.slideNext()}
           >
             Let's Build!
