@@ -6,11 +6,11 @@ import dynamic from 'next/dynamic'
 
 import { cn } from '@/lib/utils'
 import './SectionHowItWorks.css'
-import QuoteLine1 from './work_flow/svgs/quote_line1'
-import QuoteLine2 from './work_flow/svgs/quote_line2'
-import QuoteLine3 from './work_flow/svgs/quote_line3'
+import QuoteLine1 from './workflow/svgs/quote_line1'
+import QuoteLine2 from './workflow/svgs/quote_line2'
+import QuoteLine3 from './workflow/svgs/quote_line3'
 
-const WorkFlow = dynamic(() => import('./work_flow'), {
+const WorkFlow = dynamic(() => import('./workflow'), {
   ssr: false,
 })
 
