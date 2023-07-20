@@ -279,7 +279,7 @@ const WorkFlow = ({ animation, inViewAnimation }: { animation?: string, inViewAn
       <div
         className={cn(
           "flow3-top opacity-0",
-          "absolute left-[26.51%] top-[11%]",
+          "absolute left-[27.51%] top-[11%]",
           "flex w-[44.98%]"
         )}
       >
