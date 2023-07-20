@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, useRef, type ReactNode } from 'react'
+import React, { useState, useEffect, useMemo, type ReactNode } from 'react'
 import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react'
 import { FreeMode, Mousewheel } from 'swiper/modules'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
@@ -23,7 +23,6 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
   const features = useAtomValue(featuresAtom)
   const freeModeIndex = useMemo(() => features.length + 2, [features])
   const setNavVisible = useSetAtom(navVisibleAtom)
-  const timeout = useRef<number>()
 
   const updateSwiperEnabled = (swiper: TypeSwiperClass) => {
     if (swiper.width < 1280) {
@@ -70,7 +69,13 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
         "w-full",
         swiperEnabled ? 'h-full' : 'h-auto touch-auto'
       )}
-      mousewheel
+      wrapperClass="ease-in-out"
+      mousewheel={{
+        thresholdTime: 600
+      }}
+      simulateTouch={false}
+      shortSwipes={false}
+      preventInteractionOnTransition
       speed={500}
       direction="vertical"
       slidesPerView="auto"
@@ -88,11 +93,9 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
         } else if (swiper.activeIndex === freeModeIndex) {
           setFreeMode(true)
         }
-        if (!timeout.current) {
-          setShowFixedFeaturePage(false)
-        }
+        setShowFixedFeaturePage(false)
       }}
-      onBeforeTransitionStart={(swiper: TypeSwiperClass) => {
+      onScroll={(swiper: TypeSwiperClass) => {
         if (swiper.previousIndex === 0 && swiper.activeIndex === 1) {
           return
         }
@@ -101,11 +104,6 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
         }
         if (swiper.activeIndex >= 1 && swiper.activeIndex < freeModeIndex) {
           setShowFixedFeaturePage(true)
-          window.clearTimeout(timeout.current)
-          timeout.current = window.setTimeout(() => {
-            setShowFixedFeaturePage(false)
-            timeout.current = 0
-          }, 500)
         }
       }}
       onSetTranslate={(swiper: TypeSwiperClass) => {

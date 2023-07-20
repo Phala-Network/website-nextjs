@@ -20,7 +20,6 @@
     "highlight.js": "^11.8.0",
     "jotai": "^2.1.0",
     "next": "13.4.4",
-    "popmotion": "^11.0.5",
     "postcss": "8.4.23",
     "ramda": "^0.29.0",
     "react": "18.2.0",
