@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fontsource/montserrat": "^5.0.1",
+    "@notionhq/client": "^2.2.9",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "20.2.4",
     "@types/react": "18.2.7",
