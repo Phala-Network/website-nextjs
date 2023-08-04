@@ -13,10 +13,12 @@ const NumberedListItem = ({
   children: React.ReactNode
 }) => {
   const block = useAtomValue(theAtom) as NumberedListItemBlockObjectResponse & {
-    listNumber: number
+    numbered_list_item: {
+      listNumber: number
+    }
   }
   return (
-    <ol start={block.listNumber} className="notion_numbered_list_container">
+    <ol start={block.numbered_list_item.listNumber} className="notion_numbered_list_container">
       <li className={`notion_${block.type}`}>
         <RichText rich_text={block.numbered_list_item.rich_text} />
       </li>
