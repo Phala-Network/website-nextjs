@@ -1,16 +1,17 @@
+import { useAtomValue } from 'jotai'
 import { TableBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { ParsedBlock } from '@/lib/notion-client'
+import { BlockAtom } from './atoms'
 import RichText from './RichText'
 
-const Table = ({ block }: { block: ParsedBlock }) => {
-  const has_column_header = (block as TableBlockObjectResponse).table
-    .has_column_header
-  const has_row_header = (block as TableBlockObjectResponse).table
-    .has_row_header
+const Table = ({ theAtom }: { theAtom: BlockAtom }) => {
+  const block = useAtomValue(theAtom) as TableBlockObjectResponse
+  const has_column_header = block.table.has_column_header
+  const has_row_header = block.table.has_row_header
   return (
     <table className="notion_table">
       <tbody>
+        {/* @ts-ignore */}
         {block.children?.map((row, i) => {
           if (row) {
             return (

@@ -1,10 +1,12 @@
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
+import { useHydrateAtoms } from 'jotai/utils'
 
 import attempt from '@/lib/attempt-promise'
 import { getParsedPageByProtertyText, ParsedPage } from '@/lib/notion-client'
-import Block from '@/components/notion-render/Block'
+import { render_block } from '@/components/notion-render/Block'
+import { blocksAtom } from '@/components/notion-render/atoms'
 import '@/components/notion-render/styles.css'
 
 interface Props {
@@ -19,6 +21,7 @@ const RenderPost = ({ page }: Props) => {
       </div>
     )
   }
+  useHydrateAtoms([[blocksAtom, page.blocks]])
   return (
     <>
       {page.title ? (
@@ -42,9 +45,7 @@ const RenderPost = ({ page }: Props) => {
               />
             </div>
           ) : null}
-          {page.blocks.map((block) => (
-            <Block key={block.id} block={block} blocks={page.blocks} />
-          ))}
+          {page.blocks.map(render_block)}
         </section>
       </article>
     </>
