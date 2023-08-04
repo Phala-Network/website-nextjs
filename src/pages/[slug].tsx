@@ -1,6 +1,5 @@
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { ParsedUrlQuery } from 'querystring'
 import { useHydrateAtoms } from 'jotai/utils'
 
 import { removeFormatFromCoverUrl } from '@/lib/utils'
@@ -10,11 +9,20 @@ import { render_block } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
 import '@/components/notion-render/styles.css'
 
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { slug: 'privacy' } },
+    ],
+    fallback: true,
+  }
+}
+
 interface Props {
   page: ParsedPage | null
 }
 
-const RenderPost = ({ page }: Props) => {
+const RenderPage = ({ page }: Props) => {
   if (!page) {
     return (
       <div className="max-w-3xl m-auto p-8">
@@ -53,14 +61,8 @@ const RenderPost = ({ page }: Props) => {
   )
 }
 
-interface Params extends ParsedUrlQuery {
-  slug: string
-}
-
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (
-  context
-) => {
-  const { slug } = context.params!
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const slug = params!.slug as string
   const [error, page] = await attempt(getParsedPageByProtertyText({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
     property: 'Custom URL',
@@ -79,4 +81,4 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (
   }
 }
 
-export default RenderPost
+export default RenderPage
