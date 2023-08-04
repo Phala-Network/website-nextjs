@@ -64,6 +64,9 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (
     property: 'Custom URL',
     property_text: slug,
   }))
+  if (page && page.coverUrl) {
+    page.coverUrl = removeFormatFromCoverUrl(page.coverUrl)
+  }
   if (error) {
     console.error(error)
   }
@@ -72,6 +75,17 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (
       page,
     },
   }
+}
+
+function removeFormatFromCoverUrl(coverUrl: string): string {
+  const regex = /^https:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^\/]+)$/
+  const match = coverUrl.match(regex)
+  if (match && match.length === 3) {
+    const formatPart = match[1]
+    const baseUrl = coverUrl.replace(formatPart, '')
+    return baseUrl
+  }
+  return coverUrl
 }
 
 export default RenderPost
