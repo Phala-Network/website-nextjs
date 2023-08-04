@@ -19,8 +19,8 @@ type PropertyTypes = PageObjectProperties[PropertyKeys]['type']
 
 export interface ParsedPage {
   id: string
-  coverUrl?: string
-  title?: string
+  coverUrl: string
+  title: string
   properties: ParsedProperty[]
   blocks: ParsedBlock[]
 }
@@ -60,11 +60,11 @@ export async function getParsedPage(
     ? 'external' in page.cover
       ? page.cover.external.url
       : page.cover.file.url
-    : undefined
+    : ''
   return {
     id: page.id,
     coverUrl,
-    title: titleProperty || undefined,
+    title: titleProperty || '',
     properties,
     blocks: parsedBlocks,
   }
