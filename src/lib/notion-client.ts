@@ -36,6 +36,17 @@ export type ParsedProperty = {
   text: string | null
 }
 
+function removeFormatFromCoverUrl(coverUrl: string): string {
+  const regex = /^https:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^\/]+)$/
+  const match = coverUrl.match(regex)
+  if (match && match.length === 3) {
+    const formatPart = match[1]
+    const baseUrl = coverUrl.replace(formatPart, '')
+    return baseUrl
+  }
+  return coverUrl
+}
+
 export async function getParsedPage(
   page_id: string
 ): Promise<ParsedPage | null> {
@@ -58,8 +69,8 @@ export async function getParsedPage(
   const titleProperty = properties.find((p) => p.type === 'title')?.text
   const coverUrl = page.cover
     ? 'external' in page.cover
-      ? page.cover.external.url
-      : page.cover.file.url
+      ? removeFormatFromCoverUrl(page.cover.external.url)
+      : removeFormatFromCoverUrl(page.cover.file.url)
     : ''
   return {
     id: page.id,
@@ -234,29 +245,30 @@ function parsePropertyText(
   }
 }
 
-export async function getParsedPageByProtertyText({
+function isParsedPage(page: ParsedPage | null): page is ParsedPage {
+  return page !== null
+}
+
+export async function getParsedPagesByProperties({
   database_id,
-  property,
-  property_text,
+  properties,
 }: {
   database_id: string
-  property: string
-  property_text: string
-}): Promise<ParsedPage | null> {
+  properties: Record<string, string>
+}): Promise<ParsedPage[]> {
   const database = await notion.databases.query({
     database_id,
     filter: {
-      property,
-      rich_text: {
-        contains: property_text,
-      },
+      and: Object.entries(properties).map(([key, value]) => ({
+        property: key,
+        rich_text: {
+          contains: value,
+        },
+      }))
     },
   })
-  if (database.results.length === 0) {
-    return null
-  }
-  const page = await getParsedPage(database.results[0].id)
-  return page
+  const pages = (await Promise.all(database.results.map(result => getParsedPage(result.id)))).filter(isParsedPage)
+  return pages
 }
 
 interface IPaginatedList<T> {
