@@ -1171,8 +1171,38 @@ function SectionSubscription() {
 // END: Section Subscription
 
 export const metadata: Metadata = {
-  title: 'Phala Network',
   themeColor: 'rgba(232, 233, 234, 1)',
+  title: "Phala Network - Computation as it’s meant to be",
+  description: "Phala Network is a decentralised off-chain compute infrastructure which enables developers to make smart contracts even smarter.",
+  keywords: [
+    "Phala Network",
+    "Phala",
+    "Phat Contracts",
+    "Web3",
+    "Web3 Builders Stack",
+    "Off-chain computation",
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://phala.network/',
+    title: 'Phala Network - Computation as it’s meant to be',
+    description: "Phala Network is a decentralised off-chain compute infrastructure which enables developers to make smart contracts even smarter.",
+    // images: [
+    //   {
+    //     url: 'https://phala.network/home/og-image.jpg',
+    //     width: 1200,
+    //     height: 630,
+    //     alt: 'Phala Network - Computation as it’s meant to be',
+    //   },
+    // ],
+  },
+  twitter: {
+    site: '@PhalaNetwork',
+    card: 'summary_large_image',
+    title: 'Phala Network - Computation as it’s meant to be',
+    description: "Phala Network is a decentralised off-chain compute infrastructure which enables developers to make smart contracts even smarter.",
+  },
 }
 
 export default async function Home() {
