@@ -2,9 +2,8 @@ import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useHydrateAtoms } from 'jotai/utils'
 
-import { removeFormatFromCoverUrl } from '@/lib/utils'
 import attempt from '@/lib/attempt-promise'
-import { getParsedPageByProtertyText, ParsedPage } from '@/lib/notion-client'
+import { getParsedPagesByProperties, ParsedPage } from '@/lib/notion-client'
 import { render_block } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
 import '@/components/notion-render/styles.css'
@@ -63,20 +62,18 @@ const RenderPage = ({ page }: Props) => {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params!.slug as string
-  const [error, page] = await attempt(getParsedPageByProtertyText({
+  const [error, pages] = await attempt(getParsedPagesByProperties({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-    property: 'Custom URL',
-    property_text: slug,
+    properties: {
+      'Custom URL': slug,
+    }
   }))
-  if (page && page.coverUrl) {
-    page.coverUrl = removeFormatFromCoverUrl(page.coverUrl)
-  }
   if (error) {
     console.error(error)
   }
   return {
     props: {
-      page,
+      page: pages.length > 0 ? pages[0] : null,
     },
   }
 }
