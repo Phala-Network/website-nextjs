@@ -12,7 +12,7 @@ const ColumnList = ({
   children: React.ReactNode
 }) => {
   const block = useAtomValue(theAtom) as ColumnListBlockObjectResponse
-  return <div className={`notion_${block.type}`}>{children}</div>
+  return <div className="notion_column_list">{children}</div>
 }
 
 export default ColumnList

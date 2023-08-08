@@ -15,7 +15,7 @@ const BulletedListItem = ({
   const block = useAtomValue(theAtom) as BulletedListItemBlockObjectResponse
   return (
     <ul className="notion_bulleted_list_container">
-      <li className={`notion_${block.type}`}>
+      <li className="notion_bulleted_list_item">
         <RichText rich_text={block.bulleted_list_item.rich_text} />
       </li>
       {children}

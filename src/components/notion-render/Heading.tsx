@@ -30,19 +30,19 @@ const Heading = ({
   switch (block.type) {
     case 'heading_1':
       return (
-        <h1 className={`notion_${block.type}`}>
+        <h1 className="notion_heading_1">
           <RichText rich_text={value.rich_text} />
         </h1>
       )
     case 'heading_2':
       return (
-        <h2 className={`notion_${block.type}`}>
+        <h2 className="notion_heading_2">
           <RichText rich_text={value.rich_text} />
         </h2>
       )
     case 'heading_3':
       return (
-        <h3 className={`notion_${block.type}`}>
+        <h3 className="notion_heading_3">
           <RichText rich_text={value.rich_text} />
         </h3>
       )

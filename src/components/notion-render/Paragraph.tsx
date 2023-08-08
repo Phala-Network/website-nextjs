@@ -7,7 +7,7 @@ import RichText from './RichText'
 const Paragraph = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as ParagraphBlockObjectResponse
   return (
-    <p className={`notion_${block.type}`}>
+    <p className="notion_paragraph">
       <RichText rich_text={block.paragraph.rich_text} />
     </p>
   )
