@@ -48,9 +48,9 @@ const Heading = ({
       )
     default:
       return (
-        <p className={`notion_${block.type}`}>
+        <h4 className={`notion_${block.type}`}>
           <RichText rich_text={value.rich_text} />
-        </p>
+        </h4>
       )
   }
 }
