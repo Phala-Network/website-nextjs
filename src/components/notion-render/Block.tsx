@@ -19,7 +19,7 @@ import Todo from './Todo'
 import Toggle from './Toggle'
 import Table from './Table'
 
-const RegistriedBlockRenderer = {
+const RegistriedBlockRenderers = {
   heading_1: Heading,
   heading_2: Heading,
   heading_3: Heading,
@@ -47,7 +47,7 @@ const MissedBlockRenderer = ({ theAtom }: { theAtom: BlockAtom }) => {
 const Block = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom)
   const renderer =
-    RegistriedBlockRenderer[block.type as never] || MissedBlockRenderer
+    RegistriedBlockRenderers[block.type as never] || MissedBlockRenderer
   let children: React.ReactNode[] | undefined
   if (block.children) {
     children = block.children.map(render_block)
