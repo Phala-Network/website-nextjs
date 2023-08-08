@@ -13,7 +13,14 @@ const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
   return (
     <div className="notion_image_container">
       <figure>
-        <img src={imageUrl} alt="" />
+        <img
+          src={imageUrl}
+          alt={
+            block.image.caption && block.image.caption.length > 0
+              ? block.image.caption[0].plain_text
+              : ''
+          }
+        />
         <figcaption className="notion_caption">
           {block.image.caption && <RichText rich_text={block.image.caption} />}
         </figcaption>

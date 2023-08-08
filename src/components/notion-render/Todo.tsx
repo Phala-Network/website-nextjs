@@ -13,12 +13,12 @@ const Todo = ({
 }) => {
   const block = useAtomValue(theAtom) as ToDoBlockObjectResponse
   return (
-    <div className={`notion_${block.type}_container`}>
+    <div className="notion_to_do_container">
       <input
         type="checkbox"
         checked={block.to_do.checked}
         readOnly
-        className={`notion_${block.type}`}
+        className="notion_to_do"
       />
       <RichText rich_text={block.to_do.rich_text} />
       {children}

@@ -13,7 +13,7 @@ const Toggle = ({
 }) => {
   const block = useAtomValue(theAtom) as ToggleBlockObjectResponse
   return (
-    <details className={`notion_${block.type}_container`}>
+    <details className="notion_toggle_container">
       <summary>
         <RichText rich_text={block.toggle.rich_text} />
       </summary>
