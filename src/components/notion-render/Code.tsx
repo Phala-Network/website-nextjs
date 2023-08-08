@@ -7,7 +7,7 @@ import RichText from './RichText'
 const Code = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as CodeBlockObjectResponse
   return (
-    <div className={`notion_${block.type}`}>
+    <div className="notion_code">
       <pre>
         <code>{block.code.rich_text[0].plain_text}</code>
       </pre>

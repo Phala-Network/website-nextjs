@@ -13,7 +13,7 @@ const Quote = ({
 }) => {
   const block = useAtomValue(theAtom) as QuoteBlockObjectResponse
   return (
-    <blockquote className={`notion_${block.type}`}>
+    <blockquote className="notion_quote">
       <RichText rich_text={block.quote.rich_text} />
       {children}
     </blockquote>
