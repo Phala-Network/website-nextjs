@@ -1172,8 +1172,8 @@ function SectionSubscription() {
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
-  title: "Phala Network - Computation as it’s meant to be",
-  description: "Phala Network is a decentralised off-chain compute infrastructure which enables developers to make smart contracts even smarter.",
+  title: "Phala Network - Verifiable Computation for Web3",
+  description: "Phala Network make smart contracts even smarter by providing decentralized compute.",
   keywords: [
     "Phala Network",
     "Phala",
@@ -1181,27 +1181,32 @@ export const metadata: Metadata = {
     "Web3",
     "Web3 Builders Stack",
     "Off-chain computation",
+    "Smart Contract",
+    "Verifiable Compute",
+    "Connectivity",
+    "Oracle",
   ],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://phala.network/',
-    title: 'Phala Network - Computation as it’s meant to be',
-    description: "Phala Network is a decentralised off-chain compute infrastructure which enables developers to make smart contracts even smarter.",
-    // images: [
-    //   {
-    //     url: 'https://phala.network/home/og-image.jpg',
-    //     width: 1200,
-    //     height: 630,
-    //     alt: 'Phala Network - Computation as it’s meant to be',
-    //   },
-    // ],
+    title: "Phala Network - Verifiable Computation for Web3",
+    description: "Phala Network make smart contracts even smarter by providing decentralized compute.",
+    images: [
+      {
+        url: 'http://localhost:3000/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: "Phala Network - Verifiable Computation for Web3",
+      },
+    ],
   },
   twitter: {
     site: '@PhalaNetwork',
     card: 'summary_large_image',
-    title: 'Phala Network - Computation as it’s meant to be',
-    description: "Phala Network is a decentralised off-chain compute infrastructure which enables developers to make smart contracts even smarter.",
+    title: "Phala Network - Verifiable Computation for Web3",
+    description: "Phala Network make smart contracts even smarter by providing decentralized compute.",
+    images: ['http://localhost:3000/og-image.jpg'],
   },
 }
 
