@@ -147,7 +147,7 @@ function SectionPitchAccelerate() {
         <DotBackground dotColor="#6b3eca" bgColor="transparent" />
         <div className={cn(
           "safe-viewport",
-          "grid gap--x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
+          "grid gap-x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
           "pt-16 pb-24 lg:pt-32 lg:pb-52 px-0"
         )}>
           <header
