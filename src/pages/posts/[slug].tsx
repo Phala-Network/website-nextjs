@@ -17,6 +17,7 @@ import {
 import { render_block } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
 import TagLink from '@/pages/components/TagLink'
+import SectionSubscription from '@/pages/components/SectionSubscription'
 import '@/components/notion-render/styles.css'
 
 interface Props {
@@ -88,11 +89,11 @@ const PostPage = ({
                 'text-sm font-medium flex gap-2'
               )}
             >
-              <a href="#">Blog</a>
+              <a href="/blog">Blog</a>
               <span>/</span>
-              <a href="#">{dayjs(page.createdTime).format('YYYY')}</a>
+              <span>{dayjs(page.createdTime).format('YYYY')}</span>
               <span>/</span>
-              <a href="#">{dayjs(page.createdTime).format('MM')}</a>
+              <span>{dayjs(page.createdTime).format('MM')}</span>
             </nav>
             <article
               className={cn(
@@ -170,7 +171,7 @@ const PostPage = ({
                 </div>
               </div>
               <div className="flex flex-wrap mt-8 gap-y-4">
-                <AboutLink href="#">Subscribe</AboutLink>
+                <AboutLink href="#section-subscription">Subscribe</AboutLink>
                 <AboutLink href="https://twitter.com/PhalaNetwork">
                   Twitter
                 </AboutLink>
@@ -227,6 +228,7 @@ const PostPage = ({
             ) : null}
           </div>
         </div>
+        <SectionSubscription />
       </div>
     </>
   )
