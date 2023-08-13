@@ -1,30 +1,53 @@
+import React, { AnchorHTMLAttributes } from 'react'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import { useHydrateAtoms } from 'jotai/utils'
-import { FiChevronLeft, FiChevronRight, FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import dayjs from 'dayjs'
 
 import { cn } from '@/lib/utils'
 import attempt from '@/lib/attempt-promise'
-import { getParsedPagesByProperties, ParsedPage } from '@/lib/notion-client'
+import {
+  queryDatabase,
+  getParsedPagesByProperties,
+  ParsedPage,
+  ParsedListPage,
+} from '@/lib/notion-client'
 import { render_block } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
-import Tag from '@/pages/components/Tag'
+import TagLink from '@/pages/components/TagLink'
 import '@/components/notion-render/styles.css'
 
 interface Props {
   page: ParsedPage | null
+  recentPages?: ParsedListPage[]
+  similarPages?: ParsedListPage[]
+  beforePages?: ParsedListPage[]
+  nextPages?: ParsedListPage[]
 }
 
-const AboutLink = ({ text, link }: { text: string, link: string }) => {
+function AboutLink({
+  children,
+  ...props
+}: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <div className="text-center text-xs text-green-700 font-bold leading-none border-r-[1px] border-green-700 w-[136px]">
-      <a href={link}>{text}</a>
-    </div>
+    <a
+      className="text-center text-xs text-green-700 font-bold leading-none border-r-[1px] border-green-700 w-[136px]"
+      {...props}
+    >
+      {children}
+    </a>
   )
 }
 
-const PostPage = ({ page }: Props) => {
+const PostPage = ({
+  page,
+  recentPages = [],
+  similarPages = [],
+  beforePages = [],
+  nextPages = [],
+}: Props) => {
   if (!page) {
     return (
       <div className="max-w-3xl m-auto p-8">
@@ -42,73 +65,92 @@ const PostPage = ({ page }: Props) => {
       ) : null}
       <div
         className={cn(
-          "min-h-screen",
-          "bg-gradient-to-b from-green-600 to-green-500",
+          'min-h-screen',
+          'bg-gradient-to-b from-green-600 to-green-500'
         )}
       >
-        <div className={cn(
-          "safe-viewport",
-          "grid grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 gap-4",
-          "py-32"
-        )}>
-          <div className={cn(
-            "col-start-1 lg:col-span-11 lg:col-start-2 3xl:col-start-4 3xl:col-span-11"
-          )}>
-            <nav className={cn(
-              "bg-white rounded-3xl",
-              "py-2 px-6",
-              "text-sm font-medium flex gap-2",
-            )}>
+        <div
+          className={cn(
+            'safe-viewport',
+            'grid grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 gap-4',
+            'py-32'
+          )}
+        >
+          <div
+            className={cn(
+              'col-start-1 lg:col-span-11 lg:col-start-2 3xl:col-start-4 3xl:col-span-11'
+            )}
+          >
+            <nav
+              className={cn(
+                'bg-white rounded-3xl',
+                'py-2 px-6',
+                'text-sm font-medium flex gap-2'
+              )}
+            >
               <a href="#">Blog</a>
               <span>/</span>
-              <a href="#">2023</a>
+              <a href="#">{dayjs(page.createdTime).format('YYYY')}</a>
               <span>/</span>
-              <a href="#">03</a>
+              <a href="#">{dayjs(page.createdTime).format('MM')}</a>
             </nav>
             <article
               className={cn(
-                "notion_page_body",
-                "bg-white rounded-3xl p-2 mt-4"
+                'notion_page_body',
+                'bg-white rounded-3xl p-2 mt-4'
               )}
             >
               {page.coverUrl ? (
-                <div className={cn(
-                  "aspect-[856/442] rounded-3xl overflow-hidden",
-                )}>
+                <div
+                  className={cn('aspect-[856/442] rounded-3xl overflow-hidden')}
+                >
                   <img
                     className="w-full object-contain"
-                    src={
-                      page.coverUrl
-                    }
+                    src={page.coverUrl}
                     alt=""
                   />
                 </div>
               ) : null}
               <div className="p-8 pt-0">
-                <h1 className={cn(
-                  "notion_page_title",
-                  "text-3xl font-black"
-                )}>
+                <h1 className={cn('notion_page_title', 'text-3xl font-black')}>
                   {page.title}
                 </h1>
                 <div className="flex items-center gap-x-4">
-                  <Tag>Weekly report</Tag>
+                  {page.tags.map((tag, i) => (
+                    <TagLink key={`${i}`} href={`/tags/${tag}`}>
+                      {tag}
+                    </TagLink>
+                  ))}
                 </div>
                 <div className="my-6">
-                  <p className="text-sm font-medium">2023-03-06</p>
+                  <p className="text-sm font-medium">
+                    {dayjs(page.createdTime).format('YYYY-MM-DD')}
+                  </p>
                 </div>
-                <div className="text-base">
-                  {page.blocks.map(render_block)}
-                </div>
-                <div className="flex justify-between text-sm text-green-800">
-                  <div className="flex items-center gap-1">
-                    <FiArrowLeft />
-                    <a href="#">Phala Network 2023 Roadmap</a>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <a href="#">Phala Network 2023 Roadmap</a>
-                    <FiArrowRight />
-                  </div>
+                <div className="text-base">{page.blocks.map(render_block)}</div>
+                <div className="grid grid-cols-20 text-sm text-green-800">
+                  {beforePages.length > 0 ? (
+                    <a
+                      className="col-start-1 col-span-10 flex items-center gap-1"
+                      href={`/posts${beforePages[0].slug}`}
+                    >
+                      <FiArrowLeft className="shrink-0" />
+                      <span className="line-clamp-1">
+                        {beforePages[0].title}
+                      </span>
+                    </a>
+                  ) : null}
+                  {nextPages.length > 0 ? (
+                    <a
+                      className="col-start-11 col-span-10 flex items-center gap-1"
+                      href={`/posts${nextPages[0].slug}`}
+                    >
+                      <span className="line-clamp-1 text-right pr-2">
+                        {nextPages[0].title}
+                      </span>
+                      <FiArrowRight className="shrink-0" />
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </article>
@@ -116,44 +158,73 @@ const PostPage = ({ page }: Props) => {
               <div className="px-10">
                 <h1 className="text-2xl font-bold">About Phala</h1>
                 <div className="text-sm mt-4 flex flex-col gap-4">
-                  <p>Phala Network is a decentralized cloud that offers secure and scalable computing for Web3.</p>
-                  <p>With Phat Contracts, an innovative programming model enabling trustless off-chain computation, developers can create new Web3 use cases.</p>
+                  <p>
+                    Phala Network is a decentralized cloud that offers secure
+                    and scalable computing for Web3.
+                  </p>
+                  <p>
+                    With Phat Contracts, an innovative programming model
+                    enabling trustless off-chain computation, developers can
+                    create new Web3 use cases.
+                  </p>
                 </div>
               </div>
-              <div className="flex flex-wrap mt-8">
-                <AboutLink link="#" text="Subscribe" />
-                <AboutLink link="#" text="Twitter" />
-                <AboutLink link="#" text="Youtube" />
-                <AboutLink link="#" text="Github" />
+              <div className="flex flex-wrap mt-8 gap-y-4">
+                <AboutLink href="#">Subscribe</AboutLink>
+                <AboutLink href="https://twitter.com/PhalaNetwork">
+                  Twitter
+                </AboutLink>
+                <AboutLink href="https://www.youtube.com/@PhalaNetwork">
+                  Youtube
+                </AboutLink>
+                <AboutLink href="https://github.com/phala-Network">
+                  Github
+                </AboutLink>
               </div>
-              <div className="flex flex-wrap mt-4">
-                <AboutLink link="#" text="Discord" />
-                <AboutLink link="#" text="Forum" />
-                <AboutLink link="#" text="Telegram" />
+              <div className="flex flex-wrap mt-4 gap-y-4">
+                <AboutLink href="https://discord.com/invite/phala">
+                  Discord
+                </AboutLink>
+                <AboutLink href="https://forum.phala.network/">Forum</AboutLink>
+                <AboutLink href="https://t.me/phalanetwork">Telegram</AboutLink>
               </div>
             </section>
           </div>
-          <div className={cn(
-            "lg:col-span-7",
-          )}>
-            <section className="bg-[#F5FEDC] rounded-3xl p-8">
-              <h1 className="text-2xl font-bold">Recent Posts</h1>
-              <div className="flex flex-col gap-5 mt-5">
-                <a href="#">
-                  <p className="text-base text-green-800 font-medium">Phala Network 2023 Roadmap</p>
-                  <p className="text-xs text-green-700">2023-02-09</p>
-                </a>
-              </div>
-            </section>
-            <section className="bg-[#F5FEDC] rounded-3xl p-8 mt-4">
-              <h1 className="text-2xl font-bold">Similar Posts</h1>
-              <div className="flex flex-col gap-5 mt-5">
-                <a href="#">
-                  <p className="text-base text-green-800 font-medium">Phala Network 2023 Roadmap</p>
-                  <p className="text-xs text-green-700">2023-02-09</p>
-                </a>
-              </div>
-            </section>
+          <div className={cn('lg:col-span-7')}>
+            {recentPages.length > 0 ? (
+              <section className="bg-[#F5FEDC] rounded-3xl p-8">
+                <h1 className="text-2xl font-bold">Recent Posts</h1>
+                <div className="flex flex-col gap-5 mt-5">
+                  {recentPages.map((recentPage) => (
+                    <a href={`/posts${recentPage.slug}`} key={recentPage.id}>
+                      <p className="text-base text-green-800 font-medium">
+                        {recentPage.title}
+                      </p>
+                      <p className="text-xs text-green-700">
+                        {dayjs(recentPage.createdTime).format('YYYY-MM-DD')}
+                      </p>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+            {similarPages.length > 0 ? (
+              <section className="bg-[#F5FEDC] rounded-3xl p-8 mt-4">
+                <h1 className="text-2xl font-bold">Similar Posts</h1>
+                <div className="flex flex-col gap-5 mt-5">
+                  {similarPages.map((similarPage) => (
+                    <a href={`/posts${similarPage.slug}`} key={similarPage.id}>
+                      <p className="text-base text-green-800 font-medium">
+                        {similarPage.title}
+                      </p>
+                      <p className="text-xs text-green-700">
+                        {dayjs(similarPage.createdTime).format('YYYY-MM-DD')}
+                      </p>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            ) : null}
           </div>
         </div>
       </div>
@@ -169,18 +240,136 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (
   context
 ) => {
   const { slug } = context.params!
-  const [error, pages] = await attempt(getParsedPagesByProperties({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-    properties: {
-      'Custom URL': slug,
-    }
-  }))
+  const [error, pages] = await attempt(
+    getParsedPagesByProperties({
+      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      properties: {
+        'Custom URL': slug,
+      },
+    })
+  )
   if (error) {
     console.error(error)
   }
+  if (pages.length === 0) {
+    return {
+      props: {
+        page: null,
+        recentPages: [],
+        similarPages: [],
+      },
+    }
+  }
+  const page = pages[0]
+  const baseFilters = [
+    {
+      property: 'Status',
+      status: {
+        equals: 'Published',
+      },
+    },
+    {
+      property: 'Post Type',
+      select: {
+        equals: 'Post',
+      },
+    },
+    {
+      property: 'Custom URL',
+      rich_text: {
+        does_not_equal: page.slug,
+      },
+    },
+  ]
+  const { pages: recentPages } = await queryDatabase({
+    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    filter: {
+      and: [...baseFilters],
+    },
+    sorts: [
+      {
+        timestamp: 'created_time',
+        direction: 'descending',
+      },
+    ],
+    page_size: 3,
+  })
+  let similarPages: ParsedListPage[] = []
+  if (page.tags.length > 0) {
+    const result = await queryDatabase({
+      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      filter: {
+        and: [
+          ...baseFilters,
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: page.tags[0],
+            },
+          },
+        ],
+      },
+      sorts: [
+        {
+          timestamp: 'created_time',
+          direction: 'descending',
+        },
+      ],
+      page_size: 3,
+    })
+    similarPages = result.pages
+  }
+  const { pages: nextPages } = await queryDatabase({
+    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    filter: {
+      and: [
+        ...baseFilters,
+        {
+          timestamp: 'created_time',
+          created_time: {
+            on_or_after: dayjs(page.createdTime).add(1, 'second').format(),
+          },
+        },
+      ],
+    },
+    sorts: [
+      {
+        timestamp: 'created_time',
+        direction: 'descending',
+      },
+    ],
+    page_size: 1,
+  })
+  const { pages: beforePages } = await queryDatabase({
+    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    filter: {
+      and: [
+        ...baseFilters,
+        {
+          timestamp: 'created_time',
+          created_time: {
+            on_or_before: dayjs(page.createdTime)
+              .subtract(1, 'second')
+              .format(),
+          },
+        },
+      ],
+    },
+    sorts: [
+      {
+        timestamp: 'created_time',
+        direction: 'descending',
+      },
+    ],
+    page_size: 1,
+  })
   return {
     props: {
-      page: pages && pages.length > 0 ? pages[0] : null,
+      page,
+      recentPages,
+      similarPages,
+      beforePages,
+      nextPages,
     },
   }
 }

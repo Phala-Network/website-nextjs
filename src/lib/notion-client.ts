@@ -5,35 +5,36 @@ import {
   isFullBlock,
 } from '@notionhq/client'
 import {
-  PageObjectResponse,
   BlockObjectResponse,
+  QueryDatabaseParameters,
 } from '@notionhq/client/build/src/api-endpoints'
+import * as R from 'ramda'
 
 export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
-type PageObjectProperties = PageObjectResponse['properties']
-type PropertyKeys = keyof PageObjectProperties
-type PropertyTypes = PageObjectProperties[PropertyKeys]['type']
-
 export interface ParsedPage {
   id: string
   coverUrl: string
   title: string
-  properties: ParsedProperty[]
+  slug: string
+  tags: string[]
   blocks: ParsedBlock[]
+  createdTime: string
+}
+
+export interface ParsedListPage {
+  id: string
+  coverUrl: string
+  title: string
+  slug: string
+  createdTime: string
+  tags: string[]
 }
 
 export type ParsedBlock = BlockObjectResponse & {
   children?: ParsedBlock[]
-}
-
-export type ParsedProperty = {
-  key: string
-  id: string
-  type: PropertyTypes
-  text: string | null
 }
 
 function removeFormatFromCoverUrl(coverUrl: string): string {
@@ -60,13 +61,18 @@ export async function getParsedPage(
   })
   const fullBlocks: BlockObjectResponse[] = blocks.filter(isFullBlock)
   const parsedBlocks = await Promise.all(fullBlocks.map(parsePageBlock))
-  const properties = Object.entries(page.properties).map(([key, value]) => ({
-    key,
-    id: value.id,
-    type: value.type,
-    text: parsePropertyText(value),
-  }))
-  const titleProperty = properties.find((p) => p.type === 'title')?.text
+  const title = R.map(
+    R.prop('plain_text'),
+    R.pathOr([], ['Title', 'title'], page.properties)
+  ).join(' ')
+  const slug = R.map(
+    R.prop('plain_text'),
+    R.pathOr([], ['Custom URL', 'rich_text'], page.properties)
+  ).join(' ')
+  const tags = R.map(
+    R.prop('name'),
+    R.pathOr([], ['Tags', 'multi_select'], page.properties)
+  )
   const coverUrl = page.cover
     ? 'external' in page.cover
       ? removeFormatFromCoverUrl(page.cover.external.url)
@@ -75,9 +81,11 @@ export async function getParsedPage(
   return {
     id: page.id,
     coverUrl,
-    title: titleProperty || '',
-    properties,
+    title,
+    slug,
+    tags,
     blocks: parsedBlocks,
+    createdTime: page.created_time,
   }
 }
 
@@ -173,78 +181,6 @@ async function withPotentialChildren(
   }
 }
 
-function parsePropertyText(
-  property: PageObjectProperties[PropertyKeys]
-): string | null {
-  switch (property.type) {
-    case 'number':
-      return property.number?.toString() || null
-    case 'url':
-      return property.url || null
-    case 'select':
-      return property.select?.name || null
-    case 'multi_select':
-      return property.multi_select.length > 0
-        ? property.multi_select.map((select) => select.name).join(', ')
-        : null
-    case 'status':
-      return property.status?.name || null
-    case 'date':
-      if (property.date?.start && property.date?.end) {
-        return `${property.date.start} - ${property.date.end}`
-      }
-      return property.date?.start || null
-    case 'email':
-      return property.email || null
-    case 'phone_number':
-      return property.phone_number || null
-    case 'checkbox':
-      return property.checkbox ? 'Yes' : 'No'
-    case 'files':
-      return property.files.length > 0
-        ? property.files
-            .map((f) => ({
-              name: f.name,
-              url: 'external' in f ? f.external.url : f.file.url,
-            }))
-            .map(({ name, url }) => `[${name}](${url})`)
-            .join(', ')
-        : null
-    case 'created_by':
-      return 'name' in property.created_by ? property.created_by?.name : null
-    case 'created_time':
-      return property.created_time
-    case 'last_edited_by':
-      return 'name' in property.last_edited_by
-        ? property.last_edited_by?.name
-        : null
-    case 'last_edited_time':
-      return property.last_edited_time
-    case 'title':
-      return property.title.map((t) => t.plain_text).join(' ')
-    case 'rich_text':
-      return property.rich_text.map((t) => t.plain_text).join(' ')
-    case 'people':
-      return property.people.length > 0
-        ? property.people.map((p) => ('name' in p ? p.name : p.id)).join(', ')
-        : null
-    case 'relation':
-    case 'rollup':
-    case 'formula':
-    // @ts-expect-error missing from Notion package
-    case 'verification':
-      return null
-    default:
-      ;((property: never) => {
-        console.warn(
-          { property_type: (property as { type: string }).type },
-          'Unknown property type.'
-        )
-      })(property as never)
-      return null
-  }
-}
-
 function isParsedPage(page: ParsedPage | null): page is ParsedPage {
   return page !== null
 }
@@ -264,10 +200,14 @@ export async function getParsedPagesByProperties({
         rich_text: {
           contains: value,
         },
-      }))
+      })),
     },
   })
-  const pages = (await Promise.all(database.results.map(result => getParsedPage(result.id)))).filter(isParsedPage)
+  const pages = (
+    await Promise.all(
+      database.results.map((result) => getParsedPage(result.id))
+    )
+  ).filter(isParsedPage)
   return pages
 }
 
@@ -327,4 +267,43 @@ export async function* iteratePaginatedWithRetries<
     nextCursor = response.next_cursor
     resultPageIdx += 1
   } while (nextCursor)
+}
+
+export async function queryDatabase(args: QueryDatabaseParameters) {
+  const database = await notion.databases.query(args)
+  const { results = [], next_cursor } = database
+  const pages = []
+  for (const page of results) {
+    // @ts-expect-error missing from Notion package
+    const { id, properties, cover, created_time } = page
+    const title = R.map(
+      R.prop('plain_text'),
+      R.pathOr([], ['Title', 'title'], properties)
+    ).join(' ')
+    const slug = R.map(
+      R.prop('plain_text'),
+      R.pathOr([], ['Custom URL', 'rich_text'], properties)
+    ).join(' ')
+    const tags = R.map(
+      R.prop('name'),
+      R.pathOr([], ['Tags', 'multi_select'], properties)
+    )
+    const coverUrl = cover
+      ? 'external' in cover
+        ? removeFormatFromCoverUrl(cover.external.url)
+        : removeFormatFromCoverUrl(cover.file.url)
+      : ''
+    pages.push({
+      id,
+      coverUrl,
+      title,
+      slug,
+      tags,
+      createdTime: created_time,
+    })
+  }
+  return {
+    next_cursor,
+    pages,
+  }
 }
