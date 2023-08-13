@@ -1,5 +1,5 @@
-import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import type { GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { ImSpinner2 } from 'react-icons/im'
 import { motion } from 'framer-motion'
@@ -145,10 +145,15 @@ interface Params extends ParsedUrlQuery {
   slug: string
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (
-  context
-) => {
-  const { slug } = context.params!
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
+}
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const slug = params!.slug as string
   const baseFilters = [
     {
       property: 'Status',

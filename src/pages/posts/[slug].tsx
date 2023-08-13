@@ -1,5 +1,5 @@
 import React, { AnchorHTMLAttributes } from 'react'
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import { useHydrateAtoms } from 'jotai/utils'
@@ -238,10 +238,15 @@ interface Params extends ParsedUrlQuery {
   slug: string
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (
-  context
-) => {
-  const { slug } = context.params!
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
+}
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const slug = params!.slug as string
   const [error, pages] = await attempt(
     getParsedPagesByProperties({
       database_id: process.env.NOTION_POSTS_DATABASE_ID!,
