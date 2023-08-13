@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
 import Card from '@/pages/components/Card'
+import SectionSubscription from '@/pages/components/SectionSubscription'
 import { queryDatabase, ParsedListPage } from '@/lib/notion-client'
 import useQueryPosts from '@/hooks/useQueryPosts'
 
@@ -134,6 +135,7 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
             </div>
           </div>
         </div>
+        <SectionSubscription />
       </div>
     </>
   )
