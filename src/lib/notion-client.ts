@@ -68,7 +68,7 @@ export async function getParsedPage(
   const slug = R.map(
     R.prop('plain_text'),
     R.pathOr([], ['Custom URL', 'rich_text'], page.properties)
-  ).join(' ')
+  ).join(' ').split('?')[0]
   const tags = R.map(
     R.prop('name'),
     R.pathOr([], ['Tags', 'multi_select'], page.properties)
@@ -283,7 +283,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
     const slug = R.map(
       R.prop('plain_text'),
       R.pathOr([], ['Custom URL', 'rich_text'], properties)
-    ).join(' ')
+    ).join(' ').split('?')[0]
     const tags = R.map(
       R.prop('name'),
       R.pathOr([], ['Tags', 'multi_select'], properties)
