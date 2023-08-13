@@ -132,7 +132,7 @@ async function retrieveTags() {
   return tags
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const tags = await retrieveTags()
   const { next_cursor, pages } = await queryDatabase({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,

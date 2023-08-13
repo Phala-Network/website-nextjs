@@ -5,6 +5,9 @@ import TagLink from '@/pages/components/TagLink'
 import { ParsedListPage } from '@/lib/notion-client'
 
 export default function Card({ page }: { page: ParsedListPage }) {
+  if (!page) {
+    return null
+  }
   return (
     <article
       className={cn(

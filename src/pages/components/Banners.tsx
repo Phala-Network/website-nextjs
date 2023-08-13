@@ -9,6 +9,9 @@ import TagLink from '@/pages/components/TagLink'
 import { ParsedListPage } from '@/lib/notion-client'
 
 export default function Banners({ pages }: { pages: ParsedListPage[] }) {
+  if (!pages) {
+    return null
+  }
   return (
     <div
       className="w-full h-full"
