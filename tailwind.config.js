@@ -492,30 +492,35 @@ module.exports = {
 
     borderRadius: {
       none: '0',
-      sm: '0.125rem',   // 0.125rem = 2px
-      DEFAULT: '0.25rem', // 0.25rem = 4px
-      md: '0.375rem',   // 0.375rem = 6px
-      lg: '0.5rem',     // 0.5rem = 8px
-      xl: '0.75rem',    // 0.75rem = 12px
-      '2xl': '1rem',    // 1rem = 16px
-      '3xl': '1.5rem',  // 1.5rem = 24px
-      '4xl': '2rem',    // 2rem = 32px
-      '5xl': '2.25rem',    // 2rem = 32px
+      xs: '0.375rem',
+      sm: '0.75rem',
+      DEFAULT: '1rem',
+      md: '1.5rem',
+      lg: '1.75rem',
+      xl: '2rem',
+      '2xl': '2.25rem',
+      '3xl': '3rem',
+      '4xl': '4rem',
       'full': '9999px',
     }, // END: borderRadius
 
     boxShadow: {
-      xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
-      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-      md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-      '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-      outline: '0 0 0 3px rgba(63, 153, 225, 0.6)',
-      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-      'dark-lg': '0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 5px 10px rgba(0, 0, 0, 0.2), 0px 15px 40px rgba(0, 0, 0, 0.4)',
+      // DEFAULT equals to 'md'
+      DEFAULT: '0px 4px 6px -2px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.10)',
       none: 'none',
+      //
+      sm: '0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)',
+      md: '0px 4px 6px -2px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.10)',
+      lg: '0px 10px 10px -5px rgba(0, 0, 0, 0.04), 0px 20px 25px -5px rgba(0, 0, 0, 0.10)',
+      xl: '0px 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      'dark-sm': '0px 2px 4px -11px rgba(0, 0, 0, 0.40), 0px 4px 6px -1px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-md': '0px 4px 10px -2px rgba(0, 0, 0, 0.40), 0px 10px 15px -3px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-lg': '0px 15px 20px 0px rgba(0, 0, 0, 0.30), 0px 5px 10px 0px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-xl': '0px 15px 40px 0px rgba(0, 0, 0, 0.40), 0px 5px 10px 0px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'inner-sm': '0px 2px 4px 0px rgba(0, 0, 0, 0.06) inset',
+      'inner-md': '0px 2px 8px 0px rgba(0, 0, 0, 0.10) inset',
+      'inner-lg': '0px 2px 12px 0px rgba(0, 0, 0, 0.14) inset',
+      'inner-xl': '0px 2px 16px 0px rgba(0, 0, 0, 0.18) inset',
     }, // END: boxShadow
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
