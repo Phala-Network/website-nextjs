@@ -525,6 +525,7 @@ module.exports = {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     extend: {
       colors: {
+        // @deprecated, use phat-green
         phat: {
           DEFAULT: '#59A138',
           50: '#F5FFF0',
@@ -538,7 +539,7 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
-        // alias to phat
+        // @deprecated, use phat-green
         brand: {
           DEFAULT: '#59A138',
           50: '#F5FFF0',
@@ -552,21 +553,24 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
+        //
+        // Brand Color
+        //
         phalaGreen: {
-          DEFAULT: '#59A138',
-          50: '#F5FFF0',
-          100: '#D5F6C6',
-          200: '#B2E69A',
-          300: '#8AD368',
-          400: '#6FB74E',
-          500: '#59A138',
-          600: '#438525',
-          700: '#3B6727',
-          800: '#325422',
-          900: '#29451C',
+          DEFAULT: '#CDFA50', // equals 500
+          50: '#FAFEED',
+          100: '#F5FEDC',
+          200: '#EBFDB9',
+          300: '#E1FC96',
+          400: '#D7FB73',
+          500: '#CDFA50',
+          600: '#A4C840',
+          700: '#7B9630',
+          800: '#526420',
+          900: '#293210',
         },
         phalaPurple: {
-          DEFAULT: '#7F52FA',
+          DEFAULT: '#7F52FA', // equals 500
           50: '#F2EDFE',
           100: '#E5DCFE',
           200: '#CCBAFD',
@@ -579,7 +583,7 @@ module.exports = {
           900: '#191032',
         },
         phatGreen: {
-          DEFAULT: '#59A138',
+          DEFAULT: '#59A138', // equals 500
           50: '#F5FFF0',
           100: '#D5F6C6',
           200: '#B2E69A',
@@ -591,14 +595,22 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
-        // website specified colors
-        primary: {
-          DEFAULT: '#CDFA50',
+        phalaWorldTeal: {
+          DEFAULT: '#2DD2B5', // equals 500
+          50: '#D7FEF7',
+          100: '#AFFDEF',
+          200: '#86FCE7',
+          300: '#5EFBDF',
+          400: '#36FAD7',
+          500: '#2DD2B5',
+          600: '#25AA92',
+          700: '#1C8270',
+          800: '#135A4D',
+          900: '#0B322B',
         },
-        secondary: {
-          DEFAULT: '#8544F6',
-        },
-        // general
+        //
+        // Basic System
+        //
         gray: {
           50: '#F7FAFC',
           100: '#EDF2F7',
@@ -657,6 +669,13 @@ module.exports = {
           900: '#1A1A1A',
           950: '#0D0D0D',
         },
+        white: {
+          DEFAULT: '#fff',
+        },
+        //
+        // END: Basic System
+        //
+        // Refer as system color 'critical'
         red: {
           50: '#fff5f5',
           100: '#fed7d7',
@@ -669,6 +688,7 @@ module.exports = {
           800: '#822727',
           900: '#63171b',
         },
+        // Refer as system color 'warning'
         orange: {
           50: '#fffaf0',
           100: '#feebcb',
@@ -681,6 +701,7 @@ module.exports = {
           800: '#7b341e',
           900: '#652b19',
         },
+        // Refer as system color 'wait'
         yellow: {
           50: '#fffff0',
           100: '#fefcbf',
@@ -693,17 +714,18 @@ module.exports = {
           800: '#744210',
           900: '#5f370e',
         },
+        // Refer as system color 'positive'
         green: {
           50: '#f0fff4',
           100: '#c6f6d5',
-          200: '#EBFDB9',
+          200: '#9AE6B4',
           300: '#68d391',
           400: '#48bb78',
-          500: '#CDFA50',
-          600: '#A4C840',
-          700: '#7B9630',
-          800: '#526420',
-          900: '#1c4532',
+          500: '#38A169',
+          600: '#25855A',
+          700: '#276749',
+          800: '#22543D',
+          900: '#1C4532',
         },
         teal: {
           50: '#e6fffa',
@@ -717,6 +739,7 @@ module.exports = {
           800: '#234e52',
           900: '#1d4044',
         },
+        // Refer as system color 'primary'
         blue: {
           50: '#ebf8ff',
           100: '#bee3f8',
@@ -764,6 +787,15 @@ module.exports = {
           700: '#97266d',
           800: '#702459',
           900: '#521b41',
+        },
+        //
+        // website specified colors, deprecated
+        //
+        primary: {
+          DEFAULT: '#CDFA50',
+        },
+        secondary: {
+          DEFAULT: '#8544F6',
         },
       }, // END: colors
 
