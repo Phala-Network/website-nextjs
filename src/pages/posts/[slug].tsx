@@ -378,6 +378,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       beforePages,
       nextPages,
     },
+    revalidate: 7200,
   }
 }
 
