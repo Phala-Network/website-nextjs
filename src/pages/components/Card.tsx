@@ -33,7 +33,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
       </div>
       <div className="h-full flex flex-col justify-between p-4">
         <div className="flex flex-col gap-y-2">
-          <div className="flex items-center gap-x-4">
+          <div className="flex items-center gap-2 flex-wrap">
             {page.tags.map((tag, i) => (
               <TagLink key={`${i}`} href={`/tags/${tag}`}>
                 {tag}
