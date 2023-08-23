@@ -183,7 +183,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     },
     sorts: [
       {
-        timestamp: 'created_time',
+        property: 'Published Time',
         direction: 'descending',
       },
     ],

@@ -18,7 +18,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
     >
       <div
         className={cn(
-          'w-full h-[53%] aspect-[412/230]',
+          'w-full h-[53%]',
           'rounded-3xl overflow-hidden',
           'shrink-0'
         )}
@@ -33,7 +33,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
       </div>
       <div className="h-full flex flex-col justify-between p-4">
         <div className="flex flex-col gap-y-2">
-          <div className="flex items-center gap-x-4">
+          <div className="flex items-center gap-2 flex-wrap">
             {page.tags.map((tag, i) => (
               <TagLink key={`${i}`} href={`/tags/${tag}`}>
                 {tag}
@@ -45,7 +45,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
           </h2>
         </div>
         <div className="text-sm">
-          <p>{dayjs(page.createdTime).format('YYYY-MM-DD')}</p>
+          <p>{dayjs(page.publishedTime).format('YYYY-MM-DD')}</p>
         </div>
       </div>
     </article>

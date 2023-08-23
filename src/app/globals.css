@@ -10,10 +10,6 @@ body {
   height: 100%;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   color: #262626;
   overflow-x: hidden;
