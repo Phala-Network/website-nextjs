@@ -97,7 +97,16 @@ export function SectionHero() {
           <a
             className={cn("btn btn-xl text-sm font-semibold lg:text-base btn-primary justify-center")}
             href="#section-features"
-            onClick={() => swiper.slideNext()}
+            onClick={(e) => {
+              e.preventDefault()
+              if (swiper && swiper.allowSlideNext) {
+                swiper.slideNext()
+              } else {
+                document.querySelector(e.currentTarget.getAttribute('href')!)?.scrollIntoView({
+                  behavior: 'smooth',
+                })
+              }
+            }}
           >
             Let's Build!
           </a>
