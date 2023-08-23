@@ -15,9 +15,10 @@ interface Props {
   tags: string[]
   nextCursor: string
   initialPages: ParsedListPage[]
+  bannerPages: ParsedListPage[]
 }
 
-export default function BlogPage({ tags, initialPages, nextCursor }: Props) {
+export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }: Props) {
   const {
     pages = [],
     isLoading,
@@ -53,7 +54,7 @@ export default function BlogPage({ tags, initialPages, nextCursor }: Props) {
             Blog
           </h1>
           <section className={cn('mt-8')}>
-            <Banners pages={pages.slice(0, 5)} />
+            <Banners pages={bannerPages} />
           </section>
           <section
             className={cn(
@@ -134,6 +135,22 @@ async function retrieveTags() {
 
 export const getStaticProps = async () => {
   const tags = await retrieveTags()
+  const queryBannerPages = await queryDatabase({
+    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    filter: {
+      property: 'Tags',
+      multi_select: {
+        contains: 'Weekly report',
+      },
+    },
+    sorts: [
+      {
+        timestamp: 'created_time',
+        direction: 'descending',
+      },
+    ],
+    page_size: 5,
+  })
   const { next_cursor, pages } = await queryDatabase({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
     filter: {
@@ -152,6 +169,12 @@ export const getStaticProps = async () => {
         },
       ],
     },
+    sorts: [
+      {
+        timestamp: 'created_time',
+        direction: 'descending',
+      },
+    ],
     page_size: 18,
   })
   return {
@@ -159,6 +182,7 @@ export const getStaticProps = async () => {
       tags,
       initialPages: pages,
       nextCursor: next_cursor,
+      bannerPages: queryBannerPages ? queryBannerPages.pages : [],
     },
   }
 }

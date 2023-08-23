@@ -35,6 +35,12 @@ export default async function handler(
   const { next_cursor, pages } = await queryDatabase({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
     filter,
+    sorts: [
+      {
+        timestamp: 'created_time',
+        direction: 'descending',
+      },
+    ],
     page_size: page_size as number,
     start_cursor: cursor as string,
   })
