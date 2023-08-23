@@ -18,7 +18,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
     >
       <div
         className={cn(
-          'w-full h-[53%] aspect-[412/230]',
+          'w-full h-[53%]',
           'rounded-3xl overflow-hidden',
           'shrink-0'
         )}
