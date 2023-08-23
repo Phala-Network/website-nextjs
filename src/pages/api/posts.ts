@@ -37,7 +37,7 @@ export default async function handler(
     filter,
     sorts: [
       {
-        timestamp: 'created_time',
+        property: 'Published Time',
         direction: 'descending',
       },
     ],
