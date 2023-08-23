@@ -33,7 +33,6 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
           <SwiperSlide
             key={page.id}
             className={cn(
-              'aspect-[500/400] lg:aspect-[1316/531]',
               'w-full h-full bg-[#FAFEED]',
               'rounded-3xl p-2'
             )}
@@ -44,7 +43,6 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
               <div
                 className={cn(
                   'lg:col-span-12',
-                  'aspect-[500/400]',
                   'rounded-3xl overflow-hidden'
                 )}
               >
@@ -64,7 +62,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                 )}
               >
                 <div className="flex flex-col gap-y-2">
-                  <div className="flex items-center gap-x-4">
+                  <div className="flex items-center gap-2 flex-wrap">
                     {page.tags.map((tag, i) => (
                       <TagLink key={`${i}`} href={`/tags/${tag}`}>
                         {tag}
@@ -76,7 +74,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                   </h2>
                 </div>
                 <div className="text-sm">
-                  <p>{dayjs(page.createdTime).format('YYYY-MM-DD')}</p>
+                  <p>{dayjs(page.publishedTime).format('YYYY-MM-DD')}</p>
                 </div>
               </div>
             </article>

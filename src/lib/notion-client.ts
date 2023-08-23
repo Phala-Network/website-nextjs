@@ -21,7 +21,7 @@ export interface ParsedPage {
   slug: string
   tags: string[]
   blocks: ParsedBlock[]
-  createdTime: string
+  publishedTime: string
 }
 
 export interface ParsedListPage {
@@ -29,8 +29,8 @@ export interface ParsedListPage {
   coverUrl: string
   title: string
   slug: string
-  createdTime: string
   tags: string[]
+  publishedTime: string
 }
 
 export type ParsedBlock = BlockObjectResponse & {
@@ -78,6 +78,7 @@ export async function getParsedPage(
       ? removeFormatFromCoverUrl(page.cover.external.url)
       : removeFormatFromCoverUrl(page.cover.file.url)
     : ''
+  const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], page.properties)
   return {
     id: page.id,
     coverUrl,
@@ -85,7 +86,7 @@ export async function getParsedPage(
     slug,
     tags,
     blocks: parsedBlocks,
-    createdTime: page.created_time,
+    publishedTime,
   }
 }
 
@@ -275,7 +276,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
   const pages = []
   for (const page of results) {
     // @ts-expect-error missing from Notion package
-    const { id, properties, cover, created_time } = page
+    const { id, properties, cover } = page
     const title = R.map(
       R.prop('plain_text'),
       R.pathOr([], ['Title', 'title'], properties)
@@ -293,13 +294,14 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
         ? removeFormatFromCoverUrl(cover.external.url)
         : removeFormatFromCoverUrl(cover.file.url)
       : ''
+    const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], properties)
     pages.push({
       id,
       coverUrl,
       title,
       slug,
       tags,
-      createdTime: created_time,
+      publishedTime,
     })
   }
   return {
