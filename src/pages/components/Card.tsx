@@ -45,7 +45,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
           </h2>
         </div>
         <div className="text-sm">
-          <p>{dayjs(page.createdTime).format('YYYY-MM-DD')}</p>
+          <p>{dayjs(page.publishedTime).format('YYYY-MM-DD')}</p>
         </div>
       </div>
     </article>

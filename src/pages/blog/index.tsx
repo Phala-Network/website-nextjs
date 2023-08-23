@@ -145,7 +145,7 @@ export const getStaticProps = async () => {
     },
     sorts: [
       {
-        timestamp: 'created_time',
+        property: 'Published Time',
         direction: 'descending',
       },
     ],
@@ -171,7 +171,7 @@ export const getStaticProps = async () => {
     },
     sorts: [
       {
-        timestamp: 'created_time',
+        property: 'Published Time',
         direction: 'descending',
       },
     ],
