@@ -95,6 +95,8 @@ const flow1to3 = [
   ['.flow-workers', { y: '70%' }, { at: 1.5, duration: 0.6, ease: 'easeOut' }],
   ['.worker1', { scale: 0.8, x: '27%', opacity: 0.1 }, { at: 1.5, duration: 0.6, ease: 'easeOut' }],
   ['.worker3', { scale: 0.8, x: '-27%', opacity: 0.1 }, { at: 1.5, duration: 0.6, ease: 'easeOut' }],
+  ['.worker-phat', { opacity: 0 }, { at: 1.5, duration: 0.6, ease: 'easeOut' }],
+  ['.worker-file', { opacity: 1 }, { at: 1.5, duration: 0.6, ease: 'easeOut' }],
   ['.flow-phala-blockchain', { x: '17.02%' }, { at: 0.6, duration: 0.6, ease: 'easeOut' }],
   ['.flow-phala-blockchain', { y: '21.5%' }, { at: 1.2, duration: 0.3, ease: 'easeOut' }],
   ['.flow-phala-blockchain', { scale: 0.8, y: '30%' }, { at: 1.5, duration: 0.6, ease: 'easeOut' }],
