@@ -64,7 +64,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                 )}
               >
                 <div className="flex flex-col gap-y-2">
-                  <div className="flex items-center gap-x-4">
+                  <div className="flex items-center gap-2 flex-wrap">
                     {page.tags.map((tag, i) => (
                       <TagLink key={`${i}`} href={`/tags/${tag}`}>
                         {tag}
