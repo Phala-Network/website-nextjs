@@ -22,6 +22,7 @@ export interface ParsedPage {
   tags: string[]
   blocks: ParsedBlock[]
   publishedTime: string
+  status: 'Published' | 'Hidden' | 'Drafting' | 'Raw Idea'
 }
 
 export interface ParsedListPage {
@@ -79,12 +80,14 @@ export async function getParsedPage(
       : removeFormatFromCoverUrl(page.cover.file.url)
     : ''
   const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], page.properties)
+  const status = R.pathOr('Drafting', ['Status', 'status', '0', 'name'], page.properties)
   return {
     id: page.id,
     coverUrl,
     title,
     slug,
     tags,
+    status,
     blocks: parsedBlocks,
     publishedTime,
   }
