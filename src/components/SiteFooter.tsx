@@ -120,8 +120,8 @@ export default function SiteFooter() {
               <LinkListItem href="https://discord.com/invite/phala">Discord</LinkListItem>
               <LinkListItem href="https://t.me/phalanetwork">Telegram</LinkListItem>
               <LinkListItem href="https://www.youtube.com/@PhalaNetwork">YouTube</LinkListItem>
-              <LinkListItem href="https://lenster.xyz/u/yourfather">Lenster</LinkListItem>
-              <LinkListItem href="https://lenstube.xyz/channel/yourfather.lens">Lenstube</LinkListItem>
+              <LinkListItem href="https://lenster.xyz/u/phatcontract">Lenster</LinkListItem>
+              <LinkListItem href="https://lenstube.xyz/channel/phatcontract.lens">Lenstube</LinkListItem>
               <LinkListItem href="https://forum.phala.network/">Forum</LinkListItem>
             </LinkList>
           </div>
