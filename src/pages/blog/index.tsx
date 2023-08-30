@@ -126,10 +126,10 @@ async function retrieveTags() {
   const database = await notion.databases.retrieve({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
   })
-  const tags = R.map(
+  const tags = R.without(['Changelog'], R.map(
     R.prop('name'),
     R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database)
-  )
+  ))
   return tags
 }
 
@@ -165,6 +165,12 @@ export const getStaticProps = async () => {
           property: 'Post Type',
           select: {
             equals: 'Post',
+          },
+        },
+        {
+          property: 'Tags',
+          multi_select: {
+            does_not_contain: 'Changelog',
           },
         },
       ],
