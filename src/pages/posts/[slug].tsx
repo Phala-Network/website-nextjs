@@ -129,10 +129,10 @@ const PostPage = ({
                   </p>
                 </div>
                 <div className="text-base">{page.blocks.map(render_block)}</div>
-                <div className="grid grid-cols-20 text-sm text-green-800">
+                <div className="grid grid-cols-2 text-sm text-green-800 mt-8">
                   {beforePages.length > 0 ? (
                     <a
-                      className="col-start-1 col-span-10 flex items-center gap-1"
+                      className="col-start-1 flex items-center gap-1"
                       href={`/posts${beforePages[0].slug}`}
                     >
                       <FiArrowLeft className="shrink-0" />
@@ -143,7 +143,7 @@ const PostPage = ({
                   ) : null}
                   {nextPages.length > 0 ? (
                     <a
-                      className="col-start-11 col-span-10 flex items-center gap-1"
+                      className="col-start-2 flex items-center gap-1 justify-end"
                       href={`/posts${nextPages[0].slug}`}
                     >
                       <span className="line-clamp-1 text-right pr-2">
