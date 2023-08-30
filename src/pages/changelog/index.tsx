@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 
 import { cn } from '@/lib/utils'
 import SectionSubscription from '@/pages/components/SectionSubscription'
+import TagLink from '@/pages/components/TagLink'
 import { queryDatabase, ParsedListPage } from '@/lib/notion-client'
 import useQueryPosts from '@/hooks/useQueryPosts'
 
@@ -43,7 +44,8 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
             className={cn(
               'text-black-850 text-xl',
               'text-4xl lg:text-5xl',
-              'font-black'
+              'font-black',
+              'mx-1'
             )}
           >
             Changelog
@@ -67,17 +69,26 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
                         <div>
                           <span
                             className={cn(
-                              'h-9 w-8 flex items-center justify-center'
+                              'h-8 w-8 flex items-center justify-center'
                             )}
                           >
                             <div className="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300" />
                           </span>
                         </div>
-                        <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
-                          <header className="text text-gray-500">
-                            <a href={`/posts${page.slug}`} className="font-medium text-gray-900 hover:text-phalaGreen-400 hover:underline">
-                              {page.title}
-                            </a>
+                        <div className="flex min-w-0 flex-1 justify-between space-x-4">
+                          <header className="text text-gray-500 flex flex-row items-center gap-4">
+                            <h4>
+                              <a href={`/posts${page.slug}`} className="font-medium text-gray-900 hover:text-phalaGreen-400 hover:underline">
+                                {page.title}
+                              </a>
+                            </h4>
+                            <div>
+                              {page.tags.filter(i => i !== 'Changelog').map((tag, idx) => (
+                                <TagLink key={`${idx}`} href={`/tags/${tag}`}>
+                                  {tag}
+                                </TagLink>
+                              ))}
+                            </div>
                           </header>
                           <div className="whitespace-nowrap text-right text-sm text-gray-500">
                             <time dateTime={page.publishedTime}>{dayjs(page.publishedTime).format('YYYY-MM-DD')}</time>
