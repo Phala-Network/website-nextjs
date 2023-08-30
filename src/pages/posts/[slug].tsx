@@ -16,8 +16,8 @@ import {
 } from '@/lib/notion-client'
 import { render_block } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
-import TagLink from '@/pages/components/TagLink'
-import SectionSubscription from '@/pages/components/SectionSubscription'
+import TagLink from '@/components/TagLink'
+import SectionSubscription from '@/components/SectionSubscription'
 import '@/components/notion-render/styles.css'
 
 interface Props {
