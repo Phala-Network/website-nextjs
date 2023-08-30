@@ -39,7 +39,7 @@ function generateSiteMap(tags: string[], posts: ParsedListPage[]) {
       ${tags.map((tag) => {
         return `
        <url>
-         <loc>${`${WEBSITE_URL}/tags/${encodeURI(tag)}`}</loc>
+         <loc>${`${WEBSITE_URL}/tags/${encodeURIComponent(tag)}`}</loc>
        </url>
         `
       })}

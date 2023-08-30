@@ -109,7 +109,7 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
                               </h4>
                               <div>
                                 {page.tags.filter(i => i !== 'Changelog').map((tag, idx) => (
-                                  <TagLink key={`${idx}`} href={`/tags/${tag}`}>
+                                  <TagLink key={`${idx}`} href={`/tags/${encodeURIComponent(tag)}`}>
                                     {tag}
                                   </TagLink>
                                 ))}
