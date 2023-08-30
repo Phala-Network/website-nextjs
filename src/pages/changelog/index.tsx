@@ -1,26 +1,22 @@
 import React from 'react'
 import Head from 'next/head'
-import * as R from 'ramda'
 import { ImSpinner2 } from 'react-icons/im'
 import { BiRss } from 'react-icons/bi'
 import { motion } from 'framer-motion'
+import dayjs from 'dayjs'
 
 import { cn } from '@/lib/utils'
-import Banners from '@/components/Banners'
-import Card from '@/components/Card'
 import SectionSubscription from '@/components/SectionSubscription'
 import TagLink from '@/components/TagLink'
-import { notion, queryDatabase, ParsedListPage } from '@/lib/notion-client'
+import { queryDatabase, ParsedListPage } from '@/lib/notion-client'
 import useQueryPosts from '@/hooks/useQueryPosts'
 
 interface Props {
-  tags: string[]
   nextCursor: string
   initialPages: ParsedListPage[]
-  bannerPages: ParsedListPage[]
 }
 
-export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }: Props) {
+export default function ChangelogPage({ initialPages, nextCursor }: Props) {
   const {
     pages = [],
     isLoading,
@@ -30,13 +26,12 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
   return (
     <>
       <Head>
-        <title>Blog - Phala Network</title>
-        <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
-        <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
+        <title>Changelog - Phala Network</title>
+        <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/changelog/rss.xml" />
+        <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/changelog/atom.xml" />
       </Head>
       <div
         className={cn(
-          'min-h-screen',
           'bg-gradient-to-b from-green-600 to-green-500'
         )}
       >
@@ -57,14 +52,15 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
                 className={cn(
                   'text-black-850 text-xl',
                   'text-4xl lg:text-5xl',
-                  'font-black'
+                  'font-black',
+                  'mx-1'
                 )}
               >
-                Blog
+                Changelog
               </h1>
               <div>
                 <a
-                  href="/atom.xml"
+                  href="/changelog/atom.xml"
                   target="_blank"
                   rel="noopener"
                   className={cn(
@@ -78,20 +74,58 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
                 </a>
               </div>
             </header>
-            <section className={cn('mt-8')}>
-              <Banners pages={bannerPages} />
-            </section>
+
             <section
               className={cn(
-                'grid mt-8',
-                'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-                'gap-4'
+                "mx-0.5 my-8 p-8",
+                'bg-[#FAFEED] rounded-3xl',
               )}
             >
-              {pages.map((page) => (
-                <Card key={page.id} page={page} />
-              ))}
+              <div className="flow-root">
+                <ul role="list" className="-mb-8">
+                  {pages.map((page, eventIdx) => (
+                    <li key={page.id}>
+                      <div className="relative pb-8">
+                        {eventIdx !== pages.length - 1 ? (
+                          <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
+                        ) : null}
+                        <div className="relative flex space-x-3">
+                          <div>
+                            <span
+                              className={cn(
+                                'h-8 w-8 flex items-center justify-center'
+                              )}
+                            >
+                              <div className="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300" />
+                            </span>
+                          </div>
+                          <div className="flex min-w-0 flex-1 justify-between space-x-4">
+                            <header className="text text-gray-500 flex flex-row items-center gap-4">
+                              <h4>
+                                <a href={`/posts${page.slug}`} className="font-medium text-gray-900 hover:text-phalaGreen-400 hover:underline">
+                                  {page.title}
+                                </a>
+                              </h4>
+                              <div>
+                                {page.tags.filter(i => i !== 'Changelog').map((tag, idx) => (
+                                  <TagLink key={`${idx}`} href={`/tags/${encodeURIComponent(tag)}`}>
+                                    {tag}
+                                  </TagLink>
+                                ))}
+                              </div>
+                            </header>
+                            <div className="whitespace-nowrap text-right text-sm text-gray-500">
+                              <time dateTime={page.publishedTime}>{dayjs(page.publishedTime).format('YYYY-MM-DD')}</time>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </section>
+
             <div
               className={cn(
                 'pt-20 pb-10 w-full flex items-center justify-center'
@@ -120,26 +154,10 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
                   >
                     <ImSpinner2 className="h-5 w-5 text-brand-700 animate-spin" />
                   </motion.span>
-                  View All Blogs
+                  View More
                 </button>
               ) : null}
             </div>
-            <section
-              className={cn(
-                'bg-[#FAFEED] rounded-3xl',
-                'flex flex-col items-center',
-                'py-12 px-8'
-              )}
-            >
-              <h2 className="text-black font-bold text-2xl">Search by Tag</h2>
-              <div className="flex flex-wrap gap-3 mt-12 w-full">
-                {tags.map((tag, i) => (
-                  <TagLink key={`${i}`} href={`/tags/${encodeURIComponent(tag)}`}>
-                    {tag}
-                  </TagLink>
-                ))}
-              </div>
-            </section>
           </div>
         </div>
         <SectionSubscription />
@@ -148,35 +166,7 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
   )
 }
 
-async function retrieveTags() {
-  const database = await notion.databases.retrieve({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-  })
-  const tags = R.without(['Changelog'], R.map(
-    R.prop('name'),
-    R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database)
-  ))
-  return tags
-}
-
 export const getStaticProps = async () => {
-  const tags = await retrieveTags()
-  const queryBannerPages = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-    filter: {
-      property: 'Tags',
-      multi_select: {
-        contains: 'Weekly report',
-      },
-    },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 5,
-  })
   const { next_cursor, pages } = await queryDatabase({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
     filter: {
@@ -196,7 +186,7 @@ export const getStaticProps = async () => {
         {
           property: 'Tags',
           multi_select: {
-            does_not_contain: 'Changelog',
+            contains: 'Changelog',
           },
         },
       ],
@@ -211,10 +201,8 @@ export const getStaticProps = async () => {
   })
   return {
     props: {
-      tags,
       initialPages: pages,
       nextCursor: next_cursor,
-      bannerPages: queryBannerPages ? queryBannerPages.pages : [],
     },
   }
 }

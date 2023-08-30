@@ -5,7 +5,7 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css/pagination'
 
 import { cn } from '@/lib/utils'
-import TagLink from '@/pages/components/TagLink'
+import TagLink from '@/components/TagLink'
 import { ParsedListPage } from '@/lib/notion-client'
 
 export default function Banners({ pages }: { pages: ParsedListPage[] }) {
