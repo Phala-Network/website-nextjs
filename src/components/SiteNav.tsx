@@ -659,11 +659,17 @@ function SiteNav() {
 
       <DropdownMenu slug="pha-token">
         <MenuItem
-          href="https://medium.com/phala-network"
-          title="News"
+          href="/blog"
+          title="Blog"
           icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
         >
           <p>Stay up-to-date with all things Phala</p>
+        </MenuItem>
+        <MenuItem
+          href="/changelog"
+          title="Changelog"
+        >
+          <p>Latest changes for Phala</p>
         </MenuItem>
         <MenuItem
           title="Connect"
