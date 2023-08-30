@@ -17,6 +17,7 @@
     "autoprefixer": "10.4.14",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.9",
+    "feed": "^4.2.2",
     "figma-squircle": "^0.3.0",
     "framer-motion": "^10.12.16",
     "highlight.js": "^11.8.0",
