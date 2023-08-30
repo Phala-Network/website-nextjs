@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
 
+import Link from 'next/link'
 import { VscCommentDiscussion } from 'react-icons/vsc'
 import { MdArrowForward, MdGraphicEq, MdFaceRetouchingNatural, MdOutlineApi } from 'react-icons/md'
 
@@ -1131,17 +1132,15 @@ function SectionHighlights() {
           />
         </div>
         <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center")}>
-          <a
-            href="https://medium.com/phala-network"
+          <Link
+            href="/blog"
             className={cn(
               "btn btn-xl w-full justify-center btn-primary text-black uppercase",
               "font-semibold text-sm lg:text-base xl:text-lg"
             )}
-            target="_blank"
-            rel="noopener"
           >
             Discover More
-          </a>
+          </Link>
         </div>
       </div>
     </section>
