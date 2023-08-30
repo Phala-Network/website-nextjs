@@ -83,7 +83,8 @@ async function retrievePosts() {
 }
 
 export async function getServerSideProps({ res }: GetServerSidePropsContext) {
-  const [tags, posts] = await Promise.all([retrieveTags(), retrievePosts()])
+  const tags = await retrieveTags()
+  const posts = await retrievePosts()
   const sitemap = generateSiteMap(tags, posts)
 
   res.setHeader('Content-Type', 'text/xml')
