@@ -5,8 +5,8 @@ import { ImSpinner2 } from 'react-icons/im'
 import { motion } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
-import Card from '@/pages/components/Card'
-import SectionSubscription from '@/pages/components/SectionSubscription'
+import Card from '@/components/Card'
+import SectionSubscription from '@/components/SectionSubscription'
 import { queryDatabase, ParsedListPage } from '@/lib/notion-client'
 import useQueryPosts from '@/hooks/useQueryPosts'
 
@@ -32,7 +32,7 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
   return (
     <>
       <Head>
-        <title>{slug}</title>
+        <title>{slug} - Phala Network</title>
       </Head>
       <div
         className={cn(

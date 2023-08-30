@@ -48,6 +48,7 @@ export default function SiteFooter() {
           <LinkListHeading>Developers</LinkListHeading>
           <LinkList>
             <LinkListItem href="https://docs.phala.network/">Docs</LinkListItem>
+            <LinkListItem href="/changelog">Changelog</LinkListItem>
             <LinkListItem href="https://github.com/Phala-Network/">GitHub</LinkListItem>
             <LinkListItem href="https://docs.phala.network/developers/phat-contract/builders-program">Builders Program</LinkListItem>
             <LinkListItem href="https://phat.phala.network/">Native Phat Contract App</LinkListItem>

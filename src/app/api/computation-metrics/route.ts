@@ -3,16 +3,13 @@ import * as R from 'ramda'
 
 const query = `
   query MyQuery {
-    globalStatesConnection(orderBy: id_ASC) {
-      edges {
-        node {
-          height
-          totalValue
-        }
-      }
+    globalStateById(id: "0") {
+      workerCount
+      totalValue
+      idleWorkerCount
     }
-    workersConnection(orderBy: id_ASC, where: {session: {state_eq: WorkerIdle}}) {
-      totalCount
+    squidStatus {
+      height
     }
   }
 `
@@ -33,12 +30,12 @@ export async function GET() {
   ])
   const totalValue = R.pathOr(
     0,
-    ['data', 'globalStatesConnection', 'edges', '0', 'node', 'totalValue'],
+    ['data', 'globalStateById', 'totalValue'],
     json
   )
   const totalNodes = R.pathOr(
     0,
-    ['data', 'workersConnection', 'totalCount'],
+    ['data', 'globalStateById', 'idleWorkerCount'],
     json
   )
   const result = await getComputationMeta()

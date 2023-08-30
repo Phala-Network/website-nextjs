@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
 
+import Link from 'next/link'
 import { VscCommentDiscussion } from 'react-icons/vsc'
 import { MdArrowForward, MdGraphicEq, MdFaceRetouchingNatural, MdOutlineApi } from 'react-icons/md'
 
@@ -786,9 +787,8 @@ function SectionPitchInnovate() {
               <div>your ideas with us</div>
             </header>
             <ul className="flex flex-row relative">
-              <li className="relative xl:-right-24 z-[3]"><Avatar src="/home/avatar-h4x.jpg" name="Hang" /></li>
-              <li className="relative -left-8 xl:left-auto xl:-right-16 z-[2]"><Avatar src="/home/avatar-zoe.jpg" name="Zoe" /></li>
-              <li className="relative -left-16 xl:left-auto xl:-right-8 z-[1]"><Avatar src="/home/avatar-dan.jpg" name="Dan" /></li>
+              <li className="relative -left-8 xl:left-auto xl:-right-16 z-[2]"><Avatar src="/home/avatar-h4x.jpg" name="Hang" /></li>
+              <li className="relative -left-16 xl:left-auto xl:-right-8 z-[1]"><Avatar src="/home/avatar-zoe.jpg" name="Zoe" /></li>
               <li className="relative -left-24 xl:left-auto"><Avatar src="/home/avatar-shelven.jpg" name="Shelven" /></li>
             </ul>
             <a
@@ -1132,17 +1132,15 @@ function SectionHighlights() {
           />
         </div>
         <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center")}>
-          <a
-            href="https://medium.com/phala-network"
+          <Link
+            href="/blog"
             className={cn(
               "btn btn-xl w-full justify-center btn-primary text-black uppercase",
               "font-semibold text-sm lg:text-base xl:text-lg"
             )}
-            target="_blank"
-            rel="noopener"
           >
             Discover More
-          </a>
+          </Link>
         </div>
       </div>
     </section>
@@ -1208,6 +1206,17 @@ export const metadata: Metadata = {
     description: "Phala Network make smart contracts even smarter by providing decentralized compute.",
     images: ['http://localhost:3000/og-image.jpg'],
   },
+  alternates: {
+    canonical: "https://phala.network",
+    types: {
+      'application/rss+xml': [
+        { url: 'https://phala.network/rss.xml', title: 'Phala News' },
+      ],
+      'application/atom+xml': [
+        { url: 'https://phala.network/atom.xml', title: 'Phala News' },
+      ],
+    },
+  }
 }
 
 export default async function Home() {
