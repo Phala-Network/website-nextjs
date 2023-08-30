@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import dayjs from 'dayjs'
 
 import { cn } from '@/lib/utils'
-import SectionSubscription from '@/pages/components/SectionSubscription'
-import TagLink from '@/pages/components/TagLink'
+import SectionSubscription from '@/components/SectionSubscription'
+import TagLink from '@/components/TagLink'
 import { queryDatabase, ParsedListPage } from '@/lib/notion-client'
 import useQueryPosts from '@/hooks/useQueryPosts'
 
