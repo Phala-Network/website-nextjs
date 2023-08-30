@@ -32,7 +32,7 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
   return (
     <>
       <Head>
-        <title>{slug}</title>
+        <title>{slug} - Phala Network</title>
       </Head>
       <div
         className={cn(
