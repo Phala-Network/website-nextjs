@@ -1,0 +1,18 @@
+import type { GetServerSidePropsContext } from 'next'
+import { getBlogFeed } from '@/lib/rss_feed'
+
+export async function getServerSideProps({ res }: GetServerSidePropsContext) {
+  const feed = await getBlogFeed()
+
+  res.setHeader('Content-Type', 'text/xml')
+  res.write(feed.atom1())
+  res.end()
+
+  return {
+    props: {},
+  }
+}
+
+export default function AtomFeed() {
+  // getServerSideProps will do the heavy lifting
+}
