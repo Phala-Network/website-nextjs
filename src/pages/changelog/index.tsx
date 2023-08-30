@@ -32,7 +32,6 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
       </Head>
       <div
         className={cn(
-          'min-h-screen',
           'bg-gradient-to-b from-green-600 to-green-500'
         )}
       >
