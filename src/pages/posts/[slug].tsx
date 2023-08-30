@@ -66,7 +66,6 @@ const PostPage = ({
       ) : null}
       <div
         className={cn(
-          'min-h-screen',
           'bg-gradient-to-b from-green-600 to-green-500'
         )}
       >
