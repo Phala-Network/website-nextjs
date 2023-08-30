@@ -117,7 +117,7 @@ const PostPage = ({
                   {page.title}
                 </h1>
                 <div className="flex items-center gap-x-4">
-                  {page.tags.map((tag, i) => (
+                  {page.tags.filter(i => i !== 'Changelog').map((tag, i) => (
                     <TagLink key={`${i}`} href={`/tags/${tag}`}>
                       {tag}
                     </TagLink>
