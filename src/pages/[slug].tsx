@@ -53,6 +53,9 @@ const StaticPage = ({ page }: Props) => {
   useHydrateAtoms([[blocksAtom, page.blocks]])
   return (
     <>
+      <Head>
+        <title>{page.title} - Phala Network</title>
+      </Head>
       {page.title ? (
         <Head>
           <title>{page.title}</title>
