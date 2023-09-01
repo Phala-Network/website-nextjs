@@ -89,10 +89,14 @@ const PostPage = ({
               )}
             >
               <a href="/blog">Blog</a>
-              <span>/</span>
-              <span>{dayjs(page.publishedTime).format('YYYY')}</span>
-              <span>/</span>
-              <span>{dayjs(page.publishedTime).format('MM')}</span>
+              {page.publishedTime ? (
+                <>
+                  <span>/</span>
+                  <span>{dayjs(page.publishedTime).format('YYYY')}</span>
+                  <span>/</span>
+                  <span>{dayjs(page.publishedTime).format('MM')}</span>
+                </>
+              ) : null}
             </nav>
             <article
               className={cn(
@@ -325,59 +329,70 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     })
     similarPages = result.pages
   }
-  const { pages: nextPages } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-    filter: {
-      and: [
-        ...baseFilters,
+  if (page.publishedTime) {
+    const { pages: nextPages } = await queryDatabase({
+      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      filter: {
+        and: [
+          ...baseFilters,
+          {
+            property: 'Published Time',
+            date: {
+              on_or_after: dayjs(page.publishedTime).add(1, 'second').format(),
+            },
+          },
+        ],
+      },
+      sorts: [
         {
           property: 'Published Time',
-          date: {
-            on_or_after: dayjs(page.publishedTime).add(1, 'second').format(),
-          },
+          direction: 'descending',
         },
       ],
-    },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
+      page_size: 1,
+    })
+    const { pages: beforePages } = await queryDatabase({
+      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      filter: {
+        and: [
+          ...baseFilters,
+          {
+            property: 'Published Time',
+            date: {
+              on_or_before: dayjs(page.publishedTime)
+                .subtract(1, 'second')
+                .format(),
+            },
+          },
+        ],
       },
-    ],
-    page_size: 1,
-  })
-  const { pages: beforePages } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-    filter: {
-      and: [
-        ...baseFilters,
+      sorts: [
         {
           property: 'Published Time',
-          date: {
-            on_or_before: dayjs(page.publishedTime)
-              .subtract(1, 'second')
-              .format(),
-          },
+          direction: 'descending',
         },
       ],
-    },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
+      page_size: 1,
+    })
+    return {
+      props: {
+        page,
+        recentPages,
+        similarPages,
+        beforePages,
+        nextPages,
       },
-    ],
-    page_size: 1,
-  })
-  return {
-    props: {
-      page,
-      recentPages,
-      similarPages,
-      beforePages,
-      nextPages,
-    },
-    revalidate: 7200,
+      revalidate: 7200,
+    }
+  } else {
+    return {
+      props: {
+        page,
+        recentPages,
+        similarPages,
+      },
+      revalidate: 7200,
+    }
   }
 }
 
