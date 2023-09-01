@@ -14,6 +14,7 @@ import { MdCodeOff, MdCode, MdAssignment, MdAssignmentInd, MdArrowForward } from
 import { IoServer, IoNewspaperSharp, IoChatbubbleEllipses } from 'react-icons/io5'
 
 import './SiteNav.css'
+import { ChangelogIcon } from '@/components/icons'
 
 import Squircle from './Squircle'
 import { AnimatedDetails } from './Details'
@@ -668,6 +669,7 @@ function SiteNav() {
         <MenuItem
           href="/changelog"
           title="Changelog"
+          icon={<ChangelogIcon className="h-5 w-5 text-black" />}
         >
           <p>Latest changes for Phala</p>
         </MenuItem>
