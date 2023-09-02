@@ -1192,7 +1192,7 @@ export const metadata: Metadata = {
     description: "Phala Network make smart contracts even smarter by providing decentralized compute.",
     images: [
       {
-        url: 'http://localhost:3000/og-image.jpg',
+        url: 'https://phala.network/og-image.jpg',
         width: 1200,
         height: 630,
         alt: "Phala Network - Verifiable Computation for Web3",
@@ -1204,7 +1204,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Phala Network - Verifiable Computation for Web3",
     description: "Phala Network make smart contracts even smarter by providing decentralized compute.",
-    images: ['http://localhost:3000/og-image.jpg'],
+    images: ['https://phala.network/og-image.jpg'],
   },
   alternates: {
     canonical: "https://phala.network",
