@@ -18,6 +18,7 @@ import { render_block } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
 import TagLink from '@/components/TagLink'
 import SectionSubscription from '@/components/SectionSubscription'
+import PageCoverImage from '@/components/PageCoverImage'
 import '@/components/notion-render/styles.css'
 
 interface Props {
@@ -104,14 +105,13 @@ const PostPage = ({
                 'bg-white rounded-3xl p-2 mt-4'
               )}
             >
-              {page.coverUrl ? (
+              {page.cover ? (
                 <div
                   className={cn('aspect-[856/442] rounded-3xl overflow-hidden')}
                 >
-                  <img
+                  <PageCoverImage
                     className="w-full object-contain"
-                    src={page.coverUrl}
-                    alt=""
+                    page={page}
                   />
                 </div>
               ) : null}
