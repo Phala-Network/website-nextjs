@@ -50,16 +50,6 @@ export function removeMediumFormat(url: string): string {
   return url
 }
 
-export const getSignedUrl = (src: string, id: string) => {
-  const table = 'block'
-  const proxyUrl = `https://www.notion.so/image/${encodeURIComponent(src)}`
-  const url = new URL(proxyUrl)
-  url.searchParams.set('table', table)
-  url.searchParams.set('id', id)
-  url.searchParams.set('cache', 'v2')
-  return url.toString()
-}
-
 export async function getParsedPage(
   page_id: string
 ): Promise<ParsedPage | null> {
