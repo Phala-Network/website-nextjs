@@ -115,11 +115,11 @@ const PostPage = ({
                   />
                 </div>
               ) : null}
-              <div className="p-8 pt-0">
+              <div className="p-4 pt-0 lg:p-8">
                 <h1 className={cn('notion_page_title', 'text-3xl font-black')}>
                   {page.title}
                 </h1>
-                <div className="flex items-center gap-x-4">
+                <div className="flex flex-wrap items-center gap-3">
                   {page.tags.filter(i => i !== 'Changelog').map((tag, i) => (
                     <TagLink key={`${i}`} href={`/tags/${encodeURIComponent(tag)}`}>
                       {tag}

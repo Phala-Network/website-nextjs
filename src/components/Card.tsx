@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import { BsImage } from 'react-icons/bs'
 
 import { cn } from '@/lib/utils'
 import TagLink from '@/components/TagLink'
@@ -25,10 +26,18 @@ export default function Card({ page }: { page: ParsedListPage }) {
         )}
       >
         <a href={`/posts${page.slug}`}>
-          <PageCoverImage
-            className="w-full h-full object-cover"
-            page={page}
-          />
+          {
+            page.cover ? (
+              <PageCoverImage
+                className="w-full h-full object-cover"
+                page={page}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                <BsImage color="#D1D5DB" size={50} />
+              </div>
+            )
+          }
         </a>
       </div>
       <div className="h-full flex flex-col justify-between p-4">
