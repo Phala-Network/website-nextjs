@@ -21,9 +21,13 @@ export default function useProxyImage({
         if (page_id) {
           params.append('page_id', page_id)
         }
-        const res = await fetch(`/api/image?${params.toString()}`)
-        const data = await res.json()
-        setProxyUrl(data.url)
+        try {
+          const res = await fetch(`/api/image?${params.toString()}`)
+          const data = await res.json()
+          setProxyUrl(data.url)
+        } catch (error) {
+          console.error(error)
+        }
       }
     })()
   }, [image])
