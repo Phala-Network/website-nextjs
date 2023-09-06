@@ -3,21 +3,18 @@ import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import { useHydrateAtoms } from 'jotai/utils'
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
-import dayjs from 'dayjs'
 
 import { cn } from '@/lib/utils'
 import attempt from '@/lib/attempt-promise'
 import {
-  queryDatabase,
   getParsedPagesByProperties,
   ParsedPage,
   ParsedListPage,
 } from '@/lib/notion-client'
 import { render_block } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
-import TagLink from '@/components/TagLink'
 import SectionSubscription from '@/components/SectionSubscription'
+import PageCoverImage from '@/components/PageCoverImage'
 import '@/components/notion-render/styles.css'
 
 interface Props {
@@ -88,14 +85,13 @@ const StaticPage = ({ page }: Props) => {
                 'bg-white rounded-3xl p-2 mt-4'
               )}
             >
-              {page.coverUrl ? (
+              {page.cover ? (
                 <div
                   className={cn('aspect-[856/442] rounded-3xl overflow-hidden')}
                 >
-                  <img
+                  <PageCoverImage
                     className="w-full object-contain"
-                    src={page.coverUrl}
-                    alt=""
+                    page={page}
                   />
                 </div>
               ) : null}
