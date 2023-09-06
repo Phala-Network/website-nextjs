@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai'
-import { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import { type ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { BlockAtom } from './atoms'
 import RichText from './RichText'
@@ -7,10 +7,13 @@ import useProxyImage from '@/hooks/useProxyImage'
 
 const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as ImageBlockObjectResponse
-  const imageUrl: string =
-    block.image.type == 'external'
-      ? block.image.external.url
-      : useProxyImage({ url: block.image.file.url, block_id: block.id})
+  const imageUrl = useProxyImage({
+    image: {
+      type: block.image.type,
+      url: block.image.type == 'external' ? block.image.external.url : block.image.file.url
+    },
+    block_id: block.id
+  })
   return (
     <div className="notion_image_container">
       <figure>
