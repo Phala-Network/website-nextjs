@@ -1,5 +1,7 @@
 import { useAtomValue } from 'jotai'
 import { CodeBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/default-highlight'
+import { github } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 import { BlockAtom } from './atoms'
 import RichText from './RichText'
@@ -8,9 +10,13 @@ const Code = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as CodeBlockObjectResponse
   return (
     <div className="notion_code">
-      <pre className="max-w-full overflow-y-scroll p-4 bg-[#f7f6f3] text-sm">
+      <SyntaxHighlighter
+        language={block.code.language}
+        className="text-sm"
+        style={github}
+      >
         {block.code.rich_text[0].plain_text}
-      </pre>
+      </SyntaxHighlighter>
       {block.code.caption && (
         <span className="notion_caption">
           <RichText rich_text={block.code.caption} />
