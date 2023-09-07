@@ -1,13 +1,12 @@
-import { NextApiResponse, NextApiRequest } from 'next'
 import { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
 
 import { queryDatabase } from '@/lib/notion-client'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { cursor = '', tag = '', page_size = 18 } = req.query
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url)
+  const cursor = searchParams.get('cursor')
+  const tag = searchParams.get('tag')
+  const page_size = searchParams.get('page_size') || 18
   const filter: QueryDatabaseParameters['filter'] = {
     and: [
       {
@@ -44,5 +43,8 @@ export default async function handler(
     page_size: page_size as number,
     start_cursor: cursor as string,
   })
-  return res.json({ pages, next_cursor })
+
+  return new Response(JSON.stringify({ pages, next_cursor }), {
+    status: 200,
+  })
 }

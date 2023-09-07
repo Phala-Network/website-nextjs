@@ -149,3 +149,9 @@
   font-size: 75%;
   line-height: 32px;
 }
+
+@media screen and (max-width: 48rem) {
+  .notion_page_title {
+    font-size: 2rem;
+  }
+}
