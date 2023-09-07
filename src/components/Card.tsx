@@ -1,5 +1,4 @@
 import dayjs from 'dayjs'
-import { BsImage } from 'react-icons/bs'
 
 import { cn } from '@/lib/utils'
 import TagLink from '@/components/TagLink'
@@ -33,9 +32,11 @@ export default function Card({ page }: { page: ParsedListPage }) {
                 page={page}
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                <BsImage color="#D1D5DB" size={50} />
-              </div>
+              <img
+                className="w-full h-full object-cover"
+                alt={page.title}
+                src="/blog/default_cover.jpg"
+              />
             )
           }
         </a>
