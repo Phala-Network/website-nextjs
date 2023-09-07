@@ -6,6 +6,7 @@ import 'swiper/css/pagination'
 
 import { cn } from '@/lib/utils'
 import TagLink from '@/components/TagLink'
+import PageCoverImage from '@/components/PageCoverImage'
 import { ParsedListPage } from '@/lib/notion-client'
 
 export default function Banners({ pages }: { pages: ParsedListPage[] }) {
@@ -47,10 +48,9 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                 )}
               >
                 <a href={`/posts${page.slug}`}>
-                  <img
+                  <PageCoverImage
                     className="w-full h-full object-cover"
-                    src={page.coverUrl}
-                    alt={page.title}
+                    page={page}
                   />
                 </a>
               </div>

@@ -103,6 +103,7 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
   const sitemap = generateSiteMap(tags, posts)
 
   res.setHeader('Content-Type', 'text/xml')
+  res.setHeader('Cache-Control', 's-maxage=1800')
   res.write(sitemap)
   res.end()
 

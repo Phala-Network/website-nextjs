@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 
 import { cn } from '@/lib/utils'
 import TagLink from '@/components/TagLink'
+import PageCoverImage from '@/components/PageCoverImage'
 import { ParsedListPage } from '@/lib/notion-client'
 
 export default function Card({ page }: { page: ParsedListPage }) {
@@ -24,11 +25,20 @@ export default function Card({ page }: { page: ParsedListPage }) {
         )}
       >
         <a href={`/posts${page.slug}`}>
-          <img
-            className="w-full h-full object-cover"
-            src={page.coverUrl}
-            alt={page.title}
-          />
+          {
+            page.cover ? (
+              <PageCoverImage
+                className="w-full h-full object-cover"
+                page={page}
+              />
+            ) : (
+              <img
+                className="w-full h-full object-cover"
+                alt={page.title}
+                src="/blog/default_cover.jpg"
+              />
+            )
+          }
         </a>
       </div>
       <div className="h-full flex flex-col justify-between p-4">
