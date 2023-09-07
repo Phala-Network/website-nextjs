@@ -17,7 +17,9 @@ const Toggle = ({
       <summary>
         <RichText rich_text={block.toggle.rich_text} />
       </summary>
-      {children}
+      <div className="pl-4">
+        {children}
+      </div>
     </details>
   )
 }

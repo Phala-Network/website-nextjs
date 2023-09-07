@@ -12,7 +12,8 @@ const Code = ({ theAtom }: { theAtom: BlockAtom }) => {
     <div className="notion_code">
       <SyntaxHighlighter
         language={block.code.language}
-        className="text-sm"
+        className="text-xs"
+        customStyle={{ padding: '1em' }}
         style={github}
       >
         {block.code.rich_text[0].plain_text}
