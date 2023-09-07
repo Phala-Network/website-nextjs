@@ -18,6 +18,7 @@ import { render_block } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
 import TagLink from '@/components/TagLink'
 import SectionSubscription from '@/components/SectionSubscription'
+import PageCoverImage from '@/components/PageCoverImage'
 import '@/components/notion-render/styles.css'
 
 interface Props {
@@ -104,22 +105,21 @@ const PostPage = ({
                 'bg-white rounded-3xl p-2 mt-4'
               )}
             >
-              {page.coverUrl ? (
+              {page.cover ? (
                 <div
                   className={cn('aspect-[856/442] rounded-3xl overflow-hidden')}
                 >
-                  <img
+                  <PageCoverImage
                     className="w-full object-contain"
-                    src={page.coverUrl}
-                    alt=""
+                    page={page}
                   />
                 </div>
               ) : null}
-              <div className="p-8 pt-0">
+              <div className="p-4 pt-0 lg:p-8">
                 <h1 className={cn('notion_page_title', 'text-3xl font-black')}>
                   {page.title}
                 </h1>
-                <div className="flex items-center gap-x-4">
+                <div className="flex flex-wrap items-center gap-3">
                   {page.tags.filter(i => i !== 'Changelog').map((tag, i) => (
                     <TagLink key={`${i}`} href={`/tags/${encodeURIComponent(tag)}`}>
                       {tag}

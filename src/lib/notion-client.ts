@@ -5,6 +5,7 @@ import {
   isFullBlock,
 } from '@notionhq/client'
 import {
+  PageObjectResponse,
   BlockObjectResponse,
   QueryDatabaseParameters,
 } from '@notionhq/client/build/src/api-endpoints'
@@ -16,7 +17,7 @@ export const notion = new Client({
 
 export interface ParsedPage {
   id: string
-  coverUrl: string
+  cover: PageObjectResponse['cover'],
   title: string
   slug: string
   tags: string[]
@@ -27,7 +28,7 @@ export interface ParsedPage {
 
 export interface ParsedListPage {
   id: string
-  coverUrl: string
+  cover: PageObjectResponse['cover'],
   title: string
   slug: string
   tags: string[]
@@ -38,15 +39,15 @@ export type ParsedBlock = BlockObjectResponse & {
   children?: ParsedBlock[]
 }
 
-function removeFormatFromCoverUrl(coverUrl: string): string {
+export function removeMediumFormat(url: string): string {
   const regex = /^https:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^\/]+)$/
-  const match = coverUrl.match(regex)
+  const match = url.match(regex)
   if (match && match.length === 3) {
     const formatPart = match[1]
-    const baseUrl = coverUrl.replace(formatPart, '')
+    const baseUrl = url.replace(formatPart, '')
     return baseUrl
   }
-  return coverUrl
+  return url
 }
 
 export async function getParsedPage(
@@ -74,16 +75,11 @@ export async function getParsedPage(
     R.prop('name'),
     R.pathOr([], ['Tags', 'multi_select'], page.properties)
   )
-  const coverUrl = page.cover
-    ? 'external' in page.cover
-      ? removeFormatFromCoverUrl(page.cover.external.url)
-      : removeFormatFromCoverUrl(page.cover.file.url)
-    : ''
   const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], page.properties)
   const status = R.pathOr('Drafting', ['Status', 'status', '0', 'name'], page.properties)
   return {
     id: page.id,
-    coverUrl,
+    cover: page.cover,
     title,
     slug,
     tags,
@@ -292,15 +288,10 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       R.prop('name'),
       R.pathOr([], ['Tags', 'multi_select'], properties)
     )
-    const coverUrl = cover
-      ? 'external' in cover
-        ? removeFormatFromCoverUrl(cover.external.url)
-        : removeFormatFromCoverUrl(cover.file.url)
-      : ''
     const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], properties)
     pages.push({
       id,
-      coverUrl,
+      cover,
       title,
       slug,
       tags,
