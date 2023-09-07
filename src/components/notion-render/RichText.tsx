@@ -25,7 +25,7 @@ const RichText = ({ rich_text }: { rich_text: RichTextItemResponse[] }) => {
           text = <u>{text}</u>
         }
         if (code) {
-          text = <code className="notion_inline_code">{text}</code>
+          text = <code className="whitespace-pre-wrap break-normal notion_inline_code">{text}</code>
         }
         if (rich_text_item.href) {
           text = (
