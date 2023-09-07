@@ -35,7 +35,7 @@ function AboutLink({
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <a
-      className="text-center text-xs text-green-700 font-bold leading-none border-r-[1px] border-green-700 w-[136px]"
+      className="text-center text-xs text-green-700 font-bold leading-none lg:border-r-[1px] border-green-700 w-1/2 lg:w-[136px] py-2 lg:py-0"
       {...props}
     >
       {children}
@@ -72,7 +72,7 @@ const PostPage = ({
       >
         <div
           className={cn(
-            'safe-viewport',
+            'lg:safe-viewport',
             'grid grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 gap-4',
             'py-32'
           )}
@@ -84,7 +84,7 @@ const PostPage = ({
           >
             <nav
               className={cn(
-                'bg-white rounded-3xl',
+                'bg-white lg:rounded-3xl',
                 'py-2 px-6',
                 'text-sm font-medium flex gap-2'
               )}
@@ -102,12 +102,12 @@ const PostPage = ({
             <article
               className={cn(
                 'notion_page_body',
-                'bg-white rounded-3xl p-2 mt-4'
+                'bg-white lg:rounded-3xl p-2 mt-4'
               )}
             >
               {page.cover ? (
                 <div
-                  className={cn('aspect-[856/442] rounded-3xl overflow-hidden')}
+                  className={cn('aspect-[856/442] lg:rounded-3xl overflow-hidden')}
                 >
                   <PageCoverImage
                     className="w-full object-contain"
@@ -158,7 +158,7 @@ const PostPage = ({
                 </div>
               </div>
             </article>
-            <section className="bg-white rounded-3xl mt-4 py-8">
+            <section className="bg-white lg:rounded-3xl mt-4 py-8">
               <div className="px-10">
                 <h1 className="text-2xl font-bold">About Phala</h1>
                 <div className="text-sm mt-4 flex flex-col gap-4">
@@ -196,7 +196,7 @@ const PostPage = ({
           </div>
           <div className={cn('lg:col-span-7')}>
             {recentPages.length > 0 ? (
-              <section className="bg-[#F5FEDC] rounded-3xl p-8">
+              <section className="bg-[#F5FEDC] lg:rounded-3xl p-8">
                 <h1 className="text-2xl font-bold">Recent Posts</h1>
                 <div className="flex flex-col gap-5 mt-5">
                   {recentPages.map((recentPage) => (
@@ -213,7 +213,7 @@ const PostPage = ({
               </section>
             ) : null}
             {similarPages.length > 0 ? (
-              <section className="bg-[#F5FEDC] rounded-3xl p-8 mt-4">
+              <section className="bg-[#F5FEDC] lg:rounded-3xl p-8 mt-4">
                 <h1 className="text-2xl font-bold">Similar Posts</h1>
                 <div className="flex flex-col gap-5 mt-5">
                   {similarPages.map((similarPage) => (
