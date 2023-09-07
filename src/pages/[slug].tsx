@@ -25,20 +25,6 @@ interface Props {
   nextPages?: ParsedListPage[]
 }
 
-function AboutLink({
-  children,
-  ...props
-}: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  return (
-    <a
-      className="text-center text-xs text-green-700 font-bold leading-none border-r-[1px] border-green-700 w-[136px]"
-      {...props}
-    >
-      {children}
-    </a>
-  )
-}
-
 const StaticPage = ({ page }: Props) => {
   if (!page) {
     return (
@@ -110,10 +96,6 @@ const StaticPage = ({ page }: Props) => {
   )
 }
 
-interface Params extends ParsedUrlQuery {
-  slug: string
-}
-
 export async function getStaticPaths() {
   return {
     paths: [
@@ -134,13 +116,15 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       database_id: process.env.NOTION_POSTS_DATABASE_ID!,
       properties: {
         'Custom URL': slug,
+        'Status': 'Published',
+        'Post Type': 'Page',
       },
     })
   )
   if (error) {
     console.error(error)
   }
-  if (pages.length === 0) {
+  if (!pages || pages.length === 0) {
     return {
       props: {
         page: null,

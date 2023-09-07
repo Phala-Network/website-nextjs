@@ -8,8 +8,8 @@ const Code = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as CodeBlockObjectResponse
   return (
     <div className="notion_code">
-      <pre>
-        <code>{block.code.rich_text[0].plain_text}</code>
+      <pre className="max-w-full overflow-y-scroll p-4 bg-[#f7f6f3] text-sm">
+        {block.code.rich_text[0].plain_text}
       </pre>
       {block.code.caption && (
         <span className="notion_caption">
