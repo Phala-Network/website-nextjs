@@ -3,17 +3,11 @@ import { type ImageBlockObjectResponse } from '@notionhq/client/build/src/api-en
 
 import { BlockAtom } from './atoms'
 import RichText from './RichText'
-import useProxyImage from '@/hooks/useProxyImage'
+import { useProxyBlockImage } from '@/hooks/useProxyImage'
 
 const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as ImageBlockObjectResponse
-  const imageUrl = useProxyImage({
-    image: {
-      type: block.image.type,
-      url: block.image.type == 'external' ? block.image.external.url : block.image.file.url
-    },
-    block_id: block.id
-  })
+  const imageUrl = useProxyBlockImage(block)
   return (
     <div className="notion_image_container">
       <figure>

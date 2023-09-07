@@ -1,35 +1,65 @@
 import { useState, useEffect } from 'react'
+import { type ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-export default function useProxyImage({
-  image,
-  block_id = '',
-  page_id = '',
-}: {
-  image: { url: string; type: 'file' | 'external' }
-  block_id?: string
-  page_id?: string
-}) {
-  const [proxyUrl, setProxyUrl] = useState(image.url)
+import {
+  removeMediumFormat,
+  type ParsedPage,
+  type ParsedListPage,
+} from '@/lib/notion-client'
+
+async function requestProxyImage(params: Record<string, string>) {
+  const query = new URLSearchParams(params)
+  try {
+    const res = await fetch(`/api/image?${query.toString()}`)
+    const data = await res.json()
+    return data.url
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export function useProxyPageImage(page: ParsedPage | ParsedListPage) {
+  const [proxyUrl, setProxyUrl] = useState(
+    page.cover
+      ? page.cover.type == 'external'
+        ? removeMediumFormat(page.cover.external.url)
+        : page.cover.file.url
+      : ''
+  )
   useEffect(() => {
     ;(async () => {
-      if (image.type === 'file') {
-        const params = new URLSearchParams()
-        params.append('url', image.url)
-        if (block_id) {
-          params.append('block_id', block_id)
-        }
-        if (page_id) {
-          params.append('page_id', page_id)
-        }
-        try {
-          const res = await fetch(`/api/image?${params.toString()}`)
-          const data = await res.json()
-          setProxyUrl(data.url)
-        } catch (error) {
-          console.error(error)
+      if (page.cover && page.cover.type === 'file') {
+        const url = await requestProxyImage({
+          url: page.cover.file.url,
+          page_id: page.id,
+        })
+        if (url) {
+          setProxyUrl(url)
         }
       }
     })()
-  }, [image])
+  }, [page])
+  return proxyUrl
+}
+
+export function useProxyBlockImage(block: ImageBlockObjectResponse) {
+  const [proxyUrl, setProxyUrl] = useState(
+    block.image.type == 'external'
+      ? block.image.external.url
+      : block.image.file.url
+  )
+  useEffect(() => {
+    ;(async () => {
+      if (block.image.type === 'file') {
+        const url = await requestProxyImage({
+          url: block.image.file.url,
+          block_id: block.id,
+        })
+        if (url) {
+          setProxyUrl(url)
+        }
+      }
+    })()
+  }, [block])
   return proxyUrl
 }
