@@ -33,9 +33,6 @@ function generateSiteMap(tags: string[], posts: ParsedListPage[]) {
      <url>
        <loc>${WEBSITE_URL}/changelog/atom.xml</loc>
      </url>
-     <url>
-       <loc>${WEBSITE_URL}</loc>
-     </url>
       ${tags.map((tag) => {
         return `
        <url>
