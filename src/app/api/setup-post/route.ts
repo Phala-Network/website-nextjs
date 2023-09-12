@@ -1,17 +1,9 @@
-import { NotionToMarkdown } from 'notion-to-md'
 import OpenAI from 'openai'
 import type { ChatCompletionMessageParam } from 'openai/resources/chat'
 import { isFullPage, collectPaginatedAPI } from '@notionhq/client'
 
-import { notion } from '@/lib/notion-client'
+import { notion, n2m } from '@/lib/notion-client'
 import attempt from '@/lib/attempt-promise'
-
-const n2m = new NotionToMarkdown({
-  notionClient: notion,
-  config:{
-    parseChildPages: false
-  }
-})
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -52,10 +44,10 @@ export async function POST(req: Request) {
     const blocks = await collectPaginatedAPI(notion.blocks.children.list, {
       block_id: page.id,
     })
-    const mdString = n2m.toMarkdownString((await n2m.blocksToMarkdown(blocks))).parent
+    const markdown = n2m.toMarkdownString((await n2m.blocksToMarkdown(blocks))).parent
     const messages: ChatCompletionMessageParam[] = [
       { role: 'system', content: SUMMARY_PROMPT },
-      { role: 'user', content: mdString },
+      { role: 'user', content: markdown },
     ]
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',

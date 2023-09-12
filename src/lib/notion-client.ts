@@ -4,6 +4,7 @@ import {
   isFullPage,
   isFullBlock,
 } from '@notionhq/client'
+import { NotionToMarkdown } from 'notion-to-md'
 import {
   PageObjectResponse,
   BlockObjectResponse,
@@ -15,6 +16,13 @@ export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
+export const n2m = new NotionToMarkdown({
+  notionClient: notion,
+  config:{
+    parseChildPages: false
+  }
+})
+
 export interface ParsedPage {
   id: string
   cover: PageObjectResponse['cover'],
@@ -24,6 +32,7 @@ export interface ParsedPage {
   blocks: ParsedBlock[]
   publishedTime: string
   status: 'Published' | 'Hidden' | 'Drafting' | 'Raw Idea'
+  markdown: string
 }
 
 export interface ParsedListPage {
@@ -77,6 +86,7 @@ export async function getParsedPage(
   )
   const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], page.properties)
   const status = R.pathOr('Drafting', ['Status', 'status', '0', 'name'], page.properties)
+  const markdown = n2m.toMarkdownString((await n2m.blocksToMarkdown(blocks))).parent
   return {
     id: page.id,
     cover: page.cover,
@@ -86,6 +96,7 @@ export async function getParsedPage(
     status,
     blocks: parsedBlocks,
     publishedTime,
+    markdown,
   }
 }
 
