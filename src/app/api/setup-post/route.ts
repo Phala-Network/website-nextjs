@@ -6,7 +6,7 @@ import { notion, n2m } from '@/lib/notion-client'
 import attempt from '@/lib/attempt-promise'
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY || '',
 })
 
 function generateSlug(title: string): string {
