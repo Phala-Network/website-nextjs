@@ -49,8 +49,10 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
               >
                 <a href={`/posts${page.slug}`}>
                   <PageCoverImage
-                    className="w-full h-full object-cover"
+                    className="w-full aspect-[872/487]"
                     page={page}
+                    width={872}
+                    height={487}
                   />
                 </a>
               </div>
