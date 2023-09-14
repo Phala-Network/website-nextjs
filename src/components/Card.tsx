@@ -45,9 +45,11 @@ export default function Card({ page }: { page: ParsedListPage }) {
         <div className="flex flex-col gap-y-2">
           <div className="flex items-center gap-2 flex-wrap">
             {page.tags.map((tag, i) => (
-              <TagLink key={`${i}`} href={`/tags/${tag}`}>
-                {tag}
-              </TagLink>
+              <div key={`${i}`}>
+                <TagLink href={`/tags/${tag}`}>
+                  {tag}
+                </TagLink>
+              </div>
             ))}
           </div>
           <h2 className="font-bold text-lg">
