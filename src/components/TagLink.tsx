@@ -10,7 +10,7 @@ export default function TagLink({
   return (
     <Link
       {...props}
-      className={cn("text-xs text-black-800 bg-green-500 rounded-md px-3 transition-all hover:bg-green-600", props.className)}
+      className={cn("text-xs text-black-800 bg-green-500 rounded-md px-3 py-1 transition-all hover:bg-green-600", props.className)}
     >
       {children}
     </Link>
