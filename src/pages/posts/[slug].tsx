@@ -107,11 +107,13 @@ const PostPage = ({
             >
               {page.cover ? (
                 <div
-                  className={cn('aspect-[856/442] lg:rounded-3xl overflow-hidden')}
+                  className={cn('lg:rounded-3xl overflow-hidden')}
                 >
                   <PageCoverImage
-                    className="w-full object-contain"
+                    className="w-full aspect-[856/442]"
                     page={page}
+                    width={856}
+                    height={442}
                   />
                 </div>
               ) : null}
