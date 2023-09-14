@@ -123,9 +123,11 @@ const PostPage = ({
                 </h1>
                 <div className="flex flex-wrap items-center gap-3">
                   {page.tags.filter(i => i !== 'Changelog').map((tag, i) => (
-                    <TagLink key={`${i}`} href={`/tags/${encodeURIComponent(tag)}`}>
-                      {tag}
-                    </TagLink>
+                    <div key={`${i}`}>
+                      <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
+                        {tag}
+                      </TagLink>
+                    </div>
                   ))}
                 </div>
                 <div className="my-6">

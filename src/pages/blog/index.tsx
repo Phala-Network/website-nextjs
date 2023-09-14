@@ -134,9 +134,11 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
               <h2 className="text-black font-bold text-2xl">Search by Tag</h2>
               <div className="flex flex-wrap gap-3 mt-12 w-full">
                 {tags.map((tag, i) => (
-                  <TagLink key={`${i}`} href={`/tags/${encodeURIComponent(tag)}`}>
-                    {tag}
-                  </TagLink>
+                  <div key={`${i}`}>
+                    <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
+                      {tag}
+                    </TagLink>
+                  </div>
                 ))}
               </div>
             </section>
