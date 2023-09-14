@@ -18,48 +18,80 @@ async function requestProxyImage(params: Record<string, string>) {
   }
 }
 
-export function useProxyPageImage(page: ParsedPage | ParsedListPage) {
-  const [proxyUrl, setProxyUrl] = useState(
-    page.cover
-      ? page.cover.type == 'external'
-        ? removeMediumFormat(page.cover.external.url)
-        : page.cover.file.url
-      : ''
-  )
-  useEffect(() => {
-    ;(async () => {
-      if (page.cover && page.cover.type === 'file') {
-        const url = await requestProxyImage({
-          url: page.cover.file.url,
-          page_id: page.id,
-        })
-        if (url) {
-          setProxyUrl(url)
-        }
-      }
-    })()
-  }, [page])
-  return proxyUrl
+interface ProxyImageOptions {
+  width: number
+  height: number
 }
 
-export function useProxyBlockImage(block: ImageBlockObjectResponse) {
-  const [proxyUrl, setProxyUrl] = useState(
-    block.image.type == 'external'
-      ? block.image.external.url
-      : block.image.file.url
-  )
-  useEffect(() => {
-    ;(async () => {
-      if (block.image.type === 'file') {
-        const url = await requestProxyImage({
-          url: block.image.file.url,
-          block_id: block.id,
-        })
-        if (url) {
-          setProxyUrl(url)
+export function useProxyImage(
+  source: ParsedListPage | ParsedPage | ImageBlockObjectResponse,
+  options?: ProxyImageOptions
+) {
+  const [proxyUrl, setProxyUrl] = useState('')
+
+  const getImageData = () => {
+    if ('cover' in source && source.cover) {
+      if (source.cover.type === 'external') {
+        return {
+          page_id: source.id,
+          type: 'external',
+          url: removeMediumFormat(source.cover.external.url),
         }
       }
+      return {
+        page_id: source.id,
+        type: 'file',
+        url: source.cover.file.url,
+      }
+    }
+    if ('image' in source && source.image) {
+      if (source.image.type === 'external') {
+        return {
+          block_id: source.id,
+          type: 'external',
+          url: removeMediumFormat(source.image.external.url),
+        }
+      }
+      return {
+        block_id: source.id,
+        type: 'file',
+        url: source.image.file.url,
+      }
+    }
+    return null
+  }
+
+  useEffect(() => {
+    ;(async () => {
+      const data = getImageData()
+      if (!data) {
+        return
+      }
+      if (!options && data.type === 'external') {
+        setProxyUrl(data.url)
+        return
+      }
+      const params: Record<string, string> = {
+        url: data.url,
+      }
+      if (data.page_id) {
+        params.page_id = data.page_id
+      }
+      if (data.block_id) {
+        params.block_id = data.block_id
+      }
+      if (options && options.width) {
+        params.width = `${options.width}`
+      }
+      if (options && options.height) {
+        params.height = `${options.height}`
+      }
+      const url = await requestProxyImage(params)
+      if (url) {
+        setProxyUrl(url)
+      }
     })()
-  }, [block])
+  }, [source])
+
   return proxyUrl
 }

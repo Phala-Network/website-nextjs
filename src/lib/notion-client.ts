@@ -49,7 +49,7 @@ export type ParsedBlock = BlockObjectResponse & {
 }
 
 export function removeMediumFormat(url: string): string {
-  const regex = /^https:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^\/]+)$/
+  const regex = /^https?:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^\/]+)$/
   const match = url.match(regex)
   if (match && match.length === 3) {
     const formatPart = match[1]
@@ -57,6 +57,11 @@ export function removeMediumFormat(url: string): string {
     return baseUrl
   }
   return url
+}
+
+export function isMediumUrl(url: string): boolean {
+  const regex = /^https?:\/\/[\w.-]+\.medium\.com/
+  return regex.test(url)
 }
 
 export async function getParsedPage(
