@@ -5,6 +5,7 @@ import {
   isFullBlock,
 } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
+import dayjs from 'dayjs'
 import {
   PageObjectResponse,
   BlockObjectResponse,
@@ -42,6 +43,7 @@ export interface ParsedListPage {
   slug: string
   tags: string[]
   publishedTime: string
+  publishedDate: string
 }
 
 export type ParsedBlock = BlockObjectResponse & {
@@ -312,6 +314,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       R.pathOr([], ['Tags', 'multi_select'], properties)
     )
     const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], properties)
+    const publishedDate = dayjs(publishedTime).format('YYYY-MM-DD')
     pages.push({
       id,
       cover,
@@ -319,6 +322,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       slug,
       tags,
       publishedTime,
+      publishedDate,
     })
   }
   return {

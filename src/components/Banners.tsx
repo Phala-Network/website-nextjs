@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react'
-import dayjs from 'dayjs'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 import 'swiper/css/pagination'
@@ -78,7 +77,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                   </h2>
                 </div>
                 <div className="text-sm">
-                  <p>{dayjs(page.publishedTime).format('YYYY-MM-DD')}</p>
+                  <p>{page.publishedDate}</p>
                 </div>
               </div>
             </article>
