@@ -1,5 +1,3 @@
-import dayjs from 'dayjs'
-
 import { cn } from '@/lib/utils'
 import TagLink from '@/components/TagLink'
 import PageCoverImage from '@/components/PageCoverImage'
@@ -57,7 +55,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
           </h2>
         </div>
         <div className="text-sm">
-          <p>{dayjs(page.publishedTime).format('YYYY-MM-DD')}</p>
+          <p>{page.publishedDate}</p>
         </div>
       </div>
     </article>
