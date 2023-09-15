@@ -206,17 +206,24 @@ export async function getParsedPagesByProperties({
   properties,
 }: {
   database_id: string
-  properties: Record<string, string>
+  properties: Record<string, any>
 }): Promise<ParsedPage[]> {
   const database = await notion.databases.query({
     database_id,
     filter: {
-      and: Object.entries(properties).map(([key, value]) => ({
-        property: key,
-        rich_text: {
-          contains: value,
-        },
-      })),
+      and: Object.entries(properties).map(([key, value]) => {
+        if (typeof value === 'object') {
+          return Object.assign({
+            property: key,
+          }, value)
+        }
+        return {
+          property: key,
+          rich_text: {
+            contains: value,
+          },
+        }
+      }),
     },
   })
   const pages = (
