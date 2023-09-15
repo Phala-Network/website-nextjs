@@ -34,7 +34,7 @@ export async function GET(request: Request) {
   if (process.env.IMGPROXY_URL) {
     let resize = ''
     if (width && height) {
-      resize = `/resize:fill:${width}:${height}:0`
+      resize = `/resize:fit:${width}:${height}:0`
     }
     url = `${process.env.IMGPROXY_URL}${resize}/plain/${url}`
   }
