@@ -118,8 +118,16 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       database_id: process.env.NOTION_POSTS_DATABASE_ID!,
       properties: {
         'Custom URL': slug,
-        'Status': 'Published',
-        'Post Type': 'Page',
+        'Status': {
+          status: {
+            equals: 'Published',
+          },
+        },
+        'Post Type': {
+          select: {
+            equals: 'Post',
+          },
+        },
       },
     })
   )
