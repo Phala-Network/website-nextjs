@@ -9,6 +9,7 @@ export async function GET(request: Request) {
   let url = searchParams.get('url')
   const width = searchParams.get('width')
   const height = searchParams.get('height')
+  const resizing_type = searchParams.get('resizing_type') || 'fill'
   const block_id = searchParams.get('block_id')
   const block_type = searchParams.get('block_type') || 'image'
   const page_id = searchParams.get('page_id')
@@ -34,7 +35,7 @@ export async function GET(request: Request) {
   if (process.env.IMGPROXY_URL) {
     let resize = ''
     if (width && height) {
-      resize = `/resize:fit:${width}:${height}:0`
+      resize = `/resize:${resizing_type}:${width}:${height}:0`
     }
     url = `${process.env.IMGPROXY_URL}${resize}/plain/${url}`
   }
