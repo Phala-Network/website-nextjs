@@ -62,6 +62,25 @@ const PostPage = ({
       {page.title ? (
         <Head>
           <title>{page.title}</title>
+          <meta name="theme-color" content="rgba(232, 233, 234, 1)" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
+          <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
+          <meta property="og:title" content={page.title} />
+          {/* <meta property="og:description" content="Phala Network make smart contracts even smarter by providing decentralized compute." /> */}
+          <meta property="og:url" content={`https://phala.network/posts${page.slug}`} />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:image" content={page.coverUrl ? page.coverUrl : "https://phala.network/og-image.jpg"} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content={page.title} />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@PhalaNetwork" />
+          <meta name="twitter:title" content={page.title} />
+          {/* <meta name="twitter:description" content="Phala Network make smart contracts even smarter by providing decentralized compute." /> */}
+          <meta name="twitter:image" content={page.coverUrl ? page.coverUrl : "https://phala.network/og-image.jpg"} />
+          <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
         </Head>
       ) : null}
       <div
