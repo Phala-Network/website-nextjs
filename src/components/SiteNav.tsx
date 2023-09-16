@@ -313,7 +313,7 @@ function DrawerMenu() {
                 <p>A no code toolkit to plug together Phat Contracts</p>
               </MenuItem>
               <MenuItem
-                href="https://phat.phala.network/"
+                href="/phat-contract"
                 title="Native Code"
                 icon={<MdCode className={cn("h-5 w-5 text-black")} />}
               >
@@ -370,11 +370,18 @@ function DrawerMenu() {
           <AnimatedDetails summary="Discover" theIdxAtom={expandedMenuAtom} idx={3}>
             <ul className={cn("flex flex-col gap-1.5 mt-2.5")}>
               <MenuItem
-                href="https://medium.com/phala-network"
-                title="News"
+                href="/blog"
+                title="Blog"
                 icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
               >
                 <p>Stay up-to-date with all things Phala</p>
+              </MenuItem>
+              <MenuItem
+                href="/changelog"
+                title="Changelog"
+                icon={<ChangelogIcon className="h-5 w-5 text-black" />}
+              >
+                <p>Latest changes for Phala</p>
               </MenuItem>
               <MenuItem
                 title="Connect"
@@ -605,7 +612,7 @@ function SiteNav() {
           <p>A no code toolkit to plug together Phat Contracts</p>
         </MenuItem>
         <MenuItem
-          href="https://phat.phala.network/"
+          href="/phat-contract"
           title="Native Code"
           icon={<MdCode className={cn("h-5 w-5 text-black")} />}
         >
