@@ -1,8 +1,7 @@
-import { use } from 'react'
 import Link from 'next/link'
 import { MdArrowForward } from 'react-icons/md'
 import { cn } from '@/lib/utils'
-import { queryDatabase } from '@/lib/notion-client'
+import { useRecentPosts } from '@/hooks/useRecentPosts'
 
 export function PostCard({ src, href, title, intro }: { src: string, href: string, title: string, intro: string }) {
   return (
@@ -39,40 +38,17 @@ export function PostCard({ src, href, title, intro }: { src: string, href: strin
   )
 }
 
-
 export function SectionHighlights() {
-  const { pages } = use(queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          status: {
-            equals: 'Published',
-          },
-        },
-        {
-          property: 'Post Type',
-          select: {
-            equals: 'Post',
-          },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            does_not_contain: 'Changelog',
-          },
-        },
-      ],
-    },
-    sorts: [
+  const { pages } = useRecentPosts({
+    and: [
       {
-        property: 'Published Time',
-        direction: 'descending',
+        property: 'Tags',
+        multi_select: {
+          does_not_contain: 'Changelog',
+        },
       },
-    ],
-    page_size: 6,
-  }))
+    ]
+  })
   return (
     <section className={cn("section-highlights", "py-16 lg:py-32")}>
       <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-16 xl:grid-cols-20 3xl:grid-cols-24")}>
