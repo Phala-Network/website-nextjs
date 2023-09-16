@@ -30,6 +30,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
+    "react-lite-youtube-embed": "^2.3.52",
     "react-syntax-highlighter": "^15.5.0",
     "swiper": "10.0.2",
     "tailwind-merge": "^1.12.0",
