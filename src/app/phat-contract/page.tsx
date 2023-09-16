@@ -2,7 +2,9 @@ import { type Metadata } from 'next'
 import { FaDiscord } from 'react-icons/fa'
 
 import { cn } from '@/lib/utils'
+import SiteFooter from '@/components/SiteFooter'
 import SubscribeForm from './_components/SubscribeForm'
+import RecentPosts from './_components/RecentPosts'
 
 
 export const metadata: Metadata = {
@@ -395,93 +397,6 @@ function Faqs() {
   )
 }
 
-
-const posts = [
-  {
-    id: 3,
-    title: "Phala Builders Program Is Accepting Applications Now",
-    href: "/en/posts/phala-builders-program-accepting-applications-now-4784a1a2d601",
-    imageUrl: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*X7SuaqIEcpu0CrJcLo4Mhw.jpeg",
-    date: "Feb 15, 2023",
-    datetime: "2023-02-15",
-  },
-  {
-    id: 1,
-    title: 'Pick Up the Pace, Testers! Phat Contract’s Closed Beta is Ending Soon!',
-    href: 'https://medium.com/phala-network/pick-up-the-pace-testers-phat-contracts-closed-beta-is-ending-soon-1c3f169d8687',
-    imageUrl:
-      'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*eOOABmC3wJZNFgjAWtkP4g.png',
-    date: 'Mar 27, 2023',
-    datetime: '2023-03-27',
-  },
-  {
-    id: 2,
-    title: 'Phala Is Coming To EthDenver! Explore The Future of Trustless Backend With The Phala Team',
-    href: '/en/posts/phala-is-coming-to-ethdenve…s-backend-with-the-phala-team-bff9b5ab63ca',
-    imageUrl:
-      'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*DJGUZLS-aHJ5BrAosp6dUg.png',
-    date: 'Feb 16, 2023',
-    datetime: '2023-02-16',
-  },
-  {
-    id: 4,
-    title: 'Phat Contract — What Phala’s New Product Will Bring to Web3',
-    href: '/en/posts/phat-contract-what-phalas-new-product-will-bring-to-web3-1958ae90de68',
-    imageUrl: 'https://cdn-images-1.medium.com/1*1sDQxA-shO0IdzJhqn1iVg.png?q=20',
-    date: 'Oct 18, 2022',
-    datetime: '2023-10-18',
-  },
-  // More posts...
-]
-
-function RecentPosts() {
-  return (
-    <div className="bg-gray-900 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">What's New</h2>
-        </div>
-        <div className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-          {posts.map((post) => (
-            <a
-              href={post.href}
-              key={post.id}
-              className="card-elevated relative isolate flex flex-col justify-end overflow-hidden"
-            >
-              <img src={post.imageUrl} alt="" className="inset-0 -z-10 h-full w-full object-cover aspect-video" />
-
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
-              <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-
-              <div className="absolute w-full left-0 bottom-0 px-4 py-3">
-                <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-400">
-                  <time dateTime={post.datetime} className="mr-8">
-                    {post.date}
-                  </time>
-                </div>
-                <h3 className="heading-md leading-7 text-white">
-                  <span className="absolute inset-0" />
-                  {post.title}
-                </h3>
-              </div>
-            </a>
-          ))}
-        </div>
-        <div className={cn("w-full mt-12 flex flex-row justify-center")}>
-          <a
-            href="https://medium.com/phala-network"
-            className={cn('btn btn-phat btn-lg')}
-            target="_blank"
-            rel="noopener"
-          >
-            Read more News about Phat Contract
-          </a>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function PhatContractsLandingPage() {
   return (
     <>
@@ -491,6 +406,7 @@ export default function PhatContractsLandingPage() {
       <Testimonials />
       <Faqs />
       <RecentPosts />
+      <SiteFooter />
     </>
   )
 }
