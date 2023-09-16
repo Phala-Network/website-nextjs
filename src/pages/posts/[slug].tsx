@@ -58,6 +58,9 @@ const PostPage = ({
     )
   }
   useHydrateAtoms([[blocksAtom, page.blocks]])
+  const postCover = page.cover ? (
+    'external' in page.cover ? page.cover.external.url : page.cover.file.url
+  ) : "https://phala.network/og-image.jpg"
   return (
     <>
       {page.title ? (
@@ -71,7 +74,7 @@ const PostPage = ({
           {/* <meta property="og:description" content="Phala Network make smart contracts even smarter by providing decentralized compute." /> */}
           <meta property="og:url" content={`https://phala.network/posts${page.slug}`} />
           <meta property="og:locale" content="en_US" />
-          <meta property="og:image" content={page.coverUrl ? page.coverUrl : "https://phala.network/og-image.jpg"} />
+          <meta property="og:image" content={postCover} />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
           <meta property="og:image:alt" content={page.title} />
@@ -80,7 +83,7 @@ const PostPage = ({
           <meta name="twitter:site" content="@PhalaNetwork" />
           <meta name="twitter:title" content={page.title} />
           {/* <meta name="twitter:description" content="Phala Network make smart contracts even smarter by providing decentralized compute." /> */}
-          <meta name="twitter:image" content={page.coverUrl ? page.coverUrl : "https://phala.network/og-image.jpg"} />
+          <meta name="twitter:image" content={postCover} />
           <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
         </Head>
       ) : null}

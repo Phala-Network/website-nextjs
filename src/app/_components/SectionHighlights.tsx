@@ -63,7 +63,11 @@ export function SectionHighlights() {
             <PostCard
               key={page.id}
               href={`/posts${page.slug}`}
-              src={page.coverUrl}
+              src={
+                page.cover ? (
+                  'external' in page.cover ? page.cover.external.url : page.cover.file.url
+                ) : "https://phala.network/og-image.jpg"
+              }
               title={page.title}
               intro=""
             />
