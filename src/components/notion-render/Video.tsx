@@ -9,20 +9,19 @@ import RichText from './RichText'
 
 const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as VideoBlockObjectResponse
+  // TODO Added test cases for it.
   const [provider, id] = useMemo(() => {
     const videoUrl: string =
       block.video.type == 'external'
         ? block.video.external.url
         : block.video.file.url
-    if (videoUrl.indexOf('youtube.com') === -1) {
-      return [null, videoUrl]
+    const url = new URL(videoUrl)
+    if (videoUrl.indexOf('youtube.com') !== -1 && url.searchParams.has('v')) {
+      return ['youtube', url.searchParams.get('v') as string]
+    } else if (videoUrl.indexOf('youtu.be') !== -1) {
+      return ['youtube', url.pathname.replace('/', '')]
     } else {
-      const url = new URL(videoUrl)
-      if (url.searchParams.has('v')) {
-        return ['youtube', url.searchParams.get('v') as string]
-      } else {
-        return ['youtube', url.pathname.split('/').filter(segment => segment !== '').pop() as string]
-      }
+      return [null, videoUrl]
     }
   }, [block])
   return (
