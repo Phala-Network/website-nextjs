@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react'
-import dayjs from 'dayjs'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 import 'swiper/css/pagination'
@@ -49,8 +48,10 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
               >
                 <a href={`/posts${page.slug}`}>
                   <PageCoverImage
-                    className="w-full h-full object-cover"
+                    className="w-full aspect-[872/487]"
                     page={page}
+                    width={872}
+                    height={487}
                   />
                 </a>
               </div>
@@ -64,9 +65,11 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                 <div className="flex flex-col gap-y-2">
                   <div className="flex items-center gap-2 flex-wrap">
                     {page.tags.map((tag, i) => (
-                      <TagLink key={`${i}`} href={`/tags/${tag}`}>
-                        {tag}
-                      </TagLink>
+                      <div key={`${i}`}>
+                        <TagLink href={`/tags/${tag}`}>
+                          {tag}
+                        </TagLink>
+                      </div>
                     ))}
                   </div>
                   <h2 className="swiper-no-swiping font-bold text-2xl">
@@ -74,7 +77,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                   </h2>
                 </div>
                 <div className="text-sm">
-                  <p>{dayjs(page.publishedTime).format('YYYY-MM-DD')}</p>
+                  <p>{page.publishedDate}</p>
                 </div>
               </div>
             </article>

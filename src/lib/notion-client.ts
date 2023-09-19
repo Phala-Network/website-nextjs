@@ -4,6 +4,8 @@ import {
   isFullPage,
   isFullBlock,
 } from '@notionhq/client'
+import { NotionToMarkdown } from 'notion-to-md'
+import dayjs from 'dayjs'
 import {
   PageObjectResponse,
   BlockObjectResponse,
@@ -15,6 +17,13 @@ export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
+export const n2m = new NotionToMarkdown({
+  notionClient: notion,
+  config:{
+    parseChildPages: false
+  }
+})
+
 export interface ParsedPage {
   id: string
   cover: PageObjectResponse['cover'],
@@ -24,6 +33,7 @@ export interface ParsedPage {
   blocks: ParsedBlock[]
   publishedTime: string
   status: 'Published' | 'Hidden' | 'Drafting' | 'Raw Idea'
+  markdown: string
 }
 
 export interface ParsedListPage {
@@ -33,6 +43,7 @@ export interface ParsedListPage {
   slug: string
   tags: string[]
   publishedTime: string
+  publishedDate: string
 }
 
 export type ParsedBlock = BlockObjectResponse & {
@@ -40,7 +51,7 @@ export type ParsedBlock = BlockObjectResponse & {
 }
 
 export function removeMediumFormat(url: string): string {
-  const regex = /^https:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^\/]+)$/
+  const regex = /^https?:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^\/]+)$/
   const match = url.match(regex)
   if (match && match.length === 3) {
     const formatPart = match[1]
@@ -48,6 +59,11 @@ export function removeMediumFormat(url: string): string {
     return baseUrl
   }
   return url
+}
+
+export function isMediumUrl(url: string): boolean {
+  const regex = /^https?:\/\/[\w.-]+\.medium\.com/
+  return regex.test(url)
 }
 
 export async function getParsedPage(
@@ -77,6 +93,7 @@ export async function getParsedPage(
   )
   const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], page.properties)
   const status = R.pathOr('Drafting', ['Status', 'status', '0', 'name'], page.properties)
+  const markdown = n2m.toMarkdownString((await n2m.blocksToMarkdown(blocks))).parent
   return {
     id: page.id,
     cover: page.cover,
@@ -86,6 +103,7 @@ export async function getParsedPage(
     status,
     blocks: parsedBlocks,
     publishedTime,
+    markdown,
   }
 }
 
@@ -190,17 +208,24 @@ export async function getParsedPagesByProperties({
   properties,
 }: {
   database_id: string
-  properties: Record<string, string>
+  properties: Record<string, any>
 }): Promise<ParsedPage[]> {
   const database = await notion.databases.query({
     database_id,
     filter: {
-      and: Object.entries(properties).map(([key, value]) => ({
-        property: key,
-        rich_text: {
-          contains: value,
-        },
-      })),
+      and: Object.entries(properties).map(([key, value]) => {
+        if (typeof value === 'object') {
+          return Object.assign({
+            property: key,
+          }, value)
+        }
+        return {
+          property: key,
+          rich_text: {
+            contains: value,
+          },
+        }
+      }),
     },
   })
   const pages = (
@@ -289,6 +314,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       R.pathOr([], ['Tags', 'multi_select'], properties)
     )
     const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], properties)
+    const publishedDate = dayjs(publishedTime).format('YYYY-MM-DD')
     pages.push({
       id,
       cover,
@@ -296,6 +322,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       slug,
       tags,
       publishedTime,
+      publishedDate,
     })
   }
   return {
