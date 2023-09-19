@@ -20,7 +20,6 @@ const NumberedListItem = ({
   return (
     <ol start={block.numbered_list_item.listNumber} className="notion_numbered_list_container">
       <li className="notion_numbered_list_item">
-        <span className="hidden">{block.numbered_list_item.listNumber}</span>
         <RichText rich_text={block.numbered_list_item.rich_text} />
       </li>
       {children}

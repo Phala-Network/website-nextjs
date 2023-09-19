@@ -73,11 +73,13 @@ const StaticPage = ({ page }: Props) => {
             >
               {page.cover ? (
                 <div
-                  className={cn('aspect-[856/442] rounded-3xl overflow-hidden')}
+                  className={cn('rounded-3xl overflow-hidden')}
                 >
                   <PageCoverImage
-                    className="w-full object-contain"
+                    className="w-full aspect-[856/442]"
                     page={page}
+                    width={856}
+                    height={442}
                   />
                 </div>
               ) : null}
@@ -116,8 +118,16 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       database_id: process.env.NOTION_POSTS_DATABASE_ID!,
       properties: {
         'Custom URL': slug,
-        'Status': 'Published',
-        'Post Type': 'Page',
+        'Status': {
+          status: {
+            equals: 'Published',
+          },
+        },
+        'Post Type': {
+          select: {
+            equals: 'Post',
+          },
+        },
       },
     })
   )
