@@ -10,6 +10,21 @@ export interface PhatItem {
   section: string[]
 }
 
+const shuffler = R.curry(function(random, list: unknown[]) {
+  const len = list.length
+  let idx = -1
+  let position
+  const result: unknown[] = []
+  while (++idx < len) {
+    position = Math.floor((idx + 1) * random())
+    result[idx] = result[position]
+    result[position] = list[idx]
+  }
+  return result
+})
+
+const shuffle = shuffler(Math.random)
+
 function pairItems(arr: any[]): PhatItem[][] {
   const pairedArray = []
   for (let i = 0; i < arr.length; i++) {
@@ -23,7 +38,7 @@ function pairItems(arr: any[]): PhatItem[][] {
       pairedArray.push([arr[i], arr[j]])
     }
   }
-  return pairedArray
+  return shuffle(pairedArray)
 }
 
 export async function getPhatList() {
