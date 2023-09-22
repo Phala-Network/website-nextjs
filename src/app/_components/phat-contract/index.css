@@ -1,0 +1,87 @@
+@tailwind utilities;
+.phat-active-list-wrap {
+  @apply absolute w-[33.33%] flex flex-col z-10 aspect-[428/168] overflow-hidden;
+}
+
+.left-phat-active-list-wrap {
+  @apply absolute justify-end left-0 bottom-[47.65%];
+}
+
+.right-phat-active-list-wrap {
+  @apply absolute right-0 bottom-[47.65%];
+}
+
+.phat-list {
+  @apply absolute w-[33.33%] flex flex-col;
+}
+
+.left-phat-list {
+  @apply left-0 bottom-[47.65%];
+}
+
+.right-phat-list {
+  @apply right-0 top-[34.55%];
+}
+
+.phat-list .phat-list-item {
+  @apply aspect-[428/168] w-full flex justify-center items-center shrink-0;
+  font-size: 1vw;
+  opacity: 0;
+}
+
+.item-inner {
+  @apply aspect-[360/96] w-[84.11%] bg-gray-100 rounded-4xl flex items-center;
+}
+
+.phat-list .phat-list-item .item-icon {
+  @apply mx-[8.88%];
+  @apply w-[17.77%] aspect-square bg-white rounded-full;
+}
+
+.phat-list .phat-list-item .item-title {
+  @apply text-black-800 font-bold;
+}
+
+.phat-active-list .phat-list-item {
+  @apply aspect-[428/168] w-full flex items-center shrink-0;
+  font-size: 1vw;
+}
+
+.phat-active-list .phat-list-item .item-icon {
+  @apply mx-[7.4%];
+  @apply w-[18.69%] aspect-square rounded-full border-[0.3vw];
+}
+
+.phat-active-list .phat-list-item .item-title {
+  @apply text-black-800 font-bold;
+}
+
+.phat-active-list .phat-list-item .item-tags {
+  @apply flex flex-wrap mt-[3%] gap-[3%];
+}
+
+.phat-active-list .phat-list-item .item-tags a {
+  @apply py-[1%] px-[4%] rounded-[0.3vw];
+  font-size: 0.8vw;
+}
+
+.left-phat-active-list-wrap .item-icon {
+  @apply border-green-600;
+}
+
+.right-phat-active-list-wrap .item-icon {
+  @apply border-phalaPurple-300;
+}
+
+.left-phat-active-list-wrap .item-tags a {
+  @apply bg-green-600;
+}
+
+.right-phat-active-list-wrap .item-tags a {
+  @apply bg-phalaPurple-700 text-white;
+}
+
+.connect-button {
+  @apply bg-black-800 text-white font-bold text-[1vw] py-[0.6vw] px-[3.5vw] rounded-[1vw];
+  @apply hover:bg-black-900;
+}
