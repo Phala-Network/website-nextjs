@@ -34,6 +34,9 @@ export default function() {
   const reverseList = list.slice().reverse()
 
   const runAnimate = async () => {
+    if (list.length === 0) {
+      return
+    }
     const nextSeq = animateSeq.current < list.length - 1 ? animateSeq.current + 1 : 0
     const sequence: any = [
       ['.gear-medium', { rotate: -90 * nextSeq }, { duration: 1.2, ease: EASE }],
@@ -327,7 +330,7 @@ export default function() {
               <p className="font-medium text-[1.5vw]">See the magic</p>
               <div className="flex gap-[2vw]">
                 {
-                  currentPhat[0] && currentPhat[0].section.map((value, i) => (
+                  currentPhat.length ? currentPhat[0].section.map((value, i) => (
                     <button
                       key={`${i}`}
                       className="connect-button"
@@ -335,7 +338,7 @@ export default function() {
                     >
                       {value}
                     </button>
-                  ))
+                  )) : null
                 }
               </div>
             </div>
@@ -351,7 +354,7 @@ function SectionSwiper() {
   const [current, setCurrent] = useState(0)
   const [connectType, setConnectType] = useAtom(connectTypeAtom)
   const currentPhat = useAtomValue(currentPhatAtom)
-  const section = currentPhat[0] ? currentPhat[0].section : []
+  const section = currentPhat.length ? currentPhat[0].section : []
 
   const renderLeft = () => {
     if (section.length === 0 || section.length === 1 || section.length === 2) {
