@@ -1,10 +1,10 @@
 import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
-
 import { VscCommentDiscussion } from 'react-icons/vsc'
 import { MdArrowForward, MdGraphicEq, MdFaceRetouchingNatural, MdOutlineApi } from 'react-icons/md'
 
 import { cn } from '@/lib/utils'
+import { getPhatList } from '@/lib/phat_list'
 import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
 import SiteFooter from '@/components/SiteFooter'
@@ -16,10 +16,11 @@ import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfI
 import SubscribeForm from './_components/SubscribeForm'
 import { StatsCard } from './_components/StatsCard'
 import { FullPageSwiper } from './_components/FullPageSwiper'
-import { FeaturePage, FixedFeaturePage } from './_components/FeaturePage'
 import { SectionHowItWorks } from './_components/SectionHowItWorks'
 import { SectionHero } from './_components/SectionHero'
 import { SectionHighlights } from './_components/SectionHighlights'
+import SectionFeatures from './_components/SectionFeatures'
+import { phatListAtom }  from './_components/phat-contract'
 import './home.css'
 
 
@@ -1137,24 +1138,20 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
+  const list = await getPhatList()
+
   return (
     <>
       <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
       <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
       <FullPageSwiper>
         <SectionHero />
-        <FeaturePage index={0} />
-        <FeaturePage index={1} />
-        <FeaturePage index={2} />
-        <FeaturePage index={3} />
-        <FeaturePage index={4} />
         <div>
-          {/* TO FIX: responsive */}
+          <SectionFeatures list={list} />
           <SectionPitchIntro />
           <SectionPitchAccelerate />
           <SectionPitchInnovate />
           <SectionPitchPioneer />
-          {/* END: TO FIX */}
           <SectionHowItWorks />
           <SectionGlobalDistribution />
           <SectionHighlights />
@@ -1162,7 +1159,6 @@ export default async function Home() {
           <SiteFooter />
         </div>
       </FullPageSwiper>
-      <FixedFeaturePage />
     </>
   )
 }
