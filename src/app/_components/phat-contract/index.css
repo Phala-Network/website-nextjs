@@ -34,7 +34,7 @@
 }
 
 .phat-list .phat-list-item .item-icon {
-  @apply mx-[8.88%];
+  @apply mx-[8.88%] bg-cover;
   @apply w-[17.77%] aspect-square bg-white rounded-full;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .phat-active-list .phat-list-item .item-icon {
-  @apply mx-[7.4%];
+  @apply mx-[7.4%] bg-cover;
   @apply w-[18.69%] aspect-square rounded-full border-[0.3vw];
 }
 
