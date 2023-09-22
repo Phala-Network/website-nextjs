@@ -9,11 +9,14 @@ import PhatContract, { phatListAtom } from '@/app/_components/phat-contract'
 function SectionFeatures({ list }: { list: PhatItem[][] }) {
   useHydrateAtoms([[phatListAtom, list]])
   return (
-    <div className={cn(
-      "safe-viewport min-h-screen py-16",
-      "flex flex-col",
-      "items-center"
-    )}>
+    <section
+      id="section-features"
+      className={cn(
+        "safe-viewport pt-12 lg:pt-32",
+        "flex flex-col gap-4 lg:gap-0",
+        "items-center"
+      )}
+    >
       <div className="flex flex-col text-center">
         <h2 className="font-normal leading-tight text-4xl lg:text-6xl">Say hello to</h2>
         <h2 className="font-black leading-tight text-4xl lg:text-6xl">Phat Contract</h2>
@@ -22,7 +25,7 @@ function SectionFeatures({ list }: { list: PhatItem[][] }) {
         </div>
       </div>
       <PhatContract />
-    </div>
+    </section>
   )
 }
 

@@ -7,7 +7,6 @@ import { cn } from '@/lib/utils'
 import { getPhatList } from '@/lib/phat_list'
 import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
-import SiteFooter from '@/components/SiteFooter'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
@@ -15,7 +14,6 @@ import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
 import SubscribeForm from './_components/SubscribeForm'
 import { StatsCard } from './_components/StatsCard'
-import { FullPageSwiper } from './_components/FullPageSwiper'
 import { SectionHowItWorks } from './_components/SectionHowItWorks'
 import { SectionHero } from './_components/SectionHero'
 import { SectionHighlights } from './_components/SectionHighlights'
@@ -1144,21 +1142,16 @@ export default async function Home() {
     <>
       <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
       <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
-      <FullPageSwiper>
-        <SectionHero />
-        <div>
-          <SectionFeatures list={list} />
-          <SectionPitchIntro />
-          <SectionPitchAccelerate />
-          <SectionPitchInnovate />
-          <SectionPitchPioneer />
-          <SectionHowItWorks />
-          <SectionGlobalDistribution />
-          <SectionHighlights />
-          <SectionSubscription />
-          <SiteFooter />
-        </div>
-      </FullPageSwiper>
+      <SectionHero />
+      <SectionFeatures list={list} />
+      <SectionPitchIntro />
+      <SectionPitchAccelerate />
+      <SectionPitchInnovate />
+      <SectionPitchPioneer />
+      <SectionHowItWorks />
+      <SectionGlobalDistribution />
+      <SectionHighlights />
+      <SectionSubscription />
     </>
   )
 }
