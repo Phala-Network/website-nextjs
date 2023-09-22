@@ -327,7 +327,7 @@ export default function() {
               <p className="font-medium text-[1.5vw]">See the magic</p>
               <div className="flex gap-[2vw]">
                 {
-                  currentPhat[0] && currentPhat[0].section.map((value, i) => ['Connect', 'Programmable', 'Verifiable'].indexOf(value) > -1 ? (
+                  currentPhat[0] && currentPhat[0].section.map((value, i) => (
                     <button
                       key={`${i}`}
                       className="connect-button"
@@ -335,7 +335,7 @@ export default function() {
                     >
                       {value}
                     </button>
-                  ) : null)
+                  ))
                 }
               </div>
             </div>
@@ -350,34 +350,14 @@ function SectionSwiper() {
   const [swiper, setSwiper] = useState<SwiperClass>()
   const [current, setCurrent] = useState(0)
   const [connectType, setConnectType] = useAtom(connectTypeAtom)
-  const [speed, setSpeed] = useState(0)
   const currentPhat = useAtomValue(currentPhatAtom)
   const section = currentPhat[0] ? currentPhat[0].section : []
-
-  useEffect(() => {
-    if (swiper && !swiper.destroyed) {
-      setSpeed(0)
-      setTimeout(() => {
-        if (connectType === 'connect') {
-          swiper.slideTo(0)
-        } else if (connectType === 'programmable') {
-          swiper.slideTo(1)
-        } else if (connectType === 'verifiable') {
-          swiper.slideTo(2)
-        }
-        setSpeed(800)
-      }, 1)
-    }
-  }, [swiper, connectType])
 
   const renderLeft = () => {
     if (section.length === 0 || section.length === 1 || section.length === 2) {
       return null
     }
     const index = current - 1 < 0 ? section.length - 1 : current - 1
-    if (['Connect', 'Programmable', 'Verifiable'].indexOf(section[index]) === -1) {
-      return null
-    }
     return (
       <div
         className="absolute -left-[5%] top-[6%] text-[1.2vw] z-10 w-[25%] cursor-pointer"
@@ -396,9 +376,6 @@ function SectionSwiper() {
       return null
     }
     const index = current + 1 > section.length - 1 ? 0 : current + 1
-    if (['Connect', 'Programmable', 'Verifiable'].indexOf(section[index]) === -1) {
-      return null
-    }
     return (
       <div
         className="absolute -right-[5%] top-[6%] text-[1.2vw] z-10 w-[25%] cursor-pointer"
@@ -424,7 +401,7 @@ function SectionSwiper() {
         className="w-[70%]"
         allowTouchMove={false}
         spaceBetween={30}
-        speed={speed}
+        speed={800}
         onSwiper={(swiper: SwiperClass) => {
           setSwiper(swiper)
         }}
