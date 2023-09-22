@@ -8,7 +8,6 @@ import { useScroll, useMotionValueEvent } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
 import { navVisibleAtom } from '@/components/SiteNav'
-import { featuresAtom, activeFeatureAtom, showFixedFeaturePageAtom } from './FeaturePage'
 
 type TypeSwiperClass = SwiperClass & {
   slidesGrid?: number[]
@@ -18,10 +17,6 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
   const [freeMode, setFreeMode] = useState(false)
   const [swiper, setSwiper] = useState<TypeSwiperClass>()
   const [swiperEnabled, setSwiperEnabled] = useState(true)
-  const [currentFeature, setCurrentFeature] = useAtom(activeFeatureAtom)
-  const setShowFixedFeaturePage = useSetAtom(showFixedFeaturePageAtom)
-  const features = useAtomValue(featuresAtom)
-  const freeModeIndex = useMemo(() => features.length + 2, [features])
   const setNavVisible = useSetAtom(navVisibleAtom)
 
   const updateSwiperEnabled = (swiper: TypeSwiperClass) => {
@@ -48,21 +43,6 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
     setLastScrollY(latest)
   })
 
-  useEffect(() => {
-    if (freeModeIndex !== undefined && !freeMode && swiper && swiper.activeIndex === freeModeIndex) {
-      swiper.slideTo(freeModeIndex - 1)
-    }
-  }, [freeMode, swiper])
-
-  useEffect(() => {
-    if (currentFeature > 0 && swiper && swiper.activeIndex > 0 && swiper.activeIndex !== currentFeature + 1) {
-      setShowFixedFeaturePage(true)
-      setTimeout(() => {
-        swiper.slideTo(currentFeature + 1)
-      }, 100)
-    }
-  }, [currentFeature, swiper])
-
   return (
     <Swiper
       className={cn(
@@ -88,33 +68,17 @@ export function FullPageSwiper({ children }: { children: ReactNode  }) {
       }}
       modules={[FreeMode, Mousewheel]}
       onSlideChangeTransitionEnd={(swiper: TypeSwiperClass) => {
-        if (swiper.activeIndex < freeModeIndex) {
-          setCurrentFeature(swiper.activeIndex - 1)
-        } else if (swiper.activeIndex === freeModeIndex) {
-          setFreeMode(true)
-        }
-        setShowFixedFeaturePage(false)
-      }}
-      onScroll={(swiper: TypeSwiperClass) => {
-        if (swiper.previousIndex === 0 && swiper.activeIndex === 1) {
-          return
-        }
-        if (swiper.previousIndex === freeModeIndex && swiper.activeIndex === freeModeIndex - 1) {
-          return
-        }
-        if (swiper.activeIndex >= 1 && swiper.activeIndex < freeModeIndex) {
-          setShowFixedFeaturePage(true)
-        }
+        setFreeMode(swiper.activeIndex === 1)
       }}
       onSetTranslate={(swiper: TypeSwiperClass) => {
-        if (swiper.translate > -swiper.slidesGrid![freeModeIndex] && freeMode) {
+        if (swiper.translate > -swiper.slidesGrid![1] && freeMode) {
           setFreeMode(false)
         }
       }}
       onResize={updateSwiperEnabled}
     >
       {React.Children.map(children, (child: ReactNode) => (
-        <SwiperSlide className={cn("h-auto", swiperEnabled ? 'min-h-screen ' : null)}>{child}</SwiperSlide>
+        <SwiperSlide className={cn('h-auto', swiperEnabled ? 'min-h-screen ' : null)}>{child}</SwiperSlide>
       ))}
     </Swiper>
   )
