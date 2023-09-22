@@ -83,7 +83,6 @@ export async function getPhatList() {
   for (const page of results) {
     // @ts-expect-error missing from Notion package
     const { id, properties } = page
-    console.info(R.pathOr([], ['Logo', 'files'], properties))
     const name = R.map(
       R.prop('plain_text'),
       R.pathOr([], ['Name', 'title'], properties)
