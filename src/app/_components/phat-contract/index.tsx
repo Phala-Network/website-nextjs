@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
-import { useAnimate, motion } from 'framer-motion'
+import { useAnimate, useInView, motion } from 'framer-motion'
 import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai';
 import { Swiper, SwiperSlide, type SwiperClass } from 'swiper/react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
@@ -25,6 +25,7 @@ const EASE = [0.65, 0, 0.31, 1]
 
 export default function() {
   const [scope, animate] = useAnimate()
+  const isInView = useInView(scope, { once: true })
   const [connectType, setConnectType] = useAtom(connectTypeAtom)
   const animateInterval = useRef<ReturnType<typeof setInterval>>()
   const animateSeq = useRef(0)
@@ -64,22 +65,30 @@ export default function() {
   }
 
   useEffect(() => {
-    if (list.length > 0) {
-      setCurrentPhat(list[0])
+    if (isInView && !connectType) {
+      runAnimate()
+      startInterval()
     }
-    clearInterval(animateInterval.current)
-    runAnimate()
-    const id = setInterval(runAnimate, 2000)
-    animateInterval.current = id
-  }, [])
+  }, [isInView])
+
+  useEffect(() => {
+    if (list.length > 0 && currentPhat.length === 0) {
+      setCurrentPhat(list[animateSeq.current])
+    }
+  }, [list, currentPhat])
 
   const handleConnect = (value: string) => {
-    setConnectType(value)
     clearInterval(animateInterval.current)
+    setConnectType(value)
   }
 
   const handleBack = () => {
     setConnectType('')
+    startInterval()
+  }
+
+  const startInterval = () => {
+    clearInterval(animateInterval.current)
     const id = setInterval(runAnimate, 2000)
     animateInterval.current = id
   }
@@ -366,6 +375,9 @@ function SectionSwiper() {
       return null
     }
     const index = current - 1 < 0 ? section.length - 1 : current - 1
+    if (['Connect', 'Programmable', 'Verifiable'].indexOf(section[index]) === -1) {
+      return null
+    }
     return (
       <div
         className="absolute -left-[5%] top-[6%] text-[1.2vw] z-10 w-[25%] cursor-pointer"
@@ -384,6 +396,9 @@ function SectionSwiper() {
       return null
     }
     const index = current + 1 > section.length - 1 ? 0 : current + 1
+    if (['Connect', 'Programmable', 'Verifiable'].indexOf(section[index]) === -1) {
+      return null
+    }
     return (
       <div
         className="absolute -right-[5%] top-[6%] text-[1.2vw] z-10 w-[25%] cursor-pointer"
@@ -415,6 +430,9 @@ function SectionSwiper() {
         }}
         onSlideChange={(swiper: SwiperClass) => {
           setCurrent(swiper.activeIndex)
+          if (!connectType) {
+            return
+          }
           setConnectType(section[swiper.activeIndex].toLowerCase())
         }}
       >
