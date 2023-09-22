@@ -10,6 +10,7 @@ export interface PhatItem {
   section: string[]
   rules: string
   rulesItem: string[]
+  logo: string
 }
 
 const shuffler = R.curry(function(random, list: unknown[]) {
@@ -82,6 +83,7 @@ export async function getPhatList() {
   for (const page of results) {
     // @ts-expect-error missing from Notion package
     const { id, properties } = page
+    console.info(R.pathOr([], ['Logo', 'files'], properties))
     const name = R.map(
       R.prop('plain_text'),
       R.pathOr([], ['Name', 'title'], properties)
@@ -111,6 +113,7 @@ export async function getPhatList() {
       R.prop('name'),
       R.pathOr([], ['Rules-Item', 'multi_select'], properties)
     )
+    const logo = R.pathOr('', ['Logo', 'files', 0, 'file', 'url'], properties)
     items.push({
       id,
       name,
@@ -121,6 +124,7 @@ export async function getPhatList() {
       section,
       rules,
       rulesItem,
+      logo,
     })
   }
   return pairItems(items)

@@ -109,7 +109,13 @@ export default function() {
               className={`phat-list-item phat-list-item-${i + 1}`}
             >
               <div className="item-inner">
-                <div className="item-icon"></div>
+                <div
+                  className="item-icon"
+                  style={{
+                    backgroundImage: `url("${item.logo}")`,
+                  }}
+                >
+                </div>
                 <div className="item-info">
                   <p className="item-title">{item.name}</p>
                 </div>
@@ -126,7 +132,13 @@ export default function() {
                 key={`${i}`}
                 className={`phat-list-item phat-list-item-${i + 1}`}
               >
-                <div className="item-icon"></div>
+                <div
+                  className="item-icon"
+                  style={{
+                    backgroundImage: `url("${item.logo}")`,
+                  }}
+                >
+                </div>
                 <div className="item-info">
                   <p className="item-title">{item.name}</p>
                   <p className="item-desc">{item.description}</p>
@@ -151,7 +163,13 @@ export default function() {
               className={`phat-list-item phat-list-item-${i + 1}`}
             >
               <div className="item-inner">
-                <div className="item-icon"></div>
+                <div
+                  className="item-icon"
+                  style={{
+                    backgroundImage: `url("${item.logo}")`,
+                  }}
+                >
+                </div>
                 <div className="item-info">
                   <p className="item-title">{item.name}</p>
                 </div>
@@ -168,7 +186,13 @@ export default function() {
                 key={`${i}`}
                 className={`phat-list-item phat-list-item-${i + 1}`}
               >
-                <div className="item-icon"></div>
+                <div
+                  className="item-icon"
+                  style={{
+                    backgroundImage: `url("${item.logo}")`,
+                  }}
+                >
+                </div>
                 <div className="item-info">
                   <p className="item-title">{item.name}</p>
                   <p className="item-desc">{item.description}</p>
