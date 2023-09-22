@@ -8,6 +8,8 @@ export interface PhatItem {
   description: string
   tags: string[]
   section: string[]
+  rules: string
+  rulesItem: string[]
 }
 
 const shuffler = R.curry(function(random, list: unknown[]) {
@@ -25,6 +27,26 @@ const shuffler = R.curry(function(random, list: unknown[]) {
 
 const shuffle = shuffler(Math.random)
 
+function filterRules(pairItems: PhatItem[]) {
+  const [left, right] = pairItems
+  if (!left.rules|| !right.rules) {
+    return false
+  }
+  if (left.rules === 'Avoid' && left.rulesItem.indexOf(right.title) > -1) {
+    return false
+  }
+  if (right.rules === 'Avoid' && right.rulesItem.indexOf(left.title) > -1) {
+    return false
+  }
+  if (left.rules === 'Bonded' && left.rulesItem.indexOf(right.name) === -1) {
+    return false
+  }
+  if (right.rules === 'Bonded' && right.rulesItem.indexOf(left.name) === -1) {
+    return false
+  }
+  return true
+}
+
 function pairItems(arr: any[]): PhatItem[][] {
   const pairedArray = []
   for (let i = 0; i < arr.length; i++) {
@@ -35,6 +57,10 @@ function pairItems(arr: any[]): PhatItem[][] {
       if (arr[j].position.length && arr[j].position.length[0] === 'Left') {
         continue
       }
+      if (!filterRules([arr[i], arr[j]])) {
+        continue
+      }
+      // filter section
       const section = arr[i].section
       if (section.length === 1 && section[0] === 'Default') {
         arr[i].section = ['Verifiable', 'Programmable', 'Connect']
@@ -80,10 +106,7 @@ export async function getPhatList() {
       R.prop('name'),
       R.pathOr([], ['Section', 'multi_select'], properties)
     )
-    const rules = R.map(
-      R.prop('name'),
-      R.pathOr([], ['Rules', 'multi_select'], properties)
-    )
+    const rules = R.pathOr('', ['Rules', 'select', 'name'], properties)
     const rulesItem = R.map(
       R.prop('name'),
       R.pathOr([], ['Rules-Item', 'multi_select'], properties)
@@ -97,6 +120,7 @@ export async function getPhatList() {
       position,
       section,
       rules,
+      rulesItem,
     })
   }
   return pairItems(items)
