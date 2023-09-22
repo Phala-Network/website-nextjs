@@ -35,6 +35,12 @@ function pairItems(arr: any[]): PhatItem[][] {
       if (arr[j].position.length && arr[j].position.length[0] === 'Left') {
         continue
       }
+      const section = arr[i].section
+      if (section.length === 1 && section[0] === 'Default') {
+        arr[i].section = ['Verifiable', 'Programmable', 'Connect']
+      } else {
+        arr[i].section = section.filter((item: string) => item !== 'Default')
+      }
       pairedArray.push([arr[i], arr[j]])
     }
   }
