@@ -8,6 +8,7 @@ import { atom, useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { atomWithReducer, selectAtom } from 'jotai/utils'
 import { useHover } from 'react-aria'
 import * as R from 'ramda'
+import { useScroll, useMotionValueEvent } from 'framer-motion'
 import { BsDiscord, BsTwitter } from 'react-icons/bs'
 import { BiDetail } from 'react-icons/bi'
 import { MdCodeOff, MdCode, MdAssignment, MdAssignmentInd, MdArrowForward } from 'react-icons/md'
@@ -537,10 +538,20 @@ function MenuItem({ href, title, icon, children }: {
 // padding is >= 96px / 6rem. 
 //
 
-export const navVisibleAtom = atom(true)
-
 function SiteNav() {
-  const navVisible = useAtomValue(navVisibleAtom)
+  const { scrollY } = useScroll()
+  const [navVisible, setNavVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useMotionValueEvent(scrollY, 'change', (latest: number) => {
+    if (latest > 0 && latest > lastScrollY && latest - lastScrollY > 10 && latest > window.screen.height / 2) {
+      setNavVisible(false)
+    } else if (latest < lastScrollY && lastScrollY - latest > 10) {
+      setNavVisible(true)
+    }
+    setLastScrollY(latest)
+  })
+
   return (
     <>
       <nav className={cn(

@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { MdArrowForward } from 'react-icons/md'
-import { useSwiper } from 'swiper/react'
 
 import Squircle from '@/components/Squircle'
 import { cn } from '@/lib/utils'
@@ -62,7 +61,6 @@ function SupportedChains() {
 
 
 export function SectionHero() {
-  const swiper = useSwiper()
   return (
     <section id="section-hero" className={cn("section-hero section-slide")}>
       <div className={cn("background", "absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden")}>
@@ -99,13 +97,9 @@ export function SectionHero() {
             href="#section-features"
             onClick={(e) => {
               e.preventDefault()
-              if (swiper && swiper.allowSlideNext) {
-                swiper.slideNext()
-              } else {
-                document.querySelector(e.currentTarget.getAttribute('href')!)?.scrollIntoView({
-                  behavior: 'smooth',
-                })
-              }
+              document.querySelector(e.currentTarget.getAttribute('href')!)?.scrollIntoView({
+                behavior: 'smooth',
+              })
             }}
           >
             Let's Build!
