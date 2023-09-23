@@ -7,10 +7,6 @@
   @apply absolute justify-end left-0 bottom-[47.65%];
 }
 
-.right-phat-active-list-wrap {
-  @apply absolute right-0 bottom-[47.65%];
-}
-
 .phat-list {
   @apply absolute w-[33.33%] flex flex-col;
 }
@@ -25,7 +21,7 @@
 
 .phat-list .phat-list-item {
   @apply aspect-[428/168] w-full flex justify-center items-center shrink-0;
-  font-size: 1vw;
+  @apply text-[1vw] xl:text-base;
   opacity: 0;
 }
 
@@ -34,7 +30,7 @@
 }
 
 .phat-list .phat-list-item .item-icon {
-  @apply mx-[8.88%] bg-cover;
+  @apply mx-[8.88%] bg-cover shrink-0;
   @apply w-[17.77%] aspect-square bg-white rounded-full;
 }
 
@@ -43,13 +39,22 @@
 }
 
 .phat-active-list .phat-list-item {
-  @apply aspect-[428/168] w-full flex items-center shrink-0;
-  font-size: 1vw;
+  @apply px-[7%] aspect-[428/168] w-full flex items-center;
+  @apply text-[1vw] xl:text-base;
+}
+
+.phat-active-list .phat-list-item .item-info {
+  @apply flex flex-col gap-2 leading-none;
+}
+
+.phat-active-list .phat-list-item .item-desc {
+  @apply text-[1.2vw] xl:text-lg;
 }
 
 .phat-active-list .phat-list-item .item-icon {
-  @apply mx-[7.4%] bg-cover;
-  @apply w-[18.69%] aspect-square rounded-full border-[0.3vw];
+  @apply mr-[7%] bg-cover shrink-0;
+  @apply w-[18.69%] aspect-square rounded-full;
+  @apply border-[0.3vw] xl:border-2;
 }
 
 .phat-active-list .phat-list-item .item-title {
@@ -57,31 +62,46 @@
 }
 
 .phat-active-list .phat-list-item .item-tags {
-  @apply flex flex-wrap mt-[3%] gap-[3%];
+  @apply flex flex-wrap gap-[3%];
 }
 
-.phat-active-list .phat-list-item .item-tags a {
-  @apply py-[1%] px-[4%] rounded-[0.3vw];
-  font-size: 0.8vw;
+.phat-active-list .phat-list-item .item-tags span {
+  @apply py-[2%] px-[4%] rounded-[0.3vw];
+  @apply xl:text-xs xl:py-0 xl:px-2 xl:rounded-md;
 }
 
 .left-phat-active-list-wrap .item-icon {
   @apply border-green-600;
 }
 
+.left-phat-active-list-wrap .item-tags span {
+  @apply bg-green-600;
+}
+
+.connect-button {
+  @apply bg-black-800 text-white font-bold leading-none;
+  @apply hover:bg-black-900;
+  @apply text-[1vw] px-[3.5vw] py-[1vw] rounded-[1vw];
+  @apply xl:text-sm xl:rounded-xl xl:py-2 xl:px-10;
+}
+
+.right-phat-active-list-wrap {
+  @apply absolute right-0 bottom-[47.65%];
+}
+
+.right-phat-active-list-wrap .phat-list-item .item-title {
+  @apply text-white;
+}
+
+.right-phat-active-list-wrap .phat-list-item .item-info {
+  @apply text-white;
+}
+
 .right-phat-active-list-wrap .item-icon {
   @apply border-phalaPurple-300;
 }
 
-.left-phat-active-list-wrap .item-tags a {
-  @apply bg-green-600;
-}
-
-.right-phat-active-list-wrap .item-tags a {
+.right-phat-active-list-wrap .item-tags span {
   @apply bg-phalaPurple-700 text-white;
 }
 
-.connect-button {
-  @apply bg-black-800 text-white font-bold text-[1vw] py-[0.6vw] px-[3.5vw] rounded-[1vw];
-  @apply hover:bg-black-900;
-}

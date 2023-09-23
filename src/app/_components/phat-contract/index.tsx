@@ -145,7 +145,7 @@ export default function() {
                   <div className="item-tags">
                     {
                       item.tags.map((tag, i) => (
-                        <a href="#" key={`${i}`}>{tag}</a>
+                        <span key={`${i}`}>{tag}</span>
                       ))
                     }
                   </div>
@@ -199,7 +199,7 @@ export default function() {
                   <div className="item-tags">
                     {
                       item.tags.map((tag, i) => (
-                        <a href="#" key={`${i}`}>{tag}</a>
+                        <span key={`${i}`}>{tag}</span>
                       ))
                     }
                   </div>
@@ -324,9 +324,15 @@ export default function() {
           }}
         >
           <SectionSwiper />
-          <div className="mt-[5%] flex justify-center items-center">
+          <div className="mt-[3%] flex justify-center items-center">
             <button
-              className="border-black-800 font-bold text-[1vw] py-[0.6vw] px-[3.5vw] rounded-[1vw] border-[0.2vw] hover:bg-black-800 hover:text-white"
+              className={cn(
+                "border-black-800 font-bold",
+                "hover:bg-black-800 hover:text-white",
+                "py-[0.6vw] px-[3.5vw] rounded-[1vw] border-[0.2vw]",
+                "xl:rounded-xl xl:border-2 xl:py-2 xl:px-6",
+                "text-[1vw] xl:text-base",
+              )}
               onClick={handleBack}
             >
               Back
@@ -347,12 +353,29 @@ export default function() {
           }}
         >
           <div className="connect-panel flex items-center justify-center">
-            <div className="flex flex-col items-center justify-center gap-[2vw]">
-              <p className="text-black-800 font-bold text-[2vw]">
+            <div
+              className={cn(
+                "flex flex-col items-center justify-center",
+                "gap-[2vw] xl:gap-6"
+              )}
+            >
+              <p
+                className={cn(
+                  "text-black-800 font-bold",
+                  "text-[1.8vw] xl:text-2xl"
+                )}
+              >
                 Smart Contract, Now Smarter
               </p>
-              <p className="font-medium text-[1.5vw]">See the magic</p>
-              <div className="flex gap-[2vw]">
+              <p
+                className={cn(
+                  "font-medium",
+                  "text-[1vw] xl:text-base"
+                )}
+              >
+                See the magic
+              </p>
+              <div className="flex gap-[2vw] xl:gap-4">
                 {
                   currentPhat.length ? currentPhat[0].section.map((value, i) => (
                     <button
@@ -387,11 +410,16 @@ function SectionSwiper() {
     const index = current - 1 < 0 ? section.length - 1 : current - 1
     return (
       <div
-        className="absolute -left-[5%] top-[6%] text-[1.2vw] z-10 w-[25%] cursor-pointer"
+        className={cn(
+          "absolute -left-[5%] z-10 w-[25%] cursor-pointer",
+          "text-black-500 font-bold",
+          "text-[1vw] xl:text-base",
+          "top-[0.7vw] xl:top-[4%]"
+        )}
         onClick={() => handleSlide(index)}
       >
         <div className="flex items-center">
-          <FiArrowLeft size="10%" />
+          <FiArrowLeft className="shrink-0" size="10%" color="#808080" />
           <span className="ml-[2%] capitalize">{section[index]}</span>
         </div>
       </div>
@@ -405,12 +433,17 @@ function SectionSwiper() {
     const index = current + 1 > section.length - 1 ? 0 : current + 1
     return (
       <div
-        className="absolute -right-[5%] top-[6%] text-[1.2vw] z-10 w-[25%] cursor-pointer"
+        className={cn(
+          "absolute -right-[5%] z-10 w-[25%] cursor-pointer",
+          "text-black-500 font-bold",
+          "text-[1vw] xl:text-base",
+          "top-[0.7vw] xl:top-[4%]"
+        )}
         onClick={() => handleSlide(index)}
       >
         <div className="flex items-center justify-end">
           <span className="mr-[2%] capitalize">{section[index]}</span>
-          <FiArrowRight size="10%" />
+          <FiArrowRight className="shrink-0" size="10%" color="#808080" />
         </div>
       </div>
     )
@@ -464,9 +497,21 @@ function SectionSwiper() {
 
 function SectionConnect() {
   return (
-    <section className="text-center text-[1vw] flex-shrink-0">
-      <p className="text-black-800 font-bold text-[2vw]">Connect Everything</p>
-      <div className="mt-[5%]">
+    <section className="text-center">
+      <p
+        className={cn(
+          "text-black-800 font-bold",
+          "text-[1.8vw] xl:text-2xl",
+        )}
+      >
+        Connect Everything
+      </p>
+      <div
+        className={cn(
+          "mt-[3%] font-medium",
+          "text-[1vw] xl:text-base"
+        )}
+      >
         <p className="font-bold">HTTP Extension can:</p>
         <p>Connect Internet with Web3</p>
         <p>Connect for multi-chains</p>
@@ -478,9 +523,21 @@ function SectionConnect() {
 
 function SectionProgrammable() {
   return (
-    <section className="text-center text-[1vw] flex-shrink-0">
-      <p className="text-black-800 font-bold text-[2vw]">Customize, Build, Automation</p>
-      <div className="mt-[5%]">
+    <section className="text-center">
+      <p
+        className={cn(
+          "text-black-800 font-bold",
+          "text-[1.8vw] xl:text-2xl",
+        )}
+      >
+        Customize, Build, Automation
+      </p>
+      <div
+        className={cn(
+          "mt-[5%]",
+          "text-[1vw] xl:text-base"
+        )}
+      >
         <p>Easy to build with Javascript</p>
         <p>SGX for off-chain execution</p>
         <p>Automation as a service</p>
@@ -491,9 +548,21 @@ function SectionProgrammable() {
 
 function SectionVerifiable() {
   return (
-    <section className="text-center text-[1vw] flex-shrink-0">
-      <p className="text-black-800 font-bold text-[2vw]">Verify for Minimal Trust</p>
-      <div className="mt-[5%]">
+    <section className="text-center">
+      <p
+        className={cn(
+          "text-black-800 font-bold",
+          "text-[1.8vw] xl:text-2xl",
+        )}
+      >
+        Verify for Minimal Trust
+      </p>
+      <div
+        className={cn(
+          "mt-[5%]",
+          "text-[1vw] xl:text-base"
+        )}
+      >
         <p>Build Minimal Trust</p>
         <p>Powered by Phala Blockchain</p>
         <p>Verifiable computation as proof</p>
