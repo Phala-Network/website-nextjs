@@ -112,7 +112,7 @@ export default function() {
                 <div
                   className="item-icon"
                   style={{
-                    backgroundImage: `url("${item.logo}")`,
+                    backgroundImage: `url(/api/image?page_id=${item.id}&path=${encodeURIComponent(JSON.stringify(['properties', 'Logo', 'files', 0, 'file', 'url']))})`,
                   }}
                 >
                 </div>
@@ -135,7 +135,7 @@ export default function() {
                 <div
                   className="item-icon"
                   style={{
-                    backgroundImage: `url("${item.logo}")`,
+                    backgroundImage: `url(/api/image?page_id=${item.id}&path=${encodeURIComponent(JSON.stringify(['properties', 'Logo', 'files', 0, 'file', 'url']))})`,
                   }}
                 >
                 </div>
@@ -166,7 +166,7 @@ export default function() {
                 <div
                   className="item-icon"
                   style={{
-                    backgroundImage: `url("${item.logo}")`,
+                    backgroundImage: `url(/api/image?page_id=${item.id}&path=${encodeURIComponent(JSON.stringify(['properties', 'Logo', 'files', 0, 'file', 'url']))})`,
                   }}
                 >
                 </div>
@@ -189,7 +189,7 @@ export default function() {
                 <div
                   className="item-icon"
                   style={{
-                    backgroundImage: `url("${item.logo}")`,
+                    backgroundImage: `url(/api/image?page_id=${item.id}&path=${encodeURIComponent(JSON.stringify(['properties', 'Logo', 'files', 0, 'file', 'url']))})`,
                   }}
                 >
                 </div>
