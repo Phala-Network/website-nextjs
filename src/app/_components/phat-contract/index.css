@@ -80,7 +80,7 @@
 
 .connect-button {
   @apply bg-black-800 text-white font-bold leading-none;
-  @apply hover:bg-black-900;
+  @apply transition-colors hover:bg-black-900;
   @apply text-[1vw] px-[3.5vw] py-[1vw] rounded-[1vw];
   @apply xl:text-sm xl:rounded-xl xl:py-2 xl:px-10;
 }
