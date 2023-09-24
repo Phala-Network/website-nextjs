@@ -5,7 +5,6 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 428 428"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <g filter="url(#filter0_dd_2406_12583)">
