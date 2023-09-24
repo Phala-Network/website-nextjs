@@ -1,6 +1,6 @@
 @tailwind utilities;
 .phat-active-list-wrap {
-  @apply absolute w-[33.33%] flex flex-col z-10 aspect-[428/168] overflow-hidden;
+  @apply absolute w-[33.33%] h-[17.8%] flex flex-col z-10 aspect-[428/168] overflow-hidden;
 }
 
 .left-phat-active-list-wrap {
