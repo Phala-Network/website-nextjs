@@ -61,7 +61,6 @@ function pairItems(arr: any[]): PhatItem[][] {
       if (!filterRules([arr[i], arr[j]])) {
         continue
       }
-      // filter section
       const section = arr[i].section
       if (section.length === 1 && section[0] === 'Default') {
         arr[i].section = ['Verifiable', 'Programmable', 'Connect']
@@ -71,7 +70,32 @@ function pairItems(arr: any[]): PhatItem[][] {
       pairedArray.push([arr[i], arr[j]])
     }
   }
-  return shuffle(pairedArray)
+  const result = []
+  let rest: PhatItem[][] = shuffle(pairedArray)
+  let times = 0
+  while (rest.length > 0 && times < 10) {
+    if (times > 5) {
+      rest = shuffle(rest)
+    }
+    const first = rest.shift() as PhatItem[]
+    if (result.length > 0 && result[result.length - 1][0].name === first[0].name) {
+      rest.push(first)
+      times += 1
+    } else if (result.length > 1 && result[result.length - 2][0].name === first[0].name) {
+      rest.push(first)
+      times += 1
+    } else if (result.length > 1 && result[result.length - 1][1].name === first[1].name) {
+      rest.push(first)
+      times += 1
+    } else if (result.length > 1 && result[result.length - 2][1].name === first[1].name) {
+      rest.push(first)
+      times += 1
+    } else {
+      times = 0
+      result.push(first)
+    }
+  }
+  return result
 }
 
 export async function getPhatList() {
