@@ -44,7 +44,7 @@
 }
 
 .phat-active-list .phat-list-item .item-info {
-  @apply flex flex-col gap-2 leading-none;
+  @apply flex flex-col gap-1 xl:gap-2 leading-none;
 }
 
 .phat-active-list .phat-list-item .item-desc {

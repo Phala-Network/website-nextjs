@@ -7,10 +7,10 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     fill="none"
     {...props}
   >
-    <rect width={184} height={184} fill="url(#pattern0)" />
+    <rect width={184} height={184} fill="url(#pattern0_1994_26843)" />
     <defs>
       <pattern
-        id="pattern0"
+        id="pattern0_1994_26843"
         patternContentUnits="objectBoundingBox"
         width={1}
         height={1}
