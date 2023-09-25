@@ -4,6 +4,7 @@ import { useAnimate, useInView, motion } from 'framer-motion'
 import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai';
 import { Swiper, SwiperSlide, type SwiperClass } from 'swiper/react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import Image from 'next/image'
 
 import { cn } from '@/lib/utils'
 import { type PhatItem } from '@/lib/phat_list'
@@ -11,10 +12,10 @@ import Gear from './svgs/gear'
 import GearSmall from './svgs/gear_small'
 import GearMedium from './svgs/gear_medium'
 import GearLink from './svgs/gear_link'
-import Phat from './svgs/phat'
-import Programmable from './svgs/programmable'
-import Plug from './svgs/plug'
-import Verifiable from './svgs/verifiable'
+import ImagePhat from './images/phat.png'
+import ImageProgrammable from './images/programmable.png'
+import ImagePlug from './images/plug.png'
+import ImageVerifiable from './images/verifiable.png'
 import './index.css'
 
 const connectTypeAtom = atom('')
@@ -252,7 +253,7 @@ export default function() {
             transition: { duration: 0.8 },
           }}
         >
-          <Phat />
+          <Image alt="phat" src={ImagePhat} />
         </motion.div>
         <motion.div
           initial={{
@@ -267,7 +268,7 @@ export default function() {
             transition: { duration: 0.8 },
           }}
         >
-          <Plug />
+          <Image alt="plug" src={ImagePlug} />
         </motion.div>
         <motion.div
           initial={{
@@ -282,7 +283,7 @@ export default function() {
             transition: { duration: 0.8 },
           }}
         >
-          <Programmable />
+          <Image alt="programmable" src={ImageProgrammable} />
         </motion.div>
         <motion.div
           initial={{
@@ -297,7 +298,7 @@ export default function() {
             transition: { duration: 0.8 },
           }}
         >
-          <Verifiable />
+          <Image alt="verifiable" src={ImageVerifiable} />
         </motion.div>
       </div>
       <div
