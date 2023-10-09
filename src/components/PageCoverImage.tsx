@@ -1,7 +1,8 @@
+'use client';
+
 import { BsImage } from 'react-icons/bs'
 
 import {
-  removeMediumFormat,
   type ParsedPage,
   type ParsedListPage,
 } from '@/lib/notion-client'
