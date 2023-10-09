@@ -47,11 +47,6 @@ export default function RecentPosts() {
                   src="/blog/default_cover.jpg"
                 />
               )}
-              {/* <img src={ */}
-              {/*   post.cover ? ( */}
-              {/*     'external' in post.cover ? post.cover.external.url : post.cover.file.url */}
-              {/*   ) : "https://phala.network/og-image.jpg" */}
-              {/* } alt="" className="inset-0 -z-10 h-full w-full object-cover aspect-video" /> */}
 
               <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
               <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />

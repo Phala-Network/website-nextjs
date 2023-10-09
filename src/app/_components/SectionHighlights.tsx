@@ -5,7 +5,6 @@ import type { ParsedListPage } from '@/lib/notion-client'
 import { useRecentPosts } from '@/hooks/useRecentPosts'
 import PageCoverImage from '@/components/PageCoverImage'
 
-// export function PostCard({ src, href, title, intro }: { src: string, href: string, title: string, intro: string }) {
 export function PostCard({ page }: { page: ParsedListPage }) {
   const href = `/posts${page.slug}`
   return (
