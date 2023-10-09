@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { useRecentPosts } from "@/hooks/useRecentPosts"
+import PageCoverImage from '@/components/PageCoverImage'
 
 export default function RecentPosts() {
   const { pages } = useRecentPosts({
@@ -32,11 +33,25 @@ export default function RecentPosts() {
               key={post.id}
               className="card-elevated relative isolate flex flex-col justify-end overflow-hidden"
             >
-              <img src={
-                post.cover ? (
-                  'external' in post.cover ? post.cover.external.url : post.cover.file.url
-                ) : "https://phala.network/og-image.jpg"
-              } alt="" className="inset-0 -z-10 h-full w-full object-cover aspect-video" />
+              {post.cover ? (
+                <PageCoverImage
+                  className="w-full aspect-[412/230] inset-0 -z-10"
+                  width={412}
+                  height={230}
+                  page={post}
+                />
+              ) : (
+                <img
+                  className="w-full h-full object-cover inset-0 -z-10"
+                  alt={post.title}
+                  src="/blog/default_cover.jpg"
+                />
+              )}
+              {/* <img src={ */}
+              {/*   post.cover ? ( */}
+              {/*     'external' in post.cover ? post.cover.external.url : post.cover.file.url */}
+              {/*   ) : "https://phala.network/og-image.jpg" */}
+              {/* } alt="" className="inset-0 -z-10 h-full w-full object-cover aspect-video" /> */}
 
               <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
               <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />

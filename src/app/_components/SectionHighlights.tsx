@@ -1,9 +1,13 @@
 import Link from 'next/link'
 import { MdArrowForward } from 'react-icons/md'
 import { cn } from '@/lib/utils'
+import type { ParsedListPage } from '@/lib/notion-client'
 import { useRecentPosts } from '@/hooks/useRecentPosts'
+import PageCoverImage from '@/components/PageCoverImage'
 
-export function PostCard({ src, href, title, intro }: { src: string, href: string, title: string, intro: string }) {
+// export function PostCard({ src, href, title, intro }: { src: string, href: string, title: string, intro: string }) {
+export function PostCard({ page }: { page: ParsedListPage }) {
+  const href = `/posts${page.slug}`
   return (
     <article className={cn("post-card", "flex flex-col gap-2.5")}>
       <Link
@@ -12,13 +16,22 @@ export function PostCard({ src, href, title, intro }: { src: string, href: strin
           "block bg-gray-200 rounded-3xl overflow-hidden border border-solid border-gray-50 w-full aspect-video shadow-lg",
           "transition-all hover:transition-all hover:shadow-md hover:scale-[0.98]",
         )}
-        title={title}
+        title={page.title}
       >
-        <img
-          src={src}
-          alt={title}
-          className={cn("object-cover w-full h-full")}
-        />
+        {page.cover ? (
+          <PageCoverImage
+            className="w-full aspect-[412/230]"
+            width={412}
+            height={230}
+            page={page}
+          />
+        ) : (
+          <img
+            className="w-full h-full object-cover"
+            alt={page.title}
+            src="/blog/default_cover.jpg"
+          />
+        )}
       </Link>
       <header className="mt-2.5">
         <a
@@ -27,13 +40,13 @@ export function PostCard({ src, href, title, intro }: { src: string, href: strin
             "text-xl font-bold hover:text-phalaPurple-500 block flex-none",
           )}
         >
-          <span>{title}</span>
+          <span>{page.title}</span>
           <MdArrowForward className="untanglable text-phalaPurple-500 h-5 w-5 arrow inline-block" />
         </a>
       </header>
-      <div>
-        <p className={cn("text-sm")}>{intro}</p>
-      </div>
+      {/* <div> */}
+      {/*   <p className={cn("text-sm")}></p> */}
+      {/* </div> */}
     </article>
   )
 }
@@ -62,14 +75,7 @@ export function SectionHighlights() {
           {pages.map(page => (
             <PostCard
               key={page.id}
-              href={`/posts${page.slug}`}
-              src={
-                page.cover ? (
-                  'external' in page.cover ? page.cover.external.url : page.cover.file.url
-                ) : "https://phala.network/og-image.jpg"
-              }
-              title={page.title}
-              intro=""
+              page={page}
             />
           ))}
         </div>
