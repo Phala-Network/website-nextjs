@@ -19,7 +19,7 @@ export const revalidate = 300
 
 export async function GET() {
   const [json, computationMeta] = await Promise.all([
-    fetch('https://squid.subsquid.io/phala-computation/graphql', {
+    fetch('https://subsquid.phala.network/phala-computation/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
