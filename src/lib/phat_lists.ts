@@ -1,13 +1,15 @@
 import * as R from 'ramda'
 import { notion } from '@/lib/notion-client'
 
+export type PhatItemSection = 'default' | 'verifiable' | 'programmable' | 'connect';
+
 export interface PhatItem {
   id: string
   name: string
   title: string
   description: string
   tags: string[]
-  section: string[]
+  section: PhatItemSection[]
   rules: string
   rulesItem: string[]
   logo: string
@@ -48,7 +50,7 @@ function filterRules(pairItems: PhatItem[]) {
   return true
 }
 
-function pairItems(arr: any[]): PhatItem[][] {
+function pairItems(arr: any[], filter_section: string): PhatItem[][] {
   const pairedArray = []
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
@@ -61,11 +63,8 @@ function pairItems(arr: any[]): PhatItem[][] {
       if (!filterRules([arr[i], arr[j]])) {
         continue
       }
-      const section = arr[i].section
-      if (section.length === 1 && section[0] === 'Default') {
-        arr[i].section = ['Verifiable', 'Programmable', 'Connect']
-      } else {
-        arr[i].section = section.filter((item: string) => item !== 'Default')
+      if (arr[i].section.indexOf(filter_section) === -1 || arr[j].section.indexOf(filter_section) === -1) {
+        continue
       }
       pairedArray.push([arr[i], arr[j]])
     }
@@ -98,7 +97,7 @@ function pairItems(arr: any[]): PhatItem[][] {
   return result
 }
 
-export async function getPhatList() {
+export async function getPhatLists() {
   const database = await notion.databases.query({
     database_id: process.env.NOTION_LANDING_DATABASE_ID!,
   })
@@ -127,10 +126,11 @@ export async function getPhatList() {
       R.prop('name'),
       R.pathOr([], ['Position', 'multi_select'], properties)
     )
-    const section = R.map(
+    const section = R.map(R.toLower, R.map(
       R.prop('name'),
       R.pathOr([], ['Section', 'multi_select'], properties)
-    )
+    ))
+
     const rules = R.pathOr('', ['Rules', 'select', 'name'], properties)
     const rulesItem = R.map(
       R.prop('name'),
@@ -150,5 +150,14 @@ export async function getPhatList() {
       logo,
     })
   }
-  return pairItems(items)
+  const default_list = pairItems(items, 'default')
+  const connect_list = pairItems(items, 'connect')
+  const programmable_list = pairItems(items, 'programmable')
+  const verifiable_list = pairItems(items, 'verifiable')
+  return {
+    default_list,
+    connect_list,
+    programmable_list,
+    verifiable_list,
+  }
 }
