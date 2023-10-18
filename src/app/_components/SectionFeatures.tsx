@@ -38,10 +38,14 @@ function SectionFeatures({
         )}
       >
         <div className="flex flex-col text-center gap-2 2xl:gap-4">
-          <h2 className="font-normal leading-tight text-4xl 2xl:text-6xl">Say hello to</h2>
-          <h2 className="font-black leading-tight text-4xl 2xl:text-6xl">Phat Contract</h2>
+          <h2 className="font-normal leading-tight text-4xl 2xl:text-6xl flex flex-col">
+            <span className="font-normal">Say hello to</span>
+            <span className="font-black">Phat Contract</span>
+          </h2>
           <div className="flex items-center justify-center mt-4 lg:mt-6">
-            <button className="bg-black-800 text-white font-bold text-md py-3 px-7 rounded-full 2xl:px-10 2xl:py-6">Start Phat Contrat</button>
+            <a target="_blank" href="https://phat.phala.network/">
+              <button className="bg-black-800 text-white font-bold text-md py-3 px-7 rounded-full 2xl:px-10 2xl:py-6">Start Phat Contrat</button>
+            </a>
           </div>
         </div>
         <PhatContract />
