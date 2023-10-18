@@ -66,7 +66,7 @@
 }
 
 .phat-active-list .phat-list-item .item-tags span {
-  @apply py-[2%] px-[4%] rounded-[0.3vw];
+  @apply py-[2%] px-[4%] rounded-[0.3vw] break-keep;
   @apply xl:text-xs xl:py-0 xl:px-2 xl:rounded-md;
 }
 
