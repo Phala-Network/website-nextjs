@@ -4,7 +4,7 @@ import { VscCommentDiscussion } from 'react-icons/vsc'
 import { MdArrowForward, MdGraphicEq, MdFaceRetouchingNatural, MdOutlineApi } from 'react-icons/md'
 
 import { cn } from '@/lib/utils'
-import { getPhatList } from '@/lib/phat_list'
+import { getPhatLists } from '@/lib/phat_lists'
 import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
 
@@ -1136,14 +1136,24 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const list = await getPhatList()
+  const {
+    default_list,
+    connect_list,
+    programmable_list,
+    verifiable_list,
+  } = await getPhatLists()
 
   return (
     <>
       <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
       <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
       <SectionHero />
-      <SectionFeatures list={list} />
+      <SectionFeatures
+        default_list={default_list}
+        connect_list={connect_list}
+        programmable_list={programmable_list}
+        verifiable_list={verifiable_list}
+      />
       <SectionPitchIntro />
       <SectionPitchAccelerate />
       <SectionPitchInnovate />

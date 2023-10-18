@@ -3,11 +3,26 @@
 import { useHydrateAtoms } from 'jotai/utils'
 
 import { cn } from '@/lib/utils'
-import { type PhatItem } from '@/lib/phat_list'
-import PhatContract, { phatListAtom } from '@/app/_components/phat-contract'
+import { type PhatItem } from '@/lib/phat_lists'
+import PhatContract, { phatListStoreAtom } from '@/app/_components/phat-contract'
 
-function SectionFeatures({ list }: { list: PhatItem[][] }) {
-  useHydrateAtoms([[phatListAtom, list]])
+function SectionFeatures({
+  default_list,
+  connect_list,
+  programmable_list,
+  verifiable_list,
+}: {
+  default_list: PhatItem[][]
+  connect_list: PhatItem[][]
+  programmable_list: PhatItem[][]
+  verifiable_list: PhatItem[][]
+}) {
+  useHydrateAtoms([[phatListStoreAtom, {
+    'default': default_list,
+    'connect': connect_list,
+    'programmable': programmable_list,
+    'verifiable': verifiable_list,
+  }]])
   return (
     <section
       id="section-features"
