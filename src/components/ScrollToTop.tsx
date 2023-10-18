@@ -31,8 +31,8 @@ const ScrollToTop = ({
       setVisible(document.documentElement.scrollTop >= top)
     }
     onScroll()
-    document.addEventListener("scroll", onScroll)
-    return () => document.removeEventListener("scroll", onScroll)
+    document.addEventListener('scroll', onScroll)
+    return () => document.removeEventListener('scroll', onScroll)
   }, [top])
 
   return (

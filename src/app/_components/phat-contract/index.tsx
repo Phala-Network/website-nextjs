@@ -92,6 +92,9 @@ export default function() {
   }, [isInView])
 
   const handleSectionChange = async (value: PhatItemSection) => {
+    if (value === currentSectionRef.current) {
+      return
+    }
     const position = window.pageYOffset
     clearInterval(animateInterval.current)
     setCurrentSection(value)
@@ -547,10 +550,9 @@ function SectionConnect() {
           "text-[1vw] xl:text-base"
         )}
       >
-        <p className="font-bold">HTTP Extension can:</p>
-        <p>Connect Internet with Web3</p>
-        <p>Connect for multi-chains</p>
-        <p>Connect Layer2 with Layer1</p>
+        <p>Connect smart contracts to the internet</p>
+        <p>Connect smart contracts to off-chain services</p>
+        <p>Connect smart contracts across the L1/2s</p>
       </div>
     </section>
   )
@@ -569,13 +571,13 @@ function SectionProgrammable() {
       </p>
       <div
         className={cn(
-          "mt-[5%]",
+          "mt-[5%] font-medium",
           "text-[1vw] xl:text-base"
         )}
       >
-        <p>Easy to build with Javascript</p>
-        <p>SGX for off-chain execution</p>
-        <p>Automation as a service</p>
+        <p>Code in Javascript</p>
+        <p>Seamless integrate to EVM projects</p>
+        <p>Function as a Service with automation</p>
       </div>
     </section>
   )
@@ -594,13 +596,13 @@ function SectionVerifiable() {
       </p>
       <div
         className={cn(
-          "mt-[5%]",
+          "mt-[5%] font-medium",
           "text-[1vw] xl:text-base"
         )}
       >
-        <p>Build Minimal Trust</p>
-        <p>Powered by Phala Blockchain</p>
-        <p>Verifiable computation as proof</p>
+        <p>Verifiable offchain execution</p>
+        <p>Trust minimized execution in Secure Enclaves (TEEs)</p>
+        <p>Backed by decentralized Phala Blockchain</p>
       </div>
     </section>
   )
