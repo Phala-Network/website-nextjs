@@ -95,11 +95,9 @@ export default function() {
     if (value === currentSectionRef.current) {
       return
     }
-    const position = window.pageYOffset
     clearInterval(animateInterval.current)
     setCurrentSection(value)
     await resetAnimate()
-    window.scrollTo(0, position)
     animateSeq.current = 0
     runAnimate()
     startInterval()
@@ -115,6 +113,7 @@ export default function() {
     <div
       ref={scope}
       className="w-full aspect-[1285/952] relative overflow-hidden"
+      style={{ overflowAnchor: 'none' }}
     >
       <div className="phat-list left-phat-list">
         {
