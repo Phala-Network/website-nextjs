@@ -7,7 +7,7 @@ import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import Image from 'next/image'
 
 import { cn } from '@/lib/utils'
-import { type PhatItem } from '@/lib/phat_list'
+import { type PhatItem, type PhatItemSection } from '@/lib/phat_lists'
 import Gear from './svgs/gear'
 import GearSmall from './svgs/gear_small'
 import GearMedium from './svgs/gear_medium'
@@ -18,76 +18,87 @@ import ImagePlug from './images/plug.png'
 import ImageVerifiable from './images/verifiable.png'
 import './index.css'
 
-const connectTypeAtom = atom('')
-export const phatListAtom = atom<PhatItem[][]>([])
-const currentPhatAtom = atom<PhatItem[]>([])
+const currentSectionAtom = atom<PhatItemSection>('default')
+export const phatListStoreAtom = atom<Record<string, PhatItem[][]>>({})
 
 const EASE = [0.65, 0, 0.31, 1]
 
 export default function() {
   const [scope, animate] = useAnimate()
   const isInView = useInView(scope, { once: true })
-  const [connectType, setConnectType] = useAtom(connectTypeAtom)
   const animateInterval = useRef<ReturnType<typeof setInterval>>()
   const animateSeq = useRef(0)
-  const [currentPhat, setCurrentPhat] = useAtom(currentPhatAtom)
-  const list = useAtomValue(phatListAtom)
+
+  const [currentSection, setCurrentSection] = useAtom(currentSectionAtom)
+  const currentSectionRef = useRef<PhatItemSection>('default')
+  currentSectionRef.current = currentSection
+  const listStore = useAtomValue(phatListStoreAtom)
+  const list = listStore[currentSection || 'default']
   const reverseList = list.slice().reverse()
 
+  const resetAnimate = async () => {
+    const len = listStore[currentSectionRef.current].length
+    const duration = 0
+    const sequence: any = [
+      ['.gear-medium', { rotate: 0 }, { duration, ease: EASE }],
+      ['.gear-small', { rotate: 0 }, { at: 0, duration, ease: EASE }],
+      ['.gear', { rotate: 0 }, { at: 0, duration, ease: EASE }],
+      ['.left-phat-list', { y: 0 }, { at: 0, duration, ease: EASE }],
+      ['.right-phat-list', { y: 0 }, { at: 0, duration, ease: EASE }],
+      ['.left-phat-active-list-wrap .phat-active-list', { y: 0 }, { at: 0, duration, ease: EASE }],
+      ['.right-phat-active-list-wrap .phat-active-list', { y: 0 }, { at: 0, duration, ease: EASE }],
+    ]
+    for (let i = 0; i < len; i++) {
+      sequence.push([`.left-phat-list .phat-list-item-${i + 1}`, { opacity: 0 }, { at: 0, duration, ease: EASE }])
+      sequence.push([`.right-phat-list .phat-list-item-${i + 1}`, { opacity: 0 }, { at: 0, duration, ease: EASE }])
+    }
+    await animate(sequence)
+  }
+
   const runAnimate = async () => {
-    if (list.length === 0) {
+    const len = listStore[currentSectionRef.current].length
+    if (len === 0) {
       return
     }
-    const nextSeq = animateSeq.current < list.length - 1 ? animateSeq.current + 1 : 0
+    const nextSeq = animateSeq.current < len - 1 ? animateSeq.current + 1 : 0
     const sequence: any = [
       ['.gear-medium', { rotate: -90 * nextSeq }, { duration: 1.2, ease: EASE }],
       ['.gear-small', { rotate: -90 * nextSeq }, { at: 0, duration: 1.2, ease: EASE }],
       ['.gear', { rotate: 90 * nextSeq }, { at: 0, duration: 1.2, ease: EASE }],
-      ['.left-phat-list', { y: `${100 * nextSeq / list.length}%` }, { at: 0, duration: 1.2, ease: EASE }],
-      ['.right-phat-list', { y: `-${100 * nextSeq / list.length}%` }, { at: 0, duration: 1.2, ease: EASE }],
-      ['.left-phat-active-list-wrap .phat-active-list', { y: `${100 * nextSeq / list.length}%` }, { at: 0, duration: 1.2, ease: EASE }],
-      ['.right-phat-active-list-wrap .phat-active-list', { y: `-${100 * nextSeq / list.length}%` }, { at: 0, duration: 1.2, ease: EASE }],
+      ['.left-phat-list', { y: `${100 * nextSeq / len}%` }, { at: 0, duration: 1.2, ease: EASE }],
+      ['.right-phat-list', { y: `-${100 * nextSeq / len}%` }, { at: 0, duration: 1.2, ease: EASE }],
+      ['.left-phat-active-list-wrap .phat-active-list', { y: `${100 * nextSeq / len}%` }, { at: 0, duration: 1.2, ease: EASE }],
+      ['.right-phat-active-list-wrap .phat-active-list', { y: `-${100 * nextSeq / len}%` }, { at: 0, duration: 1.2, ease: EASE }],
     ]
-    if (nextSeq === 0) {
-      await animate(list.map((_, i) => ([
-        `.left-phat-list .phat-list-item-${i + 1}`, { opacity: 0.8 }, { at: 0, duration: 0 }
-      ])))
-    }
-    const current = list.length - nextSeq - 1
-    for (let i = 0; i < list.length; i++) {
+    const current = len - nextSeq - 1
+    for (let i = 0; i < len; i++) {
       if (i === current || i + 1 === current || i - 1 === current) {
         sequence.push([`.left-phat-list .phat-list-item-${i + 1}`, { opacity: 1 }, { at: 0, duration: 1.2, ease: EASE }])
-        sequence.push([`.right-phat-list .phat-list-item-${list.length - i}`, { opacity: 1 }, { at: 0, duration: 1.2, ease: EASE }])
+        sequence.push([`.right-phat-list .phat-list-item-${len - i}`, { opacity: 1 }, { at: 0, duration: 1.2, ease: EASE }])
       } else {
         sequence.push([`.left-phat-list .phat-list-item-${i + 1}`, { opacity: 0 }, { at: 0, duration: 1.2, ease: EASE }])
-        sequence.push([`.right-phat-list .phat-list-item-${list.length - i}`, { opacity: 0 }, { at: 0, duration: 1.2, ease: EASE }])
+        sequence.push([`.right-phat-list .phat-list-item-${len - i}`, { opacity: 0 }, { at: 0, duration: 1.2, ease: EASE }])
       }
     }
     await animate(sequence)
     animateSeq.current = nextSeq
-    setCurrentPhat(list[animateSeq.current])
   }
 
   useEffect(() => {
-    if (isInView && !connectType) {
+    if (isInView) {
       runAnimate()
       startInterval()
     }
   }, [isInView])
 
-  useEffect(() => {
-    if (list.length > 0 && currentPhat.length === 0) {
-      setCurrentPhat(list[animateSeq.current])
-    }
-  }, [list, currentPhat])
-
-  const handleConnect = (value: string) => {
+  const handleSectionChange = async (value: PhatItemSection) => {
+    const position = window.pageYOffset
     clearInterval(animateInterval.current)
-    setConnectType(value)
-  }
-
-  const handleBack = () => {
-    setConnectType('')
+    setCurrentSection(value)
+    await resetAnimate()
+    window.scrollTo(0, position)
+    animateSeq.current = 0
+    runAnimate()
     startInterval()
   }
 
@@ -245,7 +256,7 @@ export default function() {
       >
         <motion.div
           className="absolute inset-0"
-          animate={!connectType ? {
+          animate={currentSection === 'default' ? {
             opacity: 1,
             transition: { duration: 0.8 },
           } : {
@@ -260,7 +271,7 @@ export default function() {
             opacity: 0,
           }}
           className="absolute inset-0"
-          animate={connectType === 'connect' ? {
+          animate={currentSection === 'connect' ? {
             opacity: 1,
             transition: { duration: 0.8 },
           } : {
@@ -275,7 +286,7 @@ export default function() {
             opacity: 0,
           }}
           className="absolute inset-0"
-          animate={connectType === 'programmable' ? {
+          animate={currentSection === 'programmable' ? {
             opacity: 1,
             transition: { duration: 0.8 },
           } : {
@@ -290,7 +301,7 @@ export default function() {
             opacity: 0,
           }}
           className="absolute inset-0"
-          animate={connectType === 'verifiable' ? {
+          animate={currentSection === 'verifiable' ? {
             opacity: 1,
             transition: { duration: 0.8 },
           } : {
@@ -313,7 +324,7 @@ export default function() {
             opacity: 0,
             visibility: 'hidden',
           }}
-          animate={connectType ? {
+          animate={currentSection !== 'default' ? {
             opacity: 1,
             visibility: 'visible',
             transition: { duration: 0.8 },
@@ -324,7 +335,7 @@ export default function() {
             },
           }}
         >
-          <SectionSwiper />
+          <SectionSwiper onSectionChange={handleSectionChange} />
           <div className="mt-[3%] flex justify-center items-center">
             <button
               className={cn(
@@ -334,7 +345,11 @@ export default function() {
                 "xl:rounded-xl xl:border-2 xl:py-2 xl:px-6",
                 "text-[1vw] xl:text-base",
               )}
-              onClick={handleBack}
+              onClick={ev => {
+                ev.preventDefault()
+                ev.stopPropagation()
+                handleSectionChange('default')
+              }}
             >
               Back
             </button>
@@ -342,7 +357,7 @@ export default function() {
         </motion.div>
         <motion.div
           className="absolute inset-0"
-          animate={!connectType ? {
+          animate={currentSection === 'default' ? {
             opacity: 1,
             visibility: 'visible',
             transition: { duration: 0.8 },
@@ -377,17 +392,36 @@ export default function() {
                 See the magic
               </p>
               <div className="flex gap-[2vw] xl:gap-4">
-                {
-                  currentPhat.length ? currentPhat[0].section.map((value, i) => (
-                    <button
-                      key={`${i}`}
-                      className="connect-button"
-                      onClick={() => handleConnect(value.toLowerCase())}
-                    >
-                      {value}
-                    </button>
-                  )) : null
-                }
+                <button
+                  className="connect-button"
+                  onClick={ev => {
+                    ev.preventDefault()
+                    ev.stopPropagation()
+                    handleSectionChange('connect')
+                  }}
+                >
+                  Connect
+                </button>
+                <button
+                  className="connect-button"
+                  onClick={ev => {
+                    ev.preventDefault()
+                    ev.stopPropagation()
+                    handleSectionChange('programmable')
+                  }}
+                >
+                  Programmable
+                </button>
+                <button
+                  className="connect-button"
+                  onClick={ev => {
+                    ev.preventDefault()
+                    ev.stopPropagation()
+                    handleSectionChange('verifiable')
+                  }}
+                >
+                  Verifiable
+                </button>
               </div>
             </div>
           </div>
@@ -397,18 +431,24 @@ export default function() {
   )
 }
 
-function SectionSwiper() {
+function SectionSwiper({ onSectionChange }: any) {
   const [swiper, setSwiper] = useState<SwiperClass>()
-  const [current, setCurrent] = useState(0)
-  const [connectType, setConnectType] = useAtom(connectTypeAtom)
-  const currentPhat = useAtomValue(currentPhatAtom)
-  const section = currentPhat.length ? currentPhat[0].section : []
+  const currentSection = useAtomValue(currentSectionAtom)
+  const sections: PhatItemSection[] = ['connect', 'programmable', 'verifiable']
+
+  useEffect(() => {
+    if (currentSection === 'connect') {
+      slideTo(0, 0)
+    } else if (currentSection === 'programmable') {
+      slideTo(1, 0)
+    } else if (currentSection === 'verifiable') {
+      slideTo(2, 0)
+    }
+  }, [currentSection])
 
   const renderLeft = () => {
-    if (section.length === 0 || section.length === 1 || section.length === 2) {
-      return null
-    }
-    const index = current - 1 < 0 ? section.length - 1 : current - 1
+    const current = sections.indexOf(currentSection)
+    const index = current - 1 < 0 ? sections.length - 1 : current - 1
     return (
       <div
         className={cn(
@@ -417,21 +457,19 @@ function SectionSwiper() {
           "text-[1vw] xl:text-base",
           "top-[0.7vw] xl:top-[4%]"
         )}
-        onClick={() => handleSlide(index)}
+        onClick={() => slideTo(index, 300)}
       >
         <div className="flex items-center">
           <FiArrowLeft className="shrink-0" size="10%" color="#808080" />
-          <span className="ml-[2%] capitalize">{section[index]}</span>
+          <span className="ml-[2%] capitalize">{sections[index]}</span>
         </div>
       </div>
     )
   }
 
   const renderRight = () => {
-    if (section.length === 0 || section.length === 1) {
-      return null
-    }
-    const index = current + 1 > section.length - 1 ? 0 : current + 1
+    const current = sections.indexOf(currentSection)
+    const index = current + 1 > sections.length - 1 ? 0 : current + 1
     return (
       <div
         className={cn(
@@ -440,19 +478,19 @@ function SectionSwiper() {
           "text-[1vw] xl:text-base",
           "top-[0.7vw] xl:top-[4%]"
         )}
-        onClick={() => handleSlide(index)}
+        onClick={() => slideTo(index, 300)}
       >
         <div className="flex items-center justify-end">
-          <span className="mr-[2%] capitalize">{section[index]}</span>
+          <span className="mr-[2%] capitalize">{sections[index]}</span>
           <FiArrowRight className="shrink-0" size="10%" color="#808080" />
         </div>
       </div>
     )
   }
 
-  const handleSlide = (index: number) => {
+  const slideTo = (index: number, speed: number) => {
     if (swiper && !swiper.destroyed) {
-      swiper.slideTo(index)
+      swiper.slideTo(index, speed)
     }
   }
 
@@ -467,22 +505,18 @@ function SectionSwiper() {
           setSwiper(swiper)
         }}
         onSlideChange={(swiper: SwiperClass) => {
-          setCurrent(swiper.activeIndex)
-          if (!connectType) {
-            return
-          }
-          setConnectType(section[swiper.activeIndex].toLowerCase())
+          onSectionChange(sections[swiper.activeIndex])
         }}
       >
         {
-          section.map((value, i) => (
-            <SwiperSlide key={`${i}`}>
+          sections.map(section => (
+            <SwiperSlide key={section}>
               {
-                value === 'Connect' ? (
+                section === 'connect' ? (
                   <SectionConnect />
-                ) : value === 'Programmable' ? (
+                ) : section === 'programmable' ? (
                   <SectionProgrammable />
-                ) : value === 'Verifiable' ? (
+                ) : section === 'verifiable' ? (
                   <SectionVerifiable />
                 ) : null
               }
