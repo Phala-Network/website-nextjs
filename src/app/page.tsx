@@ -18,7 +18,6 @@ import { SectionHowItWorks } from './_components/SectionHowItWorks'
 import { SectionHero } from './_components/SectionHero'
 import { SectionHighlights } from './_components/SectionHighlights'
 import SectionFeatures from './_components/SectionFeatures'
-import { phatListAtom }  from './_components/phat-contract'
 import './home.css'
 
 
