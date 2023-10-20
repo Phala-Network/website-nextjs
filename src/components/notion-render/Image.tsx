@@ -1,13 +1,13 @@
 import { useAtomValue } from 'jotai'
 import { type ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
+import { buildProxyImageUrl } from '@/lib/utils'
 import { BlockAtom } from './atoms'
 import RichText from './RichText'
-import { useProxyImage } from '@/hooks/useProxyImage'
 
 const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as ImageBlockObjectResponse
-  const imageUrl = useProxyImage(block)
+  const imageUrl = buildProxyImageUrl(block)
   return (
     <div className="notion_image_container">
       <figure>
