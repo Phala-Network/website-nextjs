@@ -338,24 +338,6 @@ export default function() {
           }}
         >
           <SectionSwiper onSectionChange={handleSectionChange} />
-          <div className="mt-[3%] flex justify-center items-center">
-            <button
-              className={cn(
-                "border-black-800 font-bold",
-                "transition-colors hover:bg-black-800 hover:text-white",
-                "py-[0.6vw] px-[3.5vw] rounded-[1vw] border-[0.2vw]",
-                "xl:rounded-xl xl:border-2 xl:py-2 xl:px-6",
-                "text-[1vw] xl:text-base",
-              )}
-              onClick={ev => {
-                ev.preventDefault()
-                ev.stopPropagation()
-                handleSectionChange('default')
-              }}
-            >
-              Back
-            </button>
-          </div>
         </motion.div>
         <motion.div
           className="absolute inset-0"
