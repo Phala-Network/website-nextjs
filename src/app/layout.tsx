@@ -1,6 +1,8 @@
 import Script from 'next/script'
 
 import SiteNav from '@/components/SiteNav'
+import SiteFooter from '@/components/SiteFooter'
+import ScrollToTop from '@/components/ScrollToTop'
 
 import 'swiper/css'
 import 'swiper/css/free-mode'
@@ -33,6 +35,8 @@ export default function RootLayout({
         ) : null}
         <SiteNav />
         {children}
+        <SiteFooter />
+        <ScrollToTop />
       </body>
     </html>
   )

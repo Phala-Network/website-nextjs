@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 import { AiOutlineArrowUp } from 'react-icons/ai'
 import { motion } from 'framer-motion'
@@ -29,8 +31,8 @@ const ScrollToTop = ({
       setVisible(document.documentElement.scrollTop >= top)
     }
     onScroll()
-    document.addEventListener("scroll", onScroll)
-    return () => document.removeEventListener("scroll", onScroll)
+    document.addEventListener('scroll', onScroll)
+    return () => document.removeEventListener('scroll', onScroll)
   }, [top])
 
   return (
