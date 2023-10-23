@@ -20,6 +20,8 @@ const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
       return ['youtube', url.searchParams.get('v') as string]
     } else if (videoUrl.indexOf('youtu.be') !== -1) {
       return ['youtube', url.pathname.replace('/', '')]
+    } else if (videoUrl.indexOf('loom.com') !== -1) {
+      return ['loom', videoUrl.replace('/share/', '/embed/')]
     } else {
       return [null, videoUrl]
     }
@@ -28,6 +30,15 @@ const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
     <div className="notion_video_container">
       {provider === 'youtube' ? (<LiteYouTubeEmbed id={id} title="" />) : null}
       {provider === null ? (<video controls src={id} className={`notion_video`} />) : null}
+      {
+        provider === 'loom' ? (
+          <iframe
+            className="w-full aspect-video"
+            src={id}
+            allowFullScreen
+          />
+        ) : null
+      }
       <span className="notion_caption">
         {block.video.caption && <RichText rich_text={block.video.caption} />}
       </span>
