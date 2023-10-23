@@ -12,6 +12,7 @@ const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
     <div className="notion_image_container">
       <figure>
         <img
+          className="m-auto"
           src={imageUrl}
           alt={
             block.image.caption && block.image.caption.length > 0
