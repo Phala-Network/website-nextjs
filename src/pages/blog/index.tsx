@@ -166,10 +166,20 @@ export const getStaticProps = async () => {
   const queryBannerPages = await queryDatabase({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
     filter: {
-      property: 'Tags',
-      multi_select: {
-        contains: 'Weekly report',
-      },
+      or: [
+        {
+          property: 'Tags',
+          multi_select: {
+            contains: 'Weekly report',
+          },
+        },
+        {
+          property: 'Tags',
+          multi_select: {
+            contains: 'Monthly report',
+          },
+        },
+      ]
     },
     sorts: [
       {
