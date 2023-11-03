@@ -42,48 +42,52 @@ export default function GetPhaButton() {
     }
 
     setLoading(true)
-    const api = await ApiPromise.create(
-      options({
-        provider: new WsProvider('wss://poc6.phala.network/ws'),
-        noInitWarn: true,
-      })
-    )
-    await api.isReady
-    const registry = await OnChainRegistry.create(api)
-    const contractId = '0xd6e643b4c615a5ccd8a2d4783e90f41b8ba941096372f23ad23ed6a81d167ab5'
-    const contractKey = await registry.getContractKeyOrFail(contractId)
-    const contract = new PinkContractPromise(
-      registry.api,
-      registry,
-      contractAbi,
-      contractId,
-      contractKey,
-    )
-    const cert = await signCertificate({ signer, account, api })
-    const { output, result } = await contract.query.balancesTransfer(
-      account!.address,
-      { cert },
-      100
-    )
-    if (result.isOk) {
-      console.info(output.toHuman())
-      localStorage.setItem(lastGetTestPhaTimeKey, currentTime.toString())
-      toast({
-        title: 'Successfully requested 100 Test-PHA',
-        description: `We've sent 100 Test-PHA to you.`,
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      })
-    } else {
-      console.info(result.toHuman())
-      toast({
-        title: 'Failed to request 100 Test-PHA',
-        description: '',
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-      })
+    try {
+      const api = await ApiPromise.create(
+        options({
+          provider: new WsProvider('wss://poc6.phala.network/ws'),
+          noInitWarn: true,
+        })
+      )
+      await api.isReady
+      const registry = await OnChainRegistry.create(api)
+      const contractId = '0xd6e643b4c615a5ccd8a2d4783e90f41b8ba941096372f23ad23ed6a81d167ab5'
+      const contractKey = await registry.getContractKeyOrFail(contractId)
+      const contract = new PinkContractPromise(
+        registry.api,
+        registry,
+        contractAbi,
+        contractId,
+        contractKey,
+      )
+      const cert = await signCertificate({ signer, account, api })
+      const { output, result } = await contract.query.balancesTransfer(
+        account!.address,
+        { cert },
+        100
+      )
+      if (result.isOk) {
+        console.info(output.toHuman())
+        localStorage.setItem(lastGetTestPhaTimeKey, currentTime.toString())
+        toast({
+          title: 'Successfully requested 100 Test-PHA',
+          description: `We've sent 100 Test-PHA to you.`,
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
+      } else {
+        console.info(result.toHuman())
+        toast({
+          title: 'Failed to request 100 Test-PHA',
+          description: '',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        })
+      }
+    } catch (error) {
+      console.error(error)
     }
     setLoading(false)
   }
