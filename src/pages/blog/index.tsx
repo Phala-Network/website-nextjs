@@ -154,7 +154,7 @@ async function retrieveTags() {
   const database = await notion.databases.retrieve({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
   })
-  const tags = R.without(['Changelog'], R.map(
+  const tags = R.without(['Changelog', 'Pinned'], R.map(
     R.prop('name'),
     R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database)
   ))
