@@ -2841,6 +2841,20 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.8.tgz#bb197b9639aa1a04cf464a617fe800cccd92ad5c"
   integrity sha512-d0XxK3YTObnWVp6rZuev3c49+j4Lo8g4L1ZRm9z5L0xpoZycUPshHgczK5gsUMaZOstjVYYi09p5gYvUtfChYw==
 
+"@upstash/redis@1.24.3":
+  version "1.24.3"
+  resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.24.3.tgz#0247250f7e26b6923e6ce4f348ce08f7bbdc6222"
+  integrity sha512-gw6d4IA1biB4eye5ESaXc0zOlVQI94aptsBvVcTghYWu1kRmOrJFoMFEDCa8p5uzluyYAOFCuY2GWLR6O4ZoIw==
+  dependencies:
+    crypto-js "^4.2.0"
+
+"@vercel/kv@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@vercel/kv/-/kv-0.2.4.tgz#87b1a187d737330583b3c308c0f0f9cb2ca24a25"
+  integrity sha512-wbIOOXhg6MzmNMzKFSWbbLAS65hCZcJN33z1coENzI1M0fOX55yE9v9LwVGqkzdItp3eZsv6pYvwcmGtllyLTw==
+  dependencies:
+    "@upstash/redis" "1.24.3"
+
 "@zag-js/dom-query@0.16.0":
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@zag-js/dom-query/-/dom-query-0.16.0.tgz#bca46bcd78f78c900064478646d95f9781ed098e"
@@ -3262,6 +3276,11 @@ crypto-browserify@^3.12.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
     randomfill "^1.0.3"
+
+crypto-js@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.2.0.tgz#4d931639ecdfd12ff80e8186dba6af2c2e856631"
+  integrity sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==
 
 css-box-model@1.2.1:
   version "1.2.1"
