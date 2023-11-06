@@ -4,8 +4,6 @@ import { useState } from 'react'
 import { useAtomValue } from 'jotai'
 import { Button, useToast } from '@chakra-ui/react'
 import { ApiPromise, WsProvider } from '@polkadot/api'
-import { u8aToHex } from "@polkadot/util"
-import { decodeAddress } from '@polkadot/util-crypto'
 import {
   options,
   OnChainRegistry,
@@ -38,7 +36,7 @@ export default function GetPhaButton() {
       )
       await api.isReady
       const registry = await OnChainRegistry.create(api)
-      const contractId = '0x524d3ae9782c7f0682adb9f368516d80a890cecdfa36d260046e9b50f4be48c6'
+      const contractId = '0x65b36578e950f48c9f5c9b4835df2357854f53c724fdb2682a6194855e456885'
       const contractKey = await registry.getContractKeyOrFail(contractId)
       const contract = new PinkContractPromise(
         registry.api,
@@ -51,25 +49,14 @@ export default function GetPhaButton() {
       const { output, result } = await contract.query.balancesTransfer(
         account!.address,
         { cert },
-        100
       )
       if (result.isOk) {
-        console.info(output.toHuman())
         toast({
           title: 'Successfully requested 100 Test-PHA',
           description: `We've sent 100 Test-PHA to you.`,
           status: 'success',
           duration: 9000,
           isClosable: true,
-        })
-        await fetch('/api/faucet', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            address: u8aToHex(decodeAddress(account.address)).replace('0x', ''),
-          }),
         })
       } else {
         console.info(result.toHuman())
