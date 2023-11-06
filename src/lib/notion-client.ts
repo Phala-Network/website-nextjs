@@ -320,7 +320,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       cover,
       title,
       slug,
-      tags,
+      tags: R.without(['Pinned', 'Changelog'], tags),
       publishedTime,
       publishedDate,
     })
