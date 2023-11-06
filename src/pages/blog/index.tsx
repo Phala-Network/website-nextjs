@@ -179,6 +179,12 @@ export const getStaticProps = async () => {
             contains: 'Monthly report',
           },
         },
+        {
+          property: 'Tags',
+          multi_select: {
+            contains: 'Pinned',
+          },
+        },
       ]
     },
     sorts: [
