@@ -99,7 +99,7 @@ export async function getParsedPage(
     cover: page.cover,
     title,
     slug,
-    tags,
+    tags: R.without(['Pinned', 'Changelog'], tags),
     status,
     blocks: parsedBlocks,
     publishedTime,
@@ -320,7 +320,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       cover,
       title,
       slug,
-      tags,
+      tags: R.without(['Pinned', 'Changelog'], tags),
       publishedTime,
       publishedDate,
     })
