@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useAtomValue } from 'jotai'
 import { Button, useToast } from '@chakra-ui/react'
 import { ApiPromise, WsProvider } from '@polkadot/api'
+import { u8aToHex } from "@polkadot/util"
+import { decodeAddress } from '@polkadot/util-crypto'
 import {
   options,
   OnChainRegistry,
@@ -25,21 +27,6 @@ export default function GetPhaButton() {
     if (!signer || !account) {
       return
     }
-    // @TODO: move to phat contract
-    const lastGetTestPhaTimeKey = `lastGetTestPhaTime:${account.address}`
-    const currentTime = new Date().getTime()
-    const lastTime = localStorage.getItem(lastGetTestPhaTimeKey) || '0'
-    const timePassed = currentTime - parseInt(lastTime, 10)
-    if (timePassed < 24 * 60 * 60 * 1000) {
-      toast({
-        title: 'Failed to request 100 Test-PHA',
-        description: 'Can only be requested once every 24 hours',
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-      })
-      return
-    }
 
     setLoading(true)
     try {
@@ -51,7 +38,7 @@ export default function GetPhaButton() {
       )
       await api.isReady
       const registry = await OnChainRegistry.create(api)
-      const contractId = '0xd6e643b4c615a5ccd8a2d4783e90f41b8ba941096372f23ad23ed6a81d167ab5'
+      const contractId = '0x524d3ae9782c7f0682adb9f368516d80a890cecdfa36d260046e9b50f4be48c6'
       const contractKey = await registry.getContractKeyOrFail(contractId)
       const contract = new PinkContractPromise(
         registry.api,
@@ -68,7 +55,6 @@ export default function GetPhaButton() {
       )
       if (result.isOk) {
         console.info(output.toHuman())
-        localStorage.setItem(lastGetTestPhaTimeKey, currentTime.toString())
         toast({
           title: 'Successfully requested 100 Test-PHA',
           description: `We've sent 100 Test-PHA to you.`,
@@ -76,11 +62,20 @@ export default function GetPhaButton() {
           duration: 9000,
           isClosable: true,
         })
+        await fetch('/api/faucet', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            address: u8aToHex(decodeAddress(account.address)).replace('0x', ''),
+          }),
+        })
       } else {
         console.info(result.toHuman())
         toast({
           title: 'Failed to request 100 Test-PHA',
-          description: '',
+          description: `${result.toHuman()}`,
           status: 'error',
           duration: 9000,
           isClosable: true,
