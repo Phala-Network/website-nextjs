@@ -10,6 +10,7 @@ import {
   PinkContractPromise,
   signCertificate,
 } from '@phala/sdk'
+import { pathOr } from 'ramda'
 
 import { currentAccountAtom, signerAtom } from './atoms'
 import contractAbi from './phala_faucet.json'
@@ -46,27 +47,30 @@ export default function GetPhaButton() {
         contractKey,
       )
       const cert = await signCertificate({ signer, account, api })
-      const { output, result } = await contract.query.balancesTransfer(
+      const { result, output } = await contract.query.balancesTransfer(
         account!.address,
         { cert },
       )
       if (result.isOk) {
-        toast({
-          title: 'Successfully requested 100 Test-PHA',
-          description: `We've sent 100 Test-PHA to you.`,
-          status: 'success',
-          duration: 9000,
-          isClosable: true,
-        })
-      } else {
-        console.info(result.toHuman())
-        toast({
-          title: 'Failed to request 100 Test-PHA',
-          description: `${result.toHuman()}`,
-          status: 'error',
-          duration: 9000,
-          isClosable: true,
-        })
+        const outputData = output?.toJSON()
+        const err = pathOr(null, ['ok', 'err', 'jsError'], outputData)
+        if (err) {
+          toast({
+            title: 'Failed to request 100 Test-PHA',
+            description: err,
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          })
+        } else {
+          toast({
+            title: 'Successfully requested 100 Test-PHA',
+            description: `We've sent 100 Test-PHA to you.`,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
+        }
       }
     } catch (error) {
       console.error(error)
