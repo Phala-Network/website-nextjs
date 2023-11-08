@@ -8,19 +8,6 @@ import {
   type WritableAtom,
 } from 'jotai'
 import { atomWithReset } from 'jotai/utils'
-import {
-  Button,
-  Avatar,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  Input,
-  InputGroup,
-  Stack,
-} from '@chakra-ui/react'
 import { BsArrowRight, BsDownload } from 'react-icons/bs'
 
 import {
@@ -30,6 +17,16 @@ import {
   walletListAtom,
 } from './atoms'
 import { cn } from '@/lib/utils'
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
 
 interface SelectModalProps {
   visibleAtom: WritableAtom<boolean, [boolean], boolean>
@@ -70,14 +67,8 @@ const ActionButton = ({
   return (
     <Button
       {...preset}
-      as={href ? 'a' : 'button'}
-      display="flex"
-      flex="row"
-      justifyContent="space-between"
-      p="4"
-      h="auto"
-      variant={'secondary'}
-      borderColor=""
+      className="flex flex-row justify-between p-4 h-auto"
+      variant={href ? 'link' : 'secondary'}
     >
       {children}
     </Button>
@@ -95,7 +86,9 @@ const WalletProviderCell = ({
   return (
     <ActionButton href={installed ? undefined : downloadUrl} onClick={onClick}>
       <div className={cn('flex flex-row items-center gap-2')}>
-        <Avatar src={src} size="sm" />
+        <Avatar>
+          <AvatarImage src={src} />
+        </Avatar>
         {name}
         {!!version && (
           <sub className={cn('text-gray-300 font-extralight ml-0.5')}>
@@ -117,32 +110,28 @@ export const WalletSelectModal = ({
   const wallets = useAtomValue(walletListAtom)
   const grant = useWeb3AccountsAccessGrant()
   return (
-    <Modal isOpen={visible} onClose={() => setVisible(false)}>
-      <ModalOverlay />
-      <ModalContent className={cn('xl:min-w-[540px]')}>
-        <ModalHeader>Select Wallet</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Stack gap="0" my="2">
-            {wallets.map((wallet) => (
-              <WalletProviderCell
-                key={wallet.key}
-                src={wallet.icon}
-                name={wallet.name}
-                version={wallet.version}
-                downloadUrl={wallet.downloadUrl}
-                installed={wallet.installed}
-                onClick={() => {
-                  grant(wallet.key)
-                  setVisible(false)
-                  setAccountSelectModalVisible(true)
-                }}
-              />
-            ))}
-          </Stack>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+    <Dialog open={visible} onOpenChange={(open) => setVisible(open)}>
+      <DialogContent className={cn('xl:min-w-[540px]')}>
+        <DialogHeader>Select Wallet</DialogHeader>
+        <div className="flex flex-col gap-2">
+          {wallets.map((wallet) => (
+            <WalletProviderCell
+              key={wallet.key}
+              src={wallet.icon}
+              name={wallet.name}
+              version={wallet.version}
+              downloadUrl={wallet.downloadUrl}
+              installed={wallet.installed}
+              onClick={() => {
+                grant(wallet.key)
+                setVisible(false)
+                setAccountSelectModalVisible(true)
+              }}
+            />
+          ))}
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 
@@ -166,14 +155,14 @@ const filteredAccountsAtom = atom((get) => {
 const AccountSearch = () => {
   const [searchTerm, setSearchTerm] = useAtom(searchTermAtom)
   return (
-    <InputGroup>
+    <div>
       <Input
         placeholder="Search account"
         value={searchTerm}
         onChange={(ev) => setSearchTerm(ev.target.value)}
         type="search"
       />
-    </InputGroup>
+    </div>
   )
 }
 
@@ -186,77 +175,72 @@ export const AccountSelectModal = ({
   const accounts = useAtomValue(filteredAccountsAtom)
   const [selected, setSelected] = useAtom(currentAccountAtom)
   return (
-    <Modal isOpen={visible} onClose={() => setVisible(false)}>
-      <ModalOverlay />
-      <ModalContent className={cn('xl:min-w-[540px]')}>
-        <ModalHeader>Select Account</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <div className={cn('flex flex-col gap-4 my-2')}>
-            <div>
-              <Button
-                size="xs"
-                onClick={() => {
-                  setVisible(false)
-                  setWalletSelectModalVisible(true)
-                }}
-              >
-                Switch Wallet
-              </Button>
-            </div>
-            <AccountSearch />
-            {accounts.length === 0 ? (
-              <p className={cn('mb-2 text-sm text-gray-300')}>
-                No Account Available.
-              </p>
-            ) : (
-              <div
-                className={cn(
-                  'flex flex-col gap-4 pl-1 max-h-80 overflow-y-scroll'
-                )}
-              >
-                {accounts.map((account) => (
-                  <div
-                    className={cn(
-                      'flex flex-row justify-between items-center p-2 border border-solid border-gray-800 rounded-sm hover:border-phala'
-                    )}
-                    key={account.address}
-                  >
-                    <div>
-                      <strong>{account.name}</strong>
-                      <small className={cn('ml-1 text-gray-400 font-mono')}>
-                        {account.address.substring(0, 6)}...
-                        {account.address.substring(account.address.length - 6)}
-                      </small>
-                    </div>
-                    {selected && selected.address === account.address ? (
-                      <Button
-                        size="sm"
-                        onClick={() => {
-                          setSelected(null)
-                          setVisible(false)
-                        }}
-                      >
-                        Unselect
-                      </Button>
-                    ) : (
-                      <Button
-                        size="sm"
-                        onClick={() => {
-                          setSelected(account)
-                          setVisible(false)
-                        }}
-                      >
-                        Select
-                      </Button>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
+    <Dialog open={visible} onOpenChange={(open) => setVisible(open)}>
+      <DialogContent className={cn('xl:min-w-[540px]')}>
+        <DialogHeader>Select Account</DialogHeader>
+        <div className={cn('flex flex-col gap-4 my-2')}>
+          <div>
+            <Button
+              onClick={() => {
+                setVisible(false)
+                setWalletSelectModalVisible(true)
+              }}
+            >
+              Switch Wallet
+            </Button>
           </div>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+          <AccountSearch />
+          {accounts.length === 0 ? (
+            <p className={cn('mb-2 text-sm text-gray-300')}>
+              No Account Available.
+            </p>
+          ) : (
+            <div
+              className={cn(
+                'flex flex-col gap-4 pl-1 max-h-80 overflow-y-scroll'
+              )}
+            >
+              {accounts.map((account) => (
+                <div
+                  className={cn(
+                    'flex flex-row justify-between items-center p-2 border border-solid border-gray-800 rounded-sm hover:border-phala'
+                  )}
+                  key={account.address}
+                >
+                  <div>
+                    <strong>{account.name}</strong>
+                    <small className={cn('ml-1 text-gray-400 font-mono')}>
+                      {account.address.substring(0, 6)}...
+                      {account.address.substring(account.address.length - 6)}
+                    </small>
+                  </div>
+                  {selected && selected.address === account.address ? (
+                    <Button
+                      size="sm"
+                      onClick={() => {
+                        setSelected(null)
+                        setVisible(false)
+                      }}
+                    >
+                      Unselect
+                    </Button>
+                  ) : (
+                    <Button
+                      size="sm"
+                      onClick={() => {
+                        setSelected(account)
+                        setVisible(false)
+                      }}
+                    >
+                      Select
+                    </Button>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }
