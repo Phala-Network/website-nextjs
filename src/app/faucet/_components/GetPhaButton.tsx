@@ -38,7 +38,7 @@ export default function GetPhaButton() {
       )
       await api.isReady
       const registry = await OnChainRegistry.create(api)
-      const contractId = '0x65b36578e950f48c9f5c9b4835df2357854f53c724fdb2682a6194855e456885'
+      const contractId = process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!
       const contractKey = await registry.getContractKeyOrFail(contractId)
       const contract = new PinkContractPromise(
         registry.api,
