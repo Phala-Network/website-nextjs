@@ -1,13 +1,13 @@
-import { ChakraProvider } from '@chakra-ui/react'
-
 import AppModals from './_components/AppModals'
 import ConnectWalletButton from './_components/ConnectWalletButton'
 import GetPhaButton from './_components/GetPhaButton'
+import { Toaster } from '@/components/ui/toaster'
 
 export default function Page() {
   return (
-    <ChakraProvider>
+    <>
       <AppModals />
+      <Toaster />
       <div className="min-h-screen safe-viewport grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24 bg-[#F1F4F9]">
         <div className="cols-span-1 xl:col-start-5 xl:col-span-12 3xl:col-start-6 3xl:col-span-14">
           <div className="py-40 w-full h-full px-4 flex flex-col gap-10">
@@ -76,6 +76,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </ChakraProvider>
+    </>
   )
 }
