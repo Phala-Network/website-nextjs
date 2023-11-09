@@ -34,7 +34,7 @@ export default async function handler(
   if (verify(JSON.stringify(json), request.headers) == false) {
     return NextResponse.json({ error: 'Bad signature' }, { status: 401 })
   }
-  const { type, data, user, token } = json
+  const { type, data, token } = json
   if (type === InteractionType.PING) {
     return NextResponse.json({
       type: InteractionResponseType.PONG
@@ -53,6 +53,28 @@ export default async function handler(
             },
             body: JSON.stringify({
               id: options[0].value,
+              interaction_token: token,
+            })
+          }
+        )
+      )
+      return NextResponse.json({
+        type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          flags: 1 << 6
+        }
+      })
+    } else if (name === 'list') {
+      context.waitUntil(
+        fetch(
+          `${request.nextUrl.protocol}//${request.headers.get('host')}/api/interactions_respond`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: 'list',
               interaction_token: token,
             })
           }
