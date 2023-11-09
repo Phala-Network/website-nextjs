@@ -59,18 +59,18 @@ const ActionButton = ({
 }>) => {
   const preset = !href
     ? { onClick }
-    : {
-        href,
-        target: '_blank',
-        rel: 'noopener noreferer',
-      }
+    : {}
   return (
     <Button
       {...preset}
       className="flex flex-row justify-between p-4 h-auto"
       variant={href ? 'link' : 'secondary'}
     >
-      {children}
+      {
+        href ? (
+          <a href={href} target="_blank" rel="noopener noreferer">{children}</a>
+        ) : children
+      }
     </Button>
   )
 }
