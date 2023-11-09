@@ -16,12 +16,6 @@ export default async function handler(
           equals: 'Post',
         },
       },
-      {
-        property: 'Tags',
-        multi_select: {
-          does_not_contain: 'Changelog',
-        },
-      },
     ],
   }
   const { next_cursor, pages } = await queryDatabase({
