@@ -3,6 +3,7 @@ import type { NextFetchEvent, NextRequest } from 'next/server'
 import {
   InteractionType,
   InteractionResponseType,
+  verifyKey,
 } from 'discord-interactions'
 
 import { queryDatabase } from '@/lib/notion-client'
@@ -12,14 +13,32 @@ export const config = {
   runtime: 'edge',
 }
 
+export const verify = (body: string, headers: Headers): boolean => {
+  const publicKey = process.env.DISCORD_PUBLIC_KEY!
+
+  const signature = headers.get('x-signature-ed25519')
+  const timestamp = headers.get('x-signature-timestamp')
+
+  if (!signature || !timestamp) {
+    return false
+  }
+
+  return verifyKey(body, signature, timestamp, publicKey)
+}
+
 export default async function handler(
   request: NextRequest,
   context: NextFetchEvent,
 ) {
   const json = await request.json()
+  if (verify(JSON.stringify(json), request.headers) == false) {
+    return NextResponse.json({ error: 'Bad signature' }, { status: 401 })
+  }
   const { type, data, user, token } = json
   if (type === InteractionType.PING) {
-    return NextResponse.json({ type: InteractionResponseType.PONG })
+    return NextResponse.json({
+      type: InteractionResponseType.PONG
+    }, { status: 200 })
   }
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name, options } = data
