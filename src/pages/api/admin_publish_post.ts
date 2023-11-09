@@ -12,7 +12,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { id } = req.body
+  const { id, interaction_token } = req.body
   const page = await notion.pages.retrieve({ page_id: id })
   if (!isFullPage(page)) {
     return res.json({
@@ -55,9 +55,25 @@ export default async function handler(
       succeed: false
     })
   }
-  await res.revalidate(`/posts${slug}`)
-  await Promise.all(tags.map((tag) => res.revalidate(`/tags/${tag}`)))
-  await res.revalidate('/blog')
+  const promises = tags.map((tag) => res.revalidate(`/tags/${tag}`))
+  promises.push(res.revalidate(`/posts${slug}`))
+  promises.push(res.revalidate('/blog'))
+  await Promise.all(promises)
+  if (interaction_token) {
+    const res = await fetch(
+      `https://discord.com/api/v10/webhooks/${process.env.DISCORD_APP_ID}/${interaction_token}/messages/@original`,
+      {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: `Published: ${title}`
+        })
+      }
+    )
+  }
   return res.json({
     succeed: true
   })

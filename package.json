@@ -28,6 +28,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.9",
+    "discord-interactions": "^3.4.0",
     "encoding": "^0.1.13",
     "feed": "^4.2.2",
     "figma-squircle": "^0.3.0",
