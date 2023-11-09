@@ -33,8 +33,8 @@ export default async function handler(
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          content: pages.map((page, index) => `${index + 1}. [${page.title}](https://${req.headers['host']}/posts/preview/${page.id})`).join('\n'),
-          embeds: [],
+          content: pages.map(page => `[${page.title}](https://${req.headers['host']}/posts/preview/${page.id})`).join('\n'),
+          flags: 1 << 2,
         })
       }
     )
