@@ -43,7 +43,7 @@ function SectionFeatures({
             <span className="font-black">Phat Contract</span>
           </h2>
           <div className="flex items-center justify-center mt-4 lg:mt-6">
-            <a target="_blank" href="https://docs.phala.network/developers/bricks-and-blueprints/featured-blueprints">
+            <a target="_blank" href="https://bricks.phala.network/">
               <button className="bg-black-800 text-white font-bold text-md py-3 px-7 rounded-full 2xl:px-10 2xl:py-6">Start Phat Contract</button>
             </a>
           </div>
