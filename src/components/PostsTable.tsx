@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { useToast } from '@/components/ui/use-toast'
 import attempt from '@/lib/attempt-promise'
-import { loginModalVisibleAtom } from './atoms'
+import { loginModalVisibleAtom } from './LoginModal'
 
 interface Page {
   id: string

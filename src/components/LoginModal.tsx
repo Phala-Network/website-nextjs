@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import {
+  atom,
   useAtom,
   useAtomValue,
   type WritableAtom,
@@ -21,11 +22,15 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ConnectWalletButton } from '@/components/connect-wallet-button'
 import { currentAccountAtom, signerAtom } from '@/components/connect-wallet-button/atoms'
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from '@/components/ui/use-toast'
 
 interface LoginModalProps {
   visibleAtom: WritableAtom<boolean, [boolean], boolean>
 }
+
+export const loginModalVisibleAtom = atom(
+  false
+) as unknown as WritableAtom<boolean, [boolean], boolean>
 
 const LoginModal = ({
   visibleAtom,
