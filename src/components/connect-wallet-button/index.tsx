@@ -1,10 +1,12 @@
 'use client'
 
 import { useAtomValue } from 'jotai'
-import { useShowAccountSelectModal } from './AppModals'
+import { useShowAccountSelectModal } from './ConnectWalletModals'
+export { default as ConnectWalletModals } from './ConnectWalletModals'
 import { currentAccountAtom, useRestoreLastSelectedAccount } from './atoms'
 
-export default function ConnectWalletButton() {
+
+export function ConnectWalletButton() {
   useRestoreLastSelectedAccount()
   const showAccountSelectModal = useShowAccountSelectModal()
   const currentAccount = useAtomValue(currentAccountAtom)
