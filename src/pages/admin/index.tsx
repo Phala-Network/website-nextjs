@@ -2,13 +2,18 @@ import type { ReactElement } from 'react'
 
 import { cn } from '@/lib/utils'
 import type { NextPageWithLayout } from '../_app'
-import AdminPosts from '@/components/AdminPosts'
+import { ConnectWalletModals } from '@/components/connect-wallet-button'
 import { Toaster } from '@/components/ui/toaster'
+import PostsTable from './_components/PostsTable'
+import LoginModal from './_components/LoginModal'
+import { loginModalVisibleAtom } from './_components/atoms'
 
 const Page: NextPageWithLayout = () => {
   return (
     <>
       <Toaster />
+      <LoginModal visibleAtom={loginModalVisibleAtom} />
+      <ConnectWalletModals />
       <div
         className={cn(
           'safe-viewport',
@@ -21,7 +26,7 @@ const Page: NextPageWithLayout = () => {
             'col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18 row-start-1'
           )}
         >
-          <AdminPosts />
+          <PostsTable />
         </div>
       </div>
     </>
