@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { LuLoader2 } from 'react-icons/lu'
 import dayjs from 'dayjs'
+import { useSetAtom } from 'jotai'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -16,6 +17,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { useToast } from '@/components/ui/use-toast'
 import attempt from '@/lib/attempt-promise'
+import { loginModalVisibleAtom } from './atoms'
 
 interface Page {
   id: string
@@ -93,7 +95,8 @@ export function PublishButton({
   )
 }
 
-const AdminPosts: React.FC = () => {
+const PostsTable: React.FC = () => {
+  const setLoginModalVisible = useSetAtom(loginModalVisibleAtom)
   const [data, setData] = useState<ApiResponse | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const prevCursors = useRef<Record<string, string>>({})
@@ -109,6 +112,10 @@ const AdminPosts: React.FC = () => {
         cursor && `&cursor=${cursor}`
       }`
       const response = await fetch(url)
+      if (response.status === 401) {
+        setLoginModalVisible(true)
+        return
+      }
       const result: ApiResponse = await response.json()
       setData({
         ...result,
@@ -219,4 +226,4 @@ const AdminPosts: React.FC = () => {
   )
 }
 
-export default AdminPosts
+export default PostsTable
