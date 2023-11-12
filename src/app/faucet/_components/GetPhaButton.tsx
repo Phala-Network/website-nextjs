@@ -13,7 +13,7 @@ import { pathOr } from 'ramda'
 
 import { Button } from '@/components/ui/button'
 import { useToast } from "@/components/ui/use-toast"
-import { currentAccountAtom, signerAtom } from './atoms'
+import { currentAccountAtom, signerAtom } from '@/components/connect-wallet-button/atoms'
 import contractAbi from './phala_faucet.json'
 
 
