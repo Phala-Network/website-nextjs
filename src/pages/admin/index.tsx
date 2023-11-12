@@ -4,9 +4,8 @@ import { cn } from '@/lib/utils'
 import type { NextPageWithLayout } from '../_app'
 import { ConnectWalletModals } from '@/components/connect-wallet-button'
 import { Toaster } from '@/components/ui/toaster'
-import PostsTable from './_components/PostsTable'
-import LoginModal from './_components/LoginModal'
-import { loginModalVisibleAtom } from './_components/atoms'
+import PostsTable from '@/components/PostsTable'
+import LoginModal, { loginModalVisibleAtom } from '@/components/LoginModal'
 
 const Page: NextPageWithLayout = () => {
   return (
