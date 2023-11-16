@@ -15,11 +15,13 @@ export default async function handler(
 ) {
   const { id, interaction_token } = req.body
   const page = await notion.pages.retrieve({ page_id: id })
+
   if (!isFullPage(page)) {
     return res.json({
       succeed: false
     })
   }
+
   let slug = R.map(
     R.prop('plain_text'),
     R.pathOr([], ['Custom URL', 'rich_text'], page.properties)
@@ -32,19 +34,23 @@ export default async function handler(
     R.prop('name'),
     R.pathOr([], ['Tags', 'multi_select'], page.properties)
   )
+  const status: string = R.pathOr('Drafting', ['Status', 'status', 'name'], page.properties)
 
   const properties: Record<string, any> = {
-    'Status': {
-      status: {
-        name: 'Published'
-      }
-    },
     'Post Type': {
       select: {
         name: 'Post'
       }
     },
-    'Published Time': {
+  }
+
+  if (status !== 'Published') {
+    properties['Status'] = {
+      status: {
+        name: 'Published'
+      }
+    }
+    properties['Published Time'] = {
       date: {
         start: dayjs().toISOString()
       }
