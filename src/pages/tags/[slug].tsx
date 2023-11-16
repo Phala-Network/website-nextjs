@@ -29,10 +29,11 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
       tag: slug,
     },
   })
+  const title = `${slug} - Phala Network`
   return (
     <>
       <Head>
-        <title>{slug} - Phala Network</title>
+        <title>{title}</title>
       </Head>
       <div
         className={cn(
