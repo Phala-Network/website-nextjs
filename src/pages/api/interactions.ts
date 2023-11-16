@@ -42,7 +42,7 @@ export default async function handler(
   }
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name, options } = data
-    if (name === 'publish' && options.length > 0) {
+    if ((name === 'publish' || name === 'update') && options.length > 0) {
       context.waitUntil(
         fetch(
           `${request.nextUrl.protocol}//${request.headers.get('host')}/api/admin_publish_post`,
@@ -89,15 +89,15 @@ export default async function handler(
     }
   } else if (type === InteractionType.APPLICATION_COMMAND_AUTOCOMPLETE) {
     const { name, options } = data
-    if (name === 'publish' && options.length > 0 && options[0].value) {
+    if (name === 'publish' || name === 'update') {
       const { pages } = await queryDatabase({
         database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-        filter: {
+        filter: options.length > 0 && options[0].value ? {
           property: 'Title',
           rich_text: {
             contains: options[0].value,
           },
-        },
+        } : undefined,
         sorts: [
           {
             property: 'Created Time',
