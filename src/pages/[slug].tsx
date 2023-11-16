@@ -36,14 +36,11 @@ const StaticPage = ({ page }: Props) => {
   useHydrateAtoms([[blocksAtom, page.blocks]])
   return (
     <>
-      <Head>
-        <title>{page.title} - Phala Network</title>
-      </Head>
       {page.title ? (
         <Head>
           <title>{page.title}</title>
           {page.status !== 'Published' ? (
-          <meta name="robots" content="noindex" />
+            <meta name="robots" content="noindex" />
           ) : null}
         </Head>
       ) : null}
