@@ -93,7 +93,7 @@ export async function getParsedPage(
     R.pathOr([], ['Tags', 'multi_select'], page.properties)
   )
   const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], page.properties)
-  const status = R.pathOr('Drafting', ['Status', 'status', '0', 'name'], page.properties)
+  const status = R.pathOr('Drafting', ['Status', 'status', 'name'], page.properties)
   const markdown = n2m.toMarkdownString((await n2m.blocksToMarkdown(blocks))).parent
   return {
     id: page.id,
