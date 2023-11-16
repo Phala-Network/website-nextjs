@@ -3,6 +3,7 @@ import {
   isFullPage,
 } from '@notionhq/client'
 import * as R from 'ramda'
+import dayjs from 'dayjs'
 
 import { notion } from '@/lib/notion-client'
 import { generateSlug } from '@/lib/utils'
@@ -31,13 +32,25 @@ export default async function handler(
     R.prop('name'),
     R.pathOr([], ['Tags', 'multi_select'], page.properties)
   )
+
   const properties: Record<string, any> = {
     'Status': {
       status: {
         name: 'Published'
       }
+    },
+    'Post Type': {
+      select: {
+        name: 'Post'
+      }
+    },
+    'Published Time': {
+      date: {
+        start: dayjs().toISOString()
+      }
     }
   }
+
   if (!slug) {
     slug = `/${generateSlug(title)}`
     properties['Custom URL'] = {
@@ -46,6 +59,7 @@ export default async function handler(
       }]
     }
   }
+
   const [, result] = await attempt(notion.pages.update({
     page_id: page.id,
     properties,
