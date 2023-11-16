@@ -8,19 +8,14 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { cursor, page_size = 20 } = req.query
-  const filter: QueryDatabaseParameters['filter'] = {
-    and: [
-      {
-        property: 'Post Type',
-        select: {
-          equals: 'Post',
-        },
-      },
-    ],
-  }
   const { next_cursor, pages } = await queryDatabase({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
-    filter,
+    filter: {
+      property: 'Title',
+      rich_text: {
+        is_not_empty: true,
+      },
+    },
     sorts: [
       {
         property: 'Created Time',

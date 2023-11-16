@@ -97,7 +97,12 @@ export default async function handler(
           rich_text: {
             contains: options[0].value,
           },
-        } : undefined,
+        } : {
+          property: 'Title',
+          rich_text: {
+            is_not_empty: true,
+          },
+        },
         sorts: [
           {
             property: 'Created Time',
