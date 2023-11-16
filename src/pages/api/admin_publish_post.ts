@@ -69,8 +69,11 @@ export default async function handler(
       succeed: false
     })
   }
-  const promises = tags.map((tag) => res.revalidate(`/tags/${tag}`))
-  promises.push(res.revalidate(`/posts${slug}`))
+  const promises = tags.map((tag) => res.revalidate(`/tags/${encodeURIComponent(tag)}`))
+  const encodedSlug = slug.charAt(0) === '/'
+    ? `/${encodeURIComponent(slug.slice(1))}`
+    : encodeURIComponent(slug)
+  promises.push(res.revalidate(`/posts${encodedSlug}`))
   promises.push(res.revalidate('/blog'))
   await Promise.all(promises)
   if (interaction_token) {
