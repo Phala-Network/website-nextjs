@@ -2,11 +2,13 @@ interface ComputationMetaResponse {
   phalaSendXcmMessageCount: number
   phalaReceivedXcmMessageCount: number
   phalaSignedExtrinsicCount: string
+  phalaIdlePInit: number,
   phalaIdlePInstant: number
   phalaIdleWorkerCount: number
   khalaSendXcmMessageCount: number
   khalaReceivedXcmMessageCount: number
   khalaSignedExtrinsicCount: string
+  khalaIdlePInit: number,
   khalaIdlePInstant: number
   khalaIdleWorkerCount: number
 }
@@ -20,11 +22,13 @@ export interface ComputationMeta {
 
 export async function getComputationMeta(): Promise<Omit<ComputationMeta, 'tx'> & { tx: string }> {
   let data: ComputationMetaResponse = {
-    phalaIdlePInstant: 28_757_250,
-    phalaIdleWorkerCount: 26_551,
-    phalaReceivedXcmMessageCount: 7_538,
+    phalaIdlePInit: 0,
+    phalaIdlePInstant: 0,
+    phalaIdleWorkerCount: 0,
+    phalaReceivedXcmMessageCount: 0,
     phalaSendXcmMessageCount: 0,
-    phalaSignedExtrinsicCount: '69622067',
+    phalaSignedExtrinsicCount: '0',
+    khalaIdlePInit: 0,
     khalaIdlePInstant: 0,
     khalaIdleWorkerCount: 0,
     khalaReceivedXcmMessageCount: 0,
@@ -40,7 +44,7 @@ export async function getComputationMeta(): Promise<Omit<ComputationMeta, 'tx'> 
 
   const onlineWorkers = data.phalaIdleWorkerCount + data.khalaIdleWorkerCount
   const vCpu = Math.floor(
-    (data.phalaIdlePInstant + data.khalaIdlePInstant) / 150
+    (data.phalaIdlePInit + data.khalaIdlePInit) / 150
   )
   const crossChainTx =
     data.phalaSendXcmMessageCount +
