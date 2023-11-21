@@ -30,7 +30,7 @@ export const useShowAccountSelectModal = () => {
   ])
 }
 
-export default function AppModals() {
+export default function ConnectWalletModals() {
   return (
     <>
       <WalletSelectModal

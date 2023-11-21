@@ -44,6 +44,7 @@ export interface ParsedListPage {
   tags: string[]
   publishedTime: string
   publishedDate: string
+  createdTime: string
 }
 
 export type ParsedBlock = BlockObjectResponse & {
@@ -92,7 +93,7 @@ export async function getParsedPage(
     R.pathOr([], ['Tags', 'multi_select'], page.properties)
   )
   const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], page.properties)
-  const status = R.pathOr('Drafting', ['Status', 'status', '0', 'name'], page.properties)
+  const status = R.pathOr('Drafting', ['Status', 'status', 'name'], page.properties)
   const markdown = n2m.toMarkdownString((await n2m.blocksToMarkdown(blocks))).parent
   return {
     id: page.id,
@@ -315,6 +316,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
     )
     const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], properties)
     const publishedDate = dayjs(publishedTime).format('YYYY-MM-DD')
+    const createdTime = R.pathOr('', ['Created Time', 'created_time'], properties)
     pages.push({
       id,
       cover,
@@ -323,6 +325,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       tags: R.without(['Pinned', 'Changelog'], tags),
       publishedTime,
       publishedDate,
+      createdTime,
     })
   }
   return {

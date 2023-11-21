@@ -27,12 +27,15 @@
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.7.0",
     "clsx": "^1.2.1",
+    "cookie": "^0.6.0",
     "dayjs": "^1.11.9",
+    "discord-interactions": "^3.4.0",
     "encoding": "^0.1.13",
     "feed": "^4.2.2",
     "figma-squircle": "^0.3.0",
     "framer-motion": "^10.16.4",
     "highlight.js": "^11.8.0",
+    "jose": "^5.1.0",
     "jotai": "^2.1.0",
     "lucide-react": "^0.292.0",
     "next": "13.4.4",
@@ -54,6 +57,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/cookie": "^0.5.4",
     "@types/ramda": "^0.29.2",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-syntax-highlighter": "^15.5.7"
