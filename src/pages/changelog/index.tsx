@@ -100,17 +100,19 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
                             </span>
                           </div>
                           <div className="flex min-w-0 flex-1 justify-between space-x-4">
-                            <header className="text text-gray-500 flex flex-row items-center gap-4">
+                            <header className="text text-gray-500 lg:flex flex-row items-center gap-4">
                               <h4>
                                 <a href={`/posts${page.slug}`} className="font-medium text-gray-900 hover:text-phalaGreen-400 hover:underline">
                                   {page.title}
                                 </a>
                               </h4>
-                              <div>
-                                {page.tags.filter(i => i !== 'Changelog').map((tag, idx) => (
-                                  <TagLink key={`${idx}`} href={`/tags/${encodeURIComponent(tag)}`}>
-                                    {tag}
-                                  </TagLink>
+                              <div className="flex flex-wrap gap-3">
+                                {page.tags.filter(i => i !== 'Changelog').map((tag, i) => (
+                                  <div key={`${i}`}>
+                                    <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
+                                      {tag}
+                                    </TagLink>
+                                  </div>
                                 ))}
                               </div>
                             </header>

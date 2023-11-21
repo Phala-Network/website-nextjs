@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { ParsedListPage } from '@/lib/notion-client'
 
@@ -14,6 +14,12 @@ export default function useQueryPosts({
   const [pages, setPages] = useState(initialPages)
   const [isLoading, setIsLoading] = useState(false)
   const [cursor, setCursor] = useState(initialCursor)
+
+  useEffect(() => {
+    setPages(initialPages)
+    setCursor(initialCursor)
+  }, [initialPages, initialCursor])
+
   const load = async () => {
     setIsLoading(true)
     const res = await fetch(
@@ -27,6 +33,7 @@ export default function useQueryPosts({
     setCursor(data.next_cursor)
     setIsLoading(false)
   }
+
   return {
     isLoading,
     load,
