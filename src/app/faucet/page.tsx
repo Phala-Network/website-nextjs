@@ -1,12 +1,11 @@
-import AppModals from './_components/AppModals'
-import ConnectWalletButton from './_components/ConnectWalletButton'
 import GetPhaButton from './_components/GetPhaButton'
+import { ConnectWalletButton, ConnectWalletModals } from '@/components/connect-wallet-button'
 import { Toaster } from '@/components/ui/toaster'
 
 export default function Page() {
   return (
     <>
-      <AppModals />
+      <ConnectWalletModals />
       <Toaster />
       <div className="min-h-screen safe-viewport grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24 bg-[#F1F4F9]">
         <div className="cols-span-1 xl:col-start-5 xl:col-span-12 3xl:col-start-6 3xl:col-span-14">

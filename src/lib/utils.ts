@@ -42,3 +42,9 @@ export function buildProxyImageUrl(source: ParsedListPage | ParsedPage | ImageBl
   const query = new URLSearchParams(params)
   return `/api/image?${query.toString()}`
 }
+
+export function generateSlug(title: string): string {
+  const sanitizedTitle = title.toLowerCase().replace(/[^\w\d\s]+/g, '')
+  const slug = sanitizedTitle.replace(/\s+/g, '-')
+  return slug
+}

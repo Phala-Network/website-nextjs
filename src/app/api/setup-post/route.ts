@@ -3,17 +3,12 @@ import type { ChatCompletionMessageParam } from 'openai/resources/chat'
 import { isFullPage, collectPaginatedAPI } from '@notionhq/client'
 
 import { notion, n2m } from '@/lib/notion-client'
+import { generateSlug } from '@/lib/utils'
 import attempt from '@/lib/attempt-promise'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || '',
 })
-
-function generateSlug(title: string): string {
-  const sanitizedTitle = title.toLowerCase().replace(/[^\w\d\s]+/g, '')
-  const slug = sanitizedTitle.replace(/\s+/g, '-')
-  return slug
-}
 
 const SUMMARY_PROMPT = 'Summarise the content in 150 to 200 words. Do not generate a summary in list format. Only provide the generated summary as the response, do not start your responses with an introductory sentence.'
 
