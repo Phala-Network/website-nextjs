@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import { atom, useAtom, useAtomValue, type Getter } from 'jotai'
 import type { Struct, Vec, u8, u128, Result, Enum } from '@polkadot/types'
-import { VscLoading } from "react-icons/vsc"
 import {
   getClient,
   getContract,
@@ -75,72 +74,94 @@ function atomWithConnectState<
 
 const phatRegistryAtom = atomWithConnectState(
   async () => {
-    const rpc = process.env.NEXT_PUBLIC_PAUCET_URL!
+    const rpc = process.env.NEXT_PUBLIC_FAUCET_RPC!
     const metadata = await fetch(`/api/rpc-metadata?rpc=${rpc}`).then(res => res.json()) as Record<string, `0x${string}`>
     return await getClient({ transport: rpc, metadata })
   },
   { autoConnect: true }
 )
 
-const injectedPolkadotWalletsAtom = atomWithConnectState(
-  () => unstable_UIKeyringProvider.getSupportedWallets(),
-  { autoConnect: true }
-)
+//
+//
+//
 
-type AccountActions =
+type Wallet = Awaited<ReturnType<typeof unstable_UIKeyringProvider.getSupportedWallets>>[number]
+
+interface InjectedWallet {
+  wallets: Wallet[]
+  accounts: InjectedAccount[]
+  provider: AnyProvider | null
+}
+
+type InjectedWalletActions =
   { type: 'setWallet', walletName: string }
   | { type: 'setPolkadotAccount', account: InjectedAccount }
   | { type: 'signinWithEthereum' }
 
+function atomWithInjectedWallet(appName: string) {
+  //
+  // internal atoms.
+  //
+  const walletsAtom = atomWithConnectState(
+    () => unstable_UIKeyringProvider.getSupportedWallets(),
+    { autoConnect: true }
+  )
 
-const _currentWalletAtom = atom('')
-const _accountListAtom = atom<InjectedAccount[]>([])
-const _providerAtom = atom<AnyProvider | null>(null)
+  const selectedWalletKeyAtom = atom('')
 
-const accountListAtom = atom(
-  get => {
-    return {
-      items: get(_accountListAtom),
-      currentProvider: get(_providerAtom),
-    }
-  },
-  async (get, set, action: AccountActions) => {
-    const injectedPolkadotWallets = get(injectedPolkadotWalletsAtom)
-    if (!injectedPolkadotWallets.connected) {
-      console.error('injectedPolkadotWallets not connected')
-      return
-    }
-    const registry = get(phatRegistryAtom)
-    if (!registry.connected && (action.type === 'signinWithEthereum' || action.type === 'setPolkadotAccount')) {
-      console.error('registry not connected')
-      return
-    }
+  const injectedAccountsAtom = atom<InjectedAccount[]>([])
 
-    if (action.type === 'setWallet') {
-      const wallet = injectedPolkadotWallets.instance.find(wallet => wallet.name === action.walletName)
-      if (!wallet) {
-        console.error('wallet not found')
+  const currentProviderAtom = atom<AnyProvider | null>(null)
+
+  //
+
+  const _injectedWalletAtom = atom(
+    get => ({
+      wallets: get(walletsAtom).instance || [],
+      accounts: get(injectedAccountsAtom),
+      provider: get(currentProviderAtom),
+    } as InjectedWallet),
+    async (get, set, action: InjectedWalletActions) => {
+      const injectedWallets = get(walletsAtom)
+      if (!injectedWallets.connected) {
+        console.error('injectedPolkadotWallets not connected')
         return
       }
-      const accounts = await unstable_UIKeyringProvider.getAllAccountsFromProvider('PhalaWebsite', wallet?.key ?? '')
-      set(_currentWalletAtom, wallet.key)
-      set(_accountListAtom, accounts)
+      const registry = get(phatRegistryAtom)
+      if (!registry.connected && (action.type === 'signinWithEthereum' || action.type === 'setPolkadotAccount')) {
+        console.error('registry not connected')
+        return
+      }
+
+      if (action.type === 'setWallet') {
+        const wallet = injectedWallets.instance.find(wallet => wallet.name === action.walletName)
+        if (!wallet) {
+          console.error('wallet not found')
+          return
+        }
+        const accounts = await unstable_UIKeyringProvider.getAllAccountsFromProvider(appName, wallet?.key ?? '')
+        set(selectedWalletKeyAtom, wallet.key)
+        set(injectedAccountsAtom, accounts)
+      }
+      else if (action.type === 'setPolkadotAccount') {
+        const instance = await unstable_UIKeyringProvider.create(registry.instance!.api, appName, get(selectedWalletKeyAtom), action.account)
+        await instance.signCertificate()
+        set(currentProviderAtom, instance)
+      }
+      else if (action.type === 'signinWithEthereum') {
+        const client = createWalletClient({ chain: mainnet, transport: custom((window as any).ethereum) })
+        const [address] = await client.requestAddresses()
+        const instance = await unstable_EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
+        await new Promise(resolve => setTimeout(resolve, 400))
+        await instance.signCertificate()
+        set(currentProviderAtom, instance)
+      }
     }
-    else if (action.type === 'setPolkadotAccount') {
-      const instance = await unstable_UIKeyringProvider.create(registry.instance!.api, 'PhalaWebsite', get(_currentWalletAtom), action.account)
-      await instance.signCertificate()
-      set(_providerAtom, instance)
-    }
-    else if (action.type === 'signinWithEthereum') {
-      const client = createWalletClient({ chain: mainnet, transport: custom((window as any).ethereum) })
-      const [address] = await client.requestAddresses()
-      const instance = await unstable_EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
-      await new Promise(resolve => setTimeout(resolve, 400))
-      await instance.signCertificate()
-      set(_providerAtom, instance)
-    }
-  }
-)
+  )
+  return _injectedWalletAtom
+}
+
+const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet')
 
 //
 //
@@ -221,7 +242,7 @@ const claimAtom = atom(
   get => get(accountClaimStateAtom),
   async (get, set, action: ClaimActions) => {
     const registryState = get(phatRegistryAtom)
-    const { currentProvider } = get(accountListAtom)
+    const { provider } = get(injectedWalletAtom)
     const contractState = get(contractAtom)
     if (!registryState.connected) {
       console.error('registry not connected')
@@ -231,12 +252,11 @@ const claimAtom = atom(
       console.error('contract not connected')
       return
     }
-    if (!currentProvider) {
+    if (!provider) {
       console.error('provider not connected')
       return
     }
     const phatRegistry = registryState.instance
-    const provider = currentProvider
     const contract = contractState.instance
 
     if (action.type === 'claim') {
@@ -258,37 +278,30 @@ const claimAtom = atom(
 //
 
 function ConnectWalletForm() {
-  const polkadotWallets = useAtomValue(injectedPolkadotWalletsAtom)
-  const [account, dispatchAccountAction] = useAtom(accountListAtom)
+  const [{ wallets, accounts }, dispatch] = useAtom(injectedWalletAtom)
   return (
     <div className={cn("flex flex-row")}>
       <aside className="border-r border-gray-100 pr-4 mr-4">
         <h4 className="text-lg font-medium">Connect a Wallet</h4>
         <ul className="flex flex-col gap-2">
           <li>
-            <button onClick={() => dispatchAccountAction({ type: 'signinWithEthereum' })}>
+            <button onClick={() => dispatch({ type: 'signinWithEthereum' })}>
               MetaMask
             </button>
           </li>
-          {polkadotWallets.connected ? (
-            <>
-              {polkadotWallets.instance.map((wallet, idx) => (
-                <li key={idx}>
-                  <button onClick={() => dispatchAccountAction({ type: 'setWallet', walletName: wallet.name })}>{wallet.name}</button>
-                </li>
-              ))}
-            </>
-          ) : (
-            <div className="w-full flex items-center justify-center"><VscLoading className="animate-spin" /></div>
-          )}
+          {wallets.map((wallet, idx) => (
+            <li key={idx}>
+              <button onClick={() => dispatch({ type: 'setWallet', walletName: wallet.name })}>{wallet.name}</button>
+            </li>
+          ))}
         </ul>
       </aside>
       <main>
-        {account.items.length > 0 ? (
+        {accounts.length > 0 ? (
           <ul className="flex flex-col gap-2">
-            {account.items.map((account, idx) => (
+            {accounts.map((account, idx) => (
               <li key={idx}>
-                <button onClick={() => dispatchAccountAction({ type: 'setPolkadotAccount', account })}>{account.name}</button>
+                <button onClick={() => dispatch({ type: 'setPolkadotAccount', account })}>{account.name}</button>
               </li>
             ))}
           </ul>
@@ -301,25 +314,25 @@ function ConnectWalletForm() {
 
 function ClaimTestPhaButton() {
   const [state, dispatch] = useAtom(claimAtom)
-  const { currentProvider } = useAtomValue(accountListAtom)
+  const { provider } = useAtomValue(injectedWalletAtom)
   const [contractState, contractDispatch] = useAtom(contractAtom)
   useEffect(() =>{
-    if (currentProvider) {
+    if (provider) {
       contractDispatch({ type: 'connect' })
     }
-  }, [currentProvider, contractDispatch])
+  }, [provider, contractDispatch])
   return (
     <div>
       <button
         className="btn btn-phatGreen"
-        disabled={!currentProvider || !contractState.connected}
+        disabled={!provider || !contractState.connected}
         onClick={async () => await dispatch({ type: 'claim' })}
       >
         Claim
       </button>
       <button
         className="btn btn-phatGreen"
-        disabled={!currentProvider || !contractState.connected}
+        disabled={!provider || !contractState.connected}
         onClick={async () => {
           await dispatch({ type: 'update' })
         }}
@@ -360,8 +373,8 @@ const provenItems: ProvenItem[] = [
 function QuestItem({ info }: { info: ProvenItem }) {
   const [running, setRunning] = useState(false)
   const contractState = useAtomValue(contractAtom)
-  const { currentProvider } = useAtomValue(accountListAtom)
-  if (!contractState.connected || !currentProvider) {
+  const { provider } = useAtomValue(injectedWalletAtom)
+  if (!contractState.connected || !provider) {
     return null
   }
   const contract = contractState.instance
@@ -375,11 +388,11 @@ function QuestItem({ info }: { info: ProvenItem }) {
           disabled={running}
           onClick={async () => {
             try {
-              const cert = await currentProvider.signCertificate()
-              const evmCaller = currentProvider.name === 'evmAccountMapping' ? currentProvider.evmCaller : undefined
+              const cert = await provider.signCertificate()
+              const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
               const { output: result } = await contract.query.runProvenScript(cert.address, { cert }, info.js_code, evmCaller)
               if (result.isOk && result.asOk.isOk && result.asOk.asOk.result.toNumber() > 0) {
-                await contract.send.saveProvenScore({ address: cert.address, cert, unstable_provider: currentProvider }, result.asOk.asOk)
+                await contract.send.saveProvenScore({ address: cert.address, cert, unstable_provider: provider }, result.asOk.asOk)
                 console.log('claimed', result.asOk.asOk.toJSON())
                 return
               }
