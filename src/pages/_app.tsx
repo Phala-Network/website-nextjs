@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react'
+import { type ReactElement, type ReactNode, createElement } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
@@ -14,11 +14,11 @@ type AppPropsWithLayout = AppProps & {
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   if (Component.getLayout) {
-    return Component.getLayout(<Component {...pageProps} />)
+    return Component.getLayout(createElement(Component, pageProps))
   }
   return (
     <Layout>
-      <Component {...pageProps} />
+      {createElement(Component, pageProps)}
     </Layout>
   )
 }
