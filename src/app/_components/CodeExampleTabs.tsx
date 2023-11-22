@@ -5,7 +5,6 @@ import { atom, useAtom, useAtomValue } from 'jotai'
 import * as R from 'ramda'
 import hls from 'highlight.js/lib/core'
 import 'highlight.js/styles/github-dark.css'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { AnimatePresence, motion } from "framer-motion"
 import { FiCheck } from 'react-icons/fi'
 
@@ -55,41 +54,40 @@ export function CodeExampleCodeViewer({ idx, children }: {
           <div className={cn("rounded-full bg-[#D9D9D9] w-4 h-4")} />
         </div>
         <div className="flex flex-row gap-1 items-center">
-          <CopyToClipboard
-            text={trimed}
-            onCopy={() => {
+          <button
+            className="relative w-6 h-6"
+            onClick={() => {
+              navigator.clipboard.writeText(trimed)
               setCopied(true)
               setTimeout(() => setCopied(false), 2500)
             }}
           >
-            <button className="relative w-6 h-6">
-              <AnimatePresence mode="sync">
-                <motion.span
-                  key="copy"
-                  className="absolute left-0 top-0.5"
-                  initial={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.25 }}
-                  animate={{ opacity: copied ? 0 : 1, scale: copied ? 0 : 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <img
-                    src="/icons/copy.svg"
-                    className="svg-gray-400 h-5 w-5"
-                    alt=""
-                  />
-                </motion.span>
-                <motion.span
-                  key="check"
-                  className="absolute left-0 top-0"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: copied ? 1 : 0, scale: copied ? 1 : 0 }}
-                  exit={{ opacity: 0, scale: 0 }}
-                >
-                  <FiCheck className="text-green-500 h-6 w-6" />
-                </motion.span>
-              </AnimatePresence>
-            </button>
-          </CopyToClipboard>
+            <AnimatePresence mode="sync">
+              <motion.span
+                key="copy"
+                className="absolute left-0 top-0.5"
+                initial={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.25 }}
+                animate={{ opacity: copied ? 0 : 1, scale: copied ? 0 : 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <img
+                  src="/icons/copy.svg"
+                  className="svg-gray-400 h-5 w-5"
+                  alt=""
+                />
+              </motion.span>
+              <motion.span
+                key="check"
+                className="absolute left-0 top-0"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: copied ? 1 : 0, scale: copied ? 1 : 0 }}
+                exit={{ opacity: 0, scale: 0 }}
+              >
+                <FiCheck className="text-green-500 h-6 w-6" />
+              </motion.span>
+            </AnimatePresence>
+          </button>
           <motion.span
             className="text-xs text-gray-400"
             initial={{ opacity: 0, width: 0 }}
