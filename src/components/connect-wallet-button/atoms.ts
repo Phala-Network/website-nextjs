@@ -96,7 +96,7 @@ const getAllAcountsForProvider = async (name: string, keyring: Keyring) => {
   )
   if (provider && provider.enable) {
     try {
-      const gateway = await provider.enable('Phat Faucet')
+      const gateway = await provider.enable('Phala Website')
       const accounts = await gateway.accounts.get(true)
       return accounts.map(
         (acc) =>
@@ -244,7 +244,7 @@ export const signerAtom = atom(async (get) => {
   )
   if (provider && provider.enable) {
     try {
-      const gateway = await provider.enable('PhatBot')
+      const gateway = await provider.enable('Phala Website')
       return gateway.signer
     } catch (error) {
       console.error(error)
