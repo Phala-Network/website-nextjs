@@ -75,7 +75,7 @@ function atomWithConnectState<
 
 const phatRegistryAtom = atomWithConnectState(
   async () => {
-    const rpc = 'ws://10.0.0.120:19944' 
+    const rpc = process.env.NEXT_PUBLIC_PAUCET_URL!
     const metadata = await fetch(`/api/rpc-metadata?rpc=${rpc}`).then(res => res.json()) as Record<string, `0x${string}`>
     return await getClient({ transport: rpc, metadata })
   },
@@ -192,7 +192,7 @@ const contractAtom = atomWithConnectState(
     const abi = await response.text()
     return await getContract({
       client: registryState.instance,
-      contractId: '0x594552c84410a7fadf77b75ba6e44e16702df5cfea16a2e2065257c5b03cb390',
+      contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
       abi,
     }) as PhatFaucetContract
   }

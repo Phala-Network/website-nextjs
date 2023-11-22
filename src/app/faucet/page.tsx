@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import { ClaimDashboard } from './_components/Claim'
 
 export default function Page() {
-  const rpc = 'ws://10.0.0.120:19944'
+  const rpc = process.env.NEXT_PUBLIC_FAUCET_RPC!
   return (
     <>
       <link rel="prefetch" href={`/api/rpc-metadata?rpc=${rpc}`} as="document" />
