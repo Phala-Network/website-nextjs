@@ -21,7 +21,7 @@ export default async function handler(
         }
       })
     }
-    const account = decodeAddress(address)
+    const account = decodeAddress(address, false, 30)
     const substrate_address = new Keyring().encodeAddress(account, 42)
     const database = await notion.databases.query({
       database_id: process.env.NOTION_ACCOUNTS_DATABASE_ID!,
