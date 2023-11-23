@@ -478,7 +478,7 @@ function WalletModal() {
           <ul className="flex flex-col gap-2.5 min-w-[16rem]">
             <li>
               <WalletButton
-                installed={!!(window as any)?.ethereum}
+                installed={!!(typeof window !== 'undefined' && (window as any)?.ethereum)}
                 onClick={async () => {
                   try {
                     await dispatch({ type: 'signinWithEthereum' })
