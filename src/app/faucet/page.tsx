@@ -1,5 +1,55 @@
+import { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
-import { ClaimDashboard } from './_components/Claim'
+import { MdExpandMore } from 'react-icons/md'
+import { AccountInfo, SponsorList } from './_components/Claim'
+
+import './style.css'
+
+function Section({ className, children }: { className?: string, children: ReactNode }) {
+  return (
+    <section
+      className={cn(
+        "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 text-white",
+        className,
+      )}
+    >
+      {children}
+    </section>
+  )
+}
+
+function Details({ summary, children }: { summary: string, children: ReactNode }) {
+  return (
+    <details className="faucet-details">
+      <summary>
+        <h4>{summary}</h4>
+        <MdExpandMore className="indicator" />
+      </summary>
+      <article>
+        {children}
+      </article>
+    </details>
+  )
+}
+
+function FAQ() {
+  return (
+    <>
+      <Details summary="What is a testnet faucet?">
+        <p>A testnet faucet is a way for developers to receive free tokens that can be used to interact with Phat Contracts on testnets.</p>
+      </Details>
+      <Details summary="How do I use this?">
+        <p>To request funds, simply enter your wallet address and hit “Send Me ETH”. We support wallets as received addresses but not smart contracts.</p>
+      </Details>
+      <Details summary="How does it work?">
+        <p>You can request 0.02 Goerli ETH every 24h without any authentication. Then create a free Alchemy account to start building!</p>
+      </Details>
+      <Details summary="What if I run into any other issues, or have questions?">
+        <p>Join our Discord.</p>
+      </Details>
+    </>
+  )
+}
 
 export default function Page() {
   const rpc = process.env.NEXT_PUBLIC_FAUCET_RPC!
@@ -12,15 +62,40 @@ export default function Page() {
           "safe-viewport",
           "grid gap-x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
           "py-16 xl:py-32 px-0",
+          "bg-gray-900",
         )}
       >
-          <div
+        <div
+          className={cn(
+            "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 row-start-1 px-9",
+            "select-none pointer-event-none",
+          )}
+        >
+          <img src="/illustrations/faucet/bg.jpg" alt="" className="rounded-xl shadow-xl overflow-hidden" />
+        </div>
+        <main
+          className={cn(
+            "col-span-full xl:col-start-3 xl:col-span-16 3xl:col-start-5 3xl:col-span-16 row-start-1 px-12",
+            "mt-20 z-[2] flex flex-col gap-6",
+            "faucet",
+          )}
+        >
+          <section className={cn("flex flex-col items-center mb-14 text-white")}>
+            <h1 className="text-5xl font-bold mb-6">Phala Testnet Faucet</h1>
+            <p className="text-xl w-2/3 text-center leading-7">
+              Phat Contract got tired of having to scrounge for testnet tokens, so we created a Multi-Chain Faucet for all of the testnet networks we support.
+            </p>
+          </section>
+          <AccountInfo />
+          <SponsorList />
+          <section
             className={cn(
-              "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18"
+              "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 pt-2 text-white",
             )}
           >
-            <ClaimDashboard />
-          </div>
+            <FAQ />
+          </section>
+        </main>
       </div>
     </>
   )
