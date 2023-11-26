@@ -61,13 +61,14 @@ export default function Page() {
         className={cn(
           "safe-viewport",
           "grid gap-x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
-          "py-16 xl:py-32 px-0",
+          "py-16 xl:py-32",
           "bg-gray-900",
         )}
       >
         <div
           className={cn(
-            "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 row-start-1 px-9",
+            "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 row-start-1",
+            "px-1",
             "select-none pointer-event-none",
           )}
         >
@@ -75,7 +76,7 @@ export default function Page() {
         </div>
         <main
           className={cn(
-            "col-span-full xl:col-start-3 xl:col-span-16 3xl:col-start-5 3xl:col-span-16 row-start-1 px-12",
+            "col-span-full xl:col-start-3 xl:col-span-16 3xl:col-start-5 3xl:col-span-16 row-start-1",
             "mt-20 z-[2] flex flex-col gap-6",
             "faucet",
           )}
