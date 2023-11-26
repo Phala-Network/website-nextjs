@@ -227,10 +227,10 @@
     "@types/node-fetch" "^2.5.10"
     node-fetch "^2.6.1"
 
-"@phala/sdk@^0.6.0-nightly-20231122":
-  version "0.6.0-nightly-20231122"
-  resolved "https://registry.yarnpkg.com/@phala/sdk/-/sdk-0.6.0-nightly-20231122.tgz#f40a5d915ec9b8207d6c0bb66f20b7e7af5484f6"
-  integrity sha512-j6rQ6AKZlhkjFijnDHF9e1seiX8Q/YlCF9jUaoeJKfaecXyIJMuQRPLx9NuFKhEGqp4fwePQfRJo8amTjuK76w==
+"@phala/sdk@^0.6.0-nightly-20231127":
+  version "0.6.0-nightly-20231127"
+  resolved "https://registry.yarnpkg.com/@phala/sdk/-/sdk-0.6.0-nightly-20231127.tgz#ff55d36b289bee16b696fd90dc90a2544d328476"
+  integrity sha512-zXQA2LtL8ZAdGosMexMRMf71t3w1Td8xg36nZwTKEJMB77wz7fkGlR3EyaVpNsCUKr5zHGzvpifsWvwa4BBRsg==
   dependencies:
     "@polkadot/api" "^10.9.1"
     "@polkadot/api-contract" "^10.9.1"
