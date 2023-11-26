@@ -10,7 +10,7 @@
   "dependencies": {
     "@fontsource/montserrat": "^5.0.1",
     "@notionhq/client": "^2.2.9",
-    "@phala/sdk": "^0.6.0-nightly-20231122",
+    "@phala/sdk": "^0.6.0-nightly-20231127",
     "@polkadot/extension-inject": "^0.46.5",
     "@polkadot/ui-keyring": "^3.6.3",
     "@polkadot/util-crypto": "^12.5.1",
