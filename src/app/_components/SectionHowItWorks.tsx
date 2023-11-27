@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { createElement } from 'react'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import { atomWithReducer } from 'jotai/utils'
 import dynamic from 'next/dynamic'
@@ -90,7 +90,7 @@ export function SectionHowItWorks() {
                   "w-full mt-10",
                 )}
               >
-                <WorkFlow inViewAnimation={index === 1 ? 'flow1to2' : index === 2 ? 'flow1to3' : ''} />
+                {createElement(WorkFlow, { inViewAnimation: index === 1 ? 'flow1to2' : index === 2 ? 'flow1to3' : '' })}
               </div>
             </div>
           ))
@@ -218,7 +218,7 @@ export function SectionHowItWorks() {
                 <QuoteLine3 />
               </motion.div>
             </div>
-            <WorkFlow animation={currentAnimation[1]} />
+            {createElement(WorkFlow, { animation: currentAnimation[1] })}
           </div>
         </div>
       </div>
