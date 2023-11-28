@@ -35,8 +35,8 @@ function Details({ summary, children }: { summary: string, children: ReactNode }
 function FAQ() {
   return (
     <>
-      <Details summary="What is a testnet faucet?">
-        <p>A testnet faucet is a way for developers to receive free tokens that can be used to interact with Phat Contracts on testnets.</p>
+      <Details summary="What is the Phala Testnet Faucet?">
+        <p>A testnet faucet enables developers to receive free tokens that can be used to interact with Phat Contracts on testnets.</p>
       </Details>
       <Details summary="How do I use this?">
         <p>To request funds, simply enter your wallet address and hit “Send Me ETH”. We support wallets as received addresses but not smart contracts.</p>
@@ -45,7 +45,7 @@ function FAQ() {
         <p>You can request 0.02 Goerli ETH every 24h without any authentication. Then create a free Alchemy account to start building!</p>
       </Details>
       <Details summary="What if I run into any other issues, or have questions?">
-        <p>Join our Discord.</p>
+        <p>Join our Discord server to tap into the support of our dedicated core team and enthusiastic community members.</p>
       </Details>
     </>
   )
@@ -84,7 +84,7 @@ export default function Page() {
           <section className={cn("flex flex-col items-center mb-14 text-white")}>
             <h1 className="text-5xl font-bold mb-6">Phala Testnet Faucet</h1>
             <p className="text-xl w-2/3 text-center leading-7">
-              Phat Contract got tired of having to scrounge for testnet tokens, so we created a Multi-Chain Faucet for all of the testnet networks we support.
+              Experience hassle-free access to testnet tokens with our multi-chain faucet, designed to facilitate the use of Phat Contracts on the testnet networks we support.
             </p>
           </section>
           <AccountInfo />
