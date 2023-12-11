@@ -19,7 +19,7 @@ computationStatsAtom.onMount = (set) => {
   ;(async function () {
     const resp = await fetch('/api/computation-metrics')
     const data = await resp.json()
-    set({ ...data, tx: BigInt(data.tx) })
+    set({ ...data, tx: BigInt(data.tx), crossChainTx: data.crossChainTx || '0' })
   })()
 }
 
