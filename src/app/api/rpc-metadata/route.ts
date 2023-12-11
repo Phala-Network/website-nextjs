@@ -33,6 +33,8 @@ export async function GET(request: Request) {
     headers: {
       'content-type': 'application/json',
       'cache-control': 'public, max-age=600, s-maxage=3600, stale-while-revalidate',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS'
     },
   })
 }
