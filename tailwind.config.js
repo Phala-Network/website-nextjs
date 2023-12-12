@@ -318,6 +318,28 @@ function buttonComponents({ addComponents, theme }) {
         },
       },
 
+      [`.btn-outline`]: {
+        border: '1px solid #333',
+        borderRadius: theme('borderRadius.xl'),
+        backgroundColor: 'transparent',
+        color: '#000',
+        transitionProperty: 'background-color,transform,color',
+        transitionTimingFunction: 'linear',
+        transitionDuration: '0.3s',
+        willChange: 'background-color,transform',
+        '&:hover': {
+          backgroundColor: '#333',
+          color: '#fff',
+          transform: 'scale(0.95)',
+          transitionDuration: '0.3s',
+          transitionTimingFunction: 'ease-in-out',
+        },
+        '&:active': {
+          backgroundColor: '#333',
+          color: '#fff',
+        },
+      },
+
       [`.btn-third`]: {
         borderRadius: theme('borderRadius.xl'),
         backgroundColor: '#8544F6',

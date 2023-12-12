@@ -4,7 +4,7 @@
 }
 
 .left-phat-active-list-wrap {
-  @apply absolute justify-end left-0 bottom-[47.65%];
+  @apply absolute justify-end left-[1.8%] bottom-[47.65%];
 }
 
 .phat-list {
@@ -12,11 +12,11 @@
 }
 
 .left-phat-list {
-  @apply left-0 bottom-[47.65%];
+  @apply left-0 bottom-[47.65%] left-[1%];
 }
 
 .right-phat-list {
-  @apply right-0 top-[34.55%];
+  @apply right-0 top-[34.55%] right-[1%];
 }
 
 .phat-list .phat-list-item {
@@ -75,26 +75,17 @@
 }
 
 .left-phat-active-list-wrap .item-tags span {
-  @apply bg-green-600;
+  @apply bg-green-600 text-white;
 }
 
 .connect-button {
-  @apply bg-black-800 text-white font-bold leading-none;
-  @apply transition-colors hover:bg-black-900;
-  @apply text-[1vw] px-[3.5vw] py-[1vw] rounded-[1vw];
-  @apply xl:text-sm xl:rounded-xl xl:py-2 xl:px-10;
+  @apply btn-outline rounded-full font-semibold;
+  @apply text-[1vw] px-[3.5vw] py-[1vw];
+  @apply xl:text-sm xl:py-2 xl:px-10;
 }
 
 .right-phat-active-list-wrap {
-  @apply absolute right-0 bottom-[47.65%];
-}
-
-.right-phat-active-list-wrap .phat-list-item .item-title {
-  @apply text-white;
-}
-
-.right-phat-active-list-wrap .phat-list-item .item-info {
-  @apply text-white;
+  @apply absolute right-[-1.8%] bottom-[47.65%];
 }
 
 .right-phat-active-list-wrap .item-icon {
@@ -102,6 +93,6 @@
 }
 
 .right-phat-active-list-wrap .item-tags span {
-  @apply bg-phalaPurple-700 text-white;
+  @apply bg-phalaPurple-600 text-white;
 }
 
