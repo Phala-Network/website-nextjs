@@ -1,17 +1,23 @@
-'use client';
+'use client'
 
 import { type ReactNode } from 'react'
 
 import { useComputationStats } from '@/hooks/useComputationStats'
 import { cn } from '@/lib/utils'
 
-import Squircle from '@/components/Squircle'
-
-function Stats({ children, name }: { children: ReactNode, name: string }) {
+function Stats({ children, name, icon, className }: { children: ReactNode, icon: string, name: string, className?: string }) {
   return (
-    <div>
-      <strong className={cn("text-[10px] lg:text-lg font-semibold")}>{children}</strong>
-      <div className={cn("text-[8px] lg:text-sm text-blackAlpha-700")}>{name}</div>
+    <div className={cn(className, "flex flex-col lg:flex-row gap-4 m-auto")}>
+      <div className="drop-shadow bg-white rounded-full w-12 h-12 shrink-0 flex items-center justify-center">
+        <img
+          src={icon}
+          alt={name}
+        />
+      </div>
+      <div>
+        <strong className={cn("text-lg font-semibold")}>{children}</strong>
+        <div className={cn("text-sm text-blackAlpha-700")}>{name}</div>
+      </div>
     </div>
   )
 }
@@ -19,32 +25,19 @@ function Stats({ children, name }: { children: ReactNode, name: string }) {
 export function RealtimeStats() {
   const { onlineWorkers, vCpu, crossChainTx, tx } = useComputationStats()
   return (
-    <div className="flex flex-col 3xl:flex-row gap-2 3xl:items-center 3xl:-ml-[5rem] w-full">
-      <img
-        src="/icons/gear.svg"
-        alt=""
-        className="svg-black mr-2.5 motion-safe:animate-spin untanglable w-9 h-9 invisible lg:visible lg:ml-6"
-      />
-      <Squircle
-        className="grid grid-cols-4 gap-1.5 lg:gap-4 px-4 pt-0.5 pb-1.5 lg:px-8 lg:py-2.5"
-        cornerRadius={32}
-        fill="rgba(255, 255, 255, 0.64)"
-        shadow={[
-          '0px 10px 15px rgba(0, 0, 0, 0.1)',
-          '0px 4px 6px rgba(0, 0, 0, 0.05)'
-        ]}
-      >
-        <Stats name="Online Workers">
-          {onlineWorkers.toLocaleString('en-US')}
-        </Stats>
-        <Stats name="Compute">
-          {vCpu.toLocaleString('en-US')} vCPU
-        </Stats>
-        <Stats name="Cross-Chain TX">
-          {crossChainTx.toLocaleString('en-US')}
-        </Stats>
-        <Stats name="TX">{tx.toLocaleString('en-US')}</Stats>
-      </Squircle>
+    <div
+      className="grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6 gap-6 lg:gap-1.5 lg:pb-10"
+    >
+      <Stats name="Online Workers" icon="/icons/hero-online-worker.svg">
+        {onlineWorkers.toLocaleString('en-US')}
+      </Stats>
+      <Stats name="Compute" icon="/icons/hero-compute.svg">
+        {vCpu.toLocaleString('en-US')} vCPU
+      </Stats>
+      <Stats className="2xl:col-start-5" name="Cross-Chain TX" icon="/icons/hero-cross-chain-tx.svg">
+        {crossChainTx.toLocaleString('en-US')}
+      </Stats>
+      <Stats name="TX" icon="/icons/hero-tx.svg">{tx.toLocaleString('en-US')}</Stats>
     </div>
   )
 }
