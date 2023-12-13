@@ -97,8 +97,8 @@ function SupportedChains() {
 export function SectionHero() {
   return (
     <section
-      id="section-hero"
       className={cn(
+        "section-hero",
         "w-full max-w-[1760px] mx-auto lg:px-10 3xl:px-0",
         "grid gap-4 grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 grid-rows-1",
       )}
