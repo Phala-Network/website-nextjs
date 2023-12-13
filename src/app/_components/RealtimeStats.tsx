@@ -15,8 +15,8 @@ function Stats({ children, name, icon, className }: { children: ReactNode, icon:
         />
       </div>
       <div>
-        <strong className={cn("text-lg font-semibold")}>{children}</strong>
-        <div className={cn("text-sm text-blackAlpha-700")}>{name}</div>
+        <strong className={cn("stats-text-shadow text-lg font-semibold")}>{children}</strong>
+        <div className={cn("stats-text-shadow text-sm text-blackAlpha-700")}>{name}</div>
       </div>
     </div>
   )
