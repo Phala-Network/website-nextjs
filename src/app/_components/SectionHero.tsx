@@ -54,27 +54,27 @@ function SupportedChains() {
         <img
           src="/home/Ethereum.png"
           alt="Ethereum"
-          className="w-16 h-16 opacity-80 m-auto"
+          className="w-16 h-16 opacity-80 m-auto pointer-events-none"
         />
         <img
           src="/home/Bnbchain.png"
           alt="Bnbchain"
-          className="w-16 h-16 opacity-80 m-auto"
+          className="w-16 h-16 opacity-80 m-auto pointer-events-none"
         />
         <img
           src="/home/Moonbean.png"
           alt="Moonbean"
-          className="w-16 h-16 opacity-80 m-auto"
+          className="w-16 h-16 opacity-80 m-auto pointer-events-none"
         />
         <img
           src="/home/Arbittrum.png"
           alt="Arbittrum"
-          className="w-16 h-16 opacity-80 m-auto"
+          className="w-16 h-16 opacity-80 m-auto pointer-events-none"
         />
         <img
           src="/home/Astar.png"
           alt="Astar"
-          className="w-16 h-16 opacity-80 m-auto"
+          className="w-16 h-16 opacity-80 m-auto pointer-events-none"
         />
       </div>
       <div className="col-start-1 col-span-full flex justify-center items-center mt-10">
