@@ -10,6 +10,7 @@ function Stats({ children, name, icon, className }: { children: ReactNode, icon:
     <div className={cn(className, "flex flex-col lg:flex-row gap-4 m-auto")}>
       <div className="drop-shadow bg-white rounded-full w-12 h-12 shrink-0 flex items-center justify-center">
         <img
+          className="pointer-events-none"
           src={icon}
           alt={name}
         />
