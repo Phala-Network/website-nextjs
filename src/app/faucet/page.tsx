@@ -5,19 +5,6 @@ import { AccountInfo, SponsorList } from './_components/Claim'
 
 import './style.css'
 
-function Section({ className, children }: { className?: string, children: ReactNode }) {
-  return (
-    <section
-      className={cn(
-        "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 text-white",
-        className,
-      )}
-    >
-      {children}
-    </section>
-  )
-}
-
 function Details({ summary, children }: { summary: string, children: ReactNode }) {
   return (
     <details className="faucet-details">
@@ -49,6 +36,10 @@ function FAQ() {
       </Details>
     </>
   )
+}
+
+export const metadata = {
+  title: 'Phala Testnet Faucet',
 }
 
 export default function Page() {
