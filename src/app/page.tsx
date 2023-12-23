@@ -1144,8 +1144,6 @@ export default async function Home() {
 
   return (
     <>
-      <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
-      <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
       <SectionHero />
       <SectionFeatures
         default_list={default_list}
