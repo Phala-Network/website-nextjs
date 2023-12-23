@@ -663,7 +663,7 @@ export function SponsorList() {
   return (
     <section
       className={cn(
-        "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 text-white shadow-xl",
+        "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 text-white",
       )}
     >
       <header>
