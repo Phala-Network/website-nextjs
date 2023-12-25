@@ -10,13 +10,14 @@ function Stats({ children, name, icon, className }: { children: ReactNode, icon:
     <div className={cn(className, "flex flex-col lg:flex-row gap-4 m-auto")}>
       <div className="drop-shadow bg-white rounded-full w-12 h-12 shrink-0 flex items-center justify-center">
         <img
+          className="pointer-events-none"
           src={icon}
           alt={name}
         />
       </div>
       <div>
-        <strong className={cn("text-lg font-semibold")}>{children}</strong>
-        <div className={cn("text-sm text-blackAlpha-700")}>{name}</div>
+        <strong className={cn("stats-text-shadow text-lg font-semibold")}>{children}</strong>
+        <div className={cn("stats-text-shadow text-sm text-blackAlpha-700")}>{name}</div>
       </div>
     </div>
   )
