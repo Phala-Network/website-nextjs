@@ -266,7 +266,7 @@ export default function() {
             transition: { duration: 0.8 },
           }}
         >
-          <Image alt="phat" src={ImagePhat} />
+          <Image className="pointer-events-none" alt="phat" src={ImagePhat} />
         </motion.div>
         <motion.div
           initial={{
@@ -281,7 +281,7 @@ export default function() {
             transition: { duration: 0.8 },
           }}
         >
-          <Image alt="plug" src={ImagePlug} />
+          <Image className="pointer-events-none" alt="plug" src={ImagePlug} />
         </motion.div>
         <motion.div
           initial={{
@@ -296,7 +296,7 @@ export default function() {
             transition: { duration: 0.8 },
           }}
         >
-          <Image alt="programmable" src={ImageProgrammable} />
+          <Image className="pointer-events-none" alt="programmable" src={ImageProgrammable} />
         </motion.div>
         <motion.div
           initial={{
@@ -311,7 +311,7 @@ export default function() {
             transition: { duration: 0.8 },
           }}
         >
-          <Image alt="verifiable" src={ImageVerifiable} />
+          <Image className="pointer-events-none" alt="verifiable" src={ImageVerifiable} />
         </motion.div>
       </div>
       <div
