@@ -67,11 +67,7 @@ const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet', phatRegistryAto
 
 const contractAtom = atomWithPhatContract<PhatFaucetContract>({
   contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
-  loadAbi: async () => {
-    const response = await fetch('/phala_faucet.json')
-    const abi = await response.text()
-    return abi
-  }
+  loadAbi: () => fetch('/phala_faucet.json').then(resp => resp.text())
 }, phatRegistryAtom)
 
 //
