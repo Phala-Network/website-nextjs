@@ -1,21 +1,13 @@
 'use client'
 
 import React, { useState, type ReactNode } from 'react'
-import { atom, useAtom, useSetAtom, useAtomValue, type Getter } from 'jotai'
+import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai'
 import type { Struct, Vec, u8, u128, Result, Enum } from '@polkadot/types'
 import {
-  getClient,
-  getContract,
-  EvmAccountMappingProvider,
-  UIKeyringProvider,
-  type AnyProvider,
   type PinkContractPromise,
   type PinkContractQuery,
   type PinkContractTx,
-  type InjectedAccount,
 } from '@phala/sdk'
-import { createWalletClient, custom } from 'viem'
-import { mainnet } from 'viem/chains'
 import { FiSearch, FiLoader } from 'react-icons/fi'
 import { LuX } from "react-icons/lu"
 import Identicon from '@polkadot/react-identicon'
@@ -27,234 +19,11 @@ import {
   DialogClose,
 } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
-import { atomWithStorage } from 'jotai/utils'
 
+import { atomWithClient } from '@/lib/phala-web/atomWithClient'
+import { atomWithInjectedWallet } from '@/lib/phala-web/atomWithInjectedWallet'
+import { atomWithPhatContract } from '@/lib/phala-web/atomWithPhatContract'
 
-///
-
-type ConnectState<TInstance = unknown> = {
-  connected: false
-  connecting: false
-  instance?: null | undefined
-} | {
-  connected: false
-  connecting: true
-  instance?: null | undefined
-} | {
-  connected: true
-  connecting: false
-  instance: TInstance
-}
-
-interface AtomWithConnectStateOptions {
-  autoConnect?: boolean
-}
-
-function atomWithConnectState<
-  T
->(
-  connect: (get: Getter) => Promise<T | undefined | null>,
-  options?: AtomWithConnectStateOptions
-) {
-  const innerAtom = atom<ConnectState<T>>({ connected: false, connecting: false, instance: null })
-  const outerAtom = atom(
-    get => get(innerAtom),
-    async (get, set, action: { type: 'connect' }) => {
-      if (action.type === 'connect') {
-        set(innerAtom, { connected: false, connecting: true, instance: null })
-        const instance = await connect(get)
-        if (!instance) {
-          set(innerAtom, { connected: false, connecting: false, instance: null })
-        } else {
-          set(innerAtom, { connected: true, connecting: false, instance })
-        }
-      }
-    }
-  )
-  if (options?.autoConnect) {
-    outerAtom.onMount = (set) => {
-      if (typeof window !== 'undefined') {
-        set({ type: 'connect' })
-      }
-    }
-  }
-  return outerAtom
-}
-
-///
-
-const phatRegistryAtom = atomWithConnectState(
-  async () => {
-    const rpc = process.env.NEXT_PUBLIC_FAUCET_RPC!
-    const metadata = await fetch(`/api/rpc-metadata?rpc=${rpc}`).then(res => res.json()) as Record<string, `0x${string}`>
-    return await getClient({ transport: rpc, metadata })
-  },
-  { autoConnect: true }
-)
-
-//
-//
-//
-
-type Wallet = Awaited<ReturnType<typeof UIKeyringProvider.getSupportedWallets>>[number] & {
-  installed?: boolean
-  version?: string
-}
-
-interface InjectedWallet {
-  wallets: Wallet[]
-  accounts: InjectedAccount[]
-  provider: AnyProvider | null
-  lastSelectedWallet: string | null
-  lastSelectedAccount: string | null
-  isReady: boolean
-}
-
-type InjectedWalletActions =
-  { type: 'setWallet', walletName: string }
-  | { type: 'setPolkadotAccount', account: InjectedAccount }
-  | { type: 'signinWithEthereum' }
-  | { type: 'preload' }
-  | { type: 'restore' }
-
-function atomWithInjectedWallet(appName: string) {
-  //
-  // internal atoms.
-  //
-  const walletsAtom = atomWithConnectState(
-    () => UIKeyringProvider.getSupportedWallets(),
-    { autoConnect: true }
-  )
-
-  const selectedWalletKeyAtom = atom('')
-
-  const injectedAccountsAtom = atom<InjectedAccount[]>([])
-
-  const currentProviderAtom = atom<AnyProvider | null>(null)
-
-  const lastSelectedAtom = atomWithStorage<{
-    wallet: string | null
-    account: string | null
-  }>(`${appName}::last-selected`, { wallet: null, account: null })
-
-  //
-
-  const _injectedWalletAtom = atom(
-    get => {
-      const lastSelected = get(lastSelectedAtom)
-      const wallets = get(walletsAtom).instance || []
-      const accounts = get(injectedAccountsAtom)
-      const provider = get(currentProviderAtom)
-      return {
-        wallets,
-        accounts,
-        provider,
-        lastSelectedWallet: lastSelected.wallet,
-        lastSelectedAccount: lastSelected.account,
-        isReady: !!provider,
-      } as InjectedWallet
-    },
-    async (get, set, action: InjectedWalletActions) => {
-
-      if (action.type === 'preload') {
-        const seed = setInterval(async () => {
-          const injectedWallets = get(walletsAtom)
-          const registry = get(phatRegistryAtom)
-          const selected = get(lastSelectedAtom)
-          if (!injectedWallets.connected || !registry.connected) {
-            return
-          }
-          clearInterval(seed)
-
-          if (selected.wallet) {
-            const wallet = injectedWallets.instance.find(wallet => wallet.key === selected.wallet)
-            if (wallet) {
-              const accounts = await UIKeyringProvider.getAllAccountsFromProvider(appName, wallet?.key ?? '')
-              set(selectedWalletKeyAtom, wallet.key)
-              set(injectedAccountsAtom, accounts)
-            }
-          }
-        }, 500)
-        return
-      }
-
-      const injectedWallets = get(walletsAtom)
-      if (!injectedWallets.connected) {
-        console.error('injectedPolkadotWallets not connected')
-        return
-      }
-      const registry = get(phatRegistryAtom)
-      if (!registry.connected) {
-        console.error('registry not connected')
-        return
-      }
-
-      if (action.type === 'restore') {
-        const selected = get(lastSelectedAtom)
-        if (!selected.wallet || !selected.account) {
-          console.error('no last selected wallet/account')
-          return
-        }
-        if (selected.wallet === 'ethereum') {
-          const client = createWalletClient({ chain: mainnet, transport: custom((window as any).ethereum) })
-          const [address] = await client.requestAddresses()
-          const instance = await EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
-          await new Promise(resolve => setTimeout(resolve, 400))
-          await instance.signCertificate()
-          set(currentProviderAtom, instance)
-        } else {
-          const accounts = get(injectedAccountsAtom)
-          const account = accounts.find(account => account.address === selected.account)
-          if (account) {
-            const instance = await UIKeyringProvider.create(registry.instance!.api, appName, selected.wallet, account)
-            await instance.signCertificate()
-            set(currentProviderAtom, instance)
-          }
-        }
-      }
-      else if (action.type === 'setWallet') {
-        const wallet = injectedWallets.instance.find(wallet => wallet.name === action.walletName)
-        if (!wallet) {
-          console.error('wallet not found')
-          return
-        }
-        const accounts = await UIKeyringProvider.getAllAccountsFromProvider(appName, wallet?.key ?? '')
-        set(selectedWalletKeyAtom, wallet.key)
-        set(injectedAccountsAtom, accounts)
-      }
-      else if (action.type === 'setPolkadotAccount') {
-        const walletKey = get(selectedWalletKeyAtom)
-        const instance = await UIKeyringProvider.create(registry.instance!.api, appName, walletKey, action.account)
-        await instance.signCertificate()
-        set(currentProviderAtom, instance)
-        set(lastSelectedAtom, { wallet: walletKey, account: action.account.address })
-      }
-      else if (action.type === 'signinWithEthereum') {
-        const client = createWalletClient({ chain: mainnet, transport: custom((window as any).ethereum) })
-        const [address] = await client.requestAddresses()
-        const instance = await EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
-        await new Promise(resolve => setTimeout(resolve, 400))
-        await instance.signCertificate()
-        set(currentProviderAtom, instance)
-        set(lastSelectedAtom, { wallet: 'ethereum', account: address })
-      } else {
-        throw new Error(`Unknown action: ${action}`)
-      }
-    }
-  )
-
-  _injectedWalletAtom.onMount = (set) => {
-    set({ type: 'preload' })
-  }
-
-  return _injectedWalletAtom
-}
-
-const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet')
-
-//
-//
-//
 
 interface FaucetResult extends Struct {
   txId: Vec<u8>
@@ -291,22 +60,23 @@ type PhatFaucetContract = PinkContractPromise<{
   saveProvenScore: PinkContractTx<[LiteralProvenResult]>
 }>
 
-const contractAtom = atomWithConnectState(
-  async (get) => {
-    const registryState = get(phatRegistryAtom)
-    if (!registryState.connected) {
-      console.error('registry not connected')
-      return
-    }
+
+const phatRegistryAtom = atomWithClient(process.env.NEXT_PUBLIC_FAUCET_RPC!)
+
+const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet', phatRegistryAtom)
+
+const contractAtom = atomWithPhatContract<PhatFaucetContract>({
+  contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
+  loadAbi: async () => {
     const response = await fetch('/phala_faucet.json')
     const abi = await response.text()
-    return await getContract({
-      client: registryState.instance,
-      contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
-      abi,
-    }) as PhatFaucetContract
+    return abi
   }
-)
+}, phatRegistryAtom)
+
+//
+//
+//
 
 interface AccountClaimState {
   balance: number
