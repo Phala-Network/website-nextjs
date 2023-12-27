@@ -6,8 +6,8 @@ import type { Struct, Vec, u8, u128, Result, Enum } from '@polkadot/types'
 import {
   getClient,
   getContract,
-  unstable_EvmAccountMappingProvider,
-  unstable_UIKeyringProvider,
+  EvmAccountMappingProvider,
+  UIKeyringProvider,
   type AnyProvider,
   type PinkContractPromise,
   type PinkContractQuery,
@@ -90,7 +90,7 @@ const phatRegistryAtom = atomWithConnectState(
 //
 //
 
-type Wallet = Awaited<ReturnType<typeof unstable_UIKeyringProvider.getSupportedWallets>>[number] & {
+type Wallet = Awaited<ReturnType<typeof UIKeyringProvider.getSupportedWallets>>[number] & {
   installed?: boolean
   version?: string
 }
@@ -111,7 +111,7 @@ function atomWithInjectedWallet(appName: string) {
   // internal atoms.
   //
   const walletsAtom = atomWithConnectState(
-    () => unstable_UIKeyringProvider.getSupportedWallets(),
+    () => UIKeyringProvider.getSupportedWallets(),
     { autoConnect: true }
   )
 
@@ -147,19 +147,19 @@ function atomWithInjectedWallet(appName: string) {
           console.error('wallet not found')
           return
         }
-        const accounts = await unstable_UIKeyringProvider.getAllAccountsFromProvider(appName, wallet?.key ?? '')
+        const accounts = await UIKeyringProvider.getAllAccountsFromProvider(appName, wallet?.key ?? '')
         set(selectedWalletKeyAtom, wallet.key)
         set(injectedAccountsAtom, accounts)
       }
       else if (action.type === 'setPolkadotAccount') {
-        const instance = await unstable_UIKeyringProvider.create(registry.instance!.api, appName, get(selectedWalletKeyAtom), action.account)
+        const instance = await UIKeyringProvider.create(registry.instance!.api, appName, get(selectedWalletKeyAtom), action.account)
         await instance.signCertificate()
         set(currentProviderAtom, instance)
       }
       else if (action.type === 'signinWithEthereum') {
         const client = createWalletClient({ chain: mainnet, transport: custom((window as any).ethereum) })
         const [address] = await client.requestAddresses()
-        const instance = await unstable_EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
+        const instance = await EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
         await new Promise(resolve => setTimeout(resolve, 400))
         await instance.signCertificate()
         set(currentProviderAtom, instance)
@@ -364,7 +364,7 @@ function SponsorDetailModal() {
                   const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
                   const { output: result } = await contract.query.runProvenScript(cert.address, { cert }, currentSponsor.js_code, evmCaller)
                   if (result.isOk && result.asOk.isOk && result.asOk.asOk.result.toNumber() > 0) {
-                    await contract.send.saveProvenScore({ address: cert.address, cert, unstable_provider: provider }, result.asOk.asOk)
+                    await contract.send.saveProvenScore({ address: cert.address, cert, provider }, result.asOk.asOk)
                     return
                   }
                 } finally {
@@ -414,7 +414,7 @@ function SponsorItem({ info }: { info: ProvenItem }) {
               const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
               const { output: result } = await contract.query.runProvenScript(cert.address, { cert }, info.js_code, evmCaller)
               if (result.isOk && result.asOk.isOk && result.asOk.asOk.result.toNumber() > 0) {
-                await contract.send.saveProvenScore({ address: cert.address, cert, unstable_provider: provider }, result.asOk.asOk)
+                await contract.send.saveProvenScore({ address: cert.address, cert, provider }, result.asOk.asOk)
                 return
               }
             } finally {
