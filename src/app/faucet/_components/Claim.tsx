@@ -815,7 +815,7 @@ export function AccountInfo() {
             </div>
           </div>
           {(provider.name === 'evmAccountMapping') ? (
-            <div className="mt-2 text-sm text-gray-300">Mapped to Ethereum Address <code className="ml-1.5">{provider.evmAccount.address}</code></div>
+            <div className="mt-2 text-sm text-gray-300">Mapping from Ethereum Address <code className="ml-1.5">{provider.evmAccount.address}</code></div>
           ) : null}
           {(result && result[0]) ? (
             <div className="mt-6 bg-phatGreen-600 p-4 rounded-xl">
