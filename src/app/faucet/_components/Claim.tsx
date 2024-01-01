@@ -68,7 +68,7 @@ const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet', phatRegistryAto
 const contractAtom = atomWithPhatContract<PhatFaucetContract>({
   contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
   loadAbi: () => fetch('/phala_faucet.json').then(resp => resp.text())
-}, phatRegistryAtom)
+}, phatRegistryAtom, injectedWalletAtom)
 
 //
 //
@@ -115,13 +115,11 @@ const claimAtom = atom(
     const contract = contractState.instance
 
     if (action.type === 'claim') {
-      const cert = await provider.signCertificate()
       const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
-      const { output: result } = await contract.query.claim(cert.address, { cert }, evmCaller)
+      const { output: result } = await contract.q.claim<Result<FaucetResult, FhatFaucetError>>({ args: [evmCaller] })
       return result
     } else if (action.type === 'update') {
-      const cert = await provider.signCertificate()
-      const { output: result } = await contract.query.getProvenScore(cert.address, { cert })
+      const { output: result } = await contract.q.getProvenScore<Result<u128, FaucetResult>>()
       const account = await phatRegistry.api.query.system.account<PartialAccountQueryResult>(provider.address)
       set(accountClaimStateAtom, { balance: Number(account.data.free.toBigInt() / BigInt(1e12)), score: result.asOk.asOk.toNumber() })
     }
@@ -207,11 +205,10 @@ function SponsorDetailModal() {
                     return
                   }
                   const contract = contractState.instance
-                  const cert = await provider.signCertificate()
                   const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
-                  const { output: result } = await contract.query.runProvenScript(cert.address, { cert }, currentSponsor.js_code, evmCaller)
+                  const { output: result } = await contract.q.runProvenScript<Result<ProvenResult, FhatFaucetError>>({ args: [currentSponsor.js_code, evmCaller] })
                   if (result.isOk && result.asOk.isOk && result.asOk.asOk.result.toNumber() > 0) {
-                    await contract.send.saveProvenScore({ address: cert.address, cert, provider }, result.asOk.asOk)
+                    await contract.exec.saveProvenScore({args: [result.asOk.asOk] })
                     return
                   }
                 } finally {
@@ -257,11 +254,10 @@ function SponsorItem({ info }: { info: ProvenItem }) {
                 return
               }
               const contract = contractState.instance
-              const cert = await provider.signCertificate()
               const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
-              const { output: result } = await contract.query.runProvenScript(cert.address, { cert }, info.js_code, evmCaller)
+              const { output: result } = await contract.q.runProvenScript<Result<ProvenResult, FhatFaucetError>>({ args: [info.js_code, evmCaller]})
               if (result.isOk && result.asOk.isOk && result.asOk.asOk.result.toNumber() > 0) {
-                await contract.send.saveProvenScore({ address: cert.address, cert, provider }, result.asOk.asOk)
+                await contract.exec.saveProvenScore({ args: [ result.asOk.asOk ] })
                 return
               }
             } finally {

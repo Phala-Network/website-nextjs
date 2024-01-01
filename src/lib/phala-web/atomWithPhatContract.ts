@@ -1,6 +1,7 @@
 import { getContract, type AbiLike } from '@phala/sdk'
 
 import { type ClientAtom } from './atomWithClient'
+import { type InjectedWalletAtom } from './atomWithInjectedWallet'
 import { atomWithConnectState } from './atomWithConnectState'
 
 export interface AtomWithPhatContractOptions {
@@ -8,11 +9,12 @@ export interface AtomWithPhatContractOptions {
   loadAbi: () => Promise<AbiLike>
 }
 
-export function atomWithPhatContract<T>(options: AtomWithPhatContractOptions, clientAtom: ClientAtom) {
+export function atomWithPhatContract<T>(options: AtomWithPhatContractOptions, clientAtom: ClientAtom, walletAtom: InjectedWalletAtom) {
   return atomWithConnectState<T>(
     async (get) => {
       const clientState = get(clientAtom)
-      if (!clientState.connected) {
+      const injectedWallet = get(walletAtom)
+      if (!clientState.connected || !injectedWallet.isReady || !injectedWallet.provider) {
         console.error('registry not connected')
         return
       }
@@ -21,6 +23,7 @@ export function atomWithPhatContract<T>(options: AtomWithPhatContractOptions, cl
         client: clientState.instance,
         contractId: options.contractId,
         abi,
+        provider: injectedWallet.provider,
       }) as T
     }
   )
