@@ -1,4 +1,4 @@
-import { atom } from 'jotai'
+import { atom, type WritableAtom } from 'jotai'
 import {
   EvmAccountMappingProvider,
   UIKeyringProvider,
@@ -33,6 +33,8 @@ type InjectedWalletActions =
   | { type: 'signinWithEthereum' }
   | { type: 'preload' }
   | { type: 'restore' }
+
+export type InjectedWalletAtom = WritableAtom<InjectedWallet, [InjectedWalletActions], Promise<void>>
 
 export function atomWithInjectedWallet(appName: string, clientAtom: ClientAtom) {
   //
