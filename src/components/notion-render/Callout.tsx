@@ -15,7 +15,7 @@ const Callout = ({
   const block = useAtomValue(theAtom) as CalloutBlockObjectResponse
   return (
     <div className="notion_callout">
-      <div className="notion_callout_emoji">
+      <div className="notion_callout_emoji text-xl mt-0.5">
         {block.callout.icon?.type === 'emoji' ? block.callout.icon.emoji : ''}
       </div>
       <div className="notion_callout_text">
