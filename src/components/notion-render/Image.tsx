@@ -8,21 +8,20 @@ import RichText from './RichText'
 const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
   const block = useAtomValue(theAtom) as ImageBlockObjectResponse
   const imageUrl = buildProxyImageUrl(block)
+  const caption = block.image.caption?.[0]?.plain_text ?? ''
   return (
     <div className="notion_image_container">
       <figure>
         <img
           className="m-auto"
           src={imageUrl}
-          alt={
-            block.image.caption && block.image.caption.length > 0
-              ? block.image.caption[0].plain_text
-              : ''
-          }
+          alt={caption}
         />
-        <figcaption className="notion_caption">
-          {block.image.caption && <RichText rich_text={block.image.caption} />}
-        </figcaption>
+        {caption && (
+          <figcaption className="notion_caption">
+            <RichText rich_text={block.image.caption} />
+          </figcaption>
+        )}
       </figure>
     </div>
   )
