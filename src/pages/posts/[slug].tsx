@@ -311,6 +311,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       },
     },
     {
+      property: 'Tags',
+      multi_select: {
+        does_not_contain: 'Changelog',
+      },
+    },
+    {
       property: 'Custom URL',
       rich_text: {
         does_not_equal: page.slug,
