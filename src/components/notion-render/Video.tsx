@@ -28,7 +28,13 @@ const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
   }, [block])
   return (
     <div className="notion_video_container">
-      {provider === 'youtube' ? (<LiteYouTubeEmbed id={id} title="" />) : null}
+      {provider === 'youtube' ? (
+        <LiteYouTubeEmbed
+          id={id}
+          title=""
+          poster="sddefault"
+        />
+      ) : null}
       {provider === null ? (<video controls src={id} className={`notion_video`} />) : null}
       {
         provider === 'loom' ? (
