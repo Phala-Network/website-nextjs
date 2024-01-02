@@ -157,7 +157,9 @@ const PostPage = ({
                     {dayjs(page.publishedTime).format('YYYY-MM-DD')}
                   </p>
                 </div>
-                <div className="text-base">{page.blocks.map(render_block)}</div>
+                <main className="prose max-w-full">
+                  {page.blocks.map(render_block)}
+                </main>
                 <div className="grid grid-cols-2 text-sm text-green-800 mt-8">
                   {beforePages.length > 0 ? (
                     <a
@@ -308,6 +310,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       property: 'Post Type',
       select: {
         equals: 'Post',
+      },
+    },
+    {
+      property: 'Tags',
+      multi_select: {
+        does_not_contain: 'Changelog',
       },
     },
     {

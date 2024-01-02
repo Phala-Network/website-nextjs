@@ -16,7 +16,7 @@ const Table = ({ theAtom }: { theAtom: BlockAtom }) => {
           if (row) {
             return (
               <tr
-                key={row.id}
+                key={row.id || `${block.id}-${i}`}
                 className={
                   has_column_header && i === 0 ? 'notion_table_header' : ''
                 }
@@ -26,7 +26,7 @@ const Table = ({ theAtom }: { theAtom: BlockAtom }) => {
                   if (cell) {
                     return (
                       <td
-                        key={cell.id}
+                        key={cell.id || `${block.id}-${i}-${j}`}
                         className={`notion_table_cell ${
                           has_row_header && i === 0 ? 'notion_table_header' : ''
                         }`}
