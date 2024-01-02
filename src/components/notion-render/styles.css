@@ -92,14 +92,6 @@
   color: #6e7681;
 }
 
-.notion_callout {
-  padding: 1rem;
-  border-radius: 3px;
-  border: 1px solid #eaecef;
-  background-color: #f9fafb;
-  margin: 0 0 1.5rem;
-}
-
 .notion_table,
 .notion_table_row,
 .notion_table_cell {
@@ -124,10 +116,10 @@
   padding: 1rem;
   border-radius: 3px;
   border: 1px solid #eaecef;
-  background-color: lightgrey;
+  background-color: #f1f1ef;
   margin: 1.5rem 0 1.5rem 0;
   display: flex;
-  align-items: center;
+  align-items: top;
 }
 
 .notion_callout_emoji {
