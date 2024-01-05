@@ -48,46 +48,47 @@ export default function Page() {
     <>
       <link rel="prefetch" href={`/api/rpc-metadata?rpc=${rpc}`} as="document" />
       <link rel="preconnect" href={`${rpc}`} />
-      <div
-        className={cn(
-          "safe-viewport",
-          "grid gap-x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
-          "py-16 xl:py-32",
-          "bg-gray-900",
-        )}
-      >
+      <div className="bg-gray-900 w-full">
         <div
           className={cn(
-            "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 row-start-1",
-            "px-1",
-            "select-none pointer-event-none",
+            "safe-viewport",
+            "grid gap-x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
+            "py-16 xl:py-32",
           )}
         >
-          <img src="/illustrations/faucet/bg.jpg" alt="" className="rounded-xl shadow-xl overflow-hidden" />
-        </div>
-        <main
-          className={cn(
-            "col-span-full xl:col-start-3 xl:col-span-16 3xl:col-start-5 3xl:col-span-16 row-start-1",
-            "mt-20 z-[2] flex flex-col gap-6",
-            "faucet",
-          )}
-        >
-          <section className={cn("flex flex-col items-center mb-14 text-white")}>
-            <h1 className="text-5xl font-bold mb-6">Phala Testnet Faucet</h1>
-            <p className="text-xl w-2/3 text-center leading-7">
-              Experience hassle-free access to testnet tokens with our multi-chain faucet, designed to facilitate the use of Phat Contracts on the testnet networks we support.
-            </p>
-          </section>
-          <AccountInfo />
-          <SponsorList />
-          <section
+          <div
             className={cn(
-              "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 pt-2 text-white",
+              "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 row-start-1",
+              "px-1",
+              "select-none pointer-event-none",
             )}
           >
-            <FAQ />
-          </section>
-        </main>
+            <img src="/illustrations/faucet/bg.jpg" alt="" className="rounded-xl shadow-xl overflow-hidden" />
+          </div>
+          <main
+            className={cn(
+              "col-span-full xl:col-start-3 xl:col-span-16 3xl:col-start-5 3xl:col-span-16 row-start-1",
+              "mt-20 z-[2] flex flex-col gap-6",
+              "faucet",
+            )}
+          >
+            <section className={cn("flex flex-col items-center mb-14 text-white")}>
+              <h1 className="text-5xl font-bold mb-6">Phala Testnet Faucet</h1>
+              <p className="text-xl w-2/3 text-center leading-7">
+                Experience hassle-free access to testnet tokens with our multi-chain faucet, designed to facilitate the use of Phat Contracts on the testnet networks we support.
+              </p>
+            </section>
+            <AccountInfo />
+            <SponsorList />
+            <section
+              className={cn(
+                "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 pt-2 text-white",
+              )}
+            >
+              <FAQ />
+            </section>
+          </main>
+        </div>
       </div>
     </>
   )

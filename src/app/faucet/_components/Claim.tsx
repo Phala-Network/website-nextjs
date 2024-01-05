@@ -1,179 +1,29 @@
 'use client'
 
 import React, { useState, type ReactNode } from 'react'
-import { atom, useAtom, useSetAtom, useAtomValue, type Getter } from 'jotai'
+import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai'
 import type { Struct, Vec, u8, u128, Result, Enum } from '@polkadot/types'
 import {
-  getClient,
-  getContract,
-  unstable_EvmAccountMappingProvider,
-  unstable_UIKeyringProvider,
-  type AnyProvider,
   type PinkContractPromise,
   type PinkContractQuery,
   type PinkContractTx,
-  type InjectedAccount,
 } from '@phala/sdk'
-import { createWalletClient, custom } from 'viem'
-import { mainnet } from 'viem/chains'
 import { FiSearch, FiLoader } from 'react-icons/fi'
+import { LuX } from "react-icons/lu"
+import Identicon from '@polkadot/react-identicon'
 import {
   Dialog,
+  DialogHeader,
+  DialogTitle,
   DialogContent,
+  DialogClose,
 } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
 
+import { atomWithClient } from '@/lib/phala-web/atomWithClient'
+import { atomWithInjectedWallet } from '@/lib/phala-web/atomWithInjectedWallet'
+import { atomWithPhatContract } from '@/lib/phala-web/atomWithPhatContract'
 
-///
-
-type ConnectState<TInstance = unknown> = {
-  connected: false
-  connecting: false
-  instance?: null | undefined
-} | {
-  connected: false
-  connecting: true
-  instance?: null | undefined
-} | {
-  connected: true
-  connecting: false
-  instance: TInstance
-}
-
-interface AtomWithConnectStateOptions {
-  autoConnect?: boolean
-}
-
-function atomWithConnectState<
-  T
->(
-  connect: (get: Getter) => Promise<T | undefined | null>,
-  options?: AtomWithConnectStateOptions
-) {
-  const innerAtom = atom<ConnectState<T>>({ connected: false, connecting: false, instance: null })
-  const outerAtom = atom(
-    get => get(innerAtom),
-    async (get, set, action: { type: 'connect' }) => {
-      if (action.type === 'connect') {
-        set(innerAtom, { connected: false, connecting: true, instance: null })
-        const instance = await connect(get)
-        if (!instance) {
-          set(innerAtom, { connected: false, connecting: false, instance: null })
-        } else {
-          set(innerAtom, { connected: true, connecting: false, instance })
-        }
-      }
-    }
-  )
-  if (options?.autoConnect) {
-    outerAtom.onMount = (set) => {
-      if (typeof window !== 'undefined') {
-        set({ type: 'connect' })
-      }
-    }
-  }
-  return outerAtom
-}
-
-///
-
-const phatRegistryAtom = atomWithConnectState(
-  async () => {
-    const rpc = process.env.NEXT_PUBLIC_FAUCET_RPC!
-    const metadata = await fetch(`/api/rpc-metadata?rpc=${rpc}`).then(res => res.json()) as Record<string, `0x${string}`>
-    return await getClient({ transport: rpc, metadata })
-  },
-  { autoConnect: true }
-)
-
-//
-//
-//
-
-type Wallet = Awaited<ReturnType<typeof unstable_UIKeyringProvider.getSupportedWallets>>[number] & {
-  installed?: boolean
-  version?: string
-}
-
-interface InjectedWallet {
-  wallets: Wallet[]
-  accounts: InjectedAccount[]
-  provider: AnyProvider | null
-}
-
-type InjectedWalletActions =
-  { type: 'setWallet', walletName: string }
-  | { type: 'setPolkadotAccount', account: InjectedAccount }
-  | { type: 'signinWithEthereum' }
-
-function atomWithInjectedWallet(appName: string) {
-  //
-  // internal atoms.
-  //
-  const walletsAtom = atomWithConnectState(
-    () => unstable_UIKeyringProvider.getSupportedWallets(),
-    { autoConnect: true }
-  )
-
-  const selectedWalletKeyAtom = atom('')
-
-  const injectedAccountsAtom = atom<InjectedAccount[]>([])
-
-  const currentProviderAtom = atom<AnyProvider | null>(null)
-
-  //
-
-  const _injectedWalletAtom = atom(
-    get => ({
-      wallets: get(walletsAtom).instance || [],
-      accounts: get(injectedAccountsAtom),
-      provider: get(currentProviderAtom),
-    } as InjectedWallet),
-    async (get, set, action: InjectedWalletActions) => {
-      const injectedWallets = get(walletsAtom)
-      if (!injectedWallets.connected) {
-        console.error('injectedPolkadotWallets not connected')
-        return
-      }
-      const registry = get(phatRegistryAtom)
-      if (!registry.connected && (action.type === 'signinWithEthereum' || action.type === 'setPolkadotAccount')) {
-        console.error('registry not connected')
-        return
-      }
-
-      if (action.type === 'setWallet') {
-        const wallet = injectedWallets.instance.find(wallet => wallet.name === action.walletName)
-        if (!wallet) {
-          console.error('wallet not found')
-          return
-        }
-        const accounts = await unstable_UIKeyringProvider.getAllAccountsFromProvider(appName, wallet?.key ?? '')
-        set(selectedWalletKeyAtom, wallet.key)
-        set(injectedAccountsAtom, accounts)
-      }
-      else if (action.type === 'setPolkadotAccount') {
-        const instance = await unstable_UIKeyringProvider.create(registry.instance!.api, appName, get(selectedWalletKeyAtom), action.account)
-        await instance.signCertificate()
-        set(currentProviderAtom, instance)
-      }
-      else if (action.type === 'signinWithEthereum') {
-        const client = createWalletClient({ chain: mainnet, transport: custom((window as any).ethereum) })
-        const [address] = await client.requestAddresses()
-        const instance = await unstable_EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
-        await new Promise(resolve => setTimeout(resolve, 400))
-        await instance.signCertificate()
-        set(currentProviderAtom, instance)
-      }
-    }
-  )
-  return _injectedWalletAtom
-}
-
-const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet')
-
-//
-//
-//
 
 interface FaucetResult extends Struct {
   txId: Vec<u8>
@@ -210,22 +60,19 @@ type PhatFaucetContract = PinkContractPromise<{
   saveProvenScore: PinkContractTx<[LiteralProvenResult]>
 }>
 
-const contractAtom = atomWithConnectState(
-  async (get) => {
-    const registryState = get(phatRegistryAtom)
-    if (!registryState.connected) {
-      console.error('registry not connected')
-      return
-    }
-    const response = await fetch('/phala_faucet.json')
-    const abi = await response.text()
-    return await getContract({
-      client: registryState.instance,
-      contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
-      abi,
-    }) as PhatFaucetContract
-  }
-)
+
+const phatRegistryAtom = atomWithClient(process.env.NEXT_PUBLIC_FAUCET_RPC!)
+
+const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet', phatRegistryAtom)
+
+const contractAtom = atomWithPhatContract<PhatFaucetContract>({
+  contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
+  loadAbi: () => fetch('/phala_faucet.json').then(resp => resp.text())
+}, phatRegistryAtom, injectedWalletAtom)
+
+//
+//
+//
 
 interface AccountClaimState {
   balance: number
@@ -268,13 +115,11 @@ const claimAtom = atom(
     const contract = contractState.instance
 
     if (action.type === 'claim') {
-      const cert = await provider.signCertificate()
       const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
-      const { output: result } = await contract.query.claim(cert.address, { cert }, evmCaller)
+      const { output: result } = await contract.q.claim<Result<FaucetResult, FhatFaucetError>>({ args: [evmCaller] })
       return result
     } else if (action.type === 'update') {
-      const cert = await provider.signCertificate()
-      const { output: result } = await contract.query.getProvenScore(cert.address, { cert })
+      const { output: result } = await contract.q.getProvenScore<Result<u128, FaucetResult>>()
       const account = await phatRegistry.api.query.system.account<PartialAccountQueryResult>(provider.address)
       set(accountClaimStateAtom, { balance: Number(account.data.free.toBigInt() / BigInt(1e12)), score: result.asOk.asOk.toNumber() })
     }
@@ -360,11 +205,10 @@ function SponsorDetailModal() {
                     return
                   }
                   const contract = contractState.instance
-                  const cert = await provider.signCertificate()
                   const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
-                  const { output: result } = await contract.query.runProvenScript(cert.address, { cert }, currentSponsor.js_code, evmCaller)
+                  const { output: result } = await contract.q.runProvenScript<Result<ProvenResult, FhatFaucetError>>({ args: [currentSponsor.js_code, evmCaller] })
                   if (result.isOk && result.asOk.isOk && result.asOk.asOk.result.toNumber() > 0) {
-                    await contract.send.saveProvenScore({ address: cert.address, cert, unstable_provider: provider }, result.asOk.asOk)
+                    await contract.exec.saveProvenScore({args: [result.asOk.asOk] })
                     return
                   }
                 } finally {
@@ -410,11 +254,10 @@ function SponsorItem({ info }: { info: ProvenItem }) {
                 return
               }
               const contract = contractState.instance
-              const cert = await provider.signCertificate()
               const evmCaller = provider.name === 'evmAccountMapping' ? provider.evmCaller : undefined
-              const { output: result } = await contract.query.runProvenScript(cert.address, { cert }, info.js_code, evmCaller)
+              const { output: result } = await contract.q.runProvenScript<Result<ProvenResult, FhatFaucetError>>({ args: [info.js_code, evmCaller]})
               if (result.isOk && result.asOk.isOk && result.asOk.asOk.result.toNumber() > 0) {
-                await contract.send.saveProvenScore({ address: cert.address, cert, unstable_provider: provider }, result.asOk.asOk)
+                await contract.exec.saveProvenScore({ args: [ result.asOk.asOk ] })
                 return
               }
             } finally {
@@ -435,6 +278,11 @@ function SponsorItem({ info }: { info: ProvenItem }) {
   )
 }
 
+
+/**
+ * Wallet select
+ */
+
 const walletModalVisibleAtom = atom(false)
 
 function WalletButton({ onClick, installed, version, active, children }: {
@@ -448,9 +296,10 @@ function WalletButton({ onClick, installed, version, active, children }: {
     <button
       className={cn(
         "flex flex-row items-bottom justify-between py-2 px-4 rounded w-full",
-        "border border-solid border-transparent hover:horder-gray-600 hover:bg-gray-600",
-        !installed && 'text-gray-500',
-        active && 'border-phalaPurple-400 bg-phalaPurple-400/10 text-white',
+        "border border-solid border-transparent hover:border-gray-600 hover:bg-gray-600",
+        "transform-gpu transition-all",
+        !installed && "text-gray-500 hover:text-gray-200 hover:cursor-alias",
+        active && "border-phat-400 bg-phat-400/70 text-white",
       )}
       onClick={onClick}
     >
@@ -468,104 +317,207 @@ function WalletButton({ onClick, installed, version, active, children }: {
 
 function WalletModal() {
   const [visible, setVisible] = useAtom(walletModalVisibleAtom)
+  const [{ wallets, accounts, lastSelectedWallet, lastSelectedAccount, isReady }, dispatch] = useAtom(injectedWalletAtom)
   const [selected, setSelected] = useState('')
-  const [{ wallets, accounts }, dispatch] = useAtom(injectedWalletAtom)
   const sendContractAction = useSetAtom(contractAtom)
   return (
     <Dialog open={visible} onOpenChange={(open) => setVisible(open)}>
-      <DialogContent className={cn('max-w-5xl flex flex-row gap-8 pt-16')}>
-        <div className="py-2">
-          <ul className="flex flex-col gap-2.5 min-w-[16rem]">
-            <li>
-              <WalletButton
-                installed={!!(typeof window !== 'undefined' && (window as any)?.ethereum)}
-                onClick={async () => {
-                  try {
-                    await dispatch({ type: 'signinWithEthereum' })
-                    sendContractAction({ type: 'connect' })
-                    setVisible(false)
-                  } catch (_err) {
-                  }
-                }}
-              >
-                <img src="/illustrations/faucet/metamask.png" alt="" className="w-6" />
-                MetaMask
-                <span className="ml-2 rounded-2xl bg-phalaPurple-400/50 text-white text-xs font-medium px-4">BETA</span>
-              </WalletButton>
-            </li>
-            {wallets.map((wallet, idx) => (
-              <li key={idx}>
+      <DialogContent className={cn('max-w-4xl')} withoutClose>
+        <DialogHeader className="flex flex-row justify-between items-center">
+          <DialogTitle>Connect a Wallet</DialogTitle>
+          <DialogClose className="relative -top-1">
+            <LuX className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+        </DialogHeader>
+        {lastSelectedAccount && !isReady ? (
+          <div className="flex flex-row items-center justify-stretch gap-2.5 py-2 px-4 rounded w-full border border-solid border-gray-600">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden">
+              <Identicon size={40} value={lastSelectedAccount} theme={lastSelectedWallet === "ethereum" ? "ethereum" : "polkadot"} />
+            </div>
+            <div className="flex flex-col">
+              <span className="tracking-wide">{lastSelectedAccount}</span>
+              <code className="font-light text-xs font-mono text-gray-400 tracking-wider">{lastSelectedWallet}</code>
+            </div>
+            <button
+              className={cn(
+                "btn btn-phat btn-sm rounded-lg",
+                "ml-auto"
+              )}
+              onClick={async () => {
+                try {
+                  await dispatch({ type: 'restore' })
+                  sendContractAction({ type: 'connect' })
+                  setVisible(false)
+                } catch (_err) {
+                }
+              }}
+            >
+              restore
+            </button>
+          </div>
+        ) : null}
+        <div className="flex flex-row gap-8">
+          <div className="py-2">
+            <ul className="flex flex-col gap-2.5 min-w-[16rem]">
+              <li>
                 <WalletButton
-                  active={wallet.name === selected}
-                  installed={wallet.installed}
-                  version={wallet.version}
-                  onClick={() => {
-                    if (!wallet.installed) {
-                      window.open(wallet.downloadUrl, '_blank')
-                    } else {
-                      dispatch({ type: 'setWallet', walletName: wallet.name })
+                  installed={!!(typeof window !== 'undefined' && (window as any)?.ethereum)}
+                  active={selected ? 'ethereum' === selected : 'ethereum' === lastSelectedWallet}
+                  onClick={async () => {
+                    try {
+                      await dispatch({ type: 'signinWithEthereum' })
                       sendContractAction({ type: 'connect' })
-                      setSelected(wallet.name)
+                      setVisible(false)
+                    } catch (_err) {
                     }
                   }}
                 >
-                  <img src={wallet.icon} alt="" className="w-6" />
-                  {wallet.name}
+                  <img src="/illustrations/faucet/metamask.png" alt="" className="w-6" />
+                  MetaMask
+                  <span className="ml-2 rounded-2xl bg-phalaPurple-400 text-white text-xs font-medium px-4">BETA</span>
                 </WalletButton>
               </li>
-            ))}
-          </ul>
-        </div>
-        <div
-          className={cn(
-            "border-l border-solid border-gray-600 h-[20rem] w-full"
-          )}
-        >
-          {selected ? (
-            <ul className="h-[20rem] overflow-y-scroll px-8 w-full">
-              {accounts.map((account, idx) => (
+              {wallets.map((wallet, idx) => (
                 <li key={idx}>
-                  <button
-                    className={cn(
-                      "flex flex-row items-bottom py-2 px-4 rounded w-full",
-                      "border border-solid border-transparent hover:horder-gray-600 hover:bg-gray-600",
-                      'hover:border-phalaPurple-400 hover:bg-phalaPurple-400/10 text-white',
-                    )}
-                    onClick={async () => {
-                      try {
-                        await dispatch({ type: 'setPolkadotAccount', account })
-                        setVisible(false)
-                      } catch (_err) {
+                  <WalletButton
+                    active={selected ? wallet.key === selected : wallet.key === lastSelectedWallet}
+                    installed={wallet.installed}
+                    version={wallet.version}
+                    onClick={() => {
+                      setSelected(wallet.key)
+                      if (!wallet.installed) {
+                        window.open(wallet.downloadUrl, '_blank')
+                      } else {
+                        dispatch({ type: 'setWallet', walletName: wallet.name })
+                        sendContractAction({ type: 'connect' })
                       }
                     }}
                   >
-                    <span className="tracking-wide">{account.name}</span>
-                    <code className="ml-2 font-light text-xs font-mono text-gray-400 tracking-wider">{account.address}</code>
-                  </button>
+                    <img src={wallet.icon} alt="" className="w-6" />
+                    {wallet.name}
+                  </WalletButton>
                 </li>
-              )
-              )}
+              ))}
             </ul>
-          ) : (
-            <div className="p-8 flex flex-col gap-8">
-              <h3 className="text-xl font-medium">What is a Wallet?</h3>
-              <div className="flex flex-col gap-5">
-                <div>
-                  <h4 className="text-lg font-medium mb-2">A Home for your Digital Assets</h4>
-                  <p className="text-sm font-light text-gray-200">Wallets are used to send, receive, store, and display digital assets like Ethereum and NFTs.</p>
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium mb-2">A New Way to Log In</h4>
-                  <p className="text-sm font-light text-gray-200">Instead of creating new accounts and passwords on every website, just connect your wallet.</p>
+          </div>
+          <div
+            className={cn(
+              "border-l border-solid border-gray-600 h-[20rem] w-full"
+            )}
+          >
+            {selected || (lastSelectedWallet && lastSelectedWallet !== 'ethereum') ? (
+              <ul className="h-[20rem] overflow-y-scroll px-4 w-full flex flex-col gap-0.5">
+                {accounts.map((account, idx) => (
+                  <li key={idx}>
+                    <div
+                      className={cn(
+                        "flex flex-row items-center gap-4 py-2 px-4 rounded w-full",
+                        "border border-solid border-transparent text-white transition-all",
+                        "hover:border-gray-600 hover:bg-gray-600",
+                        account.address === lastSelectedAccount && 'border-phat-400 bg-phat-400/70',
+                      )}
+                    >
+                      <div className="relative">
+                        <Identicon size={40} value={account.address} theme="polkadot" />
+                      </div>
+                      <button
+                        className="flex flex-col items-start"
+                        onClick={async () => {
+                          try {
+                            await dispatch({ type: 'setPolkadotAccount', account })
+                            setVisible(false)
+                          } catch (_err) {
+                          }
+                        }}
+                      >
+                        <span className="tracking-wide">{account.name}</span>
+                        <code
+                          className={cn(
+                            "font-light text-xs font-mono text-gray-400 tracking-wider",
+                            account.address === lastSelectedAccount && 'text-white/60',
+                          )}
+                        >
+                          {account.address}
+                        </code>
+                      </button>
+                    </div>
+                  </li>
+                )
+                )}
+              </ul>
+            ) : (
+              <div className="p-8 flex flex-col gap-8">
+                <h3 className="text-xl font-medium">What is a Wallet?</h3>
+                <div className="flex flex-col gap-5">
+                  <div>
+                    <h4 className="text-lg font-medium mb-2">A Home for your Digital Assets</h4>
+                    <p className="text-sm font-light text-gray-200">Wallets are used to send, receive, store, and display digital assets like Ethereum and NFTs.</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-medium mb-2">A New Way to Log In</h4>
+                    <p className="text-sm font-light text-gray-200">Instead of creating new accounts and passwords on every website, just connect your wallet.</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </DialogContent>
     </Dialog>
   )
 }
+
+function ConnectWallet() {
+  const setVisible = useSetAtom(walletModalVisibleAtom)
+  const [{ lastSelectedWallet, lastSelectedAccount }, dispatch] = useAtom(injectedWalletAtom)
+  const sendContractAction = useSetAtom(contractAtom)
+  if (lastSelectedWallet && lastSelectedAccount) {
+    return (
+      <div
+        className={cn(
+          "flex flex-row items-center justify-stretch gap-2.5 py-2 px-4 rounded w-full max-w-2xl",
+          "bg-white/90 border border-solid border-gray-600",
+        )}
+      >
+        <div className="relative w-10 h-10 rounded-full overflow-hidden">
+          <Identicon size={40} value={lastSelectedAccount} theme={lastSelectedWallet === "ethereum" ? "ethereum" : "polkadot"} />
+        </div>
+        <div className="flex flex-col">
+          <span className="tracking-wide">{lastSelectedAccount}</span>
+          <code className="font-light text-xs font-mono text-gray-400 tracking-wider">{lastSelectedWallet}</code>
+        </div>
+        <button
+          className={cn(
+            "btn btn-phat btn-sm rounded-lg",
+            "ml-auto"
+          )}
+          onClick={async () => {
+            try {
+              await dispatch({ type: 'restore' })
+              sendContractAction({ type: 'connect' })
+            } catch (_err) {
+            }
+          }}
+        >
+          Connect
+        </button>
+      </div>
+    )
+  }
+  return (
+    <button
+      className="btn btn-xl btn-phatGreen rounded-2xl font-medium"
+      onClick={() => setVisible(true)}
+    >
+      Connect Wallet
+    </button>
+  )
+}
+
+//
+//
+//
 
 export function AccountInfo() {
   const registryState = useAtomValue(phatRegistryAtom)
@@ -625,7 +577,7 @@ export function AccountInfo() {
             </div>
           </div>
           {(provider.name === 'evmAccountMapping') ? (
-            <div className="mt-2 text-sm text-gray-300">Mapped to Ethereum Address <code className="ml-1.5">{provider.evmAccount.address}</code></div>
+            <div className="mt-2 text-sm text-gray-300">Mapping from Ethereum Address <code className="ml-1.5">{provider.evmAccount.address}</code></div>
           ) : null}
           {(result && result[0]) ? (
             <div className="mt-6 bg-phatGreen-600 p-4 rounded-xl">
@@ -642,12 +594,7 @@ export function AccountInfo() {
         </section>
       ) : (
         <div className="flex flex-row justify-center mb-20">
-          <button
-            className="btn btn-xl btn-phatGreen rounded-2xl font-medium"
-            onClick={() => setVisible(true)}
-          >
-            Connect Wallet
-          </button>
+          <ConnectWallet />
         </div>
       )}
       <WalletModal />
