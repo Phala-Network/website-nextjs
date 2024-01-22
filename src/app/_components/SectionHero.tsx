@@ -31,7 +31,7 @@ function ComputeTitle() {
 
   return (
     <h2
-      className="text-6xl lg:text-7xl font-extrabold bg-black-800 text-transparent bg-clip-text bg-no-repeat lg:bg-[url('/home/blur.png')]"
+      className="text-5xl lg:text-7xl font-extrabold bg-black-800 text-transparent bg-clip-text bg-no-repeat lg:bg-[url('/home/blur.png')]"
       style={{
         backgroundPosition: `${position.x}rem ${position.y}rem`,
       }}
@@ -84,8 +84,10 @@ function SupportedChains() {
       <div className="col-start-1 col-span-full flex justify-center items-center mt-10">
         <a
           className={cn(
-            "btn btn-sm text-sm font-semibold btn-outline justify-center",
-            "rounded-full px-7"
+            "btn font-bold bg-black text-white justify-center",
+            "border border-solid border-black",
+            "rounded-full px-4 py-2",
+            "hover:bg-whiteAlpha-700 hover:text-black transition-colors",
           )}
           href="https://docs.phala.network/developers/phat-contract/supported-chains"
           target="_blank"
@@ -133,7 +135,7 @@ export function SectionHero() {
           >
             <header className="flex flex-col gap-4">
               <ComputeTitle />
-              <h3 className="text-xl lg:text-3xl font-normal text-black-800">for Blockchains</h3>
+              <h3 className="text-2xl lg:text-3xl font-normal text-black-800">for Blockchains</h3>
             </header>
             <div
               className={cn(
@@ -142,8 +144,9 @@ export function SectionHero() {
             >
               <a
                 className={cn(
-                  "btn btn-sm text-sm font-semibold btn-primary justify-center",
-                  "rounded-full px-8"
+                  "btn font-bold btn-primary justify-center",
+                  "rounded-full px-12 pb-2.5 pt-3",
+                  "tracking-wide",
                 )}
                 href="#section-features"
                 onClick={(e) => {
@@ -153,18 +156,7 @@ export function SectionHero() {
                   })
                 }}
               >
-                Let's Build!
-              </a>
-              <a
-                className={cn(
-                  "btn btn-sm text-sm font-semibold btn-secondary justify-center",
-                  "rounded-full px-7"
-                )}
-                href="https://discord.gg/gZjZuVHXtm"
-                target="_blank"
-                rel="noopener"
-              >
-                Join Community
+                Get Started
               </a>
             </div>
           </div>
@@ -185,7 +177,7 @@ export function SectionHero() {
           </div>
 
         </div>
-        <div className="lg:hidden safe-viewport mt-10">
+        <div className="lg:hidden safe-viewport mt-10 pr-20 pl-14">
           <RealtimeStats />
         </div>
         <SupportedChains />
