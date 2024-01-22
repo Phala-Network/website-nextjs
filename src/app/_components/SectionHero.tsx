@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -12,11 +12,15 @@ function ComputeTitle() {
     y: 0,
   })
 
-  const updatePosition = (e: MouseEvent) => {
-    const x = e.pageX / window.screen.width * 24 - 12
-    const y = (e.pageY > window.screen.height ? window.screen.height : e.pageY) / window.screen.height * 22 - 18
+  const updatePosition = useCallback((e: MouseEvent) => {
+    const x_pct = (e.pageX > window.innerWidth ? window.innerWidth : e.pageX) / window.innerWidth
+    const y_pct = (e.pageY > window.innerHeight ? window.innerHeight : e.pageY) / window.innerHeight
+    // range is (-16rem, 24rem)
+    const x = -(x_pct * 42) + 24
+    // range is (-19rem, 1rem)
+    const y = -(y_pct * 19) + 1
     setPosition({ x, y })
-  }
+  }, [setPosition])
 
   useEffect(() => {
      window.addEventListener('mousemove', updatePosition)
@@ -32,7 +36,7 @@ function ComputeTitle() {
         backgroundPosition: `${position.x}rem ${position.y}rem`,
       }}
     >
-      Compute.
+      Coprocessor
     </h2>
   )
 }
@@ -128,8 +132,8 @@ export function SectionHero() {
             )}
           >
             <header className="flex flex-col gap-4">
-              <h3 className="text-xl lg:text-2xl font-normal text-black-800">Scale Web3 by</h3>
               <ComputeTitle />
+              <h3 className="text-xl lg:text-3xl font-normal text-black-800">for Blockchains</h3>
             </header>
             <div
               className={cn(
@@ -173,7 +177,7 @@ export function SectionHero() {
           >
             <div
               className={cn(
-                "col-start-2 col-span-18 3xl:col-start-4 3xl:col-span-18",
+                "col-start-2 col-span-18 3xl:col-start-2 3xl:col-span-22",
               )}
             >
               <RealtimeStats />
