@@ -575,6 +575,7 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
+        phalaGreenLight: '#C4F142',
         phalaGreen: {
           DEFAULT: '#59A138',
           50: '#F5FFF0',

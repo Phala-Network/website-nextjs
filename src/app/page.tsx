@@ -1151,10 +1151,10 @@ export default async function Home() {
         programmable_list={programmable_list}
         verifiable_list={verifiable_list}
       />
-      <SectionPitchIntro />
-      <SectionPitchAccelerate />
-      <SectionPitchInnovate />
-      <SectionPitchPioneer />
+      {/* <SectionPitchIntro /> */}
+      {/* <SectionPitchAccelerate /> */}
+      {/* <SectionPitchInnovate /> */}
+      {/* <SectionPitchPioneer /> */}
       <SectionHowItWorks />
       <SectionGlobalDistribution />
       <SectionHighlights />

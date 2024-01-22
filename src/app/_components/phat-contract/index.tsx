@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
 import { useAnimate, useInView, motion } from 'framer-motion'
-import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai';
+import { atom, useAtom, useAtomValue } from 'jotai';
 import { Swiper, SwiperSlide, type SwiperClass } from 'swiper/react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import Image from 'next/image'
@@ -156,7 +156,7 @@ export default function() {
                 <div className="item-info">
                   <p className="item-title">{item.name}</p>
                   <p className="item-desc">{item.description}</p>
-                  <div className="item-tags">
+                  <div className="item-tags text-black">
                     {
                       item.tags.map((tag, i) => (
                         <span key={`${i}`}>{tag}</span>
