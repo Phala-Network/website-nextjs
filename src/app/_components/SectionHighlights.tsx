@@ -26,6 +26,7 @@ export function PostCard({ page }: { page: ParsedListPage }) {
           />
         ) : (
           <img
+            loading="lazy"
             className="w-full h-full object-cover"
             alt={page.title}
             src="/blog/default_cover.jpg"
