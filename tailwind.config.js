@@ -205,249 +205,125 @@ function tagComponents({ addComponents, theme }) {
 function buttonComponents({ addComponents, theme }) {
   const colors = theme('colors', {})
   let buttons = [
+    // Size
     {
       '.btn': {
-        borderRadius: theme('borderRadius.md'),
-        // fontWeight: '600',
         fontSize: theme('fontSize.md'), // 16px
-        lineHeight: '1.5rem',
-        padding: '0.5rem 1rem',
+        fontWeight: '700',
+        borderRadius: '8px',
+        padding: '0.75rem 1.25rem calc(0.75rem - 2px)',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'transparent',
+        color: theme('colors.black.800'),
+        lineHeight: '150%',
+        //
         'transitionProperty': 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
         'willChange': 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
         'transitionTimingFunction': 'cubic-bezier(0.4, 0, 0.2, 1)',
         'transitionDuration': '150ms',
         display: 'inline-flex',
         flexDirection: 'row',
+        justifyContent: 'center',
         rowGap: '0.25rem',
         textRendering: 'optimizelegibility',
+        //
+        '&:active': {
+          color: theme('colors.black.400'),
+        },
+        '&:focus-visible': {
+          outline: `4px solid #90CDF4`,
+        },
+        '&[disabled], &[disabled]:hover, &.disabled': {
+          color: theme('colors.black.400'),
+          backgroundColor: theme('colors.blackAlpha.100'),
+        },
       },
-    },
-    {
-      '.btn-sm': {
-        fontSize: theme('fontSize.sm'), // 14px
-        lineHeight: '1.25rem',
-        padding: '0.375rem 0.75rem',
-      },
-    },
-    {
       '.btn-xs': {
         fontSize: theme('fontSize.xs'), // 12px
-        lineHeight: '1rem',
-        padding: '0.25rem 0.5rem',
+        lineHeight: '150%',
+        fontWeight: '700',
+        borderRadius: '4px',
+        padding: '0.4375rem 0.75rem calc(0.4375rem - 1px)',
       },
-    },
-    {
+      '.btn-sm': {
+        fontSize: theme('fontSize.sm'), // 14px
+        lineHeight: '150%',
+        fontWeight: '700',
+        borderRadius: '4px',
+        padding: '0.59375rem 1rem calc(0.59375rem - 2px)',
+      },
       '.btn-lg': {
         fontSize: theme('fontSize.lg'), // 18px
-        lineHeight: '1.75rem',
-        padding: '0.625rem 1.5rem',
+        lineHeight: '150%',
+        fontWeight: '700',
+        borderRadius: '6px',
+        padding: '1.125rem 1.5rem calc(1.125rem - 2px)',
       },
-    },
-    {
       '.btn-xl': {
         fontSize: theme('fontSize.lg'),
-        lineHeight: '1.75rem',
+        lineHeight: '1em',
         padding: '1rem 3.875rem',
       },
     },
+
+    // Type
     {
-      [`.btn-white.btn-outline`]: {
-        backgroundColor: 'transparent',
-        border: `1px solid #fff`,
-        color: '#fff',
+      '.btn-circle': {
+        borderRadius: theme('borderRadius.full'),
+      },
+      '.btn-rounded': {
+        borderRadius: theme('borderRadius.full'),
+      },
+    },
+
+    // Pre-defined style
+    {
+      ['.btn-primary']: {
         '&:hover': {
-          backgroundColor: '#fff',
-          color: colors['brand']['400'],
+          opacity: '0.75',
         },
-        '&[disabled], &[disabled]:hover': {
-          background: 'transparent',
-          border: `1px solid ${colors['gray']['300']}`,
-          color: colors['whiteAlpha']['500'],
-          cursor: 'not-allowed',
+      },
+      '.btn-secondary': {
+        '&:hover': {
+          opacity: '0.7',
+        },
+      },
+      '.btn-outline': {
+      },
+      '.btn-outlineFill': {
+      },
+      '.btn-text': {
+        background: 'none',
+        borderColor: 'transparent',
+        '&:hover': {
+          color: theme('colors.phalaGreenLight'),
         },
       },
     },
+
+    // Colors
     {
-      ['.btn-animated']: {
-        transitionProperty: 'background-color,color,transform',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.25s',
-        willChange: 'background-color,color,transform',
-        '&:hover': {
-          transform: 'scale(0.95)',
-          transitionDuration: '0.25s',
-          transitionTimingFunction: 'ease-in-out',
-        },
+      '.btn-phala': {
+        backgroundColor: theme('colors.phalaGreen.500'),
       },
-      [`.btn-primary`]: {
-        borderRadius: theme('borderRadius.xl'),
-        backgroundColor: '#CDFA50',
-        color: '#000',
-        transitionProperty: 'background-color,transform',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.3s',
-        willChange: 'background-color,transform',
-        '&:hover': {
-          backgroundColor: '#E0FF8A',
-          transform: 'scale(0.95)',
-          transitionDuration: '0.3s',
-          transitionTimingFunction: 'ease-in-out',
-        },
-        '&:active': {
-          backgroundColor: '#9ECB22',
-        },
+      '.btn-purple': {
+        backgroundColor: theme('colors.phalaPurple.500'),
       },
-
-      [`.btn-secondary`]: {
-        borderRadius: theme('borderRadius.xl'),
-        backgroundColor: '#fff',
-        color: '#000',
-        transitionProperty: 'background-color,transform,color',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.3s',
-        willChange: 'background-color,transform',
-        '&:hover': {
-          backgroundColor: '#DFDFDF',
-          transform: 'scale(0.95)',
-          transitionDuration: '0.3s',
-          transitionTimingFunction: 'ease-in-out',
-        },
-        '&:active': {
-          backgroundColor: '#4B4B4B',
-          color: '#fff',
-        },
+      '.btn-blk': {
+        backgroundColor: theme('colors.black.800'),
       },
-
-      [`.btn-outline`]: {
-        border: '1px solid #333',
-        borderRadius: theme('borderRadius.xl'),
-        backgroundColor: 'transparent',
-        color: '#000',
-        transitionProperty: 'background-color,transform,color',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.3s',
-        willChange: 'background-color,transform',
-        '&:hover': {
-          backgroundColor: '#333',
-          color: '#fff',
-          transform: 'scale(0.95)',
-          transitionDuration: '0.3s',
-          transitionTimingFunction: 'ease-in-out',
-        },
-        '&:active': {
-          backgroundColor: '#333',
-          color: '#fff',
-        },
+      '.btn-wht': {
+        backgroundColor: theme('colors.white'),
       },
-
-      [`.btn-third`]: {
-        borderRadius: theme('borderRadius.xl'),
-        backgroundColor: '#8544F6',
-        color: '#fff',
-        transitionProperty: 'background-color,transform,color',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.3s',
-        willChange: 'background-color,transform',
-        '&:hover': {
-          backgroundColor: '#A774FF',
-          transform: 'scale(0.95)',
-          transitionDuration: '0.3s',
-          transitionTimingFunction: 'ease-in-out',
-        },
-        '&:active': {
-          backgroundColor: '#5E34A8',
-          color: '#fff',
-        },
+      '.btn-phat': {
+        backgroundColor: theme('colors.phatGreen.400'),
       },
-
-      [`.btn-primary.btn-reverse`]: {
-        borderRadius: theme('borderRadius.md'),
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        color: '#CDFA50',
-      },
-
-      [`.btn-aside-icon`]: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        '& .icon': {
-          'transitionProperty': 'transform',
-          'transitionTimingFunction': 'cubic-bezier(.52,.47,.92,.25)',
-          'transitionDuration': '250ms',
-          'willChange': 'transform',
-          transform: 'scale(1)',
-        },
-        '&:hover .icon': {
-          transform: 'scale(1.20)',
-        },
-      },
-
-      [`.btn-center-icon`]: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        '& .icon': {
-          marginLeft: '1.25rem',
-        },
+      '.btn-phalaworld': {
+        backgroundColor: theme('colors.phalaWorldTeal.400'),
       },
     },
   ]
-  for (let color in colors) {
-    if (color === 'primary' || color === 'secondary') {
-      continue
-    }
-    buttons.push({
-      [`.btn-${color}`]: {
-        backgroundColor: colors[color]['400'],
-        border: `1px solid ${colors[color]['400']}`,
-        color: '#fff',
-        '&:hover': {
-          backgroundColor: colors[color]['200'],
-          border: `1px solid ${colors[color]['200']}`,
-        },
-        '&[disabled], &[disabled]:hover': {
-          backgroundColor: colors['gray']['400'],
-          border: `1px solid ${colors['gray']['400']}`,
-          color: colors['whiteAlpha']['500'],
-          cursor: 'not-allowed',
-        },
-        '&:focus-visible': {
-          outline: `2px solid ${colors[color]['400']}`,
-        }
-      },
-      [`.btn-${color}.btn-solid`]: {
-        backgroundColor: colors[color]['400'],
-        border: `1px solid ${colors[color]['400']}`,
-        color: '#fff',
-        '&:hover': {
-          backgroundColor: colors[color]['200'],
-          border: `1px solid ${colors[color]['200']}`,
-        },
-        '&[disabled], &[disabled]:hover': {
-          backgroundColor: colors['gray']['400'],
-          border: `1px solid ${colors['gray']['400']}`,
-          color: colors['whiteAlpha']['500'],
-          cursor: 'not-allowed',
-        },
-      },
-      [`.btn-${color}.btn-outline`]: {
-        backgroundColor: 'transparent',
-        border: `1px solid ${colors[color]['400']}`,
-        color: colors[color]['400'],
-        '&:hover': {
-          backgroundColor: colors[color]['100'],
-        },
-        '&[disabled], &[disabled]:hover': {
-          background: 'transparent',
-          border: `1px solid ${colors['gray']['300']}`,
-          color: colors['whiteAlpha']['500'],
-          cursor: 'not-allowed',
-        },
-      },
-    })
-  }
   addComponents(buttons)
 }
 
@@ -932,11 +808,6 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -962,35 +833,36 @@ module.exports = {
       }, // END: fontFamily
 
       fontSize: {
-        // 0.75rem = 12px, 1.5rem = 18px
-        '12': ['0.75rem', { lineHeight: '1.5rem' }],
-        'xs': ['0.75rem', { lineHeight: '1.5rem' }],
-        // 0.875rem = 14px, 1.5rem = 21px
-        '14': ['0.875rem', { lineHeight: '1.5rem', letterSpacing: '-0.6%' }],
-        'sm': ['0.875rem', { lineHeight: '1.5rem', letterSpacing: '-0.6%' }],
-        // 1rem = 16px, 1.5rem = 24px
-        '16': ['1rem', { lineHeight: '1.5rem', letterSpacing: '-1.1%' }],
-        'md': ['1rem', { lineHeight: '1.5rem', letterSpacing: '-1.1%' }],
-        // @FIXME 1.125rem = 18px
-        '18': ['1.125rem', { lineHeight: '1.5rem' }],
-        'lg': ['1.125rem', { lineHeight: '1.5rem' }],
-        // 1.25rem = 20px,
-        '20': ['1.25rem', { lineHeight: '1.4rem', letterSpacing: '-1.7%', }],
-        'xl': ['1.25rem', { lineHeight: '1.4rem', letterSpacing: '-1.7%', }],
-        // 1.5rem = 24px
-        '24': ['1.5rem', { lineHeight: '1.375rem', letterSpacing: '-1.9%', }],
-        '2xl': ['1.5rem', { lineHeight: '1.375rem', letterSpacing: '-1.9%', }],
-        // 2rem = 32px
-        '32': ['2rem', { lineHeight: '1.375rem', letterSpacing: '-2.2%', }],
-        '3xl': ['2rem', { lineHeight: '1.375rem', letterSpacing: '-2.2%', }],
-        // 2.5rem = 40px
-        '40': ['2.5rem', { lineHeight: '1.3rem', letterSpacing: '-2.2%', }],
-        '4xl': ['2.5rem', { lineHeight: '1.3rem', letterSpacing: '-2.2%', }],
-        // 3rem = 48px
-        '48': ['3rem', { lineHeight: '1.25rem', letterSpacing: '-2.2%', }],
-        '5xl': ['3rem', { lineHeight: '1.25rem', letterSpacing: '-2.2%', }],
-        // @FIXME 3.5rem = 56px
-        '6xl': ['3.5rem', { lineHeight: '1' }],
+        // 0.75rem = 12px, 1.5em = 18px, 0
+        '12': ['0.75rem', { lineHeight: '1.5em', letterSpacing: '0' }],
+        'xs': ['0.75rem', { lineHeight: '1.5em', letterSpacing: '0' }],
+        // 0.875rem = 14px, 1.5em = 21px, -0.6% = -0.084px
+        '14': ['0.875rem', { lineHeight: '1.5em', letterSpacing: '-0.084px' }],
+        'sm': ['0.875rem', { lineHeight: '1.5em', letterSpacing: '-0.084px' }],
+        // 1rem = 16px, 1.5em = 24px, -1.1% = -0.176px
+        '16': ['1rem', { lineHeight: '1.5em', letterSpacing: '-0.176px' }],
+        'md': ['1rem', { lineHeight: '1.5em', letterSpacing: '-0.176px' }],
+        // 1.125rem = 18px, 1.5em = 27px, -1.1% = -0.198px
+        '18': ['1.125rem', { lineHeight: '1.5em', letterSpacing: '-0.198px' }],
+        'lg': ['1.125rem', { lineHeight: '1.5em', letterSpacing: '-0.198px' }],
+        // 1.25rem = 20px, 1.4em = 28px, -1.7% = -0.34px
+        '20': ['1.25rem', { lineHeight: '1.4em', letterSpacing: '-0.34px', }],
+        'xl': ['1.25rem', { lineHeight: '1.4em', letterSpacing: '-0.34px', }],
+        // 1.5rem = 24px, 1.375em = 33px, -1.9% = -0.456px
+        '24': ['1.5rem', { lineHeight: '1.375em', letterSpacing: '-0.456px', }],
+        '2xl': ['1.5rem', { lineHeight: '1.375em', letterSpacing: '-0.456px', }],
+        // 2rem = 32px, 1.375em = 44px, -2.2% = -0.704px
+        '32': ['2rem', { lineHeight: '1.375em', letterSpacing: '-0.704px', }],
+        '3xl': ['2rem', { lineHeight: '1.375em', letterSpacing: '-0.704px', }],
+        // 2.5rem = 40px, 1.3em = 52px, -2.2% = -0.88px
+        '40': ['2.5rem', { lineHeight: '1.3em', letterSpacing: '-0.88px', }],
+        '4xl': ['2.5rem', { lineHeight: '1.3em', letterSpacing: '-0.88px', }],
+        // 3rem = 48px, 1.25em = 60px, -2.2% = -1.056px
+        '48': ['3rem', { lineHeight: '1.25em', letterSpacing: '-1.056px', }],
+        '5xl': ['3rem', { lineHeight: '1.25em', letterSpacing: '-1.056px', }],
+        // 3.5rem = 56px, 1.25em = 70px, -2.2% = -1.232px
+        '56': ['3.5rem', { lineHeight: '1.25em', letterSpacing: '-1.232px', }],
+        '6xl': ['3.5rem', { lineHeight: '1.25em', letterSpacing: '-1.232px', }],
         // @FIXME 4.5rem = 72px
         '7xl': ['4.5rem', { lineHeight: '1' }],
       }, // END: fontSize
