@@ -18,7 +18,9 @@ import { SectionHowItWorks } from './_components/SectionHowItWorks'
 import { SectionHero } from './_components/SectionHero'
 import { SectionHighlights } from './_components/SectionHighlights'
 import SectionFeatures from './_components/SectionFeatures'
+
 import './home.css'
+import './_components/section-phat-contract-highlight.css'
 
 
 //
@@ -1003,6 +1005,371 @@ function SectionPitchPioneer() {
 // END: Section Pitch Pionner
 
 //
+// Section Phat Contract Highlight
+//
+
+function SectionPhatContractHighlight() {
+  return (
+    <section
+      id="section-phat-contract-highlight"
+      className={cn(
+        "safe-viewport",
+        "grid grid-cols-4 lg:grid-cols-12 grid-rows-1 gap-6",
+        "border border-solid border-black-100 rounded-3xl py-32",
+        "bg-black-900",
+      )}
+    >
+      <header
+        className={cn(
+          "row-start-1 col-start-1 col-span-full",
+          "pb-20"
+        )}
+      >
+        <h2 className={cn("text-6xl text-white font-black -tracking-wide leading-[calc(72/56)]")}>Phat Contract</h2>
+        <p className={cn("text-6xl text-white font-normal -tracking-wide")}>make coprocessor super easy</p>
+      </header>
+      <article
+        className={cn(
+          "article",
+          "row-start-2 lg:col-start-1 lg:col-span-7",
+          "grid gap-8",
+        )}
+      >
+        <h3 className="heading">Access Unlimited API in 1 minute</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="flex flex-row items-center justify-center py-20 bg-[#e3dfdc] rounded-sm overflow-hidden">
+            <img src="/home/Frame47330.png" alt="" className="w-1/2" />
+          </div>
+          <div className="flex flex-row items-center justify-center py-20 bg-[#e3dfdc] rounded-sm overflow-hidden">
+            <img src="/home/Frame47331.png" alt="" className="w-1/2" />
+          </div>
+          <div className="flex flex-row items-center justify-center py-20 bg-[#e3dfdc] rounded-sm overflow-hidden">
+            <img src="/home/Frame47332.png" alt="" className="w-1/2" />
+          </div>
+        </div>
+        <div className="self-end">
+          <button className={cn("btn lg:btn-lg btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}>Get Start</button>
+        </div>
+      </article>
+      <div
+        className={cn(
+          "row-start-2 lg:col-start-8 lg:col-span-5",
+          "flex flex-col gap-6"
+        )}
+      >
+        <article
+          className={cn(
+            "article",
+            "flex flex-col gap-8",
+          )}
+        >
+          <h3 className="heading">Build with your famimilar</h3>
+          <div className="flex flex-row flex-wrap gap-6">
+            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/metamask.png" alt="" className="w-3/5" />
+            </div>
+            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/metamask.png" alt="" className="w-3/5" />
+            </div>
+            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/metamask.png" alt="" className="w-3/5" />
+            </div>
+            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/metamask.png" alt="" className="w-3/5" />
+            </div>
+            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/metamask.png" alt="" className="w-3/5" />
+            </div>
+            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/metamask.png" alt="" className="w-3/5" />
+            </div>
+            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/metamask.png" alt="" className="w-3/5" />
+            </div>
+          </div>
+          <div className="mt-5">
+            <button className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}>Learn</button>
+          </div>
+        </article>
+        <article
+          className={cn(
+            "article",
+            "flex flex-col gap-8",
+          )}
+        >
+          <h3 className="heading">Backing <em>153</em> Contracts</h3>
+          <div className="mt-5">
+            <button className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}>Explore</button>
+          </div>
+        </article>
+        </div>
+      <article
+        className={cn(
+          "article",
+          "row-start-3 col-span-full",
+          "grid grid-cols-2 gap-20"
+        )}
+      >
+        <div className="max-w-[494px] flex flex-col items-center justify-center gap-12 mx-auto">
+          <h3 className="heading">Coprocess <em>25</em> blockchains with smart contract templates</h3>
+          <div className={cn("flex flex-row flex-wrap justify-evenly gap-8")}>
+            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/Ellipse1579.png" alt="" />
+            </div>
+            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/Ellipse1579.png" alt="" />
+            </div>
+            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/Ellipse1579.png" alt="" />
+            </div>
+            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/Ellipse1579.png" alt="" />
+            </div>
+            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+              <img src="/home/Ellipse1579.png" alt="" />
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-6">
+          <div className="relative aspect-square">
+            <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
+              <div className="aspect-square max-w-[280px]">
+                <img src="/home/Rectangle2944.png" alt="" />
+              </div>
+            </div>
+            <div className={cn("relative z-1", "flex items-center justify-center", "p-8")}>
+              <div className="w-full h-full aspect-square max-w-[280px]">
+                <header className="text-white">
+                  <p className="text-20">Templates</p>
+                  <h4 className="text-24 font-black">VRF Oracle</h4>
+                </header>
+              </div>
+            </div>
+          </div>
+          <div className="relative aspect-square">
+            <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
+              <div className="aspect-square max-w-[280px]">
+                <img src="/home/Rectangle2944.png" alt="" />
+              </div>
+            </div>
+            <div className={cn("relative z-1", "flex items-center justify-center", "p-8")}>
+              <div className="w-full h-full aspect-square max-w-[280px]">
+                <header className="text-white">
+                  <p className="text-20">Templates</p>
+                  <h4 className="text-24 font-black">Dynamic NFT</h4>
+                </header>
+              </div>
+            </div>
+          </div>
+          <div className="relative aspect-square">
+            <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
+              <div className="aspect-square max-w-[280px]">
+                <img src="/home/Rectangle2944.png" alt="" />
+              </div>
+            </div>
+            <div className={cn("relative z-1", "flex items-center justify-center", "p-8")}>
+              <div className="w-full h-full aspect-square max-w-[280px]">
+                <header className="text-white">
+                  <p className="text-20">Templates</p>
+                  <h4 className="text-24 font-black">Lens Open Action</h4>
+                </header>
+              </div>
+            </div>
+          </div>
+          <div className="relative aspect-square">
+            <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
+              <div className="aspect-square max-w-[280px]">
+                <img src="/home/Rectangle2944.png" alt="" />
+              </div>
+            </div>
+            <div className={cn("relative z-1", "flex items-center justify-center", "p-8")}>
+              <div className="w-full h-full aspect-square max-w-[280px]">
+                <header className="text-white">
+                  <p className="text-20">Templates</p>
+                  <h4 className="text-24 font-black">Web3 Social</h4>
+                </header>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <div
+        className={cn(
+          "row-start-4 col-span-full",
+          "text-white pt-20 pb-14",
+        )}
+      >
+        <span className="text-56 font-black">Trusted by</span>
+      </div>
+      <div
+        className={cn(
+          "col-span-full",
+          "grid grid-cols-4 gap-6"
+        )}
+      >
+        <div
+          className={cn(
+            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+          )}
+        >
+          <div className={cn("flex items-center justify-center", "p-8")}>
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
+              </div>
+              <h4 className="text-white text-24 font-bold">Lens</h4>
+              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+                <span className="bg-phalaWorldTeal/20 border border-solid border-phalaWorldTeal/50 rounded-xs text-xs text-phalaWorldTeal py-1 px-3">
+                  Web3 Social
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={cn(
+            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+          )}
+        >
+          <div className={cn("flex items-center justify-center", "p-8")}>
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
+              </div>
+              <h4 className="text-white text-24 font-bold">Zurf</h4>
+              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+                <span className="bg-phalaWorldTeal/20 border border-solid border-phalaWorldTeal/50 rounded-xs text-xs text-phalaWorldTeal py-1 px-3">
+                  Web3 Social
+                </span>
+                <span className="bg-yellow-300/20 border border-solid border-yellow-300/50 rounded-xs text-xs text-yellow-300 py-1 px-3">
+                  Monetization
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={cn(
+            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+          )}
+        >
+          <div className={cn("flex items-center justify-center", "p-8")}>
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
+              </div>
+              <h4 className="text-white text-24 font-bold">Hundle 01</h4>
+              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+                <span className="bg-phalaPurple-400/20 border border-solid border-phalaPurple-400/50 rounded-xs text-xs text-phalaPurple-400 py-1 px-3">
+                  Web3 communication
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={cn(
+            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+          )}
+        >
+          <div className={cn("flex items-center justify-center", "p-8")}>
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
+              </div>
+              <h4 className="text-white text-24 font-bold">Sygma</h4>
+              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+                <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
+                  Defi
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={cn(
+            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+          )}
+        >
+          <div className={cn("flex items-center justify-center", "p-8")}>
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
+              </div>
+              <h4 className="text-white text-24 font-bold">KoinGaroo</h4>
+              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+                <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
+                  Defi
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={cn(
+            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+          )}
+        >
+          <div className={cn("flex items-center justify-center", "p-8")}>
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
+              </div>
+              <h4 className="text-white text-24 font-bold">inDEX</h4>
+              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+                <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
+                  Defi
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={cn(
+            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+          )}
+        >
+          <div className={cn("flex items-center justify-center", "p-8")}>
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
+              </div>
+              <h4 className="text-white text-24 font-bold">VRF Oracle</h4>
+              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+                <span className="bg-phatGreen-400/20 border border-solid border-phatGreen-400/50 rounded-xs text-xs text-phatGreen-400 py-1 px-3">
+                  Oracle
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={cn(
+            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+          )}
+        >
+          <div className={cn("flex items-center justify-center", "p-8")}>
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
+              </div>
+              <h4 className="text-white text-24 font-bold">DMail</h4>
+              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+                <span className="bg-phalaPurple-400/20 border border-solid border-phalaPurple-400/50 rounded-xs text-xs text-phalaPurple-400 py-1 px-3">
+                  Web3 communication
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// END: Section Phat Contract Highlight
+
+//
 // Section SectionGlobalDistribution
 //
 
@@ -1151,6 +1518,7 @@ export default async function Home() {
         programmable_list={programmable_list}
         verifiable_list={verifiable_list}
       />
+      <SectionPhatContractHighlight />
       {/* <SectionPitchIntro /> */}
       {/* <SectionPitchAccelerate /> */}
       {/* <SectionPitchInnovate /> */}

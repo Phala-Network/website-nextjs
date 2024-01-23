@@ -1,0 +1,21 @@
+@tailwind utilities;
+
+#section-phat-contract-highlight {
+
+  .article {
+    @apply text-white p-8 border border-solid border-whiteAlpha-200 bg-whiteAlpha-50 rounded-2xl;
+
+    .heading {
+      @apply text-32 font-bold text-center;
+      max-width: 494px;
+
+      em {
+        @apply bg-phalaGreenLight text-black-800 px-4 rounded-sm not-italic text-32 font-black;
+        @apply relative;
+        bottom: -1.5px;
+      }
+    }
+  }
+}
+
+
