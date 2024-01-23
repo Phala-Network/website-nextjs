@@ -478,66 +478,50 @@ module.exports = {
     spacing: {
       px: '1px',
       0: '0',
-      0.5: '0.125rem',  // 0.125rem = 2px
-      1: '0.25rem',     // 0.25rem = 4px
-      1.5: '0.375rem',  // 0.375rem = 6px
-      2: '0.5rem',      // 0.5rem = 8px
-      2.5: '0.625rem',  // 0.625rem = 10px
-      3: '0.75rem',     // 0.75rem = 12px
-      3.5: '0.875rem',  // 0.875rem = 14px
-      4: '1rem',        // 1rem = 16px
-      5: '1.25rem',     // 1.25rem = 20px
-      6: '1.5rem',      // 1.5rem = 24px
-      7: '1.75rem',     // 1.75rem = 28px
-      8: '2rem',        // 2rem = 32px
-      9: '2.25rem',     // 2.25rem = 36px
-      10: '2.5rem',     // 2.5rem = 40px
-      12: '3rem',       // 3rem = 48px
-      14: '3.5rem',     // 3.5rem = 56px
-      16: '4rem',       // 4rem = 64px
-      20: '5rem',       // 5rem = 80px
-      24: '6rem',       // 6rem = 96px
-      28: '7rem',       // 7rem = 112px
-      32: '8rem',       // 8rem = 128px
-      36: '9rem',       // 9rem = 144px
-      40: '10rem',      // 10rem = 160px
-      44: '11rem',      // 11rem = 176px
-      48: '12rem',      // 12rem = 192px
-      52: '13rem',      // 13rem = 208px
-      56: '14rem',      // 14rem = 224px
-      60: '15rem',      // 15rem = 240px
-      64: '16rem',      // 16rem = 256px
-      72: '18rem',      // 18rem = 288px
-      80: '20rem',      // 20rem = 320px
-      96: '24rem',      // 24rem = 384px
+      025: '0.125rem',  // 0.125rem = 2px
+      050: '0.25rem',     // 0.25rem = 4px
+      075: '0.375rem',  // 0.375rem = 6px
+      100: '0.5rem',      // 0.5rem = 8px
+      150: '0.75rem',     // 0.75rem = 12px
+      200: '1rem',        // 1rem = 16px
+      250: '1.25rem',     // 1.25rem = 20px
+      300: '1.5rem',      // 1.5rem = 24px
+      400: '2rem',        // 2rem = 32px
+      500: '2.5rem',     // 2.5rem = 40px
+      600: '3rem',       // 3rem = 48px
+      750: '3.5rem',       // 3.5rem = 56px
+      800: '4rem',       // 4rem = 64px
+      850: '4.5rem',       // 4rem = 72px
+      1000: '5rem',       // 5rem = 80px
     }, // END: spacing
 
     borderRadius: {
       none: '0',
-      sm: '0.125rem',   // 0.125rem = 2px
-      DEFAULT: '0.25rem', // 0.25rem = 4px
-      md: '0.375rem',   // 0.375rem = 6px
-      lg: '0.5rem',     // 0.5rem = 8px
-      xl: '0.75rem',    // 0.75rem = 12px
-      '2xl': '1rem',    // 1rem = 16px
-      '3xl': '1.5rem',  // 1.5rem = 24px
-      '4xl': '1.75rem',  // 1.75rem = 28px
-      '5xl': '2rem',    // 2rem = 32px
-      '6xl': '2.25rem',    // 2rem = 32px
+      xs: '0.375rem',   // 0.375rem = 6px
+      sm: '0.75rem',    // 0.75rem = 12px
+      DEFAULT: '1rem', // 0.25rem = 16px
+      md: '1.5rem',   // 1.5rem = 24px
+      lg: '1.75rem',     // 1.75rem = 28px
+      xl: '2rem',    // 2rem = 32x
+      '2xl': '2.25rem',    // 2.25rem = 36px
+      '3xl': '3rem',  // 3rem = 48x
+      '4xl': '4rem',  // 4rem = 64px
       'full': '9999px',
     }, // END: borderRadius
 
     boxShadow: {
-      xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
-      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-      md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-      '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-      outline: '0 0 0 3px rgba(63, 153, 225, 0.6)',
-      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-      'dark-lg': '0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 5px 10px rgba(0, 0, 0, 0.2), 0px 15px 40px rgba(0, 0, 0, 0.4)',
+      sm: '0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)',
+      base: '0px 4px 6px -2px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.10)',
+      lg: '0px 10px 10px -5px rgba(0, 0, 0, 0.04), 0px 20px 25px -5px rgba(0, 0, 0, 0.10)',
+      xl: '0px 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      'dark-sm': '0px 2px 4px -11px rgba(0, 0, 0, 0.40), 0px 4px 6px -1px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-base': '0px 4px 10px -2px rgba(0, 0, 0, 0.40), 0px 10px 15px -3px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-lg': '0px 15px 20px 0px rgba(0, 0, 0, 0.30), 0px 5px 10px 0px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-xl': '0px 15px 40px 0px rgba(0, 0, 0, 0.40), 0px 5px 10px 0px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'inner-sm': '0px 2px 4px 0px rgba(0, 0, 0, 0.06) inset',
+      'inner-base': '0px 2px 8px 0px rgba(0, 0, 0, 0.10) inset',
+      'inner-lg': '0px 2px 12px 0px rgba(0, 0, 0, 0.14) inset',
+      'inner-xl': '0px 2px 16px 0px rgba(0, 0, 0, 0.18) inset',
       none: 'none',
     }, // END: boxShadow
 
@@ -548,6 +532,7 @@ module.exports = {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     extend: {
       colors: {
+        // @deprecated use phatGreen
         phat: {
           DEFAULT: '#59A138',
           50: '#F5FFF0',
@@ -561,7 +546,7 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
-        // alias to phat
+        // @deprecated alias to phat, use phatGreen
         brand: {
           DEFAULT: '#59A138',
           50: '#F5FFF0',
@@ -575,19 +560,20 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
+        //
         phalaGreenLight: '#C4F142',
         phalaGreen: {
-          DEFAULT: '#59A138',
-          50: '#F5FFF0',
-          100: '#D5F6C6',
-          200: '#B2E69A',
-          300: '#8AD368',
-          400: '#6FB74E',
-          500: '#59A138',
-          600: '#438525',
-          700: '#3B6727',
-          800: '#325422',
-          900: '#29451C',
+          DEFAULT: '#CDFA50',
+          50: '#FAFEED',
+          100: '#F5FEDC',
+          200: '#EBFDB9',
+          300: '#E1FC96',
+          400: '#D7FB73',
+          500: '#CDFA50',
+          600: '#A4C840',
+          700: '#7B9630',
+          800: '#526420',
+          900: '#293210',
         },
         phalaPurple: {
           DEFAULT: '#7F52FA',
@@ -615,10 +601,25 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
-        // website specified colors
-        primary: {
-          DEFAULT: '#CDFA50',
+        phalaWorldTeal: {
+          DEFAULT: '#2DD2B5',
+          50: '#D7FEF7',
+          100: '#AFFDEF',
+          200: '#86FCE7',
+          300: '#5EFBDF',
+          400: '#36FAD7',
+          500: '#2DD2B5',
+          600: '#25AA92',
+          700: '#1C8270',
+          800: '#135A4D',
+          900: '#0B322B',
         },
+        // website specified colors
+        // @deprecated
+        // primary: {
+        //   DEFAULT: '#CDFA50',
+        // },
+        // @deprecated
         secondary: {
           DEFAULT: '#8544F6',
         },
@@ -681,6 +682,73 @@ module.exports = {
           900: '#1A1A1A',
           950: '#0D0D0D',
         },
+        //
+        positive: {
+          DEFAULT: '#38A169',
+          50: '#F0FFF4',
+          100: '#C6F6D5',
+          200: '#9AE6B4',
+          300: '#68D391',
+          400: '#48BB78',
+          500: '#38A169',
+          600: '#25855A',
+          700: '#276749',
+          800: '#22543S',
+          900: '#1C4532',
+        },
+        critical: {
+          DEFAULT: '#E53E3E',
+          50: '#FFF5F5',
+          100: '#FED7D7',
+          200: '#FEB2B2',
+          300: '#FC8181',
+          400: '#F56565',
+          500: '#E53E3E',
+          600: '#C53030',
+          700: '#9B2C2C',
+          800: '#822727',
+          900: '#63171B',
+        },
+        warning: {
+          DEFAULT: '#DD6B20',
+          50: '#FFFAF0',
+          100: '#FEEBCB',
+          200: '#FBD38D',
+          300: '#F6AD55',
+          400: '#ED8936',
+          500: '#DD6B20',
+          600: '#C05621',
+          700: '#9C4221',
+          800: '#7B341E',
+          900: '#652B19',
+        },
+        wait: {
+          DEFAULT: '#d69e2e',
+          50: '#FFFFF0',
+          100: '#FEFCBF',
+          200: '#FAF089',
+          300: '#f6e05e',
+          400: '#ecc94b',
+          500: '#d69e2e',
+          600: '#b7791f',
+          700: '#975a16',
+          800: '#744210',
+          900: '#5f370e',
+        },
+        primary: {
+          DEFAULT: '#3182ce',
+          50: '#e8f8ff',
+          100: '#bee3f8',
+          200: '#90cdf4',
+          300: '#63b3ed',
+          400: '#4299e1',
+          500: '#3182ce',
+          600: '#2b6cb0',
+          700: '#2c5282',
+          800: '#2a4365',
+          900: '#1a365d',
+        },
+        // END
         red: {
           50: '#fff5f5',
           100: '#fed7d7',
@@ -858,17 +926,37 @@ module.exports = {
       }, // END: fontFamily
 
       fontSize: {
-        xs: ['0.75rem', { lineHeight: '1.5rem' }], // 0.75rem = 12px
-        sm: ['0.875rem', { lineHeight: '1.5rem' }], // 0.875rem = 14px
-        md: ['1rem', { lineHeight: '1.5rem' }], // 1rem = 16px
-        lg: ['1.125rem', { lineHeight: '1.5rem' }], // 1.125rem = 18px
-        xl: ['1.25rem', { lineHeight: '1.5rem' }], // 1.25rem = 20px
-        '2xl': ['1.5rem', { lineHeight: '2rem' }], // 1.5rem = 24px
-        '3xl': ['1.875rem', { lineHeight: '2.25rem' }], // 1.875rem = 30px
-        '4xl': ['2.25rem', { lineHeight: '2.5rem' }], // 2.25rem = 36px
-        '5xl': ['3rem', { lineHeight: '1' }], // 3rem = 48px
-        '6xl': ['3.5rem', { lineHeight: '1' }], // 3.5rem = 56px
-        '7xl': ['4.5rem', { lineHeight: '1' }], // 4.5rem = 72px
+        // 0.75rem = 12px, 1.5rem = 18px
+        '12': ['0.75rem', { lineHeight: '1.5rem' }],
+        'xs': ['0.75rem', { lineHeight: '1.5rem' }],
+        // 0.875rem = 14px, 1.5rem = 21px
+        '14': ['0.875rem', { lineHeight: '1.5rem', letterSpacing: '-0.6%' }],
+        'sm': ['0.875rem', { lineHeight: '1.5rem', letterSpacing: '-0.6%' }],
+        // 1rem = 16px, 1.5rem = 24px
+        '16': ['1rem', { lineHeight: '1.5rem', letterSpacing: '-1.1%' }],
+        'md': ['1rem', { lineHeight: '1.5rem', letterSpacing: '-1.1%' }],
+        // @FIXME 1.125rem = 18px
+        '18': ['1.125rem', { lineHeight: '1.5rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.5rem' }],
+        // 1.25rem = 20px,
+        '20': ['1.25rem', { lineHeight: '1.4rem', letterSpacing: '-1.7%', }],
+        'xl': ['1.25rem', { lineHeight: '1.4rem', letterSpacing: '-1.7%', }],
+        // 1.5rem = 24px
+        '24': ['1.5rem', { lineHeight: '1.375rem', letterSpacing: '-1.9%', }],
+        '2xl': ['1.5rem', { lineHeight: '1.375rem', letterSpacing: '-1.9%', }],
+        // 2rem = 32px
+        '32': ['2rem', { lineHeight: '1.375rem', letterSpacing: '-2.2%', }],
+        '3xl': ['2rem', { lineHeight: '1.375rem', letterSpacing: '-2.2%', }],
+        // 2.5rem = 40px
+        '40': ['2.5rem', { lineHeight: '1.3rem', letterSpacing: '-2.2%', }],
+        '4xl': ['2.5rem', { lineHeight: '1.3rem', letterSpacing: '-2.2%', }],
+        // 3rem = 48px
+        '48': ['3rem', { lineHeight: '1.25rem', letterSpacing: '-2.2%', }],
+        '5xl': ['3rem', { lineHeight: '1.25rem', letterSpacing: '-2.2%', }],
+        // @FIXME 3.5rem = 56px
+        '6xl': ['3.5rem', { lineHeight: '1' }],
+        // @FIXME 4.5rem = 72px
+        '7xl': ['4.5rem', { lineHeight: '1' }],
       }, // END: fontSize
 
       //
