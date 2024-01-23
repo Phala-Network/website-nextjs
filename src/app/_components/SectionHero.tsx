@@ -144,9 +144,10 @@ export function SectionHero() {
             >
               <a
                 className={cn(
-                  "btn font-bold btn-primary justify-center",
-                  "rounded-full px-12 pb-2.5 pt-3",
-                  "tracking-wide",
+                  "btn btn-sm btn-primary btn-rounded btn-phala justify-center",
+                  "min-w-[160px]"
+                  // "rounded-full px-12 pb-2.5 pt-3",
+                  // "tracking-wide",
                 )}
                 href="#section-features"
                 onClick={(e) => {
