@@ -114,7 +114,7 @@ details > summary::-webkit-details-marker {
  */
 
 .safe-viewport {
-  @apply w-full max-w-[1760px] mx-auto px-9 xl:px-10 3xl:px-0;
+  @apply w-full max-w-[1760px] mx-auto px-6 lg:px-9 xl:px-10 3xl:px-0;
 }
 
 
