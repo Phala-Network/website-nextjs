@@ -852,54 +852,30 @@ function SectionPitchInnovate() {
 function SectionPitchPioneer() {
   return (
     <section id="section-pitch-pionner">
-      <Squircle cornerRadius={48} fill="#333">
-      <DotBackground dotColor="#2b2b2b" bgColor="transparent" />
       <div className={cn(
         "safe-viewport",
-        "grid gap-x-4 grid-cols-6 xl:grid-cols-20 3xl:grid-cols-24",
-        "py-16 xl:py-32 px-0",
+        "grid gap-x-10 grid-cols-12",
+        "border border-solid border-black-100 rounded-3xl py-32",
+        "bg-black-100",
       )}>
-
         <header
           className={cn(
-            "row-start-1 col-end-6 col-span-4 xl:col-end-17 xl:col-span-6 3xl:col-end-19",
-            "flex flex-col gap-3 xl:gap-6",
-            "text-white text-right",
+            "row-start-1 col-start-1 col-span-full",
+            "flex flex-col gap-5",
+            "pb-20"
           )}
         >
-          <h2 className="text-4xl xl:text-6xl font-black uppercase">Pioneer</h2>
-          <div className="text-base xl:text-2xl">
-            <p>Work with us</p>
-            <p>on cutting edge research</p>
+          <h2 className={cn("text-6xl text-black font-black")}>Cutting Edge Web3 Usecases</h2>
+          <div>
+            <button className={cn("btn btn-primary btn-md btn-purple btn-rounded")}>
+              Learn about Blueprints
+            </button>
           </div>
         </header>
-
-        <div className={cn("row-start-2 hidden xl:block xl:col-start-3 xl:col-span-14 3xl:col-start-5 3xl:col-span-14 pt-12 -mb-[2px]")}>
-          <svg viewBox="0 0 1099 237">
-            <path fill="none" stroke="#ffffff" strokeWidth="6" d="M 980 60 L 171 60 C 137.397003 60 120.595001 60 107.761002 66.539597 C 96.471001 72.291992 87.292 81.470795 81.539597 92.76059 C 75 105.595001 75 122.397003 75 156 L 75 160"/>
-            <path fill="#ffffff" stroke="none" d="M 1050.439941 46.297104 L 1025.369995 71.362793 L 1021.930054 70.9991 C 1019.410034 67.087097 1018.300049 62.429901 1018.800049 57.802597 C 1019.290039 53.175293 1021.359985 48.856995 1024.650024 45.566406 C 1027.939941 42.275696 1032.26001 40.211197 1036.890015 39.7164 C 1041.51001 39.221603 1046.170044 40.326401 1050.079956 42.846893 L 1050.439941 46.297104 Z"/>
-            <path fill="#ffffff" stroke="none" d="M 1053.439941 74.375305 C 1050.140015 77.6642 1045.819946 79.725708 1041.189941 80.216705 C 1036.560059 80.707611 1031.910034 79.598297 1028 77.073502 L 1027.630005 73.633102 L 1052.699951 48.567398 L 1056.140015 48.931091 C 1058.660034 52.842407 1059.77002 57.5009 1059.280029 62.1306 C 1058.790039 66.760406 1056.72998 71.081909 1053.439941 74.375305 Z"/>
-            <path fill="#ffffff" stroke="none" d="M 1056.089966 42.925797 C 1052.72998 39.531296 1048.430054 37.212891 1043.73999 36.264404 C 1039.050049 35.315903 1034.189941 35.7798 1029.76001 37.597595 C 1025.339966 39.415298 1021.550049 42.505005 1018.890015 46.475296 C 1016.219971 50.445602 1014.789978 55.117996 1014.780029 59.900604 C 1014.780029 64.683105 1016.189941 69.360809 1018.839966 73.341095 C 1021.48999 77.321411 1025.26001 80.425201 1029.680054 82.259491 C 1034.099976 84.093811 1038.959961 84.575989 1043.650024 83.645111 C 1048.339966 82.714111 1052.650024 80.411896 1056.030029 77.029999 C 1060.550049 72.51059 1063.099976 66.383499 1063.109985 59.991104 C 1063.119995 53.598694 1060.599976 47.462097 1056.089966 42.925797 Z M 1054.75 88.378296 L 1048 91.169998 L 1044.140015 103.024994 L 1034.319946 103.024994 L 1030.079956 91.189606 L 1023.339966 88.378296 L 1013.51001 93.371796 L 1012.219971 94.045197 L 1005.299988 87.120102 L 1010.669983 75.752106 L 1007.869995 69.008911 L 996.02002 65.12619 L 996.02002 55.311203 L 1007.849976 51.059906 L 1010.650024 44.326599 L 1005.01001 33.2043 L 1011.929993 26.279205 L 1023.290039 31.656097 L 1030.02002 28.859497 L 1033.459961 18.381104 L 1033.910034 17 L 1043.689941 17 L 1047.949951 28.844803 L 1054.689941 31.636398 L 1064.52002 26.647797 L 1065.810059 25.979401 L 1072.73999 32.904495 L 1067.359985 44.282303 L 1070.140015 51.025497 L 1082.01001 54.913101 L 1082.01001 64.698608 L 1070.180054 68.945007 L 1067.359985 75.678406 L 1073.030029 86.810501 L 1066.109985 93.730591 L 1054.75 88.378296 Z"/>
-            <path fill="none" stroke="#ffffff" strokeWidth="6" d="M 1096 60 C 1096 91.480225 1070.480225 117 1039 117 C 1007.519775 117 982 91.480225 982 60 C 982 28.519775 1007.519775 3 1039 3 C 1070.480225 3 1096 28.519775 1096 60 Z"/>
-            <path fill="#ffffff" stroke="none" d="M -0.0031 237 L -9 237 L 152.5 237 L 149.960007 237 C 110.195 237 77.9599 204.764008 77.9599 165 L 77.9599 160 L 71.996902 160 L 71.996902 165 C 71.996902 204.764999 39.761398 237 -0.0031 237 Z"/>
-          </svg>
-        </div>
-
-        <div className={cn("row-start-2 col-start-2 col-span-4 pt-6 xl:hidden")}>
-          <svg viewBox="0 0 284 119">
-            <path fill="#ffffff" stroke="none" d="M 259.217987 23.648598 L 246.684998 36.181503 L 244.964996 35.999603 C 243.705002 34.043594 243.151993 31.714996 243.399994 29.401398 C 243.647003 27.0877 244.679001 24.928604 246.324997 23.283302 C 247.970001 21.637901 250.128998 20.605698 252.442993 20.358299 C 254.756012 20.110901 257.084991 20.6633 259.040985 21.9235 L 259.217987 23.648598 Z"/>
-            <path fill="#ffffff" stroke="none" d="M 260.717987 37.687599 C 259.071014 39.3321 256.911011 40.3629 254.596985 40.608299 C 252.282013 40.853806 249.95401 40.299194 247.998001 39.036697 L 247.817001 37.316605 L 260.350006 24.783699 L 262.070007 24.9655 C 263.332001 26.921204 263.886993 29.250504 263.640991 31.5653 C 263.394989 33.880203 262.364014 36.040901 260.717987 37.687599 Z"/>
-            <path fill="#ffffff" stroke="none" d="M 262.046997 21.962898 C 260.363007 20.265602 258.213013 19.106499 255.868988 18.632202 C 253.524994 18.157898 251.092987 18.3899 248.881012 19.298798 C 246.669006 20.207596 244.776993 21.752502 243.444 23.737701 C 242.110992 25.722801 241.397003 28.058998 241.391998 30.450302 C 241.388 32.841599 242.093002 35.180405 243.419006 37.170502 C 244.744003 39.160706 246.630997 40.712601 248.838989 41.629799 C 251.048004 42.546906 253.479004 42.787994 255.824005 42.322495 C 258.170013 41.857101 260.325012 40.705902 262.015015 39.014999 C 264.276001 36.755295 265.548004 33.691803 265.553986 30.495499 C 265.559998 27.299301 264.299011 24.231003 262.046997 21.962898 Z M 261.373993 44.689201 L 257.997986 46.084999 L 256.071014 52.012299 L 251.158997 52.012299 L 249.037994 46.094803 L 245.671005 44.689201 L 240.755997 47.185898 L 240.110001 47.522598 L 236.647003 44.060104 L 239.332993 38.375999 L 237.932999 35.004501 L 232.007996 33.063095 L 232.007996 28.155602 L 237.925003 26.029999 L 239.326004 22.6633 L 236.501999 17.102097 L 239.964996 13.639603 L 245.647003 16.328003 L 249.010986 14.929802 L 250.730988 9.690536 L 250.954987 9 L 255.846985 9 L 257.975006 14.922401 L 261.345001 16.318199 L 266.259003 13.823898 L 266.906006 13.4897 L 270.368011 16.952202 L 267.679993 22.641197 L 269.067993 26.012695 L 275.002991 27.956604 L 275.002991 32.849304 L 269.088013 34.972504 L 267.682007 38.339203 L 270.515991 43.905304 L 267.056 47.365295 L 261.373993 44.689201 Z"/>
-            <path fill="none" stroke="#ffffff" strokeWidth="3" d="M 282 30.5 C 282 46.240112 269.240112 59 253.5 59 C 237.759888 59 225 46.240112 225 30.5 C 225 14.759888 237.759888 2 253.5 2 C 269.240112 2 282 14.759888 282 30.5 Z"/>
-            <path fill="none" stroke="#ffffff" strokeWidth="4" d="M 225 31 L 66 31 C 48.3269 31 34 45.326904 34 63 L 34 79"/>
-            <path fill="#ffffff" stroke="none" d="M 35.999901 79 L 35.999901 87 C 35.999901 104.670998 50.3241 118.997002 67.995003 119 L -9e-05 119 C 17.673 119 31.999901 104.672997 31.999901 87 L 31.999901 79 L 35.999901 79 Z"/>
-          </svg>
-        </div>
-
-        <main className={cn("row-start-3 invisible col-span-full xl:visible xl:col-end-19 xl:col-span-10 3xl:col-end-21")}>
-          <div className={cn("hidden xl:grid grid-cols-6 grid-rows-8 gap-2.5", "text-white text-xl font-extrabold")}>
+        <main className={cn("row-start-2 invisible col-span-full xl:visible xl:col-start-6 xl:col-span-7")}>
+          <div className={cn("hidden xl:grid grid-cols-6 grid-rows-8 gap-2.5", "text-white text-xl font-extrabold", "mx-auto")}>
             <AreaOfInterestTab idx={0} className="bento-1">
-              <h4 className="uppercase">Trustless MEV</h4>
+              <h4 className="text-20 font-bold">Trustless MEV</h4>
             </AreaOfInterestTab>
             <AreaOfInterestTab idx={1} className="bento-2">
               <h4 className="uppercase">Account Abstraction</h4>
@@ -916,19 +892,6 @@ function SectionPitchPioneer() {
             <AreaOfInterestTab idx={5} className="bento-6">
               <h4 className="uppercase">Distributed Computing</h4>
             </AreaOfInterestTab>
-            <a
-              href="https://discord.gg/fKuFDPj2Zh"
-              target="_blank"
-              rel="noopener"
-              className={cn(
-                "bento-8",
-                "rounded-4xl btn-third p-6 w-full aspect-square flex flex-col gap-3.5 items-left justify-center text-right",
-                "uppercase",
-              )}
-            >
-              <VscCommentDiscussion className="w-36 h-36 text-gray-200" />
-              <div>Join research community</div>
-            </a>
             <AreaOfInterestTab idx={6} className="bento-9">
               <h4 className="uppercase">Gateway & CDN</h4>
             </AreaOfInterestTab>
@@ -938,66 +901,81 @@ function SectionPitchPioneer() {
           </div>
         </main>
 
-        <aside className={cn("row-start-3 col-span-full xl:col-start-2 xl:col-span-7 3xl:col-start-4")}>
-          <Squircle cornerRadius={36} fill="#fff" className="p-10">
-            <h3 className="text-3xl font-black uppercase">Area of Interest</h3>
-            <hr className="my-5 xl:my-10 border-blackAlpha-800 border-t border-solid" />
-            <div className={cn("h-full")}>
-              <AreaOfInterestTabPanel idx={0} title="Trustless MEV">
-                <p>Trustless MEV refers to the concept of eliminating reliance on trusted service providers, such as Flashbot, in the Miner Extractable Value (MEV) ecosystem. Currently, 80% of Ethereum blocks are built by MEV, but the existing MEV stack depends on these trusted providers.</p>
-                <p>The problem with this approach is that it creates a single point of trust in the MEV ecosystem. Researchers have suggested using Secure Enclaves, like Intel SGX, to minimize this trust dependency.</p>
-                <p>Phala Network, an off-chain compute network powered by Secure Enclaves, can be utilized to build the MEV core stack with minimal trust assumptions. This enables a more secure and trustless MEV ecosystem for developers and users alike.</p>
-              </AreaOfInterestTabPanel>
-              <AreaOfInterestTabPanel idx={1} title="Account Abstraction">
-                <p>Account Abstraction is the idea of using smart contract wallets as first-class citizens instead of Externally Owned Accounts (EOAs), alongside a reliable transaction relaying infrastructure. This allows third parties to execute transactions on behalf of users, enabling features such as wallet recovery and batched transactions.</p>
-                <p>However, adoption of smart contract wallets has been limited due to the lack of a common standard for interaction between smart contracts and dApps. This results in users still relying on their EOAs for transactions.</p>
-                <p>Phala Network’s Phat Contract allows developers to create seamless user experiences by enabling registration via social accounts or gasless dApp usage. It also allows developers to sponsor transactions on behalf of users, eliminating the need for users to worry about gas fees.</p>
-              </AreaOfInterestTabPanel>
-              <AreaOfInterestTabPanel idx={2} title="L2 Sequencer">
-                <p>Layer 2 solutions aim to scale applications by handling transactions off the Ethereum Mainnet (Layer 1) while maintaining the decentralized security of the Mainnet. However, rollups, a popular Layer 2 solution, introduce issues like monopoly pricing, censorship, and fragmented liquidity between rollups.</p>
-                <p>Phala Network can provide a scalable and secure solution by leveraging its high-performance and confidentiality features. This enables developers to create application-tailored rollups that are fast, reliable, and maintain the composability of the Ethereum ecosystem.</p>
-              </AreaOfInterestTabPanel>
-              <AreaOfInterestTabPanel idx={3} title="Decentralized API">
-                <p>Decentralized APIs can enhance the trustworthiness of various services, such as Infura, Graph, Alchemy, and RPC APIs. Phala Network enables the aggregation of API services or RPC services with trustless algorithms, providing use cases like verifiable RPC aggregator switchers and trustless CDN management programs.</p>
-                <p>This allows developers to secure their websites, APIs, and Internet applications while maintaining a decentralized and trustless environment.</p>
-              </AreaOfInterestTabPanel>
-              <AreaOfInterestTabPanel idx={4} title="Web3 AI">
-              <p>Web3 AI refers to the integration of decentralized AI systems with blockchain technology. This enables distributed model training, ensuring data privacy while benefiting from diverse data sources. It also allows for collaborative model development, where multiple parties can work on AI models without sharing sensitive data.</p>
-              <p>Phala Network can facilitate the development of Web3 AI systems by providing a secure and transparent platform for AI model training, updates, and access. Smart contracts on Phala Network can ensure adherence to predefined rules and agreements, while the immutable nature of the blockchain provides an auditable record of these processes.</p>
-              </AreaOfInterestTabPanel>
-              <AreaOfInterestTabPanel idx={5} title="Distributed Computing">
-                <p>Distributed computing enables multiple computers to work together to solve complex problems, making a computer network appear as a powerful single computer. It can be used to encrypt large volumes of data, solve complex equations, and render high-quality animations.</p>
-                <p>Phala Network offers fast, cost-efficient, and secure computation by running jobs where data is generated and stored. It can streamline existing workflows without extensive rewriting by running arbitrary Docker containers and WebAssembly (WASM) images as tasks.</p>
-              </AreaOfInterestTabPanel>
-              <AreaOfInterestTabPanel idx={6} title="Gateway & CDN">
-                <p>Centralized CDN services can lead to issues like single points of failure, data leaks, and centralized control. Phala Network provides a decentralized content and application delivery network that accelerates the delivery of Web3 content and apps.</p>
-                <p>By connecting with decentralized storage services like IPFS, Filecoin, and Arweave, Phala Network can create a transparent, content-addressable, and publicly available CDN. This ensures a trustless, censorship-resistant, and open-source environment for content delivery.</p>
-              </AreaOfInterestTabPanel>
-              <AreaOfInterestTabPanel idx={7} title="Relayers & Validators">
-                <p>The relay model for cross-chain transactions abstracts data verification into a consensus problem at the relay layer. A relay chain is developed for interoperability, with relay nodes deployed in each blockchain network to monitor and synchronize transaction data.</p>
-                <p>Phala Network can help developers build inter-chain-native dApps with efficient liquidity utilization, coherent application logic, and shared states with cross-chain verifications. This eliminates the need for multiple isolated smart contract deployments on different blockchains, streamlining the development process.</p>
-              </AreaOfInterestTabPanel>
+        <aside className={cn("row-start-2 col-span-full xl:col-start-1 xl:col-span-5")}>
+          <div className={cn("h-full")}>
+            <AreaOfInterestTabPanel idx={0} title="Trustless MEV">
+              <p>Trustless MEV refers to the concept of eliminating reliance on trusted service providers, such as Flashbot, in the Miner Extractable Value (MEV) ecosystem. Currently, 80% of Ethereum blocks are built by MEV, but the existing MEV stack depends on these trusted providers.</p>
+              <p>The problem with this approach is that it creates a single point of trust in the MEV ecosystem. Researchers have suggested using Secure Enclaves, like Intel SGX, to minimize this trust dependency.</p>
+              <p>Phala Network, an off-chain compute network powered by Secure Enclaves, can be utilized to build the MEV core stack with minimal trust assumptions. This enables a more secure and trustless MEV ecosystem for developers and users alike.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={1} title="Account Abstraction">
+              <p>Account Abstraction is the idea of using smart contract wallets as first-class citizens instead of Externally Owned Accounts (EOAs), alongside a reliable transaction relaying infrastructure. This allows third parties to execute transactions on behalf of users, enabling features such as wallet recovery and batched transactions.</p>
+              <p>However, adoption of smart contract wallets has been limited due to the lack of a common standard for interaction between smart contracts and dApps. This results in users still relying on their EOAs for transactions.</p>
+              <p>Phala Network’s Phat Contract allows developers to create seamless user experiences by enabling registration via social accounts or gasless dApp usage. It also allows developers to sponsor transactions on behalf of users, eliminating the need for users to worry about gas fees.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={2} title="L2 Sequencer">
+              <p>Layer 2 solutions aim to scale applications by handling transactions off the Ethereum Mainnet (Layer 1) while maintaining the decentralized security of the Mainnet. However, rollups, a popular Layer 2 solution, introduce issues like monopoly pricing, censorship, and fragmented liquidity between rollups.</p>
+              <p>Phala Network can provide a scalable and secure solution by leveraging its high-performance and confidentiality features. This enables developers to create application-tailored rollups that are fast, reliable, and maintain the composability of the Ethereum ecosystem.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={3} title="Decentralized API">
+              <p>Decentralized APIs can enhance the trustworthiness of various services, such as Infura, Graph, Alchemy, and RPC APIs. Phala Network enables the aggregation of API services or RPC services with trustless algorithms, providing use cases like verifiable RPC aggregator switchers and trustless CDN management programs.</p>
+              <p>This allows developers to secure their websites, APIs, and Internet applications while maintaining a decentralized and trustless environment.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={4} title="Web3 AI">
+            <p>Web3 AI refers to the integration of decentralized AI systems with blockchain technology. This enables distributed model training, ensuring data privacy while benefiting from diverse data sources. It also allows for collaborative model development, where multiple parties can work on AI models without sharing sensitive data.</p>
+            <p>Phala Network can facilitate the development of Web3 AI systems by providing a secure and transparent platform for AI model training, updates, and access. Smart contracts on Phala Network can ensure adherence to predefined rules and agreements, while the immutable nature of the blockchain provides an auditable record of these processes.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={5} title="Distributed Computing">
+              <p>Distributed computing enables multiple computers to work together to solve complex problems, making a computer network appear as a powerful single computer. It can be used to encrypt large volumes of data, solve complex equations, and render high-quality animations.</p>
+              <p>Phala Network offers fast, cost-efficient, and secure computation by running jobs where data is generated and stored. It can streamline existing workflows without extensive rewriting by running arbitrary Docker containers and WebAssembly (WASM) images as tasks.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={6} title="Gateway & CDN">
+              <p>Centralized CDN services can lead to issues like single points of failure, data leaks, and centralized control. Phala Network provides a decentralized content and application delivery network that accelerates the delivery of Web3 content and apps.</p>
+              <p>By connecting with decentralized storage services like IPFS, Filecoin, and Arweave, Phala Network can create a transparent, content-addressable, and publicly available CDN. This ensures a trustless, censorship-resistant, and open-source environment for content delivery.</p>
+            </AreaOfInterestTabPanel>
+            <AreaOfInterestTabPanel idx={7} title="Relayers & Validators">
+              <p>The relay model for cross-chain transactions abstracts data verification into a consensus problem at the relay layer. A relay chain is developed for interoperability, with relay nodes deployed in each blockchain network to monitor and synchronize transaction data.</p>
+              <p>Phala Network can help developers build inter-chain-native dApps with efficient liquidity utilization, coherent application logic, and shared states with cross-chain verifications. This eliminates the need for multiple isolated smart contract deployments on different blockchains, streamlining the development process.</p>
+            </AreaOfInterestTabPanel>
 
-              <div className={cn("border-t border-solid border-whiteAlpha-700 mt-4 hidden")}>
-                <h3 className={cn("text-2xl font-bold leading-normal py-8")}>We help you build your future.<br />Share your vision:</h3>
-                <form className="flex flex-col gap-2.5">
-                  <div className="flex flex-row gap-2.5">
-                    <input placeholder="Contact name" className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 flex-1 w-1/2" />
-                    <input placeholder="nick@domain.ltd" className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 flex-1 w-1/2" />
-                  </div>
-                  <div>
-                    <textarea className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 w-full" rows={6} />
-                  </div>
-                  <div className="flex flex-row justify-end">
-                    <button type="submit" className="btn text-black bg-primary">Submit</button>
-                  </div>
-                </form>
-              </div>
+            <div className={cn("border-t border-solid border-whiteAlpha-700 mt-4 hidden")}>
+              <h3 className={cn("text-2xl font-bold leading-normal py-8")}>We help you build your future.<br />Share your vision:</h3>
+              <form className="flex flex-col gap-2.5">
+                <div className="flex flex-row gap-2.5">
+                  <input placeholder="Contact name" className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 flex-1 w-1/2" />
+                  <input placeholder="nick@domain.ltd" className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 flex-1 w-1/2" />
+                </div>
+                <div>
+                  <textarea className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 w-full" rows={6} />
+                </div>
+                <div className="flex flex-row justify-end">
+                  <button type="submit" className="btn text-black bg-primary">Submit</button>
+                </div>
+              </form>
             </div>
-          </Squircle>
+          </div>
         </aside>
+
+        <div className={cn("rounded p-8 bg-white mt-32", "col-span-full", "grid grid-cols-12")}>
+          <form className={cn("col-span-6", "flex flex-col gap-3 pr-8")}>
+            <legend className="text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>
+            <fieldset className="flex flex-row gap-3">
+              <input type="text" placeholder="Contact name" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
+              <input type="email" placeholder="gavin@hooli.com" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
+            </fieldset>
+            <textarea className="bg-black-50 rounded-xs px-5 py-2.5" rows={7}>
+            </textarea>
+            <div>
+              <button className="btn btn-primary btn-blk">
+                Submit
+              </button>
+            </div>
+          </form>
+          <div className="col-span-4 col-end-12 relative">
+            <img src="/home/contact-us.png" alt="" className="absolute pointer-events-none select-none bottom-0" />
+          </div>
+        </div>
       </div>
-      </Squircle>
     </section>
   )
 }
@@ -1137,8 +1115,8 @@ function SectionPhatContractHighlight() {
                 <img src="/home/Rectangle2944.png" alt="" />
               </div>
             </div>
-            <div className={cn("relative z-1", "flex items-center justify-center", "p-8")}>
-              <div className="w-full h-full aspect-square max-w-[280px]">
+            <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
+              <div className="aspect-square w-full max-w-[280px] p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">VRF Oracle</h4>
@@ -1152,8 +1130,8 @@ function SectionPhatContractHighlight() {
                 <img src="/home/Rectangle2944.png" alt="" />
               </div>
             </div>
-            <div className={cn("relative z-1", "flex items-center justify-center", "p-8")}>
-              <div className="w-full h-full aspect-square max-w-[280px]">
+            <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
+              <div className="aspect-square w-full max-w-[280px] p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Dynamic NFT</h4>
@@ -1167,8 +1145,8 @@ function SectionPhatContractHighlight() {
                 <img src="/home/Rectangle2944.png" alt="" />
               </div>
             </div>
-            <div className={cn("relative z-1", "flex items-center justify-center", "p-8")}>
-              <div className="w-full h-full aspect-square max-w-[280px]">
+            <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
+              <div className="aspect-square w-full max-w-[280px] p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Lens Open Action</h4>
@@ -1182,8 +1160,8 @@ function SectionPhatContractHighlight() {
                 <img src="/home/Rectangle2944.png" alt="" />
               </div>
             </div>
-            <div className={cn("relative z-1", "flex items-center justify-center", "p-8")}>
-              <div className="w-full h-full aspect-square max-w-[280px]">
+            <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
+              <div className="aspect-square w-full max-w-[280px] p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Web3 Social</h4>
@@ -1212,7 +1190,7 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "p-8")}>
+          <div className={cn("flex items-center justify-center", "h-full p-8")}>
             <div className="flex flex-col gap-6 items-center justify-center">
               <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
@@ -1231,7 +1209,7 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "p-8")}>
+          <div className={cn("flex items-center justify-center", "h-full p-8")}>
             <div className="flex flex-col gap-6 items-center justify-center">
               <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
@@ -1253,7 +1231,7 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "p-8")}>
+          <div className={cn("flex items-center justify-center", "h-full p-8")}>
             <div className="flex flex-col gap-6 items-center justify-center">
               <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
@@ -1272,7 +1250,7 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "p-8")}>
+          <div className={cn("flex items-center justify-center", "h-full p-8")}>
             <div className="flex flex-col gap-6 items-center justify-center">
               <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
@@ -1291,7 +1269,7 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "p-8")}>
+          <div className={cn("flex items-center justify-center", "h-full p-8")}>
             <div className="flex flex-col gap-6 items-center justify-center">
               <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
@@ -1310,7 +1288,7 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "p-8")}>
+          <div className={cn("flex items-center justify-center", "h-full p-8")}>
             <div className="flex flex-col gap-6 items-center justify-center">
               <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
@@ -1329,7 +1307,7 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "p-8")}>
+          <div className={cn("flex items-center justify-center", "h-full p-8")}>
             <div className="flex flex-col gap-6 items-center justify-center">
               <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
@@ -1348,7 +1326,7 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "p-8")}>
+          <div className={cn("flex items-center justify-center", "h-full p-8")}>
             <div className="flex flex-col gap-6 items-center justify-center">
               <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
@@ -1522,7 +1500,7 @@ export default async function Home() {
       {/* <SectionPitchIntro /> */}
       {/* <SectionPitchAccelerate /> */}
       {/* <SectionPitchInnovate /> */}
-      {/* <SectionPitchPioneer /> */}
+      <SectionPitchPioneer />
       <SectionHowItWorks />
       <SectionGlobalDistribution />
       <SectionHighlights />
