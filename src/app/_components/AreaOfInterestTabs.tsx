@@ -14,9 +14,10 @@ export function AreaOfInterestTab({ idx, className, children }: AreaOfInterestTa
   return (
     <button
       className={cn(
-        "rounded-4xl p-6 w-full aspect-square transition-all border border-solid border-transparent hover:border-[#CDFA50]",
-        current === idx ? 'active bg-[#CDFA50] text-black' : 'bg-blackAlpha-800',
-        "flex flex-row text-left leading-7",
+        "rounded-sm p-5 w-full aspect-square transition-all",
+        "border-2 border-solid border-transparent hover:border-phalaPurple-500",
+        current === idx ? 'active bg-phalaPurple-500 text-white' : 'bg-white text-black-800',
+        "flex flex-row text-left",
         className
       )}
       onClick={() => setCurrent(idx)}
@@ -33,11 +34,11 @@ export function AreaOfInterestTabPanel({ idx, title, children }: {
 }) {
   const current = useAtomValue(activeAreaOfInterestAtom)
   return (
-    <details open={idx === current}>
+    <details open={idx === current} className={cn(idx === current && 'h-full')}>
       <summary className="list-none" />
-      <div className={cn("flex flex-col justify-between")}>
-        <h4 className={cn("text-2xl font-black uppercase")}>{title}</h4>
-        <div className={cn("flex flex-col gap-2.5 leading-normal text-base py-5 xl:py-10")}>{children}</div>
+      <div className={cn("flex flex-col gap-10", "bg-white rounded-sm p-10", "h-full")}>
+        <h4 className={cn("text-32 font-bold")}>{title}</h4>
+        <div className={cn("flex flex-col gap-5", "leading-normal text-16")}>{children}</div>
       </div>
     </details>
   )

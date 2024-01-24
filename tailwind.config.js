@@ -306,21 +306,27 @@ function buttonComponents({ addComponents, theme }) {
     {
       '.btn-phala': {
         backgroundColor: theme('colors.phalaGreen.500'),
+        color: theme('colors.black.800'),
       },
       '.btn-purple': {
         backgroundColor: theme('colors.phalaPurple.500'),
+        color: '#fff',
       },
       '.btn-blk': {
         backgroundColor: theme('colors.black.800'),
+        color: '#fff',
       },
       '.btn-wht': {
         backgroundColor: theme('colors.white'),
+        color: theme('colors.black.800'),
       },
       '.btn-phat': {
         backgroundColor: theme('colors.phatGreen.400'),
+        color: '#fff',
       },
       '.btn-phalaworld': {
         backgroundColor: theme('colors.phalaWorldTeal.400'),
+        color: theme('colors.black.800'),
       },
     },
   ]
