@@ -854,18 +854,18 @@ function SectionPitchPioneer() {
     <section id="section-pitch-pionner">
       <div className={cn(
         "safe-viewport",
-        "grid gap-x-10 grid-cols-12",
-        "border border-solid border-black-100 rounded-3xl py-32",
+        "grid grid-cols-1 lg:gap-x-10 lg:grid-cols-12",
+        "border border-solid border-black-100 rounded py-10 lg:py-32",
         "bg-black-100",
       )}>
         <header
           className={cn(
             "row-start-1 col-start-1 col-span-full",
             "flex flex-col gap-5",
-            "pb-20"
+            "pb-10 lg:pb-20"
           )}
         >
-          <h2 className={cn("text-6xl text-black font-black")}>Cutting Edge Web3 Usecases</h2>
+          <h2 className={cn("text-3xl lg:text-6xl text-black font-black")}>Cutting Edge Web3 Usecases</h2>
           <div>
             <button className={cn("btn btn-primary btn-md btn-purple btn-rounded")}>
               Learn about Blueprints
@@ -956,10 +956,10 @@ function SectionPitchPioneer() {
           </div>
         </aside>
 
-        <div className={cn("rounded p-8 bg-white mt-32", "col-span-full", "grid grid-cols-12")}>
-          <form className={cn("col-span-6", "flex flex-col gap-3 pr-8")}>
-            <legend className="text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>
-            <fieldset className="flex flex-row gap-3">
+        <div className={cn("rounded p-8 bg-white mt-8 lg:mt-32", "col-span-full", "grid grid-cols-1 lg:grid-cols-12")}>
+          <form className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")}>
+            <legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>
+            <fieldset className="flex flex-col lg:flex-row gap-3">
               <input type="text" placeholder="Contact name" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
               <input type="email" placeholder="gavin@hooli.com" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
             </fieldset>
@@ -971,8 +971,14 @@ function SectionPitchPioneer() {
               </button>
             </div>
           </form>
-          <div className="col-span-4 col-end-12 relative">
-            <img src="/home/contact-us.png" alt="" className="absolute pointer-events-none select-none bottom-0" />
+          <div className={cn(
+            "row-start-1 col-span-full lg:col-span-4 lg:col-end-12",
+            "flex flex-col-reverse items-end lg:flex-col lg:items-start",
+            "lg:relative",
+            "opacity-25 lg:opacity-100",
+            "pointer-events-none select-none",
+          )}>
+            <img src="/home/contact-us.png" alt="" className="w-1/2 lg:w-auto lg:absolute pointer-events-none select-none bottom-0" />
           </div>
         </div>
       </div>
@@ -993,23 +999,36 @@ function SectionPhatContractHighlight() {
       className={cn(
         "safe-viewport",
         "grid grid-cols-4 lg:grid-cols-12 grid-rows-1 gap-6",
-        "border border-solid border-black-100 rounded-3xl py-32",
+        "border border-solid border-black-100 rounded-md py-10 lg:py-32",
         "bg-black-900",
       )}
     >
       <header
         className={cn(
           "row-start-1 col-start-1 col-span-full",
-          "pb-20"
+          "lg:pb-20",
         )}
       >
-        <h2 className={cn("text-6xl text-white font-black -tracking-wide leading-[calc(72/56)]")}>Phat Contract</h2>
-        <p className={cn("text-6xl text-white font-normal -tracking-wide")}>make coprocessor super easy</p>
+        <h2
+          className={cn(
+            "text-3xl lg:text-6xl text-white font-black",
+          )}
+        >
+          Phat Contract
+        </h2>
+        <p
+          className={cn(
+            "text-3xl lg:text-6xl text-white font-normal",
+          )}
+        >
+          make coprocessor super easy
+        </p>
       </header>
+
       <article
         className={cn(
           "article",
-          "row-start-2 lg:col-start-1 lg:col-span-7",
+          "row-start-2 col-span-full lg:col-start-1 lg:col-span-7",
           "grid gap-8",
         )}
       >
@@ -1029,9 +1048,10 @@ function SectionPhatContractHighlight() {
           <button className={cn("btn lg:btn-lg btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}>Get Start</button>
         </div>
       </article>
+
       <div
         className={cn(
-          "row-start-2 lg:col-start-8 lg:col-span-5",
+          "row-start-3 col-span-full lg:row-start-2 lg:col-start-8 lg:col-span-5",
           "flex flex-col gap-6"
         )}
       >
@@ -1042,7 +1062,7 @@ function SectionPhatContractHighlight() {
           )}
         >
           <h3 className="heading">Build with your famimilar</h3>
-          <div className="flex flex-row flex-wrap gap-6">
+          <div className="flex flex-row flex-wrap gap-4 lg:gap-6">
             <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
               <img src="/home/metamask.png" alt="" className="w-3/5" />
             </div>
@@ -1065,7 +1085,7 @@ function SectionPhatContractHighlight() {
               <img src="/home/metamask.png" alt="" className="w-3/5" />
             </div>
           </div>
-          <div className="mt-5">
+          <div className="lg:mt-5">
             <button className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}>Learn</button>
           </div>
         </article>
@@ -1076,39 +1096,40 @@ function SectionPhatContractHighlight() {
           )}
         >
           <h3 className="heading">Backing <em>153</em> Contracts</h3>
-          <div className="mt-5">
+          <div className="lg:mt-5">
             <button className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}>Explore</button>
           </div>
         </article>
         </div>
+
       <article
         className={cn(
           "article",
-          "row-start-3 col-span-full",
-          "grid grid-cols-subgrid grid-cols-2 gap-20"
+          "lg:row-start-3 col-span-full",
+          "grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20"
         )}
       >
         <div className="max-w-[494px] flex flex-col items-center justify-center gap-12 mx-auto">
           <h3 className="heading">Coprocess <em>25</em> blockchains with smart contract templates</h3>
-          <div className={cn("flex flex-row flex-wrap justify-evenly gap-8")}>
-            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+          <div className={cn("flex flex-row flex-wrap lg:justify-evenly gap-4 lg:gap-8")}>
+            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
               <img src="/home/Ellipse1579.png" alt="" />
             </div>
-            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
               <img src="/home/Ellipse1579.png" alt="" />
             </div>
-            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
               <img src="/home/Ellipse1579.png" alt="" />
             </div>
-            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
               <img src="/home/Ellipse1579.png" alt="" />
             </div>
-            <div className="w-32 h-32 flex items-center justify-center bg-black rounded-full">
+            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
               <img src="/home/Ellipse1579.png" alt="" />
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           <div className="relative aspect-square">
             <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
               <div className="aspect-square max-w-[280px]">
@@ -1116,7 +1137,7 @@ function SectionPhatContractHighlight() {
               </div>
             </div>
             <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
-              <div className="aspect-square w-full max-w-[280px] p-8">
+              <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">VRF Oracle</h4>
@@ -1131,7 +1152,7 @@ function SectionPhatContractHighlight() {
               </div>
             </div>
             <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
-              <div className="aspect-square w-full max-w-[280px] p-8">
+              <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Dynamic NFT</h4>
@@ -1146,7 +1167,7 @@ function SectionPhatContractHighlight() {
               </div>
             </div>
             <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
-              <div className="aspect-square w-full max-w-[280px] p-8">
+              <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Lens Open Action</h4>
@@ -1161,7 +1182,7 @@ function SectionPhatContractHighlight() {
               </div>
             </div>
             <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
-              <div className="aspect-square w-full max-w-[280px] p-8">
+              <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Web3 Social</h4>
@@ -1171,18 +1192,20 @@ function SectionPhatContractHighlight() {
           </div>
         </div>
       </article>
+
       <div
         className={cn(
-          "row-start-4 col-span-full",
-          "text-white pt-20 pb-14",
+          "lg:row-start-4 col-span-full",
+          "text-white py-10 lg:pt-20 lg:pb-14",
         )}
       >
-        <span className="text-56 font-black">Trusted by</span>
+        <span className="text-32 lg:text-56 font-black">Trusted by</span>
       </div>
+
       <div
         className={cn(
           "col-span-full",
-          "grid grid-cols-4 gap-6"
+          "grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
         )}
       >
         <div
@@ -1190,12 +1213,12 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "h-full p-8")}>
-            <div className="flex flex-col gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
               </div>
-              <h4 className="text-white text-24 font-bold">Lens</h4>
+              <h4 className="text-white text-20 lg:text-24 font-bold">Lens</h4>
               <div className="flex flex-row items-center justify-center flex-wrap gap-2">
                 <span className="bg-phalaWorldTeal/20 border border-solid border-phalaWorldTeal/50 rounded-xs text-xs text-phalaWorldTeal py-1 px-3">
                   Web3 Social
@@ -1209,12 +1232,12 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "h-full p-8")}>
-            <div className="flex flex-col gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
               </div>
-              <h4 className="text-white text-24 font-bold">Zurf</h4>
+              <h4 className="text-white text-20 lg:text-24 font-bold">Zurf</h4>
               <div className="flex flex-row items-center justify-center flex-wrap gap-2">
                 <span className="bg-phalaWorldTeal/20 border border-solid border-phalaWorldTeal/50 rounded-xs text-xs text-phalaWorldTeal py-1 px-3">
                   Web3 Social
@@ -1231,12 +1254,12 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "h-full p-8")}>
-            <div className="flex flex-col gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
               </div>
-              <h4 className="text-white text-24 font-bold">Hundle 01</h4>
+              <h4 className="text-white text-20 lg:text-24 font-bold">Hundle 01</h4>
               <div className="flex flex-row items-center justify-center flex-wrap gap-2">
                 <span className="bg-phalaPurple-400/20 border border-solid border-phalaPurple-400/50 rounded-xs text-xs text-phalaPurple-400 py-1 px-3">
                   Web3 communication
@@ -1250,12 +1273,12 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "h-full p-8")}>
-            <div className="flex flex-col gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
               </div>
-              <h4 className="text-white text-24 font-bold">Sygma</h4>
+              <h4 className="text-white text-20 lg:text-24 font-bold">Sygma</h4>
               <div className="flex flex-row items-center justify-center flex-wrap gap-2">
                 <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
                   Defi
@@ -1269,12 +1292,12 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "h-full p-8")}>
-            <div className="flex flex-col gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
               </div>
-              <h4 className="text-white text-24 font-bold">KoinGaroo</h4>
+              <h4 className="text-white text-20 lg:text-24 font-bold">KoinGaroo</h4>
               <div className="flex flex-row items-center justify-center flex-wrap gap-2">
                 <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
                   Defi
@@ -1288,12 +1311,12 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "h-full p-8")}>
-            <div className="flex flex-col gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
               </div>
-              <h4 className="text-white text-24 font-bold">inDEX</h4>
+              <h4 className="text-white text-20 lg:text-24 font-bold">inDEX</h4>
               <div className="flex flex-row items-center justify-center flex-wrap gap-2">
                 <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
                   Defi
@@ -1307,12 +1330,12 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "h-full p-8")}>
-            <div className="flex flex-col gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
               </div>
-              <h4 className="text-white text-24 font-bold">VRF Oracle</h4>
+              <h4 className="text-white text-20 lg:text-24 font-bold">VRF Oracle</h4>
               <div className="flex flex-row items-center justify-center flex-wrap gap-2">
                 <span className="bg-phatGreen-400/20 border border-solid border-phatGreen-400/50 rounded-xs text-xs text-phatGreen-400 py-1 px-3">
                   Oracle
@@ -1326,12 +1349,12 @@ function SectionPhatContractHighlight() {
             "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
           )}
         >
-          <div className={cn("flex items-center justify-center", "h-full p-8")}>
-            <div className="flex flex-col gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full max-w-[120px] aspect-square overflow-hidden">
+          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
                 <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
               </div>
-              <h4 className="text-white text-24 font-bold">DMail</h4>
+              <h4 className="text-white text-20 lg:text-24 font-bold">DMail</h4>
               <div className="flex flex-row items-center justify-center flex-wrap gap-2">
                 <span className="bg-phalaPurple-400/20 border border-solid border-phalaPurple-400/50 rounded-xs text-xs text-phalaPurple-400 py-1 px-3">
                   Web3 communication
@@ -1377,7 +1400,7 @@ function SectionGlobalDistribution() {
         </div>
         <div className={cn(
           "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
-          "z-0 overflow-hidden rounded-3xl",
+          "z-0 overflow-hidden rounded-md",
         )}>
           <div className="bg-video-container">
             <video
@@ -1488,20 +1511,20 @@ export default async function Home() {
   } = await getPhatLists()
 
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-10 lg:gap-20">
       <SectionHero />
-      {/* <SectionFeatures */}
-      {/*   default_list={default_list} */}
-      {/*   connect_list={connect_list} */}
-      {/*   programmable_list={programmable_list} */}
-      {/*   verifiable_list={verifiable_list} */}
-      {/* /> */}
-      {/* <SectionPhatContractHighlight /> */}
-      {/* <SectionPitchPioneer /> */}
-      {/* <SectionHowItWorks /> */}
-      {/* <SectionGlobalDistribution /> */}
-      {/* <SectionHighlights /> */}
-      {/* <SectionSubscription /> */}
+      <SectionFeatures
+        default_list={default_list}
+        connect_list={connect_list}
+        programmable_list={programmable_list}
+        verifiable_list={verifiable_list}
+      />
+      <SectionPhatContractHighlight />
+      <SectionPitchPioneer />
+      <SectionHowItWorks />
+      <SectionGlobalDistribution />
+      <SectionHighlights />
+      <SectionSubscription />
     </div>
   )
 }

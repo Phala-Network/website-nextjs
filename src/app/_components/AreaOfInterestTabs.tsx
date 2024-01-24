@@ -2,6 +2,7 @@
 
 import React, { type ReactNode } from 'react'
 import { atom, useAtom, useAtomValue } from 'jotai'
+import { MdOutlineExpandLess, MdOutlineExpandMore } from "react-icons/md"
 
 import { cn } from '@/lib/utils'
 
@@ -32,12 +33,29 @@ export function AreaOfInterestTabPanel({ idx, title, children }: {
   title: string
   children: ReactNode
 }) {
-  const current = useAtomValue(activeAreaOfInterestAtom)
+  const [current, setCurrentIdx] = useAtom(activeAreaOfInterestAtom)
   return (
-    <details open={idx === current} className={cn(idx === current && 'h-full')}>
-      <summary className="list-none" />
-      <div className={cn("flex flex-col gap-10", "bg-white rounded-sm p-10", "h-full")}>
-        <h4 className={cn("text-32 font-bold")}>{title}</h4>
+    <details
+      open={idx === current}
+      className={cn(idx === current && 'lg:h-full')}
+      onClick={(ev) => {
+        ev.preventDefault()
+        setCurrentIdx(idx)
+      }}
+    >
+      <summary
+        className="list-none lg:hidden"
+        onClick={ev => {
+          ev.preventDefault()
+        }}
+      >
+        <div className="flex flex-row justify-between items-center">
+          <h4 className={cn("text-20 font-bold px-1.5 py-2")}>{title}</h4>
+          {idx === current ? <MdOutlineExpandLess /> : <MdOutlineExpandMore />}
+        </div>
+      </summary>
+      <div className={cn("flex flex-col lg:gap-10", "bg-white rounded-sm p-5 lg:p-10", "lg:h-full")}>
+        <h4 className={cn("text-32 font-bold invisible h-0 lg:visible lg:h-auto")}>{title}</h4>
         <div className={cn("flex flex-col gap-5", "leading-normal text-16")}>{children}</div>
       </div>
     </details>

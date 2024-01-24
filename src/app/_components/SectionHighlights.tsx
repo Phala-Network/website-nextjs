@@ -12,7 +12,7 @@ export function PostCard({ page }: { page: ParsedListPage }) {
       <Link
         href={href}
         className={cn(
-          "block bg-gray-200 rounded-3xl overflow-hidden border border-solid border-gray-50 w-full aspect-video shadow-lg",
+          "block bg-gray-200 rounded overflow-hidden border border-solid border-gray-50 w-full aspect-video shadow-lg",
           "transition-all hover:transition-all hover:shadow-md hover:scale-[0.98]",
         )}
         title={page.title}
@@ -44,9 +44,6 @@ export function PostCard({ page }: { page: ParsedListPage }) {
           <MdArrowForward className="untanglable text-phalaPurple-500 h-5 w-5 arrow inline-block" />
         </a>
       </header>
-      {/* <div> */}
-      {/*   <p className={cn("text-sm")}></p> */}
-      {/* </div> */}
     </article>
   )
 }
@@ -64,12 +61,12 @@ export function SectionHighlights() {
   })
   return (
     <section className={cn("section-highlights", "py-16 lg:py-32")}>
-      <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-16 xl:grid-cols-20 3xl:grid-cols-24")}>
+      <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-16 xl:grid-cols-12")}>
         <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
         <div
           className={cn(
-            "row-start-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4",
-            "grid grid-cols-3 gap-8 lg:gap-4"
+            "row-start-2 col-span-full",
+            "grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4"
           )}
         >
           {pages.map(page => (
