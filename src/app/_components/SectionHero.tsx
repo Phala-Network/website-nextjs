@@ -44,14 +44,12 @@ function ComputeTitle() {
 function SupportedChains() {
   return (
     <div
-      className={cn(
-        "safe-viewport grid gap-4 grid-cols-1 lg:grid-cols-20 grid-rows-1 mt-16"
-      )}
+      className="safe-viewport grid gap-4 grid-cols-1 lg:grid-cols-20 grid-rows-1"
     >
       <div
         className={cn(
-          "col-start-1 col-span-full lg:col-span-14 lg:col-start-4 row-start-1",
           "grid grid-cols-3 gap-6",
+          "col-start-1 col-span-full lg:col-span-14 lg:col-start-4 row-start-1",
           "lg:flex lg:justify-between"
         )}
       >
@@ -105,17 +103,18 @@ export function SectionHero() {
     <section
       className={cn(
         "section-hero",
-        "w-full max-w-[1760px] mx-auto lg:px-10 3xl:px-0",
-        "grid gap-4 grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 grid-rows-1",
+        // alternative to safe-viewport, which only apply px-9 on lg.
+        "w-full max-w-[1760px] mx-auto lg:px-9 xl:px-10 3xl:px-0",
+        "grid grid-cols-1 lg:grid-cols-12 gap-6",
       )}
     >
       <div
         className={cn(
-          "col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18 row-start-1",
-          "pb-14 lg:py-28",
+          "row-start-1 col-span-full",
+          "lg:pt-28",
         )}
       >
-        <div className="h-screen lg:h-auto lg:rounded-3xl overflow-hidden aspect-[1312/756] w-full relative">
+        <div className="h-screen lg:h-auto lg:rounded overflow-hidden aspect-[1312/756] w-full relative">
           <div className="absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden">
             <video
               className="object-cover h-full min-w-full"
@@ -129,7 +128,7 @@ export function SectionHero() {
           <div
             className={cn(
               "absolute top-0 left-0 w-full h-full",
-              "flex flex-col justify-center items-center gap-16 lg:gap-36",
+              "flex flex-col justify-center items-center gap-16",
               "text-center",
             )}
           >
@@ -146,8 +145,6 @@ export function SectionHero() {
                 className={cn(
                   "btn btn-sm btn-primary btn-rounded btn-phala justify-center",
                   "min-w-[160px]"
-                  // "rounded-full px-12 pb-2.5 pt-3",
-                  // "tracking-wide",
                 )}
                 href="#section-features"
                 onClick={(e) => {
@@ -161,26 +158,26 @@ export function SectionHero() {
               </a>
             </div>
           </div>
-
-          <div
-            className={cn(
-              "hidden absolute left-0 right-0 bottom-0",
-              "lg:grid gap-4 grid-cols-20 3xl:grid-cols-24"
-            )}
-          >
-            <div
-              className={cn(
-                "col-start-2 col-span-18 3xl:col-start-2 3xl:col-span-22",
-              )}
-            >
-              <RealtimeStats />
-            </div>
-          </div>
-
         </div>
-        <div className="lg:hidden safe-viewport mt-10 pr-20 pl-14">
-          <RealtimeStats />
-        </div>
+      </div>
+
+      <div
+        className={cn(
+          "row-start-2 lg:row-start-1 col-span-full",
+          "flex flex-col-reverse",
+          "pr-20 pl-14 mt-10 lg:mt-0"
+        )}
+      >
+        <RealtimeStats />
+      </div>
+
+      <div
+        className={cn(
+          "col-span-full",
+          "flex flex-col lg:min-h-[312px] lg:items-center lg:justify-center",
+          "py-10",
+        )}
+      >
         <SupportedChains />
       </div>
     </section>
