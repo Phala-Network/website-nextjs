@@ -1085,7 +1085,7 @@ function SectionPhatContractHighlight() {
         className={cn(
           "article",
           "row-start-3 col-span-full",
-          "grid grid-cols-2 gap-20"
+          "grid grid-cols-subgrid grid-cols-2 gap-20"
         )}
       >
         <div className="max-w-[494px] flex flex-col items-center justify-center gap-12 mx-auto">
@@ -1488,23 +1488,20 @@ export default async function Home() {
   } = await getPhatLists()
 
   return (
-    <>
+    <div className="flex flex-col gap-20">
       <SectionHero />
-      <SectionFeatures
-        default_list={default_list}
-        connect_list={connect_list}
-        programmable_list={programmable_list}
-        verifiable_list={verifiable_list}
-      />
-      <SectionPhatContractHighlight />
-      {/* <SectionPitchIntro /> */}
-      {/* <SectionPitchAccelerate /> */}
-      {/* <SectionPitchInnovate /> */}
-      <SectionPitchPioneer />
-      <SectionHowItWorks />
-      <SectionGlobalDistribution />
-      <SectionHighlights />
-      <SectionSubscription />
-    </>
+      {/* <SectionFeatures */}
+      {/*   default_list={default_list} */}
+      {/*   connect_list={connect_list} */}
+      {/*   programmable_list={programmable_list} */}
+      {/*   verifiable_list={verifiable_list} */}
+      {/* /> */}
+      {/* <SectionPhatContractHighlight /> */}
+      {/* <SectionPitchPioneer /> */}
+      {/* <SectionHowItWorks /> */}
+      {/* <SectionGlobalDistribution /> */}
+      {/* <SectionHighlights /> */}
+      {/* <SectionSubscription /> */}
+    </div>
   )
 }
