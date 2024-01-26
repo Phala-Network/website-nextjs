@@ -7,6 +7,7 @@ import {
   type PinkContractPromise,
   type PinkContractQuery,
   type PinkContractTx,
+  unsafeGetAbiFromPatronByCodeHash,
 } from '@phala/sdk'
 import { FiSearch, FiLoader } from 'react-icons/fi'
 import { LuX } from "react-icons/lu"
@@ -67,7 +68,7 @@ const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet', phatRegistryAto
 
 const contractAtom = atomWithPhatContract<PhatFaucetContract>({
   contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
-  loadAbi: () => fetch('/phala_faucet.json').then(resp => resp.text())
+  loadAbi: () => unsafeGetAbiFromPatronByCodeHash(process.env.NEXT_PUBLIC_FAUCET_CODE_HASH!),
 }, phatRegistryAtom, injectedWalletAtom)
 
 //
