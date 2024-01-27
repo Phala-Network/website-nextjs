@@ -535,7 +535,7 @@ function MenuItem({ href, title, icon, children }: {
 //
 // The SiteNav using absolute positioning to overlap the content. So we need to
 // add a padding to the top of the content to make sure it's not overlapped. The
-// padding is >= 96px / 6rem. 
+// padding is >= 96px / 6rem.
 //
 
 function SiteNav() {
