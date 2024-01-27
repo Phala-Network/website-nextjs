@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { SVGProps } from 'react'
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: React.ForwardedRef<SVGSVGElement>) => (
   <svg
     viewBox="0 0 1076 1080"
     fill="none"
     {...props}
+    ref={ref}
   >
     <path
       stroke="#2D2D2D"
@@ -2570,4 +2571,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export default SvgComponent
+export default React.forwardRef(SvgComponent)
