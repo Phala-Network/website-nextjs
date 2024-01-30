@@ -1,3 +1,10 @@
+.roadmap-canvas svg {
+  height: 100vh;
+  width: auto;
+  margin: auto;
+  display: block;
+}
+
 .roadmap-tools {
   position: absolute;
   display: flex;

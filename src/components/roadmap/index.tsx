@@ -16,9 +16,9 @@ export const Roadmap = () => {
   useLayoutEffect(() => {
     panzoomRef.current = panzoom(ref.current, {
       minZoom: 1,
-      maxZoom: 5,
-      bounds: true,
-      boundsPadding: .25,
+      maxZoom: 3,
+      initialX: 0,
+      initialY: 0,
       zoomDoubleClickSpeed: 1,
       beforeMouseDown: function() {
         return false
@@ -65,13 +65,13 @@ export const Roadmap = () => {
   }
 
   return (
-    <div className="relative pb-24">
+    <div className="relative">
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
-      <main className={cn("safe-viewport", "grid grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24", "overflow-hidden")}>
-        <article className={cn("cols-span-1 xl:col-start-2 xl:col-span-18 3xl:col-start-6 3xl:col-span-14 pt-28")} ref={ref}>
+      <div className="w-screen h-screen overflow-hidden">
+        <div className="roadmap-canvas flex items-center justify-center pt-28" ref={ref}>
           <RoadmapSvg />
-        </article>
-      </main>
+        </div>
+      </div>
       <div className="roadmap-tools pt-24">
         <div className="roadmap-tools-group">
           <button
