@@ -68,7 +68,7 @@ export const Roadmap = () => {
     <div className="relative">
       <DotBackground dotColor="#E2E8F0" bgColor="#F7FAFC" />
       <div className="w-screen h-screen overflow-hidden">
-        <div className="roadmap-canvas flex items-center justify-center pt-28" ref={ref}>
+        <div className="roadmap-canvas flex w-screen h-screen" ref={ref}>
           <RoadmapSvg />
         </div>
       </div>
