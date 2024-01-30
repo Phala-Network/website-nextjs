@@ -16,7 +16,7 @@ export const Roadmap = () => {
   useLayoutEffect(() => {
     panzoomRef.current = panzoom(ref.current, {
       minZoom: 1,
-      maxZoom: 5,
+      maxZoom: 3,
       initialX: 0,
       initialY: 0,
       zoomDoubleClickSpeed: 1,
