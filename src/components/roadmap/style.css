@@ -5,6 +5,12 @@
   display: block;
 }
 
+@media (min-aspect-ratio: 1/1) {
+  .roadmap-canvas {
+    padding-top: 7rem;
+  }
+}
+
 .roadmap-tools {
   position: absolute;
   display: flex;
