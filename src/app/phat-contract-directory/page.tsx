@@ -48,11 +48,16 @@ function ProposalCard({ proposal }: { proposal: Proposal }) {
         "text-white",
       )}
     >
-      <div className={cn("flex flex-col gap-4", "h-full px-8 py-4 lg:p-8")}>
+      <div className={cn("flex flex-col gap-4", "h-full p-4 lg:p-6")}>
         <div className="flex flex-row gap-2.5">
         {(proposal.integrations?? []).map((integration, idx) => (
-          <div key={idx} className="border-[0.5px] border-solid border-black-900/40 rounded-full w-8 h-8 lg:w-auto aspect-square overflow-hidden">
-            <img src={integration.icon} alt={integration.name} className="w-full h-full border border-solid border-whiteAlpha-50" />
+          <div
+            key={idx}
+            className={cn(
+              "border-[0.5px] border-solid border-whiteAlpha-50 rounded-full w-8 h-8 lg:w-auto aspect-square overflow-hidden"
+            )}
+          >
+            <img src={integration.icon} alt={integration.name} className="w-full h-full" />
           </div>
         ))}
         </div>
