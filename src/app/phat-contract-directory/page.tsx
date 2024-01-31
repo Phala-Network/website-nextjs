@@ -1,6 +1,3 @@
-import { type Metadata } from 'next'
-import Link from 'next/link'
-
 import { cn } from '@/lib/utils'
 import SiteFooter from '@/components/SiteFooter'
 
@@ -11,24 +8,34 @@ function PageHeading() {
     <header
       className={cn(
         "safe-viewport",
-        "border border-solid border-black-100 rounded-md py-10 lg:py-32 !px-10 mt-32",
-        "bg-black-900 text-white",
+        "border border-solid border-black-900 rounded-md py-10 lg:py-32 !px-10 mt-32",
+        "relative",
+        "bg-phat-400 text-white",
       )}
     >
-      <h1
-        className={cn(
-          "text-2xl lg:text-4xl font-black",
-        )}
-      >
-        Phat Contract Directory
-      </h1>
-      <p
-        className={cn(
-          "text-2xl lg:text-4xl text-white font-normal",
-        )}
-      >
-        Discover What Phat Contract can do and inspire your next project.
-      </p>
+      <div
+        className="absolute inset-0 h-full w-full opacity-50 rounded-md"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(50, 84, 34, 0.5) 1.5px, rgba(111, 183, 78, 0.5) 1.5px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
+      <div className="relative z-10">
+        <h1
+          className={cn(
+            "text-2xl lg:text-4xl font-black",
+          )}
+        >
+          Phat Contract Directory
+        </h1>
+        <p
+          className={cn(
+            "text-lg lg:text-2xl font-normal",
+          )}
+        >
+          Discover What Phat Contract can do and inspire your next project.
+        </p>
+      </div>
     </header>
   )
 }
@@ -37,21 +44,22 @@ function ProposalCard({ proposal }: { proposal: Proposal }) {
   return (
     <div
       className={cn(
-        "relative bg-white solid border-whiteAlpha-200 rounded",
+        "relative bg-whiteAlpha-200 solid border-whiteAlpha-50 rounded",
+        "text-white",
       )}
     >
       <div className={cn("flex flex-col gap-4", "h-full px-8 py-4 lg:p-8")}>
         <div className="flex flex-row gap-2.5">
         {(proposal.integrations?? []).map((integration, idx) => (
           <div key={idx} className="border-[0.5px] border-solid border-black-900/40 rounded-full w-8 h-8 lg:w-auto aspect-square overflow-hidden">
-            <img src={integration.icon} alt={integration.name} className="w-full h-full" />
+            <img src={integration.icon} alt={integration.name} className="w-full h-full border border-solid border-whiteAlpha-50" />
           </div>
         ))}
         </div>
         <h4 className="text-20 lg:text-24 font-bold">
           {proposal.title}
         </h4>
-        <div className="prose">
+        <div className="prose prose-invert">
           <p>{proposal.description}</p>
         </div>
       </div>
@@ -71,8 +79,8 @@ function BlueprintCard({
   return (
     <div
       className={cn(
-        'flex flex-col gap-2.5 min-w-[20rem] rounded-xs overflow-hidden',
-        'border border-whiteAlpha-50 shadow-md',
+        'flex flex-col gap-2.5 min-w-[20rem] rounded overflow-hidden',
+        'shadow-md',
         'bg-gradient-gray'
       )}
     >
@@ -133,8 +141,8 @@ function Proposals() {
         className={cn(
           "safe-viewport",
           "grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4 lg:gap-6",
-          "border border-solid border-black-100 rounded p-8 !px-8",
-          "bg-black-100",
+          "border border-solid border-whiteAlpha-200 rounded p-8 !px-8",
+          "bg-whiteAlpha-50",
         )}
       >
         {proposals.map((proposal, index) => (
@@ -152,8 +160,8 @@ function Blueprints() {
         className={cn(
           'safe-viewport',
           'grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4 lg:gap-6',
-          'border border-solid border-black-100 rounded p-8 !px-8',
-          'bg-gray-900'
+          'border border-solid border-whiteAlpha-200 rounded p-8 !px-8',
+          'bg-whiteAlpha-50'
         )}
       >
         {blueprints.map((blueprint, index) => (
@@ -173,6 +181,7 @@ export default function PhatContractDirectoryPage() {
     <div
       className={cn(
         "flex flex-col gap-8 lg:gap-12",
+        "bg-gray-900",
       )}
     >
       <PageHeading />
