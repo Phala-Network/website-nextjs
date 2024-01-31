@@ -333,6 +333,27 @@ function buttonComponents({ addComponents, theme }) {
   addComponents(buttons)
 }
 
+function presetGradient({ addComponents, theme }) {
+  const gradients = []
+  const colors = theme('colors', {})
+  for (let color in colors) {
+    gradients.push({
+      [`.bg-gradient-${color}`]: {
+        background: `linear-gradient(147deg, ${colors[color]['900']} 0%, ${colors[color]['700']} 100%)`,
+      },
+    })
+  }
+  gradients.push({
+    ['.bg-gradient-phatGreen']: {
+      background: 'linear-gradient(147deg, #6FB74E 0%, #2A421F 100%)',
+    },
+    ['.bg-gradient-gray']: {
+      background: `linear-gradient(147deg, ${colors['gray']['600']} 0%, ${colors['gray']['800']} 100%)`,
+    },
+  })
+  addComponents(gradients)
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -1005,6 +1026,7 @@ module.exports = {
     // require(),
     require('@tailwindcss/typography'),
     require('tailwindcss-animate'),
+    plugin(presetGradient),
     plugin(headingComponents),
     plugin(cardComponents),
     plugin(tagComponents),
