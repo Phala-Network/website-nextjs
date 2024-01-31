@@ -1045,7 +1045,13 @@ function SectionPhatContractHighlight() {
           </div>
         </div>
         <div className="self-end">
-          <button className={cn("btn lg:btn-lg btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}>Get Start</button>
+          <a
+            href="https://dashboard.phala.network/"
+            className={cn("btn lg:btn-lg btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}
+            target="_blank"
+          >
+            Get Start
+          </a>
         </div>
       </article>
 
@@ -1086,7 +1092,13 @@ function SectionPhatContractHighlight() {
             </div>
           </div>
           <div className="lg:mt-5">
-            <button className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}>Learn</button>
+            <a
+              href="https://docs.phala.network/developers/bricks-and-blueprints/featured-blueprints"
+              className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
+              target="_blank"
+            >
+              Learn
+            </a>
           </div>
         </article>
         <article
@@ -1097,7 +1109,13 @@ function SectionPhatContractHighlight() {
         >
           <h3 className="heading">Backing <em>153</em> Contracts</h3>
           <div className="lg:mt-5">
-            <button className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}>Explore</button>
+            <a
+              href="https://analytics.phala.network/"
+              className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
+              target="_blank"
+            >
+              Explore
+            </a>
           </div>
         </article>
         </div>
@@ -1136,14 +1154,18 @@ function SectionPhatContractHighlight() {
                 <img src="/home/Rectangle2944.png" alt="" />
               </div>
             </div>
-            <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
+            <a
+              href="https://dashboard.phala.network/projects/new/clone?template=vrf-oracle"
+              target="_blank"
+              className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}
+            >
               <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">VRF Oracle</h4>
                 </header>
               </div>
-            </div>
+            </a>
           </div>
           <div className="relative aspect-square">
             <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
@@ -1151,14 +1173,18 @@ function SectionPhatContractHighlight() {
                 <img src="/home/Rectangle2944.png" alt="" />
               </div>
             </div>
-            <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
+            <a
+              href="https://phala.network/posts/guide-dynamic-nfts-that-evolve"
+              target="_blank"
+              className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}
+            >
               <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Dynamic NFT</h4>
                 </header>
               </div>
-            </div>
+            </a>
           </div>
           <div className="relative aspect-square">
             <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
@@ -1166,14 +1192,18 @@ function SectionPhatContractHighlight() {
                 <img src="/home/Rectangle2944.png" alt="" />
               </div>
             </div>
-            <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
+            <a
+              href="https://dashboard.phala.network/projects/new/clone?template=lensapi"
+              target="_blank"
+              className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}
+            >
               <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Lens Open Action</h4>
                 </header>
               </div>
-            </div>
+            </a>
           </div>
           <div className="relative aspect-square">
             <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
@@ -1181,14 +1211,18 @@ function SectionPhatContractHighlight() {
                 <img src="/home/Rectangle2944.png" alt="" />
               </div>
             </div>
-            <div className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}>
+            <a
+              href="https://phala.network/posts/web3-social-create-monetize-with-smart-contracts"
+              target="_blank"
+              className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}
+            >
               <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
                 <header className="text-white">
                   <p className="text-20">Templates</p>
                   <h4 className="text-24 font-black">Web3 Social</h4>
                 </header>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </article>
