@@ -169,7 +169,7 @@ function Blueprints() {
           'bg-whiteAlpha-50'
         )}
       >
-        {blueprints.map((blueprint, index) => (
+        {blueprints.filter(i => i.published).map((blueprint, index) => (
           <BlueprintCard {...blueprint} key={index} />
         ))}
       </div>
