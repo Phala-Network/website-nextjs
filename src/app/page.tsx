@@ -960,13 +960,17 @@ function SectionPitchPioneer() {
           <form className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")}>
             <legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>
             <fieldset className="flex flex-col lg:flex-row gap-3">
-              <input type="text" placeholder="Contact name" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
+              <input type="text" placeholder="Gavin Belson" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
               <input type="email" placeholder="gavin@hooli.com" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
             </fieldset>
-            <textarea className="bg-black-50 rounded-xs px-5 py-2.5" rows={7}>
+            <textarea
+              className="bg-black-50 rounded-xs px-5 py-2.5"
+              rows={7}
+              placeholder={`I'm gonna be asking you to say a few words. Just a bit about how much of a fan you are, dedicated to the cause, my cause, maybe lead with a joke. Be good to have you there, Richard. Securing my legacy with you at my wing. Wear pants you can kneel in.`}
+            >
             </textarea>
             <div>
-              <button className="btn btn-primary btn-blk">
+              <button className="btn btn-primary btn-blk" disabled>
                 Submit
               </button>
             </div>
@@ -991,6 +995,98 @@ function SectionPitchPioneer() {
 //
 // Section Phat Contract Highlight
 //
+
+function UnlimitedApiCard({ title, src, href, target }: { title: string, src: string, href: string, target?: string }) {
+  return (
+    <a
+      href={href}
+      target={target}
+      className={cn(
+        "flex flex-col items-center justify-center gap-2.5 py-20 rounded-sm overflow-hidden",
+        "bg-[#e3dfdc]",
+        "group",
+      )}
+    >
+      <img src={src} alt={title} className="w-1/2 group-hover:scale-105 duration-200 transition-transform" />
+      <div className="text-black-800 text-18 font-bold">{title}</div>
+    </a>
+  )
+}
+
+function ToolIcon({ src, title }: { src: string, title: string }) {
+  return (
+    <div className="w-20 h-20 flex items-center justify-center bg-black-900 rounded-full border border-solid border-whiteAlpha-300">
+      <img src={src} alt={title} className="w-3/5" />
+    </div>
+  )
+}
+
+function ChainIcon({ src, title }: { src: string, title: string }) {
+  return (
+    <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
+      <img src={src} alt={title} className="max-w-[60%] max-h-full select-none pointer-events-none" loading="lazy" decoding="async" />
+    </div>
+  )
+}
+
+function TemplateCard({ title, src, href, target }: { title: string, src: string, href: string, target?: string }) {
+  return (
+    <a
+      href={href}
+      target={target}
+      className={cn(
+        "bg-gradient-to-b from-[#181818] to-[#272727]",
+        "rounded-sm aspect-square",
+        "flex flex-col gap-4 items-center justify-center p-6",
+        "group",
+      )}
+    >
+      <header className="text-center">
+        <p className="text-15 text-whiteAlpha-600 mb-2">Templates</p>
+        <h4 className="text-24 font-black text-white">{title}</h4>
+      </header>
+      <div className="aspect-square w-4/6 select-none pointer-events-none group-hover:scale-105 transition-all duration-200">
+        <img src={src} alt={title} loading="lazy" decoding="async" />
+      </div>
+    </a>
+  )
+}
+
+function TrustedPartnershipCard({ title, src, tags }: { title: string, src: string, tags: {label: string, cls: string}[] }) {
+  return (
+    <div
+      className={cn(
+        "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+      )}
+    >
+      <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
+        <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+          <div className={cn(
+            "border-[0.5px] border-solid border-black-900/40 rounded-full w-32 h-32 aspect-square overflow-hidden",
+            "bg-black-900",
+            "flex items-center justify-center",
+          )}>
+            <img src={src} alt={title} className="w-3/5 select-none pointer-events-none" />
+          </div>
+          <h4 className="text-white text-20 lg:text-24 font-bold">{title}</h4>
+          <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+            {tags.map(({ label, cls }) => (
+              <span
+                key={label}
+                className={cn(
+                  "border border-solid rounded-xs text-xs py-1 px-3",
+                  cls
+                )}
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function SectionPhatContractHighlight() {
   return (
@@ -1032,17 +1128,26 @@ function SectionPhatContractHighlight() {
           "grid gap-8",
         )}
       >
-        <h3 className="heading">Access Unlimited API in 1 minute</h3>
+        <h3 className="heading">Access unlimited API in <em>1</em> minute</h3>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="flex flex-row items-center justify-center py-20 bg-[#e3dfdc] rounded-sm overflow-hidden">
-            <img src="/home/Frame47330.png" alt="" className="w-1/2" />
-          </div>
-          <div className="flex flex-row items-center justify-center py-20 bg-[#e3dfdc] rounded-sm overflow-hidden">
-            <img src="/home/Frame47331.png" alt="" className="w-1/2" />
-          </div>
-          <div className="flex flex-row items-center justify-center py-20 bg-[#e3dfdc] rounded-sm overflow-hidden">
-            <img src="/home/Frame47332.png" alt="" className="w-1/2" />
-          </div>
+          <UnlimitedApiCard
+            title="The Graph"
+            src="/home/icon-access-unlimited-thegraph.png"
+            href="https://dashboard.phala.network/projects/new/clone?template=thegraph-starterkit"
+            target="_blank"
+          />
+          <UnlimitedApiCard
+            title="Lens Protocol"
+            src="/home/icon-access-unlimited-lens.png"
+            href="https://dashboard.phala.network/projects/new/clone?template=lensapi"
+            target="_blank"
+          />
+          <UnlimitedApiCard
+            title="Airstack"
+            src="/home/icon-access-unlimited-airstack.png"
+            href="https://dashboard.phala.network/projects/new/clone?template=airstack-starterkit"
+            target="_blank"
+          />
         </div>
         <div className="self-end">
           <a
@@ -1067,29 +1172,13 @@ function SectionPhatContractHighlight() {
             "flex flex-col gap-8",
           )}
         >
-          <h3 className="heading">Build with your famimilar</h3>
+          <h3 className="heading">Build with your familiar</h3>
           <div className="flex flex-row flex-wrap gap-4 lg:gap-6">
-            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/metamask.png" alt="" className="w-3/5" />
-            </div>
-            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/metamask.png" alt="" className="w-3/5" />
-            </div>
-            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/metamask.png" alt="" className="w-3/5" />
-            </div>
-            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/metamask.png" alt="" className="w-3/5" />
-            </div>
-            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/metamask.png" alt="" className="w-3/5" />
-            </div>
-            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/metamask.png" alt="" className="w-3/5" />
-            </div>
-            <div className="w-20 h-20 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/metamask.png" alt="" className="w-3/5" />
-            </div>
+            <ToolIcon src="/home/icon-tool-hardhat.png" title="Hardhat" />
+            <ToolIcon src="/home/icon-tool-metamask.png" title="Metamask" />
+            <ToolIcon src="/home/icon-tool-foundry.png" title="Foundry" />
+            <ToolIcon src="/home/icon-tool-javascript.png" title="Javascript" />
+            <ToolIcon src="/home/icon-tool-typescript.png" title="Typescript" />
           </div>
           <div className="lg:mt-5">
             <a
@@ -1130,100 +1219,38 @@ function SectionPhatContractHighlight() {
         <div className="max-w-[494px] flex flex-col items-center justify-center gap-12 mx-auto">
           <h3 className="heading">Coprocess <em>25</em> blockchains with smart contract templates</h3>
           <div className={cn("flex flex-row flex-wrap lg:justify-evenly gap-4 lg:gap-8")}>
-            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/Ellipse1579.png" alt="" />
-            </div>
-            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/Ellipse1579.png" alt="" />
-            </div>
-            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/Ellipse1579.png" alt="" />
-            </div>
-            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/Ellipse1579.png" alt="" />
-            </div>
-            <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
-              <img src="/home/Ellipse1579.png" alt="" />
-            </div>
+            <ChainIcon src="/home/icon-binance.png" title="Binance" />
+            <ChainIcon src="/home/icon-arbitrum.png" title="Arbitrum" />
+            <ChainIcon src="/home/icon-polygon.png" title="Polygon" />
+            <ChainIcon src="/home/icon-lens.png" title="Lens" />
+            <ChainIcon src="/home/icon-ethereum.png" title="Ethereum" />
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-          <div className="relative aspect-square">
-            <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
-              <div className="aspect-square max-w-[280px]">
-                <img src="/home/Rectangle2944.png" alt="" />
-              </div>
-            </div>
-            <a
-              href="https://dashboard.phala.network/projects/new/clone?template=vrf-oracle"
-              target="_blank"
-              className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}
-            >
-              <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
-                <header className="text-white">
-                  <p className="text-20">Templates</p>
-                  <h4 className="text-24 font-black">VRF Oracle</h4>
-                </header>
-              </div>
-            </a>
-          </div>
-          <div className="relative aspect-square">
-            <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
-              <div className="aspect-square max-w-[280px]">
-                <img src="/home/Rectangle2944.png" alt="" />
-              </div>
-            </div>
-            <a
-              href="https://phala.network/posts/guide-dynamic-nfts-that-evolve"
-              target="_blank"
-              className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}
-            >
-              <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
-                <header className="text-white">
-                  <p className="text-20">Templates</p>
-                  <h4 className="text-24 font-black">Dynamic NFT</h4>
-                </header>
-              </div>
-            </a>
-          </div>
-          <div className="relative aspect-square">
-            <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
-              <div className="aspect-square max-w-[280px]">
-                <img src="/home/Rectangle2944.png" alt="" />
-              </div>
-            </div>
-            <a
-              href="https://dashboard.phala.network/projects/new/clone?template=lensapi"
-              target="_blank"
-              className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}
-            >
-              <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
-                <header className="text-white">
-                  <p className="text-20">Templates</p>
-                  <h4 className="text-24 font-black">Lens Open Action</h4>
-                </header>
-              </div>
-            </a>
-          </div>
-          <div className="relative aspect-square">
-            <div className={cn("w-full h-full absolute -z-1 top-0 left-0 touch-none pointer-events-none", "flex items-center justify-center")}>
-              <div className="aspect-square max-w-[280px]">
-                <img src="/home/Rectangle2944.png" alt="" />
-              </div>
-            </div>
-            <a
-              href="https://phala.network/posts/web3-social-create-monetize-with-smart-contracts"
-              target="_blank"
-              className={cn("relative z-1", "flex items-center justify-center", "w-full h-full")}
-            >
-              <div className="aspect-square w-full max-w-[280px] p-6 lg:p-8">
-                <header className="text-white">
-                  <p className="text-20">Templates</p>
-                  <h4 className="text-24 font-black">Web3 Social</h4>
-                </header>
-              </div>
-            </a>
-          </div>
+          <TemplateCard
+            title="VRF Oracle"
+            src="/home/icon-template-vrf.png"
+            href="https://dashboard.phala.network/projects/new/clone?template=vrf-oracle"
+            target="_blank"
+          />
+          <TemplateCard
+            title="Dynamic NFT"
+            src="/home/icon-template-dynamic-nft.png"
+            href="https://phala.network/posts/guide-dynamic-nfts-that-evolve"
+            target="_blank"
+          />
+          <TemplateCard
+            title="Lens Open Action"
+            src="/home/icon-template-lens.png"
+            href="https://dashboard.phala.network/projects/new/clone?template=lensapi"
+            target="_blank"
+          />
+          <TemplateCard
+            title="Web3 Social"
+            src="/home/icon-template-web3-social.png"
+            href="https://phala.network/posts/web3-social-create-monetize-with-smart-contracts"
+            target="_blank"
+          />
         </div>
       </article>
 
@@ -1242,161 +1269,63 @@ function SectionPhatContractHighlight() {
           "grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
         )}
       >
-        <div
-          className={cn(
-            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-          )}
-        >
-          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
-                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
-              </div>
-              <h4 className="text-white text-20 lg:text-24 font-bold">Lens</h4>
-              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-                <span className="bg-phalaWorldTeal/20 border border-solid border-phalaWorldTeal/50 rounded-xs text-xs text-phalaWorldTeal py-1 px-3">
-                  Web3 Social
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-          )}
-        >
-          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
-                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
-              </div>
-              <h4 className="text-white text-20 lg:text-24 font-bold">Zurf</h4>
-              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-                <span className="bg-phalaWorldTeal/20 border border-solid border-phalaWorldTeal/50 rounded-xs text-xs text-phalaWorldTeal py-1 px-3">
-                  Web3 Social
-                </span>
-                <span className="bg-yellow-300/20 border border-solid border-yellow-300/50 rounded-xs text-xs text-yellow-300 py-1 px-3">
-                  Monetization
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-          )}
-        >
-          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
-                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
-              </div>
-              <h4 className="text-white text-20 lg:text-24 font-bold">Hundle 01</h4>
-              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-                <span className="bg-phalaPurple-400/20 border border-solid border-phalaPurple-400/50 rounded-xs text-xs text-phalaPurple-400 py-1 px-3">
-                  Web3 communication
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-          )}
-        >
-          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
-                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
-              </div>
-              <h4 className="text-white text-20 lg:text-24 font-bold">Sygma</h4>
-              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-                <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
-                  Defi
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-          )}
-        >
-          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
-                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
-              </div>
-              <h4 className="text-white text-20 lg:text-24 font-bold">KoinGaroo</h4>
-              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-                <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
-                  Defi
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-          )}
-        >
-          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
-                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
-              </div>
-              <h4 className="text-white text-20 lg:text-24 font-bold">inDEX</h4>
-              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-                <span className="bg-blue-300/20 border border-solid border-blue-300/50 rounded-xs text-xs text-blue-300 py-1 px-3">
-                  Defi
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-          )}
-        >
-          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
-                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
-              </div>
-              <h4 className="text-white text-20 lg:text-24 font-bold">VRF Oracle</h4>
-              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-                <span className="bg-phatGreen-400/20 border border-solid border-phatGreen-400/50 rounded-xs text-xs text-phatGreen-400 py-1 px-3">
-                  Oracle
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-          )}
-        >
-          <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-            <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
-              <div className="border-[0.5px] border-solid border-black-900/40 rounded-full w-20 lg:w-auto max-w-[120px] aspect-square overflow-hidden">
-                <img src="/home/Ellipse1579.png" alt="" className="w-full h-full" />
-              </div>
-              <h4 className="text-white text-20 lg:text-24 font-bold">DMail</h4>
-              <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-                <span className="bg-phalaPurple-400/20 border border-solid border-phalaPurple-400/50 rounded-xs text-xs text-phalaPurple-400 py-1 px-3">
-                  Web3 communication
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TrustedPartnershipCard
+          title="Lens"
+          src="/home/icon-lens.png"
+          tags={[
+            { label: "Web3 Social", cls: "bg-phalaWorldTeal/20 border-phalaWorldTeal/50 text-phalaWorldTeal" },
+          ]}
+        />
+        <TrustedPartnershipCard
+          title="Zurf"
+          src="/home/icon-zurf.png"
+          tags={[
+            { label: "Web3 Social", cls: "bg-phalaWorldTeal/20 border-phalaWorldTeal/50 text-phalaWorldTeal" },
+            { label: "Monetization", cls: "bg-yellow-300/20 border-yellow-300/50 text-yellow-300" },
+          ]}
+        />
+        <TrustedPartnershipCard
+          title="Huddle01"
+          src="/home/icon-huddle01.png"
+          tags={[
+            { label: "Web3 communication", cls: "bg-phalaPurple-400/20 border-phalaPurple-400/50 text-phalaPurple-400" },
+          ]}
+        />
+        <TrustedPartnershipCard
+          title="Sygma"
+          src="/home/icon-sygma.png"
+          tags={[
+            { label: "De-Fi", cls: "bg-blue-300/20 border-blue-300/50 text-blue-300" },
+          ]}
+        />
+        <TrustedPartnershipCard
+          title="KoinGaroo"
+          src="/home/icon-koingaroo.png"
+          tags={[
+            { label: "De-Fi", cls: "bg-blue-300/20 border-blue-300/50 text-blue-300" },
+          ]}
+        />
+        <TrustedPartnershipCard
+          title="inDEX"
+          src="/home/icon-index.png"
+          tags={[
+            { label: "De-Fi", cls: "bg-blue-300/20 border-blue-300/50 text-blue-300" },
+          ]}
+        />
+        <TrustedPartnershipCard
+          title="VRF Oracle"
+          src="/home/icon-vrf-oracle.png"
+          tags={[
+            { label: "Oracle", cls: "bg-phalaPurple-400/20 border-phalaPurple-400/50 text-phalaPurple-400" },
+          ]}
+        />
+        <TrustedPartnershipCard
+          title="DMail"
+          src="/home/icon-dmail.png"
+          tags={[
+            { label: "Web3 communication", cls: "bg-phalaPurple-400/20 border-phalaPurple-400/50 text-phalaPurple-400" },
+          ]}
+        />
       </div>
     </section>
   )
