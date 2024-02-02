@@ -115,7 +115,7 @@ export function atomWithInjectedWallet(appName: string, clientAtom: ClientAtom) 
           return
         }
         if (selected.wallet === 'ethereum') {
-          const client = createWalletClient({ chain: mainnet, transport: custom((window as any).ethereum) })
+          const client = createWalletClient({ chain: mainnet, transport: custom((window as any)?.ethereum) })
           const [address] = await client.requestAddresses()
           const instance = await EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
           await new Promise(resolve => setTimeout(resolve, 400))
@@ -149,7 +149,7 @@ export function atomWithInjectedWallet(appName: string, clientAtom: ClientAtom) 
         set(lastSelectedAtom, { wallet: walletKey, account: action.account.address })
       }
       else if (action.type === 'signinWithEthereum') {
-        const client = createWalletClient({ chain: mainnet, transport: custom((window as any).ethereum) })
+        const client = createWalletClient({ chain: mainnet, transport: custom((window as any)?.ethereum) })
         const [address] = await client.requestAddresses()
         const instance = await EvmAccountMappingProvider.create(registry.instance!.api, client, { address })
         await new Promise(resolve => setTimeout(resolve, 400))
