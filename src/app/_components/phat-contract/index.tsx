@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
 import { useAnimate, useInView, motion } from 'framer-motion'
-import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai';
+import { atom, useAtom, useAtomValue } from 'jotai';
 import { Swiper, SwiperSlide, type SwiperClass } from 'swiper/react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import Image from 'next/image'
@@ -156,7 +156,7 @@ export default function() {
                 <div className="item-info">
                   <p className="item-title">{item.name}</p>
                   <p className="item-desc">{item.description}</p>
-                  <div className="item-tags">
+                  <div className="item-tags text-black">
                     {
                       item.tags.map((tag, i) => (
                         <span key={`${i}`}>{tag}</span>
@@ -359,22 +359,6 @@ export default function() {
                 "gap-[2vw] xl:gap-6"
               )}
             >
-              <p
-                className={cn(
-                  "text-black-800 font-bold",
-                  "text-[1.8vw] xl:text-2xl"
-                )}
-              >
-                Smart Contract, Now Smarter
-              </p>
-              <p
-                className={cn(
-                  "font-medium",
-                  "text-[1vw] xl:text-base"
-                )}
-              >
-                See the magic
-              </p>
               <div className="flex gap-[2vw] xl:gap-4">
                 <button
                   className="connect-button"

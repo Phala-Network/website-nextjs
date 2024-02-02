@@ -1,0 +1,16 @@
+@tailwind utilities;
+
+#section-phat-contract-highlight .article {
+  @apply text-white p-5 lg:p-8 border border-solid border-whiteAlpha-200 bg-whiteAlpha-50 rounded-md;
+}
+
+#section-phat-contract-highlight .article .heading {
+  @apply text-20 lg:text-32 font-bold;
+}
+
+#section-phat-contract-highlight .article .heading em {
+  @apply bg-phalaGreenLight text-black-800 px-2.5 lg:px-4 rounded-sm not-italic text-20 lg:text-32 font-black;
+  @apply relative;
+  @apply lg:bottom-[-1.5px];
+}
+

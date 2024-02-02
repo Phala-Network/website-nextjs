@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -12,11 +12,15 @@ function ComputeTitle() {
     y: 0,
   })
 
-  const updatePosition = (e: MouseEvent) => {
-    const x = e.pageX / window.screen.width * 24 - 12
-    const y = (e.pageY > window.screen.height ? window.screen.height : e.pageY) / window.screen.height * 22 - 18
+  const updatePosition = useCallback((e: MouseEvent) => {
+    const x_pct = (e.pageX > window.innerWidth ? window.innerWidth : e.pageX) / window.innerWidth
+    const y_pct = (e.pageY > window.innerHeight ? window.innerHeight : e.pageY) / window.innerHeight
+    // range is (-16rem, 24rem)
+    const x = -(x_pct * 42) + 24
+    // range is (-19rem, 1rem)
+    const y = -(y_pct * 19) + 1
     setPosition({ x, y })
-  }
+  }, [setPosition])
 
   useEffect(() => {
      window.addEventListener('mousemove', updatePosition)
@@ -27,12 +31,12 @@ function ComputeTitle() {
 
   return (
     <h2
-      className="text-6xl lg:text-7xl font-extrabold bg-black-800 text-transparent bg-clip-text bg-no-repeat lg:bg-[url('/home/blur.png')]"
+      className="text-5xl lg:text-7xl font-extrabold bg-black-800 text-transparent bg-clip-text bg-no-repeat lg:bg-[url('/home/blur.png')]"
       style={{
         backgroundPosition: `${position.x}rem ${position.y}rem`,
       }}
     >
-      Compute.
+      Coprocessor
     </h2>
   )
 }
@@ -40,14 +44,12 @@ function ComputeTitle() {
 function SupportedChains() {
   return (
     <div
-      className={cn(
-        "safe-viewport grid gap-4 grid-cols-1 lg:grid-cols-20 grid-rows-1 mt-16"
-      )}
+      className="safe-viewport grid gap-4 grid-cols-1 lg:grid-cols-20 grid-rows-1"
     >
       <div
         className={cn(
-          "col-start-1 col-span-full lg:col-span-14 lg:col-start-4 row-start-1",
           "grid grid-cols-3 gap-6",
+          "col-start-1 col-span-full lg:col-span-14 lg:col-start-4 row-start-1",
           "lg:flex lg:justify-between"
         )}
       >
@@ -80,8 +82,10 @@ function SupportedChains() {
       <div className="col-start-1 col-span-full flex justify-center items-center mt-10">
         <a
           className={cn(
-            "btn btn-sm text-sm font-semibold btn-outline justify-center",
-            "rounded-full px-7"
+            "btn font-bold bg-black text-white justify-center",
+            "border border-solid border-black",
+            "rounded-full px-4 py-2",
+            "hover:bg-whiteAlpha-700 hover:text-black transition-colors",
           )}
           href="https://docs.phala.network/developers/phat-contract/supported-chains"
           target="_blank"
@@ -99,17 +103,18 @@ export function SectionHero() {
     <section
       className={cn(
         "section-hero",
-        "w-full max-w-[1760px] mx-auto lg:px-10 3xl:px-0",
-        "grid gap-4 grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 grid-rows-1",
+        // alternative to safe-viewport, which only apply px-9 on lg.
+        "w-full max-w-[1760px] mx-auto lg:px-9 xl:px-10 3xl:px-0",
+        "grid grid-cols-1 lg:grid-cols-12 gap-6",
       )}
     >
       <div
         className={cn(
-          "col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18 row-start-1",
-          "pb-14 lg:py-28",
+          "row-start-1 col-span-full",
+          "lg:pt-28",
         )}
       >
-        <div className="h-screen lg:h-auto lg:rounded-3xl overflow-hidden aspect-[1312/756] w-full relative">
+        <div className="h-screen lg:h-auto lg:rounded overflow-hidden aspect-[1312/756] w-full relative">
           <div className="absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden">
             <video
               className="object-cover h-full min-w-full"
@@ -123,13 +128,13 @@ export function SectionHero() {
           <div
             className={cn(
               "absolute top-0 left-0 w-full h-full",
-              "flex flex-col justify-center items-center gap-16 lg:gap-36",
+              "flex flex-col justify-center items-center gap-16",
               "text-center",
             )}
           >
             <header className="flex flex-col gap-4">
-              <h3 className="text-xl lg:text-2xl font-normal text-black-800">Scale Web3 by</h3>
               <ComputeTitle />
+              <h3 className="text-2xl lg:text-3xl font-normal text-black-800">for Blockchains</h3>
             </header>
             <div
               className={cn(
@@ -138,8 +143,8 @@ export function SectionHero() {
             >
               <a
                 className={cn(
-                  "btn btn-sm text-sm font-semibold btn-primary justify-center",
-                  "rounded-full px-8"
+                  "btn btn-sm btn-primary btn-rounded btn-phala justify-center",
+                  "min-w-[160px]"
                 )}
                 href="#section-features"
                 onClick={(e) => {
@@ -149,41 +154,30 @@ export function SectionHero() {
                   })
                 }}
               >
-                Let's Build!
-              </a>
-              <a
-                className={cn(
-                  "btn btn-sm text-sm font-semibold btn-secondary justify-center",
-                  "rounded-full px-7"
-                )}
-                href="https://discord.gg/gZjZuVHXtm"
-                target="_blank"
-                rel="noopener"
-              >
-                Join Community
+                Get Started
               </a>
             </div>
           </div>
-
-          <div
-            className={cn(
-              "hidden absolute left-0 right-0 bottom-0",
-              "lg:grid gap-4 grid-cols-20 3xl:grid-cols-24"
-            )}
-          >
-            <div
-              className={cn(
-                "col-start-2 col-span-18 3xl:col-start-4 3xl:col-span-18",
-              )}
-            >
-              <RealtimeStats />
-            </div>
-          </div>
-
         </div>
-        <div className="lg:hidden safe-viewport mt-10">
-          <RealtimeStats />
-        </div>
+      </div>
+
+      <div
+        className={cn(
+          "row-start-2 lg:row-start-1 col-span-full",
+          "flex flex-col-reverse",
+          "pr-20 pl-14 mt-10 lg:mt-0"
+        )}
+      >
+        <RealtimeStats />
+      </div>
+
+      <div
+        className={cn(
+          "col-span-full",
+          "flex flex-col lg:min-h-[312px] lg:items-center lg:justify-center",
+          "py-10",
+        )}
+      >
         <SupportedChains />
       </div>
     </section>

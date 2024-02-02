@@ -48,9 +48,9 @@ export default function SubscribeForm() {
           <button
             type="submit"
             className={cn(
-              "btn btn-lg bg-primary text-black uppercase inline-flex flex-row items-center justify-center transition-colors",
+              "btn btn-lg btn-phala text-black uppercase inline-flex flex-row items-center justify-center transition-colors",
               "font-semibold text-sm lg:text-base xl:text-lg",
-              (isLoading || !checked) ? 'bg-gray-400 text-white' : 'bg-primary text-black',
+              "border border-whiteAlpha-500",
             )}
             disabled={isLoading || isError || !checked}
           >

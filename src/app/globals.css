@@ -69,15 +69,13 @@
 }
 
 @layer utilities {
-  @variants responsive {
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-    }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }
 
@@ -114,7 +112,7 @@ details > summary::-webkit-details-marker {
  */
 
 .safe-viewport {
-  @apply w-full max-w-[1760px] mx-auto px-9 xl:px-10 3xl:px-0;
+  @apply w-full max-w-[1760px] mx-auto px-6 lg:px-9 xl:px-10 3xl:px-0;
 }
 
 

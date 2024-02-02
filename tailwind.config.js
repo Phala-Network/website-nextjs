@@ -205,250 +205,153 @@ function tagComponents({ addComponents, theme }) {
 function buttonComponents({ addComponents, theme }) {
   const colors = theme('colors', {})
   let buttons = [
+    // Size
     {
       '.btn': {
-        borderRadius: theme('borderRadius.md'),
-        // fontWeight: '600',
         fontSize: theme('fontSize.md'), // 16px
-        lineHeight: '1.5rem',
-        padding: '0.5rem 1rem',
+        fontWeight: '700',
+        borderRadius: '8px',
+        padding: '0.75rem 1.25rem calc(0.75rem - 2px)',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'transparent',
+        color: theme('colors.black.800'),
+        lineHeight: '150%',
+        //
         'transitionProperty': 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
         'willChange': 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
         'transitionTimingFunction': 'cubic-bezier(0.4, 0, 0.2, 1)',
         'transitionDuration': '150ms',
         display: 'inline-flex',
         flexDirection: 'row',
+        justifyContent: 'center',
         rowGap: '0.25rem',
         textRendering: 'optimizelegibility',
+        //
+        '&:active': {
+          color: theme('colors.black.400'),
+        },
+        '&:focus-visible': {
+          outline: `4px solid #90CDF4`,
+        },
+        '&[disabled], &[disabled]:hover, &.disabled': {
+          color: theme('colors.black.400'),
+          backgroundColor: theme('colors.blackAlpha.100'),
+        },
       },
-    },
-    {
-      '.btn-sm': {
-        fontSize: theme('fontSize.sm'), // 14px
-        lineHeight: '1.25rem',
-        padding: '0.375rem 0.75rem',
-      },
-    },
-    {
       '.btn-xs': {
         fontSize: theme('fontSize.xs'), // 12px
-        lineHeight: '1rem',
-        padding: '0.25rem 0.5rem',
+        lineHeight: '150%',
+        fontWeight: '700',
+        borderRadius: '4px',
+        padding: '0.4375rem 0.75rem calc(0.4375rem - 1px)',
       },
-    },
-    {
+      '.btn-sm': {
+        fontSize: theme('fontSize.sm'), // 14px
+        lineHeight: '150%',
+        fontWeight: '700',
+        borderRadius: '4px',
+        padding: '0.59375rem 1rem calc(0.59375rem - 2px)',
+      },
       '.btn-lg': {
         fontSize: theme('fontSize.lg'), // 18px
-        lineHeight: '1.75rem',
-        padding: '0.625rem 1.5rem',
+        lineHeight: '150%',
+        fontWeight: '700',
+        borderRadius: '6px',
+        padding: '1.125rem 1.5rem calc(1.125rem - 2px)',
       },
-    },
-    {
       '.btn-xl': {
         fontSize: theme('fontSize.lg'),
-        lineHeight: '1.75rem',
+        lineHeight: '1em',
         padding: '1rem 3.875rem',
       },
     },
+
+    // Type
     {
-      [`.btn-white.btn-outline`]: {
-        backgroundColor: 'transparent',
-        border: `1px solid #fff`,
-        color: '#fff',
+      '.btn-circle': {
+        borderRadius: theme('borderRadius.full'),
+      },
+      '.btn-rounded': {
+        borderRadius: theme('borderRadius.full'),
+      },
+    },
+
+    // Pre-defined style
+    {
+      ['.btn-primary']: {
         '&:hover': {
-          backgroundColor: '#fff',
-          color: colors['brand']['400'],
+          opacity: '0.75',
         },
-        '&[disabled], &[disabled]:hover': {
-          background: 'transparent',
-          border: `1px solid ${colors['gray']['300']}`,
-          color: colors['whiteAlpha']['500'],
-          cursor: 'not-allowed',
+      },
+      '.btn-secondary': {
+        '&:hover': {
+          opacity: '0.7',
+        },
+      },
+      '.btn-outline': {
+      },
+      '.btn-outlineFill': {
+      },
+      '.btn-text': {
+        background: 'none',
+        borderColor: 'transparent',
+        '&:hover': {
+          color: theme('colors.phalaGreenLight'),
         },
       },
     },
+
+    // Colors
     {
-      ['.btn-animated']: {
-        transitionProperty: 'background-color,color,transform',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.25s',
-        willChange: 'background-color,color,transform',
-        '&:hover': {
-          transform: 'scale(0.95)',
-          transitionDuration: '0.25s',
-          transitionTimingFunction: 'ease-in-out',
-        },
+      '.btn-phala': {
+        backgroundColor: theme('colors.phalaGreen.500'),
+        color: theme('colors.black.800'),
       },
-      [`.btn-primary`]: {
-        borderRadius: theme('borderRadius.xl'),
-        backgroundColor: '#CDFA50',
-        color: '#000',
-        transitionProperty: 'background-color,transform',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.3s',
-        willChange: 'background-color,transform',
-        '&:hover': {
-          backgroundColor: '#E0FF8A',
-          transform: 'scale(0.95)',
-          transitionDuration: '0.3s',
-          transitionTimingFunction: 'ease-in-out',
-        },
-        '&:active': {
-          backgroundColor: '#9ECB22',
-        },
-      },
-
-      [`.btn-secondary`]: {
-        borderRadius: theme('borderRadius.xl'),
-        backgroundColor: '#fff',
-        color: '#000',
-        transitionProperty: 'background-color,transform,color',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.3s',
-        willChange: 'background-color,transform',
-        '&:hover': {
-          backgroundColor: '#DFDFDF',
-          transform: 'scale(0.95)',
-          transitionDuration: '0.3s',
-          transitionTimingFunction: 'ease-in-out',
-        },
-        '&:active': {
-          backgroundColor: '#4B4B4B',
-          color: '#fff',
-        },
-      },
-
-      [`.btn-outline`]: {
-        border: '1px solid #333',
-        borderRadius: theme('borderRadius.xl'),
-        backgroundColor: 'transparent',
-        color: '#000',
-        transitionProperty: 'background-color,transform,color',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.3s',
-        willChange: 'background-color,transform',
-        '&:hover': {
-          backgroundColor: '#333',
-          color: '#fff',
-          transform: 'scale(0.95)',
-          transitionDuration: '0.3s',
-          transitionTimingFunction: 'ease-in-out',
-        },
-        '&:active': {
-          backgroundColor: '#333',
-          color: '#fff',
-        },
-      },
-
-      [`.btn-third`]: {
-        borderRadius: theme('borderRadius.xl'),
-        backgroundColor: '#8544F6',
+      '.btn-purple': {
+        backgroundColor: theme('colors.phalaPurple.500'),
         color: '#fff',
-        transitionProperty: 'background-color,transform,color',
-        transitionTimingFunction: 'linear',
-        transitionDuration: '0.3s',
-        willChange: 'background-color,transform',
-        '&:hover': {
-          backgroundColor: '#A774FF',
-          transform: 'scale(0.95)',
-          transitionDuration: '0.3s',
-          transitionTimingFunction: 'ease-in-out',
-        },
-        '&:active': {
-          backgroundColor: '#5E34A8',
-          color: '#fff',
-        },
       },
-
-      [`.btn-primary.btn-reverse`]: {
-        borderRadius: theme('borderRadius.md'),
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        color: '#CDFA50',
+      '.btn-blk': {
+        backgroundColor: theme('colors.black.800'),
+        color: '#fff',
       },
-
-      [`.btn-aside-icon`]: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        '& .icon': {
-          'transitionProperty': 'transform',
-          'transitionTimingFunction': 'cubic-bezier(.52,.47,.92,.25)',
-          'transitionDuration': '250ms',
-          'willChange': 'transform',
-          transform: 'scale(1)',
-        },
-        '&:hover .icon': {
-          transform: 'scale(1.20)',
-        },
+      '.btn-wht': {
+        backgroundColor: theme('colors.white'),
+        color: theme('colors.black.800'),
       },
-
-      [`.btn-center-icon`]: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        '& .icon': {
-          marginLeft: '1.25rem',
-        },
+      '.btn-phat': {
+        backgroundColor: theme('colors.phatGreen.400'),
+        color: '#fff',
+      },
+      '.btn-phalaworld': {
+        backgroundColor: theme('colors.phalaWorldTeal.400'),
+        color: theme('colors.black.800'),
       },
     },
   ]
+  addComponents(buttons)
+}
+
+function presetGradient({ addComponents, theme }) {
+  const gradients = []
+  const colors = theme('colors', {})
   for (let color in colors) {
-    if (color === 'primary' || color === 'secondary') {
-      continue
-    }
-    buttons.push({
-      [`.btn-${color}`]: {
-        backgroundColor: colors[color]['400'],
-        border: `1px solid ${colors[color]['400']}`,
-        color: '#fff',
-        '&:hover': {
-          backgroundColor: colors[color]['200'],
-          border: `1px solid ${colors[color]['200']}`,
-        },
-        '&[disabled], &[disabled]:hover': {
-          backgroundColor: colors['gray']['400'],
-          border: `1px solid ${colors['gray']['400']}`,
-          color: colors['whiteAlpha']['500'],
-          cursor: 'not-allowed',
-        },
-        '&:focus-visible': {
-          outline: `2px solid ${colors[color]['400']}`,
-        }
-      },
-      [`.btn-${color}.btn-solid`]: {
-        backgroundColor: colors[color]['400'],
-        border: `1px solid ${colors[color]['400']}`,
-        color: '#fff',
-        '&:hover': {
-          backgroundColor: colors[color]['200'],
-          border: `1px solid ${colors[color]['200']}`,
-        },
-        '&[disabled], &[disabled]:hover': {
-          backgroundColor: colors['gray']['400'],
-          border: `1px solid ${colors['gray']['400']}`,
-          color: colors['whiteAlpha']['500'],
-          cursor: 'not-allowed',
-        },
-      },
-      [`.btn-${color}.btn-outline`]: {
-        backgroundColor: 'transparent',
-        border: `1px solid ${colors[color]['400']}`,
-        color: colors[color]['400'],
-        '&:hover': {
-          backgroundColor: colors[color]['100'],
-        },
-        '&[disabled], &[disabled]:hover': {
-          background: 'transparent',
-          border: `1px solid ${colors['gray']['300']}`,
-          color: colors['whiteAlpha']['500'],
-          cursor: 'not-allowed',
-        },
+    gradients.push({
+      [`.bg-gradient-${color}`]: {
+        background: `linear-gradient(147deg, ${colors[color]['900']} 0%, ${colors[color]['700']} 100%)`,
       },
     })
   }
-  addComponents(buttons)
+  gradients.push({
+    ['.bg-gradient-phatGreen']: {
+      background: 'linear-gradient(147deg, #6FB74E 0%, #2A421F 100%)',
+    },
+    ['.bg-gradient-gray']: {
+      background: `linear-gradient(147deg, ${colors['gray']['600']} 0%, ${colors['gray']['800']} 100%)`,
+    },
+  })
+  addComponents(gradients)
 }
 
 /** @type {import('tailwindcss').Config} */
@@ -478,6 +381,22 @@ module.exports = {
     spacing: {
       px: '1px',
       0: '0',
+      025: '0.125rem',  // 0.125rem = 2px
+      050: '0.25rem',     // 0.25rem = 4px
+      075: '0.375rem',  // 0.375rem = 6px
+      100: '0.5rem',      // 0.5rem = 8px
+      150: '0.75rem',     // 0.75rem = 12px
+      200: '1rem',        // 1rem = 16px
+      250: '1.25rem',     // 1.25rem = 20px
+      300: '1.5rem',      // 1.5rem = 24px
+      400: '2rem',        // 2rem = 32px
+      500: '2.5rem',     // 2.5rem = 40px
+      600: '3rem',       // 3rem = 48px
+      750: '3.5rem',       // 3.5rem = 56px
+      800: '4rem',       // 4rem = 64px
+      850: '4.5rem',       // 4rem = 72px
+      1000: '5rem',       // 5rem = 80px
+      //
       0.5: '0.125rem',  // 0.125rem = 2px
       1: '0.25rem',     // 0.25rem = 4px
       1.5: '0.375rem',  // 0.375rem = 6px
@@ -514,30 +433,34 @@ module.exports = {
 
     borderRadius: {
       none: '0',
-      sm: '0.125rem',   // 0.125rem = 2px
-      DEFAULT: '0.25rem', // 0.25rem = 4px
-      md: '0.375rem',   // 0.375rem = 6px
-      lg: '0.5rem',     // 0.5rem = 8px
-      xl: '0.75rem',    // 0.75rem = 12px
-      '2xl': '1rem',    // 1rem = 16px
-      '3xl': '1.5rem',  // 1.5rem = 24px
-      '4xl': '1.75rem',  // 1.75rem = 28px
+      xs: '0.375rem',   // 0.375rem = 6px
+      sm: '0.75rem',    // 0.75rem = 12px
+      DEFAULT: '1rem', // 0.25rem = 16px
+      md: '1.5rem',   // 1.5rem = 24px
+      lg: '1.75rem',     // 1.75rem = 28px
+      xl: '2rem',    // 2rem = 32x
+      '2xl': '2.25rem',    // 2.25rem = 36px
+      '3xl': '3rem',  // 3rem = 48x
+      '4xl': '4rem',  // 4rem = 64px
+      'full': '9999px',
+      // @deprecated
       '5xl': '2rem',    // 2rem = 32px
       '6xl': '2.25rem',    // 2rem = 32px
-      'full': '9999px',
     }, // END: borderRadius
 
     boxShadow: {
-      xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
-      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-      md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-      '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-      outline: '0 0 0 3px rgba(63, 153, 225, 0.6)',
-      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-      'dark-lg': '0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 5px 10px rgba(0, 0, 0, 0.2), 0px 15px 40px rgba(0, 0, 0, 0.4)',
+      sm: '0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)',
+      base: '0px 4px 6px -2px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.10)',
+      lg: '0px 10px 10px -5px rgba(0, 0, 0, 0.04), 0px 20px 25px -5px rgba(0, 0, 0, 0.10)',
+      xl: '0px 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      'dark-sm': '0px 2px 4px -11px rgba(0, 0, 0, 0.40), 0px 4px 6px -1px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-base': '0px 4px 10px -2px rgba(0, 0, 0, 0.40), 0px 10px 15px -3px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-lg': '0px 15px 20px 0px rgba(0, 0, 0, 0.30), 0px 5px 10px 0px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'dark-xl': '0px 15px 40px 0px rgba(0, 0, 0, 0.40), 0px 5px 10px 0px rgba(0, 0, 0, 0.20), 0px 0px 0px 1px rgba(0, 0, 0, 0.10)',
+      'inner-sm': '0px 2px 4px 0px rgba(0, 0, 0, 0.06) inset',
+      'inner-base': '0px 2px 8px 0px rgba(0, 0, 0, 0.10) inset',
+      'inner-lg': '0px 2px 12px 0px rgba(0, 0, 0, 0.14) inset',
+      'inner-xl': '0px 2px 16px 0px rgba(0, 0, 0, 0.18) inset',
       none: 'none',
     }, // END: boxShadow
 
@@ -548,6 +471,7 @@ module.exports = {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     extend: {
       colors: {
+        // @deprecated use phatGreen
         phat: {
           DEFAULT: '#59A138',
           50: '#F5FFF0',
@@ -561,7 +485,7 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
-        // alias to phat
+        // @deprecated alias to phat, use phatGreen
         brand: {
           DEFAULT: '#59A138',
           50: '#F5FFF0',
@@ -575,18 +499,20 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
+        //
+        phalaGreenLight: '#C4F142',
         phalaGreen: {
-          DEFAULT: '#59A138',
-          50: '#F5FFF0',
-          100: '#D5F6C6',
-          200: '#B2E69A',
-          300: '#8AD368',
-          400: '#6FB74E',
-          500: '#59A138',
-          600: '#438525',
-          700: '#3B6727',
-          800: '#325422',
-          900: '#29451C',
+          DEFAULT: '#CDFA50',
+          50: '#FAFEED',
+          100: '#F5FEDC',
+          200: '#EBFDB9',
+          300: '#E1FC96',
+          400: '#D7FB73',
+          500: '#CDFA50',
+          600: '#A4C840',
+          700: '#7B9630',
+          800: '#526420',
+          900: '#293210',
         },
         phalaPurple: {
           DEFAULT: '#7F52FA',
@@ -614,10 +540,25 @@ module.exports = {
           800: '#325422',
           900: '#29451C',
         },
-        // website specified colors
-        primary: {
-          DEFAULT: '#CDFA50',
+        phalaWorldTeal: {
+          DEFAULT: '#2DD2B5',
+          50: '#D7FEF7',
+          100: '#AFFDEF',
+          200: '#86FCE7',
+          300: '#5EFBDF',
+          400: '#36FAD7',
+          500: '#2DD2B5',
+          600: '#25AA92',
+          700: '#1C8270',
+          800: '#135A4D',
+          900: '#0B322B',
         },
+        // website specified colors
+        // @deprecated
+        // primary: {
+        //   DEFAULT: '#CDFA50',
+        // },
+        // @deprecated
         secondary: {
           DEFAULT: '#8544F6',
         },
@@ -680,6 +621,73 @@ module.exports = {
           900: '#1A1A1A',
           950: '#0D0D0D',
         },
+        //
+        positive: {
+          DEFAULT: '#38A169',
+          50: '#F0FFF4',
+          100: '#C6F6D5',
+          200: '#9AE6B4',
+          300: '#68D391',
+          400: '#48BB78',
+          500: '#38A169',
+          600: '#25855A',
+          700: '#276749',
+          800: '#22543S',
+          900: '#1C4532',
+        },
+        critical: {
+          DEFAULT: '#E53E3E',
+          50: '#FFF5F5',
+          100: '#FED7D7',
+          200: '#FEB2B2',
+          300: '#FC8181',
+          400: '#F56565',
+          500: '#E53E3E',
+          600: '#C53030',
+          700: '#9B2C2C',
+          800: '#822727',
+          900: '#63171B',
+        },
+        warning: {
+          DEFAULT: '#DD6B20',
+          50: '#FFFAF0',
+          100: '#FEEBCB',
+          200: '#FBD38D',
+          300: '#F6AD55',
+          400: '#ED8936',
+          500: '#DD6B20',
+          600: '#C05621',
+          700: '#9C4221',
+          800: '#7B341E',
+          900: '#652B19',
+        },
+        wait: {
+          DEFAULT: '#d69e2e',
+          50: '#FFFFF0',
+          100: '#FEFCBF',
+          200: '#FAF089',
+          300: '#f6e05e',
+          400: '#ecc94b',
+          500: '#d69e2e',
+          600: '#b7791f',
+          700: '#975a16',
+          800: '#744210',
+          900: '#5f370e',
+        },
+        primary: {
+          DEFAULT: '#3182ce',
+          50: '#e8f8ff',
+          100: '#bee3f8',
+          200: '#90cdf4',
+          300: '#63b3ed',
+          400: '#4299e1',
+          500: '#3182ce',
+          600: '#2b6cb0',
+          700: '#2c5282',
+          800: '#2a4365',
+          900: '#1a365d',
+        },
+        // END
         red: {
           50: '#fff5f5',
           100: '#fed7d7',
@@ -827,11 +835,6 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -857,17 +860,38 @@ module.exports = {
       }, // END: fontFamily
 
       fontSize: {
-        xs: ['0.75rem', { lineHeight: '1.5rem' }], // 0.75rem = 12px
-        sm: ['0.875rem', { lineHeight: '1.5rem' }], // 0.875rem = 14px
-        md: ['1rem', { lineHeight: '1.5rem' }], // 1rem = 16px
-        lg: ['1.125rem', { lineHeight: '1.5rem' }], // 1.125rem = 18px
-        xl: ['1.25rem', { lineHeight: '1.5rem' }], // 1.25rem = 20px
-        '2xl': ['1.5rem', { lineHeight: '2rem' }], // 1.5rem = 24px
-        '3xl': ['1.875rem', { lineHeight: '2.25rem' }], // 1.875rem = 30px
-        '4xl': ['2.25rem', { lineHeight: '2.5rem' }], // 2.25rem = 36px
-        '5xl': ['3rem', { lineHeight: '1' }], // 3rem = 48px
-        '6xl': ['3.5rem', { lineHeight: '1' }], // 3.5rem = 56px
-        '7xl': ['4.5rem', { lineHeight: '1' }], // 4.5rem = 72px
+        // 0.75rem = 12px, 1.5em = 18px, 0
+        '12': ['0.75rem', { lineHeight: '1.5em', letterSpacing: '0' }],
+        'xs': ['0.75rem', { lineHeight: '1.5em', letterSpacing: '0' }],
+        // 0.875rem = 14px, 1.5em = 21px, -0.6% = -0.084px
+        '14': ['0.875rem', { lineHeight: '1.5em', letterSpacing: '-0.084px' }],
+        'sm': ['0.875rem', { lineHeight: '1.5em', letterSpacing: '-0.084px' }],
+        // 1rem = 16px, 1.5em = 24px, -1.1% = -0.176px
+        '16': ['1rem', { lineHeight: '1.5em', letterSpacing: '-0.176px' }],
+        'md': ['1rem', { lineHeight: '1.5em', letterSpacing: '-0.176px' }],
+        // 1.125rem = 18px, 1.5em = 27px, -1.1% = -0.198px
+        '18': ['1.125rem', { lineHeight: '1.5em', letterSpacing: '-0.198px' }],
+        'lg': ['1.125rem', { lineHeight: '1.5em', letterSpacing: '-0.198px' }],
+        // 1.25rem = 20px, 1.4em = 28px, -1.7% = -0.34px
+        '20': ['1.25rem', { lineHeight: '1.4em', letterSpacing: '-0.34px', }],
+        'xl': ['1.25rem', { lineHeight: '1.4em', letterSpacing: '-0.34px', }],
+        // 1.5rem = 24px, 1.375em = 33px, -1.9% = -0.456px
+        '24': ['1.5rem', { lineHeight: '1.375em', letterSpacing: '-0.456px', }],
+        '2xl': ['1.5rem', { lineHeight: '1.375em', letterSpacing: '-0.456px', }],
+        // 2rem = 32px, 1.375em = 44px, -2.2% = -0.704px
+        '32': ['2rem', { lineHeight: '1.375em', letterSpacing: '-0.704px', }],
+        '3xl': ['2rem', { lineHeight: '1.375em', letterSpacing: '-0.704px', }],
+        // 2.5rem = 40px, 1.3em = 52px, -2.2% = -0.88px
+        '40': ['2.5rem', { lineHeight: '1.3em', letterSpacing: '-0.88px', }],
+        '4xl': ['2.5rem', { lineHeight: '1.3em', letterSpacing: '-0.88px', }],
+        // 3rem = 48px, 1.25em = 60px, -2.2% = -1.056px
+        '48': ['3rem', { lineHeight: '1.25em', letterSpacing: '-1.056px', }],
+        '5xl': ['3rem', { lineHeight: '1.25em', letterSpacing: '-1.056px', }],
+        // 3.5rem = 56px, 1.25em = 70px, -2.2% = -1.232px
+        '56': ['3.5rem', { lineHeight: '1.25em', letterSpacing: '-1.232px', }],
+        '6xl': ['3.5rem', { lineHeight: '1.25em', letterSpacing: '-1.232px', }],
+        // @FIXME 4.5rem = 72px
+        '7xl': ['4.5rem', { lineHeight: '1' }],
       }, // END: fontSize
 
       //
@@ -1002,6 +1026,7 @@ module.exports = {
     // require(),
     require('@tailwindcss/typography'),
     require('tailwindcss-animate'),
+    plugin(presetGradient),
     plugin(headingComponents),
     plugin(cardComponents),
     plugin(tagComponents),
