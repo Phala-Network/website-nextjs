@@ -33,8 +33,8 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
-        <SiteNav />
         {children}
+        <SiteNav />
         <SiteFooter />
         <ScrollToTop />
       </body>
