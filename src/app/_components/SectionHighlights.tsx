@@ -76,12 +76,12 @@ export function SectionHighlights() {
             />
           ))}
         </div>
-        <div className={cn("row-start-3 xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center")}>
+        <div className={cn("row-start-3 col-span-full", "flex justify-center")}>
           <Link
             href="/blog"
             className={cn(
-              "btn btn-xl w-full justify-center btn-primary text-black uppercase",
-              "font-semibold text-sm lg:text-base xl:text-lg"
+              "btn btn-xl btn-phala justify-center text-black uppercase",
+              "font-semibold text-sm lg:text-base xl:text-lg text-center"
             )}
           >
             Discover More

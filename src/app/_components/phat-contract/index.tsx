@@ -359,22 +359,6 @@ export default function() {
                 "gap-[2vw] xl:gap-6"
               )}
             >
-              <p
-                className={cn(
-                  "text-black-800 font-bold",
-                  "text-[1.8vw] xl:text-2xl"
-                )}
-              >
-                Smart Contract, Now Smarter
-              </p>
-              <p
-                className={cn(
-                  "font-medium",
-                  "text-[1vw] xl:text-base"
-                )}
-              >
-                See the magic
-              </p>
               <div className="flex gap-[2vw] xl:gap-4">
                 <button
                   className="connect-button"
