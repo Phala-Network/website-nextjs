@@ -853,9 +853,9 @@ function SectionPitchPioneer() {
   return (
     <section id="section-pitch-pionner">
       <div className={cn(
-        "safe-viewport",
-        "grid grid-cols-1 lg:gap-x-10 lg:grid-cols-12",
-        "border border-solid border-black-100 rounded py-10 lg:py-32",
+        "safe-viewport py-10 lg:py-32 !px-16",
+        "grid grid-cols-1 lg:gap-x-10 lg:grid-cols-12 gap-y-10",
+        "border border-solid border-black-100 rounded",
         "bg-black-100",
       )}>
         <header
@@ -1002,7 +1002,7 @@ function UnlimitedApiCard({ title, src, href, target }: { title: string, src: st
       href={href}
       target={target}
       className={cn(
-        "flex flex-col items-center justify-center gap-2.5 py-20 rounded-sm overflow-hidden",
+        "flex flex-col items-center justify-center gap-2.5 py-10 lg:py-20 rounded-sm overflow-hidden",
         "bg-[#e3dfdc]",
         "group",
       )}
@@ -1056,11 +1056,11 @@ function TrustedPartnershipCard({ title, src, tags }: { title: string, src: stri
   return (
     <div
       className={cn(
-        "relative aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+        "relative lg:aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
       )}
     >
-      <div className={cn("flex items-center justify-center", "h-full px-8 py-4 lg:p-8")}>
-        <div className="flex flex-col gap-2 lg:gap-6 items-center justify-center">
+      <div className={cn("flex items-center justify-start lg:justify-center", "h-full px-8 py-4 lg:p-8")}>
+        <div className="flex flex-row lg:flex-col gap-6 items-center justify-center">
           <div className={cn(
             "border-[0.5px] border-solid border-black-900/40 rounded-full w-32 h-32 aspect-square overflow-hidden",
             "bg-black-900",
@@ -1068,19 +1068,21 @@ function TrustedPartnershipCard({ title, src, tags }: { title: string, src: stri
           )}>
             <img src={src} alt={title} className="w-3/5 select-none pointer-events-none" />
           </div>
-          <h4 className="text-white text-20 lg:text-24 font-bold">{title}</h4>
-          <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-            {tags.map(({ label, cls }) => (
-              <span
-                key={label}
-                className={cn(
-                  "border border-solid rounded-xs text-xs py-1 px-3",
-                  cls
-                )}
-              >
-                {label}
-              </span>
-            ))}
+          <div className="flex flex-col gap-2">
+            <h4 className="text-white text-20 lg:text-24 font-bold lg:text-center">{title}</h4>
+            <div className="flex flex-row items-center lg:justify-center flex-wrap gap-2">
+              {tags.map(({ label, cls }) => (
+                <span
+                  key={label}
+                  className={cn(
+                    "border border-solid rounded-xs text-xs py-1 px-3",
+                    cls
+                  )}
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -1093,9 +1095,9 @@ function SectionPhatContractHighlight() {
     <section
       id="section-phat-contract-highlight"
       className={cn(
-        "safe-viewport",
+        "safe-viewport py-10 lg:py-32 !px-16",
         "grid grid-cols-4 lg:grid-cols-12 grid-rows-1 gap-6",
-        "border border-solid border-black-100 rounded-md py-10 lg:py-32",
+        "border border-solid border-black-100 rounded-md",
         "bg-black-900",
       )}
     >
@@ -1216,7 +1218,7 @@ function SectionPhatContractHighlight() {
           "grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20"
         )}
       >
-        <div className="max-w-[494px] flex flex-col items-center justify-center gap-12 mx-auto">
+        <div className="lg:max-w-[494px] flex flex-col items-center lg:justify-center gap-4 lg:gap-12 lg:mx-auto">
           <h3 className="heading">Coprocess <em>25</em> blockchains with smart contract templates</h3>
           <div className={cn("flex flex-row flex-wrap lg:justify-evenly gap-4 lg:gap-8")}>
             <ChainIcon src="/home/icon-binance.png" title="Binance" />
@@ -1226,7 +1228,7 @@ function SectionPhatContractHighlight() {
             <ChainIcon src="/home/icon-ethereum.png" title="Ethereum" />
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
           <TemplateCard
             title="VRF Oracle"
             src="/home/icon-template-vrf.png"
@@ -1266,7 +1268,7 @@ function SectionPhatContractHighlight() {
       <div
         className={cn(
           "col-span-full",
-          "grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+          "grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6"
         )}
       >
         <TrustedPartnershipCard
@@ -1340,53 +1342,53 @@ function SectionPhatContractHighlight() {
 function SectionGlobalDistribution() {
   return (
     <section className="section-global-distribution">
-      <div className={cn("safe-viewport", "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
-        <blockquote
-          className={cn(
-            "row-start-3 col-span-1 xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18 flex flex-col justify-center",
-            "mt-16 text-center",
-            "quote"
-          )}
-        >
-          <p>By the people.</p>
-          <p>For the people.</p>
-        </blockquote>
-        <div
-          className={cn(
-            "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
-            "z-10 w-full flex flex-col items-center gap-3 lg:gap-6 mt-6 lg:mt-12",
-            "text-overlay"
-          )}
-        >
-          <h3 className={cn("text-base lg:text-3xl text-center px-2.5 md:px-8")}>A Decentralized Off-chain Compute Infrastructure like no other.</h3>
-          <StatsCard />
-        </div>
+      <div
+        className={cn(
+          "safe-viewport !px-0",
+          "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-12",
+          "border border-solid border-black-100 rounded-md",
+        )}
+      >
         <div className={cn(
-          "row-start-4 col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
-          "z-0 overflow-hidden rounded-md",
-        )}>
-          <div className="bg-video-container">
-            <video
-              className={cn("object-cover aspect-[3840/1980] h-full min-w-full")}
-              autoPlay muted loop playsInline
-            >
-              <source src="https://nft-assets.phala.world/network/worldmap20230708.mp4" type="video/mp4" />
-              <source src="https://nft-assets.phala.world/network/worldmap20230708.webm" type="video/webm" />
-            </video>
+          "row-start-1 col-span-full",
+          "z-10",
+          "flex flex-col items-center gap-12 my-8 2xl:my-16"
+        )}
+        >
+          <header className="text-center">
+            <h3 className="text-56 text-black-800 font-black">DePIN with most TEE nodes</h3>
+            <h4 className="text-32 text-black-600">By the people, for the people</h4>
+          </header>
+          <div
+            className={cn(
+              "bg-phalaPurple text-white",
+              "w-96 p-4 rounded-full"
+            )}
+          >
+            <StatsCard />
+          </div>
+          <div className="flex flex-row gap-5">
+            <div className="inline-flex items-center gap-2.5">
+              <i className="w-4 h-4 inline-block rounded-full bg-[#cdfa50]" />
+              <span className="text-18">Phala Blockchain Nodes</span>
+            </div>
+            <div className="inline-flex items-center gap-2.5">
+              <i className="w-4 h-4 inline-block rounded-full bg-[#8544F6]" />
+              <span className="text-18">Off-chain Computers</span>
+            </div>
           </div>
         </div>
-        <div className={cn("row-start-5 col-span-full xl:col-start-8 xl:col-span-6 3xl:col-start-10", "text-center")}>
-          <a
-            href="https://app.phala.network/"
-            className={cn(
-              "btn btn-xl btn-primary w-full justify-center text-black uppercase",
-              "font-semibold text-sm lg:text-base xl:text-lg"
-            )}
-            target="_blank"
-            rel="noopener"
+        <div className={cn(
+          "row-start-1 col-span-full",
+          "z-0 overflow-hidden rounded-md",
+        )}>
+          <video
+            className={cn("object-cover aspect-[3840/1980] h-full min-w-full")}
+            autoPlay muted loop playsInline
           >
-            Provide Compute
-          </a>
+            <source src="https://nft-assets.phala.world/network/worldmap20230708.mp4" type="video/mp4" />
+            <source src="https://nft-assets.phala.world/network/worldmap20230708.webm" type="video/webm" />
+          </video>
         </div>
       </div>
     </section>
