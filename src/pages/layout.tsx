@@ -33,7 +33,7 @@ export default function Layout({
         </>
       ) : null}
       {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ? (
-        <Script async src={`https://${process.env.NEXT_PUBLIC_UMAMI_DOMAIN}/script.js`} data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}></Script>
+        <Script async src={`/stats/script.js`} data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}></Script>
       ) : null}
       <SiteNav />
       {children}
