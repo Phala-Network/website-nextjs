@@ -106,7 +106,10 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
                     'rounded-[160px]',
                     isLoading ? 'opacity-75' : null
                   )}
-                  onClick={load}
+                  onClick={() => {
+                    load()
+                    umami?.track('blog_load_more')
+                  }}
                   disabled={isLoading}
                 >
                   <motion.span
