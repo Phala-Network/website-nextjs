@@ -80,14 +80,16 @@ export async function getParsedPage(
   })
   const fullBlocks: BlockObjectResponse[] = blocks.filter(isFullBlock)
   const parsedBlocks = await Promise.all(fullBlocks.map(parsePageBlock))
-  const title = R.map(
-    R.prop('plain_text'),
-    R.pathOr([], ['Title', 'title'], page.properties)
-  ).join(' ')
-  const slug = R.map(
-    R.prop('plain_text'),
-    R.pathOr([], ['Custom URL', 'rich_text'], page.properties)
-  ).join(' ').split('?')[0]
+  const title = R.pipe(
+    R.pathOr([], ['Title', 'title']),
+    R.map(R.prop('plain_text')),
+    R.join(' ')
+  )(page.properties)
+  const slug = R.pipe(
+    R.pathOr([], ['Custom URL', 'rich_text']),
+    R.map(R.prop('plain_text')),
+    R.join(' ')
+  )(page.properties).split('?')[0]
   const tags = R.map(
     R.prop('name'),
     R.pathOr([], ['Tags', 'multi_select'], page.properties)
@@ -302,14 +304,16 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
   for (const page of results) {
     // @ts-expect-error missing from Notion package
     const { id, properties, cover } = page
-    const title = R.map(
-      R.prop('plain_text'),
-      R.pathOr([], ['Title', 'title'], properties)
-    ).join(' ')
-    const slug = R.map(
-      R.prop('plain_text'),
-      R.pathOr([], ['Custom URL', 'rich_text'], properties)
-    ).join(' ').split('?')[0]
+    const title = R.pipe(
+      R.pathOr([], ['Title', 'title']),
+      R.map(R.prop('plain_text')),
+      R.join(' ')
+    )(properties)
+    const slug = R.pipe(
+      R.pathOr([], ['Custom URL', 'rich_text']),
+      R.map(R.prop('plain_text')),
+      R.join(' ')
+    )(properties).split('?')[0]
     const tags = R.map(
       R.prop('name'),
       R.pathOr([], ['Tags', 'multi_select'], properties)
