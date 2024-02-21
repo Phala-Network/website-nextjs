@@ -57,11 +57,11 @@ export default function SiteFooter() {
           </LinkList>
         </div>
 
-        {/* Row #2: Blueprints */}
+        {/* Row #2: Templates */}
         <div className={cn("col-span-1 col-start-2 row-span-1 xl:col-start-2 xl:col-span-5 3xl:col-start-4")}>
-          <LinkListHeading>Blueprints</LinkListHeading>
+          <LinkListHeading>Templates</LinkListHeading>
           <LinkList>
-            <LinkListItem href="https://bricks.phala.network/?source=footer-LensAPI-Oracle">LensAPI Oracle</LinkListItem>
+            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">LensAPI Oracle</LinkListItem>
           </LinkList>
         </div>
 
@@ -81,7 +81,7 @@ export default function SiteFooter() {
             <LinkListItem href="https://app.phala.network">Phala App</LinkListItem>
             <LinkListItem href="https://docs.phala.network/">What is Phala Network?</LinkListItem>
             <LinkListItem href="https://docs.phala.network/developers/phat-contract">What is Phat Contract?</LinkListItem>
-            <LinkListItem href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints">What are Blueprints?</LinkListItem>
+            <LinkListItem href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints">What are Templates?</LinkListItem>
             <LinkListItem href="https://docs.phala.network/pha-token/delegation/delegate-to-stakepool">What is PHA staking?</LinkListItem>
             <LinkListItem href="https://docs.phala.network/developers/phat-contract/pay-for-cloud-service">Tokenomics - Utility</LinkListItem>
             <LinkListItem href="https://docs.phala.network/compute-providers/basic-info/worker-rewards">Tokenomics - Earn</LinkListItem>
