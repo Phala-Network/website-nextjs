@@ -868,7 +868,7 @@ function SectionPitchPioneer() {
           <h2 className={cn("text-3xl lg:text-6xl text-black font-black")}>Cutting Edge Web3 Usecases</h2>
           <div>
             <Link href="/tags/Usecases" className={cn("btn btn-primary btn-md btn-purple btn-rounded")}>
-              Learn about Templates
+              Learn More
             </Link>
           </div>
         </header>
@@ -1042,7 +1042,6 @@ function TemplateCard({ title, src, href, target }: { title: string, src: string
       )}
     >
       <header className="text-center">
-        <p className="text-15 text-whiteAlpha-600 mb-2">Templates</p>
         <h4 className="text-24 font-black text-white">{title}</h4>
       </header>
       <div className="aspect-square w-4/6 select-none pointer-events-none group-hover:scale-105 transition-all duration-200">
