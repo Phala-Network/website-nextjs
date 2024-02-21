@@ -103,18 +103,21 @@ export async function getPhatLists() {
   for (const page of results) {
     // @ts-expect-error missing from Notion package
     const { id, properties } = page
-    const name = R.map(
-      R.prop('plain_text'),
-      R.pathOr([], ['Name', 'title'], properties)
-    ).join(' ')
-    const title = R.map(
-      R.prop('plain_text'),
-      R.pathOr([], ['Title', 'rich_text'], properties)
-    ).join(' ')
-    const description = R.map(
-      R.prop('plain_text'),
-      R.pathOr([], ['Description', 'rich_text'], properties)
-    ).join(' ')
+    const name = R.pipe(
+      R.pathOr([], ['Name', 'title']),
+      R.map(R.prop('plain_text')),
+      R.join(' ')
+    )(properties)
+    const title = R.pipe(
+      R.pathOr([], ['Title', 'rich_text']),
+      R.map(R.prop('plain_text')),
+      R.join(' ')
+    )(properties)
+    const description = R.pipe(
+      R.pathOr([], ['Description', 'rich_text']),
+      R.map(R.prop('plain_text')),
+      R.join(' ')
+    )(properties)
     const tags = R.map(
       R.prop('name'),
       R.pathOr([], ['Tags', 'multi_select'], properties)
