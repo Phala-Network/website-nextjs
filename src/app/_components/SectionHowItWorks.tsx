@@ -1,16 +1,11 @@
 'use client'
 
-import { createElement } from 'react'
+import { createElement, type ReactNode } from 'react'
 import { atom, useAtom, useAtomValue } from 'jotai'
 import { atomWithReducer } from 'jotai/utils'
 import dynamic from 'next/dynamic'
-import { MdArrowForward } from 'react-icons/md'
-import { motion } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
-import QuoteLine1 from './workflow/svgs/quote_line1'
-import QuoteLine2 from './workflow/svgs/quote_line2'
-import QuoteLine3 from './workflow/svgs/quote_line3'
 
 const WorkFlow = dynamic(() => import('./workflow'), {
   ssr: false,
@@ -40,36 +35,26 @@ const animationAtom = atomWithReducer<[number, string], { next: number }>([0, ''
 
 export function SectionHowItWorks() {
   const works = useAtomValue(worksAtom)
-  const [currentAnimation, setNextAnimation] = useAtom(animationAtom)
+  const [currentAnimation] = useAtom(animationAtom)
 
   return (
     <section id="section-how-it-works">
       {/* Mobile */}
       <div
         className={cn(
-          "safe-viewport",
+          "safe-viewport py-10",
+          "border border-solid border-black-100 rounded",
+          "bg-black-900 text-white",
           "xl:hidden",
-          "relative"
         )}
       >
-        <div
+        <header
           className={cn(
-            "aspect-[220/278] w-60",
-            "mt-8 rounded-3xl",
-            "bg-no-repeat bg-center bg-cover",
-            "absolute top-0 left-0"
+            "row-start-1 col-start-1 col-span-full",
           )}
-          style={{
-            backgroundImage: `url("/home/how-it-works-head-icon.png")`,
-          }}
-        />
-        <div className="pb-10 pt-32">
-          <h2 className={cn(
-            "font-black text-4xl uppercase"
-          )}>
-            How <br />It Works
-          </h2>
-        </div>
+        >
+          <h2 className={cn("text-3xl lg:text-6xl font-black")}>How It Works</h2>
+        </header>
         {
           works.map((work, index) => (
             <div
@@ -97,131 +82,100 @@ export function SectionHowItWorks() {
         }
       </div>
       {/* PC */}
-      <div
-        className={cn(
-          "safe-viewport",
-          "hidden xl:flex flex-col",
-          "mt-24",
-        )}
-      >
-        <div className="w-full grid grid-cols-20 3xl:grid-cols-24">
-          <div className="col-start-2 3xl:col-start-4 col-span-18 relative">
-            <h2 className={cn(
-              "font-black text-5xl uppercase"
-            )}>
-              How It Works
-            </h2>
-            <div
-              className={cn(
-                "mt-16",
-                "grid gap-8 grid-cols-3",
-              )}
-            >
-              {
-                works.map((work, index) => (
-                  <motion.div
-                    key={`${index}`}
-                    className={cn(
-                      "cursor-pointer",
-                      "flex flex-col",
-                    )}
-                    animate="rest"
-                    whileHover="hover"
-                    variants={{
-                      hover: {
-                        opacity: 1,
-                      },
-                      rest: {
-                        opacity: currentAnimation[0] === index ? 1 : 0.5,
-                      },
-                    }}
-                    onClick={() => setNextAnimation({ next: index })}
-                  >
-                    <h3
-                      className={cn(
-                        "font-semibold text-2xl uppercase",
-                        "flex items-center",
-                      )}
-                    >
-                      {work.title}
-                      <motion.div
-                        variants={{
-                          hover: {
-                            opacity: 1,
-                            x: 10,
-                            transition: {
-                              ease: 'easeOut',
-                              duration: 0.5
-                            },
-                          },
-                          rest: {
-                            opacity: 0,
-                            x: 0,
-                          }
-                        }}
-                      >
-                        <MdArrowForward
-                          className={cn(
-                            "ml-2 w-6 h-6",
-                          )}
-                        />
-                      </motion.div>
-                    </h3>
-                    <p className="mt-5">{work.content}</p>
-                  </motion.div>
-                ))
-              }
-            </div>
+      <div className={cn(
+        "safe-viewport py-10 lg:py-32 !px-16",
+        "hidden xl:grid grid-cols-1 lg:gap-x-10 lg:grid-cols-12 gap-y-10",
+        "border border-solid border-black-100 rounded",
+        "bg-black-900 text-white",
+      )}>
+        <header
+          className={cn(
+            "row-start-1 col-start-1 col-span-full",
+            "flex flex-col gap-5",
+            "pb-10 lg:pb-20"
+          )}
+        >
+          <h2 className={cn("text-3xl lg:text-6xl font-black")}>How Phala Network works</h2>
+        </header>
+        <main
+          className={cn(
+            "col-start-1 col-span-full",
+            "grid grid-cols-12 gap-6"
+          )}
+        >
+          <div className="col-span-4 flex flex-col gap-6 justify-center">
+            {
+              works.map((work, index) => (
+                <HowItWorksDetails
+                  idx={index}
+                  title={work.title}
+                >
+                  {work.content}
+                </HowItWorksDetails>
+              ))
+            }
           </div>
-          <div className="col-start-2 3xl:col-start-4 col-span-18 relative">
-            <div className="relative top-[2.8%] -z-10">
-              <motion.div
-                className={cn(
-                  "w-[39.81%] relative left-[1%]",
-                )}
-                animate={{
-                  opacity: currentAnimation[0] === 0 ? 1 : 0.1,
-                  transition: {
-                    ease: 'easeOut',
-                    duration: 0.5
-                  },
-                }}
-              >
-                <QuoteLine1 />
-              </motion.div>
-              <motion.div
-                className={cn(
-                  "w-[12.27%] absolute top-0 left-[28.7%]",
-                )}
-                animate={{
-                  opacity: currentAnimation[0] === 1 ? 1 : 0.1,
-                  transition: {
-                    ease: 'easeOut',
-                    duration: 0.5
-                  },
-                }}
-              >
-                <QuoteLine2 />
-              </motion.div>
-              <motion.div
-                className={cn(
-                  "w-[39.81%] absolute top-0 left-[28.9%]",
-                )}
-                animate={{
-                  opacity: currentAnimation[0] === 2 ? 1 : 0.1,
-                  transition: {
-                    ease: 'easeOut',
-                    duration: 0.5
-                  },
-                }}
-              >
-                <QuoteLine3 />
-              </motion.div>
-            </div>
+          <div
+            className="col-start-5 col-span-8 bg-[length:100%_100%]"
+            style={{
+              backgroundImage: `url("/home/workflows-bg.png")`
+            }}
+          >
             {createElement(WorkFlow, { animation: currentAnimation[1] })}
           </div>
-        </div>
+        </main>
       </div>
     </section>
+  )
+}
+
+function HowItWorksDetails({ idx, title, children }: {
+  idx: number
+  title: string
+  children: ReactNode
+}) {
+  const [currentAnimation, setNextAnimation] = useAtom(animationAtom)
+  return (
+    <details
+      open={idx === currentAnimation[0]}
+      onClick={(ev) => {
+        ev.preventDefault()
+        setNextAnimation({ next: idx })
+      }}
+    >
+      <summary
+        className="relative"
+        onClick={ev => {
+          ev.preventDefault()
+        }}
+      >
+        <button
+          className={cn(
+            "btn duration-0",
+            "relative z-10",
+            "rounded-md px-6 py-2 font-bold text-xl",
+            currentAnimation[0] === idx ? "bg-green-500 text-black-800" : "text-black-200 border-black-200 border-[1px]"
+          )}
+        >
+          {title}
+        </button>
+        {
+          currentAnimation[0] === idx ? (
+            <div
+              className={cn(
+                "absolute top-0 left-0 -right-6 aspect-[275/56] -translate-y-1/4",
+                "bg-[length:100%_100%]"
+              )}
+              style={{
+                backgroundImage: `url("/home/workflows-pointer.png")`,
+              }}
+            />
+          ) : null
+        }
+      </summary>
+      <div className={cn("py-4 text-sm text-black-400")}>
+        {children}
+      </div>
+    </details>
   )
 }

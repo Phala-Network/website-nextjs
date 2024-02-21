@@ -725,7 +725,7 @@ module.exports = {
           900: '#5f370e',
         },
         green: {
-          50: '#f0fff4',
+          50: '#FAFEED',
           100: '#c6f6d5',
           200: '#EBFDB9',
           300: '#68d391',
