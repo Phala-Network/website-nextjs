@@ -1045,7 +1045,7 @@ function TrustedPartnershipCard({ title, src, tags }: { title: string, src: stri
       <div className={cn("flex items-center justify-start lg:justify-center", "h-full px-8 py-4 lg:p-8")}>
         <div className="flex flex-row lg:flex-col gap-6 items-center justify-center">
           <div className={cn(
-            "border-[0.5px] border-solid border-black-900/40 rounded-full w-32 h-32 aspect-square overflow-hidden",
+            "border-[0.5px] border-solid border-black-900/40 rounded-full w-16 h-16 lg:w-32 lg:h-32 aspect-square overflow-hidden",
             "bg-black-900",
             "flex items-center justify-center shrink-0",
           )}>
@@ -1078,7 +1078,7 @@ function SectionPhatContractHighlight() {
     <section
       id="section-phat-contract-highlight"
       className={cn(
-        "safe-viewport py-10 lg:py-32 px-8",
+        "safe-viewport py-10 lg:py-32 px-5 lg:!px-16",
         "grid grid-cols-4 lg:grid-cols-12 grid-rows-1 gap-6",
         "border border-solid border-black-100 rounded-md",
         "bg-black-900",
@@ -1099,7 +1099,7 @@ function SectionPhatContractHighlight() {
         </h2>
         <p
           className={cn(
-            "text-3xl lg:text-6xl text-white font-normal",
+            "text-xl lg:text-3xl text-white font-normal",
           )}
         >
           Optimizing coprocessing for simplicity, accessibility, and impact
