@@ -36,7 +36,7 @@
 
 
 .phat-list {
-  @apply absolute w-[33.33%] flex flex-col;
+  @apply absolute w-[33.33%] hidden lg:flex flex-col;
 }
 
 .left-phat-list {
