@@ -72,7 +72,7 @@
 }
 
 .phat-active-list .phat-list-item .item-info {
-  @apply flex flex-col gap-2 lg:gap-1 xl:gap-2 leading-none;
+  @apply flex flex-col flex-1 gap-2 lg:gap-1 xl:gap-2 leading-none;
 }
 
 .phat-active-list .phat-list-item .item-desc {
@@ -90,7 +90,7 @@
 }
 
 .phat-active-list .phat-list-item .item-tags {
-  @apply flex flex-wrap gap-[3%];
+  @apply flex flex-wrap gap-1 lg:gap-[3%];
 }
 
 .phat-active-list .phat-list-item .item-tags span {

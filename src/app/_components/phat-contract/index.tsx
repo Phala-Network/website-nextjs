@@ -96,8 +96,8 @@ export default function() {
       <div className="group">
         <div
           className={cn(
-            "absolute top-[13%] left-[1.5%]",
-            "aspect-[420/650] w-[31%] rounded-2xl",
+            "absolute top-[13%] left-[1.8%]",
+            "aspect-[420/650] w-[30.5%] rounded-2xl",
             "hidden lg:flex items-end justify-center",
             "text-black-300 border-transparent border-[1px] transition-all",
             "group-hover:text-black-800 group-hover:bg-green-50 group-hover:border-green-500",
@@ -164,7 +164,7 @@ export default function() {
         <div
           className={cn(
             "absolute top-[13%] left-[35%]",
-            "aspect-[420/650] w-[31%] rounded-2xl",
+            "aspect-[420/650] w-[30.5%] rounded-2xl",
             "hidden lg:flex items-end justify-center",
             "text-black-300 border-transparent border-[1px] transition-all",
             "group-hover:text-black-800 group-hover:bg-black-50 group-hover:border-black-300",
@@ -215,8 +215,8 @@ export default function() {
       <div className="group">
         <div
           className={cn(
-            "absolute top-[13%] left-[67.5%]",
-            "aspect-[420/650] w-[31%] rounded-2xl",
+            "absolute top-[13%] left-[67.7%]",
+            "aspect-[420/650] w-[30.5%] rounded-2xl",
             "hidden lg:flex items-end justify-center",
             "text-black-300 border-transparent border-[1px] transition-all",
             "group-hover:text-black-800 group-hover:bg-phalaPurple-50 group-hover:border-phalaPurple-500",
@@ -281,7 +281,7 @@ export default function() {
       </div>
       <div
         className={cn(
-          "aspect-square w-[14%] bg-[length:100%_100%]",
+          "aspect-[60/63] w-[14%] bg-[length:100%_100%]",
           "absolute top-[31.5%] left-1/2 -translate-x-1/2 -translate-y-1/2",
           "lg:hidden"
         )}
@@ -311,7 +311,7 @@ export default function() {
           backgroundImage: `url("/home/features-right-link.png")`
         }}
       />
-      <div className="absolute w-full left-0 h-6 bottom-[24.5%] hidden lg:block">
+      <div className="absolute w-full left-0 h-[4%] bottom-[24.5%] hidden lg:block">
         <div
           className="aspect-[279/6] w-[18%] bg-[length:100%_100%] absolute left-[25%]"
           style={{
