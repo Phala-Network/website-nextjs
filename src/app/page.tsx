@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { getPhatLists } from '@/lib/phat_lists'
 import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
+import { ContactUsForm } from '@/components/ContactUsForm'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
@@ -957,24 +958,7 @@ function SectionPitchPioneer() {
         </aside>
 
         <div className={cn("rounded p-8 bg-white mt-8 lg:mt-32", "col-span-full", "grid grid-cols-1 lg:grid-cols-12")}>
-          <form className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")}>
-            <legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>
-            <fieldset className="flex flex-col lg:flex-row gap-3">
-              <input type="text" placeholder="Gavin Belson" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
-              <input type="email" placeholder="gavin@hooli.com" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
-            </fieldset>
-            <textarea
-              className="bg-black-50 rounded-xs px-5 py-2.5"
-              rows={7}
-              placeholder={`I'm gonna be asking you to say a few words. Just a bit about how much of a fan you are, dedicated to the cause, my cause, maybe lead with a joke. Be good to have you there, Richard. Securing my legacy with you at my wing. Wear pants you can kneel in.`}
-            >
-            </textarea>
-            <div>
-              <button className="btn btn-primary btn-blk" disabled>
-                Submit
-              </button>
-            </div>
-          </form>
+          <ContactUsForm className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")} />
           <div className={cn(
             "row-start-1 col-span-full lg:col-span-4 lg:col-end-12",
             "flex flex-col-reverse items-end lg:flex-col lg:items-start",
