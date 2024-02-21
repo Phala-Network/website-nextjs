@@ -307,7 +307,7 @@ function DrawerMenu() {
                 <p>Create powerful decentralized applications with Phat Contracts</p>
               </MenuItem>
               <MenuItem
-                href="https://bricks.phala.network"
+                href="https://dashboard.phala.network"
                 title="No-Code"
                 icon={<MdCodeOff className={cn("h-5 w-5 text-black")} />}
               >
@@ -616,7 +616,7 @@ function SiteNav() {
         )}
       >
         <MenuItem
-          href="https://bricks.phala.network"
+          href="https://dashboard.phala.network"
           title="No-Code"
           icon={<MdCodeOff className={cn("h-5 w-5 text-black")} />}
         >

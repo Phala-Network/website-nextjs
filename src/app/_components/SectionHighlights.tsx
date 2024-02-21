@@ -62,7 +62,7 @@ export function SectionHighlights() {
   return (
     <section className={cn("section-highlights", "py-16 lg:py-32")}>
       <div className={cn("safe-viewport", "grid grid-cols-1 gap-8 lg:gap-16 xl:grid-cols-12")}>
-        <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Today's Highlights</h2>
+        <h2 className={cn("row-start-1 col-span-full", "section-heading")}>Recent Highlights</h2>
         <div
           className={cn(
             "row-start-2 col-span-full",
