@@ -867,9 +867,9 @@ function SectionPitchPioneer() {
         >
           <h2 className={cn("text-3xl lg:text-6xl text-black font-black")}>Cutting Edge Web3 Usecases</h2>
           <div>
-            <button className={cn("btn btn-primary btn-md btn-purple btn-rounded")}>
+            <Link href="/tags/Usecases" className={cn("btn btn-primary btn-md btn-purple btn-rounded")}>
               Learn about Templates
-            </button>
+            </Link>
           </div>
         </header>
         <main className={cn("row-start-2 invisible col-span-full xl:visible xl:col-start-6 xl:col-span-7")}>
@@ -1119,7 +1119,7 @@ function SectionPhatContractHighlight() {
             "text-3xl lg:text-6xl text-white font-normal",
           )}
         >
-          make coprocessor super easy
+          Optimizing coprocessing for simplicity, accessibility, and impact
         </p>
       </header>
 
