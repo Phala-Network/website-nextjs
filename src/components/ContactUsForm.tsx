@@ -4,12 +4,13 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import * as R from "ramda"
+import { AiOutlineLoading } from "react-icons/ai"
 
 import { cn } from "@/lib/utils"
 
 
 const contactUsSchema = z.object({
-  firstname: z.string().min(4),
+  firstname: z.string().min(3),
   email: z.string().email().email(),
   message: z.string().min(10),
 })
@@ -21,7 +22,7 @@ async function sendPostFormRequest(input: IContactUsInput) {
     fields: R.toPairs(input).map(([key, value]) => ({ name: key, value, objectTypeId: '0-1' })),
   }
   try {
-    const resp = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/20647882/9068f08e-31e5-452c-8159-32535126f95e`, {
+    const resp = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/20647882/3476ecbe-5ac1-4b7c-beb3-cb66cea0f65b`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -58,16 +59,23 @@ function FieldError({ error }: { error?: string }) {
 }
 
 export function ContactUsForm({ className }: { className?: string }) {
-  const { register, handleSubmit, formState: { isValid, errors } } = useForm<IContactUsInput>({
-    resolver: zodResolver(contactUsSchema)
+  const { register, handleSubmit, reset, formState: { errors, isValid, isSubmitting, isSubmitSuccessful } } = useForm<IContactUsInput>({
+    resolver: zodResolver(contactUsSchema),
+    mode: 'onChange',
   })
-  const onSubmit: SubmitHandler<IContactUsInput> = async (data) => {
-    console.log(data)
-    await sendPostFormRequest(data)
-  }
-  console.log('error', JSON.stringify(errors, null, 2))
   return (
-    <form className={className} onSubmit={handleSubmit(onSubmit)}>
+    <form className={cn(className, "relative p-2")} onSubmit={handleSubmit(sendPostFormRequest)}>
+      {isSubmitSuccessful && (
+        <>
+          <div className="absolute top-0 left-0 z-10 w-full h-full bg-black-50/70 backdrop-blur-sm rounded-sm flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-24 font-bold mb-4 text-phalaPurple-400">Thank you for your interest!</div>
+              <div className="text-16 mb-4">We will get back to you soon.</div>
+              <button className="btn btn-sm btn-phala rounded-sm" onClick={() => reset()}>OK</button>
+            </div>
+          </div>
+        </>
+      )}
       <legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>
       <fieldset className="flex flex-col lg:flex-row gap-3">
         <div className="relative w-full">
@@ -77,7 +85,7 @@ export function ContactUsForm({ className }: { className?: string }) {
             placeholder="Gavin Belson"
             className="bg-black-50 rounded-xs px-5 py-2.5 w-full"
           />
-          {errors.firstname && <FieldError error={errors.firstname.message} />}
+          {errors.firstname && <FieldError error={errors.firstname.message?.toString()} />}
         </div>
         <div className="relative w-full">
           <input
@@ -100,8 +108,9 @@ export function ContactUsForm({ className }: { className?: string }) {
         {errors.message && <FieldError error={errors.message.message} />}
       </div>
       <div>
-        <button className="btn btn-primary btn-blk" disabled={!isValid}>
-          Submit
+        <button className="btn btn-primary btn-blk relative" disabled={!isValid || isSubmitting}>
+          <span className={cn(isSubmitting && 'text-transparent')}>Submit</span>
+          {isSubmitting && <span className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center"><AiOutlineLoading className="animate-spin" /></span>}
         </button>
       </div>
     </form>
