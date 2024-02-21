@@ -105,7 +105,7 @@ export default function() {
         >
           <h3 className="font-medium text-xl relative bottom-[5%]">Read Data</h3>
         </div>
-        <div className="phat-list left-phat-list hidden lg:flex">
+        <div className="phat-list left-phat-list">
           {
             reverseList.map(([item], i) => (
               <div
@@ -224,7 +224,7 @@ export default function() {
         >
           <h3 className="font-medium text-xl relative bottom-[5%]">Verify & Use</h3>
         </div>
-        <div className="phat-list right-phat-list hidden lg:flex">
+        <div className="phat-list right-phat-list">
           {
             list.map(([, item], i) => (
               <div
