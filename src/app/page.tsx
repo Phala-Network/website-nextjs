@@ -853,7 +853,7 @@ function SectionPitchPioneer() {
   return (
     <section id="section-pitch-pionner">
       <div className={cn(
-        "safe-viewport py-10 lg:py-32 !px-16",
+        "safe-viewport py-10 lg:py-32 px:8",
         "grid grid-cols-1 lg:gap-x-10 lg:grid-cols-12 gap-y-10",
         "border border-solid border-black-100 rounded",
         "bg-black-100",
@@ -1064,7 +1064,7 @@ function TrustedPartnershipCard({ title, src, tags }: { title: string, src: stri
           <div className={cn(
             "border-[0.5px] border-solid border-black-900/40 rounded-full w-32 h-32 aspect-square overflow-hidden",
             "bg-black-900",
-            "flex items-center justify-center",
+            "flex items-center justify-center shrink-0",
           )}>
             <img src={src} alt={title} className="w-3/5 select-none pointer-events-none" />
           </div>
@@ -1095,7 +1095,7 @@ function SectionPhatContractHighlight() {
     <section
       id="section-phat-contract-highlight"
       className={cn(
-        "safe-viewport py-10 lg:py-32 !px-16",
+        "safe-viewport py-10 lg:py-32 px-8",
         "grid grid-cols-4 lg:grid-cols-12 grid-rows-1 gap-6",
         "border border-solid border-black-100 rounded-md",
         "bg-black-900",
@@ -1468,21 +1468,13 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const {
-    default_list,
-    connect_list,
-    programmable_list,
-    verifiable_list,
-  } = await getPhatLists()
+  const default_list = await getPhatLists()
 
   return (
     <div className="flex flex-col gap-10 lg:gap-20">
       <SectionHero />
       <SectionFeatures
         default_list={default_list}
-        connect_list={connect_list}
-        programmable_list={programmable_list}
-        verifiable_list={verifiable_list}
       />
       <SectionPhatContractHighlight />
       <SectionPitchPioneer />

@@ -50,7 +50,7 @@ function filterRules(pairItems: PhatItem[]) {
   return true
 }
 
-function pairItems(arr: any[], filter_section: string): PhatItem[][] {
+function pairItems(arr: any[]): PhatItem[][] {
   const pairedArray = []
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
@@ -61,9 +61,6 @@ function pairItems(arr: any[], filter_section: string): PhatItem[][] {
         continue
       }
       if (!filterRules([arr[i], arr[j]])) {
-        continue
-      }
-      if (arr[i].section.indexOf(filter_section) === -1 || arr[j].section.indexOf(filter_section) === -1) {
         continue
       }
       pairedArray.push([arr[i], arr[j]])
@@ -150,14 +147,5 @@ export async function getPhatLists() {
       logo,
     })
   }
-  const default_list = pairItems(items, 'default')
-  const connect_list = pairItems(items, 'connect')
-  const programmable_list = pairItems(items, 'programmable')
-  const verifiable_list = pairItems(items, 'verifiable')
-  return {
-    default_list,
-    connect_list,
-    programmable_list,
-    verifiable_list,
-  }
+  return pairItems(items)
 }
