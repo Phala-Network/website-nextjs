@@ -40,11 +40,11 @@
 }
 
 .left-phat-list {
-  @apply left-0 bottom-[47.65%] left-[1%];
+  @apply left-0 bottom-[47.65%] left-[0.5%];
 }
 
 .right-phat-list {
-  @apply right-0 top-[34.55%] right-[1%];
+  @apply right-0 top-[34.55%] right-[0.5%];
 }
 
 .phat-list .phat-list-item {
@@ -54,7 +54,7 @@
 }
 
 .item-inner {
-  @apply aspect-[360/96] w-[84.11%] bg-gray-100 rounded-4xl flex items-center;
+  @apply aspect-[360/96] w-[84.11%] bg-gray-100 rounded-md flex items-center;
 }
 
 .phat-list .phat-list-item .item-icon {
@@ -104,12 +104,6 @@
 
 .left-phat-active-list-wrap .item-tags span {
   @apply bg-phalaGreenLight text-black;
-}
-
-.connect-button {
-  @apply btn-outline rounded-full font-semibold;
-  @apply text-[1vw] px-[3.5vw] py-[1vw];
-  @apply xl:text-sm xl:py-2 xl:px-10;
 }
 
 .right-phat-active-list-wrap .item-icon {
