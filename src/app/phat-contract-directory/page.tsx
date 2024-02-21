@@ -1,5 +1,4 @@
 import { cn } from '@/lib/utils'
-import SiteFooter from '@/components/SiteFooter'
 
 import { proposals, blueprints, type Proposal, type Blueprint } from './data'
 
@@ -192,7 +191,6 @@ export default function PhatContractDirectoryPage() {
       <PageHeading />
       <Proposals />
       <Blueprints />
-      <SiteFooter />
     </div>
   )
 }
