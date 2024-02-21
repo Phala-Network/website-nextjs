@@ -1,12 +1,13 @@
 import { type ReactNode } from 'react'
 import { type Metadata } from 'next'
-import { VscCommentDiscussion } from 'react-icons/vsc'
 import { MdArrowForward, MdGraphicEq, MdFaceRetouchingNatural, MdOutlineApi } from 'react-icons/md'
+import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import { getPhatLists } from '@/lib/phat_lists'
 import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
+import { ContactUsForm } from '@/components/ContactUsForm'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
@@ -157,7 +158,7 @@ function SectionPitchAccelerate() {
             )}
           >
             <h2 className="text-4xl xl:text-6xl font-black uppercase">Accelerate</h2>
-            <p className={cn("text-base xl:text-2xl text-center")}>Scale your idea with prebuilt blueprints in minutes</p>
+            <p className={cn("text-base xl:text-2xl text-center")}>Scale your idea with prebuilt templates in minutes</p>
           </header>
 
           <div
@@ -199,13 +200,13 @@ function SectionPitchAccelerate() {
                 </div>
                 <div className="flex flex-col justify-between px-8 py-10 xl:w-[30%]">
                   <NoCodeWizardStepDetails idx={0} summary="Pick">
-                    <p>Discover the perfect solution for your needs with our marketplace of blueprints. These community-contributed, ready-to-deploy blueprints offer a quick way to integrate off-chain capabilities into your smart contracts.</p>
+                    <p>Discover the perfect solution for your needs with our marketplace of templates. These community-contributed, ready-to-deploy templates offer a quick way to integrate off-chain capabilities into your smart contracts.</p>
                   </NoCodeWizardStepDetails>
                   <NoCodeWizardStepDetails idx={1} summary="Customize">
-                    <p>Blueprints are designed to tackle common challenges developers frequently encounter. With just a few clicks, effortlessly adjust the configuration to tailor the blueprint to your specific requirements.</p>
+                    <p>Templates are designed to tackle common challenges developers frequently encounter. With just a few clicks, effortlessly adjust the configuration to tailor the template to your specific requirements.</p>
                   </NoCodeWizardStepDetails>
                   <NoCodeWizardStepDetails idx={2} summary="Deploy">
-                    <p>Easily deploy the customized blueprint as your own Phat Contract on the Phala Network. Experience the power of off-chain capabilities integrated into your DApp within seconds.</p>
+                    <p>Easily deploy the customized template as your own Phat Contract on the Phala Network. Experience the power of off-chain capabilities integrated into your DApp within seconds.</p>
                   </NoCodeWizardStepDetails>
                   <NoCodeWizardStepDetails idx={3} summary="Integrate">
                     <p>Seamlessly interact with your newly deployed Phat Contract from your smart contracts or frontend using familiar programming languages. Enjoy a streamlined process that enhances your dApp’s functionality with minimal effort.</p>
@@ -247,7 +248,7 @@ function SectionPitchAccelerate() {
           )}>
             <a
               className={cn("btn btn-xl bg-[#6C37C9] text-white gap-2.5 justify-center btn-with-arrow w-full", "mt-10")}
-              href="https://bricks.phala.network/?source=get-your-own"
+              href="https://dashboard.phala.network/?source=get-your-own"
               target="_blank"
               rel="noopener"
             >
@@ -256,7 +257,7 @@ function SectionPitchAccelerate() {
             </a>
           </div>
 
-          {/* Explore all of our blueprints */}
+          {/* Explore all of our templates */}
           <div className={cn(
             "col-span-full xl:col-start-2 xl:col-span-18 3xl:col-start-4 3xl:col-span-18",
           )}>
@@ -267,10 +268,10 @@ function SectionPitchAccelerate() {
               )}
             >
               <header className={cn("flex flex-col gap-3 xl:gap-5 py-7")}>
-                <h3 className={cn("text-2xl xl:text-4xl text-blackAlpha-900 font-black uppercase ml-1")}>Explore all of our blueprints</h3>
-                <p className={cn("text-base xl:text-lg text-blackAlpha-700 ml-1.5")}>Explore the marketplace today to find your ideal blueprints, streamlining your development process.</p>
+                <h3 className={cn("text-2xl xl:text-4xl text-blackAlpha-900 font-black uppercase ml-1")}>Explore all of our templates</h3>
+                <p className={cn("text-base xl:text-lg text-blackAlpha-700 ml-1.5")}>Explore the marketplace today to find your ideal templates, streamlining your development process.</p>
                 <a
-                  href="https://bricks.phala.network"
+                  href="https://dashboard.phala.network"
                   className={cn(
                     "btn btn-third flex-row w-full py-5 px-5 xl:px-10 gap-6 items-center justify-center",
                     "hidden xl:flex",
@@ -278,7 +279,7 @@ function SectionPitchAccelerate() {
                   target="_blank"
                   rel="noopener"
                 >
-                  <span className="font-bold uppercase">Learn about blueprints</span>
+                  <Link href="/tags/Usecases" className="font-bold uppercase">Learn about templates</Link>
                   <img
                     src="/icons/right-arrow.svg"
                     alt=""
@@ -296,7 +297,7 @@ function SectionPitchAccelerate() {
                   title="LensAPI Oracle"
                   illustration="/home/blueprint-lens-api-oracle.png"
                   tags={["Polygon", "EVM", "Lens"]}
-                  href="https://bricks.phala.network/?source=blueprint-card-LensAPI-Oracle"
+                  href="https://dashboard.phala.network/?source=template-card-LensAPI-Oracle"
                   live
                 >
                   Deploy a custom social oracle to integrate LensAPI data into your smart contracts, providing access to user profile statistics such as followers, posts, comments, and post metrics like collections, mirrors, and replies.
@@ -332,7 +333,7 @@ function SectionPitchAccelerate() {
                   Integrate your smart contract with a customized ChatGPT oracle for intelligent automation. Monitor blockchain events and initiate user-driven actions, create content on decentralized social platforms, and unlock more automated capabilities.
                 </BlueprintCard>
                 <a
-                  href="https://bricks.phala.network"
+                  href="https://dashboard.phala.network"
                   className={cn(
                     "btn btn-third flex-row w-full py-5 px-5 xl:px-10 gap-6 items-center justify-center",
                     "xl:hidden mb-5",
@@ -384,7 +385,7 @@ function SectionPitchAccelerate() {
           )}>
             <div className="text-3xl xl:text-6xl text-phalaPurple-500 font-black tracking-tight mb-10 pl-1">
               <div>INSPIRE</div>
-              <div>THE NEXT BLUEPRINT</div>
+              <div>THE NEXT TEMPLATE</div>
             </div>
             <a
               href="https://github.com/Phala-Network/phala-blueprint-proposals"
@@ -867,9 +868,9 @@ function SectionPitchPioneer() {
         >
           <h2 className={cn("text-3xl lg:text-6xl text-black font-black")}>Cutting Edge Web3 Usecases</h2>
           <div>
-            <button className={cn("btn btn-primary btn-md btn-purple btn-rounded")}>
-              Learn about Blueprints
-            </button>
+            <Link href="/tags/Usecases" className={cn("btn btn-primary btn-md btn-purple btn-rounded")}>
+              Learn More
+            </Link>
           </div>
         </header>
         <main className={cn("row-start-2 invisible col-span-full xl:visible xl:col-start-6 xl:col-span-7")}>
@@ -957,24 +958,7 @@ function SectionPitchPioneer() {
         </aside>
 
         <div className={cn("rounded p-8 bg-white mt-8 lg:mt-32", "col-span-full", "grid grid-cols-1 lg:grid-cols-12")}>
-          <form className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")}>
-            <legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>
-            <fieldset className="flex flex-col lg:flex-row gap-3">
-              <input type="text" placeholder="Gavin Belson" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
-              <input type="email" placeholder="gavin@hooli.com" className="bg-black-50 rounded-xs px-5 py-2.5 w-full" />
-            </fieldset>
-            <textarea
-              className="bg-black-50 rounded-xs px-5 py-2.5"
-              rows={7}
-              placeholder={`I'm gonna be asking you to say a few words. Just a bit about how much of a fan you are, dedicated to the cause, my cause, maybe lead with a joke. Be good to have you there, Richard. Securing my legacy with you at my wing. Wear pants you can kneel in.`}
-            >
-            </textarea>
-            <div>
-              <button className="btn btn-primary btn-blk" disabled>
-                Submit
-              </button>
-            </div>
-          </form>
+          <ContactUsForm className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")} />
           <div className={cn(
             "row-start-1 col-span-full lg:col-span-4 lg:col-end-12",
             "flex flex-col-reverse items-end lg:flex-col lg:items-start",
@@ -1042,7 +1026,6 @@ function TemplateCard({ title, src, href, target }: { title: string, src: string
       )}
     >
       <header className="text-center">
-        <p className="text-15 text-whiteAlpha-600 mb-2">Templates</p>
         <h4 className="text-24 font-black text-white">{title}</h4>
       </header>
       <div className="aspect-square w-4/6 select-none pointer-events-none group-hover:scale-105 transition-all duration-200">
@@ -1062,7 +1045,7 @@ function TrustedPartnershipCard({ title, src, tags }: { title: string, src: stri
       <div className={cn("flex items-center justify-start lg:justify-center", "h-full px-8 py-4 lg:p-8")}>
         <div className="flex flex-row lg:flex-col gap-6 items-center justify-center">
           <div className={cn(
-            "border-[0.5px] border-solid border-black-900/40 rounded-full w-32 h-32 aspect-square overflow-hidden",
+            "border-[0.5px] border-solid border-black-900/40 rounded-full w-16 h-16 lg:w-32 lg:h-32 aspect-square overflow-hidden",
             "bg-black-900",
             "flex items-center justify-center shrink-0",
           )}>
@@ -1095,7 +1078,7 @@ function SectionPhatContractHighlight() {
     <section
       id="section-phat-contract-highlight"
       className={cn(
-        "safe-viewport py-10 lg:py-32 px-8",
+        "safe-viewport py-10 lg:py-32 px-5 lg:!px-16",
         "grid grid-cols-4 lg:grid-cols-12 grid-rows-1 gap-6",
         "border border-solid border-black-100 rounded-md",
         "bg-black-900",
@@ -1116,10 +1099,10 @@ function SectionPhatContractHighlight() {
         </h2>
         <p
           className={cn(
-            "text-3xl lg:text-6xl text-white font-normal",
+            "text-xl lg:text-3xl text-white font-normal",
           )}
         >
-          make coprocessor super easy
+          Optimizing coprocessing for simplicity, accessibility, and impact
         </p>
       </header>
 
@@ -1130,7 +1113,7 @@ function SectionPhatContractHighlight() {
           "grid gap-8",
         )}
       >
-        <h3 className="heading">Access unlimited API in <em>1</em> minute</h3>
+        <h3 className="heading">Access unlimited APIs in under <em>1</em> minute</h3>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <UnlimitedApiCard
             title="The Graph"
@@ -1157,7 +1140,7 @@ function SectionPhatContractHighlight() {
             className={cn("btn lg:btn-lg btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}
             target="_blank"
           >
-            Get Start
+            Get Started
           </a>
         </div>
       </article>
@@ -1174,7 +1157,7 @@ function SectionPhatContractHighlight() {
             "flex flex-col gap-8",
           )}
         >
-          <h3 className="heading">Build with your familiar</h3>
+          <h3 className="heading">Build with familiar tools</h3>
           <div className="flex flex-row flex-wrap gap-4 lg:gap-6">
             <ToolIcon src="/home/icon-tool-hardhat.png" title="Hardhat" />
             <ToolIcon src="/home/icon-tool-metamask.png" title="Metamask" />
@@ -1188,7 +1171,7 @@ function SectionPhatContractHighlight() {
               className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
               target="_blank"
             >
-              Learn
+              Learn More
             </a>
           </div>
         </article>
@@ -1236,13 +1219,13 @@ function SectionPhatContractHighlight() {
             target="_blank"
           />
           <TemplateCard
-            title="Dynamic NFT"
+            title="Dynamic NFTs"
             src="/home/icon-template-dynamic-nft.png"
             href="https://phala.network/posts/guide-dynamic-nfts-that-evolve"
             target="_blank"
           />
           <TemplateCard
-            title="Lens Open Action"
+            title="Lens Open Actions"
             src="/home/icon-template-lens.png"
             href="https://dashboard.phala.network/projects/new/clone?template=lensapi"
             target="_blank"
@@ -1272,7 +1255,7 @@ function SectionPhatContractHighlight() {
         )}
       >
         <TrustedPartnershipCard
-          title="Lens"
+          title="Lens Protocol"
           src="/home/icon-lens.png"
           tags={[
             { label: "Web3 Social", cls: "bg-phalaWorldTeal/20 border-phalaWorldTeal/50 text-phalaWorldTeal" },
@@ -1356,7 +1339,7 @@ function SectionGlobalDistribution() {
         )}
         >
           <header className="text-center">
-            <h3 className="text-56 text-black-800 font-black">DePIN with most TEE nodes</h3>
+            <h3 className="text-56 text-black-800 font-black">DePIN with the most TEE nodes</h3>
             <h4 className="text-32 text-black-600">By the people, for the people</h4>
           </header>
           <div

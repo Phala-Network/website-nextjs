@@ -55,18 +55,16 @@ export default function SiteFooter() {
             <LinkListItem href="https://dashboard.phala.network/?source=foot-bricks-app">Dashboard</LinkListItem>
             <LinkListItem href="https://docs.phala.network/developers/phat-contract/use-cases">Use Cases</LinkListItem>
           </LinkList>
-        </div>
 
-        {/* Row #2: Blueprints */}
-        <div className={cn("col-span-1 col-start-2 row-span-1 xl:col-start-2 xl:col-span-5 3xl:col-start-4")}>
-          <LinkListHeading>Blueprints</LinkListHeading>
+          <LinkListHeading>Templates</LinkListHeading>
           <LinkList>
-            <LinkListItem href="https://bricks.phala.network/?source=footer-LensAPI-Oracle">LensAPI Oracle</LinkListItem>
+            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">Phat Contract Starter Kit</LinkListItem>
+            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">LensAPI Oracle</LinkListItem>
+            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">VRF Oracle</LinkListItem>
+            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">AirStack Starter Kit</LinkListItem>
+            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">The Graph Starter Kit</LinkListItem>
           </LinkList>
-        </div>
 
-        {/* Row #3: Other Products */}
-        <div className={cn("col-span-1 col-start-2 row-span-1 xl:col-start-2 xl:col-span-5 3xl:col-start-4")}>
           <LinkListHeading>Other Products</LinkListHeading>
           <LinkList>
             <LinkListItem href="https://subbridge.io">SubBridge</LinkListItem>
@@ -81,7 +79,7 @@ export default function SiteFooter() {
             <LinkListItem href="https://app.phala.network">Phala App</LinkListItem>
             <LinkListItem href="https://docs.phala.network/">What is Phala Network?</LinkListItem>
             <LinkListItem href="https://docs.phala.network/developers/phat-contract">What is Phat Contract?</LinkListItem>
-            <LinkListItem href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints">What are Blueprints?</LinkListItem>
+            <LinkListItem href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints">What are Templates?</LinkListItem>
             <LinkListItem href="https://docs.phala.network/pha-token/delegation/delegate-to-stakepool">What is PHA staking?</LinkListItem>
             <LinkListItem href="https://docs.phala.network/developers/phat-contract/pay-for-cloud-service">Tokenomics - Utility</LinkListItem>
             <LinkListItem href="https://docs.phala.network/compute-providers/basic-info/worker-rewards">Tokenomics - Earn</LinkListItem>
@@ -101,10 +99,7 @@ export default function SiteFooter() {
             <LinkListItem href="https://phala.subscan.io/">Phala Explorer</LinkListItem>
             <LinkListItem href="https://phala.subsquare.io/">Phala Governance</LinkListItem>
           </LinkList>
-        </div>
 
-        {/* Block #6: Khala */}
-        <div className={cn("col-span-1 col-start-2 xl:row-start-2 xl:col-start-12 xl:col-span-5 3xl:col-start-16")}>
           <LinkListHeading>Khala</LinkListHeading>
           <LinkList>
             <LinkListItem href="https://khala.subscan.io/">Khala Explorer</LinkListItem>
