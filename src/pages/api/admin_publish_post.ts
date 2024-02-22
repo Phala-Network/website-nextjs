@@ -82,6 +82,7 @@ export default async function handler(
   promises.push(res.revalidate(`/posts${encodedSlug}`))
   promises.push(res.revalidate('/blog'))
   promises.push(res.revalidate('/changelog'))
+  promises.push(res.revalidate('/'))
   await Promise.all(promises)
   if (interaction_token) {
     const res = await fetch(
