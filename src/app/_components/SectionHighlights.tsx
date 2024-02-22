@@ -57,6 +57,12 @@ export function SectionHighlights() {
           does_not_contain: 'Changelog',
         },
       },
+      {
+        property: 'Tags',
+        multi_select: {
+          does_not_contain: 'not-listed',
+        },
+      },
     ]
   })
   return (
