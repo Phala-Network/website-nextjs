@@ -1,5 +1,9 @@
+import { type Metadata } from 'next'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import dedent from 'dedent'
+
+import SubscribeForm from '@/app/_components/SubscribeForm'
 
 const deepdives = [
   {
@@ -7,35 +11,35 @@ const deepdives = [
     description: dedent`
       Modular Coprocessor such as Phat Contracts streamline blockchain tasks, enhancing security and scalability while solving Ethereum's challenges.
     `,
-    href: '#',
+    href: '/posts/what-is-coprocessor',
   },
   {
     name: 'Coprocessor Indexers',
     description: dedent`
       Phala Network's indexers provide seamless data querying, high-performance indexing, and cross-chain data access.
     `,
-    href: '#',
+    href: '/data/coprocessor-indexers-for-data-rich-access',
   },
   {
     name: 'Computation Framework',
     description: dedent`
       Phala Network advances web3 with a trustless computing framework, leveraging Phat Contracts for secure off-chain computations.
     `,
-    href: '#',
+    href: '/posts/coprocessor-trustless-computation-framework',
   },
   {
     name: 'Coprocessor Function Oracles',
     description: dedent`
       Phat Contracts as web3 oracles enable secure, low-cost bridge between on-chain/off-chain data for dApps, offering real-time access and complex computations without high gas fees.
     `,
-    href: '#',
+    href: '/posts/coprocessor-data-fetching-with-web3-function-oracles',
   },
   {
     name: 'Security Verification Framework',
     description: dedent`
       Phala Network boosts blockchain security using ZKPs, TEE with Intel SGX, and MPC, ensuring unmatched privacy, data integrity, and secure collaboration.
     `,
-    href: '#',
+    href: '/posts/coprocessor-security-verification-framework',
   },
 ]
 
@@ -70,10 +74,15 @@ const challenges = [
   },
 ]
 
+export const metadata: Metadata = {
+  themeColor: 'rgba(232, 233, 234, 1)',
+  title: "Coprocessors by Phala Network",
+}
+
 export default function Page() {
   return (
-    <>
-      <div className="bg-white">
+    <div className="flex flex-col gap-8 sm:gap-16">
+      <section className="bg-white">
         <div className="relative isolate px-6 pt-14 lg:px-8">
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
@@ -91,14 +100,14 @@ export default function Page() {
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="https://docs.phala.network/"
-                  className="btn btn-xl btn-phala"
+                  className="btn btn-xl btn-primary btn-phala"
                   target="_blank"
                 >
                   Start Building
                 </a>
                 <a
                   href="#"
-                  className="btn btn-xl btn-outline border-gray-200"
+                  className="btn btn-xl btn-secondary btn-blk"
                 >
                   Explore More
                 </a>
@@ -118,46 +127,60 @@ export default function Page() {
             />
           </div>
         </div>
-      </div>
-      <div className="bg-white px-6 py-24 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="mt-2 text-xl font-bold tracking-tight text-gray-900 sm:text-6xl">How does Modular Coprocessor work?</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+      </section>
+
+      <section className="px-6 py-24 sm:py-32 lg:px-8 rounded-3xl bg-black/90">
+        <div className="mx-auto text-center">
+          <h2 className="mt-2 text-xl font-bold tracking-tight text-white sm:text-5xl">
+            How does Modular Coprocessor work?
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-gray-100">
             Modular Coprocessor of blockchains involves data indexing, processing and proof.
           </p>
-          <figure>
-            <img src="/illustrations/coprocessor.jpg" />
+          <figure className="max-w-full mt-6">
+            <img src="/illustrations/coprocessor.jpg" alt="" className="mx-auto" />
           </figure>
         </div>
-      </div>
-      <div className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      </section>
+
+      <section className="py-24 sm:py-32 rounded-3xl bg-black-50/50">
+        <div className="safe-viewport mx-auto px-6 lg:px-8">
+          <div className="mx-auto lg:text-center">
+            <h2 className="mt-2 text-xl font-bold tracking-tight text-gray-900 sm:text-5xl">
               Deepdive into Modular Coprocessor content series.
             </h2>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+          <div className="mx-auto mt-16 sm:mt-20 lg:mt-24 max-w-6xl">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-              {deepdives.map((feature) => (
-                <div key={feature.name} className="relative pl-16 border border-gray-200 rounded-sm p-8">
-                  <dt className="text-base font-semibold leading-7 text-gray-900">
-                    {feature.name}
+              {deepdives.map((item, idx) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "relative pl-16 border border-phalaGreen-400 rounded-sm p-8",
+                    "flex flex-col",
+                    "bg-white",
+                    "hover:scale-105 transition-transform transform-gpu duration-300",
+                  )}
+                >
+                  <dt className="text-2xl font-bold leading-7 text-phalaGreen-700">
+                    {item.name}
                   </dt>
-                  <dd className="mt-2 text-base leading-7 text-gray-600">{feature.description}</dd>
-                </div>
+                  <dd className="mt-2 text-base leading-7 text-gray-900">{item.description}</dd>
+                </Link>
               ))}
             </dl>
           </div>
         </div>
-      </div>
-      <div className="bg-gray-900 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Modern dApp deployment challenges</h2>
+      </section>
+
+      <section className="py-24 sm:py-32 rounded-3xl bg-black/90">
+        <div className="mx-auto px-6 lg:px-8">
+          <div className="mx-auto lg:text-center">
+            <h2 className="text-xl font-bold tracking-tight text-white sm:text-5xl">Modern dApp deployment challenges</h2>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-6xl">
+            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
               {challenges.map((feature) => (
                 <div key={feature.name} className="flex flex-col">
                   <dt className="text-base font-semibold leading-7 text-white">
@@ -181,66 +204,28 @@ export default function Page() {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
               href="#"
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="btn btn-xl btn-primary btn-phala px-16"
             >
-              Get started
+              Read docs
             </a>
-            <a href="#" className="text-sm font-semibold leading-6 text-white">
+            <a href="#"
+              className="btn btn-xl btn-primary btn-wht px-8"
+            >
               Talk to an expert
             </a>
           </div>
         </div>
-      </div>
-      <div className="bg-white py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
-            <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Get the latsest Phala Network content straight to your inbox.
-            </h2>
-            <form className="mx-auto mt-10 flex max-w-md gap-x-4">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
-                placeholder="Enter your email"
-              />
-              <button
-                type="submit"
-                className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                Notify me
-              </button>
-            </form>
-            <svg
-              viewBox="0 0 1024 1024"
-              className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2"
-              aria-hidden="true"
-            >
-              <circle cx={512} cy={512} r={512} fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fillOpacity="0.7" />
-              <defs>
-                <radialGradient
-                  id="759c1415-0410-454c-8f7c-9a820de03641"
-                  cx={0}
-                  cy={0}
-                  r={1}
-                  gradientUnits="userSpaceOnUse"
-                  gradientTransform="translate(512 512) rotate(90) scale(512)"
-                >
-                  <stop stopColor="#7775D6" />
-                  <stop offset={1} stopColor="#E935C1" stopOpacity={0} />
-                </radialGradient>
-              </defs>
-            </svg>
+      </section>
+
+      <section className="bg-[#262626] xl:bg-gradient-to-r from-50% to-0% from-[#262626] to-[#f3f3f3]">
+        <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
+          <SubscribeForm />
+          <div className={cn("hidden xl:block xl:h-full xl:bg-[#f3f3f3] row-start-1 col-span-full xl:col-start-14 3xl:col-start-16 -ml-4 relative")}>
+            <img src="/home/newsletter-aside.jpg" alt="" className={cn("absolute bottom-0 left-0 aspect-[1860/728]")} />
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   )
 }
 
