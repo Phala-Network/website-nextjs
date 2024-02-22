@@ -40,7 +40,7 @@ function LinkListItem({ children, className, href, ...props }: React.HTMLProps<H
 
 export default function SiteFooter() {
   return (
-    <footer className={cn("page-footer", "bg-[#1c1c1c] text-white pt-12 pb-6 xl:pt-16")}>
+    <footer className={cn("page-footer", "bg-[#1c1c1c] text-white py-12 xl:py-16")}>
       <div className={cn("safe-viewport", "grid gap-4 grid-cols-2 auto-rows-min xl:auto-rows-fr xl:grid-cols-20 3xl:grid-cols-24")}>
         {/* Block #1: Developers */}
         <div className={cn("col-span-1 col-start-1 row-start-1 xl:row-start-1 xl:col-start-2 xl:col-span-5 3xl:col-start-4")}>
