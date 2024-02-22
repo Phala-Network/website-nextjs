@@ -220,6 +220,12 @@ export const getStaticProps = async () => {
             does_not_contain: 'Changelog',
           },
         },
+        {
+          property: 'Tags',
+          multi_select: {
+            does_not_contain: 'not-listed',
+          },
+        },
       ],
     },
     sorts: [
