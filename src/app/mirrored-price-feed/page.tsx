@@ -2,7 +2,7 @@ import { type Metadata } from 'next'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
-import SubscribeForm from '@/components/landing-pages/SubscribeForm'
+import SubscribeForm from '@/components/marketing/SubscribeForm'
 import { ContactUsButton } from './ContactUsButton'
 
 export const metadata: Metadata = {
