@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import SubscribeForm from '@/app/_components/SubscribeForm'
+import SubscribeForm from './landing-pages/SubscribeForm'
 
 export default function SectionSubscription() {
   return (

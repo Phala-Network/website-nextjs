@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import dedent from 'dedent'
 
-import SubscribeForm from '@/app/_components/SubscribeForm'
+import SubscribeForm from '@/components/landing-pages/SubscribeForm'
 
 const deepdives = [
   {
