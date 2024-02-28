@@ -1023,29 +1023,28 @@ module.exports = {
     }, // END: extend
   },
   plugins: [
-    // require(),
     require('@tailwindcss/typography'),
     require('tailwindcss-animate'),
+    require("daisyui"),
     plugin(presetGradient),
     plugin(headingComponents),
     plugin(cardComponents),
     plugin(tagComponents),
     plugin(buttonComponents),
-    require("daisyui"),
   ],
   daisyui: {
     based: false,
     styled: true,
     prefix: "d-",
-    themes: [
-      {
-        "primary": "#CDFA50",
-        "secondary": "#7F52FA",
-        "accent": "#45A138",
-        "neutral": "#3d4451",
-        "base-100": "#ffffff",
-      },
-    ],
-    darkTheme: false,
+  //   themes: [
+  //     {
+  //       "primary": "#CDFA50",
+  //       "secondary": "#7F52FA",
+  //       "accent": "#45A138",
+  //       "neutral": "#3d4451",
+  //       "base-100": "#ffffff",
+  //     },
+  //   ],
+  //   // darkTheme: false,
   },
 }
