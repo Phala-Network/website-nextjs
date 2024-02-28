@@ -36,7 +36,7 @@ export async function getComputationMeta(): Promise<Omit<ComputationMeta, 'tx'> 
     khalaSignedExtrinsicCount: '0',
   }
   try {
-    const res = await fetch('https://phala-website-meta.phala-dev.workers.dev')
+    const res = await fetch('https://phala-website-meta.phala-dev.workers.dev', { next: { revalidate: 0 } })
     data = await res.json()
   } catch (err) {
     // noop
