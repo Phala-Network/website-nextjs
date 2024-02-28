@@ -99,28 +99,26 @@ interface FrequentlyAskedQuestionsSection01Props {
 
 function FrequentlyAskedQuestionsSection01({ title = 'Frequently Asked Questions', records, CTA }: FrequentlyAskedQuestionsSection01Props) {
   return (
-    <section className="bg-gray-900 py-24 sm:py-32 rounded">
+    <section className="bg-black-50/50 py-24 sm:py-32 rounded">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-5xl lg:text-center">
-          <h2 className="mt-2 heading-xl text-white">
+          <h2 className="mt-2 heading-xl text-black-900">
             {title}
           </h2>
         </div>
         <div className="mx-auto mt-14 max-w-2xl lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-4 gap-y-4 lg:max-w-none lg:grid-cols-2">
+          <div className="max-w-xl lg:max-w-none flex flex-col gap-2.5">
             {records.map((record, idx) => (
-              <div key={idx} className="card-filled bg-gray-800 border-gray-600 px-6 py-9 flex flex-col gap-4">
-                <dt className="flex flex-col gap-1">
-                  <h4 className="heading-lg text-phat-400">
-                    {record.question}
-                  </h4>
-                </dt>
-                <dd className="flex flex-auto flex-col text-base leading-7 text-gray-400">
+              <details key={idx} className="d-collapse d-collapse-arrow border border-phatGreen-300 bg-white">
+                <summary className="d-collapse-title text-xl font-medium text-phat-400">
+                  {record.question}
+                </summary>
+                <div className={cn("d-collapse-content", "text-base leading-7")}>
                   <p className="flex-auto">{record.answer}</p>
-                </dd>
-              </div>
+                </div>
+              </details>
             ))}
-          </dl>
+          </div>
         </div>
         {CTA ? (
           <div className={cn("w-full mt-12 flex flex-row justify-center")}>
