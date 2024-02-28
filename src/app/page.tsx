@@ -958,7 +958,10 @@ function SectionPitchPioneer() {
         </aside>
 
         <div className={cn("rounded p-8 bg-white mt-8 lg:mt-32", "col-span-full", "grid grid-cols-1 lg:grid-cols-12")}>
-          <ContactUsForm className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")} />
+          <ContactUsForm
+            className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")}
+            legend={<legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>}
+          />
           <div className={cn(
             "row-start-1 col-span-full lg:col-span-4 lg:col-end-12",
             "flex flex-col-reverse items-end lg:flex-col lg:items-start",

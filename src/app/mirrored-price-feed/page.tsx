@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 import SubscribeForm from '@/components/landing-pages/SubscribeForm'
+import { ContactUsButton } from './ContactUsButton'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -152,12 +153,11 @@ export default function MirroredPriceFeedPage() {
               >
                 Learn More
               </a>
-              <a
-                href="#"
+              <ContactUsButton
                 className="btn btn-xl btn-secondary btn-blk btn-rounded"
               >
                 Integrate Now
-              </a>
+              </ContactUsButton>
             </div>
           </div>
         </div>
