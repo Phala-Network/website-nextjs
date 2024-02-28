@@ -43,7 +43,7 @@ export default function SubscribeForm() {
           <input
             placeholder="Enter your email address"
             onChange={ev => setEmail(ev.target.value)}
-            className={cn("flex-1 rounded border border-solid border-whiteAlpha-500 bg-transparent py-2.5 px-5")}
+            className={cn("flex-1 rounded-xs border border-solid border-whiteAlpha-500 bg-transparent py-2.5 px-5")}
           />
           <button
             type="submit"
