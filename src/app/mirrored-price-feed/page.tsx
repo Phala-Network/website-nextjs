@@ -133,7 +133,6 @@ function FrequentlyAskedQuestionsSection01({ title = 'Frequently Asked Questions
 export default function MirroredPriceFeedPage() {
   return (
     <div className="flex flex-col gap-8 sm:gap-16">
-      {/* Hero Section */}
       <HeroSection01>
         <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
@@ -183,13 +182,93 @@ export default function MirroredPriceFeedPage() {
         ]}
       />
 
-      <section>
+      <section className="bg-phatGreen-50/50 py-24 sm:py-32 rounded">
         <h2 className="mt-2 mb-6 heading-xl text-center">
           Under the Hood
         </h2>
         <figure className="mx-auto max-w-5xl border border-blackAlpha-500 overflow-hidden rounded-sm">
           <img src="/illustrations/mirrored-price-feed.jpg" alt="How Mirrored Price Feed Works" />
         </figure>
+      </section>
+
+      <section>
+        <h2 className="mt-2 mb-6 heading-xl text-center">
+          Deployment
+        </h2>
+        <main className="overflow-x-auto mx-auto max-w-5xl">
+          <div className="flex flex-row justify-between items-center mb-4">
+            <h4 className="text-xl font-semibold">
+              Tanssi Dancebox Testnet
+            </h4>
+            <img src="https://healthchecks.io/b/2/2e2c1114-7eb5-4eab-9582-afc64f17dc2c.svg" alt="Tanssi Dancebox Mirrored Price Feed" />
+          </div>
+          <table className="d-table">
+            <thead>
+              <tr>
+                <th>Asset Pair</th>
+                <th>Contract Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>AAVE to USD</th>
+                <td>
+                  <Link href="https://3001-blockscout.a.dancebox.tanssi.network/address/0x2E1640853bB2dD9f47831582665477865F9240DB" target="_blank" rel="noopener noreferrer">
+                    <code>0x2E1640853bB2dD9f47831582665477865F9240DB</code>
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <th>BTC to USD</th>
+                <td>
+                  <Link href="https://3001-blockscout.a.dancebox.tanssi.network/address/0x89BC5048d634859aef743fF2152363c0e83a6a49" target="_blank" rel="noopener noreferrer">
+                    <code>0x89BC5048d634859aef743fF2152363c0e83a6a49</code>
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <th>CRV to USD</th>
+                <td>
+                  <Link href="https://3001-blockscout.a.dancebox.tanssi.network/address/0xf38b25b79A72393Fca2Af88cf948D98c64726273" target="_blank" rel="noopener noreferrer">
+                    <code>0xf38b25b79A72393Fca2Af88cf948D98c64726273</code>
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <th>DAI to USD</th>
+                <td>
+                  <Link href="https://3001-blockscout.a.dancebox.tanssi.network/address/0x1f56d8c7D72CE2210Ef340E00119CDac2b05449B" target="_blank" rel="noopener noreferrer">
+                    <code>0x1f56d8c7D72CE2210Ef340E00119CDac2b05449B</code>
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <th>ETH to USD</th>
+                <td>
+                  <Link href="https://3001-blockscout.a.dancebox.tanssi.network/address/0x739d71fC66397a28B3A3b7d40eeB865CA05f0185" target="_blank" rel="noopener noreferrer">
+                    <code>0x739d71fC66397a28B3A3b7d40eeB865CA05f0185</code>
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <th>USDC to USD</th>
+                <td>
+                  <Link href="https://3001-blockscout.a.dancebox.tanssi.network/address/0x4b8331Ce5Ae6cd33bE669c10Ded9AeBA774Bf252" target="_blank" rel="noopener noreferrer">
+                    <code>0x4b8331Ce5Ae6cd33bE669c10Ded9AeBA774Bf252</code>
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <th>USDT to USD</th>
+                <td>
+                  <Link href="https://3001-blockscout.a.dancebox.tanssi.network/address/0x5018c16707500D2C89a0446C08f347A024f55AE3" target="_blank" rel="noopener noreferrer">
+                    <code>0x5018c16707500D2C89a0446C08f347A024f55AE3</code>
+                  </Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </main>
       </section>
 
       <FrequentlyAskedQuestionsSection01
