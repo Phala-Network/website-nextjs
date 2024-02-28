@@ -40,11 +40,10 @@ function LinkListItem({ children, className, href, ...props }: React.HTMLProps<H
 
 export default function SiteFooter() {
   return (
-    <footer className={cn("page-footer", "bg-[#1c1c1c] text-white pt-12 pb-6 xl:pt-16 xl:pb-0")}>
+    <footer className={cn("page-footer", "bg-[#1c1c1c] text-white py-12 xl:py-16")}>
       <div className={cn("safe-viewport", "grid gap-4 grid-cols-2 auto-rows-min xl:auto-rows-fr xl:grid-cols-20 3xl:grid-cols-24")}>
-
         {/* Block #1: Developers */}
-        <div className={cn("col-span-1 col-start-1 row-start-1 row-span-2 xl:row-start-1 xl:row-span-2 xl:col-start-2 xl:col-span-5 3xl:col-start-4")}>
+        <div className={cn("col-span-1 col-start-1 row-start-1 xl:row-start-1 xl:col-start-2 xl:col-span-5 3xl:col-start-4")}>
           <LinkListHeading>Developers</LinkListHeading>
           <LinkList>
             <LinkListItem href="https://docs.phala.network/">Docs</LinkListItem>
@@ -73,7 +72,7 @@ export default function SiteFooter() {
         </div>
 
         {/* Block #4: Resources */}
-        <div className={cn("col-span-1 row-start-3 row-span-3 xl:row-start-1 xl:row-span-4 xl:col-start-7 xl:col-span-5 3xl:col-start-10")}>
+        <div className={cn("col-span-1 xl:row-start-1 xl:col-start-7 xl:col-span-5 3xl:col-start-10")}>
           <LinkListHeading>Resources</LinkListHeading>
           <LinkList>
             <LinkListItem href="https://app.phala.network">Phala App</LinkListItem>
@@ -108,7 +107,7 @@ export default function SiteFooter() {
         </div>
 
         {/* Block #7: Social */}
-        <div className={cn("col-span-1 col-start-2 xl:row-start-1 xl:row-span-2 xl:col-start-17 xl:col-span-5 3xl:col-start-21")}>
+        <div className={cn("col-span-1 col-start-2 xl:row-start-1 xl:col-start-17 xl:col-span-5 3xl:col-start-21")}>
           <div>
             <LinkListHeading>Social</LinkListHeading>
             <LinkList>
@@ -122,11 +121,18 @@ export default function SiteFooter() {
             </LinkList>
           </div>
         </div>
-
+      </div>
+      <div
+        className={cn(
+          "safe-viewport",
+          "mt-4",
+          "grid gap-4 grid-cols-2 auto-rows-min xl:auto-rows-fr xl:grid-cols-20 3xl:grid-cols-24",
+        )}
+      >
         {/* Block #8: Logo & policy, disclosure, etc. */}
         <div
           className={cn(
-            "col-span-2 row-start-6 xl:row-start-5 xl:col-start-2 xl:col-span-18 3xl:col-start-4",
+            "col-span-2 xl:col-start-2 xl:col-span-18 3xl:col-start-4",
             "flex flex-col gap-5 xl:flex-row xl:items-center justify-between"
           )}>
           <Image
