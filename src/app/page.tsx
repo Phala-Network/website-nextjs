@@ -8,7 +8,7 @@ import { getPhatLists } from '@/lib/phat_lists'
 import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
 import { ContactUsForm } from '@/components/ContactUsForm'
-import SubscribeForm from '@/components/landing-pages/SubscribeForm'
+import SubscribeForm from '@/components/marketing/SubscribeForm'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
