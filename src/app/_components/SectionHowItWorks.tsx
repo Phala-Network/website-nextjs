@@ -107,6 +107,7 @@ export function SectionHowItWorks() {
             {
               works.map((work, index) => (
                 <HowItWorksDetails
+                  key={index}
                   idx={index}
                   title={work.title}
                 >
