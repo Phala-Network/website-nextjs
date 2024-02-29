@@ -2,36 +2,13 @@ import { type Metadata } from 'next'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
+import { HeroSection } from '@/components/marketing/Hero01'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 import { ContactUsButton } from './ContactUsButton'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
   title: "Mirrored Price Feed by Phala Network",
-}
-
-
-function HeroSection01({ className, children }: { className?: string, children?: React.ReactNode }) {
-  return (
-    <section className={cn("grid grid-cols-1", className)}>
-      <div
-        className={cn(
-          "row-start-1 col-span-full",
-          "lg:phat-400 p-9 xl:p-10 3xl:p-0",
-        )}
-      >
-        <div className="relative bg-black-900 overflow-hidden rounded" style={{height: "calc(100cqh - 5rem)"}}>
-        </div>
-      </div>
-
-      <div className={cn(
-        "row-start-1 col-span-full",
-        "relative px-6 pt-14 lg:px-8 z-10"
-      )}>
-        {children}
-      </div>
-    </section>
-  )
 }
 
 interface FeaturesSection01Props {
@@ -133,32 +110,23 @@ function FrequentlyAskedQuestionsSection01({ title = 'Frequently Asked Questions
 export default function MirroredPriceFeedPage() {
   return (
     <div className="flex flex-col gap-8 sm:gap-16">
-      <HeroSection01>
-        <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Reliable Price Feed Relayer
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-50">
-              Phat Contract is a decentralized, secure, and reliable price feed relayer that mirrors any price feed on Ethereum to any EVM L2 blockchain.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="https://docs.phala.network/"
-                className="btn btn-xl btn-primary btn-phala btn-rounded"
-                target="_blank"
-              >
-                Learn More
-              </a>
-              <ContactUsButton
-                className="btn btn-xl btn-secondary btn-blk btn-rounded"
-              >
-                Integrate Now
-              </ContactUsButton>
-            </div>
-          </div>
-        </div>
-      </HeroSection01>
+      <HeroSection
+        title="Reliable Price Feed Relayer"
+        subTitle="Phat Contract is a decentralized, secure, and reliable price feed relayer that mirrors any price feed on Ethereum to any EVM L2 blockchain."
+      >
+        <a
+          href="https://docs.phala.network/"
+          className="btn btn-primary btn-phala btn-rounded min-w-52"
+          target="_blank"
+        >
+          Learn More
+        </a>
+        <ContactUsButton
+          className="btn btn-secondary btn-blk btn-rounded min-w-52"
+        >
+          Integrate Now
+        </ContactUsButton>
+      </HeroSection>
 
       <FeatureSection01
         title="Unlock Limitless Web3 Potential with Phat Contract"

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import dedent from 'dedent'
 
+import { HeroSection } from '@/components/marketing/Hero01'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 
 const deepdives = [
@@ -45,28 +46,32 @@ const deepdives = [
 
 const challenges = [
   {
-    name: 'Challenge 1 - Multi-Chain Deployment',
+    label: 'Challenges 1',
+    name: 'Multi-Chain Deployment',
     description: dedent`
       A key limitation of Multi-Chain smart contracts lies in their restricted interoperability across various blockchains, sidechains, and layer-2 networks.
     `,
     href: '#',
   },
   {
-    name: 'Challenge 2 - Oracle Limitation',
+    label: 'Challenges 2',
+    name: 'Oracle Limitation',
     description: dedent`
       Smart contracts reach their full potential with access to real-world data, which, unlike blockchain's consistent integrity, often lacks reliability and determinism.
     `,
     href: '#',
   },
   {
-    name: 'Challenge 3 - Off-chain Trust Issues',
+    label: 'Challenges 3',
+    name: 'Off-chain Trust Issues',
     description: dedent`
       Off-chain transactions require trust in operators, posing risks of delays, security issues, and reduced transparency comparedd to on-chain transactions
     `,
     href: '#',
   },
   {
-    name: 'Challenge 4 - Hard to Use',
+    label: 'Challenges 4',
+    name: 'Hard to Use',
     description: dedent`
       Modularity of Phat Contracts enables it to fit your use cases without having to worry about adjusting your tech stack.
     `,
@@ -82,91 +87,69 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="flex flex-col gap-8 sm:gap-16">
-      <section className="bg-white">
-        <div className="relative isolate px-6 pt-14 lg:px-8">
-          <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 uppercase">
-                Modular coprocessor
-              </div>
-            </div>
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Modular Coprocessor of Blockchains
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                A coprocessor, like Phat Contracts, empowers developers to build efficient, friendly, and secure, decentralized applications (dApps) with read, compute and proof functionalities bundled together as a service in a modular coprocessor tech stack.
-              </p>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
-                <a
-                  href="https://docs.phala.network/"
-                  className="btn btn-xl btn-primary btn-phala"
-                  target="_blank"
-                >
-                  Start Building
-                </a>
-                <a
-                  href="#"
-                  className="btn btn-xl btn-secondary btn-blk"
-                >
-                  Explore More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div
-            className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-            aria-hidden="true"
-          >
-            <div
-              className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-phalaGreen-400 to-phalaGreen-800 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-              style={{
-                clipPath:
-                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-              }}
-            />
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        label="modular coprocessor"
+        title="Modular Coprocessor of Blockchains"
+        subTitle="A coprocessor, like Phat Contracts, empowers developers to build efficient, friendly, and secure, decentralized applications (dApps) with read, compute and proof functionalities bundled together as a service in a modular coprocessor tech stack."
+      >
+        <a
+          href="https://docs.phala.network/"
+          className="btn btn-primary btn-phala btn-rounded min-w-52"
+          target="_blank"
+        >
+          Start Building
+        </a>
+        <a
+          href="#"
+          className="btn btn-secondary btn-blk btn-rounded min-w-52"
+        >
+          Explore More
+        </a>
+      </HeroSection>
 
-      <section className="px-6 py-24 sm:py-32 lg:px-8 rounded-3xl bg-black/90">
-        <div className="mx-auto text-center">
-          <h2 className="mt-2 text-xl font-bold tracking-tight text-white sm:text-5xl">
+      <section className="mt-[-15rem] z-10 px-32">
+        <div className="mx-auto text-center rounded bg-black-800 py-16">
+          <h2 className="text-32 font-black text-white">
             How does Modular Coprocessor work?
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-100">
+          <p className="text-black-200">
             Modular Coprocessor of blockchains involves data indexing, processing and proof.
           </p>
-          <figure className="max-w-full mt-6">
-            <img src="/illustrations/coprocessor.jpg" alt="" className="mx-auto" />
+          <figure className="max-w-full mt-12">
+            <img src="/illustrations/coprocessor.jpg" alt="" className="mx-auto rounded-sm" />
           </figure>
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 rounded-3xl bg-black-50/50">
+      <section className="py-20 rounded bg-black-50">
         <div className="safe-viewport mx-auto px-6 lg:px-8">
           <div className="mx-auto lg:text-center">
-            <h2 className="mt-2 text-xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            <h2 className="mt-2 text-40 font-black text-black-800">
               Deepdive into Modular Coprocessor content series.
             </h2>
           </div>
-          <div className="mx-auto mt-16 sm:mt-20 lg:mt-24 max-w-6xl">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+          <div className="mx-auto mt-16 max-w-6xl">
+            <dl className="flex flex-col gap-6">
               {deepdives.map((item, idx) => (
                 <Link
-                  key={item.name}
+                  key={item.name || idx}
                   href={item.href}
                   className={cn(
-                    "relative pl-16 border border-phalaGreen-400 rounded-sm p-8",
-                    "flex flex-col",
+                    "relative rounded-sm p-2",
+                    "flex flex-row gap-10",
                     "bg-white",
-                    "hover:scale-105 transition-transform transform-gpu duration-300",
+                    "group",
                   )}
                 >
-                  <dt className="text-2xl font-bold leading-7 text-phalaGreen-700">
-                    {item.name}
-                  </dt>
-                  <dd className="mt-2 text-base leading-7 text-gray-900">{item.description}</dd>
+                  <div className={"w-[360px] h-[195px] overflow-hidden rounded-sm flex-grow shrink-0"}>
+                    <img src="/blog/default_cover.jpg" alt="" className={cn("w-full h-full aspect-[360/195] group-hover:scale-105 transition-transform transform-gpu duration-200")} />
+                  </div>
+                  <div className="py-4 pr-6">
+                    <h4 className="text-24 font-bold text-black-800">
+                      {item.name}
+                    </h4>
+                    <div className="mt-4 text-base text-black-800">{item.description}</div>
+                  </div>
                 </Link>
               ))}
             </dl>
@@ -174,17 +157,18 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 rounded-3xl bg-black/90">
+      <section className="py-20 rounded bg-black-900">
         <div className="mx-auto px-6 lg:px-8">
           <div className="mx-auto lg:text-center">
-            <h2 className="text-xl font-bold tracking-tight text-white sm:text-5xl">Modern dApp deployment challenges</h2>
+            <h2 className="text-40 font-black text-white">Modern dApp deployment challenges</h2>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-6xl">
+          <div className="mx-auto mt-16 max-w-2xl lg:max-w-6xl">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
               {challenges.map((feature) => (
-                <div key={feature.name} className="flex flex-col gap-4">
-                  <dt className="text-2xl font-bold leading-7 bg-gradient-to-br from-phalaPurple-400 to-phalaPurple-600 text-white p-4 rounded-full">
-                    {feature.name}
+                <div key={feature.name} className="flex flex-col gap-4 p-8 border border-whiteAlpha-200 bg-whiteAlpha-50 rounded">
+                  <dt>
+                    <span className="font-bold text-black-800 bg-phalaGreen-500 py-1 px-5 rounded-xs">{feature.label}</span>
+                    <h4 className="text-24 font-bold text-white mt-4">{feature.name}</h4>
                   </dt>
                   <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-300">
                     <p className="flex-auto">{feature.description}</p>
@@ -196,12 +180,12 @@ export default function Page() {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
               href="#"
-              className="btn btn-xl btn-primary btn-phala px-16"
+              className="btn btn-xl btn-primary btn-phala btn-rounded min-w-60"
             >
               Read docs
             </a>
             <a href="#"
-              className="btn btn-xl btn-primary btn-wht px-8"
+              className="btn btn-xl btn-primary btn-wht btn-rounded min-w-60 px-0"
             >
               Talk to an expert
             </a>
