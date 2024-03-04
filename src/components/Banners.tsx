@@ -50,7 +50,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                     className="w-full aspect-[872/487]"
                     width={872}
                     height={487}
-                    src={`https://img0.phala.world/insecure/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
+                    src={`https://img0.phala.world/notion/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
                   />
                 </a>
               </div>
