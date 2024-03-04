@@ -23,11 +23,12 @@ export default function Card({ page }: { page: ParsedListPage }) {
         <a href={`/posts${page.slug}`}>
           {
             page.cover ? (
-              <PageCoverImage
+              <img
                 className="w-full aspect-[412/230]"
                 width={412}
                 height={230}
-                page={page}
+                alt={page.title}
+                src={`https://img0.phala.world/cover/${page.id}.jpg`}
               />
             ) : (
               <img
