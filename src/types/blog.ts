@@ -1,14 +1,23 @@
+import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+
 export interface Author {
-  name: string
-  title?: string
-  avatar: string
+  id: string
+  handle: string
+  nickname: string
+  avatar?: string
+  blocks?: BlockObjectResponse[]
 }
 
 export interface Post {
+  id: string
+  cover?: string | null
+  authors: Author[]
   title: string
-  summary?: string
-  coverImage: string
-  href: string
-  author: Author
-  publishedAt?: Date
+  summary?: string | null
+  slug: string
+  path: string
+  tags: string[]
+  status: string
+  publishedTime: string
+  blocks: BlockObjectResponse[]
 }
