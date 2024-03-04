@@ -10,7 +10,7 @@ export interface GetPostList {
 }
 
 export async function getPostList(params: GetPostList): Promise<Post[]> {
-  return await fetch('http://127.0.0.1:3001/site/posts', {
+  return await fetch(`${process.env.NOTION_BACKEND_PREFIX}/site/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
