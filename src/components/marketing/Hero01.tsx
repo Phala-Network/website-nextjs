@@ -19,7 +19,8 @@ export function HeroSection({ label, heroImage, title, subTitle, className, chil
       )}>
         <div
           className={cn(
-            "mx-auto max-w-4xl py-32 sm:py-48 lg:py-56",
+            "mx-auto max-w-4xl",
+            "pt-24 pb-32 sm:pt-32 sm:pb-48 lg:pb-56 lg:pt-44",
           )}
         >
           <div className="text-center flex flex-col gap-4">

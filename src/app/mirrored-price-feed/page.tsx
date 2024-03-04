@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 import { HeroSection } from '@/components/marketing/Hero01'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
-import { ContactUsButton } from './ContactUsButton'
+import { ContactUsButton } from '@/components/ContactUsButton'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',

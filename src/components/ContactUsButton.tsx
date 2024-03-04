@@ -11,7 +11,10 @@ export function ContactUsButton({ className, children = 'Contact Us' }: { classN
   const setVisible = useSetAtom(ContactUsModalVisibleAtom)
   return (
     <>
-      <Button className={className} onPress={() => setVisible(true)}>
+      <Button
+        className={className}
+        onPress={() => setVisible(true)}
+      >
         {children}
       </Button>
       <Modal
