@@ -171,6 +171,74 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="py-20 rounded bg-black-50">
+        <div className="mx-auto px-6 lg:px-8">
+          <div className="mx-auto lg:text-center">
+            <h2 className="mt-2 text-40 font-black text-black-800">
+              Step-by-step Coprocessor Implementation Guide
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-16 mx-auto max-w-2xl lg:max-w-6xl">
+            <div
+              className={cn(
+                "flex flex-col items-center",
+                "bg-white p-2 rounded-md",
+              )}
+            >
+              <img src="/illustrations/coprocessor-step-by-step-write.png" alt="" className="w-full rounded-sm" />
+              <h4 className="mt-6 px-4 font-bold text-xl w-full text-left">
+                Write
+              </h4>
+              <p className="m-4 text-sm">
+                Begin your project by leveraging one of our pre-built Oracle templates. Eliminating the need for custom coding, enabling a quicker and more efficient implementation process.
+              </p>
+            </div>
+            <div
+              className={cn(
+                "flex flex-col items-center",
+                "bg-white p-2 rounded-md",
+              )}
+            >
+              <img src="/illustrations/coprocessor-step-by-step-deploy.png" alt="" className="w-full rounded-sm" />
+              <h4 className="mt-6 px-4 font-bold text-xl w-full text-left">
+                Deploy
+              </h4>
+              <p className="m-4 text-sm">
+                Use the Command Line Interface (CLI) to deploy and seamlessly connect to the Phat Contract dashboard. Simplifying deployment, making it more accessible and user-friendly.
+              </p>
+            </div>
+            <div
+              className={cn(
+                "flex flex-col items-center",
+                "bg-white p-2 rounded-md",
+              )}
+            >
+              <img src="/illustrations/coprocessor-step-by-step-run.png" alt="" className="w-full rounded-sm" />
+              <h4 className="mt-6 px-4 font-bold text-xl w-full text-left">
+                Run
+              </h4>
+              <p className="m-4 text-sm">
+                After successfully deploying your Phat Contract Oracle, it automatically initiates and runs at regular intervals.
+              </p>
+            </div>
+            <div
+              className={cn(
+                "flex flex-col items-center",
+                "bg-white p-2 rounded-md",
+              )}
+            >
+              <img src="/illustrations/coprocessor-step-by-step-execute.png" alt="" className="w-full rounded-sm" />
+              <h4 className="mt-6 px-4 font-bold text-xl w-full text-left">
+                Execute
+              </h4>
+              <p className="m-4 text-sm">
+                Data execution takes place every 10 seconds to ensure continuous operation and data flow. Phat Contract will automatically handle the request and response flow once initiated.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#262626] xl:bg-gradient-to-r from-50% to-0% from-[#262626] to-[#f3f3f3]">
         <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
           <SubscribeForm />
