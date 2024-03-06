@@ -28,7 +28,7 @@ const challenges = [
   {
     name: 'Off-chain Trust Issues',
     description: dedent`
-      Off-chain transactions require trust in operators, posing risks of delays, security issues, and reduced transparency comparedd to on-chain transactions
+      Off-chain transactions require trust in operators, posing risks of delays, security issues, and reduced transparency compared to on-chain transactions.
     `,
     href: '#',
   },
@@ -76,7 +76,7 @@ export default function Page() {
       <section className="mt-[-15rem] z-10 px-32">
         <div className="mx-auto text-center rounded bg-black-800 py-16">
           <h2 className="text-32 font-black text-white">
-            How does Modular Coprocessor work?
+            How does Phala Network’s Modular Coprocessor work?
           </h2>
           <p className="text-black-200">
             Modular Coprocessor of blockchains involves data indexing, processing and proof.
@@ -89,7 +89,7 @@ export default function Page() {
         <div className="safe-viewport mx-auto px-6 lg:px-8">
           <div className="mx-auto lg:text-center">
             <h2 id="deepdive-into-modular-coprocessor" className="mt-2 text-40 font-black text-black-800">
-              Deepdive into Modular Coprocessor content series.
+              Deepdive into Phala Network’s Modular Coprocessor content series.
             </h2>
           </div>
           <div className="mx-auto mt-16 max-w-6xl">
