@@ -8,12 +8,12 @@ import { getPhatLists } from '@/lib/phat_lists'
 import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
 import { ContactUsForm } from '@/components/ContactUsForm'
+import SubscribeForm from '@/components/marketing/SubscribeForm'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
 import { ShowCaseTab, ShowCaseTabPanel } from './_components/ShowCaseTabs'
 import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
-import SubscribeForm from './_components/SubscribeForm'
 import { StatsCard } from './_components/StatsCard'
 import { SectionHowItWorks } from './_components/SectionHowItWorks'
 import { SectionHero } from './_components/SectionHero'
@@ -22,67 +22,6 @@ import SectionFeatures from './_components/SectionFeatures'
 
 import './home.css'
 import './_components/section-phat-contract-highlight.css'
-
-
-//
-// Section Pitch Intro
-//
-
-function SectionPitchIntro() {
-  return (
-    <section className={cn("pt-16 lg:pt-32 flex flex-col gap-6 lg:gap-12")}>
-      <div className="text-2xl lg:text-3xl text-center">FROM</div>
-      <div className={cn("flex flex-col lg:flex-row lg:items-center gap-2.5")}>
-        <div
-          className={cn(
-            "text-right text-white lg:flex-1 lg:flex-grow",
-            "text-4xl lg:text-5xl"
-          )}
-        >
-          <h4 className="bg-blackAlpha-800 rounded-tr-3xl rounded-br-3xl font-black py-4 px-10 lg:w-full">NO CODE</h4>
-        </div>
-        <div className={cn("w-full flex justify-center lg:w-auto lg:block rotate-90 lg:rotate-0 m-2.5")}>
-          <svg
-            className={cn(
-              "w-[42px] h-[26] lg:w-[84px] lg:h-[52px]",
-            )}
-            viewBox="0 0 93 63"
-            fill="transparent"
-          >
-            <path d="M10 31.5H84.5" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
-            <path d="M62.002 57.0034L86.5894 32.4159C87.3705 31.6349 87.3705 30.3685 86.5894 29.5875L62.002 5" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
-            <path d="M31.0017 57.0034L6.41421 32.4159C5.63317 31.6349 5.63317 30.3685 6.41421 29.5875L31.0017 5" stroke="currentColor" strokeWidth="10" strokeLinecap="round"/>
-          </svg>
-        </div>
-        <div
-          className={cn(
-            "lg:flex-1 text-black flex flex-row justify-end lg:block",
-            "text-4xl lg:text-5xl"
-          )}
-        >
-          <h4 className="bg-[#f0f0f0] rounded-tl-3xl rounded-bl-3xl font-black py-4 px-10 w-full">FULL CODE</h4>
-        </div>
-      </div>
-      <div className={cn("flex flex-col items-center gap-1")}>
-        <div className="text-2xl lg:text-4xl">WE GOT YOU</div>
-        <div className="text-5xl lg:text-[3.5rem] font-black">COVERED</div>
-      </div>
-      <div className="overflow-hidden max-w-[100vw]">
-        <svg viewBox="0 0 1880 253" fill="none" className="w-[300vw] -translate-x-[100vw] lg:w-screen lg:-translate-x-0">
-          <circle cx="886" cy="22" r="12" fill="#CDFA50"/>
-          <circle cx="940" cy="22" r="12" fill="#7F4af0"/>
-          <circle cx="994" cy="22" r="12" fill="black"/>
-          <path d="M940 28V318.5" stroke="#7F52FA" strokeWidth="4" strokeLinecap="round"/>
-          <path d="M886 33V126C886 166.317 853.317 199 813 199H2" stroke="#CDFA50" strokeWidth="4" strokeLinecap="round"/>
-          <path d="M994 33V126C994 166.317 1026.68 199 1067 199H1878" stroke="black" strokeWidth="4" strokeLinecap="round"/>
-          <path d="M938 177V197C938 227.928 912.928 253 882 253H998C967.072 253 942 227.928 942 197V177H938Z" fill="#7f4af0"/>
-        </svg>
-      </div>
-    </section>
-  )
-}
-
-// END: Section Pitch Intro
 
 //
 // Section Pitch Accelerate
@@ -958,7 +897,10 @@ function SectionPitchPioneer() {
         </aside>
 
         <div className={cn("rounded p-8 bg-white mt-8 lg:mt-32", "col-span-full", "grid grid-cols-1 lg:grid-cols-12")}>
-          <ContactUsForm className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")} />
+          <ContactUsForm
+            className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")}
+            legend={<legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>}
+          />
           <div className={cn(
             "row-start-1 col-span-full lg:col-span-4 lg:col-end-12",
             "flex flex-col-reverse items-end lg:flex-col lg:items-start",
