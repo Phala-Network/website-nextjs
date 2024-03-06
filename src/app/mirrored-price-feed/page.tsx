@@ -2,6 +2,7 @@ import { type Metadata } from 'next'
 import Link from 'next/link'
 import { IoOpenOutline } from 'react-icons/io5'
 
+import { cn } from '@/lib/utils'
 import { HeroSection01, Section, SectionHeader, SectionBody, SimpleCard, Support } from '@/components/marketing'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 import { ContactUsButton } from '@/components/ContactUsButton'
@@ -206,7 +207,14 @@ export default function MirroredPriceFeedPage() {
         </SectionBody>
       </Section>
 
-      <SubscribeForm />
+      <section className="bg-[#262626] xl:bg-gradient-to-r from-50% to-0% from-[#262626] to-[#f3f3f3]">
+        <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
+          <SubscribeForm />
+          <div className={cn("hidden xl:block xl:h-full xl:bg-[#f3f3f3] row-start-1 col-span-full xl:col-start-14 3xl:col-start-16 -ml-4 relative")}>
+            <img src="/home/newsletter-aside.jpg" alt="" className={cn("absolute bottom-0 left-0 aspect-[1860/728]")} />
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
