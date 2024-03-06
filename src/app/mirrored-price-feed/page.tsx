@@ -155,7 +155,7 @@ export default function MirroredPriceFeedPage() {
 
       <Section>
         <SectionHeader>
-          deployments
+          Deployments
         </SectionHeader>
         <SectionBody className="flex flex-col gap-4">
           {deployments.map((deployment, idx) => (
