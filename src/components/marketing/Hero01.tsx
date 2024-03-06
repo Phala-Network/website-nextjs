@@ -36,28 +36,39 @@ export function HeroSection({ label, heroImage, title, subTitle, className, chil
                 </span>
               </div>
             ) : null}
-            <h1 className="text-48 font-black text-black-800">
+            <h1 className="text-32 lg:text-48 font-black text-black-800">
               {title}
             </h1>
             <p className="text-16 leading-8 text-black-600">
               {subTitle}
             </p>
           </div>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-10 flex flex-col lg:flex-row items-center justify-center gap-6">
             {children}
           </div>
         </div>
       </div>
+
       {/* backdrop background image. */}
       <div
         className={cn(
           "row-start-1 col-span-full",
-          "p-9 xl:p-10 3xl:p-0",
+          "p-0 xl:p-10 3xl:p-0",
+          "untangle",
         )}
       >
-        <div className="relative overflow-hidden rounded w-full" style={{maxHeight: "calc(100cqh - 5rem)", aspectRatio: "16/9"}}>
+        <div
+          className={cn(
+            "relative overflow-hidden rounded w-full invisible xl:visible",
+          )}
+          style={{maxHeight: "calc(100cqh - 5rem)", aspectRatio: "16/9"}}
+        >
           <img src={heroImage || DEFAULT_HERO_IMAGE} alt="" className="object-cover w-full h-full" />
         </div>
+      </div>
+
+      <div className="absolute top-0 left-0 w-full h-full z-[-1] untanglable overflow-hidden visible xl:invisible">
+        <img className="object-cover h-full min-w-full" src={heroImage || DEFAULT_HERO_IMAGE} alt="" />
       </div>
     </section>
   )

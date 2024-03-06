@@ -1,12 +1,12 @@
 import { type Metadata } from 'next'
 import { use } from 'react'
-import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import dedent from 'dedent'
 
 import { HeroSection } from '@/components/marketing/Hero01'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 import { ContactUsButton } from '@/components/ContactUsButton'
+import { BlogPostCard } from '@/components/BlogCard'
 import { Video } from '@/components/Video'
 import { getPostList } from '@/queries/GetPostList'
 
@@ -73,88 +73,56 @@ export default function Page() {
         </a>
       </HeroSection>
 
-      <section className="mt-[-15rem] z-10 px-32">
-        <div className="mx-auto text-center rounded bg-black-800 py-16">
-          <h2 className="text-32 font-black text-white">
+      <section className="lg:mt-[-15rem] z-10 lg:px-8 xl:px-32">
+        <div className="mx-auto text-center rounded bg-black-800 py-16 w-full max-w-6xl">
+          <h2 className="text-20 lg:text-32 font-black text-white px-4 lg:px-0">
             How does Phala Network’s Modular Coprocessor work?
           </h2>
-          <p className="text-black-200">
+          <p className="mt-2.5 text-black-200 px-4 lg:px-0">
             Modular Coprocessor of blockchains involves data indexing, processing and proof.
           </p>
           <Video blockId="1605b5d2b5c14473a4a5fae99bb87c48" className="max-w-4xl aspect-[896/504] mx-auto mt-12 rounded-sm overflow-hidden" />
         </div>
       </section>
 
-      <section className="py-20 rounded bg-black-50">
+      <section className="py-8 lg:py-20 rounded bg-black-50">
         <div className="safe-viewport mx-auto px-6 lg:px-8">
           <div className="mx-auto lg:text-center">
-            <h2 id="deepdive-into-modular-coprocessor" className="mt-2 text-40 font-black text-black-800">
+            <h2 id="deepdive-into-modular-coprocessor" className="lg:mt-2 text-24 lg:text-40 font-black text-black-800 max-w-4xl mx-auto">
               Deepdive into Phala Network’s Modular Coprocessor content series.
             </h2>
           </div>
-          <div className="mx-auto mt-16 max-w-6xl">
+          <div className="mx-auto mt-8 lg:mt-16 max-w-6xl">
             <dl className="flex flex-col gap-6">
               {(posts || []).map((post, idx) => (
-                <Link
-                  key={post.id || idx}
-                  href={post.path}
-                  className={cn(
-                    "relative rounded-sm p-2",
-                    "flex flex-row gap-10",
-                    "bg-white",
-                    "group",
-                  )}
-                  shallow
-                >
-                  <div className={"w-[360px] h-[195px] overflow-hidden rounded-sm flex-grow shrink-0"}>
-                    <img
-                      src={post.cover ? post.cover :"/blog/default_cover.jpg"}
-                      alt={post.title}
-                      className={cn("w-full h-full aspect-[360/195] group-hover:scale-105 transition-transform transform-gpu duration-200")}
-                    />
-                  </div>
-                  <div className="py-4 pr-6">
-                    <h4 className="text-24 font-bold text-black-800">
-                      {post.title}
-                    </h4>
-                    <div className="mt-4 text-base text-black-800">{post.summary}</div>
-                    <div
-                      className={cn(
-                        // "mt-2.5 uppercase font-medium text-black-400 text-sm underline",
-                        "d-btn d-btn-link -ml-4"
-                      )}
-                    >
-                      READ MORE
-                    </div>
-                  </div>
-                </Link>
+                <BlogPostCard key={post.id || idx} post={post} />
               ))}
             </dl>
           </div>
         </div>
       </section>
 
-      <section className="py-20 rounded bg-black-900">
+      <section className="py-8 lg:py-20 rounded bg-black-900">
         <div className="mx-auto px-6 lg:px-8">
           <div className="mx-auto lg:text-center">
-            <h2 className="text-40 font-black text-white">Modern dApp deployment challenges</h2>
+            <h2 className="text-24 lg:text-40 font-black text-white">Modern dApp deployment challenges</h2>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl lg:max-w-6xl">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+          <div className="mx-auto mt-8 lg:mt-16 max-w-2xl lg:max-w-6xl">
+            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-16 lg:max-w-none lg:grid-cols-2">
               {challenges.map((feature) => (
-                <div key={feature.name} className="flex flex-col gap-4 p-8 border border-whiteAlpha-200 bg-whiteAlpha-50 rounded">
+                <div key={feature.name} className="flex flex-col gap-2.4 lg:gap-4 p-6 lg:p-8 border border-whiteAlpha-200 bg-whiteAlpha-50 rounded">
                   <dt>
                     <span className="font-bold text-black-800 bg-phalaGreen-500 py-1 px-5 rounded-xs">Challenge</span>
-                    <h4 className="text-24 font-bold text-white mt-4">{feature.name}</h4>
+                    <h4 className="text-20 lg:text-24 font-bold text-white mt-4">{feature.name}</h4>
                   </dt>
-                  <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-300">
+                  <dd className="mt-1 flex flex-auto flex-col text-sm lg:text-base leading-7 text-gray-300">
                     <p className="flex-auto">{feature.description}</p>
                   </dd>
                 </div>
               ))}
             </dl>
           </div>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-10 flex flex-col lg:flex-row items-center justify-center gap-y-2.5 gap-x-6">
             <a
               href="https://docs.phala.network"
               className="btn btn-xl btn-primary btn-phala btn-rounded min-w-60"
@@ -177,7 +145,7 @@ export default function Page() {
               Step-by-step Coprocessor Implementation Guide
             </h2>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-16 mx-auto max-w-2xl lg:max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 mt-16 mx-auto max-w-2xl lg:max-w-6xl">
             <div
               className={cn(
                 "flex flex-col items-center",

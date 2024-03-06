@@ -77,7 +77,7 @@ export function ContactUsForm({ legend, className }: { legend?: React.ReactNode,
         </>
       )}
       {legend}
-      <fieldset className="flex flex-col lg:flex-row gap-3">
+      <fieldset className="w-full flex flex-col lg:flex-row gap-3">
         <div className="relative w-full">
           <input
             {...register("firstname", { required: true })}
