@@ -23,7 +23,7 @@ export default function SubscribeForm() {
           onSubmit()
         }}
       >
-        <legend className={cn("uppercase text-2xl xl:text-4xl font-black max-w-3xl")}>Get the latest Phala Content Straight To Your Inbox.</legend>
+        <legend className={cn("text-32 font-bold max-w-xl")}>Get the latest Phala Content Straight To Your Inbox.</legend>
         <div className={cn("max-w-3xl flex flex-col lg:flex-row gap-6 relative")}>
           <motion.div
             className={cn(
@@ -43,12 +43,12 @@ export default function SubscribeForm() {
           <input
             placeholder="Enter your email address"
             onChange={ev => setEmail(ev.target.value)}
-            className={cn("flex-1 rounded-xs border border-solid border-whiteAlpha-500 bg-transparent py-2.5 px-5")}
+            className={cn("flex-1 rounded-xs border border-solid border-whiteAlpha-500 bg-transparent py-3 px-5")}
           />
           <button
             type="submit"
             className={cn(
-              "btn btn-lg btn-phala text-black uppercase inline-flex flex-row items-center justify-center transition-colors",
+              "btn btn-lg btn-phala btn-rounded min-w-[240px] text-black uppercase inline-flex flex-row items-center justify-center transition-colors",
               "font-semibold text-sm lg:text-base xl:text-lg",
               "border border-whiteAlpha-500",
             )}

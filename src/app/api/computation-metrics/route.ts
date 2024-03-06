@@ -18,13 +18,16 @@ const query = `
 export const revalidate = 300
 
 export async function GET() {
-  const [json, computationMeta] = await Promise.all([
+  const [json, result] = await Promise.all([
     fetch('https://subsquid.phala.network/phala-computation/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({query}),
+      next: {
+        revalidate: 0,
+      }
     }).then((res) => res.json()),
     getComputationMeta(),
   ])
@@ -38,7 +41,6 @@ export async function GET() {
     ['data', 'globalStateById', 'idleWorkerCount'],
     json
   )
-  const result = await getComputationMeta()
   return new Response(JSON.stringify({ totalValue: Number(totalValue), totalNodes, ...result }), {
     status: 200,
     headers: {

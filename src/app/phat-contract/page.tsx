@@ -2,7 +2,6 @@ import { type Metadata } from 'next'
 import { FaDiscord } from 'react-icons/fa'
 
 import { cn } from '@/lib/utils'
-import SiteFooter from '@/components/SiteFooter'
 import SubscribeForm from './_components/SubscribeForm'
 import RecentPosts from './_components/RecentPosts'
 
@@ -406,7 +405,6 @@ export default function PhatContractsLandingPage() {
       <Testimonials />
       <Faqs />
       <RecentPosts />
-      <SiteFooter />
     </>
   )
 }

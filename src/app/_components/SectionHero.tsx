@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
+import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 
@@ -141,21 +142,21 @@ export function SectionHero() {
                 "flex flex-col lg:flex-row gap-2.5 lg:gap-5 mx-auto"
               )}
             >
-              <a
+              <Link
                 className={cn(
                   "btn btn-sm btn-primary btn-rounded btn-phala justify-center",
                   "min-w-[160px]"
                 )}
-                href="#section-features"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.querySelector(e.currentTarget.getAttribute('href')!)?.scrollIntoView({
-                    behavior: 'smooth',
-                  })
-                }}
+                href="/modular-coprocessor"
+                // onClick={(e) => {
+                //   e.preventDefault()
+                //   document.querySelector(e.currentTarget.getAttribute('href')!)?.scrollIntoView({
+                //     behavior: 'smooth',
+                //   })
+                // }}
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
         </div>
