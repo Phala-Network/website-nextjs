@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { type Post } from '../types/blog'
+import { type Post } from '../../types/blog'
 
 export function BlogPostCard({ post }: { post: Post }) {
   return (
