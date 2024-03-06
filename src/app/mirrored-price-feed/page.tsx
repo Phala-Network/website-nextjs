@@ -14,6 +14,48 @@ export const metadata: Metadata = {
 
 const deployments = [
   {
+    name: 'Astar zKatana',
+    icon: 'https://zkatana.explorer.startale.com/favicon/apple-touch-icon-180x180.png',
+    healthcheckBadge: 'https://healthchecks.io/b/2/250aefa2-6f34-4f98-a969-0c947ccba482.svg',
+    assets: [
+      {
+        name: 'AAVE to USD',
+        address: '0x49899fBd9be6b23d5e4AF697a92dc1E6C695862b',
+        url: 'https://zkatana.explorer.startale.com/address/0x49899fBd9be6b23d5e4AF697a92dc1E6C695862b',
+      },
+      {
+        name: 'BTC to USD',
+        address: '0xf38b25b79A72393Fca2Af88cf948D98c64726273',
+        url: 'https://zkatana.explorer.startale.com/address/0xf38b25b79A72393Fca2Af88cf948D98c64726273',
+      },
+      {
+        name: 'CRV to USD',
+        address: '0x89BC5048d634859aef743fF2152363c0e83a6a49',
+        url: 'https://zkatana.explorer.startale.com/address/0x89BC5048d634859aef743fF2152363c0e83a6a49',
+      },
+      {
+        name: 'DAI to USD',
+        address: '0x2E1640853bB2dD9f47831582665477865F9240DB',
+        url: 'https://zkatana.explorer.startale.com/address/0x2E1640853bB2dD9f47831582665477865F9240DB',
+      },
+      {
+        name: 'ETH to USD',
+        address: '0x739d71fC66397a28B3A3b7d40eeB865CA05f0185',
+        url: 'https://zkatana.explorer.startale.com/address/0x739d71fC66397a28B3A3b7d40eeB865CA05f0185',
+      },
+      {
+        name: 'USDC to USD',
+        address: '0xB842f535a88021F95e1a94245Fa549a7f75084Dc',
+        url: 'https://zkatana.explorer.startale.com/address/0xB842f535a88021F95e1a94245Fa549a7f75084Dc',
+      },
+      {
+        name: 'USDT to USD',
+        address: '0x1e73C20c42a7de166868da4c47963d137030492A',
+        url: 'https://zkatana.explorer.startale.com/address/0x1e73C20c42a7de166868da4c47963d137030492A',
+      },
+    ],
+  },
+  {
     name: 'Tanssi Dancebox Testnet',
     icon: '/home/icon-tanssi.png',
     healthcheckBadge: 'https://healthchecks.io/b/2/2e2c1114-7eb5-4eab-9582-afc64f17dc2c.svg',
@@ -155,7 +197,7 @@ export default function MirroredPriceFeedPage() {
 
       <Section>
         <SectionHeader>
-          deployments
+          Deployments
         </SectionHeader>
         <SectionBody className="flex flex-col gap-4">
           {deployments.map((deployment, idx) => (
