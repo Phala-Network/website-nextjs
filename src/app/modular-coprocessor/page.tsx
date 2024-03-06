@@ -6,8 +6,8 @@ import dedent from 'dedent'
 import { HeroSection01, Section, BlogPostCard, SectionHeader, SectionBody, SectionActions, SimpleCard } from '@/components/marketing'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 import { ContactUsButton } from '@/components/ContactUsButton'
-import { Video } from '@/components/Video'
 import { getPostList } from '@/queries/GetPostList'
+import { Video } from './video'
 
 const challenges = [
   {
@@ -80,7 +80,8 @@ export default function Page() {
           <p className="mt-2.5 text-black-200 px-4 lg:px-0">
             Modular Coprocessor of blockchains involves data indexing, processing and proof.
           </p>
-          <Video blockId="1605b5d2b5c14473a4a5fae99bb87c48" className="max-w-4xl aspect-[896/504] mx-auto mt-12 rounded-sm overflow-hidden" />
+          <Video />
+          {/* <Video blockId="1605b5d2b5c14473a4a5fae99bb87c48" className="max-w-4xl aspect-[896/504] mx-auto mt-12 rounded-sm overflow-hidden" /> */}
         </div>
       </section>
 
