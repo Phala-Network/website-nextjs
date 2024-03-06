@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import * as R from "ramda"
@@ -51,14 +51,14 @@ function FieldError({ error }: { error?: string }) {
   }
   return (
     <span
-      className={cn('absolute bottom-[-1.5cqh] left-0 z-10 text-red-500 text-xs w-full bg-red-100 p-2 rounded-bl-xs rounded-br-xs')}
+      className={cn('absolute mt-0 left-0 z-10 text-red-500 text-xs w-full bg-red-100 p-2 rounded-bl-xs rounded-br-xs block text-left untanglable')}
     >
       {error}
     </span>
   )
 }
 
-export function ContactUsForm({ className }: { className?: string }) {
+export function ContactUsForm({ legend, className }: { legend?: React.ReactNode, className?: string }) {
   const { register, handleSubmit, reset, formState: { errors, isValid, isSubmitting, isSubmitSuccessful } } = useForm<IContactUsInput>({
     resolver: zodResolver(contactUsSchema),
     mode: 'onChange',
@@ -76,8 +76,8 @@ export function ContactUsForm({ className }: { className?: string }) {
           </div>
         </>
       )}
-      <legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>
-      <fieldset className="flex flex-col lg:flex-row gap-3">
+      {legend}
+      <fieldset className="w-full flex flex-col lg:flex-row gap-3">
         <div className="relative w-full">
           <input
             {...register("firstname", { required: true })}

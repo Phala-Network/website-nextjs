@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils'
 import TagLink from '@/components/TagLink'
-import PageCoverImage from '@/components/PageCoverImage'
 import { ParsedListPage } from '@/lib/notion-client'
 
 export default function Card({ page }: { page: ParsedListPage }) {
@@ -23,11 +22,12 @@ export default function Card({ page }: { page: ParsedListPage }) {
         <a href={`/posts${page.slug}`}>
           {
             page.cover ? (
-              <PageCoverImage
+              <img
                 className="w-full aspect-[412/230]"
                 width={412}
                 height={230}
-                page={page}
+                alt={page.title}
+                src={`https://img0.phala.world/notion/resize:fill:824:460:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
               />
             ) : (
               <img
