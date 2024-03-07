@@ -147,6 +147,7 @@ export default function MirroredPriceFeedPage() {
       <HeroSection01
         title="Reliable Price Feed Relayer"
         subTitle="Phat Contract is a decentralized, secure, and reliable price feed relayer that mirrors any price feed on Ethereum to any EVM L2 blockchain."
+        heroImage="/illustrations/hero-bg-mirrored-price-feed.jpg"
       >
         <a
           href="https://docs.phala.network/"
@@ -168,7 +169,7 @@ export default function MirroredPriceFeedPage() {
             Under the Hood
           </h2>
           <figure className="mt-12 mx-auto max-w-5xl border border-blackAlpha-500 overflow-hidden rounded-sm">
-            <img src="/illustrations/mirrored-price-feed.jpg" alt="How Mirrored Price Feed Works" />
+            <img src="/illustrations/how-mirrored-price-feed-works.jpg" alt="How Mirrored Price Feed Works" />
           </figure>
         </div>
       </section>
@@ -202,34 +203,38 @@ export default function MirroredPriceFeedPage() {
         <SectionBody className="flex flex-col gap-4">
           {deployments.map((deployment, idx) => (
             <details key={idx} open className="border border-phalaPurple-100 p-4 rounded-sm bg-white">
-              <summary className="flex flex-row justify-between items-center mb-4">
+              <summary className="flex flex-col lg:flex-row gap-y-2 justify-between lg:items-center mb-4">
                 <h4 className="text-24 font-semibold ml-3 inline-flex gap-1.5 items-center">
                   <img src={deployment.icon} alt={deployment.name} className="h-6 w-6" />
                   {deployment.name}
                 </h4>
-                <img src={deployment.healthcheckBadge} alt={`${deployment.name} Mirrored Price Feed`} />
+                <div>
+                  <img src={deployment.healthcheckBadge} alt={`${deployment.name} Mirrored Price Feed`} className="h-5" />
+                </div>
               </summary>
-              <table className="d-table d-table-zebra">
-                <thead>
-                  <tr>
-                    <th>Asset Pair</th>
-                    <th>Contract Address</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {deployment.assets.map((asset, idx) => (
-                    <tr key={idx}>
-                      <th>{asset.name}</th>
-                      <td>
-                        <Link href={asset.url} target="_blank" rel="noopener noreferrer" className="relative">
-                          <code>{asset.address}</code>
-                          <IoOpenOutline className="inline-block ml-1 relative -top-0.5" />
-                        </Link>
-                      </td>
+              <div className="overflow-x-auto">
+                <table className="d-table d-table-zebra">
+                  <thead>
+                    <tr>
+                      <th>Asset Pair</th>
+                      <th>Contract Address</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {deployment.assets.map((asset, idx) => (
+                      <tr key={idx}>
+                        <th className="min-w-36">{asset.name}</th>
+                        <td>
+                          <Link href={asset.url} target="_blank" rel="noopener noreferrer" className="relative">
+                            <code>{asset.address}</code>
+                            <IoOpenOutline className="inline-block ml-1 relative -top-0.5" />
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </details>
           ))}
         </SectionBody>
