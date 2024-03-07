@@ -168,7 +168,7 @@ export default function MirroredPriceFeedPage() {
             Under the Hood
           </h2>
           <figure className="mt-12 mx-auto max-w-5xl border border-blackAlpha-500 overflow-hidden rounded-sm">
-            <img src="/illustrations/mirrored-price-feed.jpg" alt="How Mirrored Price Feed Works" />
+            <img src="/illustrations/how-mirrored-price-feed-works.jpg" alt="How Mirrored Price Feed Works" />
           </figure>
         </div>
       </section>
