@@ -7,7 +7,8 @@ import { HeroSection01, Section, BlogPostCard, SectionHeader, SectionBody, Secti
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 import { ContactUsButton } from '@/components/ContactUsButton'
 import { getPostList } from '@/queries/GetPostList'
-import { Video } from './video'
+import { Video } from '@/components/Video'
+import { getPageSettings } from '@/queries/GetPageSettings'
 
 const challenges = [
   {
@@ -50,6 +51,7 @@ export default function Page() {
     includeTags: ['Blockchain Coprocessor'],
     sortReversed: true,
   }))
+  const pageSettings = use(getPageSettings('/modular-coprocessor'))
   return (
     <div className="flex flex-col gap-8 sm:gap-16">
       <HeroSection01
@@ -80,8 +82,9 @@ export default function Page() {
           <p className="mt-2.5 text-black-200 px-4 lg:px-0">
             Modular Coprocessor of blockchains involves data indexing, processing and proof.
           </p>
-          <Video />
-          {/* <Video blockId="1605b5d2b5c14473a4a5fae99bb87c48" className="max-w-4xl aspect-[896/504] mx-auto mt-12 rounded-sm overflow-hidden" /> */}
+          {pageSettings.videoBlockId ? (
+            <Video blockId={pageSettings.videoBlockId} className="max-w-4xl aspect-[896/504] mx-auto mt-12 rounded-sm overflow-hidden" />
+          ) : null}
         </div>
       </section>
 
