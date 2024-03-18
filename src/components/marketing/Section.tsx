@@ -49,6 +49,21 @@ export function SectionHeader({ id, className, children }: SectionHeaderProps) {
   )
 }
 
+export function SectionSubHeader({ className, children }: GenericComponent) {
+  const theme = useSectionTheme()
+  return (
+    <div
+      className={cn(
+        "mx-auto max-w-4xl lg:text-center mt-4",
+        theme === 'dark' ? 'text-whiteAlpha-800' : 'text-black-600',
+        className,
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
 export function SectionBody({ className, children }: GenericComponent) {
   return (
     <div className={cn("mx-auto mt-8 lg:mt-16 max-w-6xl", className)}>
