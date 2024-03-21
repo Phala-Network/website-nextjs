@@ -37,7 +37,7 @@ function ComputeTitle() {
         backgroundPosition: `${position.x}rem ${position.y}rem`,
       }}
     >
-      Coprocessor
+      AI Coprocessor
     </h2>
   )
 }
