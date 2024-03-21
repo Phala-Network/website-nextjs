@@ -19,6 +19,7 @@ import { SectionHowItWorks } from './_components/SectionHowItWorks'
 import { SectionHero } from './_components/SectionHero'
 import { SectionHighlights } from './_components/SectionHighlights'
 import SectionFeatures from './_components/SectionFeatures'
+import { ContactUsButton } from '@/components/ContactUsButton'
 
 import './home.css'
 import './_components/section-phat-contract-highlight.css'
@@ -1037,14 +1038,14 @@ function SectionPhatContractHighlight() {
             "text-3xl lg:text-6xl text-white font-black",
           )}
         >
-          Phat Contract
+          AI Agent Contract
         </h2>
         <p
           className={cn(
             "text-xl lg:text-3xl text-white font-normal",
           )}
         >
-          Optimizing coprocessing for simplicity, accessibility, and impact
+          Ship AI agents in minutes
         </p>
       </header>
 
@@ -1055,7 +1056,7 @@ function SectionPhatContractHighlight() {
           "grid gap-8",
         )}
       >
-        <h3 className="heading">Access unlimited APIs in under <em>1</em> minute</h3>
+        <h3 className="heading">Integrate with Popular LLMs</h3>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <UnlimitedApiCard
             title="The Graph"
@@ -1077,13 +1078,11 @@ function SectionPhatContractHighlight() {
           />
         </div>
         <div className="self-end">
-          <a
-            href="https://dashboard.phala.network/"
+          <ContactUsButton
             className={cn("btn lg:btn-lg btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}
-            target="_blank"
           >
-            Get Started
-          </a>
+            Get Early Access
+          </ContactUsButton>
         </div>
       </article>
 
