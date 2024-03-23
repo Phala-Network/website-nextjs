@@ -1033,6 +1033,7 @@ module.exports = {
     plugin(buttonComponents),
   ],
   daisyui: {
+    darkTheme: false,
     based: false,
     styled: true,
     prefix: "d-",
@@ -1045,6 +1046,5 @@ module.exports = {
   //       "base-100": "#ffffff",
   //     },
   //   ],
-  //   // darkTheme: false,
   },
 }
