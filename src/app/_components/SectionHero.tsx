@@ -147,15 +147,9 @@ export function SectionHero() {
                   "btn btn-sm btn-primary btn-rounded btn-phala justify-center",
                   "min-w-[160px]"
                 )}
-                href="/modular-coprocessor"
-                // onClick={(e) => {
-                //   e.preventDefault()
-                //   document.querySelector(e.currentTarget.getAttribute('href')!)?.scrollIntoView({
-                //     behavior: 'smooth',
-                //   })
-                // }}
+                href="/tags/AI-Agent"
               >
-                Get Started
+                Learn More
               </Link>
             </div>
           </div>
