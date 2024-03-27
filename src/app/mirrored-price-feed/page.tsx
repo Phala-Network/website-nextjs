@@ -14,6 +14,48 @@ export const metadata: Metadata = {
 
 const deployments = [
   {
+    name: 'Astar zKyoto',
+    icon: 'https://zkatana.explorer.startale.com/favicon/apple-touch-icon-180x180.png',
+    healthcheckBadge: 'https://healthchecks.io/b/2/250aefa2-6f34-4f98-a969-0c947ccba482.svg',
+    assets: [
+      {
+        name: 'AAVE to USD',
+        address: '0x92E9b9348949455580EB820ba041f4cAaB998e3f',
+        url: 'https://zkyoto.explorer.startale.com/address/0x92E9b9348949455580EB820ba041f4cAaB998e3f',
+      },
+      {
+        name: 'BTC to USD',
+        address: '0xB842f535a88021F95e1a94245Fa549a7f75084Dc',
+        url: 'https://zkyoto.explorer.startale.com/address/0xB842f535a88021F95e1a94245Fa549a7f75084Dc',
+      },
+      {
+        name: 'CRV to USD',
+        address: '0x49899fBd9be6b23d5e4AF697a92dc1E6C695862b',
+        url: 'https://zkyoto.explorer.startale.com/address/0x49899fBd9be6b23d5e4AF697a92dc1E6C695862b',
+      },
+      {
+        name: 'DAI to USD',
+        address: '0xf38b25b79A72393Fca2Af88cf948D98c64726273',
+        url: 'https://zkyoto.explorer.startale.com/address/0xf38b25b79A72393Fca2Af88cf948D98c64726273',
+      },
+      {
+        name: 'ETH to USD',
+        address: '0x739d71fC66397a28B3A3b7d40eeB865CA05f0185',
+        url: 'https://zkyoto.explorer.startale.com/address/0x739d71fC66397a28B3A3b7d40eeB865CA05f0185',
+      },
+      {
+        name: 'USDC to USD',
+        address: '0x1e73C20c42a7de166868da4c47963d137030492A',
+        url: 'https://zkyoto.explorer.startale.com/address/0x1e73C20c42a7de166868da4c47963d137030492A',
+      },
+      {
+        name: 'USDT to USD',
+        address: '0x2E1640853bB2dD9f47831582665477865F9240DB',
+        url: 'https://zkyoto.explorer.startale.com/address/0x2E1640853bB2dD9f47831582665477865F9240DB',
+      },
+    ],
+  },
+  {
     name: 'Astar zKatana',
     icon: 'https://zkatana.explorer.startale.com/favicon/apple-touch-icon-180x180.png',
     healthcheckBadge: 'https://healthchecks.io/b/2/250aefa2-6f34-4f98-a969-0c947ccba482.svg',
