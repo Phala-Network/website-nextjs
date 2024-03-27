@@ -23,16 +23,16 @@ function FAQ() {
   return (
     <>
       <Details summary="What is the Phala Testnet Faucet?">
-        <p>A testnet faucet enables developers to receive free tokens that can be used to interact with Phat Contracts on testnets.</p>
+        <p>A testnet faucet enables developers to receive free tokens that can be used to interact with Phat Contracts on the PoC6 Testnet.</p>
       </Details>
       <Details summary="How do I use this?">
-        <p>To request funds, simply enter your wallet address and hit “Send Me ETH”. We support wallets as received addresses but not smart contracts.</p>
+        <p>To request funds, simply enter your wallet address and hit “Send Me PHA”. The faucet is implemented by Phat Contract, you can use our DevTool <a href="https://phat.phala.network/contracts/view/0x53cc868c706baa1977084ff5d920100016ffd315e3cd304b512d2161f2a02548?rpc=wss://poc6.phala.network/ws" target="_blank">play with it</a>, too.</p>
       </Details>
       <Details summary="How does it work?">
-        <p>You can request 0.02 Goerli ETH every 24h without any authentication. Then create a free Alchemy account to start building!</p>
+        <p>You can request 1,000 PHA every 24 hours without authentication. Additional test tokens are available with specific eligibility requirements.</p>
       </Details>
       <Details summary="What if I run into any other issues, or have questions?">
-        <p>Join our Discord server to tap into the support of our dedicated core team and enthusiastic community members.</p>
+        <p>Join our <a href="https://discord.com/invite/phala" target="_blank">Discord server</a> to tap into the support of our dedicated core team and enthusiastic community members.</p>
       </Details>
     </>
   )
@@ -63,7 +63,7 @@ export default function Page() {
               "select-none pointer-event-none",
             )}
           >
-            <img src="/illustrations/faucet/bg.jpg" alt="" className="rounded-xl shadow-xl overflow-hidden" />
+            <img src="/illustrations/faucet/bg.jpg" alt="" className="rounded-sm shadow-xl overflow-hidden" />
           </div>
           <main
             className={cn(
@@ -82,7 +82,7 @@ export default function Page() {
             <SponsorList />
             <section
               className={cn(
-                "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 pt-2 text-white",
+                "bg-gray-700 border border-solid border-gray-600 rounded-sm shadow-xl p-8 pt-2 text-white",
               )}
             >
               <FAQ />
