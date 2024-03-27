@@ -9,6 +9,7 @@ import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
 import { ContactUsForm } from '@/components/ContactUsForm'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
+import { YouTubeVideo } from '@/components/YouTubeVideo'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
@@ -1079,7 +1080,7 @@ function SectionPhatContractHighlight() {
         </div>
         <div className="self-end">
           <ContactUsButton
-            className={cn("btn lg:btn-lg btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}
+            className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}
           >
             Get Early Access
           </ContactUsButton>
@@ -1152,31 +1153,25 @@ function SectionPhatContractHighlight() {
             <ChainIcon src="/home/icon-ethereum.png" title="Ethereum" />
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-          <TemplateCard
-            title="VRF Oracle"
-            src="/home/icon-template-vrf.png"
-            href="https://dashboard.phala.network/projects/new/clone?template=vrf-oracle"
-            target="_blank"
+        <div className="flex flex-col gap-4">
+          <YouTubeVideo
+            id="TEAFVKEV2oc"
+            title=""
+            poster="sddefault"
           />
-          <TemplateCard
-            title="Dynamic NFTs"
-            src="/home/icon-template-dynamic-nft.png"
-            href="https://phala.network/posts/guide-dynamic-nfts-that-evolve"
-            target="_blank"
-          />
-          <TemplateCard
-            title="Lens Open Actions"
-            src="/home/icon-template-lens.png"
-            href="https://dashboard.phala.network/projects/new/clone?template=lensapi"
-            target="_blank"
-          />
-          <TemplateCard
-            title="Web3 Social"
-            src="/home/icon-template-web3-social.png"
-            href="https://phala.network/posts/web3-social-create-monetize-with-smart-contracts"
-            target="_blank"
-          />
+          <div className="flex flex-row justify-center gap-2.5">
+            <Link
+              href="/posts/empowering-the-aiagent-economy-create-own-and-earn"
+              className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
+            >
+              Learn More
+            </Link>
+            <ContactUsButton
+              className={cn("btn btn-primary btn-phat btn-rounded lg:btn-rounded", "min-w-[178px]")}
+            >
+              Get Early Access
+            </ContactUsButton>
+          </div>
         </div>
       </article>
 
