@@ -9,6 +9,7 @@ import DotBackground from '@/components/DotBackground'
 import Squircle from '@/components/Squircle'
 import { ContactUsForm } from '@/components/ContactUsForm'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
+import { YouTubeVideo } from '@/components/YouTubeVideo'
 
 import { NoCodeWizardStepTrigger, NoCodeWizardStepDetails, NoCodeWizardStepPreview } from './_components/NoCodeWizard'
 import { CodeExampleTab, CodeExampleCodeViewer } from './_components/CodeExampleTabs'
@@ -19,6 +20,7 @@ import { SectionHowItWorks } from './_components/SectionHowItWorks'
 import { SectionHero } from './_components/SectionHero'
 import { SectionHighlights } from './_components/SectionHighlights'
 import SectionFeatures from './_components/SectionFeatures'
+import { ContactUsButton } from '@/components/ContactUsButton'
 
 import './home.css'
 import './_components/section-phat-contract-highlight.css'
@@ -1037,14 +1039,14 @@ function SectionPhatContractHighlight() {
             "text-3xl lg:text-6xl text-white font-black",
           )}
         >
-          Phat Contract
+          AI-Agent Contract
         </h2>
         <p
           className={cn(
             "text-xl lg:text-3xl text-white font-normal",
           )}
         >
-          Optimizing coprocessing for simplicity, accessibility, and impact
+          Ship AI agents in minutes
         </p>
       </header>
 
@@ -1055,7 +1057,7 @@ function SectionPhatContractHighlight() {
           "grid gap-8",
         )}
       >
-        <h3 className="heading">Access unlimited APIs in under <em>1</em> minute</h3>
+        <h3 className="heading">Integrate with Popular LLMs and Web3 data layers</h3>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <UnlimitedApiCard
             title="The Graph"
@@ -1077,13 +1079,11 @@ function SectionPhatContractHighlight() {
           />
         </div>
         <div className="self-end">
-          <a
-            href="https://dashboard.phala.network/"
-            className={cn("btn lg:btn-lg btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}
-            target="_blank"
+          <ContactUsButton
+            className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}
           >
-            Get Started
-          </a>
+            Get Early Access
+          </ContactUsButton>
         </div>
       </article>
 
@@ -1144,7 +1144,7 @@ function SectionPhatContractHighlight() {
         )}
       >
         <div className="lg:max-w-[494px] flex flex-col items-center lg:justify-center gap-4 lg:gap-12 lg:mx-auto">
-          <h3 className="heading">Coprocess <em>25</em> blockchains with smart contract templates</h3>
+          <h3 className="heading">Connect AI-Agent with <em>25+</em> Blockchains Instantly</h3>
           <div className={cn("flex flex-row flex-wrap lg:justify-evenly gap-4 lg:gap-8")}>
             <ChainIcon src="/home/icon-binance.png" title="Binance" />
             <ChainIcon src="/home/icon-arbitrum.png" title="Arbitrum" />
@@ -1153,31 +1153,25 @@ function SectionPhatContractHighlight() {
             <ChainIcon src="/home/icon-ethereum.png" title="Ethereum" />
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-          <TemplateCard
-            title="VRF Oracle"
-            src="/home/icon-template-vrf.png"
-            href="https://dashboard.phala.network/projects/new/clone?template=vrf-oracle"
-            target="_blank"
+        <div className="flex flex-col gap-4">
+          <YouTubeVideo
+            id="TEAFVKEV2oc"
+            title=""
+            poster="sddefault"
           />
-          <TemplateCard
-            title="Dynamic NFTs"
-            src="/home/icon-template-dynamic-nft.png"
-            href="https://phala.network/posts/guide-dynamic-nfts-that-evolve"
-            target="_blank"
-          />
-          <TemplateCard
-            title="Lens Open Actions"
-            src="/home/icon-template-lens.png"
-            href="https://dashboard.phala.network/projects/new/clone?template=lensapi"
-            target="_blank"
-          />
-          <TemplateCard
-            title="Web3 Social"
-            src="/home/icon-template-web3-social.png"
-            href="https://phala.network/posts/web3-social-create-monetize-with-smart-contracts"
-            target="_blank"
-          />
+          <div className="flex flex-row justify-center gap-2.5">
+            <Link
+              href="/tags/AI-Agent"
+              className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
+            >
+              Learn More
+            </Link>
+            <ContactUsButton
+              className={cn("btn btn-primary btn-phat btn-rounded lg:btn-rounded", "min-w-[178px]")}
+            >
+              Get Early Access
+            </ContactUsButton>
+          </div>
         </div>
       </article>
 
