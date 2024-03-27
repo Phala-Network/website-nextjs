@@ -1056,7 +1056,7 @@ function SectionPhatContractHighlight() {
           "grid gap-8",
         )}
       >
-        <h3 className="heading">Integrate with Popular LLMs</h3>
+        <h3 className="heading">Integrate with Popular LLMs and Web3 data layers</h3>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <UnlimitedApiCard
             title="The Graph"
