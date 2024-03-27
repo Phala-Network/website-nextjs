@@ -1144,7 +1144,7 @@ function SectionPhatContractHighlight() {
         )}
       >
         <div className="lg:max-w-[494px] flex flex-col items-center lg:justify-center gap-4 lg:gap-12 lg:mx-auto">
-          <h3 className="heading">Coprocess <em>25</em> blockchains with smart contract templates</h3>
+          <h3 className="heading">Connect AI-Agent with <em>25+</em> Blockchains Instantly</h3>
           <div className={cn("flex flex-row flex-wrap lg:justify-evenly gap-4 lg:gap-8")}>
             <ChainIcon src="/home/icon-binance.png" title="Binance" />
             <ChainIcon src="/home/icon-arbitrum.png" title="Arbitrum" />
