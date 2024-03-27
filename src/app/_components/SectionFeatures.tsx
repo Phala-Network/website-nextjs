@@ -32,7 +32,7 @@ function SectionFeatures({
             "text-4xl lg:text-5xl font-black text-center",
           )}
         >
-          Smart Contracts, Now Smarter
+          Easily Integrate AI & Web3
         </h2>
         <div
           className={cn(
