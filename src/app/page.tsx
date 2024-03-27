@@ -1161,7 +1161,7 @@ function SectionPhatContractHighlight() {
           />
           <div className="flex flex-row justify-center gap-2.5">
             <Link
-              href="/tags/AI-Agent"
+              href="/tags/AI-Agent%20Contract"
               className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
             >
               Learn More
