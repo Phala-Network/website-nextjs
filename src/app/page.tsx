@@ -1039,7 +1039,7 @@ function SectionPhatContractHighlight() {
             "text-3xl lg:text-6xl text-white font-black",
           )}
         >
-          AI Agent Contract
+          AI-Agent Contract
         </h2>
         <p
           className={cn(
@@ -1161,7 +1161,7 @@ function SectionPhatContractHighlight() {
           />
           <div className="flex flex-row justify-center gap-2.5">
             <Link
-              href="/posts/empowering-the-aiagent-economy-create-own-and-earn"
+              href="/tags/AI-Agent"
               className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
             >
               Learn More
