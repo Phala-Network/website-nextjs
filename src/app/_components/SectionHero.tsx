@@ -147,7 +147,7 @@ export function SectionHero() {
                   "btn btn-sm btn-primary btn-rounded btn-phala justify-center",
                   "min-w-[160px]"
                 )}
-                href="/tags/AI-Agent"
+                href="/tags/AI-Agent%20Contract"
               >
                 Learn More
               </Link>

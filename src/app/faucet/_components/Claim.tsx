@@ -7,7 +7,7 @@ import {
   type PinkContractPromise,
   type PinkContractQuery,
   type PinkContractTx,
-  unsafeGetAbiFromPatronByCodeHash,
+  unsafeGetAbiFromGitHubRepoByCodeHash,
 } from '@phala/sdk'
 import { FiSearch, FiLoader } from 'react-icons/fi'
 import { LuX } from "react-icons/lu"
@@ -68,7 +68,7 @@ const injectedWalletAtom = atomWithInjectedWallet('PhalaFaucet', phatRegistryAto
 
 const contractAtom = atomWithPhatContract<PhatFaucetContract>({
   contractId: process.env.NEXT_PUBLIC_FAUCET_CONTRACT_ID!,
-  loadAbi: () => unsafeGetAbiFromPatronByCodeHash(process.env.NEXT_PUBLIC_FAUCET_CODE_HASH!),
+  loadAbi: () => unsafeGetAbiFromGitHubRepoByCodeHash(process.env.NEXT_PUBLIC_FAUCET_CODE_HASH!),
 }, phatRegistryAtom, injectedWalletAtom)
 
 //
@@ -173,7 +173,7 @@ function SponsorDetailModal() {
     <Dialog open={!!currentSponsor} onOpenChange={() => setCurrentSponsor(null)}>
       <DialogContent className={cn('max-w-5xl')}>
         <div className="flex flex-col gap-6 mt-14 px-3">
-          <div className="w-full h-[180px] rounded-lg overflow-hidden flex">
+          <div className="w-full h-[180px] rounded-xs overflow-hidden flex">
             <img src={currentSponsor?.poster} alt="" className="object-cover w-full" />
           </div>
           <header>
@@ -197,7 +197,7 @@ function SponsorDetailModal() {
           </div>
           <div>
             <button
-              className="btn btn-phatGreen btn-xl rounded-full text-sm font-bold leading-none tracking-wide"
+              className="btn btn-primary btn-phat btn-xl text-sm font-bold leading-none tracking-wide"
               disabled={!isReady || running}
               onClick={async () => {
                 try {
@@ -233,20 +233,20 @@ function SponsorItem({ info }: { info: ProvenItem }) {
   const isReady = !!(contractState.connected && provider)
   const setCurrentSponsor = useSetAtom(currentSponsorAtom)
   return (
-    <div className="border border-solid border-gray-600 rounded-xl">
+    <div className="border border-solid border-gray-600 rounded-xs">
       <div className="p-4">
-        <img src={info.poster} alt="" className="mb-4 rounded-[6px]" />
+        <img src={info.poster} alt="" className="mb-4 rounded-xs" />
         <h4 className="text-lg font-bold mb-2 tracking-wide">{info.title}</h4>
         <div className="h-[4rem] overflow-y-scroll text-sm text-black-200 leading-6">
           <p>{info.description}</p>
         </div>
         <div>
-          <span className="text-sm text-white bg-orange-300 px-4 py-1.5 rounded-lg">+ {formatter.format(info.amount)} test-PHA</span>
+          <span className="text-sm text-white bg-orange-300 px-4 py-1.5 rounded-xs">+ {formatter.format(info.amount)} test-PHA</span>
         </div>
       </div>
       <div className="p-4 border-t border-solid border-gray-600 flex flex-row justify-between items-center">
         <button
-          className="btn btn-phatGreen rounded-full px-4 py-2.5 text-sm font-bold leading-none tracking-wide"
+          className="btn btn-primary btn-phat rounded-xs px-4 py-2.5 text-sm font-bold leading-none tracking-wide"
           disabled={!isReady || running}
           onClick={async () => {
             try {
@@ -269,7 +269,7 @@ function SponsorItem({ info }: { info: ProvenItem }) {
           {running ? (<FiLoader className="animate-spin text-xl font-normal" />) : 'Check Eligibility'}
         </button>
         <button
-          className="btn btn-phatGreen rounded-full p-0 w-10 h-10 flex items-center justify-center"
+          className="btn btn-phat rounded-full p-0 w-10 h-10 flex items-center justify-center"
           onClick={() => setCurrentSponsor(info)}
         >
           <FiSearch className="text-xl" />
@@ -376,7 +376,7 @@ function WalletModal() {
                 >
                   <img src="/illustrations/faucet/metamask.png" alt="" className="w-6" />
                   MetaMask
-                  <span className="ml-2 rounded-2xl bg-phalaPurple-400 text-white text-xs font-medium px-4">BETA</span>
+                  <span className="ml-2 rounded-xs bg-phalaPurple-400 text-white text-xs font-medium px-4">BETA</span>
                 </WalletButton>
               </li>
               {wallets.map((wallet, idx) => (
@@ -413,7 +413,7 @@ function WalletModal() {
                   <li key={idx}>
                     <div
                       className={cn(
-                        "flex flex-row items-center gap-4 py-2 px-4 rounded w-full",
+                        "flex flex-row items-center gap-4 py-2 px-4 rounded-xs w-full",
                         "border border-solid border-transparent text-white transition-all",
                         "hover:border-gray-600 hover:bg-gray-600",
                         account.address === lastSelectedAccount && 'border-phat-400 bg-phat-400/70',
@@ -477,7 +477,7 @@ function ConnectWallet() {
     return (
       <div
         className={cn(
-          "flex flex-row items-center justify-stretch gap-2.5 py-2 px-4 rounded w-full max-w-2xl",
+          "flex flex-row items-center justify-stretch gap-2.5 py-2 px-4 rounded-xs w-full max-w-2xl",
           "bg-white/90 border border-solid border-gray-600",
         )}
       >
@@ -490,7 +490,7 @@ function ConnectWallet() {
         </div>
         <button
           className={cn(
-            "btn btn-phat btn-sm rounded-lg",
+            "btn btn-primary btn-phat btn-sm",
             "ml-auto"
           )}
           onClick={async () => {
@@ -508,7 +508,7 @@ function ConnectWallet() {
   }
   return (
     <button
-      className="btn btn-xl btn-phatGreen rounded-2xl font-medium"
+      className="btn btn-primary btn-xl btn-phat"
       onClick={() => setVisible(true)}
     >
       Connect Wallet
@@ -531,18 +531,18 @@ export function AccountInfo() {
     <>
       {provider ? (
         <section
-          className="bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 text-white"
+          className="bg-gray-700 border border-solid border-gray-600 rounded-xs shadow-xl p-8 text-white"
         >
           <div className="flex flex-row gap-4 items-center">
             <div
               className={cn(
-                "px-4 py-2.5 border border-solid border-gray-500 rounded-lg bg-gray-600 grow leading-none",
+                "px-4 py-2.5 border border-solid border-gray-500 rounded-xs bg-gray-600 grow leading-none",
                 "flex items-center justify-between",
               )}
             >
               <span className="tracking-wider font-mono">{provider.address}</span>
               <button
-                className="btn btn-gray px-6 btn-sm relative -mr-2"
+                className="btn btn-phat px-6 btn-sm relative -mr-2"
                 disabled={!registryState.connected}
                 onClick={() => setVisible(true)}
               >
@@ -551,7 +551,7 @@ export function AccountInfo() {
             </div>
             <div>
               <button
-                className="btn btn-phatGreen btn-lg rounded-lg"
+                className="btn btn-primary btn-phat btn-lg"
                 onClick={async () => {
                   try {
                     setIsPending(true)
@@ -581,7 +581,7 @@ export function AccountInfo() {
             <div className="mt-2 text-sm text-gray-300">Mapping from Ethereum Address <code className="ml-1.5">{provider.evmAccount.address}</code></div>
           ) : null}
           {(result && result[0]) ? (
-            <div className="mt-6 bg-phatGreen-600 p-4 rounded-xl">
+            <div className="mt-6 bg-phatGreen-600 p-4 rounded-xs">
               Your test-PHA has been sent.
               <a
                 href={`https://poc6-statescan.phala.network/extrinsics/${result[1]}`}
@@ -611,7 +611,7 @@ export function SponsorList() {
   return (
     <section
       className={cn(
-        "bg-gray-700 border border-solid border-gray-600 rounded-2xl shadow-xl p-8 text-white",
+        "bg-gray-700 border border-solid border-gray-600 rounded-xs shadow-xl p-8 text-white",
       )}
     >
       <header>
