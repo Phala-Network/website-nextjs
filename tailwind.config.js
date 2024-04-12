@@ -354,6 +354,31 @@ function presetGradient({ addComponents, theme }) {
   addComponents(gradients)
 }
 
+//
+// AI-Agents
+//
+function themeAIAgent({ addComponents, theme }) {
+  const settings = []
+  settings.push({
+    '.btn-ai-agent': {
+      background: 'linear-gradient(90deg, #CDFA50 0%, #29BDB4 50.55%, #7F52FA 100%)',
+      color: '#fff',
+      '&:hover': {
+        opacity: '0.75',
+      },
+    },
+    ['.bg-ai-agent']: {
+      background: 'linear-gradient(90deg, #CDFA50 0%, #29BDB4 50.55%, #7F52FA 100%)',
+    },
+    '.text-ai-agent': {
+      background: 'linear-gradient(90deg, #CDFA50 0%, #29BDB4 50.55%, #7F52FA 100%)',
+      "-webkit-background-clip": "text",
+      "-webkit-text-fill-color": "transparent",
+    },
+  })
+  addComponents(settings)
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -1031,6 +1056,7 @@ module.exports = {
     plugin(cardComponents),
     plugin(tagComponents),
     plugin(buttonComponents),
+    plugin(themeAIAgent),
   ],
   daisyui: {
     darkTheme: false,
