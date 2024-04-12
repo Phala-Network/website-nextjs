@@ -459,11 +459,11 @@ function SiteNavItem({
   })
   return (
     <li className="relative h-[3rem] flex items-center cursor-pointer rounded-sm">
-      <div
+      <button
         {...hoverProps}
         className={cn("w-full h-full")}
         // cornerRadius={28}
-        fill={isHovered ? "rgba(0, 0, 0, 0.06)" : "rgba(0, 0, 0, 0)"}
+        // fill={isHovered ? "rgba(0, 0, 0, 0.06)" : "rgba(0, 0, 0, 0)"}
         onClick={({ target }) => {
           const rect = (target as HTMLElement).getBoundingClientRect()
           setOpenedDropdown({
@@ -477,7 +477,7 @@ function SiteNavItem({
         <span className={cn('px-8 py-4 transition-all text-white untanglable h-full flex items-center')}>
           {children}
         </span>
-      </div>
+      </button>
     </li>
   )
 }
