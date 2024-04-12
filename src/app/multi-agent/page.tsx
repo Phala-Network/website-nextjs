@@ -7,93 +7,12 @@ import { getPostList } from '@/queries/GetPostList'
 import { Stats } from '@/components/Stats'
 import { HeroSection01, Section, SectionHeader, SectionSubHeader, SectionBody, SectionActions, SimpleCard, BlogPostCard } from '@/components/marketing'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
-import { type GenericComponent } from '@/types/marketing'
+import { type GenericComponent } from '@/types/components'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
   title: "The Multi-agent AI Blockchain Coprocessor by Phala Network",
 }
-
-const features1 = [
-  {
-    title: 'Hosting AI Agents',
-    description: dedent`
-      Phala Network offers a secure platform for hosting Al agents, ensuring efficient operation with blockchain's security and transparency. This enables developers to launch innovative and resilient AI solutions.
-    `,
-  },
-  {
-    title: 'Monetization for Developers',
-    description: dedent`
-      Phala Network's model enables developers to monetize AI agents, creating new revenue streams and encouraging quality AI solutions, thus fostering a vibrant community of innovators.
-    `,
-  },
-  {
-    title: 'AI Agent Templates',
-    description: dedent`
-      Phala Network offers AI agent templates to speed up development and market entry, saving time and resources, and fostering innovation and diversity in the AI ecosystem.
-    `,
-  },
-]
-
-const features2 = [
-  {
-    title: 'Easy to Use',
-    description: dedent`
-      The platform is designed with simplicity in mind, enabling developers to effortlessly create and deploy Al agents without the need for extensive blockchain expertise.
-    `,
-  },
-  {
-    title: 'AI Agent Interoperability',
-    description: dedent`
-      It fosters an environment where Al agents can seamlessly interact and exchange information, thereby enhancing the capability of agents to perform complex tasks through collaboration.
-    `,
-  },
-  {
-    title: 'Verifiable for Every Step of Agent',
-    description: dedent`
-      Transparency and trust are paramount; hence, every action and decision made by the AI agents can be tracked and verified, ensuring accountability throughout the agent's lifecycle.
-    `,
-  },
-  {
-    title: 'Unstoppable Agent',
-    description: dedent`
-      Built on Phala Network's robust infrastructure, these Al agents are resilient and operate continuously, ensuring that applications remain active without downtime.
-    `,
-  },
-  {
-    title: 'Community Owned',
-    description: dedent`
-      Emphasizing the decentralized ethos, the platform allows the community to own and govern the Al agents, ensuring that the developments and benefits are aligned with the users' interests.
-    `,
-  },
-]
-
-const features3 = [
-  {
-    title: 'Streamlined Deployment with Templates',
-    description: dedent`
-      Phala Netowrk provides ready-to-use Agent templates, enabling rapid selection, deployment, and serverless hosting directly on its platform. This approach drastically reduces development time and complexity.
-    `,
-  },
-  {
-    title: 'Extensive Al Tools Integration',
-    description: dedent`
-      The platform supports a wide variety of Al tools, including top-tier Large Language Models (LLMs) like OpenAl and Llama, and advanced frameworks such as Langchain and Autogpt, empowering developers to build sophisticated Al agents with ease.
-    `,
-  },
-  {
-    title: 'Comprehensive Web3 Technology Support',
-    description: dedent`
-      Phala Network ensures seamless integration with essential Web3 technologies: 1. Data Indexing and Storage: Incorporates protocols like Graph, Airstack, IPFS, Filecoin, and Arweave for efficient data handling. 2. Blockchain Compatibility: Offers support for EVM-compatible chains, Solana, Polkadot, facilitating wide network operability. 3. Customizable Computation: Developers can use popular programming languages, including JavaScript and TypeScript, for agent customization.
-    `,
-  },
-  {
-    title: 'Trust through Verifiable Proofs',
-    description: dedent`
-      To guarantee transparency and security, Phala integrates verifiable proof mechanisms such as SGX attestation, EAS attestation, and ZKP, ensuring every Al agent's action is accountable and verifiable.
-    `,
-  },
-]
 
 function Box({ className, children }: GenericComponent) {
   return (
