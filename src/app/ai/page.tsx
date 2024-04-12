@@ -100,7 +100,7 @@ export default function Page() {
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
           <ContactUsButton
             className={cn(
-              "btn lg:btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
+              "btn lg:btn-lg btn-primary btn-ai-agent btn-rounded lg:btn-rounded w-full border-0"
             )}
           >
             Join the Waitlist
@@ -109,7 +109,7 @@ export default function Page() {
             href="https://docs.phala.network/"
             target="_blank"
             className={cn(
-              "btn lg:btn-lg btn-primary btn-blk btn-rounded w-full"
+              "btn lg:btn-lg btn-primary btn-blk btn-rounded lg:btn-rounded w-full"
             )}
           >
             Explore Docs
