@@ -1,13 +1,15 @@
 import { use } from 'react'
+import Link from 'next/link'
 import { type Metadata } from 'next'
-import { cn } from '@/lib/utils'
 import dedent from 'dedent'
 
+import { type GenericComponent } from '@/types/components'
+import { cn } from '@/lib/utils'
 import { getPostList } from '@/queries/GetPostList'
 import { Stats } from '@/components/Stats'
-import { HeroSection01, Section, SectionHeader, SectionSubHeader, SectionBody, SectionActions, SimpleCard, BlogPostCard } from '@/components/marketing'
+import { HeroSection01, BlogPostCard } from '@/components/marketing'
+import { ContactUsButton } from '@/components/ContactUsButton'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
-import { type GenericComponent } from '@/types/components'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -52,7 +54,7 @@ export default function Page() {
         heroImage="/illustrations/hero-bg-ai-agents.jpg"
         theme="dark"
         headingClass="max-w-3xl"
-        className="bg-ai-agent xl:bg-transparent"
+        className="bg-ai-agent lg:bg-none"
       >
       </HeroSection01>
 
@@ -96,20 +98,22 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <button
+          <ContactUsButton
             className={cn(
               "btn lg:btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
             Join the Waitlist
-          </button>
-          <button
+          </ContactUsButton>
+          <a
+            href="https://docs.phala.network/"
+            target="_blank"
             className={cn(
               "btn lg:btn-lg btn-primary btn-blk btn-rounded w-full"
             )}
           >
             Explore Docs
-          </button>
+          </a>
         </div>
       </section>
 
@@ -154,13 +158,13 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <button
+          <ContactUsButton
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
             Join the Waitlist
-          </button>
+          </ContactUsButton>
         </div>
       </section>
 
@@ -195,13 +199,13 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <button
+          <ContactUsButton
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
             Join the Waitlist
-          </button>
+          </ContactUsButton>
         </div>
       </section>
 
@@ -280,7 +284,9 @@ export default function Page() {
           </Box>
 
           <Box className="lg:col-start-1 lg:col-span-2 lg:row-start-7 lg:row-span-2 px-12 py-4">
-            <div
+            <a
+              href="https://dune.com/phala_network/phala-analytics"
+              target="_blank"
               className={cn(
                 "text-white",
                 "grid grid-cols-2 gap-4 lg:grid-cols-4"
@@ -296,18 +302,18 @@ export default function Page() {
                 13,270
               </Stats>
               <Stats name="TX" icon="/icons/hero-tx.png">151,268,233</Stats>
-            </div>
+            </a>
           </Box>
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <button
+          <ContactUsButton
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
             Join the Waitlist
-          </button>
+          </ContactUsButton>
         </div>
       </section>
 
@@ -325,13 +331,13 @@ export default function Page() {
         />
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <button
+          <ContactUsButton
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
             Join the Waitlist
-          </button>
+          </ContactUsButton>
         </div>
       </section>
 
@@ -345,13 +351,14 @@ export default function Page() {
           ))}
         </dl>
         <div className="mt-16 flex flex-col gap-6 w-[180px] mx-auto">
-          <button
+          <Link
+            href="/tags/AI-Agent%20Contract"
             className={cn(
               "btn btn-primary btn-blk bg-transparent btn-rounded w-full text-black-800 border-black-800"
             )}
           >
             More
-          </button>
+          </Link>
         </div>
       </section>
 
