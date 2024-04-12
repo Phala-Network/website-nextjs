@@ -93,27 +93,84 @@ const features3 = [
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-8 sm:gap-16">
+    <div className="flex flex-col gap-8 sm:gap-16 bg-black-800">
       <HeroSection01
-        label="introducing"
-        title="The Multi-agent AI Blockchain Coprocessor"
-        subTitle="Phala Network is dedicated to forging a multi-agent ecosystem, seamlessly merging leading Web3 and AI frameworks to empower developers in deploying and managing AI agents on a robust, decentralized platform with ease."
+        title="Build Decentralized Autonomous AI Agents"
+        subTitle="Phala Network is at the forefront of innovation with our AI-Agent Contract platform, transforming decentralized AI agents. We aim to revolutionize their control and governance, ensuring operation within a decentralized framework that eliminates central authority control."
+        heroImage="/illustrations/hero-bg-ai-agents.jpg"
+        theme="dark"
+        headingClass="max-w-3xl"
       >
-        <a
-          href="#"
-          className="btn btn-primary btn-phala btn-rounded min-w-52"
-          target="_blank"
-        >
-          Discover Agents
-        </a>
-        <a
-          href="#"
-          className="btn btn-secondary btn-blk btn-rounded min-w-52"
-          target="_blank"
-        >
-          Get started
-        </a>
       </HeroSection01>
+
+      <section className="lg:mt-[-20rem] z-10 lg:px-8 xl:px-32">
+        <figure className="mt-12 mx-auto max-w-5xl">
+          <img src="/illustrations/how-ai-agents-works.png" alt="How AI Agents Works" />
+        </figure>
+
+        <div className="flex flex-row gap-6 mx-auto mt-6 max-w-5xl">
+          <div
+            className={cn(
+              "rounded-sm bg-whiteAlpha-50 border border-whiteAlpha-200",
+              "flex flex-col p-8 gap-5 flex-1"
+            )}
+          >
+            <h3
+              className={cn(
+                "text-xl font-bold h-8",
+                "text-transparent !bg-clip-text [background:linear-gradient(90deg,_#cdfa50,_#29bdb4_50.55%,_#7f52fa)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [display:-webkit-inline-box] overflow-hidden text-ellipsis [-webkit-line-clamp:2] [-webkit-box-orient:vertical] max-w-full mq450:text-lgi mq450:leading-[29px]"
+              )}
+            >
+              Decentralization Ethos
+            </h3>
+            <div className="text-black-200">
+              AI-Agent Contract transforms AI agents into autonomous
+              entities, emphasizing decentralization to promote unbiased
+              decisions free from central control, leading to more
+              resilient, transparent AI aligned with user interests.
+            </div>
+          </div>
+          <div
+            className={cn(
+              "rounded-sm bg-whiteAlpha-50 border border-whiteAlpha-200",
+              "flex flex-col p-8 gap-5 flex-1"
+            )}
+          >
+            <h3
+              className={cn(
+                "text-xl font-bold h-8",
+                "text-transparent !bg-clip-text [background:linear-gradient(90deg,_#cdfa50,_#29bdb4_50.55%,_#7f52fa)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [display:-webkit-inline-box] overflow-hidden text-ellipsis [-webkit-line-clamp:2] [-webkit-box-orient:vertical] max-w-full mq450:text-lgi mq450:leading-[29px]"
+              )}
+            >
+              Tokenomics Simplified
+            </h3>
+            <div className="text-black-200">
+              AI-Agent Contract integrates tokenomics, revolutionizing
+              governance and incentivization within the ecosystem through
+              cryptocurrencies. This approach rewards contributions and
+              enables decentralized, community-driven management of AI
+              agents, enhancing participation and autonomy.
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-6 w-[480px] mx-auto">
+          <button
+            className={cn(
+              "btn btn-lg btn-primary btn-phala btn-rounded w-full"
+            )}
+          >
+            Join the Waitlist
+          </button>
+          <button
+            className={cn(
+              "btn btn-lg btn-primary btn-phala btn-rounded w-full"
+            )}
+          >
+            Explore Docs
+          </button>
+        </div>
+      </section>
 
       <Section theme="light">
         <SectionHeader>Phala Network is Fueling the Multi-Agent AI Economy</SectionHeader>
