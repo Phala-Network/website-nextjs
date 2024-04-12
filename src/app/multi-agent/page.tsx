@@ -11,7 +11,8 @@ import { type GenericComponent } from '@/types/components'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
-  title: "The Multi-agent AI Blockchain Coprocessor by Phala Network",
+  title: "AI-Agent Smart Contract by Phala Network",
+  description: "The AI Agent Contract aims to facilitate AI integration, decentralize ownership and monetization, provide tokenomics for Web3 and AI adoption.",
 }
 
 function Box({ className, children }: GenericComponent) {
@@ -28,21 +29,21 @@ function LocalSectionHeader({ label, title, subTitle }: {
   subTitle?: string,
 }) {
   return (
-    <header className="text-center max-w-3xl mx-auto px-8 py-12">
+    <header className="text-center max-w-3xl mx-auto px-4 lg:px-8 py-8 lg:py-12">
       {label && (
         <span className="text-ai-agent text-sm font-bold">{label}</span>
       )}
-      <h2 className="text-4xl font-bold text-white">{title}</h2>
+      <h2 className="text-2xl lg:text-4xl font-bold text-white">{title}</h2>
       {subTitle && <p className="text-black-200 mt-4">{subTitle}</p>}
     </header>
   )
 }
 
 export default function Page() {
-  // const posts = use(getPostList({
-  //   includeTags: ['Blockchain Coprocessor'],
-  //   sortReversed: true,
-  // }))
+  const posts = use(getPostList({
+    includeTags: ['AI-Agent Contract'],
+    sortReversed: true,
+  }))
   return (
     <div className="flex flex-col gap-8 sm:gap-16 bg-black-900">
       <HeroSection01
@@ -51,6 +52,7 @@ export default function Page() {
         heroImage="/illustrations/hero-bg-ai-agents.jpg"
         theme="dark"
         headingClass="max-w-3xl"
+        className="bg-ai-agent xl:bg-transparent"
       >
       </HeroSection01>
 
@@ -59,31 +61,31 @@ export default function Page() {
           <img src="/illustrations/how-ai-agents-works.png" alt="How AI Agents Works" />
         </figure>
 
-        <div className="flex flex-row gap-6 mx-auto mt-6 max-w-5xl">
-          <Box className="flex flex-col p-8 gap-5 flex-1">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mx-auto mt-4 lg:mt-6 max-w-5xl">
+          <Box className="flex flex-col p-6 lg:p-8 gap-2.5 lg:gap-5 flex-1">
             <h3
               className={cn(
-                "text-xl font-bold h-8 text-ai-agent",
+                "lg:text-xl font-bold lg:h-8 text-ai-agent",
               )}
             >
               Decentralization Ethos
             </h3>
-            <div className="text-black-200">
+            <div className="text-sm lg:text-md text-black-200">
               AI-Agent Contract transforms AI agents into autonomous
               entities, emphasizing decentralization to promote unbiased
               decisions free from central control, leading to more
               resilient, transparent AI aligned with user interests.
             </div>
           </Box>
-          <Box className="flex flex-col p-8 gap-5 flex-1">
+          <Box className="flex flex-col p-6 lg:p-8 gap-2.5 lg:gap-5 flex-1">
             <h3
               className={cn(
-                "text-xl font-bold h-8 text-ai-agent",
+                "lg:text-xl font-bold lg:h-8 text-ai-agent",
               )}
             >
               Tokenomics Simplified
             </h3>
-            <div className="text-black-200">
+            <div className="text-sm lg:text-md text-black-200">
               AI-Agent Contract integrates tokenomics, revolutionizing
               governance and incentivization within the ecosystem through
               cryptocurrencies. This approach rewards contributions and
@@ -93,17 +95,17 @@ export default function Page() {
           </Box>
         </div>
 
-        <div className="mt-16 flex flex-col gap-6 w-[480px] mx-auto">
+        <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
           <button
             className={cn(
-              "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
+              "btn lg:btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
             Join the Waitlist
           </button>
           <button
             className={cn(
-              "btn btn-lg btn-primary btn-blk btn-rounded w-full"
+              "btn lg:btn-lg btn-primary btn-blk btn-rounded w-full"
             )}
           >
             Explore Docs
@@ -111,7 +113,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-8 lg:py-20 px-6 lg:px-8 mx-auto max-w-6xl">
+      <section className="py-8 px-6 lg:px-8 mx-auto max-w-6xl">
         <LocalSectionHeader
           label="AI-Agent Contract"
           title="Integrating AI Agents on Blockchain"
@@ -120,11 +122,11 @@ export default function Page() {
 
         <Box>
           <figure>
-            <img src="/illustrations/ai-agents/features.png" alt="Phala AI Agents Features" />
+            <img src="/illustrations/ai-agents/features.png" alt="Phala AI Agents Features" className="max-w-full" />
           </figure>
         </Box>
 
-        <div className="flex flex-row gap-6 mt-6">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mt-4 lg:mt-6">
           <Box className="flex-1 p-8">
             <img
               src="/illustrations/ai-agents/feature-connective.png"
@@ -151,7 +153,7 @@ export default function Page() {
           </Box>
         </div>
 
-        <div className="mt-16 flex flex-col gap-6 w-[480px] mx-auto">
+        <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
           <button
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
@@ -162,37 +164,37 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-8 lg:py-20 px-6 lg:px-8 mx-auto max-w-6xl">
+      <section className="py-8 px-6 lg:px-8 mx-auto max-w-6xl">
         <LocalSectionHeader
           label="Build with AI-Agent Contract"
           title="Multi AI-Agent Contract Offerings"
         />
 
-        <div className="flex flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           <Box className="flex flex-col items-center flex-1 p-12">
             <img
               src="/illustrations/ai-agents/templates.png"
               className="w-60 aspect-[178/240] mb-6"
             />
-            <h4 className="text-xl text-center text-white">Pre-built AI-Agent Templates</h4>
+            <h4 className="lg:text-xl text-center text-white">Pre-built AI-Agent Templates</h4>
           </Box>
           <Box className="flex flex-col items-center flex-1 p-12">
             <img
               src="/illustrations/ai-agents/tokenomics.png"
               className="w-60 aspect-[178/240] mb-6"
             />
-            <h4 className="text-xl text-center text-white">Tokenomics on Ethereum / L2</h4>
+            <h4 className="lg:text-xl text-center text-white">Tokenomics on Ethereum / L2</h4>
           </Box>
           <Box className="flex flex-col items-center flex-1 p-12">
             <img
               src="/illustrations/ai-agents/serverless.png"
               className="w-60 aspect-[178/240] mb-6"
             />
-            <h4 className="text-xl text-center text-white">Serverless AI-Agents Hosted on Phala Network</h4>
+            <h4 className="lg:text-xl text-center text-white">Serverless AI-Agents Hosted on Phala Network</h4>
           </Box>
         </div>
 
-        <div className="mt-16 flex flex-col gap-6 w-[480px] mx-auto">
+        <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
           <button
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
@@ -203,14 +205,14 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-8 lg:py-20 px-6 lg:px-8 mx-auto max-w-6xl">
+      <section className="py-8 px-6 lg:px-8 mx-auto max-w-6xl">
         <LocalSectionHeader
           label="AI-Agent Contract Backed by Phala Network"
           title="The Phala Network Advantage"
         />
 
-        <div className="grid grid-cols-2 grid-rows-7 gap-6">
-          <Box className="col-span-1 row-start-1 row-span-6 p-8 flex flex-col gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-7 gap-6">
+          <Box className="lg:col-span-1 lg:row-start-1 lg:row-span-6 p-8 flex flex-col gap-6">
             <h3 className="text-white text-lg font-bold">Powered By DePIN</h3>
             <figure className="grow">
               <img
@@ -223,7 +225,7 @@ export default function Page() {
             </div>
           </Box>
 
-          <Box className="col-span-1 row-start-1 row-span-3 p-8">
+          <Box className="lg:col-span-1 lg:row-start-1 lg:row-span-3 p-8">
             <h3 className="text-white text-lg font-bold">Integrate Your Favorite Tools With Ease</h3>
             <ul
               className={cn(
@@ -246,7 +248,7 @@ export default function Page() {
             </ul>
           </Box>
 
-          <Box className="col-span-1 row-start-4 row-span-3 p-8">
+          <Box className="lg:col-span-1 lg:row-start-4 lg:row-span-3 p-8">
             <h3 className="text-white text-lg font-bold">Bring AI Agent Use Cases to Life</h3>
             <ul
               className={cn(
@@ -257,28 +259,33 @@ export default function Page() {
                 <img
                   src="/illustrations/ai-agents/case-social.png"
                   alt=""
-                  className="h-16"
+                  className="lg:h-16"
                 />
               </li>
               <li>
                 <img
                   src="/illustrations/ai-agents/case-defi.png"
                   alt=""
-                  className="h-16"
+                  className="lg:h-16"
                 />
               </li>
               <li>
                 <img
                   src="/illustrations/ai-agents/case-dao.png"
                   alt=""
-                  className="h-16"
+                  className="lg:h-16"
                 />
               </li>
             </ul>
           </Box>
 
-          <Box className="col-start-1 col-span-2 row-start-7 row-span-2 px-12 py-4">
-            <div className="text-white flex flex-row items-center justify-evenly">
+          <Box className="lg:col-start-1 lg:col-span-2 lg:row-start-7 lg:row-span-2 px-12 py-4">
+            <div
+              className={cn(
+                "text-white",
+                "grid grid-cols-2 gap-4 lg:grid-cols-4"
+              )}
+            >
               <Stats name="Online Workers" icon="/icons/hero-online-worker.png">
                 34,238
               </Stats>
@@ -293,7 +300,7 @@ export default function Page() {
           </Box>
         </div>
 
-        <div className="mt-16 flex flex-col gap-6 w-[480px] mx-auto">
+        <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
           <button
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
@@ -304,7 +311,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-8 lg:py-20 px-6 lg:px-8 mx-auto max-w-6xl">
+      <section className="py-8 px-6 lg:px-8 mx-auto max-w-6xl">
         <LocalSectionHeader
           label="AI-Agent Ecosystem"
           title="We Are Not Alone"
@@ -317,7 +324,7 @@ export default function Page() {
           className="max-w-full"
         />
 
-        <div className="mt-16 flex flex-col gap-6 w-[480px] mx-auto">
+        <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
           <button
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
@@ -329,17 +336,13 @@ export default function Page() {
       </section>
 
       <section
-        className="relative py-8 lg:py-20 px-6 lg:px-8 rounded-sm overflow-hidden aspect-[2880/1614]"
-        style={{
-          backgroundImage: 'url(/illustrations/ai-agents/bg-blog.jpg)',
-          backgroundSize: 'cover',
-        }}
+        className="relative py-8 px-6 lg:px-8 rounded-sm overflow-hidden bg-ai-agent"
       >
         <h2 className="text-black-950 text-4xl font-black text-center">Latest Developments</h2>
-        <dl className="flex flex-col gap-6">
-          {/* {(posts || []).map((post, idx) => ( */}
-          {/*   <BlogPostCard key={post.id || idx} post={post} /> */}
-          {/* ))} */}
+        <dl className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-16">
+          {(posts || []).map((post, idx) => (
+            <BlogPostCard key={post.id || idx} post={post} dir="col" theme="dark" />
+          ))}
         </dl>
         <div className="mt-16 flex flex-col gap-6 w-[180px] mx-auto">
           <button
