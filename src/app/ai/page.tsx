@@ -6,10 +6,10 @@ import dedent from 'dedent'
 import { type GenericComponent } from '@/types/components'
 import { cn } from '@/lib/utils'
 import { getPostList } from '@/queries/GetPostList'
-import { Stats } from '@/components/Stats'
 import { HeroSection01, BlogPostCard } from '@/components/marketing'
 import { ContactUsButton } from '@/components/ContactUsButton'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
+import { NodeStats } from './node-stats'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -284,25 +284,7 @@ export default function Page() {
           </Box>
 
           <Box className="lg:col-start-1 lg:col-span-2 lg:row-start-7 lg:row-span-2 px-12 py-4">
-            <a
-              href="https://dune.com/phala_network/phala-analytics"
-              target="_blank"
-              className={cn(
-                "text-white",
-                "grid grid-cols-2 gap-4 lg:grid-cols-4"
-              )}
-            >
-              <Stats name="Online Workers" icon="/icons/hero-online-worker.png">
-                34,238
-              </Stats>
-              <Stats name="Compute" icon="/icons/hero-compute.png">
-                154,272 vCPU
-              </Stats>
-              <Stats name="Cross-Chain TX" icon="/icons/hero-cross-chain-tx.png">
-                13,270
-              </Stats>
-              <Stats name="TX" icon="/icons/hero-tx.png">151,268,233</Stats>
-            </a>
+            <NodeStats />
           </Box>
         </div>
 
