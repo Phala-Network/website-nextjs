@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import { GenericComponent } from '../../types/components'
 
@@ -6,11 +7,30 @@ export interface HeroSectionProps extends GenericComponent {
   heroImage?: string
   title: string
   subTitle: string
+  theme? : 'light' | 'dark'
+  headingClass?: string
+}
+
+interface Colors {
+  heading: string
+  subTitle: string
 }
 
 const DEFAULT_HERO_IMAGE = "/illustrations/hero-bg-default.jpg"
 
-export function HeroSection({ label, heroImage, title, subTitle, className, children }: HeroSectionProps) {
+export function HeroSection({ label, heroImage, title, subTitle, className, children, theme, headingClass }: HeroSectionProps) {
+  const colors: Colors = useMemo(() => {
+    if (theme === 'dark') {
+      return {
+        heading: 'text-white',
+        subTitle: 'text-white',
+      }
+    }
+    return {
+      heading: 'text-black-800',
+      subTitle: 'text-black-600',
+    }
+  }, [theme])
   return (
     <section className={cn("grid grid-cols-1", className)}>
       <div className={cn(
@@ -21,6 +41,7 @@ export function HeroSection({ label, heroImage, title, subTitle, className, chil
           className={cn(
             "mx-auto max-w-4xl",
             "pt-24 pb-32 sm:pt-32 sm:pb-48 lg:pb-56 lg:pt-44",
+            headingClass,
           )}
         >
           <div className="text-center flex flex-col gap-4">
@@ -36,10 +57,10 @@ export function HeroSection({ label, heroImage, title, subTitle, className, chil
                 </span>
               </div>
             ) : null}
-            <h1 className="text-32 lg:text-48 font-black text-black-800">
+            <h1 className={cn("text-32 lg:text-48 font-black", colors.heading)}>
               {title}
             </h1>
-            <p className="text-16 leading-8 text-black-600">
+            <p className={cn("text-16 leading-8", colors.subTitle)}>
               {subTitle}
             </p>
           </div>
