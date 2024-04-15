@@ -13,6 +13,7 @@ const contactUsSchema = z.object({
   firstname: z.string().min(3),
   email: z.string().email().email(),
   message: z.string().min(10),
+  form_id: z.string(),
 })
 
 type IContactUsInput = z.infer<typeof contactUsSchema>
@@ -22,7 +23,7 @@ async function sendPostFormRequest(input: IContactUsInput) {
     fields: R.toPairs(input).map(([key, value]) => ({ name: key, value, objectTypeId: '0-1' })),
   }
   try {
-    const resp = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/20647882/3476ecbe-5ac1-4b7c-beb3-cb66cea0f65b`, {
+    const resp = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${input.form_id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -58,7 +59,7 @@ function FieldError({ error }: { error?: string }) {
   )
 }
 
-export function ContactUsForm({ legend, className }: { legend?: React.ReactNode, className?: string }) {
+export function ContactUsForm({ legend, className, formId }: { legend?: React.ReactNode, className?: string, formId?: string }) {
   const { register, handleSubmit, reset, formState: { errors, isValid, isSubmitting, isSubmitSuccessful } } = useForm<IContactUsInput>({
     resolver: zodResolver(contactUsSchema),
     mode: 'onChange',
@@ -78,6 +79,7 @@ export function ContactUsForm({ legend, className }: { legend?: React.ReactNode,
       )}
       {legend}
       <fieldset className="w-full flex flex-col lg:flex-row gap-3">
+        <input type="hidden" {...register("form_id")} value={formId || "20647882/3476ecbe-5ac1-4b7c-beb3-cb66cea0f65b"} />
         <div className="relative w-full">
           <input
             {...register("firstname", { required: true })}

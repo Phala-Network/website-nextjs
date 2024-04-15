@@ -7,7 +7,7 @@ import { Modal } from '@/components/Modal'
 
 const ContactUsModalVisibleAtom = atom(false)
 
-export function ContactUsButton({ className, children = 'Contact Us' }: { className?: string, children?: React.ReactNode }) {
+export function ContactUsButton({ className, children = 'Contact Us', formId }: { className?: string, children?: React.ReactNode, formId?: string }) {
   const setVisible = useSetAtom(ContactUsModalVisibleAtom)
   return (
     <>
@@ -21,7 +21,7 @@ export function ContactUsButton({ className, children = 'Contact Us' }: { classN
         visiableAtom={ContactUsModalVisibleAtom}
         title="Contact Us"
       >
-        <ContactUsForm className="flex flex-col gap-4 items-end" />
+        <ContactUsForm className="flex flex-col gap-4 items-end" formId={formId} />
       </Modal>
     </>
   )
