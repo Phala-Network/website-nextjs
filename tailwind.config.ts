@@ -1,12 +1,13 @@
 const { fontFamily } = require('tailwindcss/defaultTheme')
-const plugin = require('tailwindcss/plugin')
+import { PluginAPI } from 'tailwindcss/types/config'
+import plugin from 'tailwindcss/plugin'
 
 //
 // Data Display Components
 //
 
-function headingComponents({ addComponents, theme }) {
-  const heading = [
+function headingComponents({ addComponents, theme }: PluginAPI) {
+  const heading: Record<string, any>[] = [
     {
       '.heading-xs': {
         fontSize: theme('fontSize.sm'), // 14px
@@ -111,8 +112,8 @@ function headingComponents({ addComponents, theme }) {
   addComponents(heading)
 }
 
-function cardComponents({ addComponents, theme }) {
-  const cards = [
+function cardComponents({ addComponents, theme }: PluginAPI) {
+  const cards: Record<string, any>[] = [
     {
       '.card-elevated': {
         background: '#fff',
@@ -131,7 +132,7 @@ function cardComponents({ addComponents, theme }) {
       }
     }
   ]
-  const colors = theme('colors', {})
+  const colors = theme('colors', {}) as Record<string, any>
   for (let color in colors) {
     cards.push({
       [`.card-${color}`]: {
@@ -142,9 +143,9 @@ function cardComponents({ addComponents, theme }) {
   addComponents(cards)
 }
 
-function tagComponents({ addComponents, theme }) {
-  const colors = theme('colors', {})
-  let tags = [
+function tagComponents({ addComponents, theme }: PluginAPI) {
+  const colors = theme('colors', {}) as Record<string, any>
+  let tags: Record<string, any>[] = [
     {
       '.tag': {
         fontSize: theme('fontSize.sm'), // 14px
@@ -202,9 +203,9 @@ function tagComponents({ addComponents, theme }) {
 // Form Components
 //
 
-function buttonComponents({ addComponents, theme }) {
-  const colors = theme('colors', {})
-  let buttons = [
+function buttonComponents({ addComponents, theme }: PluginAPI) {
+  // const colors = theme('colors', {})
+  let buttons: Record<string, any>[] = [
     // Size
     {
       '.btn': {
@@ -319,6 +320,9 @@ function buttonComponents({ addComponents, theme }) {
       '.btn-wht': {
         backgroundColor: theme('colors.white'),
         color: theme('colors.black.800'),
+        '&:hover': {
+          backgroundColor: 'oklch(0.278078 0.029596 256.848 / 0.1)',
+        },
       },
       '.btn-phat': {
         backgroundColor: theme('colors.phatGreen.400'),
@@ -333,9 +337,9 @@ function buttonComponents({ addComponents, theme }) {
   addComponents(buttons)
 }
 
-function presetGradient({ addComponents, theme }) {
+function presetGradient({ addComponents, theme }: PluginAPI) {
   const gradients = []
-  const colors = theme('colors', {})
+  const colors = theme('colors', {}) as Record<string, any>
   for (let color in colors) {
     gradients.push({
       [`.bg-gradient-${color}`]: {
@@ -357,7 +361,7 @@ function presetGradient({ addComponents, theme }) {
 //
 // AI-Agents
 //
-function themeAIAgent({ addComponents, theme }) {
+function themeAIAgent({ addComponents }: PluginAPI) {
   const settings = []
   settings.push({
     '.btn-ai-agent': {
@@ -378,6 +382,7 @@ function themeAIAgent({ addComponents, theme }) {
   })
   addComponents(settings)
 }
+
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -406,9 +411,9 @@ module.exports = {
     spacing: {
       px: '1px',
       0: '0',
-      025: '0.125rem',  // 0.125rem = 2px
-      050: '0.25rem',     // 0.25rem = 4px
-      075: '0.375rem',  // 0.375rem = 6px
+      '025': '0.125rem',  // 0.125rem = 2px
+      '050': '0.25rem',     // 0.25rem = 4px
+      '075': '0.375rem',  // 0.375rem = 6px
       100: '0.5rem',      // 0.5rem = 8px
       150: '0.75rem',     // 0.75rem = 12px
       200: '1rem',        // 1rem = 16px
@@ -826,14 +831,14 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
+        // primary: {
+        //   DEFAULT: 'hsl(var(--primary))',
+        //   foreground: 'hsl(var(--primary-foreground))',
+        // },
+        // secondary: {
+        //   DEFAULT: 'hsl(var(--secondary))',
+        //   foreground: 'hsl(var(--secondary-foreground))',
+        // },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
