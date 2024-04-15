@@ -2,6 +2,7 @@
 
 import { type ReactNode, useState, useMemo } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { type MotionProps, motion } from 'framer-motion'
 import { atom, useAtom, useAtomValue, useSetAtom } from 'jotai'
@@ -18,6 +19,37 @@ import './SiteNav.css'
 import { ChangelogIcon } from '@/components/icons'
 
 import { AnimatedDetails } from './Details'
+
+function Banner() {
+  const pathname = usePathname()
+  if (pathname === '/ai') {
+    return null
+  }
+  return (
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 z-50">
+      <div
+        className={cn(
+          "pointer-events-auto flex items-center justify-between gap-x-6",
+          "bg-ai-agent sm:rounded-xs",
+          "p-0.5",
+        )}
+      >
+        <div className="px-12 py-2.5 sm:py-3 bg-blackAlpha-600 rounded-xs">
+          <p className="text-sm leading-6 text-white">
+            <Link href="/ai?utm_source=website&utm_medium=banner&utm_campaign=annoucement&utm_id=annoucement">
+              <strong className="font-semibold">NEWS</strong>
+              <svg viewBox="0 0 2 2" className="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
+                <circle cx={1} cy={1} r={1} />
+              </svg>
+              Explore Multi AI Agent Contract by Phala Network
+              &nbsp;<span aria-hidden="true">&rarr;</span>
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 
 function IconCompute({ className }: { className?: string }) {
@@ -77,7 +109,7 @@ function IconJobs({ className }: { className?: string }) {
 
 const LogoVariants = {
   hover: {
-    fill: "#7F52FA",
+    fill: "#fff",
     rotate: "-15deg",
   },
   blur: {
@@ -98,7 +130,7 @@ function Logo() {
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <svg viewBox="0 0 56 56" className="h-full untanglable bg-phalaGreen-500 rounded-sm">
+      <svg viewBox="0 0 56 56" className={cn("h-full untanglable bg-phalaGreen-500 rounded-sm", isHover && 'bg-phalaPurple')}>
         <motion.path
           d="M37.2219 13.7344H20.3467H19.5381H14.7217V24.8781V26.656V27.6629H20.3467V26.656V24.8781V19.3063H37.2219V13.7344ZM37.222 19.3063H42.847V27.6629H37.222V19.3063ZM14.7217 33.2343H20.3468V36.0214V41.591H14.7217V36.0214V34.6279V33.2343ZM20.3468 27.6625H37.2196V33.2343H20.3468V27.6625Z"
           variants={LogoVariants}
@@ -547,6 +579,7 @@ function SiteNav() {
 
   return (
     <>
+      <Banner />
       <nav className={cn(
           "site-nav w-screen fixed z-30 top-0 left-0",
           navVisible ? null : 'hide'
