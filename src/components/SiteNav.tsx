@@ -2,6 +2,7 @@
 
 import { type ReactNode, useState, useMemo } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { type MotionProps, motion } from 'framer-motion'
 import { atom, useAtom, useAtomValue, useSetAtom } from 'jotai'
@@ -11,7 +12,6 @@ import * as R from 'ramda'
 import { useScroll, useMotionValueEvent } from 'framer-motion'
 import { BsDiscord, BsTwitter } from 'react-icons/bs'
 import { BiDetail } from 'react-icons/bi'
-import { HiX } from 'react-icons/hi'
 import { MdCodeOff, MdCode, MdAssignment, MdAssignmentInd, MdArrowForward } from 'react-icons/md'
 import { IoServer, IoNewspaperSharp, IoChatbubbleEllipses } from 'react-icons/io5'
 
@@ -21,16 +21,20 @@ import { ChangelogIcon } from '@/components/icons'
 import { AnimatedDetails } from './Details'
 
 function Banner() {
+  const pathname = usePathname()
+  if (pathname === '/ai') {
+    return null
+  }
   return (
-    <>
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 z-50">
-        <div
-          className={cn(
-            "pointer-events-auto flex items-center justify-between gap-x-6",
-            "bg-ai-agent sm:rounded-xs",
-            "px-12 py-2.5 sm:py-3",
-          )}
-        >
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 z-50">
+      <div
+        className={cn(
+          "pointer-events-auto flex items-center justify-between gap-x-6",
+          "bg-ai-agent sm:rounded-xs",
+          "p-0.5",
+        )}
+      >
+        <div className="px-12 py-2.5 sm:py-3 bg-blackAlpha-600 rounded-xs">
           <p className="text-sm leading-6 text-white">
             <Link href="/ai?utm_source=website&utm_medium=banner&utm_campaign=annoucement&utm_id=annoucement">
               <strong className="font-semibold">NEWS</strong>
@@ -43,7 +47,7 @@ function Banner() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
