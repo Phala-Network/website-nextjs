@@ -104,7 +104,7 @@ export default function Page() {
               "btn lg:btn-lg btn-primary btn-ai-agent btn-rounded lg:btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
+            Join the Agent Wars Waitlist
           </JoinWaitlistButton>
           <a
             href="https://docs.phala.network/"
@@ -164,7 +164,7 @@ export default function Page() {
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
+            Join the Agent Wars Waitlist
           </JoinWaitlistButton>
         </div>
       </section>
@@ -205,7 +205,7 @@ export default function Page() {
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
+            Join the Agent Wars Waitlist
           </JoinWaitlistButton>
         </div>
       </section>
@@ -295,7 +295,7 @@ export default function Page() {
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
+            Join the Agent Wars Waitlist
           </JoinWaitlistButton>
         </div>
       </section>
@@ -319,7 +319,7 @@ export default function Page() {
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
+            Join the Agent Wars Waitlist
           </JoinWaitlistButton>
         </div>
       </section>
