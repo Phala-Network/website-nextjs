@@ -139,7 +139,7 @@ export function JoinWaitlistModal() {
   return (
     <Modal
       visiableAtom={JoinWaitlistModalVisibleAtom}
-      title="Join the Waitlist"
+      title="Join the Agent Wars Waitlist"
       theme="dark"
     >
       <JoinWaitlistForm />
