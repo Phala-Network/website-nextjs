@@ -1,15 +1,15 @@
 import { use } from 'react'
 import Link from 'next/link'
 import { type Metadata } from 'next'
-import dedent from 'dedent'
 
 import { type GenericComponent } from '@/types/components'
 import { cn } from '@/lib/utils'
 import { getPostList } from '@/queries/GetPostList'
 import { HeroSection01, BlogPostCard } from '@/components/marketing'
-import { ContactUsButton } from '@/components/ContactUsButton'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
+
 import { NodeStats } from './node-stats'
+import { JoinWaitlistModal, JoinWaitlistButton } from './join-waitlist-modal'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -47,6 +47,7 @@ export default function Page() {
     sortReversed: true,
   }))
   return (
+    <>
     <div className="flex flex-col gap-8 sm:gap-16 bg-black-900">
       <HeroSection01
         title="Build Decentralized Autonomous AI Agents"
@@ -98,13 +99,13 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <ContactUsButton
+          <JoinWaitlistButton
             className={cn(
               "btn lg:btn-lg btn-primary btn-ai-agent btn-rounded lg:btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
-          </ContactUsButton>
+            Join the Agent Wars Waitlist
+          </JoinWaitlistButton>
           <a
             href="https://docs.phala.network/"
             target="_blank"
@@ -158,13 +159,13 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <ContactUsButton
+          <JoinWaitlistButton
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
-          </ContactUsButton>
+            Join the Agent Wars Waitlist
+          </JoinWaitlistButton>
         </div>
       </section>
 
@@ -199,13 +200,13 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <ContactUsButton
+          <JoinWaitlistButton
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
-          </ContactUsButton>
+            Join the Agent Wars Waitlist
+          </JoinWaitlistButton>
         </div>
       </section>
 
@@ -289,13 +290,13 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <ContactUsButton
+          <JoinWaitlistButton
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
-          </ContactUsButton>
+            Join the Agent Wars Waitlist
+          </JoinWaitlistButton>
         </div>
       </section>
 
@@ -313,13 +314,13 @@ export default function Page() {
         />
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <ContactUsButton
+          <JoinWaitlistButton
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
           >
-            Join the Waitlist
-          </ContactUsButton>
+            Join the Agent Wars Waitlist
+          </JoinWaitlistButton>
         </div>
       </section>
 
@@ -352,6 +353,9 @@ export default function Page() {
           </div>
         </div>
       </section>
+
     </div>
+    <JoinWaitlistModal />
+    </>
   )
 }

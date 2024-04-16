@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 
 const contactUsSchema = z.object({
   firstname: z.string().min(3),
-  email: z.string().email().email(),
+  email: z.string().email(),
   message: z.string().min(10),
 })
 
