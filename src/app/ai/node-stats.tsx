@@ -1,7 +1,5 @@
 'use client'
 
-import { type ReactNode } from 'react'
-
 import { useComputationStats } from '@/hooks/useComputationStats'
 import { cn } from '@/lib/utils'
 import { Stats } from '@/components/Stats'
