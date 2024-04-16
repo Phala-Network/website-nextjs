@@ -41,7 +41,7 @@ export function buildProxyImageUrl(source: ParsedListPage | ParsedPage | ImageBl
   }
   const query = new URLSearchParams(params)
   // return `/api/image?${query.toString()}`
-  return `https://img0.phala.world/tmp/insecure/plain/https://img0.phala.world/files/${source.id}.jpg`
+  return `https://img0.phala.world/notion/insecure/plain/https://img0.phala.world/files/${source.id}.jpg`
 }
 
 export function generateSlug(title: string): string {
