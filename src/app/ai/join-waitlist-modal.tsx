@@ -13,7 +13,7 @@ import * as R from 'ramda'
 import { cn } from '@/lib/utils'
 import { OpenModalButton, Modal } from '@/components/Modal'
 
-export const JoinWaitlistModalVisibleAtom = atom(true)
+export const JoinWaitlistModalVisibleAtom = atom(false)
 
 const contactUsSchema = z.object({
   email: z.string().email(),
