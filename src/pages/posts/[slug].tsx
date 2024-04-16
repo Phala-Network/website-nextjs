@@ -58,9 +58,10 @@ const PostPage = ({
     )
   }
   useHydrateAtoms([[blocksAtom, page.blocks]])
-  const postCover = page.cover ? (
-    'external' in page.cover ? page.cover.external.url : page.cover.file.url
-  ) : "https://phala.network/og-image.jpg"
+  // const postCover = page.cover ? (
+  //   'external' in page.cover ? page.cover.external.url : page.cover.file.url
+  // ) : "https://phala.network/og-image.jpg"
+  const postCover = `https://img0.phala.world/cover/${page.id}.jpg`
   return (
     <>
       {page.title ? (
@@ -131,11 +132,17 @@ const PostPage = ({
                 <div
                   className={cn('lg:rounded-3xl overflow-hidden')}
                 >
-                  <PageCoverImage
-                    className="w-full aspect-[856/442]"
-                    page={page}
-                    width={856}
-                    height={442}
+                  <img
+                    className="w-full aspect-[872/487]"
+                    width={872}
+                    height={487}
+                    // src={`https://img0.phala.world/notion/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
+                    src={`https://img0.phala.world/cover/${page.id}.jpg`}
+                    // src={
+                    //   page.id === '879ccad7-3aaf-4c7e-b043-d98a1b77ee7b'
+                    //     ? `https://img0.phala.world/cover/${page.id}.jpg`
+                    //     : `https://img0.phala.world/notion/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`
+                    // }
                   />
                 </div>
               ) : null}
