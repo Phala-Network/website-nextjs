@@ -61,7 +61,7 @@ const PostPage = ({
   // const postCover = page.cover ? (
   //   'external' in page.cover ? page.cover.external.url : page.cover.file.url
   // ) : "https://phala.network/og-image.jpg"
-  const postCover = `https://img0.phala.world/cover/${page.id}.jpg`
+  const postCover = `https://img0.phala.world/cover/1200x630/${page.id}.jpg`
   return (
     <>
       {page.title ? (
@@ -136,7 +136,7 @@ const PostPage = ({
                     className="w-full aspect-[872/487]"
                     width={872}
                     height={487}
-                    src={`https://img0.phala.world/tmp/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
+                    src={`https://img0.phala.world/cover/1744x974/${page.id}.jpg`}
                     // src={`https://img0.phala.world/notion/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
                     // src={`https://img0.phala.world/cover/${page.id}.jpg`}
                     // src={
