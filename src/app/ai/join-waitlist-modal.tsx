@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import * as R from 'ramda'
-import Turnstile from "react-turnstile"
+import Turnstile, { useTurnstile } from "react-turnstile"
 
 import { cn } from '@/lib/utils'
 import { OpenModalButton, Modal } from '@/components/Modal'
@@ -57,8 +57,12 @@ export function JoinWaitlistForm() {
     resolver: zodResolver(contactUsSchema),
     mode: 'onChange',
   })
+  const turnstile = useTurnstile()
   return (
-    <form className="text-black-900 flex flex-col gap-6" onSubmit={handleSubmit(sendPostFormRequest)}>
+    <form className="text-black-900 flex flex-col gap-6" onSubmit={handleSubmit(async (input) => {
+      await sendPostFormRequest(input)
+      turnstile.reset()
+    })}>
       {isSubmitSuccessful && (
         <>
           <div className="absolute top-0 left-0 z-10 w-full h-full bg-black-900 rounded-sm flex items-center justify-center">
