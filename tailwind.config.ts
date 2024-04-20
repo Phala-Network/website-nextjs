@@ -321,7 +321,8 @@ function buttonComponents({ addComponents, theme }: PluginAPI) {
         backgroundColor: theme('colors.white'),
         color: theme('colors.black.800'),
         '&:hover': {
-          backgroundColor: 'oklch(0.278078 0.029596 256.848 / 0.1)',
+          // backgroundColor: 'oklch(0.278078 0.029596 256.848 / 0.1)',
+          backgroundColor: theme('colors.whiteAlpha.900'),
         },
       },
       '.btn-phat': {
