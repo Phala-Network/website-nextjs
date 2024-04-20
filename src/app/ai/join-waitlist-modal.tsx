@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import * as R from 'ramda'
+import Turnstile, { useTurnstile } from "react-turnstile"
 
 import { cn } from '@/lib/utils'
 import { OpenModalButton, Modal } from '@/components/Modal'
@@ -17,38 +18,24 @@ export const JoinWaitlistModalVisibleAtom = atom(false)
 
 const contactUsSchema = z.object({
   email: z.string().email(),
+  turnstile: z.string().min(1),
 })
 
 type IContactUsInput = z.infer<typeof contactUsSchema>
 
 async function sendPostFormRequest(input: IContactUsInput) {
-  const data = {
-    fields: R.toPairs(input).map(([key, value]) => ({ name: key, value, objectTypeId: '0-1' })),
+  const resp = await fetch('/api/waitlist', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(input),
+  })
+  if (resp.status === 200) {
+    return { succeed: true, message: 'Thank you for joining the waitlist!' }
   }
-  const portalId = '20647882'
-  const formId = '9fd7f6ed-4ace-4f01-8f02-edb8f675006f'
-  try {
-    const resp = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data),
-    });
-    if (resp.status === 200) {
-      const body = await resp.json();
-      return { succeed: true, message: body.inlineMessage };
-    }
-    if (resp.status === 400) {
-      // const body = await resp.json();
-      return { succeed: false, error: 'Invalid Email Address.' };
-    }
-    console.error('Unexpected response:', resp);
-    return { succeed: false, error: 'Unknown Error, please try again later.' };
-  } catch (err) {
-    console.error('Unexpected exception:', err);
-    return { succeed: false, error: 'Unknown Error, please try again later.' };
-  }
+  const body = await resp.json()
+  return { succeed: false, error: body.error }
 }
 
 function FieldError({ error }: { error?: string }) {
@@ -66,12 +53,16 @@ function FieldError({ error }: { error?: string }) {
 
 export function JoinWaitlistForm() {
   const setVisible = useSetAtom(JoinWaitlistModalVisibleAtom)
-  const { register, handleSubmit, reset, formState: { errors, isValid, isSubmitting, isSubmitSuccessful } } = useForm<IContactUsInput>({
+  const { register, handleSubmit, reset, formState: { errors, isValid, isSubmitting, isSubmitSuccessful }, setValue } = useForm<IContactUsInput>({
     resolver: zodResolver(contactUsSchema),
     mode: 'onChange',
   })
+  const turnstile = useTurnstile()
   return (
-    <form className="text-black-900 flex flex-col gap-6" onSubmit={handleSubmit(sendPostFormRequest)}>
+    <form className="text-black-900 flex flex-col gap-6" onSubmit={handleSubmit(async (input) => {
+      await sendPostFormRequest(input)
+      turnstile.reset()
+    })}>
       {isSubmitSuccessful && (
         <>
           <div className="absolute top-0 left-0 z-10 w-full h-full bg-black-900 rounded-sm flex items-center justify-center">
@@ -109,10 +100,16 @@ export function JoinWaitlistForm() {
         </label>
         {errors.email && <FieldError error={errors.email.message} />}
       </div>
-
+      <Turnstile
+        theme="dark"
+        fixedSize={true}
+        sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+        refreshExpired="auto"
+        onVerify={(token) => setValue("turnstile", token)}
+      />
       <Button
         type="submit"
-        className="btn btn-primary btn-ai-agent border-0 w-[65%] mx-auto mt-4 items-center"
+        className="btn btn-primary btn-ai-agent border-0 w-[65%] mx-auto mt-0 items-center"
         isDisabled={!isValid || isSubmitting}
       >
         {isSubmitting && (

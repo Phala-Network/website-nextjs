@@ -230,25 +230,52 @@ export default function Page() {
             </div>
           </Box>
 
-          <Box className="lg:col-span-1 lg:row-start-1 lg:row-span-3 p-8">
+          <Box className="lg:col-span-1 lg:row-start-1 lg:row-span-3 p-8 pb-4">
             <h3 className="text-white text-lg font-bold">Integrate Your Favorite Tools With Ease</h3>
             <ul
               className={cn(
                 "text-sm font-medium text-white",
-                "flex flex-row gap-9 mt-6"
+                "flex flex-row gap-6 mt-2"
               )}
             >
-              <li className="w-18 flex flex-col items-center">
-                <img src="/illustrations/ai-agents/icon-chatgpt.png" className="w-16 h-16 mb-2" />
-                <span>GPT-4</span>
+              <li>
+                <Link
+                  className={cn(
+                    "w-18 flex flex-col items-center p-4 rounded-xs border border-transparent",
+                    "hover:bg-whiteAlpha-50 hover:border-whiteAlpha-100"
+                  )}
+                  href="https://docs.phala.network/ai-agent-contract/getting-started/build-your-ai-agent-contract-with-openai"
+                  target="_blank"
+                >
+                  <img src="/illustrations/ai-agents/icon-chatgpt.png" className="w-16 h-16 mb-2" />
+                  <span>GPT-4</span>
+                </Link>
               </li>
               <li className="w-18 flex flex-col items-center">
-                <img src="/illustrations/ai-agents/icon-autogpt.png" className="w-16 h-16 mb-2" />
-                <span>AutoGPT</span>
+                <Link
+                  className={cn(
+                    "w-18 flex flex-col items-center p-4 rounded-xs border border-transparent",
+                    "hover:bg-whiteAlpha-50 hover:border-whiteAlpha-100"
+                  )}
+                  href="https://docs.phala.network/ai-agent-contract/getting-started/integrate-with-3rd-party-api-with-http-request"
+                  target="_blank"
+                >
+                  <img src="/illustrations/ai-agents/icon-autogpt.png" className="w-16 h-16 mb-2" />
+                  <span>AutoGPT</span>
+                </Link>
               </li>
               <li className="w-18 flex flex-col items-center">
-                <img src="/illustrations/ai-agents/icon-langchain.png" className="w-16 h-16 mb-2" />
-                <span>Langchain</span>
+                <Link
+                  className={cn(
+                    "w-18 flex flex-col items-center p-4 rounded-xs border border-transparent",
+                    "hover:bg-whiteAlpha-50 hover:border-whiteAlpha-100"
+                  )}
+                  href="https://docs.phala.network/ai-agent-contract/getting-started/build-your-ai-agent-contract-with-langchain"
+                  target="_blank"
+                >
+                  <img src="/illustrations/ai-agents/icon-langchain.png" className="w-16 h-16 mb-2" />
+                  <span>Langchain</span>
+                </Link>
               </li>
             </ul>
           </Box>
