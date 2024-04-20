@@ -130,7 +130,7 @@ function Logo() {
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <svg viewBox="0 0 56 56" className={cn("h-full untanglable bg-phalaGreen-500 rounded-sm", isHover && 'bg-phalaPurple')}>
+      <svg viewBox="0 0 56 56" className={cn("h-full untanglable bg-phalaGreen-500 rounded-sm transition-colors", isHover && "bg-whiteAlpha-200")}>
         <motion.path
           d="M37.2219 13.7344H20.3467H19.5381H14.7217V24.8781V26.656V27.6629H20.3467V26.656V24.8781V19.3063H37.2219V13.7344ZM37.222 19.3063H42.847V27.6629H37.222V19.3063ZM14.7217 33.2343H20.3468V36.0214V41.591H14.7217V36.0214V34.6279V33.2343ZM20.3468 27.6625H37.2196V33.2343H20.3468V27.6625Z"
           variants={LogoVariants}

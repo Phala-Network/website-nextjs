@@ -1150,6 +1150,7 @@ function SectionPhatContractHighlight() {
             <ChainIcon src="/home/icon-arbitrum.png" title="Arbitrum" />
             <ChainIcon src="/home/icon-polygon.png" title="Polygon" />
             <ChainIcon src="/home/icon-lens.png" title="Lens" />
+            <ChainIcon src="/home/icon-polkadot.svg" title="Polkadot" />
             <ChainIcon src="/home/icon-ethereum.png" title="Ethereum" />
           </div>
         </div>
