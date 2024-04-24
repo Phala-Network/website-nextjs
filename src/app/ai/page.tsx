@@ -44,7 +44,7 @@ function LocalSectionHeader({ label, title, subTitle }: {
 export default function Page() {
   const posts = use(getPostList({
     includeTags: ['AI-Agent Contract'],
-    sortReversed: true,
+    sortReversed: false,
   }))
   return (
     <>
