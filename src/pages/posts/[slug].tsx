@@ -222,7 +222,7 @@ const PostPage = ({
                 </AboutLink>
               </div>
               <div className="flex flex-wrap mt-4 gap-y-4">
-                <AboutLink href="https://discord.com/invite/phala">
+                <AboutLink href="https://discord.gg/phala-network">
                   Discord
                 </AboutLink>
                 <AboutLink href="https://forum.phala.network/">Forum</AboutLink>
