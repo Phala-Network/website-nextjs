@@ -32,7 +32,7 @@ function FAQ() {
         <p>You can request 1,000 PHA every 24 hours without authentication. Additional test tokens are available with specific eligibility requirements.</p>
       </Details>
       <Details summary="What if I run into any other issues, or have questions?">
-        <p>Join our <a href="https://discord.com/invite/phala" target="_blank">Discord server</a> to tap into the support of our dedicated core team and enthusiastic community members.</p>
+        <p>Join our <a href="https://discord.gg/phala-network" target="_blank">Discord server</a> to tap into the support of our dedicated core team and enthusiastic community members.</p>
       </Details>
     </>
   )

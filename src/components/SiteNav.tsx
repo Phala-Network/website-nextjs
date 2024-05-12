@@ -416,7 +416,7 @@ function DrawerMenu() {
                 <p>Follow and dive into the Phala Community</p>
                 <div className="flex flex-row gap-2 mt-2">
                   <Link
-                    href="https://discord.com/invite/phala"
+                    href="https://discord.gg/phala-network"
                     className={cn(
                       "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
                     )}
@@ -722,7 +722,7 @@ function SiteNav() {
           <p className="text-sm">Follow and dive into the Phala Community</p>
           <div className="flex flex-row gap-2 mt-2">
             <Link
-              href="https://discord.com/invite/phala"
+              href="https://discord.gg/phala-network"
               className={cn(
                 "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
                 "transition-all hover:bg-black-50 hover:shadow-md",
