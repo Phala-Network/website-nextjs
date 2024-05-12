@@ -112,7 +112,7 @@ export default function SiteFooter() {
             <LinkListHeading>Social</LinkListHeading>
             <LinkList>
               <LinkListItem href="https://twitter.com/PhalaNetwork">Twitter</LinkListItem>
-              <LinkListItem href="https://discord.com/invite/phala">Discord</LinkListItem>
+              <LinkListItem href="https://discord.gg/phala-network">Discord</LinkListItem>
               <LinkListItem href="https://t.me/phalanetwork">Telegram</LinkListItem>
               <LinkListItem href="https://www.youtube.com/@PhalaNetwork">YouTube</LinkListItem>
               <LinkListItem href="https://lenster.xyz/u/phatcontract">Lenster</LinkListItem>
