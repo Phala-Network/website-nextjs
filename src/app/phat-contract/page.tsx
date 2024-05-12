@@ -54,7 +54,7 @@ function HeroScreen() {
               <SubscribeForm />
               <a
                 className="btn btn-lg btn-outline btn-white items-center gap-1.5"
-                href="https://discord.gg/phala"
+                href="https://discord.gg/phala-network"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -383,7 +383,7 @@ function Faqs() {
         <div className="mx-auto">
           <a
             className="btn btn-brand btn-lg items-center gap-1.5"
-            href="https://discord.gg/phala"
+            href="https://discord.gg/phala-network"
             target="_blank"
             rel="noopener noreferrer"
           >
