@@ -828,7 +828,7 @@ function SiteNav() {
         </MenuItem>
         <MenuItem
           href="https://docs.phala.network/tech-specs/ai-agent-contract?utm_source=phala.network&utm_medium=site-nav"
-          title="Multi AI Agent Contract"
+          title="Use AI Agent Contract"
           icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
         >
         </MenuItem>
