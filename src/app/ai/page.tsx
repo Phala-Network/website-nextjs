@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
   title: "AI-Agent Smart Contract by Phala Network",
   description: "The AI Agent Contract aims to facilitate AI integration, decentralize ownership and monetization, provide tokenomics for Web3 and AI adoption.",
+  alternates: {
+    canonical: "https://phala.network/ai",
+  },
 }
 
 function Box({ className, children }: GenericComponent) {
@@ -61,7 +64,7 @@ export default function Page() {
 
       <section className="lg:mt-[-20rem] 2xl:mt-[-30%] px-6 lg:px-8 z-10 mx-auto w-full max-w-6xl">
         <Box className="rounded p-2 bg-black-850 border-black-750 w-full">
-          <div className="min-w-full lg:min-h-[620px]">
+          <div className="min-w-full lg:min-h-[620px] rounded overflow-hidden">
             <YouTubeVideo
               id="uSY-0NxEnFY"
               title=""
