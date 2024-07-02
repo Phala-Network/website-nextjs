@@ -92,24 +92,6 @@ function IconLearn({ className }: { className?: string }) {
   )
 }
 
-function IconPhalaWorld({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24">
-      <path d="M13.1385 3.63233L9.42832 16.6374C9.41553 16.6821 9.38855 16.7214 9.35145 16.7493C9.31435 16.7773 9.26916 16.7924 9.2227 16.7924H6.49353L10.2798 3.51519C10.2925 3.47044 10.3194 3.43106 10.3565 3.40302C10.3937 3.37499 10.4389 3.35983 10.4854 3.35986H12.9332C12.9663 3.35993 12.9989 3.36765 13.0284 3.38243C13.058 3.39721 13.0837 3.41864 13.1036 3.44504C13.1235 3.47144 13.137 3.50209 13.1431 3.53459C13.1491 3.56708 13.1476 3.60054 13.1385 3.63233Z" fill="currentColor"/>
-      <path d="M18.1458 20.6397H15.4144C15.3679 20.6397 15.3226 20.6246 15.2854 20.5965C15.2483 20.5685 15.2213 20.5291 15.2085 20.4844L11.8487 8.70316C11.8397 8.67134 11.8381 8.63786 11.8442 8.60534C11.8503 8.57282 11.8638 8.54215 11.8837 8.51575C11.9036 8.48934 11.9294 8.46792 11.959 8.45316C11.9886 8.4384 12.0213 8.43072 12.0544 8.4307H14.5018C14.5483 8.43067 14.5936 8.44582 14.6307 8.47386C14.6678 8.5019 14.6948 8.54128 14.7074 8.58603L17.2981 17.67L17.3001 17.676L18.1458 20.6397Z" fill="currentColor"/>
-      <path d="M13.3616 17.9787C13.3487 17.9344 13.3217 17.8954 13.2848 17.8677C13.2478 17.84 13.2029 17.825 13.1567 17.825H6.36048C6.31397 17.825 6.26871 17.8401 6.2316 17.8682C6.19449 17.8962 6.16754 17.9356 6.15485 17.9803L5.474 20.3676C5.46494 20.3994 5.46338 20.4329 5.46945 20.4654C5.47552 20.4979 5.48906 20.5286 5.50898 20.555C5.52891 20.5814 5.55469 20.6028 5.5843 20.6176C5.61391 20.6323 5.64654 20.64 5.67962 20.64H13.8547C13.8879 20.64 13.9207 20.6323 13.9504 20.6174C13.9802 20.6026 14.006 20.581 14.0259 20.5544C14.0459 20.5278 14.0593 20.4969 14.0652 20.4642C14.0711 20.4315 14.0694 20.3979 14.06 20.366L13.3616 17.9787Z" fill="currentColor"/>
-    </svg>
-  )
-}
-
-function IconJobs({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24">
-      <path d="M14.9072 14.9072L12.2 20.8399L9.49282 14.9072L3.56006 12.2L9.49282 9.49282L12.2 3.56006L14.9072 9.49282L20.8399 12.2L14.9072 14.9072Z" fill="currentColor"/>
-    </svg>
-  )
-}
-
 const LogoVariants = {
   hover: {
     fill: "#fff",
@@ -246,7 +228,7 @@ function DropdownMenu({
             </div>
             <ul
               className={cn(
-                "flex flex-col gap-1.5 p-5 relative bg-white rounded-sm",
+                "flex flex-col gap-1.5 p-5 relative bg-black-800 rounded-sm",
                 featured ? "w-3/5" : "w-full"
               )}
             >
@@ -257,7 +239,7 @@ function DropdownMenu({
       ) : (
         <ul
           className={cn(
-            "flex flex-col gap-1.5 p-5 relative bg-white rounded-sm",
+            "flex flex-col gap-1.5 p-5 relative bg-black-800 rounded-sm",
             featured ? "w-3/5" : "w-full"
           )}
         >
@@ -324,7 +306,7 @@ function DrawerMenu() {
     >
       <div className="pt-8 px-8">
         <Hamburger />
-        <div className={cn("flex flex-col gap-5")}>
+        <div className={cn("flex flex-col gap-5 text-whiteAlpha-800")}>
           <AnimatedDetails summary="Developers" theIdxAtom={expandedMenuAtom} idx={1}>
             <ul className={cn("flex flex-col gap-1.5 mt-2.5")}>
               <MenuItem
@@ -823,31 +805,31 @@ function SiteNav() {
         <MenuItem
           href="/ai"
           title="Multi AI Agent Contract"
-          icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
+          icon={<img src="/icons/menu-multi-ai-agent-contract.png" className={cn("h-5 w-5 -mt-0.5")} />}
         >
         </MenuItem>
         <MenuItem
           href="https://docs.phala.network/tech-specs/ai-agent-contract?utm_source=phala.network&utm_medium=site-nav"
           title="Use AI Agent Contract"
-          icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
+          icon={<img src="/icons/menu-use-ai-agent-contract.png" className={cn("h-5 w-5 -mt-0.5")} />}
         >
         </MenuItem>
         <MenuItem
           href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=site-nav"
           title="Agent Wars"
-          icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
+          icon={<img src="/icons/menu-agent-wars.png" className={cn("h-5 w-5 -mt-0.5")} />}
         >
         </MenuItem>
         <MenuItem
-          href=""
+          href="/partnerships"
           title="Phala Ecosystem"
-          icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
+          icon={<img src="/icons/menu-phala-ecosystem.png" className={cn("h-5 w-5 -mt-0.5")} />}
         >
         </MenuItem>
         <MenuItem
           href="https://dune.com/phala_network/phala-analytics?utm_source=phala.network&utm_medium=site-nav"
           title="AI Agent Contract Statistics"
-          icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
+          icon={<img src="/icons/menu-ai-agent-contract-statstics.png" className={cn("h-5 w-5 -mt-0.5")} />}
         >
         </MenuItem>
       </DropdownMenu>
