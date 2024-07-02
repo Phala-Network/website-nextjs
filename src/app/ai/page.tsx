@@ -5,6 +5,7 @@ import { type Metadata } from 'next'
 import { type GenericComponent } from '@/types/components'
 import { cn } from '@/lib/utils'
 import { getPostList } from '@/queries/GetPostList'
+import { YouTubeVideo } from '@/components/YouTubeVideo'
 import { HeroSection01, BlogPostCard } from '@/components/marketing'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 
@@ -58,12 +59,42 @@ export default function Page() {
       >
       </HeroSection01>
 
-      <section className="lg:mt-[-20rem] z-10 lg:px-8 xl:px-32">
-        <figure className="mt-12 w-full mx-auto max-w-5xl">
+      <section className="lg:mt-[-20rem] 2xl:mt-[-30%] px-6 lg:px-8 z-10 mx-auto w-full max-w-6xl">
+        <Box className="rounded p-2 bg-black-850 border-black-750 w-full">
+          <div className="min-w-full lg:min-h-[620px]">
+            <YouTubeVideo
+              id="uSY-0NxEnFY"
+              title=""
+              poster="sddefault"
+            />
+          </div>
+          <div className="flex flex-row justify-center gap-2.5 my-8">
+            <Link
+              href="https://agentwars.phala.network/?utm_source=phala.network&utm_medium=referral&utm_campaign=phala.network"
+              className={cn(
+                "btn btn-primary btn-rounded lg:btn-rounded",
+                "min-w-[200px]",
+                "bg-gradient-to-l from-[#FF8A35] via-40% via-[#F94D4D] to-[#9C52FA] text-white border-none"
+              )}
+            >
+              Join Agent Wars
+            </Link>
+            <Link
+              href="/tags/AI-Agent%20Contract"
+              className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[200px]")}
+            >
+              Learn More
+            </Link>
+          </div>
+        </Box>
+      </section>
+
+      <section className="py-8 px-6 lg:px-8 mx-auto max-w-6xl">
+        <figure className="w-full mx-auto">
           <img src="/illustrations/how-ai-agents-works.png" alt="How AI Agents Works" />
         </figure>
 
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mx-auto mt-4 lg:mt-6 max-w-5xl">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mt-4 lg:mt-6">
           <Box className="flex flex-col p-6 lg:p-8 gap-2.5 lg:gap-5 flex-1">
             <h3
               className={cn(
