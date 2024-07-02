@@ -9,7 +9,6 @@ import { HeroSection01, BlogPostCard } from '@/components/marketing'
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 
 import { NodeStats } from './node-stats'
-import { JoinWaitlistModal, JoinWaitlistButton } from './join-waitlist-modal'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -99,13 +98,14 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <JoinWaitlistButton
+          <Link
             className={cn(
               "btn lg:btn-lg btn-primary btn-ai-agent btn-rounded lg:btn-rounded w-full border-0"
             )}
+            href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=website&utm_campaign=ai-agent-contract&utm_content=cta1"
           >
-            Join the Agent Wars Waitlist
-          </JoinWaitlistButton>
+            Chat with an AI Agent on Agent Wars
+          </Link>
           <a
             href="https://docs.phala.network/"
             target="_blank"
@@ -159,13 +159,14 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <JoinWaitlistButton
+          <Link
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
+            href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=website&utm_campaign=ai-agent-contract&utm_content=cta2"
           >
-            Join the Agent Wars Waitlist
-          </JoinWaitlistButton>
+            Chat with an AI Agent on Agent Wars
+          </Link>
         </div>
       </section>
 
@@ -200,13 +201,14 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <JoinWaitlistButton
+          <Link
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
+            href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=website&utm_campaign=ai-agent-contract&utm_content=cta3"
           >
-            Join the Agent Wars Waitlist
-          </JoinWaitlistButton>
+            Chat with an AI Agent on Agent Wars
+          </Link>
         </div>
       </section>
 
@@ -317,13 +319,14 @@ export default function Page() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <JoinWaitlistButton
+          <Link
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
+            href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=website&utm_campaign=ai-agent-contract&utm_content=cta4"
           >
-            Join the Agent Wars Waitlist
-          </JoinWaitlistButton>
+            Chat with an AI Agent on Agent Wars
+          </Link>
         </div>
       </section>
 
@@ -341,13 +344,14 @@ export default function Page() {
         />
 
         <div className="mt-16 flex flex-col gap-6 w-2/3 lg:w-[480px] mx-auto">
-          <JoinWaitlistButton
+          <Link
             className={cn(
               "btn btn-lg btn-primary btn-ai-agent btn-rounded w-full border-0"
             )}
+            href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=website&utm_campaign=ai-agent-contract&utm_content=cta5"
           >
-            Join the Agent Wars Waitlist
-          </JoinWaitlistButton>
+            Chat with an AI Agent on Agent Wars
+          </Link>
         </div>
       </section>
 
@@ -382,7 +386,6 @@ export default function Page() {
       </section>
 
     </div>
-    <JoinWaitlistModal />
     </>
   )
 }
