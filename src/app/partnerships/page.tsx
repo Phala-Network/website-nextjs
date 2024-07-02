@@ -55,7 +55,7 @@ const items = [
   {
     name: 'Flock.io',
     url: 'https://www.flock.io/',
-    icon: '',
+    icon: '/partnerships/Flock.png',
     description: 'Federated Machine Learning On the Blockchain',
     tags: [
       'AI', 'LLM', 'Partner',
@@ -64,7 +64,7 @@ const items = [
   {
     name: 'GM Network',
     url: 'https://gmnetwork.ai/',
-    icon: '',
+    icon: '/partnerships/GMNetwork.png',
     description: 'The First Consumer AIoT Network',
     tags: [
       'AI', 'Partner',
@@ -73,7 +73,7 @@ const items = [
   {
     name: 'IoTEX',
     url: 'https://iotex.io/',
-    icon: '',
+    icon: '/partnerships/IoTEX.png',
     description: 'The modular infrastructure for DePIN projects',
     tags: [
       'DePIN', 'Partner',
@@ -82,7 +82,7 @@ const items = [
   {
     name: 'Pond',
     url: 'https://cryptopond.xyz/',
-    icon: '',
+    icon: '/partnerships/Pond.png',
     description: 'Decentralized Graph Neural Network (GNN) model for web3',
     tags: [
       'AI', 'Partner',
@@ -91,7 +91,7 @@ const items = [
   {
     name: 'Mind Network',
     url: 'https://www.mindnetwork.xyz/',
-    icon: '',
+    icon: '/partnerships/MindNetwork.png',
     description: 'FHE Restaking Layer for AI and POS Networks',
     tags: [
       'AI', 'FHE', 'Partner',
@@ -100,7 +100,7 @@ const items = [
   {
     name: 'AwesomeQA',
     url: 'https://home.awesomeqa.xyz/',
-    icon: '',
+    icon: '/partnerships/AwesomeQA.png',
     description: 'AI support for web3 communities',
     tags: [
       'AI', 'Community',
@@ -109,7 +109,7 @@ const items = [
   {
     name: 'Theoriq (ChainML)',
     url: 'https://www.theoriq.ai/',
-    icon: '',
+    icon: '/partnerships/Theoriq.png',
     description: 'A modular and composable AI Agent Base Layer',
     tags: [
       'AI', 'Partner',
@@ -118,7 +118,7 @@ const items = [
   {
     name: 'Nevermined',
     url: 'https://nevermined.io/',
-    icon: '',
+    icon: '/partnerships/Nevermined.png',
     description: 'decentralized AI payments protocol',
     tags: [
       'AI', 'Payments', 'Partner',
@@ -127,7 +127,7 @@ const items = [
   {
     name: 'MagnetAI',
     url: 'https://magnetai.xyz/',
-    icon: '',
+    icon: '/partnerships/MagnetAI.png',
     description: 'ModelFi Protocol',
     tags: [
       'AI', 'DeFi', 'Partner',
@@ -136,7 +136,7 @@ const items = [
   {
     name: 'OnFinality',
     url: 'https://onfinality.io/',
-    icon: '',
+    icon: '/partnerships/OnFinality.png',
     description: 'Smarter Blockchain Infrastructure',
     tags: [
       'Tools', 'Partner',
@@ -145,7 +145,7 @@ const items = [
   {
     name: 'Zurf',
     url: 'https://zurf.social/',
-    icon: '/home/icon-zurf.png',
+    icon: '/partnerships/Zurf.png',
     description: 'next generation of social media',
     tags: [
       'Web3 Social', 'Builder',
@@ -154,7 +154,7 @@ const items = [
   {
     name: 'Huddle01',
     url: 'https://huddle01.com/',
-    icon: '/home/icon-huddle01.png',
+    icon: '/partnerships/Huddle01.png',
     description: 'decentralized real-time communication network (dRTC)',
     tags: [
       'Web3 Social', 'DePIN', 'Buiilder',
@@ -163,7 +163,7 @@ const items = [
   {
     name: 'Airstack',
     url: 'https://airstack.xyz/',
-    icon: '',
+    icon: '/partnerships/Airstack.png',
     description: 'developer platform for composable web3 apps',
     tags: [
       'Web3 Social', 'Tools', 'Builder',
@@ -172,7 +172,7 @@ const items = [
   {
     name: 'DMail',
     url: 'https://dmail.ai/',
-    icon: '/home/icon-dmail.png',
+    icon: '/partnerships/DMail.png',
     description: 'AI-powered decentralized communication infrastructure',
     tags: [
       'Communications', 'Builder', 'AI'
@@ -181,7 +181,7 @@ const items = [
   {
     name: 'Sygma',
     url: 'https://buildwithsygma.com/',
-    icon: '/home/icon-sygma.png',
+    icon: '/partnerships/Sygma.png',
     description: 'modular, open-source, cross-chain connectivity protocol',
     tags: [
       'DeFi', 'Builder'
@@ -190,7 +190,7 @@ const items = [
   {
     name: 'inDEX',
     url: 'https://index.phala.network/',
-    icon: '/home/icon-index.png',
+    icon: '/partnerships/inDEX.png',
     description: 'Cross-Chain Intent Infrastructure',
     tags: [
       'DeFi', 'Builder',
@@ -199,7 +199,7 @@ const items = [
   {
     name: 'Polygon',
     url: 'https://polygon.technology/',
-    icon: '',
+    icon: '/partnerships/Polygon.png',
     description: 'Ethereum scaling solution',
     tags: [
       'Infra', 'Tools', 'Partner',
@@ -208,7 +208,7 @@ const items = [
   {
     name: 'Polkadot',
     url: 'https://polkadot.network/',
-    icon: '',
+    icon: '/partnerships/Polkadot.png',
     description: 'Blockspace ecosystem for boundless innovation',
     tags: [
       'Infra', 'Tools', 'Partner',
@@ -217,7 +217,7 @@ const items = [
   {
     name: 'Base',
     url: 'https://www.base.org/',
-    icon: '',
+    icon: '/partnerships/Base.png',
     description: 'Secure, low-cost, builder-friendly Ethereum L2',
     tags: [
       'Infra', 'Partner',
@@ -226,7 +226,7 @@ const items = [
   {
     name: 'The Graph',
     url: 'https://thegraph.com/',
-    icon: '',
+    icon: '/partnerships/TheGraph.png',
     description: 'a decentralized protocol for indexing and querying data from blockchains.',
     tags: [
       'Infra', 'Tools', 'Partner',
@@ -235,7 +235,7 @@ const items = [
   {
     name: 'Lens',
     url: 'https://www.lens.xyz/',
-    icon: '/home/icon-lens.png',
+    icon: '/partnerships/Lens.png',
     description: 'Open social network',
     tags: [
       'Web3 Social', 'Partner',
@@ -244,7 +244,7 @@ const items = [
   {
     name: 'Farcaster',
     url: 'https://www.farcaster.xyz/',
-    icon: '',
+    icon: '/partnerships/Farcaster.png',
     description: 'decentralized social network',
     tags: [
       'Web3 Social', 'Tools'
@@ -253,7 +253,7 @@ const items = [
   {
     name: 'Hackachain',
     url: 'https://www.hackachain.io/',
-    icon: '',
+    icon: '/partnerships/Hackachain.png',
     description: 'laboratory for high tech experiments',
     tags: [
       'Tools', 'ZK', 'Builder'
@@ -262,7 +262,7 @@ const items = [
   {
     name: 'Developer DAO',
     url: 'https://www.developerdao.com/',
-    icon: '',
+    icon: '/partnerships/DeveloperDAO.png',
     description: 'Educational web3 Builders Community',
     tags: [
       'Community', 'Builder',
@@ -271,7 +271,7 @@ const items = [
   {
     name: 'EasyA',
     url: 'https://www.easya.io/',
-    icon: '',
+    icon: '/partnerships/EasyA.png',
     description: 'Blockchain Developer onboarding Community',
     tags: [
       'Community', 'Builder'
@@ -280,14 +280,6 @@ const items = [
 ]
 
 const sorted = items.sort((a, b) => a.name.localeCompare(b.name))
-
-const tagColors: Readonly<Record<string, string>> = {
-  'Web3 Social': 'bg-phalaWorldTeal/20 border-phalaWorldTeal/50 text-phalaWorldTeal',
-  'Monetization': 'bg-yellow-300/20 border-yellow-300/50 text-yellow-300',
-  'Web3 communication': 'bg-phalaPurple-400/20 border-phalaPurple-400/50 text-phalaPurple-400',
-  'De-Fi': 'bg-blue-300/20 border-blue-300/50 text-blue-300',
-  'Oracle': 'bg-phalaPurple-400/20 border-phalaPurple-400/50 text-phalaPurple-400',
-}
 
 export default function Page() {
   return (
@@ -321,7 +313,7 @@ export default function Page() {
               src={icon || "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+R8AAvcB+vBGZskAAAAASUVORK5CYII="}
               tags={tags.map(tag => ({
                 label: tag,
-                cls: tagColors[tag] || 'bg-whiteAlpha-50 border-whiteAlpha-100 text-white',
+                cls: 'bg-whiteAlpha-50 border-whiteAlpha-100 text-white',
               }))}
             />
           ))}
