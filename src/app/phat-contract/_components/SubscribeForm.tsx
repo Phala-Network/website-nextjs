@@ -6,10 +6,7 @@ import { cn } from '@/lib/utils'
 import { useSubscribe } from '@/hooks/useSubscribe'
 
 export default function SubscribeForm() {
-  const { setEmail, onSubmit, isLoading, message, error, isSucceed, isError } = useSubscribe(
-    '20647882',
-    '0b071cad-c7bd-44dd-9f2d-e1a822e2e1cf'
-  )
+  const { setEmail, onSubmit, isLoading, message, error, isSucceed, isError } = useSubscribe()
   return (
     <div>
       <form
