@@ -75,7 +75,7 @@ export function HeroSection({ label, heroImage, title, subTitle, className, chil
         className={cn(
           "row-start-1 col-span-full",
           "p-0 xl:p-10 3xl:p-0",
-          "untangle",
+          "untanglable",
         )}
       >
         <div
