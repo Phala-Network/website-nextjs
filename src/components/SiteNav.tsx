@@ -10,10 +10,15 @@ import { atomWithReducer, selectAtom } from 'jotai/utils'
 import { useHover } from 'react-aria'
 import * as R from 'ramda'
 import { useScroll, useMotionValueEvent } from 'framer-motion'
-import { BsDiscord, BsTwitter } from 'react-icons/bs'
+
+import { BsDiscord } from 'react-icons/bs'
 import { BiDetail } from 'react-icons/bi'
 import { MdCodeOff, MdCode, MdAssignment, MdAssignmentInd, MdArrowForward } from 'react-icons/md'
-import { IoServer, IoNewspaperSharp, IoChatbubbleEllipses } from 'react-icons/io5'
+import { IoServer, IoNewspaperSharp } from 'react-icons/io5'
+import { ImBlog } from 'react-icons/im'
+import { RiTwitterXLine } from 'react-icons/ri'
+import { PiTelegramLogoLight } from 'react-icons/pi'
+import { FiChevronDown, FiBox } from 'react-icons/fi'
 
 import './SiteNav.css'
 import { ChangelogIcon } from '@/components/icons'
@@ -26,7 +31,7 @@ function Banner() {
     return null
   }
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 z-50">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 xl:px-8 z-50">
       <div
         className={cn(
           "pointer-events-auto flex items-center justify-between gap-x-6",
@@ -89,24 +94,6 @@ function IconLearn({ className }: { className?: string }) {
   )
 }
 
-function IconPhalaWorld({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24">
-      <path d="M13.1385 3.63233L9.42832 16.6374C9.41553 16.6821 9.38855 16.7214 9.35145 16.7493C9.31435 16.7773 9.26916 16.7924 9.2227 16.7924H6.49353L10.2798 3.51519C10.2925 3.47044 10.3194 3.43106 10.3565 3.40302C10.3937 3.37499 10.4389 3.35983 10.4854 3.35986H12.9332C12.9663 3.35993 12.9989 3.36765 13.0284 3.38243C13.058 3.39721 13.0837 3.41864 13.1036 3.44504C13.1235 3.47144 13.137 3.50209 13.1431 3.53459C13.1491 3.56708 13.1476 3.60054 13.1385 3.63233Z" fill="currentColor"/>
-      <path d="M18.1458 20.6397H15.4144C15.3679 20.6397 15.3226 20.6246 15.2854 20.5965C15.2483 20.5685 15.2213 20.5291 15.2085 20.4844L11.8487 8.70316C11.8397 8.67134 11.8381 8.63786 11.8442 8.60534C11.8503 8.57282 11.8638 8.54215 11.8837 8.51575C11.9036 8.48934 11.9294 8.46792 11.959 8.45316C11.9886 8.4384 12.0213 8.43072 12.0544 8.4307H14.5018C14.5483 8.43067 14.5936 8.44582 14.6307 8.47386C14.6678 8.5019 14.6948 8.54128 14.7074 8.58603L17.2981 17.67L17.3001 17.676L18.1458 20.6397Z" fill="currentColor"/>
-      <path d="M13.3616 17.9787C13.3487 17.9344 13.3217 17.8954 13.2848 17.8677C13.2478 17.84 13.2029 17.825 13.1567 17.825H6.36048C6.31397 17.825 6.26871 17.8401 6.2316 17.8682C6.19449 17.8962 6.16754 17.9356 6.15485 17.9803L5.474 20.3676C5.46494 20.3994 5.46338 20.4329 5.46945 20.4654C5.47552 20.4979 5.48906 20.5286 5.50898 20.555C5.52891 20.5814 5.55469 20.6028 5.5843 20.6176C5.61391 20.6323 5.64654 20.64 5.67962 20.64H13.8547C13.8879 20.64 13.9207 20.6323 13.9504 20.6174C13.9802 20.6026 14.006 20.581 14.0259 20.5544C14.0459 20.5278 14.0593 20.4969 14.0652 20.4642C14.0711 20.4315 14.0694 20.3979 14.06 20.366L13.3616 17.9787Z" fill="currentColor"/>
-    </svg>
-  )
-}
-
-function IconJobs({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24">
-      <path d="M14.9072 14.9072L12.2 20.8399L9.49282 14.9072L3.56006 12.2L9.49282 9.49282L12.2 3.56006L14.9072 9.49282L20.8399 12.2L14.9072 14.9072Z" fill="currentColor"/>
-    </svg>
-  )
-}
-
 const LogoVariants = {
   hover: {
     fill: "#fff",
@@ -125,7 +112,7 @@ function Logo() {
       href="/"
       className={cn(
         "flex gap-2.5 items-center h-[4rem] p-2",
-        "col-span-1 col-start-1 lg:col-span-4 xl:col-span-3 row-start-1"
+        "col-span-1 col-start-1 xl:col-span-3 row-start-1"
       )}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
@@ -243,7 +230,7 @@ function DropdownMenu({
             </div>
             <ul
               className={cn(
-                "flex flex-col gap-1.5 p-5 relative bg-white rounded-sm",
+                "flex flex-col gap-1.5 p-5 relative bg-black-800 rounded-sm",
                 featured ? "w-3/5" : "w-full"
               )}
             >
@@ -254,7 +241,7 @@ function DropdownMenu({
       ) : (
         <ul
           className={cn(
-            "flex flex-col gap-1.5 p-5 relative bg-white rounded-sm",
+            "flex flex-col gap-1.5 p-5 relative bg-black-800 rounded-sm",
             featured ? "w-3/5" : "w-full"
           )}
         >
@@ -294,7 +281,7 @@ const expandedMenuAtom = atom(0)
 function Hamburger() {
   const [isExpanded, setIsExpanded] = useAtom(drawerMenuVisibleAtom)
   return (
-    <div className={cn("col-span-1 col-start-2 row-start-1 lg:hidden", "flex items-center justify-end", "mr-5")}>
+    <div className={cn("col-span-1 col-start-2 row-start-1 xl:hidden", "flex items-center justify-end", "mr-5")}>
       <button
         className={cn("site-hamjurger-menu", isExpanded && "opened")}
         onClick={() => setIsExpanded(i => !i)}
@@ -315,147 +302,240 @@ function DrawerMenu() {
   const isExpanded = useAtomValue(drawerMenuVisibleAtom)
   return (
     <motion.div
-      className="site-nav-drawer"
+      className="site-nav-drawer flex flex-col justify-between"
       initial={{x: '105%'}}
       animate={{x: isExpanded ? '0' : '105%'}}
     >
       <div className="pt-8 px-8">
         <Hamburger />
-        <div className={cn("flex flex-col gap-5")}>
-          <AnimatedDetails summary="Developers" theIdxAtom={expandedMenuAtom} idx={1}>
+        <div className={cn("flex flex-col gap-5 text-whiteAlpha-800")}>
+          <AnimatedDetails
+            summaryClassName={"flex flex-row gap-2 items-center"}
+            summary={
+              <>
+                Developers <FiChevronDown />
+              </>
+            }
+            theIdxAtom={expandedMenuAtom} idx={1}
+          >
             <ul className={cn("flex flex-col gap-1.5 mt-2.5")}>
               <MenuItem
                 href="https://docs.phala.network/developers/phat-contract"
                 title="Docs"
-                icon={<BiDetail className={cn("h-5 w-5 text-black")} />}
+                icon={<BiDetail className={cn("h-5 w-5")} />}
               >
-                <p>Create powerful decentralized applications with Phat Contracts</p>
+                <p>Discover how Phala's AI Agent Contract offers the essential tools to develop and profit from intelligent applications.</p>
               </MenuItem>
               <MenuItem
-                href="https://dashboard.phala.network"
-                title="No-Code"
-                icon={<MdCodeOff className={cn("h-5 w-5 text-black")} />}
+                href="https://docs.phala.network/overview/phala-network?utm_source=phala.network&utm_medium=site-nav"
+                title="About Phala Network"
+                icon={<img src="/icons/menu-about-phala.png" className={cn("h-3.5 w-3.5 ml-1")} />}
               >
-                <p>A no code toolkit to plug together Phat Contracts</p>
               </MenuItem>
               <MenuItem
-                href="/phat-contract"
-                title="Native Code"
-                icon={<MdCode className={cn("h-5 w-5 text-black")} />}
+                href="https://docs.phala.network/overview/ai-execution-layer?utm_source=phala.network&utm_medium=site-nav"
+                title="AI Execution Layer"
+                icon={<img src="/icons/menu-ai-execution-layer.png" className={cn("h-5 w-5 -mt-0.5")} />}
               >
-                <p>Create your own Phat Brick and earn!</p>
               </MenuItem>
               <MenuItem
-                href="https://docs.phala.network/developers/phat-contract/builders-program"
+                href="https://docs.phala.network/ai-agent-contract/getting-started?utm_source=phala.network&utm_medium=site-nav"
+                title="Build OpenAI and Langchain Agents"
+                icon={<FiBox className={cn("h-5 w-5")} />}
+              >
+              </MenuItem>
+              <MenuItem
+                href="https://docs.phala.network/developers/phat-contract/builders-program?utm_source=phala.network&utm_medium=site-nav"
                 title="Builders Program"
-                icon={<IoServer className={cn("h-5 w-5 text-black")} />}
+                icon={<IoServer className={cn("h-5 w-5")} />}
               >
                 <p>Receive grants and technical guidance to bring your idea to life with Phat Contract</p>
               </MenuItem>
             </ul>
           </AnimatedDetails>
-          <AnimatedDetails summary="Network" theIdxAtom={expandedMenuAtom} idx={2}>
+          <AnimatedDetails
+            summaryClassName={"flex flex-row gap-2 items-center"}
+            summary={
+              <>
+                Network <FiChevronDown />
+              </>
+            }
+            theIdxAtom={expandedMenuAtom} idx={2}
+          >
             <ul className={cn("flex flex-col gap-1.5 mt-2.5")}>
               <MenuItem
-                href="https://docs.phala.network/compute-providers/basic-info"
+                href="https://docs.phala.network/tech-specs/pha-token?utm_source=phala.network&utm_medium=site-nav"
+                title="PHA Token"
+                icon={<img src="/icons/menu-pha-token.png" className={cn("h-5 w-5 mt-0.5")} />}
+              >
+                <p>PHA is the native token of the Phala blockchain</p>
+              </MenuItem>
+              <MenuItem
+                href="https://docs.phala.network/compute-providers/basic-info?utm_source=phala.network&utm_medium=site-nav"
                 title="Compute to Earn"
-                icon={<IconCompute className={cn("h-5 w-5 text-black")} />}
+                icon={<IconCompute className={cn("h-5 w-5")} />}
               >
                 <p>Provide hardware to the network and earn rewards!</p>
               </MenuItem>
               <MenuItem
-                href="https://app.phala.network/khala"
+                href="https://app.phala.network/khala?utm_source=phala.network&utm_medium=site-nav"
                 title="Stake"
-                icon={<IconStake className={cn("h-5 w-5 text-black")} />}
+                icon={<IconStake className={cn("h-5 w-5")} />}
               >
                 <p>Help secure the network and earn yield by staking your PHA</p>
               </MenuItem>
               <MenuItem
-                href="https://khala.subsquare.io/"
+                href="https://khala.subsquare.io/?utm_source=phala.network&utm_medium=site-nav"
                 title="Govern"
-                icon={<MdAssignment className={cn("h-5 w-5 text-black")} />}
+                icon={<MdAssignment className={cn("h-5 w-5")} />}
               >
                 <p>Take an active part in deciding the future direction of off-chain compute</p>
               </MenuItem>
               <MenuItem
-                href="https://subbridge.io/"
+                href="https://subbridge.io/?utm_source=phala.network&utm_medium=site-nav"
                 title="Bridge"
-                icon={<IconBridge className={cn("h-4 w-4 ml-0.5 text-black")} />}
+                icon={<IconBridge className={cn("h-4 w-4 ml-0.5")} />}
               >
                 <p>Bring tokens to and from the Phala Blockchain with SubBridge</p>
               </MenuItem>
               <MenuItem
-                href="https://docs.phala.network/introduction/readme"
+                href="https://docs.phala.network/?utm_source=phala.network&utm_medium=site-nav"
                 title="Learn"
-                icon={<IconLearn className={cn("h-5 w-5 text-black")} />}
+                icon={<IconLearn className={cn("h-5 w-5")} />}
               >
                 <p>Explore the architecture and power of Phala Network</p>
               </MenuItem>
             </ul>
           </AnimatedDetails>
-          <AnimatedDetails summary="Discover" theIdxAtom={expandedMenuAtom} idx={3}>
+          <AnimatedDetails
+            summaryClassName={"flex flex-row gap-2 items-center"}
+            summary={
+              <>
+                Discover <FiChevronDown />
+              </>
+            }
+            theIdxAtom={expandedMenuAtom} idx={3}
+          >
             <ul className={cn("flex flex-col gap-1.5 mt-2.5")}>
               <MenuItem
                 href="/blog"
                 title="Blog"
-                icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
+                icon={<IoNewspaperSharp className={cn("h-5 w-5")} />}
               >
                 <p>Stay up-to-date with all things Phala</p>
               </MenuItem>
               <MenuItem
                 href="/changelog"
                 title="Changelog"
-                icon={<ChangelogIcon className="h-5 w-5 text-black" />}
+                icon={<ChangelogIcon className="h-5 w-5" />}
               >
                 <p>Latest changes for Phala</p>
               </MenuItem>
               <MenuItem
-                title="Connect"
-                icon={<IoChatbubbleEllipses className={cn("h-5 w-5 text-black")} />}
-              >
-                <p>Follow and dive into the Phala Community</p>
-                <div className="flex flex-row gap-2 mt-2">
-                  <Link
-                    href="https://discord.gg/phala-network"
-                    className={cn(
-                      "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
-                    )}
-                  >
-                    <BsDiscord className={cn("w-8 h-6 text-[#5562EA]")} />
-                  </Link>
-                  <Link
-                    href="https://twitter.com/PhalaNetwork"
-                    className={cn(
-                      "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
-                    )}>
-                    <BsTwitter className={cn("w-7 h-6 text-[#3397DB]")} />
-                  </Link>
-                </div>
-              </MenuItem>
-              <MenuItem
                 href="https://github.com/Phala-Network/growth-program"
                 title="Ambassador Program"
-                icon={<MdAssignmentInd className={cn("h-5 w-5 text-black")} />}
+                icon={<MdAssignmentInd className={cn("h-5 w-5")} />}
               >
                 <p>Become a community leader and earn rewards</p>
               </MenuItem>
+            </ul>
+          </AnimatedDetails>
+
+          <AnimatedDetails
+            summaryClassName={"flex flex-row gap-2 items-center"}
+            summary={
+              <>
+                AI Agent Contract <FiChevronDown />
+              </>
+            }
+            theIdxAtom={expandedMenuAtom} idx={4}
+          >
+            <ul className={cn("flex flex-col gap-1.5 mt-2.5")}>
               <MenuItem
-                href="https://phala.world"
-                title="PhalaWorld"
-                icon={<IconPhalaWorld className={cn("h-5 w-5 text-black")} />}
+                href="/ai"
+                title="Multi AI Agent Contract"
+                icon={<img src="/icons/menu-multi-ai-agent-contract.png" className={cn("h-5 w-5 -mt-0.5")} />}
               >
-                <p>Gamified, on-chain representation of your contributions to Phala</p>
               </MenuItem>
               <MenuItem
-                href="https://wellfound.com/company/phala-network"
-                title="Jobs"
-                icon={<IconJobs className={cn("h-5 w-5 text-black")} />}
+                href="https://docs.phala.network/tech-specs/ai-agent-contract?utm_source=phala.network&utm_medium=site-nav"
+                title="Use AI Agent Contract"
+                icon={<img src="/icons/menu-use-ai-agent-contract.png" className={cn("h-5 w-5 -mt-0.5")} />}
               >
-                <p>Help build the decentralized web</p>
+              </MenuItem>
+              <MenuItem
+                href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=site-nav"
+                title="Agent Wars"
+                icon={<img src="/icons/menu-agent-wars.png" className={cn("h-5 w-5 -mt-0.5")} />}
+              >
+              </MenuItem>
+              <MenuItem
+                href="/partnerships"
+                title="Phala Ecosystem"
+                icon={<img src="/icons/menu-phala-ecosystem.png" className={cn("h-5 w-5 -mt-0.5")} />}
+              >
+              </MenuItem>
+              <MenuItem
+                href="https://dune.com/phala_network/phala-analytics?utm_source=phala.network&utm_medium=site-nav"
+                title="AI Agent Contract Statistics"
+                icon={<img src="/icons/menu-ai-agent-contract-statstics.png" className={cn("h-5 w-5 -mt-0.5")} />}
+              >
               </MenuItem>
             </ul>
           </AnimatedDetails>
         </div>
+      </div>
+      <div className="flex flex-row gap-2 px-8 pb-8 mb-20">
+        <Link
+          href="/blog"
+          title="Blog"
+          className={cn(
+            "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-black-750 text-whiteAlpha-700",
+            "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+          )}
+        >
+          <ImBlog className={cn("w-8 h-6")} />
+        </Link>
+        <Link
+          href="https://twitter.com/PhalaNetwork"
+          title="X.com"
+          className={cn(
+            "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-black-750 text-whiteAlpha-700",
+            "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+          )}>
+          <RiTwitterXLine className={cn("w-7 h-6")} />
+        </Link>
+        <Link
+          href="https://t.me/phalanetwork"
+          title="Telegram"
+          className={cn(
+            "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-black-750 text-whiteAlpha-700",
+            "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+          )}
+        >
+          <PiTelegramLogoLight className={cn("w-8 h-6")} />
+        </Link>
+        <Link
+          href="https://discord.gg/phala-network"
+          title="Discord"
+          className={cn(
+            "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-black-750 text-whiteAlpha-700",
+            "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+          )}
+        >
+          <BsDiscord className={cn("w-8 h-6")} />
+        </Link>
+        <Link
+          href="https://coinmarketcap.com/community/profile/PhalaNetwork/"
+          title="CoinMarketCap"
+          target="_blank"
+          className={cn(
+            "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-black-750 text-whiteAlpha-700",
+            "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+          )}
+        >
+          <svg className="w-8 h-6" viewBox="0 0 76.52 77.67" xmlns="http://www.w3.org/2000/svg"><path d="m66.54 46.41a4.09 4.09 0 0 1 -4.17.28c-1.54-.87-2.37-2.91-2.37-5.69v-8.52c0-4.09-1.62-7-4.33-7.79-4.58-1.34-8 4.27-9.32 6.38l-8.1 13.11v-16c-.09-3.69-1.29-5.9-3.56-6.56-1.5-.44-3.75-.26-5.94 3.08l-18.11 29.07a32 32 0 0 1 -3.64-14.94c0-17.52 14-31.77 31.25-31.77s31.3 14.25 31.3 31.77v.09s0 .06 0 .09c.17 3.39-.93 6.09-3 7.4zm10-7.57v-.17c-.14-21.35-17.26-38.67-38.29-38.67s-38.25 17.42-38.25 38.83 17.16 38.84 38.25 38.84a37.81 37.81 0 0 0 26-10.36 3.56 3.56 0 0 0 .18-5 3.43 3.43 0 0 0 -4.86-.23 30.93 30.93 0 0 1 -44.57-2.08l16.3-26.2v12.09c0 5.81 2.25 7.69 4.14 8.24s4.78.17 7.81-4.75l9-14.57c.28-.47.55-.87.79-1.22v7.41c0 5.43 2.18 9.77 6 11.91a11 11 0 0 0 11.21-.45c4.2-2.73 6.49-7.67 6.25-13.62z" fill="currentColor"/></svg>
+        </Link>
       </div>
     </motion.div>
   )
@@ -508,6 +588,14 @@ function SiteNavItem({
       >
         <span className={cn('px-8 py-4 transition-all text-white untanglable h-full flex items-center')}>
           {children}
+          <motion.span
+            className="ml-1.5"
+            initial={{ rotate: 0 }}
+            animate={{ rotate: isHovered ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <FiChevronDown className="text-black-650" />
+          </motion.span>
         </span>
       </button>
     </li>
@@ -525,7 +613,7 @@ function MenuItem({ href, title, icon, children }: {
       {href ? (
         <Link href={href} className={cn(
           "site-nav-menu-item btn-with-arrow",
-          "flex flex-row gap-2.5 w-full",
+          "flex flex-row gap-2.5 w-full items-start",
         )}>
           <span className={cn("h-6 w-6 py-1")}>
             {icon}
@@ -541,15 +629,13 @@ function MenuItem({ href, title, icon, children }: {
           </div>
         </Link>
       ) : (
-        <div className={cn("flex flex-row gap-2.5 w-full")}>
+        <div className={cn("flex flex-row gap-2.5 w-full items-start")}>
           <span className={cn("h-6 w-6 py-1")}>
             {icon}
           </span>
           <div className={cn("flex-grow w-full")}>
-            <h4 className="text-sm text-[#323233] font-medium">{title}</h4>
-            <div className={cn("text-xs text-[#5A5A5C]")}>
-              {children}
-            </div>
+            <h4 className="heading">{title}</h4>
+            <div className="body">{children}</div>
           </div>
         </div>
       )}
@@ -594,17 +680,72 @@ function SiteNav() {
           <div
             className={cn(
               "bg-black-800 rounded-sm",
-              "grid gap-4 grid-cols-2 lg:grid-cols-20 3xl:grid-cols-24 grid-rows-1",
+              "grid gap-4 grid-cols-2 xl:grid-cols-20 3xl:grid-cols-24 grid-rows-1",
             )}
           >
             <Logo />
 
             <Hamburger />
 
-            <ul className="hidden lg:flex lg:items-center lg:gap-4 lg:h-[4rem] lg:col-start-6 lg:col-span-14 3xl:col-start-7 row-start-1">
+            <ul className="hidden xl:flex xl:items-center xl:gap-4 xl:h-[4rem] xl:col-start-5 xl:col-span-17 3xl:col-start-6 3xl:col-span-19 row-start-1">
               <SiteNavItem dropdownTarget="developers">Developers</SiteNavItem>
-              <SiteNavItem dropdownTarget="compute-providers">Network</SiteNavItem>
-              <SiteNavItem dropdownTarget="pha-token">Discover</SiteNavItem>
+              <SiteNavItem dropdownTarget="network">Network</SiteNavItem>
+              <SiteNavItem dropdownTarget="discover">Discover</SiteNavItem>
+              <SiteNavItem dropdownTarget="ai-agent-contract">AI Agent Contract</SiteNavItem>
+
+              <div className="flex flex-row gap-2 grow justify-end pr-3">
+                <Link
+                  href="/blog"
+                  title="Blog"
+                  className={cn(
+                    "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-whiteAlpha-50 text-whiteAlpha-700",
+                    "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+                  )}
+                >
+                  <ImBlog className={cn("w-8 h-6")} />
+                </Link>
+                <Link
+                  href="https://twitter.com/PhalaNetwork"
+                  title="X.com"
+                  className={cn(
+                    "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-whiteAlpha-50 text-whiteAlpha-700",
+                    "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+                  )}>
+                  <RiTwitterXLine className={cn("w-7 h-6")} />
+                </Link>
+                <Link
+                  href="https://t.me/phalanetwork"
+                  title="Telegram"
+                  className={cn(
+                    "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-whiteAlpha-50 text-whiteAlpha-700",
+                    "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+                  )}
+                >
+                  <PiTelegramLogoLight className={cn("w-8 h-6")} />
+                </Link>
+                <Link
+                  href="https://discord.gg/phala-network"
+                  title="Discord"
+                  className={cn(
+                    "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-whiteAlpha-50 text-whiteAlpha-700",
+                    "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+                  )}
+                >
+                  <BsDiscord className={cn("w-8 h-6")} />
+                </Link>
+                <Link
+                  href="https://coinmarketcap.com/community/profile/PhalaNetwork/"
+                  title="CoinMarketCap"
+                  target="_blank"
+                  className={cn(
+                    "shadow-lg rounded-2xl w-10 h-10 flex items-center justify-center bg-whiteAlpha-50 text-whiteAlpha-700",
+                    "transition-all hover:shadow-md hover:bg-black-50 hover:text-black-800",
+                  )}
+                >
+                  <svg className="w-8 h-6" viewBox="0 0 76.52 77.67" xmlns="http://www.w3.org/2000/svg"><path d="m66.54 46.41a4.09 4.09 0 0 1 -4.17.28c-1.54-.87-2.37-2.91-2.37-5.69v-8.52c0-4.09-1.62-7-4.33-7.79-4.58-1.34-8 4.27-9.32 6.38l-8.1 13.11v-16c-.09-3.69-1.29-5.9-3.56-6.56-1.5-.44-3.75-.26-5.94 3.08l-18.11 29.07a32 32 0 0 1 -3.64-14.94c0-17.52 14-31.77 31.25-31.77s31.3 14.25 31.3 31.77v.09s0 .06 0 .09c.17 3.39-.93 6.09-3 7.4zm10-7.57v-.17c-.14-21.35-17.26-38.67-38.29-38.67s-38.25 17.42-38.25 38.83 17.16 38.84 38.25 38.84a37.81 37.81 0 0 0 26-10.36 3.56 3.56 0 0 0 .18-5 3.43 3.43 0 0 0 -4.86-.23 30.93 30.93 0 0 1 -44.57-2.08l16.3-26.2v12.09c0 5.81 2.25 7.69 4.14 8.24s4.78.17 7.81-4.75l9-14.57c.28-.47.55-.87.79-1.22v7.41c0 5.43 2.18 9.77 6 11.91a11 11 0 0 0 11.21-.45c4.2-2.73 6.49-7.67 6.25-13.62z" fill="currentColor"/></svg>
+                </Link>
+              </div>
+
             </ul>
           </div>
         </div>
@@ -623,143 +764,148 @@ function SiteNav() {
               </span>
               <h4 className="text-base text-[#323233] font-medium">Docs</h4>
               <div className={cn("text-sm text-[#5A5A5C]")}>
-                <p>Create powerful decentralized applications with Phat Contracts</p>
+                <p>Discover how Phala's AI Agent Contract offers the essential tools to develop and profit from intelligent applications.</p>
               </div>
             </div>
             <Link
-              href="https://docs.phala.network/"
+              href="https://docs.phala.network/?utm_source=phala.network&utm_medium=site-nav"
               className={cn(
                 "btn-with-arrow",
-                "text-sm font-semibold text-black hover:text-phalaPurple-500",
+                "text-sm font-semibold text-black",
               )}
             >
-              Try Now!
+              Explore Now
               <MdArrowForward className="arrow" />
             </Link>
           </div>
         )}
       >
         <MenuItem
-          href="https://dashboard.phala.network"
-          title="No-Code"
-          icon={<MdCodeOff className={cn("h-5 w-5 text-black")} />}
+          href="https://docs.phala.network/overview/phala-network?utm_source=phala.network&utm_medium=site-nav"
+          title="About Phala Network"
+          icon={<img src="/icons/menu-about-phala.png" className={cn("h-3.5 w-3.5 ml-1 mt-0.5")} />}
         >
-          <p>A no code toolkit to plug together Phat Contracts</p>
         </MenuItem>
         <MenuItem
-          href="/phat-contract"
-          title="Native Code"
-          icon={<MdCode className={cn("h-5 w-5 text-black")} />}
+          href="https://docs.phala.network/overview/ai-execution-layer?utm_source=phala.network&utm_medium=site-nav"
+          title="AI Execution Layer"
+          icon={<img src="/icons/menu-ai-execution-layer.png" className={cn("h-5 w-5 -mt-0.5")} />}
         >
-          <p>Create your own Phat Brick and earn!</p>
         </MenuItem>
         <MenuItem
-          href="https://docs.phala.network/developers/phat-contract/builders-program"
+          href="https://docs.phala.network/ai-agent-contract/getting-started?utm_source=phala.network&utm_medium=site-nav"
+          title="Build OpenAI and Langchain Agents"
+          icon={<FiBox className={cn("h-5 w-5")} />}
+        >
+        </MenuItem>
+        <MenuItem
+          href="https://docs.phala.network/developers/phat-contract/builders-program?utm_source=phala.network&utm_medium=site-nav"
           title="Builders Program"
-          icon={<IoServer className={cn("h-5 w-5 text-black")} />}
+          icon={<IoServer className={cn("h-5 w-5")} />}
         >
           <p>Receive grants and technical guidance to bring your idea to life with Phat Contract</p>
         </MenuItem>
       </DropdownMenu>
 
-      <DropdownMenu slug="compute-providers">
+      <DropdownMenu slug="network">
         <MenuItem
-          href="https://docs.phala.network/compute-providers/basic-info"
+          href="https://docs.phala.network/tech-specs/pha-token?utm_source=phala.network&utm_medium=site-nav"
+          title="PHA Token"
+          icon={<img src="/icons/menu-pha-token.png" className={cn("h-5 w-5 mt-0.5")} />}
+        >
+          <p>PHA is the native token of the Phala blockchain</p>
+        </MenuItem>
+        <MenuItem
+          href="https://docs.phala.network/compute-providers/basic-info?utm_source=phala.network&utm_medium=site-nav"
           title="Compute to Earn"
-          icon={<IconCompute className={cn("h-5 w-5 text-black")} />}
+          icon={<IconCompute className={cn("h-5 w-5")} />}
         >
           <p>Provide hardware to the network and earn rewards!</p>
         </MenuItem>
         <MenuItem
-          href="https://app.phala.network/khala"
+          href="https://app.phala.network/khala?utm_source=phala.network&utm_medium=site-nav"
           title="Stake"
-          icon={<IconStake className={cn("h-5 w-5 text-black")} />}
+          icon={<IconStake className={cn("h-5 w-5")} />}
         >
           <p>Help secure the network and earn yield by staking your PHA</p>
         </MenuItem>
         <MenuItem
-          href="https://khala.subsquare.io/"
+          href="https://khala.subsquare.io/?utm_source=phala.network&utm_medium=site-nav"
           title="Govern"
-          icon={<MdAssignment className={cn("h-5 w-5 text-black")} />}
+          icon={<MdAssignment className={cn("h-5 w-5")} />}
         >
           <p>Take an active part in deciding the future direction of off-chain compute</p>
         </MenuItem>
         <MenuItem
-          href="https://subbridge.io/"
+          href="https://subbridge.io/?utm_source=phala.network&utm_medium=site-nav"
           title="Bridge"
-          icon={<IconBridge className={cn("h-4 w-4 ml-0.5 text-black")} />}
+          icon={<IconBridge className={cn("h-4 w-4 ml-0.5")} />}
         >
           <p>Bring tokens to and from the Phala Blockchain with SubBridge</p>
         </MenuItem>
         <MenuItem
-          href="https://docs.phala.network/introduction/readme"
+          href="https://docs.phala.network/?utm_source=phala.network&utm_medium=site-nav"
           title="Learn"
-          icon={<IconLearn className={cn("h-5 w-5 text-black")} />}
+          icon={<IconLearn className={cn("h-5 w-5")} />}
         >
           <p>Explore the architecture and power of Phala Network</p>
         </MenuItem>
       </DropdownMenu>
 
-      <DropdownMenu slug="pha-token">
+      <DropdownMenu slug="discover">
         <MenuItem
           href="/blog"
           title="Blog"
-          icon={<IoNewspaperSharp className={cn("h-5 w-5 text-black")} />}
+          icon={<IoNewspaperSharp className={cn("h-5 w-5")} />}
         >
           <p>Stay up-to-date with all things Phala</p>
         </MenuItem>
         <MenuItem
           href="/changelog"
           title="Changelog"
-          icon={<ChangelogIcon className="h-5 w-5 text-black" />}
+          icon={<ChangelogIcon className="h-5 w-5" />}
         >
           <p>Latest changes for Phala</p>
         </MenuItem>
         <MenuItem
-          title="Connect"
-          icon={<IoChatbubbleEllipses className={cn("h-5 w-5 text-black")} />}
-        >
-          <p className="text-sm">Follow and dive into the Phala Community</p>
-          <div className="flex flex-row gap-2 mt-2">
-            <Link
-              href="https://discord.gg/phala-network"
-              className={cn(
-                "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
-                "transition-all hover:bg-black-50 hover:shadow-md",
-              )}
-            >
-              <BsDiscord className={cn("w-8 h-6 text-[#5562EA]")} />
-            </Link>
-            <Link
-              href="https://twitter.com/PhalaNetwork"
-              className={cn(
-                "shadow-lg rounded-2xl bg-white w-12 h-12 flex items-center justify-center",
-                "transition-all hover:bg-black-50 hover:shadow-md",
-              )}>
-              <BsTwitter className={cn("w-7 h-6 text-[#3397DB]")} />
-            </Link>
-          </div>
-        </MenuItem>
-        <MenuItem
           href="https://github.com/Phala-Network/growth-program"
           title="Ambassador Program"
-          icon={<MdAssignmentInd className={cn("h-5 w-5 text-black")} />}
+          icon={<MdAssignmentInd className={cn("h-5 w-5")} />}
         >
           <p>Become a community leader and earn rewards</p>
         </MenuItem>
+      </DropdownMenu>
+
+      <DropdownMenu slug="ai-agent-contract">
         <MenuItem
-          href="https://phala.world"
-          title="PhalaWorld"
-          icon={<IconPhalaWorld className={cn("h-5 w-5 text-black")} />}
+          href="/ai"
+          title="Multi AI Agent Contract"
+          icon={<img src="/icons/menu-multi-ai-agent-contract.png" className={cn("h-5 w-5 -mt-0.5")} />}
         >
-          <p>Gamified, on-chain representation of your contributions to Phala</p>
         </MenuItem>
         <MenuItem
-          href="https://wellfound.com/company/phala-network"
-          title="Jobs"
-          icon={<IconJobs className={cn("h-5 w-5 text-black")} />}
+          href="https://docs.phala.network/tech-specs/ai-agent-contract?utm_source=phala.network&utm_medium=site-nav"
+          title="Use AI Agent Contract"
+          icon={<img src="/icons/menu-use-ai-agent-contract.png" className={cn("h-5 w-5 -mt-0.5")} />}
         >
-          <p>Help build the decentralized web</p>
+        </MenuItem>
+        <MenuItem
+          href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=site-nav"
+          title="Agent Wars"
+          icon={<img src="/icons/menu-agent-wars.png" className={cn("h-5 w-5 -mt-0.5")} />}
+        >
+        </MenuItem>
+        <MenuItem
+          href="/partnerships"
+          title="Phala Ecosystem"
+          icon={<img src="/icons/menu-phala-ecosystem.png" className={cn("h-5 w-5 -mt-0.5")} />}
+        >
+        </MenuItem>
+        <MenuItem
+          href="https://dune.com/phala_network/phala-analytics?utm_source=phala.network&utm_medium=site-nav"
+          title="AI Agent Contract Statistics"
+          icon={<img src="/icons/menu-ai-agent-contract-statstics.png" className={cn("h-5 w-5 -mt-0.5")} />}
+        >
         </MenuItem>
       </DropdownMenu>
     </>
