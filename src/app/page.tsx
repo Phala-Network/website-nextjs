@@ -210,44 +210,6 @@ function TemplateCard({ title, src, href, target }: { title: string, src: string
   )
 }
 
-function TrustedPartnershipCard({ title, src, tags }: { title: string, src: string, tags: {label: string, cls: string}[] }) {
-  return (
-    <div
-      className={cn(
-        "relative lg:aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
-      )}
-    >
-      <div className={cn("flex items-center justify-start lg:justify-center", "h-full px-8 py-4 lg:p-8")}>
-        <div className="flex flex-row lg:flex-col gap-6 items-center justify-center">
-          <div className={cn(
-            "border-[0.5px] border-solid border-black-900/40 rounded-full w-16 h-16 lg:w-32 lg:h-32 aspect-square overflow-hidden",
-            "bg-black-900",
-            "flex items-center justify-center shrink-0",
-          )}>
-            <img src={src} alt={title} className="w-3/5 select-none pointer-events-none" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <h4 className="text-white text-20 lg:text-24 font-bold lg:text-center">{title}</h4>
-            <div className="flex flex-row items-center lg:justify-center flex-wrap gap-2">
-              {tags.map(({ label, cls }) => (
-                <span
-                  key={label}
-                  className={cn(
-                    "border border-solid rounded-xs text-xs py-1 px-3",
-                    cls
-                  )}
-                >
-                  {label}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function SectionPhatContractHighlight() {
   return (
     <section
@@ -371,7 +333,7 @@ function SectionPhatContractHighlight() {
         className={cn(
           "article",
           "lg:row-start-3 col-span-full",
-          "grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20"
+          "grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-20"
         )}
       >
         <div className="lg:max-w-[494px] flex flex-col items-center lg:justify-center gap-4 lg:gap-12 lg:mx-auto">
@@ -418,72 +380,60 @@ function SectionPhatContractHighlight() {
           "text-white py-10 lg:pt-20 lg:pb-14",
         )}
       >
-        <span className="text-32 lg:text-56 font-black">Trusted by</span>
+        <span className="text-32 lg:text-56 font-black">Phala Ecosystem</span>
       </div>
 
       <div
         className={cn(
           "col-span-full",
-          "grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6"
+          "grid grid-cols-1",
+          "flex flex-row gap-5 justify-center flex-wrap",
         )}
       >
-        <TrustedPartnershipCard
-          title="Lens Protocol"
-          src="/home/icon-lens.png"
-          tags={[
-            { label: "Web3 Social", cls: "bg-phalaWorldTeal/20 border-phalaWorldTeal/50 text-phalaWorldTeal" },
-          ]}
-        />
-        <TrustedPartnershipCard
-          title="Zurf"
-          src="/home/icon-zurf.png"
-          tags={[
-            { label: "Web3 Social", cls: "bg-phalaWorldTeal/20 border-phalaWorldTeal/50 text-phalaWorldTeal" },
-            { label: "Monetization", cls: "bg-yellow-300/20 border-yellow-300/50 text-yellow-300" },
-          ]}
-        />
-        <TrustedPartnershipCard
-          title="Huddle01"
-          src="/home/icon-huddle01.png"
-          tags={[
-            { label: "Web3 communication", cls: "bg-phalaPurple-400/20 border-phalaPurple-400/50 text-phalaPurple-400" },
-          ]}
-        />
-        <TrustedPartnershipCard
-          title="Sygma"
-          src="/home/icon-sygma.png"
-          tags={[
-            { label: "De-Fi", cls: "bg-blue-300/20 border-blue-300/50 text-blue-300" },
-          ]}
-        />
-        <TrustedPartnershipCard
-          title="KoinGaroo"
-          src="/home/icon-koingaroo.png"
-          tags={[
-            { label: "De-Fi", cls: "bg-blue-300/20 border-blue-300/50 text-blue-300" },
-          ]}
-        />
-        <TrustedPartnershipCard
-          title="inDEX"
-          src="/home/icon-index.png"
-          tags={[
-            { label: "De-Fi", cls: "bg-blue-300/20 border-blue-300/50 text-blue-300" },
-          ]}
-        />
-        <TrustedPartnershipCard
-          title="VRF Oracle"
-          src="/home/icon-vrf-oracle.png"
-          tags={[
-            { label: "Oracle", cls: "bg-phalaPurple-400/20 border-phalaPurple-400/50 text-phalaPurple-400" },
-          ]}
-        />
-        <TrustedPartnershipCard
-          title="DMail"
-          src="/home/icon-dmail.png"
-          tags={[
-            { label: "Web3 communication", cls: "bg-phalaPurple-400/20 border-phalaPurple-400/50 text-phalaPurple-400" },
-          ]}
-        />
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-airstack" title="Airstack" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-awesomeqa" title="AwesomeQA" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-base" title="Base" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-developerdao" title="Developer DAO" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-dmail" title="DMail" /></div>
+
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-easya" title="EasyA" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-farcaster" title="Farcaster" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-flockio" title="Flock.io" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-gmnetwork" title="GM Network" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-hackachain" title="Hackachain" /></div>
+
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-huddle01" title="Huddle01" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-index" title="inDEX" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-iotex" title="IoTEX" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-lens" title="Lens" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-magnetai" title="MagnetAI" /></div>
+
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-mindnetwork" title="Mind Network" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-nevermined" title="Nevermined" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-onfinality" title="OnFinality" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-polkadot" title="Polkadot" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-polygon" title="Polygon" /></div>
+
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-pond" title="Pond" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-sygma" title="Sygma" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-thegraph" title="The Graph" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-theoriq" title="Theoriq" /></div>
+        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-zurf" title="Zurf" /></div>
+      </div>
+
+      <div
+        className={cn(
+          "col-span-full",
+          "grid grid-cols-1",
+          "flex flex-row justify-center",
+        )}
+      >
+        <Link
+          href="/partnerships"
+          className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[200px]")}
+        >
+          Explore More
+        </Link>
       </div>
     </section>
   )
