@@ -58,7 +58,11 @@
 }
 
 .site-nav-drawer summary {
-  @apply text-xl font-semibold text-whiteAlpha-800;
+  @apply text-xl font-semibold text-phalaGreen-500 transition-all;
+}
+
+.site-nav-drawer summary.is-closed {
+  @apply text-xl font-semibold text-white;
 }
 
 .site-nav-drawer details summary {
@@ -69,9 +73,21 @@
   display:none;
 }
 
+.site-nav-drawer summary svg {
+  @apply rotate-180 transition-all;
+}
+
+.site-nav-drawer summary.is-closed svg {
+  @apply rotate-0;
+}
+
 @layer components {
   .site-nav-menu-item .heading {
-    @apply text-sm lg:text-base font-medium inline-flex flex-row items-center;
+    @apply text-sm font-medium inline-flex flex-row items-center;
+    @apply text-white;
+  }
+
+  .site-nav-menu-item span {
     @apply text-white;
   }
 
@@ -81,11 +97,11 @@
   }
 
   .site-nav-menu-item:hover .heading {
-    @apply text-white;
+    @apply text-green-500;
   }
 
   .site-nav-menu-item:hover .body {
-    @apply text-white;
+    @apply text-green-700;
   }
 }
 
