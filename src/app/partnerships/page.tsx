@@ -1,14 +1,22 @@
 import { type Metadata } from 'next'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { HeroSection01 } from '@/components/marketing'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
   title: "Phala’s Ecosystem Overview",
+  alternates: {
+    canonical: "https://phala.network/partnerships",
+  }
 }
 
-function TrustedPartnershipCard({ title, url, description, src, tags }: { title: string, url: string, description: string, src: string, tags: {label: string, cls: string}[] }) {
+function TrustedPartnershipCard({ title, url, description, src, tags }: {
+  title: string,
+  url: string,
+  description: string,
+  src: string,
+  tags: {label: string, cls: string}[]
+}) {
   return (
     <Link
       href={url}
@@ -41,7 +49,7 @@ function TrustedPartnershipCard({ title, url, description, src, tags }: { title:
                 </span>
               ))}
             </div>
-            <div className="text-whiteAlpha-700 mx-auto mt-4">
+            <div className="text-whiteAlpha-700 mx-auto lg:mt-4 lg:text-center">
               {description}
             </div>
           </div>
@@ -283,42 +291,58 @@ const sorted = items.sort((a, b) => a.name.localeCompare(b.name))
 
 export default function Page() {
   return (
-    <>
-      <HeroSection01
-        title="Phala’s Ecosystem Overview"
-        subTitle="Where AI meets Web3.0."
-        heroImage="/illustrations/hero-bg-ai-agents.jpg"
-        theme="dark"
-        headingClass="max-w-3xl"
-        className="bg-ai-agent lg:bg-none"
+    <div className="bg-black-900">
+      <div
+        className={cn(
+          "safe-viewport pt-28 pb-4 lg:pb-6",
+          "px-5 lg:!px-16",
+          "grid grid-cols-1",
+        )}
       >
-      </HeroSection01>
-      <div className={cn(
-        "border border-solid border-black-100 rounded-md",
-        "bg-black-900",
-      )}>
+        <header className="row-start-1 col-span-full z-[1] flex flex-col justify-center py-4 lg:py-0">
+          <h1 className="text-black-800 text-24 lg:text-48 font-black text-center tracking-wide">
+            Phala’s Ecosystem Overview
+          </h1>
+          <p className="text-black-500 text-16 lg:text-24 leading-8 text-center lg:mt-4">
+            Where AI meets Web3.0
+          </p>
+        </header>
         <div
           className={cn(
-            "safe-viewport py-10 lg:py-32 px-5 lg:!px-16",
-            "col-span-full",
-            "grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6",
+            "row-start-1 col-span-full z-0 untanglable",
           )}
         >
-          {sorted.map(({ name, url, icon, description, tags }, idx) => (
-            <TrustedPartnershipCard
-              key={idx}
-              title={name}
-              url={url}
-              description={description}
-              src={icon || "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+R8AAvcB+vBGZskAAAAASUVORK5CYII="}
-              tags={tags.map(tag => ({
-                label: tag,
-                cls: 'bg-whiteAlpha-50 border-whiteAlpha-100 text-white',
-              }))}
-            />
-          ))}
+          <div
+            className={cn(
+              "relative overflow-hidden rounded w-full h-full",
+            )}
+          >
+            <img src="/illustrations/partnerships.jpg" alt="" className="object-cover w-full h-full" />
+          </div>
         </div>
       </div>
-    </>
+
+      <div
+        className={cn(
+          "safe-viewport pb-10 lg:pb-32 px-5 lg:!px-16",
+          "col-span-full",
+          "grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6",
+        )}
+      >
+        {sorted.map(({ name, url, icon, description, tags }, idx) => (
+          <TrustedPartnershipCard
+            key={idx}
+            title={name}
+            url={url}
+            description={description}
+            src={icon}
+            tags={tags.map(tag => ({
+              label: tag,
+              cls: 'bg-whiteAlpha-50 border-whiteAlpha-100 text-white',
+            }))}
+          />
+        ))}
+      </div>
+    </div>
   )
 }
