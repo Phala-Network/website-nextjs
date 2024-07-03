@@ -8,6 +8,9 @@ import RecentPosts from './_components/RecentPosts'
 
 export const metadata: Metadata = {
   title: 'Phat Contract | Phala Network',
+  alternates: {
+    canonical: "https://phala.network/phat-contract",
+  }
 }
 
 function HeroScreen() {

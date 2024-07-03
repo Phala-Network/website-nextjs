@@ -69,6 +69,7 @@ const PostPage = ({
           <title>{page.title}</title>
           <meta name="theme-color" content="rgba(232, 233, 234, 1)" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link ref="canonical" href={`https://phala.network/posts${page.slug}`} />
           <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
           <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
           <meta property="og:title" content={page.title} />

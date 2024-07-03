@@ -31,6 +31,7 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
     <>
       <Head>
         <title>Blog - Phala Network</title>
+        <link ref="canonical" href={`https://phala.network/blog`} />
         <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
         <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
       </Head>

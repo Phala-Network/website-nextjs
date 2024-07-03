@@ -44,6 +44,9 @@ const challenges = [
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
   title: "Coprocessors by Phala Network",
+  alternates: {
+    canonical: "https://phala.network/modular-coprocessor",
+  }
 }
 
 export default function Page() {
