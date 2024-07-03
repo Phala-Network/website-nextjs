@@ -10,10 +10,7 @@ import { useSubscribe } from '@/hooks/useSubscribe'
 
 export default function SubscribeForm() {
   const [checked, setChecked] = useState(false)
-  const { setEmail, onSubmit, isLoading, message, error, isSucceed, isError, dismiss } = useSubscribe(
-    '20647882',
-    '0b071cad-c7bd-44dd-9f2d-e1a822e2e1cf'
-  )
+  const { setEmail, onSubmit, isLoading, message, error, isSucceed, isError, dismiss } = useSubscribe()
   return (
     <div className={cn("row-start-1 col-span-full xl:col-start-2 xl:col-span-12 3xl:col-start-4 xl:px-10 bg-[#262626]")}>
       <form

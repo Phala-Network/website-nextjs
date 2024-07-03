@@ -40,6 +40,9 @@ function FAQ() {
 
 export const metadata = {
   title: 'Phala Testnet Faucet',
+  alternates: {
+    canonical: "https://phala.network/faucet",
+  }
 }
 
 export default function Page() {

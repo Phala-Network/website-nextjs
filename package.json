@@ -8,8 +8,10 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@effect/schema": "^0.68.16",
     "@fontsource/montserrat": "^5.0.1",
     "@hookform/resolvers": "^3.3.4",
+    "@next/third-parties": "^14.2.4",
     "@notionhq/client": "^2.2.9",
     "@phala/sdk": "^0.6.0-beta.10",
     "@polkadot/extension-inject": "^0.46.5",
@@ -34,6 +36,7 @@
     "dayjs": "^1.11.9",
     "dedent": "^1.5.1",
     "discord-interactions": "^3.4.0",
+    "effect": "^3.4.6",
     "encoding": "^0.1.13",
     "feed": "^4.2.2",
     "figma-squircle": "^0.3.0",
