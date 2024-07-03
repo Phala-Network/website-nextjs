@@ -27,8 +27,10 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
     <>
       <Head>
         <title>Changelog - Phala Network</title>
+        <link ref="canonical" href={`https://phala.network/changelog`} />
         <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/changelog/rss.xml" />
         <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/changelog/atom.xml" />
+        <meta name="robots" content="noindex" />
       </Head>
       <div
         className={cn(
