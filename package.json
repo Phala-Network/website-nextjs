@@ -11,6 +11,7 @@
     "@effect/schema": "^0.68.16",
     "@fontsource/montserrat": "^5.0.1",
     "@hookform/resolvers": "^3.3.4",
+    "@next/third-parties": "^14.2.4",
     "@notionhq/client": "^2.2.9",
     "@phala/sdk": "^0.6.0-beta.10",
     "@polkadot/extension-inject": "^0.46.5",
