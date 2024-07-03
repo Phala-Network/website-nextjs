@@ -72,7 +72,7 @@ const upsertSubscriberResponseSchema = Schema.Struct({
 export type UpsertSubscriberReturns = typeof upsertSubscriberResponseSchema.Type
 
 export function upsertSubscriber(params: UpsertSubscriberParams): Effect.Effect<UpsertSubscriberReturns> {
-  const { email, fields, groups } = params
+  const { email, groups, ...fields } = params
   return Effect.promise(async () => {
     const resp = await fetch(
       `https://connect.mailerlite.com/api/subscribers`, {
