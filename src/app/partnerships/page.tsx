@@ -1,5 +1,7 @@
 import { type Metadata } from 'next'
 import Link from 'next/link'
+import { FiExternalLink } from 'react-icons/fi'
+
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -10,32 +12,51 @@ export const metadata: Metadata = {
   }
 }
 
-function TrustedPartnershipCard({ title, url, description, src, tags }: {
+function TrustedPartnershipCard({ title, url, description, src, tags, post }: {
   title: string,
   url: string,
   description: string,
   src: string,
+  post?: string,
   tags: {label: string, cls: string}[]
 }) {
   return (
-    <Link
-      href={url}
-      target="_blank"
+    <div
       className={cn(
         "relative lg:aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
       )}
     >
       <div className={cn("flex items-center justify-start lg:justify-center", "h-full px-4 py-4 lg:p-6")}>
-        <div className="flex flex-row lg:flex-col gap-6 items-center justify-center">
-          <div className={cn(
-            "border-[0.5px] border-solid border-black-900/40 rounded-full w-16 h-16 lg:w-32 lg:h-32 aspect-square overflow-hidden",
-            "bg-black-900",
-            "flex items-center justify-center shrink-0",
-          )}>
+        <div className="flex flex-row lg:flex-col gap-6 items-center justify-center py-6">
+          <Link
+            className={cn(
+              "border-[0.5px] border-solid border-black-900/40 rounded-full w-16 h-16 lg:w-32 lg:h-32 aspect-square overflow-hidden",
+              "bg-black-900",
+              "flex items-center justify-center shrink-0",
+            )}
+            href={url}
+            target="_blank"
+          >
             <img src={src} alt={title} className="w-3/5 select-none pointer-events-none" />
-          </div>
+          </Link>
           <div className="flex flex-col gap-2">
-            <h4 className="text-white text-20 lg:text-24 font-bold lg:text-center">{title}</h4>
+            <h4
+              className="flex flex-row gap-4 lg:justify-center items-center"
+            >
+              <Link
+                href={post || url}
+                target="_blank"
+                className="text-white text-20 lg:text-24 font-bold"
+              >
+                {title}
+              </Link>
+              <Link
+                href={url}
+                target="_blank"
+              >
+                <FiExternalLink className="h-4 w-4 text-black-400" />
+              </Link>
+            </h4>
             <div className="flex flex-row items-center lg:justify-center flex-wrap gap-2">
               {tags.map(({ label, cls }) => (
                 <span
@@ -49,13 +70,13 @@ function TrustedPartnershipCard({ title, url, description, src, tags }: {
                 </span>
               ))}
             </div>
-            <div className="text-whiteAlpha-700 mx-auto lg:mt-4 lg:text-center">
+            <div className="text-whiteAlpha-700 mx-auto lg:mt-2 lg:text-center">
               {description}
             </div>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 
@@ -68,6 +89,7 @@ const items = [
     tags: [
       'AI', 'LLM', 'Partner',
     ],
+    post: '/posts/partnership-announcement-phala-flock',
   },
   {
     name: 'GM Network',
@@ -77,6 +99,7 @@ const items = [
     tags: [
       'AI', 'Partner',
     ],
+    post: '/posts/partnership-announcement-phala-gm-network',
   },
   {
     name: 'IoTEX',
@@ -95,6 +118,7 @@ const items = [
     tags: [
       'AI', 'Partner',
     ],
+    post: '/posts/phala-pond-enhancing-the-ai-endgame-for-the-brave',
   },
   {
     name: 'Mind Network',
@@ -112,7 +136,8 @@ const items = [
     description: 'AI support for web3 communities',
     tags: [
       'AI', 'Community',
-    ]
+    ],
+    post: '/posts/phala-network-integrates-awesomeqa-for-aipowered-community-support',
   },
   {
     name: 'Theoriq (ChainML)',
@@ -157,7 +182,8 @@ const items = [
     description: 'next generation of social media',
     tags: [
       'Web3 Social', 'Builder',
-    ]
+    ],
+    post: '/posts/monetizing-social-interactions-phala-and-zurf-parnership',
   },
   {
     name: 'Huddle01',
@@ -166,7 +192,8 @@ const items = [
     description: 'decentralized real-time communication network (dRTC)',
     tags: [
       'Web3 Social', 'DePIN', 'Buiilder',
-    ]
+    ],
+    post: '/posts/supercharging-web3-audio-and-video-communication',
   },
   {
     name: 'Airstack',
@@ -175,7 +202,8 @@ const items = [
     description: 'developer platform for composable web3 apps',
     tags: [
       'Web3 Social', 'Tools', 'Builder',
-    ]
+    ],
+    post: '/posts/advancing-web3-social-infrastructure',
   },
   {
     name: 'DMail',
@@ -184,7 +212,8 @@ const items = [
     description: 'AI-powered decentralized communication infrastructure',
     tags: [
       'Communications', 'Builder', 'AI'
-    ]
+    ],
+    post: '/posts/dmail-partners-with-phala-network-to-deliver-decentralized-cloud-computing-services',
   },
   {
     name: 'Sygma',
@@ -220,7 +249,8 @@ const items = [
     description: 'Blockspace ecosystem for boundless innovation',
     tags: [
       'Infra', 'Tools', 'Partner',
-    ]
+    ],
+    post: '/posts/on-chain-polkadot-alliance-formed-to-recognize-ecosystem-contributors-and-establish-community-dcaa2b718bda',
   },
   {
     name: 'Base',
@@ -274,7 +304,8 @@ const items = [
     description: 'Educational web3 Builders Community',
     tags: [
       'Community', 'Builder',
-    ]
+    ],
+    post: '/posts/phat-contract-2-0-use-cases-d-d-hackathon-recap',
   },
   {
     name: 'EasyA',
@@ -329,13 +360,14 @@ export default function Page() {
           "grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6",
         )}
       >
-        {sorted.map(({ name, url, icon, description, tags }, idx) => (
+        {sorted.map(({ name, url, icon, description, tags, post }, idx) => (
           <TrustedPartnershipCard
             key={idx}
             title={name}
             url={url}
             description={description}
             src={icon}
+            post={post}
             tags={tags.map(tag => ({
               label: tag,
               cls: 'bg-whiteAlpha-50 border-whiteAlpha-100 text-white',
