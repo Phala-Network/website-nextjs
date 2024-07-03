@@ -42,13 +42,13 @@ export function AnimatedDetails({
   summaryClassName,
   children,
   ...props
-}: {
+}:  Omit<React.HTMLProps<HTMLDetailsElement>, 'summary'> & {
   theIdxAtom?: PrimitiveAtom<number>
   idx: number
   summary: ReactNode
-  summaryClassName?: string
+  summaryClassName?: string | ((state: { isClosed: boolean }) => string)
   children: ReactNode
-} & React.HTMLProps<HTMLDetailsElement>) {
+}) {
   const [isClosed, setIsClosed] = useState(false)
   const theAtom = useMemo(() => theIdxAtom || defaultOpenedDetailIdxAtom, [theIdxAtom])
   const [currentIdx, setCurrentIdx] = useAtom(theAtom)
@@ -73,7 +73,7 @@ export function AnimatedDetails({
       }}
     >
       <summary
-        className={summaryClassName}
+        className={typeof summaryClassName === 'function' ? cn(summaryClassName({ isClosed }), isClosed && 'is-closed') : cn(summaryClassName, isClosed ? 'is-closed' : null)}
         onClick={ev => {
           ev.preventDefault()
         }}

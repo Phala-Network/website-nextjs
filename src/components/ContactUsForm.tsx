@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 
 
 const contactUsSchema = z.object({
-  firstname: z.string().min(3),
+  name: z.string().min(3),
   email: z.string().email(),
   message: z.string().min(10),
 })
@@ -18,26 +18,21 @@ const contactUsSchema = z.object({
 type IContactUsInput = z.infer<typeof contactUsSchema>
 
 async function sendPostFormRequest(input: IContactUsInput) {
-  const data = {
-    fields: R.toPairs(input).map(([key, value]) => ({ name: key, value, objectTypeId: '0-1' })),
-  }
   try {
-    const resp = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/20647882/3476ecbe-5ac1-4b7c-beb3-cb66cea0f65b`, {
+    const resp = await fetch('/api/contact-us', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
-    });
-    if (resp.status === 200) {
-      const body = await resp.json();
-      return { succeed: true, message: body.inlineMessage };
+      body: JSON.stringify(input),
+    })
+    if (resp.status >= 200 && resp.status < 300) {
+      return { succeed: true, message: 'Thank you to reach us, we will get back to you soon!' };
     }
     if (resp.status === 400) {
-      // const body = await resp.json();
-      return { succeed: false, error: 'Invalid Email Address.' };
+      const body = await resp.json();
+      return { succeed: false, error: body.message };
     }
-    console.error('Unexpected response:', resp);
     return { succeed: false, error: 'Unknown Error, please try again later.' };
   } catch (err) {
     console.error('Unexpected exception:', err);
@@ -80,12 +75,12 @@ export function ContactUsForm({ legend, className }: { legend?: React.ReactNode,
       <fieldset className="w-full flex flex-col lg:flex-row gap-3">
         <div className="relative w-full">
           <input
-            {...register("firstname", { required: true })}
+            {...register("name", { required: true })}
             type="text"
             placeholder="Gavin Belson"
             className="bg-black-50 rounded-xs px-5 py-2.5 w-full"
           />
-          {errors.firstname && <FieldError error={errors.firstname.message?.toString()} />}
+          {errors.name && <FieldError error={errors.name.message?.toString()} />}
         </div>
         <div className="relative w-full">
           <input

@@ -47,7 +47,7 @@
  */
 
 .site-nav-drawer {
-  @apply fixed left-0 top-0 w-screen h-screen z-40 rounded-l-5xl bg-white;
+  @apply fixed left-0 top-0 w-screen h-screen z-40 rounded-l-5xl bg-black-800;
   width: 120vw;
   max-height: -webkit-fill-available;
   will-change: transform;
@@ -58,8 +58,11 @@
 }
 
 .site-nav-drawer summary {
-  @apply text-xl font-semibold;
-  color: #323233;
+  @apply text-xl font-semibold text-phalaGreen-500 transition-all;
+}
+
+.site-nav-drawer summary.is-closed {
+  @apply text-xl font-semibold text-white;
 }
 
 .site-nav-drawer details summary {
@@ -70,23 +73,35 @@
   display:none;
 }
 
+.site-nav-drawer summary svg {
+  @apply rotate-180 transition-all;
+}
+
+.site-nav-drawer summary.is-closed svg {
+  @apply rotate-0;
+}
+
 @layer components {
   .site-nav-menu-item .heading {
-    @apply text-sm lg:text-base font-medium inline-flex flex-row items-center;
-    @apply text-black-800;
+    @apply text-sm font-medium inline-flex flex-row items-center;
+    @apply text-white;
+  }
+
+  .site-nav-menu-item span {
+    @apply text-white;
   }
 
   .site-nav-menu-item .body {
     @apply text-xs lg:text-sm;
-    @apply text-black-700;
+    @apply text-whiteAlpha-600;
   }
 
   .site-nav-menu-item:hover .heading {
-    @apply text-phalaPurple-500;
+    @apply text-green-500;
   }
 
   .site-nav-menu-item:hover .body {
-    @apply text-phalaPurple-400;
+    @apply text-green-700;
   }
 }
 

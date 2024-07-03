@@ -10,6 +10,9 @@ import { ContactUsButton } from '@/components/ContactUsButton'
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
   title: "Mirrored Price Feed by Phala Network",
+  alternates: {
+    canonical: "https://phala.network/mirrored-price-feed",
+  }
 }
 
 const deployments = [

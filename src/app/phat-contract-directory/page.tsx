@@ -178,6 +178,9 @@ function Blueprints() {
 
 export const metadata = {
   title: 'Phat Contract Directory | Phala Network',
+  alternates: {
+    canonical: "https://phala.network/phat-contract-directory",
+  }
 }
 
 export default function PhatContractDirectoryPage() {

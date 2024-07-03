@@ -34,6 +34,8 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
     <>
       <Head>
         <title>{title}</title>
+        <link ref="canonical" href={`https://phala.network/tags/${encodeURIComponent(slug)}`} />
+        <meta name="robots" content="noindex" />
       </Head>
       <div
         className={cn(
