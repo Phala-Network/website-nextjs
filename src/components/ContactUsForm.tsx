@@ -18,17 +18,13 @@ const contactUsSchema = z.object({
 type IContactUsInput = z.infer<typeof contactUsSchema>
 
 async function sendPostFormRequest(input: IContactUsInput) {
-  const data = {
-    fields: R.toPairs(input).map(([key, value]) => ({ name: key, value, objectTypeId: '0-1' })),
-  }
-
   try {
     const resp = await fetch('/api/contact-us', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(input),
     })
     if (resp.status >= 200 && resp.status < 300) {
       return { succeed: true, message: 'Thank you to reach us, we will get back to you soon!' };
