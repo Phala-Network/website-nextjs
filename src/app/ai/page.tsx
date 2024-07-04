@@ -66,7 +66,7 @@ export default function Page() {
         <Box className="rounded p-2 bg-black-850 border-black-750 w-full">
           <div className="min-w-full lg:min-h-[620px] rounded overflow-hidden">
             <YouTubeVideo
-              id="uSY-0NxEnFY"
+              id="iU9YZca2l5s"
               title=""
               poster="sddefault"
             />
