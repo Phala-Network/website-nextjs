@@ -320,7 +320,7 @@ function DrawerMenu() {
           >
             <ul className={cn("flex flex-col gap-1.5 mt-2.5")}>
               <MenuItem
-                href="https://docs.phala.network/developers/phat-contract"
+                href="https://docs.phala.network/"
                 title="Docs"
                 icon={<BiDetail className={cn("h-5 w-5")} />}
               >
