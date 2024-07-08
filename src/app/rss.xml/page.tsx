@@ -2,5 +2,12 @@ import { getBlogFeed } from '@/lib/rss_feed'
 
 export default async function Page() {
   const feed = await getBlogFeed()
-  return feed.rss2()
+  return new Response(
+    feed.rss2(),
+    {
+      headers: {
+        'Content-Type': 'application/xml',
+      }
+    }
+  )
 }
