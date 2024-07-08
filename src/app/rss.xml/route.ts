@@ -7,6 +7,9 @@ export async function GET() {
     {
       headers: {
         'Content-Type': 'application/xml',
+        'Cache-Control': 'public, s-maxage=60',
+        'CDN-Cache-Control': 'public, s-maxage=600',
+        'Vercel-CDN-Cache-Control': 'public, s-maxage=7200',
       }
     }
   )
