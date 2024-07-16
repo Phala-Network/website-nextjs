@@ -88,7 +88,7 @@ function SupportedChains() {
             "rounded-full px-4 py-2",
             "hover:bg-whiteAlpha-700 hover:text-black transition-colors",
           )}
-          href="https://docs.phala.network/developers/phat-contract/supported-chains"
+          href="https://docs.phala.network/ai-agent-contract/supported-chains"
           target="_blank"
           rel="noopener"
         >
