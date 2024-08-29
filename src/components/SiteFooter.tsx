@@ -55,15 +55,6 @@ export default function SiteFooter() {
             <LinkListItem href="https://docs.phala.network/developers/phat-contract/use-cases">Use Cases</LinkListItem>
           </LinkList>
 
-          <LinkListHeading>Templates</LinkListHeading>
-          <LinkList>
-            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">Phat Contract Starter Kit</LinkListItem>
-            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">LensAPI Oracle</LinkListItem>
-            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">VRF Oracle</LinkListItem>
-            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">AirStack Starter Kit</LinkListItem>
-            <LinkListItem href="https://dashboard.phala.network/?source=footer-LensAPI-Oracle">The Graph Starter Kit</LinkListItem>
-          </LinkList>
-
           <LinkListHeading>Other Products</LinkListHeading>
           <LinkList>
             <LinkListItem href="https://subbridge.io">SubBridge</LinkListItem>
