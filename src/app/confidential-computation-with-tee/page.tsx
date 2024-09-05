@@ -216,8 +216,9 @@ function GetStarted() {
 
 function LatestNews() {
   const posts = use(getPostList({
-    includeTags: ['AI-Agent Contract'],
+    includeTags: ['TEE'],
     sortReversed: false,
+    pageSize: 3,
   }))
   return (
     <section className={cn("section--latest-news", "px-6 py-28 lg:px-10", "mx-auto max-w-[1760px]")}>
