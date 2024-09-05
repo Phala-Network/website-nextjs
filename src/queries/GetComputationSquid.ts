@@ -45,5 +45,5 @@ export async function getComputationSquid() {
     },
     [0, 0]
   )
-  return { totalValue, totalNodes, ...result }
+  return { totalValue, totalNodes, ...result, tx: Number(result.tx) }
 }
