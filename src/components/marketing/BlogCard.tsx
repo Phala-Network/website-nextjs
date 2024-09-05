@@ -5,7 +5,7 @@ import { type Post } from '../../types/blog'
 export interface BlogCardProps {
   post: Post
   dir?: 'row' | 'col'
-  theme?: 'light' | 'dark'
+  theme?: 'light' | 'dark' | 'light2'
 }
 
 export function BlogPostCard({ post, dir, theme }: BlogCardProps) {
@@ -17,7 +17,7 @@ export function BlogPostCard({ post, dir, theme }: BlogCardProps) {
         dir === 'col'
         ? "flex gap-2 flex-col grow"
         : "flex gap-2 flex-col lg:flex-row lg:gap-10",
-        theme === 'dark' ? "bg-[#232323]" : "bg-white",
+        theme === 'dark' ? "bg-[#232323]" : theme === 'light' ? "bg-white" : 'bg-black-50',
         "group",
       )}
       shallow
@@ -28,7 +28,7 @@ export function BlogPostCard({ post, dir, theme }: BlogCardProps) {
             ? "w-full max-h-full aspect-[360/195]"
             : "w-[360px] h-[195px] max-w-full",
           "aspect-[360/195] overflow-hidden rounded-sm flex-grow shrink-0",
-          theme === "dark" ? "border border-transparent" : "border border-gray-50",
+          theme === "dark" ? "border border-transparent" : theme === 'light' ? "border border-gray-50" : 'border border-black-150',
           "overflow-hidden",
         )}
       >
