@@ -9,6 +9,7 @@ import { getPostList } from '@/queries/GetPostList'
 import { getComputationSquid } from '@/queries/GetComputationSquid'
 import { Stats } from '@/components/Stats'
 import { BlogPostCard } from '@/components/marketing'
+import { ContactUsButton } from '@/components/ContactUsButton'
 
 import './style.css'
 
@@ -88,12 +89,12 @@ function Hero() {
         </header>
         <div className={cn("col-span-8 col-start-2 row-start-7", "pb-24 lg:pb-0")}>
           <div className={"flex flex-col lg:flex-row gap-4 items-center"}>
-            <a href="#" className="btn btn-sm lg:btn-md btn-primary !btn-rounded btn-purple w-[178px]">
+            <Link href="https://docs.phala.network/tech-specs/multi-proof-and-verifiable-compute" className="btn btn-sm lg:btn-md btn-primary !btn-rounded btn-purple w-[178px]">
               Read Docs
-            </a>
-            <a href="#" className="btn btn-sm lg:btn-md btn-primary !btn-rounded btn-wht w-[178px] border border-black-200">
+            </Link>
+            <ContactUsButton className="btn btn-sm lg:btn-md btn-primary !btn-rounded btn-wht w-[178px] border border-black-200">
               Get In Touch
-            </a>
+            </ContactUsButton>
           </div>
         </div>
       </div>
@@ -198,10 +199,10 @@ function Case({ icon, title, ctaLink, ctaText = 'Learn more', className, childre
           {children}
         </p>
         {ctaLink ? (
-          <a href={ctaLink} className="inline-flex gap-2 items-center text-purple-500 !no-underline text-14 font-medium mt-8 hover:!underline">
+          <Link href={ctaLink} className="inline-flex gap-2 items-center text-purple-500 !no-underline text-14 font-medium mt-8 hover:!underline">
             {ctaText}
             <FaArrowRight className="w-3 h-3" />
-          </a>
+          </Link>
         ) : null}
       </main>
     </article>
@@ -241,12 +242,12 @@ function GetStarted() {
         <img src="/confidential-computing/get-started.jpg" alt="" className="w-full h-full" />
       </figure>
       <footer className="flex flex-col lg:flex-row gap-4 justify-center">
-        <a href="#" className="btn btn-rounded btn-purple px-12">
+        <Link href="https://docs.phala.network/tech-specs/multi-proof-and-verifiable-compute" className="btn btn-rounded btn-purple px-12">
           Read Docs
-        </a>
-        <a href="#" className="btn btn-rounded btn-wht px-12 border border-black-800">
+        </Link>
+        <ContactUsButton className="btn btn-rounded btn-wht px-12 border border-black-800">
           Get In Touch
-        </a>
+        </ContactUsButton>
       </footer>
     </section>
   )
@@ -327,7 +328,7 @@ export default function Page() {
             className="col-span-1 col-start-1 row-span-2 row-start-1"
             icon="/confidential-computing/icon-case-dagi.png"
             title="Build Confidential dAGI"
-            ctaLink="#"
+            ctaLink="https://phalanetwork.notion.site/RedPill-Introduction-dca9c41a4eb547b6a598278e077eef03"
           >
             <ul className="list-disc list-outside ml-6 flex flex-col gap-2">
               <li>Run AI Models Inside TEE</li>
@@ -338,7 +339,6 @@ export default function Page() {
             className="col-span-1 col-start-2 row-span-3 row-start-1"
             icon="/confidential-computing/icon-case-web3-consumer-apps.png"
             title="Build Secure Web3 Consumer Apps"
-            ctaLink="#"
           >
             <ul className="list-disc list-outside ml-6 flex flex-col gap-2">
               <li>
@@ -356,7 +356,7 @@ export default function Page() {
             className="col-span-1 col-start-1 row-span-2 row-start-3"
             icon="/confidential-computing/icon-case-fhe.png"
             title="Build Coprocessor for FHE"
-            ctaLink="#"
+            ctaLink="/posts/build-fhe-coprocessor-on-tee-using-javascript"
           >
             <p>
               TEE can eliminate the collusion risk exist in MPC network, and prove the validity of encryption and decryption without rely on ZK.
@@ -366,7 +366,7 @@ export default function Page() {
             className="col-span-1 col-start-2 row-span-2 row-start-4"
             icon="/confidential-computing/icon-case-2fa-zkrollups.png"
             title="Build 2FA for zkRollups"
-            ctaLink="#"
+            ctaLink="https://docs.phala.network/tech-specs/multi-proof-and-verifiable-compute"
           >
             <p>
               To hedge the bugs in ZK implementation, TEE can be used as a 2-factor verifier to zk-Rollups. Inspired by Vitalik Buterin's <Link href="https://hackmd.io/@vbuterin/zk_slides_20221010#/" target="_blank" title="Hardening rollups with multi-proofs">presentation</Link> and a recent <Link href="https://ethresear.ch/t/2fa-zk-rollups-using-sgx/14462" target="_blank" title="2FA zk-rollups using SGX">post</Link> by Justin Drake.
@@ -377,8 +377,8 @@ export default function Page() {
             icon="/confidential-computing/icon-case-all.png"
             title="Explore all use cases"
           >
-            <p className="text-purple-500">
-              Check out our documentation and <Link href="https://github.com/Phala-Network/phat-quickjs/tree/master/WapoJS/examples" target="_blank">GitHub examples</Link>.
+            <p className="text-purple-400">
+              Check out our documentation and <Link href="https://github.com/Phala-Network/phat-quickjs/tree/master/WapoJS/examples" target="_blank" className="text-purple-500">GitHub examples</Link>.
             </p>
           </Case>
         </CaseStudies>
