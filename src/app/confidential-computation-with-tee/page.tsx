@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import { getPostList } from '@/queries/GetPostList'
 import { getComputationSquid } from '@/queries/GetComputationSquid'
 import { Stats } from '@/components/Stats'
+import { YouTubeVideo } from '@/components/YouTubeVideo'
 import { BlogPostCard } from '@/components/marketing'
 import { ContactUsButton } from '@/components/ContactUsButton'
 
@@ -286,6 +287,16 @@ export default function Page() {
     <>
       <div className={cn("page--confidential-computation-with-tee", "flex flex-col gap-8 sm:gap-16")}>
         <Hero />
+
+        <section className={cn("section--video", "px-6 pt-14 lg:px-10", "mx-auto w-full max-w-5xl")}>
+          <div className="min-w-full lg:min-h-[530px] rounded overflow-hidden">
+            <YouTubeVideo
+              id="toG7koBZMoQ"
+              title=""
+              poster="sddefault"
+            />
+          </div>
+        </section>
 
         <Highlights>
           <Card
