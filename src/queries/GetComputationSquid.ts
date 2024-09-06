@@ -28,6 +28,17 @@ async function fetchComputationSquid (chain: 'phala' | 'khala') {
 }
 
 export async function getComputationSquid() {
+  // returns mock data for development
+  if (process.env.NODE_ENV === 'development') {  // returns mock data for development
+    return {
+      totalValue: 216351471,
+      totalNodes: 41619,
+      onlineWorkers: 41619,
+      vCpu: 145326,
+      crossChainTx: 15790,
+      tx: 195460673,
+    }
+  }
   const [phala, khala, result] = await Promise.all([
     fetchComputationSquid('phala'),
     fetchComputationSquid('khala'),
