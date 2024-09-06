@@ -188,8 +188,8 @@ function Case({ icon, title, ctaLink, ctaText = 'Learn more', className, childre
   ctaText?: string,
 }) {
   return (
-    <article className={cn("lg:flex-row gap-4 p-4 lg:gap-8 lg:p-8 rounded border border-blackAlpha-200", className)}>
-      <aside className="float-left lg:float-none w-7 h-7 basis-7 lg:w-16 lg:basis-16 grow-0 shrink-0">
+    <article className={cn("lg:flex lg:flex-row gap-4 p-4 lg:gap-8 lg:p-8 rounded border border-blackAlpha-200", className)}>
+      <aside className="float-left lg:float-none w-7 h-7 basis-7 lg:w-16 lg:h-16 lg:basis-16 grow-0 shrink-0">
         <img src={icon} alt="" className={cn('w-full h-full aspect-square')} />
       </aside>
       <main>
