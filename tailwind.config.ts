@@ -240,6 +240,13 @@ function buttonComponents({ addComponents, theme }: PluginAPI) {
           backgroundColor: theme('colors.blackAlpha.100'),
         },
       },
+      '.btn-md': {
+        fontSize: theme('fontSize.md'), // 14px
+        lineHeight: '150%',
+        fontWeight: '700',
+        borderRadius: '8px',
+        padding: '0.75rem 1.25rem calc(0.75rem - 2px)',
+      },
       '.btn-xs': {
         fontSize: theme('fontSize.xs'), // 12px
         lineHeight: '150%',
