@@ -13,7 +13,7 @@ import { useScroll, useMotionValueEvent } from 'framer-motion'
 
 import { BsDiscord } from 'react-icons/bs'
 import { BiDetail } from 'react-icons/bi'
-import { MdCodeOff, MdCode, MdAssignment, MdAssignmentInd, MdArrowForward } from 'react-icons/md'
+import { MdAssignment, MdAssignmentInd, MdArrowForward } from 'react-icons/md'
 import { IoServer, IoNewspaperSharp } from 'react-icons/io5'
 import { ImBlog } from 'react-icons/im'
 import { RiTwitterXLine } from 'react-icons/ri'
@@ -41,12 +41,8 @@ function Banner() {
       >
         <div className="px-12 py-2.5 sm:py-3 bg-blackAlpha-600 rounded-xs">
           <p className="text-sm leading-6 text-white">
-            <Link href="/ai?utm_source=website&utm_medium=banner&utm_campaign=annoucement&utm_id=annoucement">
-              <strong className="font-semibold">NEWS</strong>
-              <svg viewBox="0 0 2 2" className="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
-                <circle cx={1} cy={1} r={1} />
-              </svg>
-              Explore Multi AI Agent Contract by Phala Network
+            <Link href="/confidential-computation-with-tee?utm_source=website&utm_medium=banner&utm_campaign=annoucement&utm_id=annoucement">
+              Build with GPU TEE
               &nbsp;<span aria-hidden="true">&rarr;</span>
             </Link>
           </p>
