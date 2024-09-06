@@ -1,8 +1,11 @@
+import { use } from 'react'
 import { type Metadata } from 'next'
 import Link from 'next/link'
 import { FiExternalLink } from 'react-icons/fi'
 
 import { cn } from '@/lib/utils'
+import { getPostList } from '@/queries/GetPostList'
+import { BlogPostCard } from '@/components/marketing'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -320,6 +323,33 @@ const items = [
 
 const sorted = items.sort((a, b) => a.name.localeCompare(b.name))
 
+function LatestNews() {
+  const posts = use(getPostList({
+    includeTags: ['Partnerships'],
+    sortReversed: false,
+    pageSize: 9,
+  }))
+  return (
+    <section className={cn("section--latest-news", "px-6 lg:py-14 lg:px-10", "mx-auto max-w-[1760px]")}>
+      <header>
+        <h2 className="text-24 lg:text-40 font-black text-whiteAlpha-800 max-w-5xl mb-4 lg:mb-10 mx-auto text-center">
+          Latest News
+        </h2>
+      </header>
+      <dl className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6 lg:gap-6 lg:mt-16">
+        {(posts || []).map((post, idx) => (
+          <BlogPostCard key={post.id || idx} post={post} dir="col" theme="dark" />
+        ))}
+      </dl>
+      <div className="mt-16 flex flex-col lg:flex-row gap-4 justify-center">
+        <Link href="/tags/Partnerships" className="btn btn-rounded btn-purple px-12">
+          More
+        </Link>
+      </div>
+    </section>
+  )
+}
+
 export default function Page() {
   return (
     <div className="bg-black-900">
@@ -375,6 +405,8 @@ export default function Page() {
           />
         ))}
       </div>
+
+      <LatestNews />
     </div>
   )
 }

@@ -271,7 +271,7 @@ function LatestNews() {
         ))}
       </dl>
       <div className="mt-16 flex flex-col lg:flex-row gap-4 justify-center">
-        <Link href="#" className="btn btn-rounded btn-purple px-12">
+        <Link href="/tags/TEE" className="btn btn-rounded btn-purple px-12">
           More
         </Link>
       </div>
