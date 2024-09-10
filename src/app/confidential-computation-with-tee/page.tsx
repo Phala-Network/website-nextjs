@@ -82,7 +82,7 @@ function Hero() {
         </div>
         <header className={cn("col-span-6 col-start-2 row-start-3 row-span-3", "grow")}>
           <h1 className={cn("text-32 lg:text-40 font-bold lg:font-black tracking-tight lg:tracking-wider")}>
-            Build on World's largest Truest Execution Environment (TEE) network
+            Build on World's largest Trusted Execution Environment (TEE) network
           </h1>
           <h4 className={cn("mt-4", "text-18 text-gray-500")}>
             Our state-of-the-art open GPU TEE infrastructure empowers developers to build secure, confidential, and decentralized applications in both AI and blockchain.
