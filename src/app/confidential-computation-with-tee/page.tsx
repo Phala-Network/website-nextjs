@@ -6,7 +6,7 @@ import { FaArrowRight } from "react-icons/fa6"
 import { type GenericComponent } from '@/types/components'
 import { cn } from '@/lib/utils'
 import { getPostList } from '@/queries/GetPostList'
-import { getComputationSquid } from '@/queries/GetComputationSquid'
+import { getComputationData } from '@/queries/GetComputationData'
 import { Stats } from '@/components/Stats'
 import { YouTubeVideo } from '@/components/YouTubeVideo'
 import { BlogPostCard } from '@/components/marketing'
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 }
 
 function Hero() {
-  const { onlineWorkers, vCpu, crossChainTx, tx } = use(getComputationSquid())
+  const { onlineWorkers, vCpu, crossChainTx, tx } = use(getComputationData())
   return (
     <section className={cn("grid grid-cols-1", "lg:pt-28 lg:px-10", "mx-auto max-w-[1760px]")}>
       {/* the first screen */}
