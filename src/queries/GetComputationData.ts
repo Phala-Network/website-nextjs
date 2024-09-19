@@ -64,12 +64,9 @@ const fetchXcm = async (endpoint: string, paraId: number) =>
 const fetchMetadata = async (endpoint: string) =>
   fetch(endpoint, { method: 'POST', next: { revalidate: 300 } })
     .then((res) => res.json() as Promise<Metadata>)
+    .then((data) => data.data)
     .catch(() => {
-      return {
-        data: {
-          count_signed_extrinsic: '0',
-        },
-      } as Metadata
+      return { count_signed_extrinsic: '0' }
     })
 
 const fetchSquid = async (endpoint: string) =>
@@ -111,7 +108,7 @@ export async function getComputationData() {
   const data = {
     phalaSendXcmMessageCount: phalaXcm.xcm_send_message_count,
     phalaReceivedXcmMessageCount: phalaXcm.xcm_receive_message_count,
-    phalaSignedExtrinsicCount: phalaMetadata.data.count_signed_extrinsic,
+    phalaSignedExtrinsicCount: phalaMetadata.count_signed_extrinsic,
     phalaIdlePInit: phalaSquid.idleWorkerPInit,
     phalaIdlePInstant: phalaSquid.idleWorkerPInstant,
     phalaIdleWorkerCount: phalaSquid.idleWorkerCount,
@@ -119,7 +116,7 @@ export async function getComputationData() {
     phalaTotalValue: phalaSquid.totalValue,
     khalaSendXcmMessageCount: khalaXcm.xcm_send_message_count,
     khalaReceivedXcmMessageCount: khalaXcm.xcm_receive_message_count,
-    khalaSignedExtrinsicCount: khalaMetadata.data.count_signed_extrinsic,
+    khalaSignedExtrinsicCount: khalaMetadata.count_signed_extrinsic,
     khalaIdlePInit: khalaSquid.idleWorkerPInit,
     khalaIdlePInstant: khalaSquid.idleWorkerPInstant,
     khalaIdleWorkerCount: khalaSquid.idleWorkerCount,
