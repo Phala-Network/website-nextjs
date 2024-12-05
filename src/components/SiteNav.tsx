@@ -795,7 +795,7 @@ function SiteNav() {
         >
         </MenuItem>
         <MenuItem
-          href="https://docs.phala.network/developers/phat-contract/builders-program?utm_source=phala.network&utm_medium=site-nav"
+          href="https://docs.phala.network/legacy/builders-program?utm_source=phala.network&utm_medium=site-nav"
           title="Builders Program"
           icon={<IoServer className={cn("h-5 w-5")} />}
         >

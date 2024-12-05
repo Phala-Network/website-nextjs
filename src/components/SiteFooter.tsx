@@ -49,7 +49,7 @@ export default function SiteFooter() {
             <LinkListItem href="https://docs.phala.network/">Docs</LinkListItem>
             <LinkListItem href="/changelog">Changelog</LinkListItem>
             <LinkListItem href="https://github.com/Phala-Network/">GitHub</LinkListItem>
-            <LinkListItem href="https://docs.phala.network/developers/phat-contract/builders-program">Builders Program</LinkListItem>
+            <LinkListItem href="https://docs.phala.network/legacy/builders-program">Builders Program</LinkListItem>
             <LinkListItem href="https://phat.phala.network/">DevTool</LinkListItem>
             <LinkListItem href="https://dashboard.phala.network/?source=foot-bricks-app">Dashboard</LinkListItem>
             <LinkListItem href="https://docs.phala.network/developers/phat-contract/use-cases">Use Cases</LinkListItem>
