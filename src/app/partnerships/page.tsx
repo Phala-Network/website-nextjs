@@ -319,6 +319,66 @@ const items = [
       'Community', 'Builder'
     ]
   },
+  {
+    name: 'io.net',
+    url: 'https://io.net/',
+    icon: '/partnerships/io-net.png',
+    description: '',
+    tags: [
+      'AI', 'Cloud', 'Builder'
+    ],
+    post: '/posts/phala-and-ionet-create-strategic-partnership-to-enhance-gputee-',
+  },
+  {
+    name: 'Allora',
+    url: 'https://www.allora.network/',
+    icon: '/partnerships/allora.png',
+    description: 'self-improving decentralized AI network',
+    tags: [
+      'AI', 'Inference', 'Builder'
+    ],
+    post: '/posts/allora-phala-announce-strategic-partnership',
+  },
+  {
+    name: 'Artela',
+    url: 'https://artela.network/',
+    icon: '/partnerships/artela.png',
+    description: 'L1 for parallel execution and interoperable VMs',
+    tags: [
+      'L1', 'AI', 'Builder'
+    ],
+    post: '/posts/phala-network-and-artela-announce-partnership-building-a-trustless-ai-coprocessor-layer',
+  },
+  {
+    name: 'Morpheus',
+    url: 'https://mor.org/',
+    icon: '/partnerships/morpheus.png',
+    description: 'AI & compute marketplace',
+    tags: [
+      'AI', 'Cloud', 'Builder'
+    ],
+    post: '/posts/partnership-announcement-phala-brings-verifiable-tee-compute-to-morpheus-and-lumerin',
+  },
+  {
+    name: 'Hyperbolic',
+    url: 'https://hyperbolic.xyz/',
+    icon: '/partnerships/hyperbolic.png',
+    description: 'open access AI cloud',
+    tags: [
+      'AI', 'Cloud', 'Builder'
+    ],
+    post: '/posts/hyperbolic-and-phala-announce-strategic-partnership-to-advance-secure-verifiable-ai-computing',
+  },
+  {
+    name: 'Aligned Layer',
+    url: 'https://alignedlayer.com/',
+    icon: '/partnerships/alignedlayer.png',
+    description: 'simplifying ZK adoption',
+    tags: [
+      'ZK', 'AI', 'Builder'
+    ],
+    post: '/posts/partnership-announcement-phala-aligned',
+  },
 ]
 
 const sorted = items.sort((a, b) => a.name.localeCompare(b.name))
