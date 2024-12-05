@@ -323,6 +323,7 @@ const items = [
     name: 'io.net',
     url: 'https://io.net/',
     icon: '/partnerships/io-net.png',
+    description: '',
     tags: [
       'AI', 'Cloud', 'Builder'
     ],
