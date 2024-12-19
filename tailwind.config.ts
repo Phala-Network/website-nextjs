@@ -315,14 +315,16 @@ function buttonComponents({ addComponents, theme }: PluginAPI) {
       '.btn-phala': {
         backgroundColor: theme('colors.phalaGreen.500'),
         color: theme('colors.black.800'),
+        borderRadius: theme('borderRadius.full'),
       },
       '.btn-purple': {
         backgroundColor: theme('colors.phalaPurple.500'),
         color: '#fff',
       },
       '.btn-blk': {
-        backgroundColor: theme('colors.black.800'),
+        backgroundColor: theme('colors.black.900'),
         color: '#fff',
+        borderRadius: theme('borderRadius.full'),
       },
       '.btn-wht': {
         backgroundColor: theme('colors.white'),

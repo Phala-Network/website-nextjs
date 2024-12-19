@@ -1,0 +1,63 @@
+.mask-teacup {
+  width: 100%;
+  height: 100%;
+
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/home/main-landing-2025/bg-hero-2025.jpg')
+    ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+
+  border-radius: 1rem;
+  overflow: hidden;
+
+  mask-image:
+    url('/home/main-landing-2025/bottom-left-mask.png')
+    ,url('/home/main-landing-2025/bottom-right-mask.png')
+    ,url('/home/main-landing-2025/repeat-mask.png')
+    ,url('/home/main-landing-2025/repeat-mask.png')
+  ;
+  mask-size:
+    20vw 20vh
+    ,30vw 20vh
+    ,100% 80vh
+    ,51vw 20vh
+    ;
+
+  mask-position:
+    -4px bottom
+    ,right bottom
+    ,left top
+    ,19vw bottom
+    ;
+
+  mask-repeat: no-repeat;
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    mask-image:
+      url('/home/main-landing-2025/bottom-left-mask.png')
+      ,url('/home/main-landing-2025/repeat-mask.png')
+      ,url('/home/main-landing-2025/repeat-mask.png')
+    ;
+    mask-size:
+      20vw 20vh
+      ,100% 80vh
+      ,90vw 20vh
+      ;
+
+    mask-position:
+      -4px bottom
+      ,left top
+      ,19vw bottom
+      ;
+  }
+}
+
+.section-usercases {
+  background: url('/home/main-landing-2025/bg-usecases.png') no-repeat center center;
+  background-size: cover;
+}
