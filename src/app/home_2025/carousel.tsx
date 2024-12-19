@@ -24,7 +24,7 @@ export function Carousel({ children }: CarouselProps) {
   }, []);
 
   return (
-    <div className="grid grid-cols-2 gap-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -38,7 +38,7 @@ export function Carousel({ children }: CarouselProps) {
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col-reverse gap-4 lg:gap-0 lg:flex-col items-center lg:items-start justify-between">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -52,7 +52,7 @@ export function Carousel({ children }: CarouselProps) {
           </motion.div>
         </AnimatePresence>
 
-        <div className="flex items-center space-x-3 mt-8">
+        <div className="flex items-center space-x-3 lg:mt-8">
           {slides.map((_, index) => (
             <motion.button
               key={index}

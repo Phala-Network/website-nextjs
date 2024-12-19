@@ -74,7 +74,7 @@ export function Solutions({ children }: SolutionsProps) {
   }, []);
 
   return (
-    <div ref={containerRef} className="grid grid-cols-2">
+    <div ref={containerRef} className="grid grid-cols-1 lg:grid-cols-2">
       <div>
         <div 
           ref={stickyRef}
