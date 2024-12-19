@@ -11,49 +11,38 @@
   background-position: top center;
 
   border-radius: 1rem;
+  border-bottom-left-radius: 11.5rem;
   overflow: hidden;
 
   mask-image:
-    url('/home/main-landing-2025/bottom-left-mask.png')
-    ,url('/home/main-landing-2025/bottom-right-mask.png')
+    url('/home/main-landing-2025/bottom-right-mask.png')
     ,url('/home/main-landing-2025/repeat-mask.png')
     ,url('/home/main-landing-2025/repeat-mask.png')
   ;
+
+  /* NOTE: mask-size: [width] [height] */
   mask-size:
-    20vw 20vh
-    ,30vw 20vh
-    ,100% 80vh
-    ,51vw 20vh
+    32.625rem 10rem
+    ,100% calc(100% - 10rem)
+    ,calc(100% - 32.625rem) 10rem
     ;
 
   mask-position:
-    -4px bottom
-    ,right bottom
+    right bottom
     ,left top
-    ,19vw bottom
+    ,0 bottom
     ;
 
   mask-repeat: no-repeat;
 }
 
-@media (max-width: 1024px) {
-  .hero-section {
-    mask-image:
-      url('/home/main-landing-2025/bottom-left-mask.png')
-      ,url('/home/main-landing-2025/repeat-mask.png')
-      ,url('/home/main-landing-2025/repeat-mask.png')
-    ;
-    mask-size:
-      20vw 20vh
-      ,100% 80vh
-      ,90vw 20vh
-      ;
+@media (max-width: 1280px) {
+  .mask-teacup {
+    border-radius: 1rem;
+    border-bottom-left-radius: 5.75rem;
 
-    mask-position:
-      -4px bottom
-      ,left top
-      ,19vw bottom
-      ;
+    mask-image: none !important;
+    mask-size: none !important;
   }
 }
 
