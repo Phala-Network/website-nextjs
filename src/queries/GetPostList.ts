@@ -1,4 +1,5 @@
 import { type Post } from '../types/blog'
+export { type Post } from '../types/blog'
 
 export interface GetPostList {
   readonly cursor?: string;
