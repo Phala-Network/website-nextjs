@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState, ReactNode } from 'react';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { FiArrowLeft } from 'react-icons/fi'
 
@@ -93,10 +94,10 @@ export function Solutions({ children }: SolutionsProps) {
               />
             ))}
           </div>
-          <button className="flex items-center gap-2 mb-8 text-gray-600 hover:text-gray-900 mt-16">
+          <Link href="https://docs.phala.network" target="_blank" className="flex items-center gap-2 mb-8 text-gray-600 hover:text-gray-900 mt-16">
             <span className="text-18 p-1.5 rounded-full bg-black text-white"><FiArrowLeft /></span>
             <span className="text-18 font-medium">Phala Docs</span>
-          </button>
+          </Link>
         </div>
       </div>
       <div>
