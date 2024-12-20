@@ -75,7 +75,7 @@ function HeroSection() {
           </div>
           <header className="xl:flex lg:flex-row gap-2 col-span-10 col-start-2">
             <h1 className="py-1 px-4 text-24 md:text-40 text-white bg-black rounded-sm font-bold tracking-tight uppercase text-center xl:text-left">
-              CRYPTOGRAPHIC
+              CRYPTOGRAPHIC COMPUTER
             </h1>
             <h2 className="py-1 text-24 md:text-40 text-white font-bold tracking-tight text-center xl:text-left">
               Not Tomorrow. Today.
@@ -194,12 +194,12 @@ function OurProducts() {
                 <li>Fully open source—no vendor lock-in.</li>
               </ul>
               <div className="flex flex-col md:flex-row gap-4 mt-6">
-                <button className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                <Link href="https://github.com/dstack-TEE/dstack" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
                   Dstack
-                </button>
-                <button className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+                </Link>
+                <Link href="#" className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
                   Open Source TEE SDK
-                </button>
+                </Link>
               </div>
             </SolutionCard>
             <SolutionCard
@@ -212,12 +212,12 @@ function OurProducts() {
                 <li>With 5 years experience, we know how to deliver the best security.</li>
               </ul>
               <div className="flex flex-col md:flex-row gap-4 mt-6">
-                <button className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                <Link href="#" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
                   Phala Cloud
-                </button>
-                <button className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+                </Link>
+                <Link href="#" className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
                   A Secure, AI-Ready Platform
-                </button>
+                </Link>
               </div>
             </SolutionCard>
             <SolutionCard
@@ -229,9 +229,9 @@ function OurProducts() {
                 <li>RA Explorer and Phala L2 Explorer tools simplify trustless verification.</li>
               </ul>
               <div className="flex flex-col md:flex-row gap-4 mt-6">
-                <button className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                <Link href="https://phalanetwork.notion.site/TEE-Coprocessor-Handbook-1360317e04a180ffa888f5f6e8a07310" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
                   TEE as a Service
-                </button>
+                </Link>
               </div>
             </SolutionCard>
           </Solutions>
@@ -349,7 +349,7 @@ function UseCases() {
           <p className="text-14 text-center text-black-600 w-[20rem]">Build intelligence-centric applications like MEV-boost and intent-driven platforms.</p>
         </div>
 
-        <Link href="#" className="btn btn-wht rounded-full col-start-3 col-span-8 mt-6">
+        <Link href="/partnerships" className="btn btn-wht rounded-full col-start-3 col-span-8 mt-6">
           Discover All Usecases
         </Link>
       </main>
@@ -417,7 +417,7 @@ function HowItWorks() {
           />
         </div>
         <div className="md:col-span-10 md:col-start-2 flex flex-row justify-center">
-          <a href="#" className="btn btn-blk btn-sm rounded-full">Explore 5 Levels of Secured Hardwares</a>
+          <a href="https://www.paradigm.xyz/2024/11/the-5-levels-of-secure-hardware" target="_blank" className="btn btn-blk btn-sm rounded-full">Explore 5 Levels of Secured Hardwares</a>
         </div>
       </main>
     </section>

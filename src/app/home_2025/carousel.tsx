@@ -96,7 +96,10 @@ export function CarouselSlide({ title, image, children, renderMode }: SlideProps
   if (renderMode === 'content') {
     return (
       <div className="space-y-2">
-        <h2 className="text-3xl font-bold mb-4">{title}</h2>
+        <div className="text-32 xl:text-40 font-bold xl:mb-14">
+          Get TEE-Pilled
+        </div>
+        <h2 className="text-24 font-bold mb-4">{title}</h2>
         {children}
       </div>
     );
