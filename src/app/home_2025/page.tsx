@@ -189,9 +189,9 @@ function OurProducts() {
               image="/home/main-landing-2025/img-solution-1.png"
             >
               <ul className="space-y-2.5 list-disc ml-4">
-                <li>Write code, dockerize, and deploy as TEE applications.</li>
-                <li>Rely on built-in security best practices.</li>
-                <li>Fully open source—no vendor lock-in.</li>
+                <li>Write code, dockerize, and deploy it as trustless TEE apps.</li>
+                <li>You deserve the best security with built-in security best practices.</li>
+                <li>Fully open source. No vender lock-in.</li>
               </ul>
               <div className="flex flex-col md:flex-row gap-4 mt-6">
                 <Link href="https://github.com/dstack-TEE/dstack" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
@@ -203,11 +203,11 @@ function OurProducts() {
               </div>
             </SolutionCard>
             <SolutionCard
-              title="Deploy and Operate with Confidence"
+              title="Deploy with ease. Operate with confident"
               image="/home/main-landing-2025/img-solution-2.png"
             >
               <ul className="space-y-2.5 list-disc ml-4">
-                <li>We deal with the pain of hardware maintenance. So you don't have to.</li>
+                <li>We deal with the pain of hardware maintenance. So you don&apos;t have to.</li>
                 <li>Get access to CPU and GPU TEEs in one click. Intel TDX, AMD SEV, and nVIDIA H100/H200 available.</li>
                 <li>With 5 years experience, we know how to deliver the best security.</li>
               </ul>
@@ -225,10 +225,17 @@ function OurProducts() {
               image="/home/main-landing-2025/img-solution-3.png"
             >
               <ul className="space-y-2.5 list-disc ml-4">
-                <li>On-chain attestation and audit trails for off-chain computations.</li>
+                <li>From RA quote to onchain proof, all the evidences are ready for the Pros.</li>
                 <li>RA Explorer and Phala L2 Explorer tools simplify trustless verification.</li>
+                <li>Degens can enjoy the security with our user friendly explorers.</li>
               </ul>
               <div className="flex flex-col md:flex-row gap-4 mt-6">
+                <Link href="https://proof.t16z.com/" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                  RA Explorer
+                </Link>
+                <Link href="#" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                  Phala L2 Explorer
+                </Link>
                 <Link href="https://phalanetwork.notion.site/TEE-Coprocessor-Handbook-1360317e04a180ffa888f5f6e8a07310" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
                   TEE as a Service
                 </Link>
@@ -254,7 +261,7 @@ function UseCases() {
         </h2>
 
         <div className="lg:col-span-5 xl:col-span-3 xl:col-start-3 rounded p-8 bg-white flex flex-col gap-8 items-center">
-          <h4 className="text-20 font-semibold tracking-tight mb-1">From Web2 to Web3</h4>
+          <h4 className="text-20 font-semibold tracking-tight mb-1">Web2 In. Web3 Out.</h4>
           <div className="flex flex-row items-center">
             <div className="h-16 w-16 flex items-center justify-center p-3 border border-black-150 rounded-full">
               <img className="h-8 w-auto" src="/home/main-landing-2025/icon-x.png" />
@@ -264,7 +271,7 @@ function UseCases() {
               <img className="h-10 w-auto" src="/home/main-landing-2025/icon-openai.png" />
             </div>
           </div>
-          <p className="text-14 text-center text-black-600">Transition seamlessly from Web2 software to Web3, connecting easily with smart contracts across blockchains.</p>
+          <p className="text-14 text-center text-black-600">Turn your web2 apps into verifiable web3 powerhouses in minutes. No single points of failure. No headaches. Just connect Docker → Blockchain / Autonomous AI. Done.</p>
         </div>
 
         <div className="lg:col-start-6 lg:col-span-7 xl:col-start-6 xl:col-span-5 rounded p-8 bg-white flex flex-col gap-8 items-center">
@@ -309,7 +316,7 @@ function UseCases() {
               </div>
             </div>
           </div>
-          <p className="text-14 text-center text-black-600 max-w-[26rem]">Build and run autonomous AI agents and AI-native infrastructure securely.</p>
+          <p className="text-14 text-center text-black-600">Set your AI free. No AWS. No censorship. Just pure autonomous AI, secured by GPU TEE. Train it. Deploy it. Trust it.</p>
         </div>
 
         <div className="lg:col-span-6 xl:col-start-3 xl:col-span-4 rounded p-8 bg-white flex flex-col gap-8 items-center">
@@ -328,6 +335,7 @@ function UseCases() {
               <img className="h-16 w-auto" src="/home/main-landing-2025/icon-scroll.png" />
             </div>
           </div>
+          <p className="text-14 text-center text-black-600">Frontrun the MEV crisis with TEE. Build blocks that can&apos;t be censored or sandwiched. Provable execution. Trustless. Fair.</p>
         </div>
 
         <div className="lg:col-span-6 lg:col-start-7 xl:col-start-7 xl:col-span-4 rounded p-8 bg-white flex flex-col gap-8 items-center">
@@ -346,7 +354,7 @@ function UseCases() {
               <img className="h-14 w-auto" src="/home/main-landing-2025/icon-polkadot.png" />
             </div>
           </div>
-          <p className="text-14 text-center text-black-600 w-[20rem]">Build intelligence-centric applications like MEV-boost and intent-driven platforms.</p>
+          <p className="text-14 text-center text-black-600 w-[20rem]">Secure cryptography even more. Combine TEE with the math kind. No flaws. No collusion. Just pure, layered protection.</p>
         </div>
 
         <Link href="/partnerships" className="btn btn-wht rounded-full col-start-3 col-span-8 mt-6">
@@ -359,12 +367,12 @@ function UseCases() {
 
 interface HowItWorkCardProps {  
   title: string
-  description: string
   image: string
   backdropColor: string
+  children: React.ReactNode
 }
 
-function HowItWorkCard({ title, description, image, backdropColor }: HowItWorkCardProps) {
+function HowItWorkCard({ title, image, backdropColor, children }: HowItWorkCardProps) {
   return (
     <article
       style={{
@@ -376,9 +384,9 @@ function HowItWorkCard({ title, description, image, backdropColor }: HowItWorkCa
         `bg-cover bg-center`,
       )}
     >
-      <main className="p-10 z-10 text-white min-h-1/2">
+      <main className="p-10 z-10 text-white min-h-[50%]">
         <h3 className="text-20 font-bold tracking-tight mb-4">{title}</h3>
-        <p className="text-14 font-medium">{description}</p>
+        {children}
       </main>
       <div
         className="w-6 h-6 rounded-full bg-white absolute top-6 left-6"
@@ -399,22 +407,31 @@ function HowItWorks() {
         <div className="lg:col-span-12 xl:col-span-10 xl:col-start-2 flex flex-col lg:grid lg:grid-cols-3 gap-6">
           <HowItWorkCard
             title="TEE Hardwares"
-            description="The TEE hardware ensures your computation is tamper-proof, privacy preserving, and unstoppable. It generates the execution proof that everyone can verify easily."
             image="/home/main-landing-2025/img-how-it-work-1.jpg"
             backdropColor="#669fd7"
-          />
+          >
+            <p className="text-14 font-medium">
+              The TEE hardware ensures your computation is tamper-proof, privacy preserving, and unstoppable. It generates the execution proof that everyone can verify easily.
+            </p>
+          </HowItWorkCard>
           <HowItWorkCard
             title="TEE Abstraction"
-            description="Phala provides an abstraction unifies the security of Intel SGX, Intel TDX, AMD SEV, and NVIDIA GPU TEEs. With decentralized Root-of-Trust design benefit from the security of Ethereum."
             image="/home/main-landing-2025/img-how-it-work-2.jpg"
             backdropColor="#A9D03F"
-          />
+          >
+            <p className="text-14 font-medium">
+              Phala provides an abstraction unifies the security of Intel SGX, Intel TDX, AMD SEV, and NVIDIA GPU TEEs. With decentralized Root-of-Trust design benefit from the security of Ethereum.
+            </p>
+          </HowItWorkCard>
           <HowItWorkCard
             title="T16Z Philosophy"
-            description="A cryptographic computer is built with not only TEE, but a novel blend of TEE, MPC, ZKP, and cryptoeconomic security defends the attacks to your app in depth.."
             image="/home/main-landing-2025/img-how-it-work-3.jpg"
             backdropColor="#D58E5E"
-          />
+          >
+            <p className="text-14 font-medium">
+              A cryptographic computer is built with not only TEE, but a novel blend of TEE, MPC, ZKP, and cryptoeconomic security defends the attacks to your app in depth.
+            </p>
+          </HowItWorkCard>
         </div>
         <div className="md:col-span-10 md:col-start-2 flex flex-row justify-center">
           <a href="https://www.paradigm.xyz/2024/11/the-5-levels-of-secure-hardware" target="_blank" className="btn btn-blk btn-sm rounded-full">Explore 5 Levels of Secured Hardwares</a>

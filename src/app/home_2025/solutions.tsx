@@ -83,7 +83,7 @@ export function Solutions({ children }: SolutionsProps) {
             isSticky ? "sticky top-8" : ""
           }`}
         >
-          <h1 className="text-4xl font-bold mb-4">The Solution</h1>
+          <h1 className="text-4xl font-bold mb-4">Solutions</h1>
           <div className="flex gap-2 ml-1">
             {slides.map((_, index) => (
               <div
