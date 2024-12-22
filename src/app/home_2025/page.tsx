@@ -116,18 +116,18 @@ function ProblemStatements() {
       <main className="safe-viewport grid grid-cols-1 lg:grid-cols-12 gap-y-10">
         <article className={cn("lg:col-span-5 xl:col-span-4 xl:col-start-2 lg:row-start-1", "flex flex-col gap-2.5")}>
           <h3 className="text-24 font-bold tracking-tight mb-1">
-            The AI-Powered, Decentralized Future Is Stuck
+            Trustless ≠ Expensive
           </h3>
           <p className="text-16">
-            Right now, AI is deployed on either centralized clouds you can&apos;t trust or algorithms that are so slow and expensive that they&apos;re 1000x the cost. If we don&apos;t solve this, AI won&apos;t be autonomous—it&apos;ll be controlled.
+            Trustless systems are expensive. Apps are deployed on either centralized clouds you can&apos;t trust or algorithms that are so slow and expensive that they&apos;re 1000x the cost.
           </p>
         </article>
         <article className={cn("lg:col-span-5 xl:col-span-4 xl:col-start-2 lg:row-start-2", "flex flex-col gap-2.5")}>
           <h3 className="text-24 font-bold tracking-tight mb-1">
-            Phala Enables Unruggable AI
+            Trustless = The Future of AI
           </h3>
           <p className="text-16">
-            We&apos;ve made trustless, offchain computation fast, affordable, and provable. Build decentralized, unruggable AI and apps without the wait, without the cost, without the compromise. Because the future of Web3 and AI isn&apos;t next year. It&apos;s now.
+            The next generation of cloud must be AI-native. Autonomous AI needs seamless access to secure physical machines for development, deployment, and operation, all while being auditable.
           </p>
         </article>
         <div className="lg:col-span-6 lg:col-start-7 xl:col-span-5 xl:col-start-7 lg:row-start-1 lg:row-span-2 flex flex-row justify-end">
