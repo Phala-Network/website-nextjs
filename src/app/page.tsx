@@ -87,7 +87,7 @@ function HeroSection() {
             <p>No months of work. No 1000x performance penalty.</p>
           </div>
           <div className="flex flex-col md:flex-row gap-4 col-span-10 col-start-2">
-            <Link href="/" className="btn btn-phala">
+            <Link href="https://cloud.phala.network" target="_blank" className="btn btn-phala">
               Start with Phala 2.0
             </Link>
             <Link href="https://docs.phala.network" target="_blank" className="btn btn-blk min-w-32 leading-4 text-center">
@@ -198,9 +198,9 @@ function OurProducts() {
                 <Link href="https://github.com/dstack-TEE/dstack" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
                   Dstack
                 </Link>
-                <Link href="#" className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+                <span className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
                   Open Source TEE SDK
-                </Link>
+                </span>
               </div>
             </SolutionCard>
             <SolutionCard
@@ -216,9 +216,9 @@ function OurProducts() {
                 <Link href="https://cloud.phala.network" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
                   Phala Cloud
                 </Link>
-                <Link href="#" className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+                <span className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
                   A Secure, AI-Ready Platform
-                </Link>
+                </span>
               </div>
             </SolutionCard>
             <SolutionCard
@@ -336,7 +336,7 @@ function UseCases() {
               <img className="h-16 w-auto" src="/home/main-landing-2025/icon-scroll.png" />
             </div>
           </div>
-          <p className="text-14 text-center text-black-600">Frontrun the MEV crisis with TEE. Build blocks that can&apos;t be censored or sandwiched. Provable execution. Trustless. Fair.</p>
+          <p className="text-14 text-center text-black-600">Secure cryptography even more. Combine TEE with the math kind. No flaws. No collusion. Just pure, layered protection.</p>
         </div>
 
         <div className="lg:col-span-6 lg:col-start-7 xl:col-start-7 xl:col-span-4 rounded p-8 bg-white flex flex-col gap-8 items-center">
@@ -355,7 +355,7 @@ function UseCases() {
               <img className="h-14 w-auto" src="/home/main-landing-2025/icon-polkadot.png" />
             </div>
           </div>
-          <p className="text-14 text-center text-black-600 w-[20rem]">Secure cryptography even more. Combine TEE with the math kind. No flaws. No collusion. Just pure, layered protection.</p>
+          <p className="text-14 text-center text-black-600">Frontrun the MEV crisis with TEE. Build blocks that can&apos;t be censored or sandwiched. Provable execution. Trustless. Fair.</p>
         </div>
 
         <Link href="/partnerships" className="btn btn-wht rounded-full col-start-3 col-span-8 mt-6">
