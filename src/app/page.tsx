@@ -1,526 +1,17 @@
-import { type Metadata } from 'next'
+import { use } from 'react'
+import { Metadata } from 'next'
 import Link from 'next/link'
+import { FiArrowDown } from 'react-icons/fi'
 
 import { cn } from '@/lib/utils'
-import { getPhatLists } from '@/lib/phat_lists'
-import { ContactUsForm } from '@/components/ContactUsForm'
-import SubscribeForm from '@/components/marketing/SubscribeForm'
-import { YouTubeVideo } from '@/components/YouTubeVideo'
+import { getPostList, type Post } from '@/queries/GetPostList'
+import { PostCard } from '@/components/PostCard'
 
-import { AreaOfInterestTab, AreaOfInterestTabPanel } from './_components/AreaOfInterestTabs'
-import { StatsCard } from './_components/StatsCard'
-import { SectionHowItWorks } from './_components/SectionHowItWorks'
-import { SectionHero } from './_components/SectionHero'
-import { SectionHighlights } from './_components/SectionHighlights'
-import SectionFeatures from './_components/SectionFeatures'
-import { ContactUsButton } from '@/components/ContactUsButton'
+import { Carousel, CarouselSlide } from './home_2025/carousel'
+import { Solutions, SolutionCard } from './home_2025/solutions'
+import { Stats } from './home_2025/stats'
+import './home_2025/style.css'
 
-import './home.css'
-import './_components/section-phat-contract-highlight.css'
-
-//
-// Section Pitch Pionner
-//
-
-function SectionPitchPioneer() {
-  return (
-    <section id="section-pitch-pionner">
-      <div className={cn(
-        "safe-viewport py-10 lg:py-32 px-8 lg:px-16",
-        "grid grid-cols-1 lg:gap-x-10 lg:grid-cols-12 gap-y-10",
-        "border border-solid border-black-100 rounded",
-        "bg-black-100",
-      )}>
-        <header
-          className={cn(
-            "row-start-1 col-start-1 col-span-full",
-            "flex flex-col gap-5",
-            "pb-10 lg:pb-20"
-          )}
-        >
-          <h2 className={cn("text-3xl lg:text-6xl text-black font-black")}>Cutting Edge Web3 Usecases</h2>
-          <div>
-            <Link href="/tags/Usecases" className={cn("btn btn-primary btn-md btn-purple btn-rounded")}>
-              Learn More
-            </Link>
-          </div>
-        </header>
-        <main className={cn("row-start-2 invisible col-span-full xl:visible xl:col-start-6 xl:col-span-7")}>
-          <div className={cn("hidden xl:grid grid-cols-6 grid-rows-8 gap-2.5", "text-white text-xl font-extrabold", "mx-auto")}>
-            <AreaOfInterestTab idx={0} className="bento-1">
-              <h4 className="text-20 font-bold">Trustless MEV</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={1} className="bento-2">
-              <h4 className="uppercase">Account Abstraction</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={2} className="bento-7">
-              <h4 className="uppercase">L2 Sequencer</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={3} className="bento-4">
-              <h4 className="uppercase">Decentralized API</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={4} className="bento-5">
-              <h4 className="uppercase">Web3 AI</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={5} className="bento-6">
-              <h4 className="uppercase">Distributed Computing</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={6} className="bento-9">
-              <h4 className="uppercase">Gateway & CDN</h4>
-            </AreaOfInterestTab>
-            <AreaOfInterestTab idx={7} className="bento-3">
-              <h4 className="uppercase">Relayers & Validators</h4>
-            </AreaOfInterestTab>
-          </div>
-        </main>
-
-        <aside className={cn("row-start-2 col-span-full xl:col-start-1 xl:col-span-5")}>
-          <div className={cn("h-full")}>
-            <AreaOfInterestTabPanel idx={0} title="Trustless MEV">
-              <p>Trustless MEV refers to the concept of eliminating reliance on trusted service providers, such as Flashbot, in the Miner Extractable Value (MEV) ecosystem. Currently, 80% of Ethereum blocks are built by MEV, but the existing MEV stack depends on these trusted providers.</p>
-              <p>The problem with this approach is that it creates a single point of trust in the MEV ecosystem. Researchers have suggested using Secure Enclaves, like Intel SGX, to minimize this trust dependency.</p>
-              <p>Phala Network, an off-chain compute network powered by Secure Enclaves, can be utilized to build the MEV core stack with minimal trust assumptions. This enables a more secure and trustless MEV ecosystem for developers and users alike.</p>
-            </AreaOfInterestTabPanel>
-            <AreaOfInterestTabPanel idx={1} title="Account Abstraction">
-              <p>Account Abstraction is the idea of using smart contract wallets as first-class citizens instead of Externally Owned Accounts (EOAs), alongside a reliable transaction relaying infrastructure. This allows third parties to execute transactions on behalf of users, enabling features such as wallet recovery and batched transactions.</p>
-              <p>However, adoption of smart contract wallets has been limited due to the lack of a common standard for interaction between smart contracts and dApps. This results in users still relying on their EOAs for transactions.</p>
-              <p>Phala Network’s Phat Contract allows developers to create seamless user experiences by enabling registration via social accounts or gasless dApp usage. It also allows developers to sponsor transactions on behalf of users, eliminating the need for users to worry about gas fees.</p>
-            </AreaOfInterestTabPanel>
-            <AreaOfInterestTabPanel idx={2} title="L2 Sequencer">
-              <p>Layer 2 solutions aim to scale applications by handling transactions off the Ethereum Mainnet (Layer 1) while maintaining the decentralized security of the Mainnet. However, rollups, a popular Layer 2 solution, introduce issues like monopoly pricing, censorship, and fragmented liquidity between rollups.</p>
-              <p>Phala Network can provide a scalable and secure solution by leveraging its high-performance and confidentiality features. This enables developers to create application-tailored rollups that are fast, reliable, and maintain the composability of the Ethereum ecosystem.</p>
-            </AreaOfInterestTabPanel>
-            <AreaOfInterestTabPanel idx={3} title="Decentralized API">
-              <p>Decentralized APIs can enhance the trustworthiness of various services, such as Infura, Graph, Alchemy, and RPC APIs. Phala Network enables the aggregation of API services or RPC services with trustless algorithms, providing use cases like verifiable RPC aggregator switchers and trustless CDN management programs.</p>
-              <p>This allows developers to secure their websites, APIs, and Internet applications while maintaining a decentralized and trustless environment.</p>
-            </AreaOfInterestTabPanel>
-            <AreaOfInterestTabPanel idx={4} title="Web3 AI">
-            <p>Web3 AI refers to the integration of decentralized AI systems with blockchain technology. This enables distributed model training, ensuring data privacy while benefiting from diverse data sources. It also allows for collaborative model development, where multiple parties can work on AI models without sharing sensitive data.</p>
-            <p>Phala Network can facilitate the development of Web3 AI systems by providing a secure and transparent platform for AI model training, updates, and access. Smart contracts on Phala Network can ensure adherence to predefined rules and agreements, while the immutable nature of the blockchain provides an auditable record of these processes.</p>
-            </AreaOfInterestTabPanel>
-            <AreaOfInterestTabPanel idx={5} title="Distributed Computing">
-              <p>Distributed computing enables multiple computers to work together to solve complex problems, making a computer network appear as a powerful single computer. It can be used to encrypt large volumes of data, solve complex equations, and render high-quality animations.</p>
-              <p>Phala Network offers fast, cost-efficient, and secure computation by running jobs where data is generated and stored. It can streamline existing workflows without extensive rewriting by running arbitrary Docker containers and WebAssembly (WASM) images as tasks.</p>
-            </AreaOfInterestTabPanel>
-            <AreaOfInterestTabPanel idx={6} title="Gateway & CDN">
-              <p>Centralized CDN services can lead to issues like single points of failure, data leaks, and centralized control. Phala Network provides a decentralized content and application delivery network that accelerates the delivery of Web3 content and apps.</p>
-              <p>By connecting with decentralized storage services like IPFS, Filecoin, and Arweave, Phala Network can create a transparent, content-addressable, and publicly available CDN. This ensures a trustless, censorship-resistant, and open-source environment for content delivery.</p>
-            </AreaOfInterestTabPanel>
-            <AreaOfInterestTabPanel idx={7} title="Relayers & Validators">
-              <p>The relay model for cross-chain transactions abstracts data verification into a consensus problem at the relay layer. A relay chain is developed for interoperability, with relay nodes deployed in each blockchain network to monitor and synchronize transaction data.</p>
-              <p>Phala Network can help developers build inter-chain-native dApps with efficient liquidity utilization, coherent application logic, and shared states with cross-chain verifications. This eliminates the need for multiple isolated smart contract deployments on different blockchains, streamlining the development process.</p>
-            </AreaOfInterestTabPanel>
-
-            <div className={cn("border-t border-solid border-whiteAlpha-700 mt-4 hidden")}>
-              <h3 className={cn("text-2xl font-bold leading-normal py-8")}>We help you build your future.<br />Share your vision:</h3>
-              <form className="flex flex-col gap-2.5">
-                <div className="flex flex-row gap-2.5">
-                  <input placeholder="Contact name" className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 flex-1 w-1/2" />
-                  <input placeholder="nick@domain.ltd" className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 flex-1 w-1/2" />
-                </div>
-                <div>
-                  <textarea className="py-2.5 px-5 bg-transparent rounded-lg border border-solid border-whiteAlpha-500 w-full" rows={6} />
-                </div>
-                <div className="flex flex-row justify-end">
-                  <button type="submit" className="btn text-black bg-primary">Submit</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </aside>
-
-        <div className={cn("rounded p-8 bg-white mt-8 lg:mt-32", "col-span-full", "grid grid-cols-1 lg:grid-cols-12")}>
-          <ContactUsForm
-            className={cn("row-start-1 col-span-full lg:col-span-6", "flex flex-col gap-3 lg:pr-8")}
-            legend={<legend className="text-md lg:text-24 font-bold mb-4">We help you build your future.<br />Share your vision:</legend>}
-          />
-          <div className={cn(
-            "row-start-1 col-span-full lg:col-span-4 lg:col-end-12",
-            "flex flex-col-reverse items-end lg:flex-col lg:items-start",
-            "lg:relative",
-            "opacity-25 lg:opacity-100",
-            "pointer-events-none select-none",
-          )}>
-            <img src="/home/contact-us.png" alt="" className="w-1/2 lg:w-auto lg:absolute pointer-events-none select-none bottom-0" />
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// END: Section Pitch Pionner
-
-//
-// Section Phat Contract Highlight
-//
-
-function UnlimitedApiCard({ title, src, href, target }: { title: string, src: string, href: string, target?: string }) {
-  return (
-    <a
-      href={href}
-      target={target}
-      className={cn(
-        "flex flex-col items-center justify-center gap-2.5 py-10 lg:py-20 rounded-sm overflow-hidden",
-        "bg-[#e3dfdc]",
-        "group",
-      )}
-    >
-      <img src={src} alt={title} className="w-1/2 group-hover:scale-105 duration-200 transition-transform" />
-      <div className="text-black-800 text-18 font-bold">{title}</div>
-    </a>
-  )
-}
-
-function ToolIcon({ src, title }: { src: string, title: string }) {
-  return (
-    <div className="w-20 h-20 flex items-center justify-center bg-black-900 rounded-full border border-solid border-whiteAlpha-300">
-      <img src={src} alt={title} className="w-3/5" />
-    </div>
-  )
-}
-
-function ChainIcon({ src, title }: { src: string, title: string }) {
-  return (
-    <div className="w-20 h-20 lg:w-32 lg:h-32 flex items-center justify-center bg-black rounded-full">
-      <img src={src} alt={title} className="max-w-[60%] max-h-full select-none pointer-events-none" loading="lazy" decoding="async" />
-    </div>
-  )
-}
-
-function TemplateCard({ title, src, href, target }: { title: string, src: string, href: string, target?: string }) {
-  return (
-    <a
-      href={href}
-      target={target}
-      className={cn(
-        "bg-gradient-to-b from-[#181818] to-[#272727]",
-        "rounded-sm aspect-square",
-        "flex flex-col gap-4 items-center justify-center p-6",
-        "group",
-      )}
-    >
-      <header className="text-center">
-        <h4 className="text-24 font-black text-white">{title}</h4>
-      </header>
-      <div className="aspect-square w-4/6 select-none pointer-events-none group-hover:scale-105 transition-all duration-200">
-        <img src={src} alt={title} loading="lazy" decoding="async" />
-      </div>
-    </a>
-  )
-}
-
-function SectionPhatContractHighlight() {
-  return (
-    <section
-      id="section-phat-contract-highlight"
-      className={cn(
-        "safe-viewport py-10 lg:py-32 px-5 lg:!px-16",
-        "grid grid-cols-4 lg:grid-cols-12 grid-rows-1 gap-6",
-        "border border-solid border-black-100 rounded-md",
-        "bg-black-900",
-      )}
-    >
-      <header
-        className={cn(
-          "row-start-1 col-start-1 col-span-full",
-          "lg:pb-20",
-        )}
-      >
-        <h2
-          className={cn(
-            "text-3xl lg:text-6xl text-white font-black",
-          )}
-        >
-          AI-Agent Contract
-        </h2>
-        <p
-          className={cn(
-            "text-xl lg:text-3xl text-white font-normal",
-          )}
-        >
-          Ship AI agents in minutes
-        </p>
-      </header>
-
-      <article
-        className={cn(
-          "article",
-          "row-start-2 col-span-full lg:col-start-1 lg:col-span-7",
-          "grid gap-8",
-        )}
-      >
-        <h3 className="heading">Integrate with Popular LLMs and Web3 data layers</h3>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <UnlimitedApiCard
-            title="The Graph"
-            src="/home/icon-access-unlimited-thegraph.png"
-            href="https://dashboard.phala.network/projects/new/clone?template=thegraph-starterkit"
-            target="_blank"
-          />
-          <UnlimitedApiCard
-            title="Lens Protocol"
-            src="/home/icon-access-unlimited-lens.png"
-            href="https://dashboard.phala.network/projects/new/clone?template=lensapi"
-            target="_blank"
-          />
-          <UnlimitedApiCard
-            title="Airstack"
-            src="/home/icon-access-unlimited-airstack.png"
-            href="https://dashboard.phala.network/projects/new/clone?template=airstack-starterkit"
-            target="_blank"
-          />
-        </div>
-        <div className="self-end">
-          <ContactUsButton
-            className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[216px]")}
-          >
-            Get Early Access
-          </ContactUsButton>
-        </div>
-      </article>
-
-      <div
-        className={cn(
-          "row-start-3 col-span-full lg:row-start-2 lg:col-start-8 lg:col-span-5",
-          "flex flex-col gap-6"
-        )}
-      >
-        <article
-          className={cn(
-            "article",
-            "flex flex-col gap-8",
-          )}
-        >
-          <h3 className="heading">Build with familiar tools</h3>
-          <div className="flex flex-row flex-wrap gap-4 lg:gap-6">
-            <ToolIcon src="/home/icon-tool-hardhat.png" title="Hardhat" />
-            <ToolIcon src="/home/icon-tool-metamask.png" title="Metamask" />
-            <ToolIcon src="/home/icon-tool-foundry.png" title="Foundry" />
-            <ToolIcon src="/home/icon-tool-javascript.png" title="Javascript" />
-            <ToolIcon src="/home/icon-tool-typescript.png" title="Typescript" />
-          </div>
-          <div className="lg:mt-5">
-            <a
-              href="https://docs.phala.network/developers/bricks-and-blueprints/featured-blueprints"
-              className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
-              target="_blank"
-            >
-              Learn More
-            </a>
-          </div>
-        </article>
-        <article
-          className={cn(
-            "article",
-            "flex flex-col gap-8",
-          )}
-        >
-          <h3 className="heading">Backing <em>153</em> Contracts</h3>
-          <div className="lg:mt-5">
-            <a
-              href="https://analytics.phala.network/"
-              className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[178px]")}
-              target="_blank"
-            >
-              Explore
-            </a>
-          </div>
-        </article>
-        </div>
-
-      <article
-        className={cn(
-          "article",
-          "lg:row-start-3 col-span-full",
-          "grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-20"
-        )}
-      >
-        <div className="lg:max-w-[494px] flex flex-col items-center lg:justify-center gap-4 lg:gap-12 lg:mx-auto">
-          <h3 className="heading">Connect AI-Agent with <em>25+</em> Blockchains Instantly</h3>
-          <div className={cn("flex flex-row flex-wrap lg:justify-evenly gap-4 lg:gap-8")}>
-            <ChainIcon src="/home/icon-binance.png" title="Binance" />
-            <ChainIcon src="/home/icon-arbitrum.png" title="Arbitrum" />
-            <ChainIcon src="/home/icon-polygon.png" title="Polygon" />
-            <ChainIcon src="/home/icon-lens.png" title="Lens" />
-            <ChainIcon src="/home/icon-polkadot.svg" title="Polkadot" />
-            <ChainIcon src="/home/icon-ethereum.png" title="Ethereum" />
-          </div>
-        </div>
-        <div className="flex flex-col gap-4">
-          <YouTubeVideo
-            id="uSY-0NxEnFY"
-            title=""
-            poster="sddefault"
-          />
-          <div className="flex flex-row justify-center gap-2.5">
-            <Link
-              href="https://agentwars.phala.network/?utm_source=phala.network&utm_medium=referral&utm_campaign=phala.network"
-              className={cn(
-                "btn btn-primary btn-rounded lg:btn-rounded",
-                "min-w-[200px]",
-                "bg-gradient-to-l from-[#FF8A35] via-40% via-[#F94D4D] to-[#9C52FA] text-white border-none"
-              )}
-            >
-              Join Agent Wars
-            </Link>
-            <Link
-              href="/tags/AI-Agent%20Contract"
-              className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[200px]")}
-            >
-              Learn More
-            </Link>
-          </div>
-        </div>
-      </article>
-
-      <div
-        className={cn(
-          "lg:row-start-4 col-span-full",
-          "text-white py-10 lg:pt-20 lg:pb-14",
-        )}
-      >
-        <span className="text-32 lg:text-56 font-black">Phala Ecosystem</span>
-      </div>
-
-      <div
-        className={cn(
-          "col-span-full",
-          "grid grid-cols-1",
-          "flex flex-row gap-5 justify-center flex-wrap",
-        )}
-      >
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-airstack" title="Airstack" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-awesomeqa" title="AwesomeQA" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-base" title="Base" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-developerdao" title="Developer DAO" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-dmail" title="DMail" /></div>
-
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-easya" title="EasyA" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-farcaster" title="Farcaster" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-flockio" title="Flock.io" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-gmnetwork" title="GM Network" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-hackachain" title="Hackachain" /></div>
-
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-huddle01" title="Huddle01" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-index" title="inDEX" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-iotex" title="IoTEX" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-lens" title="Lens" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-magnetai" title="MagnetAI" /></div>
-
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-mindnetwork" title="Mind Network" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-nevermined" title="Nevermined" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-onfinality" title="OnFinality" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-polkadot" title="Polkadot" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-polygon" title="Polygon" /></div>
-
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-pond" title="Pond" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-sygma" title="Sygma" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-thegraph" title="The Graph" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-theoriq" title="Theoriq" /></div>
-        <div className="partnership-logo-container"><div className="partnership-logo partnership-logo-zurf" title="Zurf" /></div>
-      </div>
-
-      <div
-        className={cn(
-          "col-span-full",
-          "grid grid-cols-1",
-          "flex flex-row justify-center",
-        )}
-      >
-        <Link
-          href="/partnerships"
-          className={cn("btn btn-primary btn-wht btn-rounded lg:btn-rounded", "min-w-[200px]")}
-        >
-          Explore More
-        </Link>
-      </div>
-    </section>
-  )
-}
-
-// END: Section Phat Contract Highlight
-
-//
-// Section SectionGlobalDistribution
-//
-
-function SectionGlobalDistribution() {
-  return (
-    <section className="section-global-distribution">
-      <div
-        className={cn(
-          "safe-viewport !px-0",
-          "grid gap-8 xl:gap-16 grid-cols-1 xl:grid-cols-12",
-          "border border-solid border-black-100 rounded-md",
-        )}
-      >
-        <div className={cn(
-          "row-start-1 col-span-full",
-          "z-10",
-          "flex flex-col items-center gap-12 my-8 2xl:my-16"
-        )}
-        >
-          <header className="text-center">
-            <h3 className="text-56 text-black-800 font-black">DePIN with the most TEE nodes</h3>
-            <h4 className="text-32 text-black-600">By the people, for the people</h4>
-          </header>
-          <div
-            className={cn(
-              "bg-phalaPurple text-white",
-              "w-96 p-4 rounded-full"
-            )}
-          >
-            <StatsCard />
-          </div>
-          <div className="flex flex-row gap-5">
-            <div className="inline-flex items-center gap-2.5">
-              <i className="w-4 h-4 inline-block rounded-full bg-[#cdfa50]" />
-              <span className="text-18">Phala Blockchain Nodes</span>
-            </div>
-            <div className="inline-flex items-center gap-2.5">
-              <i className="w-4 h-4 inline-block rounded-full bg-[#8544F6]" />
-              <span className="text-18">Off-chain Computers</span>
-            </div>
-          </div>
-        </div>
-        <div className={cn(
-          "row-start-1 col-span-full",
-          "z-0 overflow-hidden rounded-md",
-        )}>
-          <video
-            className={cn("object-cover aspect-[3840/1980] h-full min-w-full")}
-            autoPlay muted loop playsInline
-          >
-            <source src="https://nft-assets.phala.world/network/worldmap20230708.mp4" type="video/mp4" />
-            <source src="https://nft-assets.phala.world/network/worldmap20230708.webm" type="video/webm" />
-          </video>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// END: Section How It Works
-
-//
-// Section Subscription
-//
-
-function SectionSubscription() {
-  return (
-    <section id="section-subscription" className="section-subscription">
-      <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
-        <SubscribeForm />
-        <div className={cn("hidden xl:block xl:h-full xl:bg-[#f3f3f3] row-start-1 col-span-full xl:col-start-14 3xl:col-start-16 -ml-4 relative")}>
-          <img src="/home/newsletter-aside.jpg" alt="" className={cn("absolute bottom-0 left-0 aspect-[1860/728]")} />
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// END: Section Subscription
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -573,21 +64,443 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function Home() {
-  const default_list = await getPhatLists()
-
+function HeroSection() {
   return (
-    <div className="flex flex-col gap-10 lg:gap-20">
-      <SectionHero />
-      <SectionFeatures
-        default_list={default_list}
+    <section className="w-screen max-h-screen h-[calc(100vh-3rem)] md:h-screen xl:h-auto xl:aspect-video p-2 relative">
+      <div className={cn("mask-teacup", "flex flex-col justify-center")}>
+        <div className="safe-viewport flex flex-col items-center xl:grid xl:grid-cols-12">
+          <div className="mb-4 xl:col-span-10 xl:col-start-2">
+            <span className="border border-base-300 rounded-full px-2.5 py-1 text-sm leading-5 bg-white text-center font-medium">
+              Phala Network 2.0
+            </span>
+          </div>
+          <header className="xl:flex lg:flex-row gap-2 col-span-10 col-start-2">
+            <h1 className="py-1 px-4 text-24 md:text-40 text-white bg-black rounded-sm font-bold tracking-tight uppercase text-center xl:text-left">
+              CRYPTOGRAPHIC COMPUTER
+            </h1>
+            <h2 className="py-1 text-24 md:text-40 text-white font-bold tracking-tight text-center xl:text-left">
+              Not Tomorrow. Today.
+            </h2>
+          </header>
+          <div className="text-16 md:text-20 text-white leading-8 my-8 col-span-10 col-start-2 text-center xl:text-left">
+            <p>Eliminate centralized trust from Web3.</p>
+            <p>No months of work. No 1000x performance penalty.</p>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 col-span-10 col-start-2">
+            <Link href="/" className="btn btn-phala">
+              Start with Phala 2.0
+            </Link>
+            <Link href="https://docs.phala.network" target="_blank" className="btn btn-blk min-w-32 leading-4 text-center">
+              Learn more
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="xl:hidden flex absolute bottom-0 right-0 flex-row items-center justify-center h-[6rem] w-full">
+        <span className="text-24 p-3 rounded-full bg-white text-black-900 animate-bounce"><FiArrowDown /></span>
+      </div>
+      <div className="hidden absolute bottom-0 right-0 w-[31.25rem] h-[8rem] xl:flex flex-col justify-center items-center">
+        <button className="flex flex-row gap-6 items-center">
+          <span className="font-bold tracking-tight">
+            Learn More About Phala 2.0
+          </span>
+          <span className="text-24 p-3 rounded-full bg-black text-white animate-bounce"><FiArrowDown /></span>
+        </button>
+      </div>
+    </section>
+  )
+}
+
+function ProblemStatements() {
+  return (
+    <section className="py-12 lg:py-20">
+      <main className="safe-viewport grid grid-cols-1 lg:grid-cols-12 gap-y-10">
+        <article className={cn("lg:col-span-5 xl:col-span-4 xl:col-start-2 lg:row-start-1", "flex flex-col gap-2.5")}>
+          <h3 className="text-24 font-bold tracking-tight mb-1">
+            Trustless ≠ Expensive
+          </h3>
+          <p className="text-16">
+            Trustless systems are expensive. Apps are deployed on either centralized clouds you can&apos;t trust or algorithms that are so slow and expensive that they&apos;re 1000x the cost.
+          </p>
+        </article>
+        <article className={cn("lg:col-span-5 xl:col-span-4 xl:col-start-2 lg:row-start-2", "flex flex-col gap-2.5")}>
+          <h3 className="text-24 font-bold tracking-tight mb-1">
+            Trustless = The Future of AI
+          </h3>
+          <p className="text-16">
+            The next generation of cloud must be AI-native. Autonomous AI needs seamless access to secure physical machines for development, deployment, and operation, all while being auditable.
+          </p>
+        </article>
+        <div className="lg:col-span-6 lg:col-start-7 xl:col-span-5 xl:col-start-7 lg:row-start-1 lg:row-span-2 flex flex-row justify-end">
+          <figure className="rounded-[0.5rem] rounded-bl-[5.75rem] rounded-tr-[5.75rem] overflow-hidden">
+            <img src="/home/main-landing-2025/img-problem-1.png" alt="Problem 1" className="w-full h-full object-cover" />
+          </figure>
+        </div>
+      </main>
+    </section>
+  )
+}
+
+function Features() {
+  return (
+    <section className="py-12 lg:py-20">
+      <main className="safe-viewport grid grid-cols-1 xl:grid-cols-12">
+        <div className="xl:col-span-10 xl:col-start-2">
+          <Carousel>
+            <CarouselSlide
+              title="Build Trust in Minutes"
+              image="/home/main-landing-2025/img-feature-1.png"
+            >
+              <p className="text-gray-600">
+                We turn TEE development into plug-and-play reality.
+              </p>
+              <ol className="list-disc ml-4 text-gray-600">
+                <li>Cut your effort from months to days.</li>
+                <li>Deploy production-grade TEE workloads in minutes.</li>
+                <li>No steep learning curve. No sleepless nights.</li>
+              </ol>
+            </CarouselSlide>
+            <CarouselSlide
+              title="Today&apos;s Best Security, Tomorrow&apos;s Baseline"
+              image="/home/main-landing-2025/img-feature-1.png"
+            >
+              <p className="text-gray-600">
+                You don&apos;t trust anyone — not clouds, hardware, or us. We redefine the security baseline for Web3 with provable, auditable TEE that scales.
+              </p>
+              <ol className="list-disc ml-4 text-gray-600">
+                <li>State-of-the-art security enforced by default.</li>
+                <li>Perfect for Decentralized AI, blockchain protocol, and anywhere rug pull is not an option.</li>
+              </ol>
+            </CarouselSlide>
+          </Carousel>
+        </div>
+      </main>
+    </section>
+  )
+}
+
+function OurProducts() {
+  return (
+    <section className="py-12 lg:py-20">
+      <main className="safe-viewport grid grid-cols-1 xl:grid-cols-12">
+        <div className="xl:col-span-10 xl:col-start-2">
+          <Solutions>
+            <SolutionCard
+              title="Build in Minutes, Not Months"
+              image="/home/main-landing-2025/img-solution-1.png"
+            >
+              <ul className="space-y-2.5 list-disc ml-4">
+                <li>Write code, dockerize, and deploy it as trustless TEE apps.</li>
+                <li>You deserve the best security with built-in security best practices.</li>
+                <li>Fully open source. No vender lock-in.</li>
+              </ul>
+              <div className="flex flex-col md:flex-row gap-4 mt-6">
+                <Link href="https://github.com/dstack-TEE/dstack" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                  Dstack
+                </Link>
+                <Link href="#" className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+                  Open Source TEE SDK
+                </Link>
+              </div>
+            </SolutionCard>
+            <SolutionCard
+              title="Deploy with ease. Operate with confident"
+              image="/home/main-landing-2025/img-solution-2.png"
+            >
+              <ul className="space-y-2.5 list-disc ml-4">
+                <li>We deal with the pain of hardware maintenance. So you don&apos;t have to.</li>
+                <li>Get access to CPU and GPU TEEs in one click. Intel TDX, AMD SEV, and nVIDIA H100/H200 available.</li>
+                <li>With 5 years experience, we know how to deliver the best security.</li>
+              </ul>
+              <div className="flex flex-col md:flex-row gap-4 mt-6">
+                <Link href="https://cloud.phala.network" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                  Phala Cloud
+                </Link>
+                <Link href="#" className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+                  A Secure, AI-Ready Platform
+                </Link>
+              </div>
+            </SolutionCard>
+            <SolutionCard
+              title="Easily Verify and Prove"
+              image="/home/main-landing-2025/img-solution-3.png"
+            >
+              <ul className="space-y-2.5 list-disc ml-4">
+                <li>From RA quote to onchain proof, all the evidences are ready for the Pros.</li>
+                <li>RA Explorer and Phala L2 Explorer tools simplify trustless verification.</li>
+                <li>Degens can enjoy the security with our user friendly explorers.</li>
+              </ul>
+              <div className="flex flex-col md:flex-row gap-4 mt-6">
+                <Link href="https://proof.t16z.com/" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                  RA Explorer
+                </Link>
+                <Link href="#" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                  Phala L2 Explorer
+                </Link>
+                <Link href="https://phalanetwork.notion.site/TEE-Coprocessor-Handbook-1360317e04a180ffa888f5f6e8a07310" target="_blank" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                  TEE as a Service
+                </Link>
+              </div>
+            </SolutionCard>
+          </Solutions>
+        </div>
+      </main>
+    </section>
+  )
+}
+
+function UseCases() {
+  return (
+    <section
+      className={cn(
+        "py-12 lg:py-20 px-2", "section-usercases"
+      )}
+    >
+      <main className="safe-viewport flex flex-col lg:grid lg:grid-cols-12 gap-6">
+        <h2 className="lg:col-span-12 xl:col-span-10 xl:col-start-2 text-40 font-bold tracking-tight text-center mb-6">
+          TEE is Eating the World
+        </h2>
+
+        <div className="lg:col-span-5 xl:col-span-3 xl:col-start-3 rounded p-8 bg-white flex flex-col gap-8 items-center">
+          <h4 className="text-20 font-semibold tracking-tight mb-1">Web2 In. Web3 Out.</h4>
+          <div className="flex flex-row items-center">
+            <div className="h-16 w-16 flex items-center justify-center p-3 border border-black-150 rounded-full">
+              <img className="h-8 w-auto" src="/home/main-landing-2025/icon-x.png" />
+            </div>
+            <img src="/home/main-landing-2025/arrow.png" />
+            <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full">
+              <img className="h-10 w-auto" src="/home/main-landing-2025/icon-openai.png" />
+            </div>
+          </div>
+          <p className="text-14 text-center text-black-600">Turn your web2 apps into verifiable web3 powerhouses in minutes. No single points of failure. No headaches. Just connect Docker → Blockchain / Autonomous AI. Done.</p>
+        </div>
+
+        <div className="lg:col-start-6 lg:col-span-7 xl:col-start-6 xl:col-span-5 rounded p-8 bg-white flex flex-col gap-8 items-center">
+          <h4 className="text-20 font-semibold tracking-tight mb-1">Decentralized AI</h4>
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
+            <div className="flex flex-col gap-2.5 items-center">
+              <h5>AI Infra</h5>
+              <div className="w-56 overflow-hidden">
+                <div className="flex flex-row w-80">
+                  <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white">
+                    <img className="h-12 w-auto" src="/home/main-landing-2025/icon-ai-infra1.png" />
+                  </div>
+                  <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-6">
+                    <img className="h-14 w-auto" src="/home/main-landing-2025/icon-ai-infra2.png" />
+                  </div>
+                  <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-12">
+                    <img className="h-12 w-auto" src="/home/main-landing-2025/icon-ai-infra3.png" />
+                  </div>
+                  <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-[4.5rem]">
+                    <img className="h-auto w-12" src="/home/main-landing-2025/icon-ai-infra4.png" />
+                  </div>
+                  <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-24">
+                    <img className="h-12 w-auto" src="/home/main-landing-2025/icon-ai-infra5.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2.5 items-center">
+              <h5>AI Agents</h5>
+              <div className="w-36 overflow-hidden">
+                <div className="flex flex-row w-48">
+                  <div className="h-[62px] w-[62px] flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white">
+                    <img className="h-auto w-auto" src="/home/main-landing-2025/icon-ai-agents-1.png" />
+                  </div>
+                  <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-6">
+                    <img className="w-12 h-auto" src="/home/main-landing-2025/icon-ai-agents-2.png" />
+                  </div>
+                  <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-12">
+                    <img className="h-8 w-auto" src="/home/main-landing-2025/icon-ai-agents-3.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p className="text-14 text-center text-black-600">Set your AI free. No AWS. No censorship. Just pure autonomous AI, secured by GPU TEE. Train it. Deploy it. Trust it.</p>
+        </div>
+
+        <div className="lg:col-span-6 xl:col-start-3 xl:col-span-4 rounded p-8 bg-white flex flex-col gap-8 items-center">
+          <h4 className="text-20 font-semibold tracking-tight mb-1">Defense in Depth</h4>
+          <div className="flex flex-row items-center gap-1 lg:gap-2.5">
+            <div className="h-20 w-20 flex items-center justify-center p-3 border border-black-150 rounded-full overflow-hidden">
+              <img className="h-full w-18" src="/home/main-landing-2025/icon-lit.png" />
+            </div>
+            <div className="h-20 w-20 flex items-center justify-center border border-black-150 rounded-full overflow-hidden">
+              <img className="h-auto w-16" src="/home/main-landing-2025/icon-zama.png" />
+            </div>
+            <div className="h-20 w-20 flex items-center justify-center border border-black-150 rounded-full overflow-hidden">
+              <img className="h-16 w-auto" src="/home/main-landing-2025/icon-ss.png" />
+            </div>
+            <div className="h-20 w-20 flex items-center justify-center border border-black-150 rounded-full overflow-hidden">
+              <img className="h-16 w-auto" src="/home/main-landing-2025/icon-scroll.png" />
+            </div>
+          </div>
+          <p className="text-14 text-center text-black-600">Frontrun the MEV crisis with TEE. Build blocks that can&apos;t be censored or sandwiched. Provable execution. Trustless. Fair.</p>
+        </div>
+
+        <div className="lg:col-span-6 lg:col-start-7 xl:col-start-7 xl:col-span-4 rounded p-8 bg-white flex flex-col gap-8 items-center">
+          <h4 className="text-20 font-semibold tracking-tight mb-1">Blockchain Economy</h4>
+          <div className="flex flex-row items-center gap-1 lg:gap-2.5">
+            <div className="h-20 w-20 flex items-center justify-center p-1 border border-black-150 rounded-full overflow-hidden">
+              <img className="h-auto" src="/home/main-landing-2025/icon-flashbots.png" />
+            </div>
+            <div className="h-20 w-20 flex items-center justify-center border border-black-150 rounded-full overflow-hidden">
+              <img className="h-auto w-14 relative -top-0.5" src="/home/main-landing-2025/icon-uniswap.png" />
+            </div>
+            <div className="h-20 w-20 flex items-center justify-center border border-black-150 rounded-full overflow-hidden">
+              <img className="h-14 w-auto" src="/home/main-landing-2025/icon-ethereum.png" />
+            </div>
+            <div className="h-20 w-20 flex items-center justify-center border border-black-150 rounded-full overflow-hidden">
+              <img className="h-14 w-auto" src="/home/main-landing-2025/icon-polkadot.png" />
+            </div>
+          </div>
+          <p className="text-14 text-center text-black-600 w-[20rem]">Secure cryptography even more. Combine TEE with the math kind. No flaws. No collusion. Just pure, layered protection.</p>
+        </div>
+
+        <Link href="/partnerships" className="btn btn-wht rounded-full col-start-3 col-span-8 mt-6">
+          Discover All Usecases
+        </Link>
+      </main>
+    </section>
+  )
+}
+
+interface HowItWorkCardProps {  
+  title: string
+  image: string
+  backdropColor: string
+  children: React.ReactNode
+}
+
+function HowItWorkCard({ title, image, backdropColor, children }: HowItWorkCardProps) {
+  return (
+    <article
+      style={{
+        backgroundImage: `url(${image})`,
+      }}
+      className={cn(
+        "flex flex-col-reverse gap-2.5 aspect-[389/440]",
+        "relative rounded-sm overflow-hidden rounded-br-[46px]",
+        `bg-cover bg-center`,
+      )}
+    >
+      <main className="p-10 z-10 text-white min-h-[50%]">
+        <h3 className="text-20 font-bold tracking-tight mb-4">{title}</h3>
+        {children}
+      </main>
+      <div
+        className="w-6 h-6 rounded-full bg-white absolute top-6 left-6"
       />
-      <SectionPhatContractHighlight />
-      <SectionPitchPioneer />
-      <SectionHowItWorks />
-      <SectionGlobalDistribution />
-      <SectionHighlights />
-      <SectionSubscription />
+      <div
+        className="absolute z-[1] h-full w-[120%] rounded-full blur-[60px] right-0 translate-y-1/2"
+        style={{backgroundColor: backdropColor}}
+      />
+    </article>
+  )
+}
+
+function HowItWorks() {
+  return (
+    <section className="py-12 lg:py-20">
+      <main className="safe-viewport flex flex-col lg:grid lg:grid-cols-12 gap-10">
+        <h2 className="lg:col-span-12 xl:col-span-10 xl:col-start-2 text-40 font-bold tracking-tight text-center">How It Works</h2>
+        <div className="lg:col-span-12 xl:col-span-10 xl:col-start-2 flex flex-col lg:grid lg:grid-cols-3 gap-6">
+          <HowItWorkCard
+            title="TEE Hardwares"
+            image="/home/main-landing-2025/img-how-it-work-1.jpg"
+            backdropColor="#669fd7"
+          >
+            <p className="text-14 font-medium">
+              The TEE hardware ensures your computation is tamper-proof, privacy preserving, and unstoppable. It generates the execution proof that everyone can verify easily.
+            </p>
+          </HowItWorkCard>
+          <HowItWorkCard
+            title="TEE Abstraction"
+            image="/home/main-landing-2025/img-how-it-work-2.jpg"
+            backdropColor="#A9D03F"
+          >
+            <p className="text-14 font-medium">
+              Phala provides an abstraction unifies the security of Intel SGX, Intel TDX, AMD SEV, and NVIDIA GPU TEEs. With decentralized Root-of-Trust design benefit from the security of Ethereum.
+            </p>
+          </HowItWorkCard>
+          <HowItWorkCard
+            title="T16Z Philosophy"
+            image="/home/main-landing-2025/img-how-it-work-3.jpg"
+            backdropColor="#D58E5E"
+          >
+            <p className="text-14 font-medium">
+              A cryptographic computer is built with not only TEE, but a novel blend of TEE, MPC, ZKP, and cryptoeconomic security defends the attacks to your app in depth.
+            </p>
+          </HowItWorkCard>
+        </div>
+        <div className="md:col-span-10 md:col-start-2 flex flex-row justify-center">
+          <a href="https://www.paradigm.xyz/2024/11/the-5-levels-of-secure-hardware" target="_blank" className="btn btn-blk btn-sm rounded-full">Explore 5 Levels of Secured Hardwares</a>
+        </div>
+      </main>
+    </section>
+  )
+}
+
+function GlobalAvailability() {
+  return (
+    <section className="py-12 lg:py-20">
+      <div className="safe-viewport flex flex-col lg:grid lg:grid-cols-12 gap-y-4">
+        <header className="lg:col-span-10 lg:row-start-1 lg:col-start-2 text-center">
+          <h2 className="text-40 font-bold tracking-tight mb-6 text-black-900">
+            A Decentralized Cloud
+          </h2>
+          <p className="text-20 font-semibold tracking-tight text-black-600">By the people, for the people</p>
+        </header>
+        <Stats />
+        <figure className="md:col-span-8 md:col-start-3 md: row-start-3 flex flex-col gap-4 items-center">
+          <img src="/home/main-landing-2025/img-global-availability.png" />
+        </figure>
+        <div className="md:col-span-8 md:col-start-3 md:row-start-3 flex flex-col-reverse w-full h-full items-center">
+          <div className="relative top-1">
+            <a href="https://cloud.phala.network" className="btn btn-blk rounded-full">Visit Phala Cloud</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function RecentPosts({ posts }: { posts: Post[] }) {
+  return (
+    <section className="py-12 lg:py-20 bg-[hsl(78,32%,95%)]">
+      <main className="safe-viewport flex flex-col md:grid md:grid-cols-12 gap-6">
+        <header className="md:col-span-12 xl:col-span-10 xl:col-start-2 text-center flex flex-row justify-between items-center">
+          <h2 className="text-40 font-bold tracking-tight">Today&apos;s Highlights</h2>
+          <Link href="/blog" className="btn btn-blk btn-sm min-w-36 rounded-full tracking-wide">More</Link>
+        </header>
+        
+        <div className="md:col-span-12 xl:col-span-10 xl:col-start-2 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </div>
+      </main>
+    </section>
+  );
+}
+
+export default function Home2025() {
+  const posts = use(getPostList({
+    excludeTags: ['Changelog', 'not-listed'],
+    sortReversed: false,
+    pageSize: 12,
+  }))
+  return (
+    <div>
+      <HeroSection />
+      <ProblemStatements />
+      <Features />
+      <OurProducts />
+      <UseCases />
+      <HowItWorks />
+      <GlobalAvailability />
+      <RecentPosts posts={posts} />
     </div>
   )
 }
