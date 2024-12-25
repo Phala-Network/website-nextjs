@@ -6,6 +6,7 @@ export interface Author {
   nickname: string
   avatar?: string
   blocks?: BlockObjectResponse[]
+  title?: string
 }
 
 export interface Post {
