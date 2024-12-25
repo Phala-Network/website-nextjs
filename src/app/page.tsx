@@ -90,7 +90,7 @@ function HeroSection() {
             <Link href="https://cloud.phala.network" target="_blank" className="btn btn-phala">
               Start with Phala 2.0
             </Link>
-            <Link href="https://docs.phala.network" target="_blank" className="btn btn-blk min-w-32 leading-4 text-center">
+            <Link href="https://docs.phala.network" target="_blank" className="btn btn-blk min-w-32 text-center">
               Learn more
             </Link>
           </div>
