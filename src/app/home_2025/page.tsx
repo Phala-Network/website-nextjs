@@ -7,11 +7,10 @@ import { cn } from '@/lib/utils'
 import { getPostList, type Post } from '@/queries/GetPostList'
 import { PostCard } from '@/components/PostCard'
 
-import { Carousel, CarouselSlide } from './home_2025/carousel'
-import { Solutions, SolutionCard } from './home_2025/solutions'
-import { Stats } from './home_2025/stats'
-import './home_2025/style.css'
-
+import { Carousel, CarouselSlide } from './carousel'
+import { Solutions, SolutionCard } from './solutions'
+import { Stats } from './stats'
+import './style.css'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -213,7 +212,7 @@ function OurProducts() {
                 <li>With 5 years experience, we know how to deliver the best security.</li>
               </ul>
               <div className="flex flex-col md:flex-row gap-4 mt-6">
-                <Link href="https://cloud.phala.network" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
+                <Link href="#" className="btn btn-blk min-w-36 px-4 py-2 rounded-full text-sm font-medium">
                   Phala Cloud
                 </Link>
                 <Link href="#" className="btn btn-text text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
@@ -458,7 +457,7 @@ function GlobalAvailability() {
         </figure>
         <div className="md:col-span-8 md:col-start-3 md:row-start-3 flex flex-col-reverse w-full h-full items-center">
           <div className="relative top-1">
-            <a href="https://cloud.phala.network" className="btn btn-blk rounded-full">Visit Phala Cloud</a>
+            <a href="#" className="btn btn-blk rounded-full">Visit Phala Cloud</a>
           </div>
         </div>
       </div>
