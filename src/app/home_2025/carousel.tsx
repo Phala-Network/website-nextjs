@@ -85,11 +85,10 @@ interface SlideProps {
 export function CarouselSlide({ title, image, children, renderMode }: SlideProps) {
   if (renderMode === 'image') {
     return (
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-full object-cover"
-      />
+      <picture>
+        <source srcSet={`${image}.webp`}type="image/webp" />
+        <img src={`${image}.jpg`} alt={title} className="w-full h-full object-cover" />
+      </picture>
     );
   }
 
