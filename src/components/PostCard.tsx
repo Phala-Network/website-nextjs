@@ -18,9 +18,9 @@ export function PostCard({ post }: { post: Post }) {
       className="group rounded-[6px] overflow-hidden bg-white"
     >
       <article className="h-full flex flex-col gap-4">
-        <div className="rounded-[6px] overflow-hidden aspect-[389/220]">
+        <div className="rounded-[6px] overflow-hidden aspect-[390/220]">
           <img 
-            src={post.cover || '/images/default-cover.jpg'} 
+            src={post.cover ? `https://img0.phala.world/cover/780x440/${post.id.replace(/\-/g, '')}.jpg` : '/images/default-cover.jpg'} 
             alt={post.title || ''}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
           />
