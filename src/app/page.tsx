@@ -133,7 +133,14 @@ function ProblemStatements() {
         </article>
         <div className="lg:col-span-6 lg:col-start-7 xl:col-span-5 xl:col-start-7 lg:row-start-1 lg:row-span-2 flex flex-row justify-end">
           <figure className="rounded-[0.5rem] rounded-bl-[5.75rem] rounded-tr-[5.75rem] overflow-hidden">
-            <img src="/home/main-landing-2025/img-problem-1.png" alt="Problem 1" className="w-full h-full object-cover" />
+            <picture>
+              <source srcSet="/home/main-landing-2025/img-problem-1.webp" type="image/webp" />
+              <img 
+                src="/home/main-landing-2025/img-problem-1.jpg"
+                alt="Problem 1"
+                className="w-full h-full object-cover"
+              />
+            </picture>
           </figure>
         </div>
       </main>
@@ -149,7 +156,7 @@ function Features() {
           <Carousel>
             <CarouselSlide
               title="Build Trust in Minutes"
-              image="/home/main-landing-2025/img-feature-1.png"
+              image="/home/main-landing-2025/img-feature-1"
             >
               <p className="text-gray-600">
                 We turn TEE development into plug-and-play reality.
@@ -162,7 +169,7 @@ function Features() {
             </CarouselSlide>
             <CarouselSlide
               title="Today&apos;s Best Security, Tomorrow&apos;s Baseline"
-              image="/home/main-landing-2025/img-feature-1.png"
+              image="/home/main-landing-2025/img-feature-1"
             >
               <p className="text-gray-600">
                 You don&apos;t trust anyone — not clouds, hardware, or us. We redefine the security baseline for Web3 with provable, auditable TEE that scales.
@@ -187,7 +194,7 @@ function OurProducts() {
           <Solutions>
             <SolutionCard
               title="Build in Minutes, Not Months"
-              image="/home/main-landing-2025/img-solution-1.png"
+              image="/home/main-landing-2025/img-solution-1"
             >
               <ul className="space-y-2.5 list-disc ml-4">
                 <li>Write code, dockerize, and deploy it as trustless TEE apps.</li>
@@ -205,7 +212,7 @@ function OurProducts() {
             </SolutionCard>
             <SolutionCard
               title="Deploy with ease. Operate with confident"
-              image="/home/main-landing-2025/img-solution-2.png"
+              image="/home/main-landing-2025/img-solution-2"
             >
               <ul className="space-y-2.5 list-disc ml-4">
                 <li>We deal with the pain of hardware maintenance. So you don&apos;t have to.</li>
@@ -223,7 +230,7 @@ function OurProducts() {
             </SolutionCard>
             <SolutionCard
               title="Easily Verify and Prove"
-              image="/home/main-landing-2025/img-solution-3.png"
+              image="/home/main-landing-2025/img-solution-3"
             >
               <ul className="space-y-2.5 list-disc ml-4">
                 <li>From RA quote to onchain proof, all the evidences are ready for the Pros.</li>
@@ -454,7 +461,10 @@ function GlobalAvailability() {
         </header>
         <Stats />
         <figure className="md:col-span-8 md:col-start-3 md: row-start-3 flex flex-col gap-4 items-center">
-          <img src="/home/main-landing-2025/img-global-availability.png" />
+          <picture>
+            <source srcSet={`/home/main-landing-2025/img-global-availability.webp`}type="image/webp" />
+            <img src={`/home/main-landing-2025/img-global-availability.jpg`} alt="Global Availability" className="w-full h-full object-cover" />
+          </picture>
         </figure>
         <div className="md:col-span-8 md:col-start-3 md:row-start-3 flex flex-col-reverse w-full h-full items-center">
           <div className="relative top-1">

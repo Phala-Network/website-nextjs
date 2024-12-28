@@ -24,7 +24,10 @@ export function SolutionCard({ title, image, children }: SolutionCardProps) {
       className="flex flex-col gap-6 mb-16"
     >
       <div className="rounded-[2rem] rounded-bl-[5.75rem] rounded-tr-[5.75rem] overflow-hidden">
-        <img src={image} alt={title} className="w-full h-64 object-cover" />
+        <picture>
+          <source srcSet={`${image}.webp`}type="image/webp" />
+          <img src={`${image}.jpg`} alt={title} className="w-full h-64 object-cover" />
+        </picture>
       </div>
       <div>
         <h2 className="text-2xl font-bold mb-4">{title}</h2>
