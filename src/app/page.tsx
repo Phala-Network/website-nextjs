@@ -309,16 +309,19 @@ function UseCases() {
             </div>
             <div className="flex flex-col gap-2.5 items-center">
               <h5>AI Agents</h5>
-              <div className="w-36 overflow-hidden">
-                <div className="flex flex-row w-48">
+              <div className="w-48 overflow-hidden">
+                <div className="flex flex-row w-64">
                   <div className="h-[62px] w-[62px] flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white">
-                    <img className="w-12 h-auto" src="/home/main-landing-2025/icon-ai-agents-eliza.png" />
+                    <img className="w-auto h-auto" src="/home/main-landing-2025/icon-ai-agents-elizaos.jpg" />
                   </div>
                   <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-6">
                     <img className="w-12 h-auto" src="/home/main-landing-2025/icon-ai-agents-2.png" />
                   </div>
                   <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-12">
                     <img className="h-8 w-auto" src="/home/main-landing-2025/icon-ai-agents-3.png" />
+                  </div>
+                  <div className="h-16 w-16 flex items-center justify-center border border-black-150 rounded-full overflow-hidden bg-white relative -left-[4rem]">
+                    <img className="w-12 h-auto" src="/home/main-landing-2025/icon-ai-agents-aipool.jpg" />
                   </div>
                 </div>
               </div>
