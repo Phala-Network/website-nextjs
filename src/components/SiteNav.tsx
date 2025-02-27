@@ -422,11 +422,10 @@ function DrawerMenu() {
                 <p>Stay up-to-date with all things Phala</p>
               </MenuItem>
               <MenuItem
-                href="/changelog"
-                title="Changelog"
-                icon={<ChangelogIcon className="h-5 w-5" />}
+                href="/partnerships"
+                title="Phala Ecosystem"
+                icon={<img src="/icons/menu-phala-ecosystem.png" className={cn("h-5 w-5")} />}
               >
-                <p>Latest changes for Phala</p>
               </MenuItem>
               <MenuItem
                 href="https://github.com/Phala-Network/growth-program"
@@ -442,39 +441,30 @@ function DrawerMenu() {
             summaryClassName={"flex flex-row gap-2 items-center"}
             summary={
               <>
-                AI Agent Contract <FiChevronDown />
+                Phala Cloud <FiChevronDown />
               </>
             }
             theIdxAtom={expandedMenuAtom} idx={4}
           >
             <ul className={cn("flex flex-col gap-1.5 mt-2.5")}>
               <MenuItem
-                href="/ai"
-                title="Multi AI Agent Contract"
-                icon={<img src="/icons/menu-multi-ai-agent-contract.png" className={cn("h-5 w-5")} />}
+                href="https://cloud.phala.network/?utm_source=phala.network&utm_medium=site-nav"
+                title="Phala Cloud"
               >
               </MenuItem>
               <MenuItem
-                href="https://docs.phala.network/tech-specs/ai-agent-contract?utm_source=phala.network&utm_medium=site-nav"
-                title="Use AI Agent Contract"
-                icon={<img src="/icons/menu-use-ai-agent-contract.png" className={cn("h-5 w-5")} />}
+                href="https://www.notion.so/phalanetwork/Phala-Cloud-User-Guide-1700317e04a18018a98ed9ea39b02670?utm_source=phala.network&utm_medium=site-nav"
+                title="Docs"
               >
               </MenuItem>
               <MenuItem
-                href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=site-nav"
-                title="Agent Wars"
-                icon={<img src="/icons/menu-agent-wars.png" className={cn("h-5 w-5")} />}
-              >
-              </MenuItem>
-              <MenuItem
-                href="/partnerships"
-                title="Phala Ecosystem"
-                icon={<img src="/icons/menu-phala-ecosystem.png" className={cn("h-5 w-5")} />}
+                href="https://github.com/Phala-Network/phala-cloud-community/?utm_source=phala.network&utm_medium=site-nav"
+                title="Community"
               >
               </MenuItem>
               <MenuItem
                 href="https://dune.com/phala_network/phala-analytics?utm_source=phala.network&utm_medium=site-nav"
-                title="AI Agent Contract Statistics"
+                title="Dune Statistics"
                 icon={<img src="/icons/menu-ai-agent-contract-statstics.png" className={cn("h-5 w-5")} />}
               >
               </MenuItem>
@@ -688,7 +678,7 @@ function SiteNav() {
               <SiteNavItem dropdownTarget="developers">Developers</SiteNavItem>
               <SiteNavItem dropdownTarget="network">Network</SiteNavItem>
               <SiteNavItem dropdownTarget="discover">Discover</SiteNavItem>
-              <SiteNavItem dropdownTarget="ai-agent-contract">AI Agent Contract</SiteNavItem>
+              <SiteNavItem dropdownTarget="ai-agent-contract">Phala Cloud</SiteNavItem>
 
               <div className="flex flex-row gap-2 grow justify-end pr-3">
                 <Link
@@ -858,11 +848,10 @@ function SiteNav() {
           <p>Stay up-to-date with all things Phala</p>
         </MenuItem>
         <MenuItem
-          href="/changelog"
-          title="Changelog"
-          icon={<ChangelogIcon className="h-5 w-5" />}
+          href="/partnerships"
+          title="Phala Ecosystem"
+          icon={<img src="/icons/menu-phala-ecosystem.png" className={cn("h-5 w-5")} />}
         >
-          <p>Latest changes for Phala</p>
         </MenuItem>
         <MenuItem
           href="https://github.com/Phala-Network/growth-program"
@@ -875,32 +864,23 @@ function SiteNav() {
 
       <DropdownMenu slug="ai-agent-contract">
         <MenuItem
-          href="/ai"
-          title="Multi AI Agent Contract"
-          icon={<img src="/icons/menu-multi-ai-agent-contract.png" className={cn("h-5 w-5")} />}
+          href="https://cloud.phala.network/?utm_source=phala.network&utm_medium=site-nav"
+          title="Phala Cloud"
         >
         </MenuItem>
         <MenuItem
-          href="https://docs.phala.network/tech-specs/ai-agent-contract?utm_source=phala.network&utm_medium=site-nav"
-          title="Use AI Agent Contract"
-          icon={<img src="/icons/menu-use-ai-agent-contract.png" className={cn("h-5 w-5")} />}
+          href="https://www.notion.so/phalanetwork/Phala-Cloud-User-Guide-1700317e04a18018a98ed9ea39b02670?utm_source=phala.network&utm_medium=site-nav"
+          title="Docs"
         >
         </MenuItem>
         <MenuItem
-          href="https://agentwars.phala.network/home?utm_source=phala.network&utm_medium=site-nav"
-          title="Agent Wars"
-          icon={<img src="/icons/menu-agent-wars.png" className={cn("h-5 w-55")} />}
-        >
-        </MenuItem>
-        <MenuItem
-          href="/partnerships"
-          title="Phala Ecosystem"
-          icon={<img src="/icons/menu-phala-ecosystem.png" className={cn("h-5 w-5")} />}
+          href="https://github.com/Phala-Network/phala-cloud-community/?utm_source=phala.network&utm_medium=site-nav"
+          title="Community"
         >
         </MenuItem>
         <MenuItem
           href="https://dune.com/phala_network/phala-analytics?utm_source=phala.network&utm_medium=site-nav"
-          title="AI Agent Contract Statistics"
+          title="Dune Statistics"
           icon={<img src="/icons/menu-ai-agent-contract-statstics.png" className={cn("h-5 w-5")} />}
         >
         </MenuItem>
