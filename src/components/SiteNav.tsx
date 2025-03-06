@@ -41,10 +41,10 @@ function Banner() {
       >
         <div className="px-12 py-2.5 sm:py-3 bg-blackAlpha-600 rounded-xs">
           <p className="text-sm leading-6 text-white">
-            <Link href="/confidential-computation-with-tee?utm_source=website&utm_medium=banner&utm_campaign=annoucement&utm_id=annoucement">
+            <a href="https://docs.phala.network/overview/phala-network/confidential-ai-inference" target="_blank" rel="noopener noreferrer">
               Build with GPU TEE
               &nbsp;<span aria-hidden="true">&rarr;</span>
-            </Link>
+            </a>
           </p>
         </div>
       </div>
@@ -864,12 +864,12 @@ function SiteNav() {
 
       <DropdownMenu slug="ai-agent-contract">
         <MenuItem
-          href="https://cloud.phala.network/?utm_source=phala.network&utm_medium=site-nav"
+          href="https://cloud.phala.network/?utm_source=phalanetwork&utm_medium=phala_hp"
           title="Phala Cloud"
         >
         </MenuItem>
         <MenuItem
-          href="https://www.notion.so/phalanetwork/Phala-Cloud-User-Guide-1700317e04a18018a98ed9ea39b02670?utm_source=phala.network&utm_medium=site-nav"
+          href="https://docs.phala.network/cloud/getting-started?utm_source=phala.network&utm_medium=site-nav"
           title="Docs"
         >
         </MenuItem>

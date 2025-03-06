@@ -49,10 +49,6 @@ export default function SiteFooter() {
             <LinkListItem href="https://docs.phala.network/">Docs</LinkListItem>
             <LinkListItem href="/changelog">Changelog</LinkListItem>
             <LinkListItem href="https://github.com/Phala-Network/">GitHub</LinkListItem>
-            <LinkListItem href="https://docs.phala.network/legacy/builders-program">Builders Program</LinkListItem>
-            <LinkListItem href="https://phat.phala.network/">DevTool</LinkListItem>
-            <LinkListItem href="https://dashboard.phala.network/?source=foot-bricks-app">Dashboard</LinkListItem>
-            <LinkListItem href="https://docs.phala.network/developers/phat-contract/use-cases">Use Cases</LinkListItem>
           </LinkList>
 
           <LinkListHeading>Other Products</LinkListHeading>
@@ -68,8 +64,8 @@ export default function SiteFooter() {
           <LinkList>
             <LinkListItem href="https://app.phala.network">Phala App</LinkListItem>
             <LinkListItem href="https://docs.phala.network/">What is Phala Network?</LinkListItem>
-            <LinkListItem href="https://docs.phala.network/developers/phat-contract">What is Phat Contract?</LinkListItem>
-            <LinkListItem href="https://docs.phala.network/developers/phat-contract/bricks-and-blueprints">What are Templates?</LinkListItem>
+            <LinkListItem href="https://phala.network/posts/real-code-for-real-dagi-">Real Code for Real dAGI</LinkListItem>
+            <LinkListItem href="https://github.com/nearai/private-ml-sdk">Private ML SDK</LinkListItem>
             <LinkListItem href="https://docs.phala.network/pha-token/delegation/delegate-to-stakepool">What is PHA staking?</LinkListItem>
             <LinkListItem href="https://docs.phala.network/developers/phat-contract/pay-for-cloud-service">Tokenomics - Utility</LinkListItem>
             <LinkListItem href="https://docs.phala.network/compute-providers/basic-info/worker-rewards">Tokenomics - Earn</LinkListItem>
