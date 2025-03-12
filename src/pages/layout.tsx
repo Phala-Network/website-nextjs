@@ -32,9 +32,6 @@ export default function Layout({
           </Script>
         </>
       ) : null}
-      {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ? (
-        <Script async src={`/stats/script.js`} data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}></Script>
-      ) : null}
       <SiteNav />
       {children}
       <SiteFooter />
