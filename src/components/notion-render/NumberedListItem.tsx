@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { useAtomValue } from 'jotai'
 import { NumberedListItemBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
