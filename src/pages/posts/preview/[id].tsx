@@ -13,7 +13,7 @@ import {
   ParsedPage,
   ParsedListPage,
 } from '@/lib/notion-client'
-import { render_block } from '@/components/notion-render/Block'
+import { renderBlocks } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
 import TagLink from '@/components/TagLink'
 import SectionSubscription from '@/components/SectionSubscription'
@@ -157,7 +157,7 @@ const PostPage = ({
                     {dayjs(page.publishedTime).format('YYYY-MM-DD')}
                   </p>
                 </div>
-                <div className="text-base">{page.blocks.map(render_block)}</div>
+                <div className="text-base">{renderBlocks(page.blocks)}</div>
                 <div className="grid grid-cols-2 text-sm text-green-800 mt-8">
                   {beforePages.length > 0 ? (
                     <a

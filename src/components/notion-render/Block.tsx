@@ -1,8 +1,9 @@
 import React, { createElement, useMemo } from 'react'
-import { useAtomValue } from 'jotai'
+import { atom, useAtomValue } from 'jotai'
+import { NumberedListItemBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { ParsedBlock } from '@/lib/notion-client'
-import { BlockAtom, atomWithBlocks } from './atoms'
+import { BlockAtom } from './atoms'
 import Heading from './Heading'
 import Paragraph from './Paragraph'
 import Image from './Image'
@@ -50,14 +51,46 @@ const Block = ({ theAtom }: { theAtom: BlockAtom }) => {
     RegistriedBlockRenderers[block.type as never] || MissedBlockRenderer
   let children: React.ReactNode[] | undefined
   if (block.children) {
-    children = block.children.map(render_block)
+    children = renderBlocks(block.children)
   }
   return createElement(renderer, { theAtom }, children)
 }
 
-export const render_block = (block: ParsedBlock) => {
-  const blockAtom = useMemo(() => atomWithBlocks(block), [block])
+export const renderBlock = (block: ParsedBlock) => {
+  const blockAtom = useMemo(() => atom(block), [block])
   return <Block key={block.id} theAtom={blockAtom} />
+}
+
+export const renderBlocks = (blocks: ParsedBlock[]) => {
+  const blocksWithListNumbers = useMemo(() => {
+    const processBlocks = (items: ParsedBlock[]) => {
+      let currentNumber = 1
+
+      return items.map((block) => {
+        const newBlock = { ...block }
+
+        if (newBlock.children && newBlock.children.length > 0) {
+          newBlock.children = processBlocks(newBlock.children)
+        }
+
+        if (newBlock.type === 'numbered_list_item') {
+          ;(
+            newBlock.numbered_list_item as unknown as {
+              listNumber: number
+            }
+          ).listNumber = currentNumber++
+        } else {
+          currentNumber = 1
+        }
+
+        return newBlock
+      })
+    }
+
+    return processBlocks(blocks)
+  }, [blocks])
+
+  return blocksWithListNumbers.map(renderBlock)
 }
 
 export default Block
