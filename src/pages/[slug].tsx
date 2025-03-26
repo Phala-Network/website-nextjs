@@ -11,7 +11,7 @@ import {
   ParsedPage,
   ParsedListPage,
 } from '@/lib/notion-client'
-import { render_block } from '@/components/notion-render/Block'
+import { renderBlocks } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
 import SectionSubscription from '@/components/SectionSubscription'
 import PageCoverImage from '@/components/PageCoverImage'
@@ -84,7 +84,7 @@ const StaticPage = ({ page }: Props) => {
                 <h1 className={cn('notion_page_title', 'text-3xl font-black')}>
                   {page.title}
                 </h1>
-                <div className="text-base">{page.blocks.map(render_block)}</div>
+                <div className="text-base">{renderBlocks(page.blocks)}</div>
               </div>
             </article>
           </div>
