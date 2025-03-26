@@ -14,7 +14,7 @@ import {
   ParsedPage,
   ParsedListPage,
 } from '@/lib/notion-client'
-import { render_block } from '@/components/notion-render/Block'
+import { renderBlocks } from '@/components/notion-render/Block'
 import { blocksAtom } from '@/components/notion-render/atoms'
 import TagLink from '@/components/TagLink'
 import SectionSubscription from '@/components/SectionSubscription'
@@ -167,7 +167,7 @@ const PostPage = ({
                   </p>
                 </div>
                 <main className="prose max-w-full">
-                  {page.blocks.map(render_block)}
+                  {renderBlocks(page.blocks)}
                 </main>
                 <div className="grid grid-cols-2 text-sm text-green-800 mt-8">
                   {beforePages.length > 0 ? (
