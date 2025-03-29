@@ -1,4 +1,5 @@
 @import '@fontsource/montserrat/latin.css';
+@import '@fontsource/open-sans/latin.css';
 
 @tailwind base;
 @tailwind components;
