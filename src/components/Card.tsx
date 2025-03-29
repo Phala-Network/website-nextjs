@@ -9,14 +9,14 @@ export default function Card({ page }: { page: ParsedListPage }) {
   return (
     <article
       className={cn(
-        'bg-[#FAFEED] rounded-3xl p-2',
+        'bg-[#FAFEED] rounded-2xl p-2',
         'flex flex-col',
         'h-full',
       )}
     >
       <div
         className={cn(
-          'rounded-3xl overflow-hidden',
+          'rounded-[1.75rem] overflow-hidden',
         )}
       >
         <a href={`/posts${page.slug}`}>

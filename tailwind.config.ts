@@ -892,6 +892,7 @@ module.exports = {
 
       fontFamily: {
         sans: ['Montserrat', ...fontFamily.sans],
+        blog: ['Open Sans', ...fontFamily.sans],
         // primary: 'var(--font-montserrat)',
         // heading: 'Montserrat',
         //

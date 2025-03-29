@@ -4,10 +4,9 @@
 }
 
 .notion_page_title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  @apply text-3xl font-bold;
   line-height: 1.2;
-  margin: 1.75rem 0 1.5rem 0;
+  margin: 1rem 0 1.5rem 0;
 }
 
 .notion_heading_1 {

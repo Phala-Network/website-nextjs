@@ -10,6 +10,7 @@
   "dependencies": {
     "@effect/schema": "^0.68.16",
     "@fontsource/montserrat": "^5.0.1",
+    "@fontsource/open-sans": "^5.2.5",
     "@hookform/resolvers": "^3.3.4",
     "@next/third-parties": "^15.2.3",
     "@notionhq/client": "^2.2.9",
