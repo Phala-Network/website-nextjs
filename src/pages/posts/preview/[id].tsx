@@ -222,7 +222,7 @@ const PostPage = ({
           </div>
           <div className={cn('lg:col-span-7')}>
             {recentPages.length > 0 ? (
-              <section className="bg-[#F5FEDC] lg:rounded-3xl p-8">
+              <section className="bg-[#F5FEDC] lg:rounded-2xl p-8">
                 <h1 className="text-2xl font-bold">Recent Posts</h1>
                 <div className="flex flex-col gap-5 mt-5">
                   {recentPages.map((recentPage) => (
@@ -239,7 +239,7 @@ const PostPage = ({
               </section>
             ) : null}
             {similarPages.length > 0 ? (
-              <section className="bg-[#F5FEDC] lg:rounded-3xl p-8 mt-4">
+              <section className="bg-[#F5FEDC] lg:rounded-2xl p-8 mt-4">
                 <h1 className="text-2xl font-bold">Similar Posts</h1>
                 <div className="flex flex-col gap-5 mt-5">
                   {similarPages.map((similarPage) => (

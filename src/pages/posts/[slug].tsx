@@ -96,14 +96,14 @@ const PostPage = ({
       >
         <div
           className={cn(
-            'lg:safe-viewport',
-            'grid grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 gap-4',
+            'max-w-screen-xl mx-auto',
+            'grid gap-4 grid-cols-1 lg:grid-cols-12',
             'py-32'
           )}
         >
           <div
             className={cn(
-              'col-start-1 lg:col-span-11 lg:col-start-2 3xl:col-start-4 3xl:col-span-11'
+              'lg:col-span-8'
             )}
           >
             <nav
@@ -126,12 +126,12 @@ const PostPage = ({
             <article
               className={cn(
                 'notion_page_body',
-                'bg-white lg:rounded-3xl p-2 mt-4'
+                'bg-white lg:rounded-2xl p-2 mt-4'
               )}
             >
               {page.cover ? (
                 <div
-                  className={cn('lg:rounded-3xl overflow-hidden')}
+                  className={cn('lg:rounded-[1.75rem] overflow-hidden')}
                 >
                   <img
                     className="w-full aspect-[872/487]"
@@ -166,7 +166,7 @@ const PostPage = ({
                     {dayjs(page.publishedTime).format('YYYY-MM-DD')}
                   </p>
                 </div>
-                <main className="prose max-w-full">
+                <main className="prose font-blog max-w-full">
                   {renderBlocks(page.blocks)}
                 </main>
                 <div className="grid grid-cols-2 text-sm text-green-800 mt-8">
@@ -231,10 +231,10 @@ const PostPage = ({
               </div>
             </section>
           </div>
-          <div className={cn('lg:col-span-7')}>
+          <div className={cn('lg:col-span-4')}>
             {recentPages.length > 0 ? (
-              <section className="bg-[#F5FEDC] lg:rounded-3xl p-8">
-                <h1 className="text-2xl font-bold">Recent Posts</h1>
+              <section className="bg-[#F5FEDC] lg:rounded-2xl p-8">
+                <h1 className="text-xl font-bold">Recent Posts</h1>
                 <div className="flex flex-col gap-5 mt-5">
                   {recentPages.map((recentPage) => (
                     <a href={`/posts${recentPage.slug}`} key={recentPage.id}>
@@ -250,8 +250,8 @@ const PostPage = ({
               </section>
             ) : null}
             {similarPages.length > 0 ? (
-              <section className="bg-[#F5FEDC] lg:rounded-3xl p-8 mt-4">
-                <h1 className="text-2xl font-bold">Similar Posts</h1>
+              <section className="bg-[#F5FEDC] lg:rounded-2xl p-8 mt-4">
+                <h1 className="text-xl font-bold">Similar Posts</h1>
                 <div className="flex flex-col gap-5 mt-5">
                   {similarPages.map((similarPage) => (
                     <a href={`/posts${similarPage.slug}`} key={similarPage.id}>

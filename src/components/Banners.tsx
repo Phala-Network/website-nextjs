@@ -23,7 +23,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
       }
     >
       <Swiper
-        className={cn('w-full h-full', 'rounded-3xl')}
+        className={cn('w-full h-full', 'rounded-2xl')}
         modules={[Pagination]}
         spaceBetween={30}
         pagination={{ clickable: true, el: '.banners-pagination' }}
@@ -33,7 +33,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
             key={page.id}
             className={cn(
               'w-full h-full bg-[#FAFEED]',
-              'rounded-3xl p-2'
+              'rounded-2xl p-2'
             )}
           >
             <article
@@ -42,7 +42,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
               <div
                 className={cn(
                   'lg:col-span-12',
-                  'rounded-3xl overflow-hidden'
+                  'rounded-[1.75rem] overflow-hidden'
                 )}
               >
                 <a href={`/posts${page.slug}`}>

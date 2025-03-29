@@ -205,17 +205,15 @@ function DropdownMenu({
       {...(hoverProps as MotionProps)}
       className={cn(
         "comp-dropdown-menu",
-        "fixed left-40 w-[22rem] min-h-[200px] z-40 overflow-hidden shadow-lg",
+        "fixed left-40 w-[22rem] min-h-[200px] z-40 shadow-lg",
         !state.isOpened && 'untanglable',
       )}
       style={{ left: state.x || 0, top: state.y + 20, minWidth }}
-      initial={{ height: 0, scale: 0, opacity: 0 }}
+      initial={{ opacity: 0 }}
       animate={{
-        height: state.isOpened ? 'auto' : 0,
-        scale: state.isOpened ? 1 : 0,
         opacity: state.isOpened ? 1 : 0,
       }}
-      transition={{ duration: 0.20 }}
+      transition={{ duration: state.isOpened ? 0.2 : 0 }}
     >
       {featured ? (
         <>
@@ -602,7 +600,7 @@ function MenuItem({ href, title, icon, children }: {
           "site-nav-menu-item btn-with-arrow",
           "flex flex-row gap-2.5 w-full items-start",
         )}>
-          <span className={cn("h-8 w-8 p-1 flex flex-row justify-center items-center rounded-full bg-black-800")}>
+          <span className={cn("h-8 w-8 p-1 flex flex-row justify-center items-center rounded-full bg-black-800 shrink-0")}>
             {icon}
           </span>
           <div className={cn("flex-grow w-full")}>
@@ -617,7 +615,7 @@ function MenuItem({ href, title, icon, children }: {
         </Link>
       ) : (
         <div className={cn("flex flex-row gap-2.5 w-full items-start")}>
-          <span className={cn("h-8 w-8 p-1 flex flex-row justify-center items-center rounded-full bg-black-800")}>
+          <span className={cn("h-8 w-8 p-1 flex flex-row justify-center items-center rounded-full bg-black-800 shrink-0")}>
             {icon}
           </span>
           <div className={cn("flex-grow w-full")}>
