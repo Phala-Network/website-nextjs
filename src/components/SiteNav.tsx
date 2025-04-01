@@ -448,22 +448,25 @@ function DrawerMenu() {
               <MenuItem
                 href="https://cloud.phala.network/?utm_source=phala.network&utm_medium=site-nav"
                 title="Phala Cloud"
+                icon={<img src="/icons/phala-cloud.png" className={cn("h-5 w-5")} />}
               >
               </MenuItem>
               <MenuItem
                 href="https://www.notion.so/phalanetwork/Phala-Cloud-User-Guide-1700317e04a18018a98ed9ea39b02670?utm_source=phala.network&utm_medium=site-nav"
                 title="Docs"
+                icon={<img src="/icons/docs.png" className={cn("h-5 w-5")} />}
               >
               </MenuItem>
               <MenuItem
                 href="https://github.com/Phala-Network/phala-cloud-community/?utm_source=phala.network&utm_medium=site-nav"
                 title="Community"
+                icon={<img src="/icons/community.png" className={cn("h-5 w-5")} />}
               >
               </MenuItem>
               <MenuItem
                 href="https://dune.com/phala_network/phala-analytics?utm_source=phala.network&utm_medium=site-nav"
                 title="Dune Statistics"
-                icon={<img src="/icons/menu-ai-agent-contract-statstics.png" className={cn("h-5 w-5")} />}
+                icon={<img src="/icons/dune.png" className={cn("h-5 w-5")} />}
               >
               </MenuItem>
             </ul>
@@ -864,22 +867,25 @@ function SiteNav() {
         <MenuItem
           href="https://cloud.phala.network/?utm_source=phalanetwork&utm_medium=phala_hp"
           title="Phala Cloud"
+          icon={<img src="/icons/phala-cloud.png" className={cn("h-5 w-5")} />}
         >
         </MenuItem>
         <MenuItem
           href="https://docs.phala.network/cloud/getting-started?utm_source=phala.network&utm_medium=site-nav"
           title="Docs"
+          icon={<img src="/icons/docs.png" className={cn("h-5 w-5")} />}
         >
         </MenuItem>
         <MenuItem
           href="https://github.com/Phala-Network/phala-cloud-community/?utm_source=phala.network&utm_medium=site-nav"
           title="Community"
+          icon={<img src="/icons/community.png" className={cn("h-5 w-5")} />}
         >
         </MenuItem>
         <MenuItem
           href="https://dune.com/phala_network/phala-analytics?utm_source=phala.network&utm_medium=site-nav"
           title="Dune Statistics"
-          icon={<img src="/icons/menu-ai-agent-contract-statstics.png" className={cn("h-5 w-5")} />}
+          icon={<img src="/icons/dune.png" className={cn("h-5 w-5")} />}
         >
         </MenuItem>
       </DropdownMenu>
