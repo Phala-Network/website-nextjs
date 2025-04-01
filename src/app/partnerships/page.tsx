@@ -6,6 +6,7 @@ import { FiExternalLink } from 'react-icons/fi'
 import { cn } from '@/lib/utils'
 import { getPostList } from '@/queries/GetPostList'
 import { BlogPostCard } from '@/components/marketing'
+import { m } from 'framer-motion'
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -26,10 +27,10 @@ function TrustedPartnershipCard({ title, url, description, src, tags, post }: {
   return (
     <div
       className={cn(
-        "relative lg:aspect-square bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
+        "relative bg-whiteAlpha-50 border border-solid border-whiteAlpha-200 rounded",
       )}
     >
-      <div className={cn("flex items-center justify-start lg:justify-center", "h-full px-4 py-4 lg:p-6")}>
+      <div className={cn("flex items-start justify-start lg:justify-center", "h-full px-4 py-4 lg:p-6")}>
         <div className="flex flex-row lg:flex-col gap-6 items-center justify-center py-6">
           <Link
             className={cn(
@@ -73,7 +74,7 @@ function TrustedPartnershipCard({ title, url, description, src, tags, post }: {
                 </span>
               ))}
             </div>
-            <div className="text-whiteAlpha-700 mx-auto lg:mt-2 lg:text-center">
+            <div className="text-whiteAlpha-700 mx-auto lg:mt-2 hyphens-auto">
               {description}
             </div>
           </div>
@@ -372,13 +373,121 @@ const items = [
   {
     name: 'Aligned Layer',
     url: 'https://alignedlayer.com/',
-    icon: '/partnerships/alignedlayer.png',
+    icon: '/partnerships/aligned.png',
     description: 'simplifying ZK adoption',
     tags: [
       'ZK', 'AI', 'Builder'
     ],
     post: '/posts/partnership-announcement-phala-aligned',
   },
+  {
+    name: 'NEAR AI',
+    url: 'https://near.ai/',
+    icon: '/partnerships/near.webp',
+    description: 'NEAR AI brought by Near foundation is a distributed system for building, deploying, and managing AI agents with the goal of making open source and user-owned AGI.',
+    tags: [
+      'AI', 'Agent', 'Blockchain'
+    ],
+  },
+  {
+    name: 'Succinct',
+    url: 'https://www.succinct.xyz/',
+    icon: '/partnerships/succinct.svg',
+    description: 'Succinct is dedicated to build the novel ZK technologies, such as SP1, which is a performant, open-source zero-knowledge virtual machine (zkVM).',
+    tags: [
+      'ZK', 'Blockchain'
+    ],
+  },
+  {
+    name: 'Vana',
+    url: 'https://www.vana.org/',
+    icon: '/partnerships/vana.jpg',
+    description: 'Vana is the first network for user-owned data. It transforms how data is owned, shared, and monetized. The Vana L1 enables users to pool their data in DataDAOs while maintaining control and privacy.',
+    tags: [
+      'AI', 'Blockchain'
+    ],
+  },
+  {
+    name: "Nethermind",
+    url: 'https://nethermind.io/',
+    icon: '/partnerships/nethermind.png',
+    description: 'Nethermind is a blockchain infrastructure provider whose vision is to empower enterprises and developers worldwide to access and build on decentralized systems.',
+    tags: [
+      'Blockchain', 'ZK', 'AI'
+    ]
+  },
+  {
+    name: 'Primus Labs',
+    url: 'https://primuslabs.xyz/',
+    icon: '/partnerships/primus.png',
+    description: 'Primus uses secure zkTLS (zero-knowledge transport layer security) and zkFHE (zero-knowledge fully homomorphic encryption) to validate arbitrary web data and utilize it in an encrypted form.',
+    tags: [
+      'ZK'
+    ]
+  },
+  {
+    name: "Flashbots",
+    url: 'https://www.flashbots.net/',
+    icon: '/partnerships/flashbots.png',
+    description: 'Flashbots is a research and development organization formed to mitigate the negative externalities posed by Maximal Extractable Value (MEV) to stateful blockchains, starting with Ethereum.',
+    tags: [
+      'Blockchain'
+    ]
+  },
+  {
+    name: 'ElizaOS',
+    url: 'https://www.elizaos.ai/',
+    icon: '/partnerships/elizaos.png',
+    description: 'Eliza is a pioneering venture capital firm that operates as a decentralized autonomous organization (DAO), leveraging the power of artificial intelligence to revolutionize investment strategies and foster an open-source community around AI agents.',
+    tags: [
+      'Agent'
+    ],
+  },
+  {
+    name: "GoPlus Security",
+    url: "https://www.gopluslabs.io/",
+    icon: "/partnerships/goplus.png",
+    description: "GoPlus Security is a leading security layer for web3, protecting every transaction for users and also providing security intelligence for developers to protect their users.",
+    tags: [
+      "Security", "Blockchain"
+    ]
+  },
+  {
+    name: "0G",
+    url: "https://0g.ai/",
+    icon: "/partnerships/0g.png",
+    description: "0G is a leading provider of security solutions for the web3 ecosystem. It offers a range of services, including audit, security research, and advisory services.",
+    tags: [
+      "AI", "Blockchain"
+    ]
+  },
+  {
+    name: "CARV",
+    url: "https://carv.io/",
+    icon: "/partnerships/CARV.png",
+    description: "CARV is building an AI chain ecosystem to enable data sovereignty at scale. By empowering AI agents with secure, unified infrastructure, CARV enables intelligent, collaborative operations through its SVM Chain, offering trustless consensus, cryptographic proofs, and verifiable execution.",
+    tags: [
+      "AI", "Blockchain"
+    ]
+  },
+  {
+    name: "xNomadAI",
+    url: "https://xnomadai.xyz/",
+    icon: "/partnerships/xNomad.png",
+    description: "xNomadAI is an open-source platform that transforms AI agents into transferable and trackable NFTs. By enabling AI-driven systems to operate independently, xNomadAI provides a foundation for creating intelligent and secure digital assets.",
+    tags: [
+      "Agent", "NFT"
+    ]
+  },
+  {
+    name: "Ava Protocol",
+    url: "https://avaprotocol.org/",
+    icon: "/partnerships/ava.png",
+    description: "Ava Protocol is a cutting-edge automation platform designed for the decentralized world. Ava enables users to create event-driven, autonomous “super-transactions” across DeFi and Web3.",
+    tags: [
+      "DeFi", "Blockchain"
+    ]
+  }
 ]
 
 const sorted = items.sort((a, b) => a.name.localeCompare(b.name))
