@@ -115,7 +115,7 @@ export default async function handler(
         type: InteractionResponseType.APPLICATION_COMMAND_AUTOCOMPLETE_RESULT,
         data: {
           choices: pages.map(page => ({
-            name: page.title,
+            name: page.title.length > 45 ? page.title.substring(0, 42) + '...' : page.title,
             value: page.id
           }))
         }
