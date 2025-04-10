@@ -69,12 +69,28 @@ const PostPage = ({
           <title>{page.title}</title>
           <meta name="theme-color" content="rgba(232, 233, 234, 1)" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link ref="canonical" href={`https://phala.network/posts${page.slug}`} />
-          <link rel="alternate" type="application/rss+xml" title="Phala News" href="https://phala.network/rss.xml" />
-          <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
+          <link
+            ref="canonical"
+            href={`https://phala.network/posts${page.slug}`}
+          />
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Phala News"
+            href="https://phala.network/rss.xml"
+          />
+          <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="Phala News"
+            href="https://phala.network/atom.xml"
+          />
           <meta property="og:title" content={page.title} />
           {/* <meta property="og:description" content="Phala Network make smart contracts even smarter by providing decentralized compute." /> */}
-          <meta property="og:url" content={`https://phala.network/posts${page.slug}`} />
+          <meta
+            property="og:url"
+            content={`https://phala.network/posts${page.slug}`}
+          />
           <meta property="og:locale" content="en_US" />
           <meta property="og:image" content={postCover} />
           <meta property="og:image:width" content="1200" />
@@ -86,14 +102,15 @@ const PostPage = ({
           <meta name="twitter:title" content={page.title} />
           {/* <meta name="twitter:description" content="Phala Network make smart contracts even smarter by providing decentralized compute." /> */}
           <meta name="twitter:image" content={postCover} />
-          <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
+          <link
+            rel="icon"
+            href="/favicon.ico"
+            type="image/x-icon"
+            sizes="any"
+          />
         </Head>
       ) : null}
-      <div
-        className={cn(
-          'bg-gradient-to-b from-green-600 to-green-500'
-        )}
-      >
+      <div className={cn('bg-gradient-to-b from-green-600 to-green-500')}>
         <div
           className={cn(
             'max-w-screen-xl mx-auto',
@@ -101,11 +118,7 @@ const PostPage = ({
             'py-32'
           )}
         >
-          <div
-            className={cn(
-              'lg:col-span-8'
-            )}
-          >
+          <div className={cn('lg:col-span-8')}>
             <nav
               className={cn(
                 'bg-white lg:rounded-3xl',
@@ -130,14 +143,15 @@ const PostPage = ({
               )}
             >
               {page.cover ? (
-                <div
-                  className={cn('lg:rounded-[1.75rem] overflow-hidden')}
-                >
+                <div className={cn('lg:rounded-[1.75rem] overflow-hidden')}>
                   <img
                     className="w-full aspect-[872/487]"
                     width={872}
                     height={487}
-                    src={`https://img0.phala.world/cover/1744x974/${page.id.replace(/\-/g, '')}.jpg`}
+                    src={`https://img0.phala.world/cover/1744x974/${page.id.replace(
+                      /\-/g,
+                      ''
+                    )}.jpg`}
                     // src={`https://img0.phala.world/notion/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
                     // src={`https://img0.phala.world/cover/${page.id}.jpg`}
                     // src={
@@ -153,13 +167,15 @@ const PostPage = ({
                   {page.title}
                 </h1>
                 <div className="flex flex-wrap items-center gap-3">
-                  {page.tags.filter(i => i !== 'Changelog').map((tag, i) => (
-                    <div key={`${i}`}>
-                      <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
-                        {tag}
-                      </TagLink>
-                    </div>
-                  ))}
+                  {page.tags
+                    .filter((i) => i !== 'Changelog')
+                    .map((tag, i) => (
+                      <div key={`${i}`}>
+                        <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
+                          {tag}
+                        </TagLink>
+                      </div>
+                    ))}
                 </div>
                 <div className="my-6">
                   <p className="text-sm font-medium">
@@ -291,7 +307,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     getParsedPagesByProperties({
       database_id: process.env.NOTION_POSTS_DATABASE_ID!,
       properties: {
-        'Custom URL': slug,
+        'Custom URL': `/${slug}`,
       },
     })
   )
@@ -300,11 +316,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   }
   if (pages.length === 0) {
     return {
-      props: {
-        page: null,
-        recentPages: [],
-        similarPages: [],
-      },
+      notFound: true,
     }
   }
   const page = pages[0]
