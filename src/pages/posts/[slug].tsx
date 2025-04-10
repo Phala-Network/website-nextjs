@@ -61,7 +61,10 @@ const PostPage = ({
   // const postCover = page.cover ? (
   //   'external' in page.cover ? page.cover.external.url : page.cover.file.url
   // ) : "https://phala.network/og-image.jpg"
-  const postCover = `https://img0.phala.world/cover/1200x630/${page.id}.jpg?z=123`
+  const postCover = `https://img0.phala.world/cover/1200x630/${page.id.replace(
+    /\-/g,
+    ''
+  )}.jpg?z=123`
   return (
     <>
       {page.title ? (
