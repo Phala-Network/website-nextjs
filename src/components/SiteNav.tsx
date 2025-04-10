@@ -373,14 +373,14 @@ function DrawerMenu() {
                 <p>Provide hardware to the network and earn rewards!</p>
               </MenuItem>
               <MenuItem
-                href="https://app.phala.network/khala?utm_source=phala.network&utm_medium=site-nav"
+                href="https://app.phala.network/?utm_source=phala.network&utm_medium=site-nav"
                 title="Stake"
                 icon={<IconStake className={cn("h-5 w-5")} />}
               >
                 <p>Help secure the network and earn yield by staking your PHA</p>
               </MenuItem>
               <MenuItem
-                href="https://khala.subsquare.io/?utm_source=phala.network&utm_medium=site-nav"
+                href="https://phala.subsquare.io/?utm_source=phala.network&utm_medium=site-nav"
                 title="Govern"
                 icon={<MdAssignment className={cn("h-5 w-5")} />}
               >
@@ -811,14 +811,14 @@ function SiteNav() {
           <p>Provide hardware to the network and earn rewards!</p>
         </MenuItem>
         <MenuItem
-          href="https://app.phala.network/khala?utm_source=phala.network&utm_medium=site-nav"
+          href="https://app.phala.network/?utm_source=phala.network&utm_medium=site-nav"
           title="Stake"
           icon={<IconStake className={cn("h-5 w-5")} />}
         >
           <p>Help secure the network and earn yield by staking your PHA</p>
         </MenuItem>
         <MenuItem
-          href="https://khala.subsquare.io/?utm_source=phala.network&utm_medium=site-nav"
+          href="https://phala.subsquare.io/?utm_source=phala.network&utm_medium=site-nav"
           title="Govern"
           icon={<MdAssignment className={cn("h-5 w-5")} />}
         >
