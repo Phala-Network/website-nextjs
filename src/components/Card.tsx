@@ -27,7 +27,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
                 width={412}
                 height={230}
                 alt={page.title}
-                src={`https://img0.phala.world/cover/824x460/${page.id.replace(/\-/g, '')}.jpg`}
+                src={`https://img0.phala.world/cover/824x460/${page.id.replace(/\-/g, '')}.jpg?z=123`}
                 // src={`https://img0.phala.world/insecure/resize:fill:824:460:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
                 // src={`https://img0.phala.world/cover/${page.id}.jpg`}
                 // src={ `https://img0.phala.world/notion/resize:fill:824:460:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
