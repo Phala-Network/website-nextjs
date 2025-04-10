@@ -1,5 +1,5 @@
 import React, { AnchorHTMLAttributes } from 'react'
-import type { GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import { useHydrateAtoms } from 'jotai/utils'
@@ -16,6 +16,7 @@ import { blocksAtom } from '@/components/notion-render/atoms'
 import SectionSubscription from '@/components/SectionSubscription'
 import PageCoverImage from '@/components/PageCoverImage'
 import '@/components/notion-render/styles.css'
+import { notFound } from 'next/navigation'
 
 interface Props {
   page: ParsedPage | null
@@ -69,9 +70,7 @@ const StaticPage = ({ page }: Props) => {
               )}
             >
               {page.cover ? (
-                <div
-                  className={cn('rounded-3xl overflow-hidden')}
-                >
+                <div className={cn('rounded-3xl overflow-hidden')}>
                   <PageCoverImage
                     className="w-full aspect-[856/442]"
                     page={page}
@@ -95,34 +94,35 @@ const StaticPage = ({ page }: Props) => {
   )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
   return {
     paths: [
       {
         params: {
-          slug: '/privacy',
+          slug: 'privacy',
         },
       },
     ],
-    fallback: 'blocking',
+    fallback: false,
   }
-}
+}) satisfies GetStaticPaths
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params!.slug as string
+  console.log(slug)
   const [error, pages] = await attempt(
     getParsedPagesByProperties({
       database_id: process.env.NOTION_POSTS_DATABASE_ID!,
       properties: {
-        'Custom URL': slug,
-        'Status': {
+        'Custom URL': `/${slug}`,
+        Status: {
           status: {
             equals: 'Published',
           },
         },
         'Post Type': {
           select: {
-            equals: 'Post',
+            equals: 'Page',
           },
         },
       },
@@ -133,11 +133,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   }
   if (!pages || pages.length === 0) {
     return {
-      props: {
-        page: null,
-        recentPages: [],
-        similarPages: [],
-      },
+      notFound: true,
     }
   }
   const page = pages[0]

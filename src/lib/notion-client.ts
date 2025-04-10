@@ -225,7 +225,7 @@ export async function getParsedPagesByProperties({
         return {
           property: key,
           rich_text: {
-            contains: value,
+            equals: value,
           },
         }
       }),
