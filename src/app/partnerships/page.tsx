@@ -599,7 +599,7 @@ const items = [
   {
     name: "Blorm",
     url: "https://blorm.xyz/",
-    icon: "/partnerships/blorm.png",
+    icon: "/partnerships/blorm.jpg",
     description: "Blorm is forming blockchain information. a blorm is an onchain action.",
     tags: [
       "AI"
