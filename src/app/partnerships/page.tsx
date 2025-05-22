@@ -487,6 +487,123 @@ const items = [
     tags: [
       "DeFi", "Blockchain"
     ]
+  },
+  {
+    name: "Fairblock",
+    url: "https://www.fairblock.network/",
+    icon: "/partnerships/fairblock.webp",
+    description: "Fairblock leverages confidential computing to mitigate centralized risks and prevent information leakage and manipulation in decentralized applications. This unlocks credible and confidential DeFi mechanisms and AI models.",
+    tags: [
+      "FHE", "MPC"
+    ]
+  },
+  {
+    name: "CrunchDAO",
+    url: "https://www.crunchdao.com/",
+    icon: "/partnerships/crunchdao.jpg",
+    description: "CrunchDAO leverages the collective intelligence of data scientists to develop machine learning models and trading signals that generate profits in varying market conditions.",
+    tags: [
+      "AI", "DAO"
+    ]
+  },
+  {
+    name: "Streamr",
+    url: "https://streamr.network/",
+    icon: "/partnerships/streamr.svg",
+    description: "Streamr is a decentralized network purpose-built for real-time data streaming. It uses a peer-to-peer (P2P) architecture and a publish/subscribe (pub/sub) model, allowing data producers to broadcast streams that applications and nodes can subscribe to and consume instantly.",
+    tags: [
+      "DATA"
+    ]
+  },
+  {
+    name: "Sentient",
+    url: "https://sentigen.ai/",
+    icon: "/partnerships/sentient.jpg",
+    description: "Sentient Foundation is a non-profit initiative pioneering a new era in AI, aiming to empower communities to build what it calls \"Loyal AI\" – AI systems that are community-built, community-aligned, and community-owned.",
+    tags: [
+      "AI"
+    ]
+  },
+  {
+    name: "Newton",
+    url: "https://magic.link/",
+    icon: "/partnerships/newton.svg",
+    description: "Magic Labs' Newton is a platform for agentic automation in crypto, built to simplify user interactions across DeFi and Web3.",
+    tags: [
+      "AI", "Agent", "DEFI"
+    ]
+  },
+  {
+    name: "Mira",
+    url: "https://mira.network/",
+    icon: "/partnerships/mira.jpg",
+    description: "Mira makes AI reliable, by verifying outputs and actions at every step using collective intelligence",
+    tags: [
+      "AI"
+    ]
+  },
+  {
+    name: "Holoworld",
+    url: "https://www.holoworld.com/",
+    icon: "/partnerships/holoworld.png",
+    description: "Holoworld lets anyone create intelligent virtual beings, or \"AI agents,\" that can talk, act, and engage across different platforms—no coding required.",
+    tags: [
+      "AI", "Agent"
+    ]
+  },
+  {
+    name: "OpenRouter",
+    url: "https://openrouter.ai",
+    icon: "/partnerships/openrouter.jpg",
+    description: "OpenRouter provides a unified API that gives you access to hundreds of AI models through a single endpoint, while automatically handling fallbacks and selecting the most cost-effective options.",
+    tags: [
+      "AI"
+    ]
+  },
+  {
+    name: "Nvidia",
+    url: "https://www.nvidia.com/",
+    icon: "/partnerships/nvidia.webp",
+    description: "NVIDIA Inception Program is designed to help startups accelerate innovation and growth.",
+    tags: [
+      "AI"
+    ]
+  },
+  {
+    name: "Swarms",
+    url: "https://www.swarms.xyz/",
+    icon: "/partnerships/swarms.png",
+    description: "The Enterprise-Grade Production-Ready Multi-Agent Orchestration Framework.",
+    tags: [
+      "AI", "Agent"
+    ]
+  },
+  {
+    name: "Ritual",
+    url: "https://ritual.net/",
+    icon: "/partnerships/ritual.jpg",
+    description: "Ritual is the network for open AI infrastructure. We build groundbreaking, new architecture on a crowdsourced governance layer aimed to handle safety, funding, alignment, and model evolution.",
+    tags: [
+      "AI"
+    ]
+  },
+  {
+    name: "Nous Research",
+    url: "https://nousresearch.com/",
+    icon: "/partnerships/nous-research.jpg",
+    description: "Nous Research is a leader in the development of human-centric language models and simulators.",
+    tags: [
+      "AI"
+    ]
+  },
+  {
+    name: "Blorm",
+    url: "https://blorm.xyz/",
+    icon: "/partnerships/blorm.png",
+    description: "Blorm is forming blockchain information. a blorm is an onchain action.",
+    tags: [
+      "AI"
+    ]
   }
 ]
 
