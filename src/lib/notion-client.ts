@@ -308,7 +308,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       R.pathOr([], ['Title', 'title']),
       R.map(R.prop('plain_text')),
       R.join(' ')
-    )(properties)
+    )(properties).replace('&nbsp;', ' ')
     const slug = R.pipe(
       R.pathOr([], ['Custom URL', 'rich_text']),
       R.map(R.prop('plain_text')),
