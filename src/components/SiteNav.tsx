@@ -328,7 +328,7 @@ function DrawerMenu() {
               >
               </MenuItem>
               <MenuItem
-                href="https://docs.phala.network/overview/ai-execution-layer?utm_source=phala.network&utm_medium=site-nav"
+                href="https://cloud.phala.network/explorer?utm_source=phala.network&utm_medium=site-nav"
                 title="AI Execution Layer"
                 icon={<img src="/icons/menu-ai-execution-layer.png" className={cn("h-5 w-5")} />}
               >
@@ -775,7 +775,7 @@ function SiteNav() {
         >
         </MenuItem>
         <MenuItem
-          href="https://docs.phala.network/overview/ai-execution-layer?utm_source=phala.network&utm_medium=site-nav"
+          href="https://cloud.phala.network/explorer?utm_source=phala.network&utm_medium=site-nav"
           title="AI Execution Layer"
           icon={<img src="/icons/menu-ai-execution-layer.png" className={cn("h-5 w-5")} />}
         >
