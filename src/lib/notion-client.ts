@@ -83,7 +83,7 @@ export async function getParsedPage(
   const title = R.pipe(
     R.pathOr([], ['Title', 'title']),
     R.map(R.prop('plain_text')),
-    R.join(' ')
+    R.join('')
   )(page.properties)
   const slug = R.pipe(
     R.pathOr([], ['Custom URL', 'rich_text']),
