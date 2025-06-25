@@ -5,7 +5,6 @@ import {
   isFullBlock,
 } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
-import dayjs from 'dayjs'
 import {
   PageObjectResponse,
   BlockObjectResponse,
@@ -213,30 +212,56 @@ export async function getParsedPagesByProperties({
   database_id: string
   properties: Record<string, any>
 }): Promise<ParsedPage[]> {
-  const database = await notion.databases.query({
-    database_id,
-    filter: {
-      and: Object.entries(properties).map(([key, value]) => {
-        if (typeof value === 'object') {
-          return Object.assign({
-            property: key,
-          }, value)
-        }
-        return {
-          property: key,
-          rich_text: {
-            equals: value,
-          },
-        }
-      }),
+  const response = await fetch(`${process.env.NOTION_BACKEND_PREFIX}/blog/pages-by-properties`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify({
+      database_id,
+      properties,
+    }),
   })
-  const pages = (
-    await Promise.all(
-      database.results.map((result) => getParsedPage(result.id))
-    )
-  ).filter(isParsedPage)
+
+  if (!response.ok) {
+    throw new Error(`Failed to get pages by properties: ${response.status} ${response.statusText}`)
+  }
+
+  const { pages } = await response.json()
   return pages
+}
+
+export async function clearPagesByPropertiesCache(properties: Record<string, any>): Promise<void> {
+  const response = await fetch(`${process.env.NOTION_BACKEND_PREFIX}/blog/cache/clear-pages-by-properties`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      database_id: process.env.NOTION_POSTS_DATABASE_ID,
+      properties,
+    }),
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to clear pages by properties cache: ${response.status} ${response.statusText}`)
+  }
+}
+
+export async function clearQueryDatabaseCache(): Promise<void> {
+  const response = await fetch(`${process.env.NOTION_BACKEND_PREFIX}/blog/cache/clear-query-database`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      database_id: process.env.NOTION_POSTS_DATABASE_ID,
+    }),
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to clear query database cache: ${response.status} ${response.statusText}`)
+  }
 }
 
 interface IPaginatedList<T> {
@@ -246,7 +271,7 @@ interface IPaginatedList<T> {
   has_more: boolean
 }
 
-export async function* iteratePaginatedWithRetries<
+async function* iteratePaginatedWithRetries<
   Args extends {
     start_cursor?: string
   },
@@ -298,40 +323,20 @@ export async function* iteratePaginatedWithRetries<
 }
 
 export async function queryDatabase(args: QueryDatabaseParameters) {
-  const database = await notion.databases.query(args)
-  const { results = [], next_cursor } = database
-  const pages = []
-  for (const page of results) {
-    // @ts-expect-error missing from Notion package
-    const { id, properties, cover } = page
-    const title = R.pipe(
-      R.pathOr([], ['Title', 'title']),
-      R.map(R.prop('plain_text')),
-      R.join('')
-    )(properties).replace('&nbsp;', ' ')
-    const slug = R.pipe(
-      R.pathOr([], ['Custom URL', 'rich_text']),
-      R.map(R.prop('plain_text')),
-      R.join(' ')
-    )(properties).split('?')[0]
-    const tags = R.map(
-      R.prop('name'),
-      R.pathOr([], ['Tags', 'multi_select'], properties)
-    )
-    const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], properties)
-    const publishedDate = dayjs(publishedTime).format('YYYY-MM-DD')
-    const createdTime = R.pathOr('', ['Created Time', 'created_time'], properties)
-    pages.push({
-      id,
-      cover,
-      title,
-      slug,
-      tags: R.without(['Pinned', 'Changelog'], tags),
-      publishedTime,
-      publishedDate,
-      createdTime,
-    })
+  const response = await fetch(`${process.env.NOTION_BACKEND_PREFIX}/blog/query-database`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(args),
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to query database: ${response.status} ${response.statusText}`)
   }
+
+  const { next_cursor, pages } = await response.json()
+
   return {
     next_cursor,
     pages,

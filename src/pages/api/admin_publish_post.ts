@@ -5,7 +5,7 @@ import {
 import * as R from 'ramda'
 import dayjs from 'dayjs'
 
-import { notion } from '@/lib/notion-client'
+import { notion, clearQueryDatabaseCache, clearPagesByPropertiesCache } from '@/lib/notion-client'
 import { generateSlug } from '@/lib/utils'
 import attempt from '@/lib/attempt-promise'
 
@@ -75,6 +75,12 @@ export default async function handler(
       succeed: false
     })
   }
+  await Promise.all([
+    clearQueryDatabaseCache(),
+    clearPagesByPropertiesCache({
+      'Custom URL': slug,
+    })
+  ])
   const promises = tags.map((tag) => res.revalidate(`/tags/${encodeURIComponent(tag)}`))
   const encodedSlug = slug.charAt(0) === '/'
     ? `/${encodeURIComponent(slug.slice(1))}`
