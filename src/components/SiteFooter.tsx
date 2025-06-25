@@ -114,10 +114,10 @@ export default function SiteFooter() {
                 <LinkListItem href="https://github.com/nearai/private-ml-sdk">
                   Private ML SDK
                 </LinkListItem>
-                <LinkListItem href="https://docs.phala.network/pha-token/delegation/delegate-to-stakepool">
+                <LinkListItem href="https://docs.phala.network/overview/pha-token/delegation/delegate-to-stakepool">
                   What is PHA staking?
                 </LinkListItem>
-                <LinkListItem href="https://docs.phala.network/developers/phat-contract/pay-for-cloud-service">
+                <LinkListItem href="https://docs.phala.network/overview/pha-token/introduction">
                   Tokenomics - Utility
                 </LinkListItem>
                 <LinkListItem href="https://docs.phala.network/compute-providers/basic-info/worker-rewards">
