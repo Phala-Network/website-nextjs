@@ -2,10 +2,16 @@ import { cn } from '@/lib/utils'
 import TagLink from '@/components/TagLink'
 import { ParsedListPage } from '@/lib/notion-client'
 
+const remap: Readonly<Record<string, string>> = {
+  '2250317e04a18058a89af73b666d10e0': '2250317e-04a1-8058-a89a-f73b666d10e0',
+}
+
 export default function Card({ page }: { page: ParsedListPage }) {
   if (!page) {
     return null
   }
+  let id = page.id.replace(/\-/g, '')
+  id = remap[id] || id
   return (
     <article
       className={cn(
@@ -27,7 +33,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
                 width={412}
                 height={230}
                 alt={page.title}
-                src={`https://img0.phala.world/cover/824x460/${page.id.replace(/\-/g, '')}.jpg?z=123`}
+                src={`https://img0.phala.world/cover/824x460/${id}.jpg?z=123`}
                 // src={`https://img0.phala.world/insecure/resize:fill:824:460:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
                 // src={`https://img0.phala.world/cover/${page.id}.jpg`}
                 // src={ `https://img0.phala.world/notion/resize:fill:824:460:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
