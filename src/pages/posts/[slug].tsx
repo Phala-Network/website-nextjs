@@ -21,6 +21,11 @@ import SectionSubscription from '@/components/SectionSubscription'
 import PageCoverImage from '@/components/PageCoverImage'
 import '@/components/notion-render/styles.css'
 
+
+const remap: Readonly<Record<string, string>> = {
+  '2250317e04a18058a89af73b666d10e0': '2250317e-04a1-8058-a89a-f73b666d10e0',
+}
+
 interface Props {
   page: ParsedPage | null
   recentPages?: ParsedListPage[]
@@ -58,13 +63,12 @@ const PostPage = ({
     )
   }
   useHydrateAtoms([[blocksAtom, page.blocks]])
+  let id = page.id.replace(/\-/g, '')
+  id = remap[id] || id
   // const postCover = page.cover ? (
   //   'external' in page.cover ? page.cover.external.url : page.cover.file.url
   // ) : "https://phala.network/og-image.jpg"
-  const postCover = `https://img0.phala.world/cover/1200x630/${page.id.replace(
-    /\-/g,
-    ''
-  )}.jpg?z=123`
+  const postCover = `https://img0.phala.world/cover/1200x630/${id}.jpg?z=123`
   return (
     <>
       {page.title ? (
