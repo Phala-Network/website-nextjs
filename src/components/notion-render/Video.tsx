@@ -14,7 +14,7 @@ const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
     const videoUrl: string =
       block.video.type == 'external'
         ? block.video.external.url
-        : block.video.file.url
+        : `https://img0.phala.world/files/${block.id}.mp4`
     const url = new URL(videoUrl)
     if (videoUrl.indexOf('youtube.com') !== -1 && url.searchParams.has('v')) {
       return ['youtube', url.searchParams.get('v') as string]
