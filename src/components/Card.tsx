@@ -65,7 +65,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
               </div>
             ))}
           </div>
-          <h2 className="font-bold text-lg">
+          <h2 className="font-bold text-lg break-all">
             <a href={`/posts${page.slug}`}>{page.title}</a>
           </h2>
         </div>
