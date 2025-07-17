@@ -32,10 +32,10 @@ export default function Layout({
           </Script>
         </>
       ) : null}
-      <SiteNav />
       {children}
       <SiteFooter />
       <ScrollToTop />
+      <SiteNav />
     </>
   )
 }

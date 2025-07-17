@@ -653,7 +653,6 @@ function SiteNav() {
 
   return (
     <>
-      <Banner />
       <nav className={cn(
           "site-nav w-screen fixed z-30 top-0 left-0",
           navVisible ? null : 'hide'
