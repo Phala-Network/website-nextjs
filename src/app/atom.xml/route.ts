@@ -5,7 +5,7 @@ export const revalidate = 7200
 export async function GET() {
   const feed = await getBlogFeed()
   return new Response(
-    feed.rss2(),
+    feed.atom1(),
     {
       headers: {
         'Content-Type': 'application/xml',
