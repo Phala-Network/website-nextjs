@@ -13,7 +13,7 @@ export const blueprintSchema = z.object({
   tags: z.array(z.string()),
   headline: z.string(),
   fullDescription: z.string(),
-  constructorArguments: z.record(z.string()).optional(),
+  constructorArguments: z.record(z.string(), z.any()).optional(),
   published: z.boolean().optional(),
 })
 

@@ -1,6 +1,6 @@
 import { use } from 'react'
 import Link from 'next/link'
-import { type Metadata } from 'next'
+import { type Metadata, type Viewport } from 'next'
 
 import { type GenericComponent } from '@/types/components'
 import { cn } from '@/lib/utils'
@@ -11,8 +11,11 @@ import SubscribeForm from '@/components/marketing/SubscribeForm'
 
 import { NodeStats } from './node-stats'
 
-export const metadata: Metadata = {
+export const viewport: Viewport = {
   themeColor: 'rgba(232, 233, 234, 1)',
+}
+
+export const metadata: Metadata = {
   title: "AI-Agent Smart Contract by Phala Network",
   description: "The AI Agent Contract aims to facilitate AI integration, decentralize ownership and monetization, provide tokenomics for Web3 and AI adoption.",
   alternates: {

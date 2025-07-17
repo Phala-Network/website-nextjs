@@ -1,4 +1,4 @@
-import { type Metadata } from 'next'
+import { type Metadata, type Viewport } from 'next'
 import Link from 'next/link'
 import { IoOpenOutline } from 'react-icons/io5'
 
@@ -7,8 +7,11 @@ import { HeroSection01, Section, SectionHeader, SectionBody, SimpleCard, Support
 import SubscribeForm from '@/components/marketing/SubscribeForm'
 import { ContactUsButton } from '@/components/ContactUsButton'
 
-export const metadata: Metadata = {
+export const viewport: Viewport = {
   themeColor: 'rgba(232, 233, 234, 1)',
+}
+
+export const metadata: Metadata = {
   title: "Mirrored Price Feed by Phala Network",
   alternates: {
     canonical: "https://phala.network/mirrored-price-feed",

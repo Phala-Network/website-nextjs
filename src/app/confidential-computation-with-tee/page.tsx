@@ -1,6 +1,6 @@
 import { use } from 'react'
 import Link from 'next/link'
-import { type Metadata } from 'next'
+import { type Metadata, type Viewport } from 'next'
 import { FaArrowRight } from "react-icons/fa6"
 
 import { type GenericComponent } from '@/types/components'
@@ -40,8 +40,11 @@ function Card({ icon, title, description }: CardComponent) {
 //
 //
 
-export const metadata: Metadata = {
+export const viewport: Viewport = {
   themeColor: 'rgba(232, 233, 234, 1)',
+}
+
+export const metadata: Metadata = {
   title: "Confidential Computation with TEE",
   description: "The TEE (Trusted Execution Environment) is a security technology that enables secure and trusted execution of code in a hardware-based environment. It is designed to protect sensitive data and ensure the integrity of the system.",
   alternates: {

@@ -1,5 +1,5 @@
 import { use } from 'react'
-import { type Metadata } from 'next'
+import { type Metadata, type Viewport } from 'next'
 import Link from 'next/link'
 import { FiExternalLink } from 'react-icons/fi'
 
@@ -8,9 +8,12 @@ import { getPostList } from '@/queries/GetPostList'
 import { BlogPostCard } from '@/components/marketing'
 import { m } from 'framer-motion'
 
-export const metadata: Metadata = {
+export const viewport: Viewport = {
   themeColor: 'rgba(232, 233, 234, 1)',
-  title: "Phala’s Ecosystem Overview",
+}
+
+export const metadata: Metadata = {
+  title: "Phala's Ecosystem Overview",
   alternates: {
     canonical: "https://phala.network/partnerships",
   }

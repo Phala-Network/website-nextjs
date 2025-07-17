@@ -31,15 +31,15 @@ function Banner() {
     return null
   }
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 flex justify-center pb-1 sm:px-6 sm:pb-5 xl:px-8 z-50 max-w-full">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 xl:px-8 z-50">
       <div
         className={cn(
-          "pointer-events-auto",
-          "bg-ai-agent rounded-xs",
+          "pointer-events-auto flex items-center justify-between gap-x-6",
+          "bg-ai-agent sm:rounded-xs",
           "p-0.5",
         )}
       >
-        <div className="px-12 py-2.5 sm:py-3 bg-blackAlpha-600 rounded-xs m-auto">
+        <div className="px-12 py-2.5 sm:py-3 bg-blackAlpha-600 rounded-xs">
           <p className="text-sm leading-6 text-white">
             <a href="https://docs.phala.network/overview/phala-network/confidential-ai-inference" target="_blank" rel="noopener noreferrer">
               Build with GPU TEE

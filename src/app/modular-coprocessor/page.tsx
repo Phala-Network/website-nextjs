@@ -1,4 +1,4 @@
-import { type Metadata } from 'next'
+import { type Metadata, type Viewport } from 'next'
 import { use } from 'react'
 import { cn } from '@/lib/utils'
 import dedent from 'dedent'
@@ -41,8 +41,11 @@ const challenges = [
   },
 ]
 
-export const metadata: Metadata = {
+export const viewport: Viewport = {
   themeColor: 'rgba(232, 233, 234, 1)',
+}
+
+export const metadata: Metadata = {
   title: "Coprocessors by Phala Network",
   alternates: {
     canonical: "https://phala.network/modular-coprocessor",

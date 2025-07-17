@@ -1,9 +1,12 @@
-import { type Metadata } from 'next'
+import { type Metadata, type Viewport } from 'next'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
-export const metadata: Metadata = {
+export const viewport: Viewport = {
   themeColor: 'rgba(232, 233, 234, 1)',
+}
+
+export const metadata: Metadata = {
   title: "VRF by Phala Network",
 }
 
