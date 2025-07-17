@@ -66,7 +66,7 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
                     href="/blog"
                     className={cn(
                       "flex items-center gap-2 pl-5 pr-6 py-2 transition-all",
-                      "rounded-lg border bg-white border-[#526420] text-[#526420] font-bold",
+                      "rounded-lg border bg-white border-phalaGreen-800 text-phalaGreen-800 font-bold",
                       "hover:bg-[#EBFDB9]",
                     )}
                   >
