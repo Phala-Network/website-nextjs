@@ -34,7 +34,7 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
       </Head>
       <div
         className={cn(
-          'bg-gradient-to-b from-green-600 to-green-500'
+          'bg-linear-to-b from-green-600 to-green-500'
         )}
       >
         <div
@@ -67,7 +67,7 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
                   rel="noopener"
                   className={cn(
                     "flex items-center gap-2 pl-5 pr-6 py-2 transition-all",
-                    "rounded-full border bg-white border-[#526420] text-[#526420] font-bold",
+                    "rounded-full border bg-white border-phalaGreen-800 text-phalaGreen-800 font-bold",
                     "hover:bg-[#EBFDB9]",
                   )}
                 >

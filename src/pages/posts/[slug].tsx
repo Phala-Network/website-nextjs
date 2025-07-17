@@ -214,7 +214,7 @@ ${page.markdown}`
               <article className="lg:col-span-8 xl:col-span-9 space-y-8">
                 {/* Cover Image */}
                 {page.cover && (
-                  <div className="aspect-[16/9] rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-green-100 to-green-200">
+                  <div className="aspect-video rounded-2xl overflow-hidden shadow-lg bg-linear-to-br from-green-100 to-green-200">
                     <img
                       className="w-full h-full object-cover"
                       width={800}
@@ -308,7 +308,7 @@ ${page.markdown}`
                       className="flex-1 h-auto p-4 text-left justify-start hover:bg-green-50 border border-green-200 rounded-md transition-colors block"
                     >
                       <div className="flex items-start gap-3">
-                        <FiArrowLeft className="w-5 h-5 mt-0.5 text-green-600 flex-shrink-0" />
+                        <FiArrowLeft className="w-5 h-5 mt-0.5 text-green-600 shrink-0" />
                         <div>
                           <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">Previous</div>
                           <div className="text-sm font-medium text-gray-900 line-clamp-2">{beforePages[0].title}</div>
@@ -327,7 +327,7 @@ ${page.markdown}`
                           <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">Next</div>
                           <div className="text-sm font-medium text-gray-900 line-clamp-2">{nextPages[0].title}</div>
                         </div>
-                        <FiArrowRight className="w-5 h-5 mt-0.5 text-green-600 flex-shrink-0" />
+                        <FiArrowRight className="w-5 h-5 mt-0.5 text-green-600 shrink-0" />
                       </div>
                     </a>
                   )}

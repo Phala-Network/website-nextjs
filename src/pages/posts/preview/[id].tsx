@@ -34,7 +34,7 @@ function AboutLink({
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <a
-      className="text-center text-xs text-green-700 font-bold leading-none lg:border-r-[1px] border-green-700 w-1/2 lg:w-[136px] py-2 lg:py-0"
+      className="text-center text-xs text-green-700 font-bold leading-none lg:border-r border-green-700 w-1/2 lg:w-[136px] py-2 lg:py-0"
       {...props}
     >
       {children}
@@ -89,7 +89,7 @@ const PostPage = ({
       ) : null}
       <div
         className={cn(
-          'bg-gradient-to-b from-green-600 to-green-500'
+          'bg-linear-to-b from-green-600 to-green-500'
         )}
       >
         <div
@@ -132,7 +132,7 @@ const PostPage = ({
                   className={cn('lg:rounded-3xl overflow-hidden')}
                 >
                   <PageCoverImage
-                    className="w-full aspect-[856/442]"
+                    className="w-full aspect-856/442"
                     page={page}
                     width={856}
                     height={442}
