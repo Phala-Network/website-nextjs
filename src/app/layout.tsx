@@ -1,9 +1,10 @@
-import Script from 'next/script'
 import { GoogleTagManager } from '@next/third-parties/google'
+import Script from 'next/script'
 
-import SiteNav from '@/components/SiteNav'
-import SiteFooter from '@/components/SiteFooter'
 import ScrollToTop from '@/components/ScrollToTop'
+import SiteFooter from '@/components/SiteFooter'
+import SiteNav from '@/components/SiteNav'
+import fontVariables from '@/lib/fonts'
 
 import 'swiper/css'
 import 'swiper/css/free-mode'
@@ -15,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={fontVariables}>
       {process.env.NEXT_PUBLIC_GTM_ID ? (
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       ) : null}

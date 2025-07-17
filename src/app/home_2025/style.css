@@ -2,10 +2,8 @@
   width: 100%;
   height: 100%;
 
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/home/main-landing-2025/bg-hero-2025.jpg')
-    ;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/home/main-landing-2025/bg-hero-2025.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -14,24 +12,15 @@
   border-bottom-left-radius: 11.5rem;
   overflow: hidden;
 
-  mask-image:
-    url('/home/main-landing-2025/bottom-right-mask.png')
-    ,url('/home/main-landing-2025/repeat-mask.png')
-    ,url('/home/main-landing-2025/repeat-mask.png')
-  ;
+  mask-image: url('/home/main-landing-2025/bottom-right-mask.png'),
+    url('/home/main-landing-2025/repeat-mask.png'),
+    url('/home/main-landing-2025/repeat-mask.png');
 
   /* NOTE: mask-size: [width] [height] */
-  mask-size:
-    32.625rem 10rem
-    ,100% calc(100% - 10rem)
-    ,calc(100% - 32.625rem) 10rem
-    ;
+  mask-size: 32.625rem 10rem, 100% calc(100% - 10rem + 10px),
+    calc(100% - 32.625rem + 10px) 10rem;
 
-  mask-position:
-    right bottom
-    ,left top
-    ,0 bottom
-    ;
+  mask-position: right bottom, left top, 0 bottom;
 
   mask-repeat: no-repeat;
 }
@@ -47,6 +36,7 @@
 }
 
 .section-usercases {
-  background: url('/home/main-landing-2025/bg-usecases.jpg') no-repeat center center;
+  background: url('/home/main-landing-2025/bg-usecases.jpg') no-repeat center
+    center;
   background-size: cover;
 }

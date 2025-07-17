@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai'
 import { CodeBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/default-highlight'
+import SyntaxHighlighter from 'react-syntax-highlighter'
 import { github } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 import { BlockAtom } from './atoms'

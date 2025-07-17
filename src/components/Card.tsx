@@ -30,7 +30,7 @@ export default function Card({ page }: { page: ParsedListPage }) {
           {
             page.cover ? (
               <img
-                className="w-full aspect-[412/230]"
+                className="w-full aspect-412/230"
                 width={412}
                 height={230}
                 alt={page.title}
