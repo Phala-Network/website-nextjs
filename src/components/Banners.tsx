@@ -27,6 +27,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
         modules={[Pagination]}
         spaceBetween={30}
         pagination={{ clickable: true, el: '.banners-pagination' }}
+        autoHeight={true}
       >
         {pages.map((page) => (
           <SwiperSlide
