@@ -15,7 +15,7 @@ const SiteFooter: React.FC = () => {
             height={48}
           />
           <span className="font-normal text-white text-[16px] text-left tracking-[-0.176px]">
-            © 2025 Phala Cloud. Build AI People Can Trust.
+            © 2025 Phala Cloud. Build AI that people trust.
           </span>
         </div>
         {/* Services Columns */}

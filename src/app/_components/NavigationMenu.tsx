@@ -23,7 +23,7 @@ const NavigationMenu: React.FC = () => {
       <div className="flex flex-row gap-9 items-center justify-end">
         {navItems.map((item) => (
           <div key={item} className="flex flex-row gap-1.5 items-center">
-            <div className="flex flex-col font-normal justify-center leading-none text-white text-[14px] text-center tracking-[-0.084px]">
+            <div className="flex flex-col font-normal justify-center leading-none text-white text-sm text-center tracking-[-0.084px]">
               <p className="block leading-[1.2] whitespace-pre">{item}</p>
             </div>
             <div className="h-1 w-2 relative">

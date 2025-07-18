@@ -15,19 +15,19 @@ const OnlyAITrustLayerSection: React.FC = () => {
   return (
     <section className="w-full flex flex-col items-center py-16 gap-8">
       {/* Title */}
-      <h2 className="font-semibold text-[#1e2119] text-[48px] text-center tracking-[-1.056px] mb-8">The Only AI Trust Layer</h2>
+      <h2 className="font-semibold text-[#1e2119] text-5xl text-center tracking-[-1.056px] mb-8">The Only AI Trust Layer</h2>
       <div className="flex flex-row gap-8 w-full max-w-[1392px]">
         {/* Tabs */}
         <div className="bg-white h-44 rounded-2xl flex flex-row items-center justify-center w-[448px]">
           <div className="flex flex-row gap-6 items-center w-full justify-center">
             <div className="flex flex-row gap-2 items-center px-2 py-3">
-              <span className="font-semibold text-[#1e2119] text-[24px] text-left tracking-[-0.456px]">Easy</span>
+              <span className="font-semibold text-[#1e2119] text-2xl text-left tracking-[-0.456px]">Easy</span>
             </div>
             <div className="flex flex-row gap-2 items-center px-2 py-3">
-              <span className="font-medium text-[#1e2119] text-[24px] text-left tracking-[-0.456px]">Open</span>
+              <span className="font-medium text-[#1e2119] text-2xl text-left tracking-[-0.456px]">Open</span>
             </div>
             <div className="flex flex-row gap-2 items-center px-2 py-3">
-              <span className="font-medium text-[#1e2119] text-[24px] text-left tracking-[-0.456px]">Private</span>
+              <span className="font-medium text-[#1e2119] text-2xl text-left tracking-[-0.456px]">Private</span>
             </div>
           </div>
         </div>
@@ -43,9 +43,9 @@ const OnlyAITrustLayerSection: React.FC = () => {
             </div>
           </div>
           <div className="flex flex-row gap-12 items-center left-12 top-1/2 translate-y-[-50%] w-[717px] z-10">
-            <span className="font-medium text-[#1e2119] text-[40px] text-left tracking-[-0.88px]">Easy</span>
+            <span className="font-medium text-[#1e2119] text-4xl text-left tracking-[-0.88px]">Easy</span>
             <div className="bg-[#1e2119] h-full rounded-full w-0.5" />
-            <span className="font-normal text-[#61645b] text-[32px] text-left tracking-[-0.64px]">Build in Minutes, Not Months</span>
+            <span className="font-normal text-[#61645b] text-3xl text-left tracking-[-0.64px]">Build in Minutes, Not Months</span>
           </div>
         </div>
       </div>
@@ -53,11 +53,11 @@ const OnlyAITrustLayerSection: React.FC = () => {
       <div className="flex flex-row gap-8 w-full max-w-[1392px] mt-8">
         {/* Left Card */}
         <div className="bg-white h-[520px] rounded-2xl border border-[#cdfa50] border-solid flex flex-col justify-between w-[684px] p-8">
-          <div className="font-semibold text-[#1e2119] text-[20px] text-left tracking-[-0.34px] w-[365px] mb-4">
+          <div className="font-semibold text-[#1e2119] text-xl text-left tracking-[-0.34px] w-[365px] mb-4">
             Write code, dockerize, and deploy it as trustless TEE apps.
           </div>
           <div className="bg-[#0d0d0d] flex flex-row gap-2.5 h-10 items-center justify-center px-6 py-[11px] rounded-full w-[120px] mb-4">
-            <span className="font-semibold text-white text-[14px] text-center tracking-[-0.084px]">Try Now</span>
+            <span className="font-semibold text-white text-sm text-center tracking-[-0.084px]">Try Now</span>
           </div>
           <div className="bg-[#c4f144] h-[321.36px] w-full rounded-2xl flex flex-col justify-center items-center relative overflow-hidden">
             <div className="absolute flex h-[678.571px] items-center justify-center left-[139px] top-[-108px] w-[678.571px] pointer-events-none select-none">
@@ -70,7 +70,7 @@ const OnlyAITrustLayerSection: React.FC = () => {
               </div>
             </div>
             <div className="bg-white h-[304px] rounded-2xl flex flex-col justify-center items-center w-[604px] relative z-10">
-              <div className="font-medium text-[#0d0d0d] text-[24px] text-left tracking-[-0.264px] w-[402px] mb-4">
+              <div className="font-medium text-[#0d0d0d] text-2xl text-left tracking-[-0.264px] w-[402px] mb-4">
                 # Deploy the webshell Dstack example phala cvms create
               </div>
               <div className="flex flex-row gap-2 absolute left-3 top-3">
@@ -83,7 +83,7 @@ const OnlyAITrustLayerSection: React.FC = () => {
         </div>
         {/* Middle Card */}
         <div className="bg-white h-[520px] rounded-2xl border border-[#cdfa50] border-solid flex flex-col justify-between w-[329px] p-8">
-          <div className="font-semibold text-[#1e2119] text-[20px] text-left tracking-[-0.34px] w-[226px] mb-4">
+          <div className="font-semibold text-[#1e2119] text-xl text-left tracking-[-0.34px] w-[226px] mb-4">
             We deal with the pain of hardware maintenance
           </div>
           <div className="flex flex-row gap-4 items-center mb-4">
@@ -97,16 +97,16 @@ const OnlyAITrustLayerSection: React.FC = () => {
               <img alt="frame" className="block max-w-none size-10" src={imgFrame2} />
             </div>
           </div>
-          <div className="font-medium text-[#61645b] text-[14px] text-left tracking-[-0.154px] w-full">
+          <div className="font-medium text-[#61645b] text-sm text-left tracking-[-0.154px] w-full">
             have their own TEE
           </div>
           <div className="bg-[#0d0d0d] flex flex-row gap-2.5 h-10 items-center justify-center px-6 py-[11px] rounded-full w-[120px] mt-4">
-            <span className="font-semibold text-white text-[14px] text-center tracking-[-0.084px]">See Hardware</span>
+            <span className="font-semibold text-white text-sm text-center tracking-[-0.084px]">See Hardware</span>
           </div>
         </div>
         {/* Right Card */}
         <div className="bg-white h-[520px] rounded-2xl border border-[#cdfa50] border-solid flex flex-col justify-between w-[330px] p-8">
-          <div className="font-semibold text-[#1e2119] text-[20px] text-left tracking-[-0.34px] w-[226px] mb-4">
+          <div className="font-semibold text-[#1e2119] text-xl text-left tracking-[-0.34px] w-[226px] mb-4">
             Deploy production-grade TEE workloads in minutes.
           </div>
           <div className="bg-white h-[382px] rounded-2xl flex flex-col justify-center items-center w-[604px] relative overflow-hidden mb-4">
@@ -118,7 +118,7 @@ const OnlyAITrustLayerSection: React.FC = () => {
             <div className="bg-no-repeat h-[373px] w-[472px]" style={{ backgroundImage: `url('${imgImage339}')` }} />
           </div>
           <div className="bg-[#0d0d0d] flex flex-row gap-2.5 h-10 items-center justify-center px-6 py-[11px] rounded-full w-[120px] mt-4">
-            <span className="font-semibold text-white text-[14px] text-center tracking-[-0.084px]">Browse Templates</span>
+            <span className="font-semibold text-white text-sm text-center tracking-[-0.084px]">Browse Templates</span>
           </div>
         </div>
       </div>

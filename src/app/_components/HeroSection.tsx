@@ -27,28 +27,28 @@ const HeroSection: React.FC = () => {
           </div>
           {/* Headline */}
           <div className="flex flex-row gap-4 items-center justify-center w-full">
-            <div className="figma-font-montserrat figma-bold figma-headline-40" style={{color: 'var(--figma-light)'}}>
-              <p className="block leading-[1.2] whitespace-pre">BUILD AI</p>
+            <div className="font-sans font-bold text-4xl text-white">
+              <p className="block leading-[1.2] whitespace-pre">The New Cloud for</p>
             </div>
             <div className="bg-[rgba(0,0,0,0.48)] flex flex-row gap-2 items-center justify-center px-4 py-1.5 rounded-xl">
-              <div className="figma-font-montserrat figma-bold figma-headline-40" style={{color: 'var(--figma-light)'}}>
-                <p className="block leading-[1.2] whitespace-pre">PEOPLE CAN TRUST</p>
+              <div className="font-sans font-bold text-4xl text-white">
+                <p className="block leading-[1.2] whitespace-pre">Confidential AI</p>
               </div>
             </div>
           </div>
-          <div className="figma-font-montserrat figma-semibold figma-headline-32" style={{color: 'var(--figma-light)'}}>
-            <p className="block leading-[1.2] whitespace-pre">Deploy today, trust AI instantly.</p>
+          <div className="font-sans font-semibold text-3xl text-white">
+            <p className="block leading-[1.2] whitespace-pre">Build AI that people trust</p>
           </div>
         </div>
         {/* Buttons */}
         <div className="relative z-10 flex flex-row gap-4 items-center justify-center mt-12">
           <div className="bg-[#c4f144] flex flex-row gap-2.5 h-12 items-center justify-center px-6 py-[11px] rounded-full w-40">
-            <div className="figma-font-montserrat figma-semibold figma-headline-14" style={{color: 'var(--figma-dark)'}}>
+            <div className="font-sans font-semibold text-sm text-[#1e2119]">
               <p className="block leading-[1.2] whitespace-pre">Get Start</p>
             </div>
           </div>
           <div className="bg-white flex flex-row gap-2.5 h-12 items-center justify-center px-6 py-[11px] rounded-full w-40">
-            <div className="figma-font-montserrat figma-semibold figma-headline-14" style={{color: 'var(--figma-dark)'}}>
+            <div className="font-sans font-semibold text-sm text-[#1e2119]">
               <p className="block leading-[1.2] whitespace-pre">Request Demo</p>
             </div>
           </div>
