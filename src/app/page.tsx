@@ -1,11 +1,4 @@
 import { Metadata } from 'next'
-import HeroSection from "./_components/HeroSection";
-import NavigationMenu from "./_components/NavigationMenu";
-import TrustedBySection from "./_components/TrustedBySection";
-import OnlyAITrustLayerSection from "./_components/OnlyAITrustLayerSection";
-import SolutionsSection from "./_components/SolutionsSection";
-import IndustryTrustSection from "./_components/IndustryTrustSection";
-import TrustCycleSection from "./_components/TrustCycleSection";
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -61,13 +54,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="w-full min-h-screen bg-[#f9f9f7] flex flex-col items-center">
-      <NavigationMenu />
-      <HeroSection />
-      <TrustCycleSection />
-      <TrustedBySection />
-      <OnlyAITrustLayerSection />
-      <SolutionsSection />
-      <IndustryTrustSection />
+
     </div>
   );
 }
