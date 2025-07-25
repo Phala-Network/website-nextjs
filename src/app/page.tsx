@@ -1,4 +1,15 @@
 import { Metadata } from 'next'
+import HeroSection from '../components/home/HeroSection';
+import TrustCycleSection from '../components/home/TrustCycleSection';
+import TrustedUsersSection from '../components/home/TrustedUsersSection';
+import ConfidentialAIModelsSection from '../components/home/ConfidentialAIModelsSection';
+import GPUComparisonSection from '../components/home/GPUComparisonSection';
+import PrivateCloudComputeSection from '../components/home/PrivateCloudComputeSection';
+import EasyBuildSection from '../components/home/EasyBuildSection';
+import ProvenAtScaleSection from '../components/home/ProvenAtScaleSection';
+import SuccessStoriesSection from '../components/home/SuccessStoriesSection';
+import FAQSection from '../components/home/FAQSection';
+import FinalCTASection from '../components/home/FinalCTASection';
 
 export const metadata: Metadata = {
   themeColor: 'rgba(232, 233, 234, 1)',
@@ -54,7 +65,17 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="w-full min-h-screen bg-[#f9f9f7] flex flex-col items-center">
-
+      <HeroSection />
+      <TrustCycleSection />
+      <TrustedUsersSection />
+      <ConfidentialAIModelsSection />
+      <GPUComparisonSection />
+      <PrivateCloudComputeSection />
+      <EasyBuildSection />
+      <ProvenAtScaleSection />
+      <SuccessStoriesSection />
+      <FAQSection />
+      <FinalCTASection />
     </div>
   );
 }
