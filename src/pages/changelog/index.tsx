@@ -34,7 +34,7 @@ export default function ChangelogPage({ initialPages, nextCursor }: Props) {
       </Head>
       <div
         className={cn(
-          'bg-gradient-to-b from-green-600 to-green-500'
+          'bg-linear-to-b from-green-600 to-green-500'
         )}
       >
         <div

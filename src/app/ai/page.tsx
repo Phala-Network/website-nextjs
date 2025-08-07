@@ -65,7 +65,7 @@ export default function Page() {
       >
       </HeroSection01>
 
-      <section className="lg:mt-[-20rem] 2xl:mt-[-30%] px-6 lg:px-8 z-10 mx-auto w-full max-w-6xl">
+      <section className="lg:-mt-80 2xl:mt-[-30%] px-6 lg:px-8 z-10 mx-auto w-full max-w-6xl">
         <Box className="rounded p-2 bg-black-850 border-black-750 w-full">
           <div className="min-w-full lg:min-h-[620px] rounded overflow-hidden">
             <YouTubeVideo
@@ -80,7 +80,7 @@ export default function Page() {
               className={cn(
                 "btn btn-primary btn-rounded lg:btn-rounded",
                 "min-w-[200px]",
-                "bg-gradient-to-l from-[#FF8A35] via-40% via-[#F94D4D] to-[#9C52FA] text-white border-none"
+                "bg-linear-to-l from-[#FF8A35] via-40% via-[#F94D4D] to-[#9C52FA] text-white border-none"
               )}
             >
               Join Agent Wars
@@ -217,21 +217,21 @@ export default function Page() {
           <Box className="flex flex-col items-center flex-1 p-12">
             <img
               src="/illustrations/ai-agents/templates.png"
-              className="w-60 aspect-[178/240] mb-6"
+              className="w-60 aspect-178/240 mb-6"
             />
             <h4 className="lg:text-xl text-center text-white">Pre-built AI-Agent Templates</h4>
           </Box>
           <Box className="flex flex-col items-center flex-1 p-12">
             <img
               src="/illustrations/ai-agents/tokenomics.png"
-              className="w-60 aspect-[178/240] mb-6"
+              className="w-60 aspect-178/240 mb-6"
             />
             <h4 className="lg:text-xl text-center text-white">Tokenomics on Ethereum / L2</h4>
           </Box>
           <Box className="flex flex-col items-center flex-1 p-12">
             <img
               src="/illustrations/ai-agents/serverless.png"
-              className="w-60 aspect-[178/240] mb-6"
+              className="w-60 aspect-178/240 mb-6"
             />
             <h4 className="lg:text-xl text-center text-white">Serverless AI-Agents Hosted on Phala Network</h4>
           </Box>
@@ -413,11 +413,11 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-[#262626] xl:bg-gradient-to-r from-50% to-0% from-[#262626] to-[#f3f3f3]">
+      <section className="bg-black-850 xl:bg-linear-to-r from-50% to-0% from-black-850 to-[#f3f3f3]">
         <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
           <SubscribeForm />
           <div className={cn("hidden xl:block xl:h-full xl:bg-[#f3f3f3] row-start-1 col-span-full xl:col-start-14 3xl:col-start-16 -ml-4 relative")}>
-            <img src="/home/newsletter-aside.jpg" alt="" className={cn("absolute bottom-0 left-0 aspect-[1860/728]")} />
+            <img src="/home/newsletter-aside.jpg" alt="" className={cn("absolute bottom-0 left-0 aspect-1860/728")} />
           </div>
         </div>
       </section>

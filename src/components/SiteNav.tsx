@@ -107,7 +107,7 @@ function Logo() {
     <Link
       href="/"
       className={cn(
-        "flex gap-2.5 items-center h-[4rem] p-2",
+        "flex gap-2.5 items-center h-16 p-2",
         "col-span-1 col-start-1 xl:col-span-3 row-start-1"
       )}
       onMouseEnter={() => setIsHover(true)}
@@ -205,7 +205,7 @@ function DropdownMenu({
       {...(hoverProps as MotionProps)}
       className={cn(
         "comp-dropdown-menu",
-        "fixed left-40 w-[22rem] min-h-[200px] z-40 shadow-lg",
+        "fixed left-40 w-88 min-h-[200px] z-40 shadow-lg",
         !state.isOpened && 'untanglable',
       )}
       style={{ left: state.x || 0, top: state.y + 20, minWidth }}
@@ -558,7 +558,7 @@ function SiteNavItem({
     }
   })
   return (
-    <li className="relative h-[3rem] flex items-center cursor-pointer rounded-sm">
+    <li className="relative h-12 flex items-center cursor-pointer rounded-sm">
       <button
         {...hoverProps}
         className={cn("w-full h-full")}
@@ -606,7 +606,7 @@ function MenuItem({ href, title, icon, children }: {
           <span className={cn("h-8 w-8 p-1 flex flex-row justify-center items-center rounded-full bg-black-800 shrink-0")}>
             {icon}
           </span>
-          <div className={cn("flex-grow w-full")}>
+          <div className={cn("grow w-full")}>
             <h4 className="heading">
               {title}
               <MdArrowForward className="arrow" />
@@ -621,7 +621,7 @@ function MenuItem({ href, title, icon, children }: {
           <span className={cn("h-8 w-8 p-1 flex flex-row justify-center items-center rounded-full bg-black-800 shrink-0")}>
             {icon}
           </span>
-          <div className={cn("flex-grow w-full")}>
+          <div className={cn("grow w-full")}>
             <h4 className="heading">{title}</h4>
             <div className="body">{children}</div>
           </div>
@@ -675,7 +675,7 @@ function SiteNav() {
 
             <Hamburger />
 
-            <ul className="hidden xl:flex xl:items-center xl:gap-4 xl:h-[4rem] xl:col-start-5 xl:col-span-17 3xl:col-start-6 3xl:col-span-19 row-start-1">
+            <ul className="hidden xl:flex xl:items-center xl:gap-4 xl:h-16 xl:col-start-5 xl:col-span-17 3xl:col-start-6 3xl:col-span-19 row-start-1">
               <SiteNavItem dropdownTarget="developers">Developers</SiteNavItem>
               <SiteNavItem dropdownTarget="network">Network</SiteNavItem>
               <SiteNavItem dropdownTarget="discover">Discover</SiteNavItem>

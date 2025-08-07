@@ -1,4 +1,4 @@
-@tailwind utilities;
+@reference '../app/globals.css';
 
 .faucet-details {
   @apply pb-6 border-b border-solid border-gray-600;
@@ -12,8 +12,7 @@
   @apply flex flex-row justify-between items-center pt-6;
 }
 
-.faucet-details summary h4
-{
+.faucet-details summary h4 {
   @apply text-xl font-medium text-gray-300 tracking-wider;
 }
 

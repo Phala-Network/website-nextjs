@@ -17,7 +17,7 @@ const Feature102 = () => {
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full border bg-muted/50 font-mono text-lg">
                   1
                 </span>
-                <span className="h-20 w-[3px] shrink-0 bg-gradient-to-b from-transparent to-primary opacity-70"></span>
+                <span className="h-20 w-[3px] shrink-0 bg-linear-to-b from-transparent to-primary opacity-70"></span>
               </div>
               <div className="flex flex-col justify-center gap-5 px-0 md:gap-6 md:px-4 md:py-4">
                 <h3 className="text-xl md:text-2xl">
@@ -67,7 +67,7 @@ const Feature102 = () => {
           <div className="flex flex-col items-center justify-between md:flex-row md:gap-10">
             <div className="flex gap-4 md:max-w-md">
               <div className="flex flex-col items-center justify-between gap-1">
-                <span className="h-20 w-[3px] shrink-0 bg-gradient-to-t from-transparent to-primary opacity-70"></span>
+                <span className="h-20 w-[3px] shrink-0 bg-linear-to-t from-transparent to-primary opacity-70"></span>
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full border bg-muted/50 font-mono text-lg">
                   3
                 </span>

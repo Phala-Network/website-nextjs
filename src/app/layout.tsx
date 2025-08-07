@@ -1,22 +1,14 @@
 import { GoogleTagManager } from '@next/third-parties/google'
-import { Inter, Montserrat, Open_Sans } from 'next/font/google'
 import Script from 'next/script'
 
 import ScrollToTop from '@/components/ScrollToTop'
 import SiteFooter from '@/components/SiteFooter'
 import SiteNav from '@/components/SiteNav'
-import { cn } from '@/lib/utils'
+import fontVariables from '@/lib/fonts'
 
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-})
-const openSans = Open_Sans({ subsets: ['latin'], variable: '--font-open-sans' })
 
 export default function RootLayout({
   children,
@@ -24,10 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={cn(inter.variable, montserrat.variable, openSans.variable)}
-    >
+    <html lang="en" className={fontVariables}>
       {process.env.NEXT_PUBLIC_GTM_ID ? (
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       ) : null}

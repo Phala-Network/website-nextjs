@@ -71,7 +71,7 @@ export default function Page() {
           <main
             className={cn(
               "col-span-full xl:col-start-3 xl:col-span-16 3xl:col-start-5 3xl:col-span-16 row-start-1",
-              "mt-20 z-[2] flex flex-col gap-6",
+              "mt-20 z-2 flex flex-col gap-6",
               "faucet",
             )}
           >

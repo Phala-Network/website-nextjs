@@ -1,3 +1,5 @@
+@reference '../../app/globals.css';
+
 .notion_page_body {
   line-height: 1.7;
   font-size: 1.2rem;
@@ -134,7 +136,7 @@
 
 .notion_inline_code {
   color: #242424;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   padding: 2px 4px;
   font-weight: 400;
   font-size: 75%;

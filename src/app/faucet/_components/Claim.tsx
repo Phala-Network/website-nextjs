@@ -297,7 +297,7 @@ function SponsorItem({ info }: { info: ProvenItem }) {
       <div className="p-4">
         <img src={info.poster} alt="" className="mb-4 rounded-xs" />
         <h4 className="text-lg font-bold mb-2 tracking-wide">{info.title}</h4>
-        <div className="h-[4rem] overflow-y-scroll text-sm text-black-200 leading-6">
+        <div className="h-16 overflow-y-scroll text-sm text-black-200 leading-6">
           <p>{info.description}</p>
         </div>
         <div>
@@ -506,12 +506,12 @@ function WalletModal() {
           </div>
           <div
             className={cn(
-              'border-l border-solid border-gray-600 h-[20rem] w-full'
+              'border-l border-solid border-gray-600 h-80 w-full'
             )}
           >
             {selected ||
             (lastSelectedWallet && lastSelectedWallet !== 'ethereum') ? (
-              <ul className="h-[20rem] overflow-y-scroll px-4 w-full flex flex-col gap-0.5">
+              <ul className="h-80 overflow-y-scroll px-4 w-full flex flex-col gap-0.5">
                 {accounts.map((account, idx) => (
                   <li key={idx}>
                     <div

@@ -38,7 +38,7 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
       <div
         className={cn(
           'min-h-screen',
-          'bg-gradient-to-b from-green-600 to-green-500'
+          'bg-linear-to-b from-green-600 to-green-500'
         )}
       >
         <div

@@ -1,37 +1,41 @@
-import { use } from 'react'
+import type { Metadata, Viewport } from 'next'
 import Link from 'next/link'
-import { type Metadata, type Viewport } from 'next'
-import { FaArrowRight } from "react-icons/fa6"
+import { use } from 'react'
+import { FaArrowRight } from 'react-icons/fa6'
 
-import { type GenericComponent } from '@/types/components'
-import { cn } from '@/lib/utils'
-import { getPostList } from '@/queries/GetPostList'
-import { getComputationData } from '@/queries/GetComputationData'
+import { ContactUsButton } from '@/components/ContactUsButton'
+import { BlogPostCard } from '@/components/marketing'
 import { Stats } from '@/components/Stats'
 import { YouTubeVideo } from '@/components/YouTubeVideo'
-import { BlogPostCard } from '@/components/marketing'
-import { ContactUsButton } from '@/components/ContactUsButton'
+import { cn } from '@/lib/utils'
+import { getComputationData } from '@/queries/GetComputationData'
+import { getPostList } from '@/queries/GetPostList'
+import type { GenericComponent } from '@/types/components'
 
 import './style.css'
 
 interface CardComponent {
-  icon: string,
-  title: string,
-  description: string,
+  icon: string
+  title: string
+  description: string
 }
 
 function Card({ icon, title, description }: CardComponent) {
   return (
     <div
       className={cn(
-        `w-full max-w-[var(--card-container-max-width)] rounded-sm shadow-xl`,
-        "bg-white border border-black-100",
-        "p-10 flex flex-col gap-6"
+        `w-full max-w-(--card-container-max-width) rounded-sm shadow-xl`,
+        'bg-white border border-black-100',
+        'p-10 flex flex-col gap-6',
       )}
     >
-      <img src={icon} alt="" className={cn(`aspect-square max-w-[var(--card-image-max-width)] mb-4`)} />
-      <h3 className="text-24 font-bold text-black-800">{title}</h3>
-      <p className="text-18 font-medium text-gray-500">{description}</p>
+      <img
+        src={icon}
+        alt=""
+        className={cn(`aspect-square max-w-(--card-image-max-width) mb-4`)}
+      />
+      <h3 className="text-[24px] font-bold text-black-800">{title}</h3>
+      <p className="text-[18px] font-medium text-gray-500">{description}</p>
     </div>
   )
 }
@@ -45,58 +49,86 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Confidential Computation with TEE",
-  description: "The TEE (Trusted Execution Environment) is a security technology that enables secure and trusted execution of code in a hardware-based environment. It is designed to protect sensitive data and ensure the integrity of the system.",
+  title: 'Confidential Computation with TEE',
+  description:
+    'The TEE (Trusted Execution Environment) is a security technology that enables secure and trusted execution of code in a hardware-based environment. It is designed to protect sensitive data and ensure the integrity of the system.',
   alternates: {
-    canonical: "https://phala.network/confidential-computation-with-tee",
+    canonical: 'https://phala.network/confidential-computation-with-tee',
   },
 }
 
 function Hero() {
   const { onlineWorkers, vCpu, crossChainTx, tx } = use(getComputationData())
   return (
-    <section className={cn("grid grid-cols-1", "lg:pt-28 lg:px-10", "mx-auto max-w-[1760px]")}>
+    <section
+      className={cn(
+        'grid grid-cols-1',
+        'lg:pt-28 lg:px-10',
+        'mx-auto max-w-[1760px]',
+      )}
+    >
       {/* the first screen */}
       <div
         className={cn(
-          "row-start-1 row-span-1 col-span-full z-[1]",
+          'row-start-1 row-span-1 col-span-full z-1',
 
           // For mobile
-          "flex flex-col gap-4 py-4 pt-28 px-8",
-          "bg-gray-200/75 backdrop-blur",
+          'flex flex-col gap-4 py-4 pt-28 px-8',
+          'bg-gray-200/75 backdrop-blur',
 
           // For desktop
-          "lg:grid lg:grid-cols-12 lg:grid-rows-8 lg:gap-0 lg:py-0 lg:pt-0 lg:px-6",
-          "lg:rounded-t rounded-t-none overflow-hidden",
-          "lg:bg-transparent lg:backdrop-blur-none",
+          'lg:grid lg:grid-cols-12 lg:grid-rows-8 lg:gap-0 lg:py-0 lg:pt-0 lg:px-6',
+          'lg:rounded-t rounded-t-none overflow-hidden',
+          'lg:bg-transparent lg:backdrop-blur-none',
         )}
       >
-        <div className={cn("col-span-8 col-start-2 row-start-2", "flex flex-col justify-end")}>
+        <div
+          className={cn(
+            'col-span-8 col-start-2 row-start-2',
+            'flex flex-col justify-end',
+          )}
+        >
           <div className="mb-4">
             <span
               className={cn(
-                "text-[10px]",
-                "bg-gray-100 border border-gray-200 text-gray-500 px-4 py-2 rounded-full lg:text-12 font-medium uppercase tracking-wider leading-10"
+                'text-[10px]',
+                'bg-gray-100 border border-gray-200 text-gray-500 px-4 py-2 rounded-full lg:text-[12px] font-medium uppercase tracking-wider leading-10',
               )}
             >
               Confidential Computation with TEE
             </span>
           </div>
         </div>
-        <header className={cn("col-span-6 col-start-2 row-start-3 row-span-3", "grow")}>
-          <h1 className={cn("text-32 lg:text-40 font-bold lg:font-black tracking-tight lg:tracking-wider")}>
+        <header
+          className={cn(
+            'col-span-6 col-start-2 row-start-3 row-span-3',
+            'grow',
+          )}
+        >
+          <h1
+            className={cn(
+              'text-[32px] lg:text-[40px] font-bold lg:font-black tracking-tight lg:tracking-wider',
+            )}
+          >
             Build on World's largest Trusted Execution Environment (TEE) network
           </h1>
-          <h4 className={cn("mt-4", "text-18 text-gray-500")}>
-            Our state-of-the-art open GPU TEE infrastructure empowers developers to build secure, confidential, and decentralized applications in both AI and blockchain.
+          <h4 className={cn('mt-4', 'text-[18px] text-gray-500')}>
+            Our state-of-the-art open GPU TEE infrastructure empowers developers
+            to build secure, confidential, and decentralized applications in
+            both AI and blockchain.
           </h4>
         </header>
-        <div className={cn("col-span-8 col-start-2 row-start-7", "pb-24 lg:pb-0")}>
-          <div className={"flex flex-col lg:flex-row gap-4 items-center"}>
-            <Link href="https://docs.phala.network/tech-specs/multi-proof-and-verifiable-compute" className="btn btn-sm lg:btn-md btn-primary !btn-rounded btn-purple w-[178px]">
+        <div
+          className={cn('col-span-8 col-start-2 row-start-7', 'pb-24 lg:pb-0')}
+        >
+          <div className={'flex flex-col lg:flex-row gap-4 items-center'}>
+            <Link
+              href="https://docs.phala.network/tech-specs/multi-proof-and-verifiable-compute"
+              className="btn btn-sm lg:btn-md btn-primary btn-rounded! btn-purple w-[178px]"
+            >
               Read Docs
             </Link>
-            <ContactUsButton className="btn btn-sm lg:btn-md btn-primary !btn-rounded btn-wht w-[178px] border border-black-200">
+            <ContactUsButton className="btn btn-sm lg:btn-md btn-primary btn-rounded! btn-wht w-[178px] border border-black-200">
               Get In Touch
             </ContactUsButton>
           </div>
@@ -106,11 +138,11 @@ function Hero() {
       {/* responsive hero image */}
       <figure
         className={cn(
-          "h-full w-full min-h-screen lg:min-h-[unset]",
-          "rounded-t overflow-hidden",
-          "row-start-1 row-span-1 col-span-full",
-          "untanglable",
-          "bg-gray-200",
+          'h-full w-full min-h-screen lg:min-h-[unset]',
+          'rounded-t overflow-hidden',
+          'row-start-1 row-span-1 col-span-full',
+          'untanglable',
+          'bg-gray-200',
         )}
         style={{
           backgroundImage: `url(/confidential-computing/hero.jpg)`,
@@ -122,8 +154,8 @@ function Hero() {
         <img
           src="/confidential-computing/hero.jpg"
           className={cn(
-            "aspect-[1312/560] object-cover w-full h-full",
-            "invisible lg:visible",
+            'aspect-1312/560 object-cover w-full h-full',
+            'invisible lg:visible',
           )}
           alt=""
         />
@@ -150,9 +182,16 @@ function Hero() {
 
 function Highlights({ children }: GenericComponent) {
   return (
-    <section className={cn("section--highlights", "grid grid-cols-1", "px-6 pt-14 lg:pt-28 lg:px-10", "mx-auto max-w-[1760px]")}>
+    <section
+      className={cn(
+        'section--highlights',
+        'grid grid-cols-1',
+        'px-6 pt-14 lg:pt-28 lg:px-10',
+        'mx-auto max-w-[1760px]',
+      )}
+    >
       <header>
-        <h2 className="text-24 lg:text-40 font-black text-black-800 tracking-wider text-center max-w-5xl mb-4 lg:mb-16">
+        <h2 className="text-[24px] lg:text-[40px] font-black text-black-800 tracking-wider text-center max-w-5xl mb-4 lg:mb-16">
           Current Limitations of Computation in Web3
         </h2>
       </header>
@@ -165,17 +204,32 @@ function Highlights({ children }: GenericComponent) {
 
 function Features({ children }: GenericComponent) {
   return (
-    <section className={cn("section--features", "px-6 pt-14 lg:pt-28 lg:px-10", "mx-auto max-w-[1760px]")}>
-      <div className={cn("flex flex-col gap-4 lg:grid grid-cols-12 lg:gap-8", "bg-gray-200", "p-4 lg:p-8 rounded-md")}>
+    <section
+      className={cn(
+        'section--features',
+        'px-6 pt-14 lg:pt-28 lg:px-10',
+        'mx-auto max-w-[1760px]',
+      )}
+    >
+      <div
+        className={cn(
+          'flex flex-col gap-4 lg:grid grid-cols-12 lg:gap-8',
+          'bg-gray-200',
+          'p-4 lg:p-8 rounded-md',
+        )}
+      >
         <header className="col-span-5 p-8">
-          <h2 className="text-24 lg:text-40 font-black text-black-800 tracking-wider max-w-5xl mb-4 lg:mb-16">
+          <h2 className="text-[24px] lg:text-[40px] font-black text-black-800 tracking-wider max-w-5xl mb-4 lg:mb-16">
             The Need for TEE
           </h2>
-          <h4 className="text-18 lg:text-24 font-bold text-gray-800 mb-2 lg:mb-6">
+          <h4 className="text-[18px] lg:text-[24px] font-bold text-gray-800 mb-2 lg:mb-6">
             What is TEE?
           </h4>
-          <p className="text-16 lg:text-18 font-medium text-gray-600 lg:leading-8">
-            Trusted Execution Environments (TEE) create secure enclaves for processing sensitive data, allowing applications to execute securely in an isolated environment, without trust the privileged software, such as hypervisors or host operating systems.
+          <p className="text-[16px] lg:text-[18px] font-medium text-gray-600 lg:leading-8">
+            Trusted Execution Environments (TEE) create secure enclaves for
+            processing sensitive data, allowing applications to execute securely
+            in an isolated environment, without trust the privileged software,
+            such as hypervisors or host operating systems.
           </p>
         </header>
         <main className="col-span-7 flex flex-col gap-2 lg:grid lg:grid-cols-2 lg:gap-4">
@@ -186,24 +240,41 @@ function Features({ children }: GenericComponent) {
   )
 }
 
-function Case({ icon, title, ctaLink, ctaText = 'Learn more', className, children }: GenericComponent & {
-  icon: string,
-  title: string,
-  ctaLink?: string,
-  ctaText?: string,
+function Case({
+  icon,
+  title,
+  ctaLink,
+  ctaText = 'Learn more',
+  className,
+  children,
+}: GenericComponent & {
+  icon: string
+  title: string
+  ctaLink?: string
+  ctaText?: string
 }) {
   return (
-    <article className={cn("lg:flex lg:flex-row gap-4 p-4 lg:gap-8 lg:p-8 rounded border border-blackAlpha-200", className)}>
+    <article
+      className={cn(
+        'lg:flex lg:flex-row gap-4 p-4 lg:gap-8 lg:p-8 rounded border border-blackAlpha-200',
+        className,
+      )}
+    >
       <aside className="float-left lg:float-none w-7 h-7 basis-7 lg:w-16 lg:h-16 lg:basis-16 grow-0 shrink-0">
         <img src={icon} alt="" className={cn('w-full h-full aspect-square')} />
       </aside>
       <main>
-        <h3 className="pl-10 lg:pl-0 text-18 lg:text-24 font-bold text-black-800 mb-4">{title}</h3>
-        <p className="text-14 lg:text-18 font-medium text-gray-500 leading-8 hyphens-auto">
+        <h3 className="pl-10 lg:pl-0 text-[18px] lg:text-[24px] font-bold text-black-800 mb-4">
+          {title}
+        </h3>
+        <p className="text-[14px] lg:text-[18px] font-medium text-gray-500 leading-8 hyphens-auto">
           {children}
         </p>
         {ctaLink ? (
-          <Link href={ctaLink} className="inline-flex gap-2 items-center text-purple-500 !no-underline text-14 font-medium mt-8 hover:!underline">
+          <Link
+            href={ctaLink}
+            className="inline-flex gap-2 items-center text-purple-500 no-underline! text-[14px] font-medium mt-8 hover:underline!"
+          >
             {ctaText}
             <FaArrowRight className="w-3 h-3" />
           </Link>
@@ -215,16 +286,26 @@ function Case({ icon, title, ctaLink, ctaText = 'Learn more', className, childre
 
 function CaseStudies({ children }: GenericComponent) {
   return (
-    <section className={cn("section--case-studies", "px-6 pt-14 lg:pt-28 lg:px-10", "mx-auto max-w-[1760px]")}>
+    <section
+      className={cn(
+        'section--case-studies',
+        'px-6 pt-14 lg:pt-28 lg:px-10',
+        'mx-auto max-w-[1760px]',
+      )}
+    >
       <header>
-        <h2 className="text-24 lg:text-40 font-black text-black-800 max-w-4xl mb-4 lg:mb-10 mx-auto text-center">
+        <h2 className="text-[24px] lg:text-[40px] font-black text-black-800 max-w-4xl mb-4 lg:mb-10 mx-auto text-center">
           Use causes for utilizing TEE to bring full privacy and security
         </h2>
-        <h4 className="text-16 lg:text-20 font-medium text-gray-500 tracking-wide text-center mb-6 lg:mb-16">
+        <h4 className="text-[16px] lg:text-[20px] font-medium text-gray-500 tracking-wide text-center mb-6 lg:mb-16">
           Practical Real-world Applications of TEE
         </h4>
       </header>
-      <main className={cn("flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:grid-rows-5 lg:gap-5")}>
+      <main
+        className={cn(
+          'flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:grid-rows-5 lg:gap-5',
+        )}
+      >
         {children}
       </main>
     </section>
@@ -233,20 +314,34 @@ function CaseStudies({ children }: GenericComponent) {
 
 function GetStarted() {
   return (
-    <section className={cn("section--get-started", "px-6 pt-14 lg:pt-28 lg:px-10", "mx-auto max-w-[1760px]")}>
+    <section
+      className={cn(
+        'section--get-started',
+        'px-6 pt-14 lg:pt-28 lg:px-10',
+        'mx-auto max-w-[1760px]',
+      )}
+    >
       <header>
-        <h2 className="text-24 lg:text-40 font-black text-black-800 max-w-5xl mb-4 lg:mb-10 mx-auto text-center">
+        <h2 className="text-[24px] lg:text-[40px] font-black text-black-800 max-w-5xl mb-4 lg:mb-10 mx-auto text-center">
           Start Building with Phala TEE Multi-Proof SDK
         </h2>
-        <h4 className="text-16 lg:text-20 font-medium text-gray-500 tracking-wide text-center mb-6 lg:mb-16">
-          Simplify Task Execution and TEE-Proof Generation with the Multi-Proof JS SDK!
+        <h4 className="text-[16px] lg:text-[20px] font-medium text-gray-500 tracking-wide text-center mb-6 lg:mb-16">
+          Simplify Task Execution and TEE-Proof Generation with the Multi-Proof
+          JS SDK!
         </h4>
       </header>
-      <figure className="aspect-[1312/690] rounded overflow-hidden mb-6 lg:mb-16">
-        <img src="/confidential-computing/get-started.jpg" alt="" className="w-full h-full" />
+      <figure className="aspect-1312/690 rounded overflow-hidden mb-6 lg:mb-16">
+        <img
+          src="/confidential-computing/get-started.jpg"
+          alt=""
+          className="w-full h-full"
+        />
       </figure>
       <footer className="flex flex-col lg:flex-row gap-4 justify-center">
-        <Link href="https://docs.phala.network/tech-specs/multi-proof-and-verifiable-compute" className="btn btn-rounded btn-purple px-12">
+        <Link
+          href="https://docs.phala.network/tech-specs/multi-proof-and-verifiable-compute"
+          className="btn btn-rounded btn-purple px-12"
+        >
           Read Docs
         </Link>
         <ContactUsButton className="btn btn-rounded btn-wht px-12 border border-black-800">
@@ -258,21 +353,34 @@ function GetStarted() {
 }
 
 function LatestNews() {
-  const posts = use(getPostList({
-    includeTags: ['TEE'],
-    sortReversed: false,
-    pageSize: 3,
-  }))
+  const posts = use(
+    getPostList({
+      includeTags: ['TEE'],
+      sortReversed: false,
+      pageSize: 3,
+    }),
+  )
   return (
-    <section className={cn("section--latest-news", "px-6 py-14 lg:py-28 lg:px-10", "mx-auto max-w-[1760px]")}>
+    <section
+      className={cn(
+        'section--latest-news',
+        'px-6 py-14 lg:py-28 lg:px-10',
+        'mx-auto max-w-[1760px]',
+      )}
+    >
       <header>
-        <h2 className="text-24 lg:text-40 font-black text-black-800 max-w-5xl mb-4 lg:mb-10 mx-auto text-center">
+        <h2 className="text-[24px] lg:text-[40px] font-black text-black-800 max-w-5xl mb-4 lg:mb-10 mx-auto text-center">
           Latest Developments
         </h2>
       </header>
       <dl className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6 lg:gap-6 lg:mt-16">
         {(posts || []).map((post, idx) => (
-          <BlogPostCard key={post.id || idx} post={post} dir="col" theme="light2" />
+          <BlogPostCard
+            key={post.id || idx}
+            post={post}
+            dir="col"
+            theme="light2"
+          />
         ))}
       </dl>
       <div className="mt-16 flex flex-col lg:flex-row gap-4 justify-center">
@@ -284,20 +392,26 @@ function LatestNews() {
   )
 }
 
-
 export default function Page() {
   return (
     <>
-      <div className={cn("page--confidential-computation-with-tee", "flex flex-col gap-8 sm:gap-16")}>
+      <div
+        className={cn(
+          'page--confidential-computation-with-tee',
+          'flex flex-col gap-8 sm:gap-16',
+        )}
+      >
         <Hero />
 
-        <section className={cn("section--video", "px-6 pt-14 lg:px-10", "mx-auto w-full max-w-5xl")}>
+        <section
+          className={cn(
+            'section--video',
+            'px-6 pt-14 lg:px-10',
+            'mx-auto w-full max-w-5xl',
+          )}
+        >
           <div className="min-w-full lg:min-h-[530px] rounded overflow-hidden">
-            <YouTubeVideo
-              id="toG7koBZMoQ"
-              title=""
-              poster="sddefault"
-            />
+            <YouTubeVideo id="toG7koBZMoQ" title="" poster="sddefault" />
           </div>
         </section>
 
@@ -346,7 +460,10 @@ export default function Page() {
           >
             <ul className="list-disc list-outside ml-6 flex flex-col gap-2">
               <li>Run AI Models Inside TEE</li>
-              <li>RedPill by Phala Network runs AI models securely in a TEE, ensuring data privacy and integrity.</li>
+              <li>
+                RedPill by Phala Network runs AI models securely in a TEE,
+                ensuring data privacy and integrity.
+              </li>
             </ul>
           </Case>
           <Case
@@ -356,13 +473,19 @@ export default function Page() {
           >
             <ul className="list-disc list-outside ml-6 flex flex-col gap-2">
               <li>
-                <strong>Gaming</strong>: Use Phala TEE for secure, confidential blockchain games, protecting player data and in-game assets from unauthorized access.
+                <strong>Gaming</strong>: Use Phala TEE for secure, confidential
+                blockchain games, protecting player data and in-game assets from
+                unauthorized access.
               </li>
               <li>
-                <strong>Social Apps</strong>: Develop social apps with Phala TEE to ensure user privacy and secure data exchanges, keeping interactions private.
+                <strong>Social Apps</strong>: Develop social apps with Phala TEE
+                to ensure user privacy and secure data exchanges, keeping
+                interactions private.
               </li>
               <li>
-                <strong>MEV DeFi</strong>: Integrate Phala TEE in DeFi apps to safeguard against MEV exploits, ensuring secure and transparent financial transactions.
+                <strong>MEV DeFi</strong>: Integrate Phala TEE in DeFi apps to
+                safeguard against MEV exploits, ensuring secure and transparent
+                financial transactions.
               </li>
             </ul>
           </Case>
@@ -373,7 +496,9 @@ export default function Page() {
             ctaLink="/posts/build-fhe-coprocessor-on-tee-using-javascript"
           >
             <p>
-              TEE can eliminate the collusion risk exist in MPC network, and prove the validity of encryption and decryption without rely on ZK.
+              TEE can eliminate the collusion risk exist in MPC network, and
+              prove the validity of encryption and decryption without rely on
+              ZK.
             </p>
           </Case>
           <Case
@@ -383,7 +508,24 @@ export default function Page() {
             ctaLink="https://docs.phala.network/tech-specs/multi-proof-and-verifiable-compute"
           >
             <p>
-              To hedge the bugs in ZK implementation, TEE can be used as a 2-factor verifier to zk-Rollups. Inspired by Vitalik Buterin's <Link href="https://hackmd.io/@vbuterin/zk_slides_20221010#/" target="_blank" title="Hardening rollups with multi-proofs">presentation</Link> and a recent <Link href="https://ethresear.ch/t/2fa-zk-rollups-using-sgx/14462" target="_blank" title="2FA zk-rollups using SGX">post</Link> by Justin Drake.
+              To hedge the bugs in ZK implementation, TEE can be used as a
+              2-factor verifier to zk-Rollups. Inspired by Vitalik Buterin's{' '}
+              <Link
+                href="https://hackmd.io/@vbuterin/zk_slides_20221010#/"
+                target="_blank"
+                title="Hardening rollups with multi-proofs"
+              >
+                presentation
+              </Link>{' '}
+              and a recent{' '}
+              <Link
+                href="https://ethresear.ch/t/2fa-zk-rollups-using-sgx/14462"
+                target="_blank"
+                title="2FA zk-rollups using SGX"
+              >
+                post
+              </Link>{' '}
+              by Justin Drake.
             </p>
           </Case>
           <Case
@@ -392,7 +534,15 @@ export default function Page() {
             title="Explore all use cases"
           >
             <p className="text-purple-400">
-              Check out our documentation and <Link href="https://github.com/Phala-Network/phat-quickjs/tree/master/WapoJS/examples" target="_blank" className="text-purple-500">GitHub examples</Link>.
+              Check out our documentation and{' '}
+              <Link
+                href="https://github.com/Phala-Network/phat-quickjs/tree/master/WapoJS/examples"
+                target="_blank"
+                className="text-purple-500"
+              >
+                GitHub examples
+              </Link>
+              .
             </p>
           </Case>
         </CaseStudies>

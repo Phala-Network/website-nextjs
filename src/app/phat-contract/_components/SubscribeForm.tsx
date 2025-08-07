@@ -17,12 +17,12 @@ export default function SubscribeForm() {
         }}
       >
         {isSucceed && message ? (
-          <div className="absolute w-full h-full py-2 px-3 text-white text-left bg-brand-400/95 z-[2] rounded">
+          <div className="absolute w-full h-full py-2 px-3 text-white text-left bg-brand-400/95 z-2 rounded">
             {message}
           </div>
         ) : null}
         {isError && error ? (
-          <div className="absolute w-full h-full py-2 px-3 text-white text-left bg-red-400/95 z-[2] rounded">
+          <div className="absolute w-full h-full py-2 px-3 text-white text-left bg-red-400/95 z-2 rounded">
             {error}
           </div>
         ) : null}

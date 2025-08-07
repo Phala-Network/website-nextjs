@@ -48,7 +48,7 @@ const StaticPage = ({ page }: Props) => {
       <div
         className={cn(
           'min-h-screen',
-          'bg-gradient-to-b from-green-600 to-green-500'
+          'bg-linear-to-b from-green-600 to-green-500'
         )}
       >
         <div
@@ -72,7 +72,7 @@ const StaticPage = ({ page }: Props) => {
               {page.cover ? (
                 <div className={cn('rounded-3xl overflow-hidden')}>
                   <PageCoverImage
-                    className="w-full aspect-[856/442]"
+                    className="w-full aspect-856/442"
                     page={page}
                     width={856}
                     height={442}

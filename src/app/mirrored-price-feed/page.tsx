@@ -1,28 +1,36 @@
-import { type Metadata, type Viewport } from 'next'
+import type { Metadata, Viewport } from 'next'
 import Link from 'next/link'
 import { IoOpenOutline } from 'react-icons/io5'
 
-import { cn } from '@/lib/utils'
-import { HeroSection01, Section, SectionHeader, SectionBody, SimpleCard, Support } from '@/components/marketing'
-import SubscribeForm from '@/components/marketing/SubscribeForm'
 import { ContactUsButton } from '@/components/ContactUsButton'
+import {
+  HeroSection01,
+  Section,
+  SectionBody,
+  SectionHeader,
+  SimpleCard,
+  Support,
+} from '@/components/marketing'
+import SubscribeForm from '@/components/marketing/SubscribeForm'
+import { cn } from '@/lib/utils'
 
 export const viewport: Viewport = {
   themeColor: 'rgba(232, 233, 234, 1)',
 }
 
 export const metadata: Metadata = {
-  title: "Mirrored Price Feed by Phala Network",
+  title: 'Mirrored Price Feed by Phala Network',
   alternates: {
-    canonical: "https://phala.network/mirrored-price-feed",
-  }
+    canonical: 'https://phala.network/mirrored-price-feed',
+  },
 }
 
 const deployments = [
   {
     name: 'Astar zKyoto',
     icon: 'https://zkyoto.explorer.startale.com/favicon/apple-touch-icon-180x180.png',
-    healthcheckBadge: 'https://healthchecks.io/b/2/080a23b4-3685-45b2-838f-a5a25ed21533.svg',
+    healthcheckBadge:
+      'https://healthchecks.io/b/2/080a23b4-3685-45b2-838f-a5a25ed21533.svg',
     assets: [
       {
         name: 'AAVE to USD',
@@ -64,7 +72,8 @@ const deployments = [
   {
     name: 'Tanssi Dancebox Testnet',
     icon: '/home/icon-tanssi.png',
-    healthcheckBadge: 'https://healthchecks.io/b/2/2e2c1114-7eb5-4eab-9582-afc64f17dc2c.svg',
+    healthcheckBadge:
+      'https://healthchecks.io/b/2/2e2c1114-7eb5-4eab-9582-afc64f17dc2c.svg',
     assets: [
       {
         name: 'AAVE to USD',
@@ -106,7 +115,8 @@ const deployments = [
   {
     name: 'Base Sepolia Testnet',
     icon: '/home/icon-base.png',
-    healthcheckBadge: 'https://healthchecks.io/b/2/35fffa17-5028-4fe4-8ce4-6d45da6aa43a.svg',
+    healthcheckBadge:
+      'https://healthchecks.io/b/2/35fffa17-5028-4fe4-8ce4-6d45da6aa43a.svg',
     assets: [
       {
         name: 'AAVE to USD',
@@ -159,23 +169,25 @@ export default function MirroredPriceFeedPage() {
           href="https://docs.phala.network/"
           className="btn btn-primary btn-phala btn-rounded min-w-52"
           target="_blank"
+          rel="noopener"
         >
           Learn More
         </a>
-        <ContactUsButton
-          className="btn btn-secondary btn-blk btn-rounded min-w-52"
-        >
+        <ContactUsButton className="btn btn-secondary btn-blk btn-rounded min-w-52">
           Integrate Now
         </ContactUsButton>
       </HeroSection01>
 
-      <section className="lg:mt-[-15rem] z-10 lg:px-8 xl:px-32">
+      <section className="lg:-mt-60 z-10 lg:px-8 xl:px-32">
         <div className="mx-auto text-center rounded bg-black-800 py-16 w-full max-w-6xl">
-          <h2 className="text-20 lg:text-32 font-black text-white px-4 lg:px-0">
+          <h2 className="text-[20px] lg:text-[32px] font-black text-white px-4 lg:px-0">
             Under the Hood
           </h2>
           <figure className="mt-12 mx-auto max-w-5xl border border-blackAlpha-500 overflow-hidden rounded-sm">
-            <img src="/illustrations/how-mirrored-price-feed-works.jpg" alt="How Mirrored Price Feed Works" />
+            <img
+              src="/illustrations/how-mirrored-price-feed-works.jpg"
+              alt="How Mirrored Price Feed Works"
+            />
           </figure>
         </div>
       </section>
@@ -187,35 +199,58 @@ export default function MirroredPriceFeedPage() {
         <SectionBody>
           <dl className="grid max-w-xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2">
             <SimpleCard title="Flexible">
-              <p>Pick any price feed on Ethereum. We mirror it to any EVM L2 blockchain.</p>
+              <p>
+                Pick any price feed on Ethereum. We mirror it to any EVM L2
+                blockchain.
+              </p>
             </SimpleCard>
             <SimpleCard title="Effortless">
-              <p>Deployed in minutes. Fully compatible with ChainLink ABI. Replace the contract address, and you are ready to ship your dapp.</p>
+              <p>
+                Deployed in minutes. Fully compatible with ChainLink ABI.
+                Replace the contract address, and you are ready to ship your
+                dapp.
+              </p>
             </SimpleCard>
             <SimpleCard title="Secure">
-              <p>Fully verifiable and unstoppable data transmission. Backed by 35k+ decentralized workers on Phala Network.</p>
+              <p>
+                Fully verifiable and unstoppable data transmission. Backed by
+                35k+ decentralized workers on Phala Network.
+              </p>
             </SimpleCard>
             <SimpleCard title="Always On-time">
-              <p>Permitted by the Phala Network, the data is always on-time and reliable.</p>
+              <p>
+                Permitted by the Phala Network, the data is always on-time and
+                reliable.
+              </p>
             </SimpleCard>
           </dl>
         </SectionBody>
       </Section>
 
       <Section>
-        <SectionHeader>
-          Deployments
-        </SectionHeader>
+        <SectionHeader>Deployments</SectionHeader>
         <SectionBody className="flex flex-col gap-4">
           {deployments.map((deployment, idx) => (
-            <details key={idx} open className="border border-phalaPurple-100 p-4 rounded-sm bg-white">
+            <details
+              key={idx}
+              open
+              className="border border-phalaPurple-100 p-4 rounded-sm bg-white"
+            >
               <summary className="flex flex-col lg:flex-row gap-y-2 justify-between lg:items-center mb-4">
-                <h4 className="text-24 font-semibold ml-3 inline-flex gap-1.5 items-center">
-                  <img src={deployment.icon} alt={deployment.name} className="h-6 w-6" />
+                <h4 className="text-[24px] font-semibold ml-3 inline-flex gap-1.5 items-center">
+                  <img
+                    src={deployment.icon}
+                    alt={deployment.name}
+                    className="h-6 w-6"
+                  />
                   {deployment.name}
                 </h4>
                 <div>
-                  <img src={deployment.healthcheckBadge} alt={`${deployment.name} Mirrored Price Feed`} className="h-5" />
+                  <img
+                    src={deployment.healthcheckBadge}
+                    alt={`${deployment.name} Mirrored Price Feed`}
+                    className="h-5"
+                  />
                 </div>
               </summary>
               <div className="overflow-x-auto">
@@ -231,7 +266,12 @@ export default function MirroredPriceFeedPage() {
                       <tr key={idx}>
                         <th className="min-w-36">{asset.name}</th>
                         <td>
-                          <Link href={asset.url} target="_blank" rel="noopener noreferrer" className="relative">
+                          <Link
+                            href={asset.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative"
+                          >
                             <code>{asset.address}</code>
                             <IoOpenOutline className="inline-block ml-1 relative -top-0.5" />
                           </Link>
@@ -247,12 +287,13 @@ export default function MirroredPriceFeedPage() {
       </Section>
 
       <Section theme="dark">
-        <SectionHeader>
-          Frequently Asked Questions
-        </SectionHeader>
+        <SectionHeader>Frequently Asked Questions</SectionHeader>
         <SectionBody className="flex flex-col gap-4">
           <Support question="Which blockchains are supported?">
-            <p>Phat Contract is blockchain agnostic. All the EVM blockchains are supported.</p>
+            <p>
+              Phat Contract is blockchain agnostic. All the EVM blockchains are
+              supported.
+            </p>
           </Support>
           <Support question="What’s the pricing of the service?">
             <p>Upon request</p>
@@ -260,11 +301,24 @@ export default function MirroredPriceFeedPage() {
         </SectionBody>
       </Section>
 
-      <section className="bg-[#262626] xl:bg-gradient-to-r from-50% to-0% from-[#262626] to-[#f3f3f3]">
-        <div className={cn("safe-viewport", "grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24")}>
+      <section className="bg-black-850 xl:bg-linear-to-r from-50% to-0% from-black-850 to-[#f3f3f3]">
+        <div
+          className={cn(
+            'safe-viewport',
+            'grid gap-4 grid-cols-1 xl:grid-cols-20 3xl:grid-cols-24',
+          )}
+        >
           <SubscribeForm />
-          <div className={cn("hidden xl:block xl:h-full xl:bg-[#f3f3f3] row-start-1 col-span-full xl:col-start-14 3xl:col-start-16 -ml-4 relative")}>
-            <img src="/home/newsletter-aside.jpg" alt="" className={cn("absolute bottom-0 left-0 aspect-[1860/728]")} />
+          <div
+            className={cn(
+              'hidden xl:block xl:h-full xl:bg-[#f3f3f3] row-start-1 col-span-full xl:col-start-14 3xl:col-start-16 -ml-4 relative',
+            )}
+          >
+            <img
+              src="/home/newsletter-aside.jpg"
+              alt=""
+              className={cn('absolute bottom-0 left-0 aspect-1860/728')}
+            />
           </div>
         </div>
       </section>

@@ -41,7 +41,7 @@ function AboutLink({
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <a
-      className="text-center text-xs text-green-700 font-bold leading-none lg:border-r-[1px] border-green-700 w-1/2 lg:w-[136px] py-2 lg:py-0"
+      className="text-center text-xs text-green-700 font-bold leading-none lg:border-r border-green-700 w-1/2 lg:w-[136px] py-2 lg:py-0"
       {...props}
     >
       {children}
@@ -118,10 +118,10 @@ const PostPage = ({
           />
         </Head>
       ) : null}
-      <div className={cn('bg-gradient-to-b from-green-600 to-green-500')}>
+      <div className={cn('bg-linear-to-b from-green-600 to-green-500')}>
         <div
           className={cn(
-            'max-w-screen-xl mx-auto',
+            'max-w-(--breakpoint-xl) mx-auto',
             'grid gap-4 grid-cols-1 lg:grid-cols-12',
             'py-32'
           )}
@@ -153,7 +153,7 @@ const PostPage = ({
               {page.cover ? (
                 <div className={cn('lg:rounded-[1.75rem] overflow-hidden')}>
                   <img
-                    className="w-full aspect-[872/487]"
+                    className="w-full aspect-872/487"
                     width={872}
                     height={487}
                     src={`https://img0.phala.world/cover/1744x974/${id}.jpg?z=123`}

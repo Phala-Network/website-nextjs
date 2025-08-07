@@ -1,19 +1,19 @@
 'use client'
 
-import React, { useEffect, useRef, useState, ReactNode } from 'react';
-import Link from 'next/link';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion'
+import Link from 'next/link'
+import React, { type ReactNode, useEffect, useRef, useState } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
 
 interface SolutionCardProps {
-  title: string;
-  image: string;
-  children: ReactNode;
+  title: string
+  image: string
+  children: ReactNode
 }
 
 export function SolutionCard({ title, image, children }: SolutionCardProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
     <motion.div
@@ -23,10 +23,14 @@ export function SolutionCard({ title, image, children }: SolutionCardProps) {
       transition={{ duration: 0.6 }}
       className="flex flex-col gap-6 mb-16"
     >
-      <div className="rounded-[2rem] rounded-bl-[5.75rem] rounded-tr-[5.75rem] overflow-hidden">
+      <div className="rounded-5xl rounded-bl-[5.75rem] rounded-tr-[5.75rem] overflow-hidden">
         <picture>
-          <source srcSet={`${image}.webp`}type="image/webp" />
-          <img src={`${image}.jpg`} alt={title} className="w-full h-64 object-cover" />
+          <source srcSet={`${image}.webp`} type="image/webp" />
+          <img
+            src={`${image}.jpg`}
+            alt={title}
+            className="w-full h-64 object-cover"
+          />
         </picture>
       </div>
       <div>
@@ -34,56 +38,57 @@ export function SolutionCard({ title, image, children }: SolutionCardProps) {
         {children}
       </div>
     </motion.div>
-  );
+  )
 }
 
 interface SolutionsProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export function Solutions({ children }: SolutionsProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
-  const [isSticky, setIsSticky] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  
-  const slides = React.Children.toArray(children);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const stickyRef = useRef<HTMLDivElement>(null)
+  const [isSticky, setIsSticky] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const slides = React.Children.toArray(children)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current || !stickyRef.current) return;
+      if (!containerRef.current || !stickyRef.current) return
 
-      const containerTop = containerRef.current.getBoundingClientRect().top;
-      const containerBottom = containerRef.current.getBoundingClientRect().bottom;
-      const stickyHeight = stickyRef.current.offsetHeight;
+      const containerTop = containerRef.current.getBoundingClientRect().top
+      const containerBottom =
+        containerRef.current.getBoundingClientRect().bottom
+      const stickyHeight = stickyRef.current.offsetHeight
 
-      setIsSticky(
-        containerTop <= 0 && 
-        containerBottom >= (stickyHeight + 32)
-      );
+      setIsSticky(containerTop <= 0 && containerBottom >= stickyHeight + 32)
 
-      const cards = containerRef.current.querySelectorAll('.solution-card');
+      const cards = containerRef.current.querySelectorAll('.solution-card')
       cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-          setActiveIndex(index);
+        const rect = card.getBoundingClientRect()
+        if (
+          rect.top <= window.innerHeight / 2 &&
+          rect.bottom >= window.innerHeight / 2
+        ) {
+          setActiveIndex(index)
         }
-      });
-    };
+      })
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <div ref={containerRef} className="grid grid-cols-1 lg:grid-cols-2">
       <div>
-        <div 
+        <div
           ref={stickyRef}
           className={`transition-all duration-200 ${
-            isSticky ? "sticky top-8" : ""
+            isSticky ? 'sticky top-8' : ''
           }`}
         >
           <h1 className="text-4xl font-bold mb-4">Solutions</h1>
@@ -92,14 +97,20 @@ export function Solutions({ children }: SolutionsProps) {
               <div
                 key={index}
                 className={`w-5 h-5 rounded-full transition-colors duration-300 ${
-                  index === activeIndex ? "bg-black" : "bg-gray-200"
+                  index === activeIndex ? 'bg-black' : 'bg-gray-200'
                 }`}
               />
             ))}
           </div>
-          <Link href="https://docs.phala.network" target="_blank" className="flex items-center gap-2 mb-8 text-gray-600 hover:text-gray-900 mt-16">
-            <span className="text-18 p-1.5 rounded-full bg-black text-white"><FiArrowLeft /></span>
-            <span className="text-18 font-medium">Phala Docs</span>
+          <Link
+            href="https://docs.phala.network"
+            target="_blank"
+            className="flex items-center gap-2 mb-8 text-gray-600 hover:text-gray-900 mt-16"
+          >
+            <span className="text-[18px] p-1.5 rounded-full bg-black text-white">
+              <FiArrowLeft />
+            </span>
+            <span className="text-[18px] font-medium">Phala Docs</span>
           </Link>
         </div>
       </div>
@@ -111,5 +122,5 @@ export function Solutions({ children }: SolutionsProps) {
         ))}
       </div>
     </div>
-  );
+  )
 }

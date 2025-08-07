@@ -35,7 +35,7 @@ export default function RecentPosts() {
             >
               {post.cover ? (
                 <PageCoverImage
-                  className="w-full aspect-[412/230] inset-0 -z-10"
+                  className="w-full aspect-412/230 inset-0 -z-10"
                   width={412}
                   height={230}
                   page={post}
@@ -48,7 +48,7 @@ export default function RecentPosts() {
                 />
               )}
 
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
+              <div className="absolute inset-0 -z-10 bg-linear-to-t from-gray-900 via-gray-900/40" />
               <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
 
               <div className="absolute w-full left-0 bottom-0 px-4 py-3">

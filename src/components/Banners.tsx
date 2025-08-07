@@ -48,7 +48,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
               >
                 <a href={`/posts${page.slug}`}>
                   <img
-                    className="w-full aspect-[872/487]"
+                    className="w-full aspect-872/487"
                     width={872}
                     height={487}
                     src={`https://img0.phala.world/cover/1744x974/${page.id}.jpg`}
