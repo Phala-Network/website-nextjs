@@ -1,4 +1,5 @@
-import { Expand, Globe, MoveRight, Rocket, Wrench } from 'lucide-react'
+import { Bot, Container, Lock, Shield } from 'lucide-react'
+import Image from 'next/image'
 
 import { Button } from '@/components/ui/button'
 
@@ -6,63 +7,93 @@ const Hero24 = () => {
   return (
     <section className="py-32">
       <div className="container">
-        <div className="text-center">
-          <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-            alt="placeholder"
-            className="mx-auto mb-5 w-16 md:mb-6 md:w-24 lg:mb-7 lg:w-28"
+        <div className="flex flex-col items-center">
+          <Image
+            src="/dstack/logo.svg"
+            alt="dstack Logo"
+            className="mx-auto mb-5 h-16 md:mb-6"
+            width={410}
+            height={106}
           />
           <span className="mb-3 text-sm tracking-widest text-muted-foreground md:text-base">
-            PLATFORM
+            🏛️ LINUX FOUNDATION PROJECT
           </span>
           <h1 className="mt-4 text-4xl font-semibold text-balance lg:text-6xl">
-            Develop, launch, and grow your service with our platform
+            Open-Source Confidential Computing
           </h1>
-          <Button className="mt-8" size="lg">
-            Start now for free
-            <MoveRight className="ml-2" strokeWidth={1} />
-          </Button>
+          <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+            Deploy secure applications with hardware-guaranteed privacy using
+            TEE technology. Built for confidential AI, private cloud compute,
+            and secure data processing.
+          </p>
+          <div className="mt-8 flex gap-4 justify-center flex-wrap">
+            <Button className="mt-4" size="lg" asChild>
+              <a
+                href="https://github.com/Dstack-TEE/dstack"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" className="mt-4" asChild>
+              <a
+                href="https://cloud.phala.network/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Don't own a TEE yet?
+              </a>
+            </Button>
+          </div>
         </div>
         <div className="mt-16 grid gap-px overflow-hidden rounded-lg border bg-input md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-3 bg-background p-5 md:gap-6">
-            <Globe className="size-6 shrink-0" />
+            <Container className="size-6 shrink-0" />
             <div>
               <h2 className="text-sm font-semibold md:text-base">
-                Robust Infrastructure
+                Developer Friendly
               </h2>
               <p className="text-sm text-muted-foreground md:text-base">
-                Reliable and scalable infrastructure, easy to manage.
+                Docker support means no code changes required. Package your
+                existing applications and deploy them securely in minutes.
               </p>
             </div>
           </div>
           <div className="flex flex-col gap-3 bg-background p-5 md:gap-6">
-            <Rocket className="size-6 shrink-0" />
+            <Bot className="size-6 shrink-0" />
             <div>
-              <h2 className="text-sm font-semibold md:text-base">Easy Setup</h2>
+              <h2 className="text-sm font-semibold md:text-base">
+                Confidential AI Ready
+              </h2>
               <p className="text-sm text-muted-foreground md:text-base">
-                Quick and simple configuration for any use case.
+                Purpose-built for confidential AI with TEE GPU support. Run
+                private AI models on NVIDIA GPUs with hardware-guaranteed
+                confidentiality.
               </p>
             </div>
           </div>
           <div className="flex flex-col gap-3 bg-background p-5 md:gap-6">
-            <Expand className="size-6 shrink-0" />
+            <Shield className="size-6 shrink-0" />
             <div>
               <h2 className="text-sm font-semibold md:text-base">
-                Effortless Scaling
+                Enterprise Security
               </h2>
               <p className="text-sm text-muted-foreground md:text-base">
-                Built to handle increased demand with ease.
+                Open source, independently audited by security experts, with
+                secure services out-of-the-box.
               </p>
             </div>
           </div>
           <div className="flex flex-col gap-3 bg-background p-5 md:gap-6">
-            <Wrench className="size-6 shrink-0" />
+            <Lock className="size-6 shrink-0" />
             <div>
               <h2 className="text-sm font-semibold md:text-base">
-                Low Maintenance
+                Verifiable Computing
               </h2>
               <p className="text-sm text-muted-foreground md:text-base">
-                Focus on building, not on maintenance tasks.
+                Every application comes with cryptographic attestation and a
+                Trust Center for real-time verification.
               </p>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import AutoScroll from 'embla-carousel-auto-scroll'
 
+import { Button } from '@/components/ui/button'
 import {
   Carousel,
   CarouselContent,
@@ -14,56 +15,56 @@ const Logos9 = () => {
   const logos = [
     {
       id: 'logo-1',
-      description: 'Logo 1',
+      description: 'Phala Network',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-wordmark.svg',
       className: 'h-7 w-auto',
     },
     {
       id: 'logo-2',
-      description: 'Logo 2',
+      description: 'Near AI',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-1.svg',
       className: 'h-7 w-auto',
     },
     {
       id: 'logo-3',
-      description: 'Logo 3',
+      description: 'Flashbots',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-2.svg',
       className: 'h-7 w-auto',
     },
     {
       id: 'logo-4',
-      description: 'Logo 4',
+      description: 'Sponsor 4',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-3.svg',
       className: 'h-7 w-auto',
     },
     {
       id: 'logo-5',
-      description: 'Logo 5',
+      description: 'Sponsor 5',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-4.svg',
       className: 'h-7 w-auto',
     },
     {
       id: 'logo-6',
-      description: 'Logo 6',
+      description: 'Sponsor 6',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-5.svg',
       className: 'h-5 w-auto',
     },
     {
       id: 'logo-7',
-      description: 'Logo 7',
+      description: 'Sponsor 7',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-6.svg',
       className: 'h-7 w-auto',
     },
     {
       id: 'logo-8',
-      description: 'Logo 8',
+      description: 'Sponsor 8',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-7.svg',
       className: 'h-7 w-auto',
@@ -72,22 +73,22 @@ const Logos9 = () => {
   const testimonials = [
     {
       quote:
-        "AI search capabilities have revolutionized our team's knowledge sharing. A true productivity game changer.",
-      name: 'Mercury, Head of Finance',
+        "dstack's confidential computing platform has revolutionized our approach to secure AI deployment. A true game changer for our privacy-focused applications.",
+      name: 'Tech Lead, AI Company',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-3.svg',
     },
     {
       quote:
-        'Polished components and great docs have saved us countless hours while maintaining consistency.',
-      name: 'Perplexity, Lead Machine Learning',
+        'Open-source transparency with enterprise security. dstack delivers exactly what we needed for confidential computing at scale.',
+      name: 'CTO, Fintech Startup',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-7.svg',
     },
     {
       quote:
-        "Perfect customization options - we've created a unique look while keeping battle-tested reliability.",
-      name: 'Retool, Product Manager',
+        "The TEE technology integration is seamless. We're running confidential workloads with hardware-guaranteed privacy.",
+      name: 'Security Engineer, Enterprise',
       image:
         'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-5.svg',
     },
@@ -96,7 +97,7 @@ const Logos9 = () => {
     <section className="py-32">
       <div className="container flex flex-col items-center text-center">
         <h1 className="text-foreground my-6 text-lg font-semibold tracking-tight">
-          The world's best product teams using our blocks
+          Trusted by industry leaders in confidential computing
         </h1>
       </div>
 

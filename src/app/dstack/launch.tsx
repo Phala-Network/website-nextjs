@@ -3,10 +3,9 @@ const Feature102 = () => {
     <section className="py-32">
       <div className="container">
         <div className="mx-auto flex max-w-3xl flex-col justify-center gap-7 md:text-center">
-          <h2 className="text-2xl md:text-4xl">Launch with Assurance</h2>
+          <h2 className="text-2xl md:text-4xl">Simple Deploy Process</h2>
           <p className="text-sm text-muted-foreground md:text-base">
-            Simplify your workflow with our tools that provide clear insights,
-            minimizing the complexity of managing intricate deployment data.
+            Deploy confidential applications with just a few clicks - no complex setup required
           </p>
         </div>
         <div className="mx-auto mt-14 flex max-w-5xl flex-col gap-4 lg:px-16">
@@ -21,17 +20,16 @@ const Feature102 = () => {
               </div>
               <div className="flex flex-col justify-center gap-5 px-0 md:gap-6 md:px-4 md:py-4">
                 <h3 className="text-xl md:text-2xl">
-                  Monitor Deployments live
+                  Paste Docker Compose
                 </h3>
                 <p className="text-sm text-muted-foreground md:text-base">
-                  Track your deployments with clarity, seeing updates take place
-                  as they happen.
+                  Copy your existing docker-compose.yml file - no modifications needed
                 </p>
               </div>
             </div>
             <img
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-              alt="placeholder"
+              src="/res/deploy-cvm.png"
+              alt="Deploy CVM Process"
               className="z-10 aspect-video w-full rounded-xl border object-cover md:max-h-56 md:w-auto"
             />
           </div>
@@ -48,12 +46,11 @@ const Feature102 = () => {
               </div>
               <div className="flex flex-col justify-center gap-5 px-0 md:gap-6 md:px-4 md:py-4">
                 <h3 className="text-xl md:text-2xl">
-                  Immediate Issue Detection
+                  Click Deploy
                 </h3>
 
                 <p className="text-sm text-muted-foreground md:text-base">
-                  Spot issues instantly and address them with precise metrics
-                  for optimized performance.
+                  Select your TEE hardware and deployment options
                 </p>
               </div>
             </div>
@@ -75,12 +72,11 @@ const Feature102 = () => {
               </div>
               <div className="flex flex-col justify-center gap-5 px-0 md:gap-6 md:px-4 md:py-4">
                 <h3 className="text-xl md:text-2xl">
-                  Revert to a Stable Version
+                  Application Launched
                 </h3>
 
                 <p className="text-sm text-muted-foreground md:text-base">
-                  With just a few actions, revert to a previous version and
-                  restore system health swiftly.
+                  Your app runs with hardware-guaranteed confidentiality
                 </p>
               </div>
             </div>
