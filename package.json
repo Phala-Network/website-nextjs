@@ -52,6 +52,7 @@
     "dayjs": "^1.11.9",
     "dedent": "^1.5.1",
     "effect": "^3.4.6",
+    "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "feed": "^4.2.2",
     "framer-motion": "^10.16.4",

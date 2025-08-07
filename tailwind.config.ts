@@ -1,3 +1,4 @@
+import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 import type { PluginAPI } from 'tailwindcss/types/config'
 
@@ -298,8 +299,6 @@ function buttonComponents({ addComponents, theme }: PluginAPI) {
           opacity: '0.7',
         },
       },
-      '.btn-outline': {},
-      '.btn-outlineFill': {},
       '.btn-text': {
         background: 'none',
         borderColor: 'transparent',
@@ -391,8 +390,7 @@ function themeAIAgent({ addComponents }: PluginAPI) {
   addComponents(settings)
 }
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ['class'],
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -903,4 +901,4 @@ module.exports = {
     styled: true,
     prefix: 'd-',
   },
-}
+} satisfies Config

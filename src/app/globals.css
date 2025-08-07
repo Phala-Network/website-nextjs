@@ -12,7 +12,7 @@
   h1,
   h2,
   h3 {
-    @apply font-heading;
+    @apply font-heading tracking-tight;
   }
   :root {
     --background: 0 0% 100%;
