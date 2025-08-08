@@ -110,7 +110,7 @@ const items: PartnerItem[] = [
   {
     name: 'Nvidia',
     url: 'https://www.nvidia.com/',
-    icon: '/partnerships/nvidia.webp',
+    icon: 'https://deepsee.ai/wp-content/uploads/2025/05/NV_Inception_Program_Logo_NV_Inception_Logo_H_CMYK-1080x662.png.webp',
     description: 'NVIDIA Inception Program is designed to help startups accelerate innovation and growth.',
     tags: ['AI'],
   },
