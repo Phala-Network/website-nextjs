@@ -123,9 +123,11 @@
     border: 1px solid #e2e8f0 !important;
     border-radius: 0.5rem !important;
     padding: 1rem !important;
+    padding-right: 3rem !important; /* Space for copy button */
     overflow-x: auto !important;
     font-size: 0.875rem !important;
     line-height: 1.5 !important;
+    position: relative !important;
   }
   
   .prose code {
@@ -143,6 +145,25 @@
     border: none !important;
     font-size: inherit !important;
     color: inherit !important;
+  }
+
+  /* Copy button styling */
+  .copy-button {
+    transition: all 0.2s ease;
+  }
+  
+  .group:hover .copy-button {
+    opacity: 1 !important;
+  }
+
+  /* Notion code blocks */
+  .notion_code {
+    position: relative !important;
+  }
+  
+  .notion_code .copy-button {
+    top: 0.5rem !important;
+    right: 0.5rem !important;
   }
 }
 
