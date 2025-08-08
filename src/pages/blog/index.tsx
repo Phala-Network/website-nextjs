@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 import Banners from '@/components/Banners'
 import Card from '@/components/Card'
 import SectionSubscription from '@/components/SectionSubscription'
-import TagLink from '@/components/TagLink'
+import TagSearch from '@/components/TagSearch'
 import { notion, queryDatabase, ParsedListPage } from '@/lib/notion-client'
 import useQueryPosts from '@/hooks/useQueryPosts'
 
@@ -36,63 +36,48 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
         <link rel="alternate" type="application/atom+xml" title="Phala News" href="https://phala.network/atom.xml" />
       </Head>
       <div
-        className={cn(
-          'min-h-screen',
-          'bg-gradient-to-b from-green-600 to-green-500'
-        )}
+        style={{
+          background: `
+            radial-gradient(1200px 600px at 70% 35%, rgba(199,255,170,0.7), rgba(255,255,255,0) 60%),
+            linear-gradient(180deg, #ffffff, #f9fff0 40%, #ffffff 70%)
+          `,
+          minHeight: '100vh'
+        }}
       >
-        <div
-          className={cn(
-            'safe-viewport',
-            'grid grid-cols-2 lg:grid-cols-20 3xl:grid-cols-24',
-            'py-32'
-          )}
-        >
-          <div
-            className={cn(
-              'col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18'
-            )}
-          >
-            <header className="flex flex-row items-center justify-between gap-4">
-              <h1
-                className={cn(
-                  'text-black-850 text-xl',
-                  'text-4xl lg:text-5xl',
-                  'font-black'
-                )}
-              >
-                Blog
-              </h1>
-              <div>
-                <a
-                  href="/atom.xml"
-                  target="_blank"
-                  rel="noopener"
-                  className={cn(
-                    "flex items-center gap-2 pl-5 pr-6 py-2 transition-all",
-                    "rounded-full border bg-white border-[#526420] text-[#526420] font-bold",
-                    "hover:bg-[#EBFDB9]",
-                  )}
-                >
-                  <BiRss className="w-6 h-6" />
-                  <span>Subscribe</span>
-                </a>
+        <section className="py-32">
+          <div className="container max-w-7xl mx-auto px-4">
+            <div className="mb-8 md:mb-14 lg:mb-16">
+              <div className="flex items-start justify-between gap-8">
+                <div>
+                  <h1 className="mb-4 w-full text-4xl font-medium md:mb-5 md:text-5xl lg:mb-6 lg:text-6xl">
+                    Blog
+                  </h1>
+                </div>
+                <div>
+                  <a
+                    href="/atom.xml"
+                    target="_blank"
+                    rel="noopener"
+                    className={cn(
+                      "flex items-center gap-2 pl-5 pr-6 py-2 transition-all",
+                      "rounded-lg border bg-white border-[#526420] text-[#526420] font-bold",
+                      "hover:bg-[#EBFDB9]",
+                    )}
+                  >
+                    <BiRss className="w-6 h-6" />
+                    <span>Subscribe</span>
+                  </a>
+                </div>
               </div>
-            </header>
+            </div>
             <section className={cn('mt-8')}>
               <Banners pages={bannerPages} />
             </section>
-            <section
-              className={cn(
-                'grid mt-8',
-                'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-                'gap-4'
-              )}
-            >
+            <div className="grid gap-x-4 gap-y-8 md:grid-cols-2 lg:gap-x-6 lg:gap-y-12 xl:grid-cols-2 2xl:grid-cols-2 mt-8">
               {pages.map((page) => (
                 <Card key={page.id} page={page} />
               ))}
-            </section>
+            </div>
             <div
               className={cn(
                 'pt-20 pb-10 w-full flex items-center justify-center'
@@ -104,12 +89,14 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
                     'py-4 px-16',
                     'inline-flex flex-row items-center justify-center',
                     'bg-white text-green-800 text-xl font-bold',
-                    'rounded-[160px]',
+                    'rounded-lg',
                     isLoading ? 'opacity-75' : null
                   )}
                   onClick={() => {
                     load()
-                    umami?.track('blog_load_more')
+                    if (typeof window !== 'undefined' && (window as any).umami) {
+                      (window as any).umami.track('blog_load_more')
+                    }
                   }}
                   disabled={isLoading}
                 >
@@ -130,24 +117,19 @@ export default function BlogPage({ tags, initialPages, nextCursor, bannerPages }
             </div>
             <section
               className={cn(
-                'bg-[#FAFEED] rounded-3xl',
+                'bg-[#FAFEED] rounded-xl',
                 'flex flex-col items-center',
                 'py-12 px-8'
               )}
             >
               <h2 className="text-black font-bold text-2xl">Search by Tag</h2>
-              <div className="flex flex-wrap gap-3 mt-12 w-full">
-                {tags.map((tag, i) => (
-                  <div key={`${i}`}>
-                    <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
-                      {tag}
-                    </TagLink>
-                  </div>
-                ))}
-              </div>
+              <TagSearch 
+                tags={tags} 
+                priorityTags={['Phala Cloud', 'TEE', 'Usecases']}
+              />
             </section>
           </div>
-        </div>
+        </section>
         <SectionSubscription />
       </div>
     </>

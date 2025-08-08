@@ -16,14 +16,14 @@ export default function Card({ page }: { page: ParsedListPage }) {
   return (
     <article
       className={cn(
-        'bg-[#FAFEED] rounded-2xl p-2',
+        'bg-[#FAFEED] rounded-xl p-3',
         'flex flex-col',
         'h-full',
       )}
     >
       <div
         className={cn(
-          'rounded-[1.75rem] overflow-hidden',
+          'rounded-xl overflow-hidden',
         )}
       >
         <a href={`/posts${page.slug}`}>
@@ -54,10 +54,10 @@ export default function Card({ page }: { page: ParsedListPage }) {
           }
         </a>
       </div>
-      <div className="grow flex flex-col gap-y-2 justify-between p-4">
+      <div className="grow flex flex-col gap-y-3 justify-between p-5">
         <div className="flex flex-col gap-y-2">
           <div className="flex items-center gap-2 flex-wrap">
-            {page.tags.map((tag, i) => (
+            {page.tags.slice(0, 3).map((tag, i) => (
               <div key={`${i}`}>
                 <TagLink href={`/tags/${tag}`}>
                   {tag}
