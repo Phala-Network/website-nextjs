@@ -1,0 +1,627 @@
+
+> phala-website@0.1.0 dev
+> next dev -p 3005
+
+ ⚠ Warning: Found multiple lockfiles. Selecting /Users/marvin/package-lock.json.
+   Consider removing the lockfiles at:
+   * /Users/marvin/website-nextjs/package-lock.json
+
+   ▲ Next.js 15.4.6
+   - Local:        http://localhost:3005
+   - Network:      http://192.168.1.130:3005
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · esmExternals: "loose"
+
+ ✓ Starting...
+ ⚠ The "experimental.esmExternals" option has been modified. experimental.esmExternals is not recommended to be modified as it may disrupt module resolution. It should be removed from your next.config.js.
+ ✓ Ready in 1118ms
+ ○ Compiling / ...
+
+🌼   daisyUI 4.12.24
+├─ ✔︎ prefix is enabled		daisyUI classnames must use d- prefix
+├─ ✔︎ 2 themes added		https://daisyui.com/docs/themes
+╰─ ★ Star daisyUI on GitHub	https://github.com/saadeghi/daisyui
+
+
+🌼   daisyUI 4.12.24
+├─ ✔︎ prefix is enabled		daisyUI classnames must use d- prefix
+├─ ✔︎ 2 themes added		https://daisyui.com/docs/themes
+╰─ ❤︎ Support daisyUI project:	https://opencollective.com/daisyui
+
+
+🌼   daisyUI 4.12.24
+├─ ✔︎ prefix is enabled		daisyUI classnames must use d- prefix
+├─ ✔︎ 2 themes added		https://daisyui.com/docs/themes
+╰─ ❤︎ Support daisyUI project:	https://opencollective.com/daisyui
+
+ ✓ Compiled / in 13.7s (4491 modules)
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 15326ms
+ GET / 200 in 10527ms
+ ○ Compiling /api/computation-metrics ...
+ ✓ Compiled /api/computation-metrics in 1399ms (2496 modules)
+ ✓ Compiled in 1019ms (1974 modules)
+ GET /favicon.ico 200 in 2577ms
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 238ms
+ GET /api/computation-metrics 200 in 2938ms
+ ○ Compiling /blog ...
+ ✓ Compiled /blog in 9s (6888 modules)
+Detected multiple Jotai instances. It may cause unexpected behavior with the default store. https://github.com/pmndrs/jotai/discussions/2044
+ GET /blog 200 in 12131ms
+ GET /blog 200 in 1112ms
+ GET /blog 200 in 4045ms
+ GET /blog 200 in 10390ms
+ ○ Compiling /posts/[slug] ...
+ ✓ Compiled /posts/[slug] in 1199ms (7253 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/gpu-tee-is-launched-on-phala-cloud-for-confidential-ai 200 in 13355ms
+ ✓ Compiled in 1719ms (4241 modules)
+ ✓ Compiled in 2.1s (7310 modules)
+ ✓ Compiled in 4.2s (7312 modules)
+ ✓ Compiled in 1456ms (7312 modules)
+ ✓ Compiled in 1723ms (7312 modules)
+ ✓ Compiled in 1458ms (7312 modules)
+ ✓ Compiled in 2.1s (7312 modules)
+ GET /blog 200 in 3081ms
+ GET /posts/Build-Trustworthy-Fintech-AI-Agents-With-TEE 200 in 9422ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+Warning: data for page "/posts/[slug]" (path "/posts/Build-Trustworthy-Fintech-AI-Agents-With-TEE") is 196 kB which exceeds the threshold of 128 kB, this amount of data can reduce performance.
+See more info here: https://nextjs.org/docs/messages/large-page-data
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+Warning: data for page "/posts/[slug]" (path "/posts/Build-Trustworthy-Fintech-AI-Agents-With-TEE") is 196 kB which exceeds the threshold of 128 kB, this amount of data can reduce performance.
+See more info here: https://nextjs.org/docs/messages/large-page-data
+ GET /posts/Build-Trustworthy-Fintech-AI-Agents-With-TEE 200 in 5906ms
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:334:1]
+ [2m331[0m | 
+ [2m332[0m |         <SectionSubscription />
+ [2m333[0m |       </div>
+ [2m334[0m |     </>
+     : [35;1m      ^[0m
+ [2m335[0m |   )
+ [2m336[0m | }
+     `----
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:335:1]
+ [2m332[0m |         <SectionSubscription />
+ [2m333[0m |       </div>
+ [2m334[0m |     </>
+ [2m335[0m |   )
+     : [35;1m  ^[0m
+ [2m336[0m | }
+ [2m337[0m | 
+ [2m338[0m | interface Params extends ParsedUrlQuery {
+     `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 6.7s (7312 modules)
+ ✓ Compiled in 1977ms (7312 modules)
+ ✓ Compiled in 1625ms (7312 modules)
+ ✓ Compiled in 2.5s (7312 modules)
+ ✓ Compiled in 1611ms (7312 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+Warning: data for page "/posts/[slug]" (path "/posts/Build-Trustworthy-Fintech-AI-Agents-With-TEE") is 196 kB which exceeds the threshold of 128 kB, this amount of data can reduce performance.
+See more info here: https://nextjs.org/docs/messages/large-page-data
+ GET /posts/Build-Trustworthy-Fintech-AI-Agents-With-TEE 200 in 3575ms
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expected '>', got 'div'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:373:1]
+ [2m370[0m |         </div>
+ [2m371[0m | 
+ [2m372[0m |         <SectionSubscription />
+ [2m373[0m |       </div>
+     : [35;1m        ^^^[0m
+ [2m374[0m |     </>
+ [2m375[0m |   )
+ [2m376[0m | }
+     `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 3.2s (7312 modules)
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expected '>', got 'div'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:375:1]
+ [2m372[0m |         </div>
+ [2m373[0m | 
+ [2m374[0m |         <SectionSubscription />
+ [2m375[0m |       </div>
+     : [35;1m        ^^^[0m
+ [2m376[0m |     </>
+ [2m377[0m |   )
+ [2m378[0m | }
+     `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 1500ms (7312 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+Warning: data for page "/posts/[slug]" (path "/posts/what-does-it-take-to-build-safe-agi") is 133 kB which exceeds the threshold of 128 kB, this amount of data can reduce performance.
+See more info here: https://nextjs.org/docs/messages/large-page-data
+ GET /posts/what-does-it-take-to-build-safe-agi 200 in 13545ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+Warning: data for page "/posts/[slug]" (path "/posts/what-does-it-take-to-build-safe-agi") is 133 kB which exceeds the threshold of 128 kB, this amount of data can reduce performance.
+See more info here: https://nextjs.org/docs/messages/large-page-data
+ GET /posts/what-does-it-take-to-build-safe-agi 200 in 7911ms
+ ✓ Compiled in 4.1s (7312 modules)
+ ✓ Compiled in 1862ms (7312 modules)
+ ✓ Compiled in 1491ms (7312 modules)
+ ✓ Compiled in 1790ms (7312 modules)
+Detected multiple Jotai instances. It may cause unexpected behavior with the default store. https://github.com/pmndrs/jotai/discussions/2044
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 1046ms
+ GET /blog 200 in 3003ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/deploy-ai-agent-without-coding-on-phala-cloud 200 in 4295ms
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:333:1]
+ [2m330[0m | 
+ [2m331[0m |         <SectionSubscription />
+ [2m332[0m |       </div>
+ [2m333[0m |     </>
+     : [35;1m      ^[0m
+ [2m334[0m |   )
+ [2m335[0m | }
+     `----
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:334:1]
+ [2m331[0m |         <SectionSubscription />
+ [2m332[0m |       </div>
+ [2m333[0m |     </>
+ [2m334[0m |   )
+     : [35;1m  ^[0m
+ [2m335[0m | }
+ [2m336[0m | 
+ [2m337[0m | interface Params extends ParsedUrlQuery {
+     `----
+
+Caused by:
+    Syntax Error
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:333:1]
+ [2m330[0m | 
+ [2m331[0m |         <SectionSubscription />
+ [2m332[0m |       </div>
+ [2m333[0m |     </>
+     : [35;1m      ^[0m
+ [2m334[0m |   )
+ [2m335[0m | }
+     `----
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:334:1]
+ [2m331[0m |         <SectionSubscription />
+ [2m332[0m |       </div>
+ [2m333[0m |     </>
+ [2m334[0m |   )
+     : [35;1m  ^[0m
+ [2m335[0m | }
+ [2m336[0m | 
+ [2m337[0m | interface Params extends ParsedUrlQuery {
+     `----
+
+Caused by:
+    Syntax Error
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:333:1]
+ [2m330[0m | 
+ [2m331[0m |         <SectionSubscription />
+ [2m332[0m |       </div>
+ [2m333[0m |     </>
+     : [35;1m      ^[0m
+ [2m334[0m |   )
+ [2m335[0m | }
+     `----
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:334:1]
+ [2m331[0m |         <SectionSubscription />
+ [2m332[0m |       </div>
+ [2m333[0m |     </>
+ [2m334[0m |   )
+     : [35;1m  ^[0m
+ [2m335[0m | }
+ [2m336[0m | 
+ [2m337[0m | interface Params extends ParsedUrlQuery {
+     `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 3.5s (7312 modules)
+ ✓ Compiled in 1908ms (7312 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/deploy-ai-agent-without-coding-on-phala-cloud 200 in 4950ms
+ ✓ Compiled in 1535ms (7312 modules)
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1295ms (3087 modules)
+ GET /favicon.ico 200 in 1393ms
+Detected multiple Jotai instances. It may cause unexpected behavior with the default store. https://github.com/pmndrs/jotai/discussions/2044
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 912ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/deploy-ai-agent-without-coding-on-phala-cloud 200 in 3898ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/deploy-ai-agent-without-coding-on-phala-cloud 200 in 7809ms
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expected '>', got 'div'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:324:1]
+ [2m321[0m |               </div>
+ [2m322[0m |             </div>
+ [2m323[0m |           </div>
+ [2m324[0m |         </div>
+     : [35;1m          ^^^[0m
+ [2m325[0m | 
+ [2m326[0m |         <SectionSubscription />
+ [2m327[0m |       </div>
+     `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 1301ms (7312 modules)
+ ✓ Compiled in 1879ms (7312 modules)
+Detected multiple Jotai instances. It may cause unexpected behavior with the default store. https://github.com/pmndrs/jotai/discussions/2044
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 902ms
+ ○ Compiling /api/computation-metrics ...
+ ✓ Compiled /api/computation-metrics in 1045ms (3078 modules)
+ GET /api/computation-metrics 200 in 1814ms
+ GET /blog 200 in 1966ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/gpu-tee-is-launched-on-phala-cloud-for-confidential-ai 200 in 7006ms
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expected '>', got 'div'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:345:1]
+ [2m342[0m |         </div>
+ [2m343[0m | 
+ [2m344[0m |         <SectionSubscription />
+ [2m345[0m |       </div>
+     : [35;1m        ^^^[0m
+ [2m346[0m |     </>
+ [2m347[0m |   )
+ [2m348[0m | }
+     `----
+
+Caused by:
+    Syntax Error
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expected '>', got 'div'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:345:1]
+ [2m342[0m |         </div>
+ [2m343[0m | 
+ [2m344[0m |         <SectionSubscription />
+ [2m345[0m |       </div>
+     : [35;1m        ^^^[0m
+ [2m346[0m |     </>
+ [2m347[0m |   )
+ [2m348[0m | }
+     `----
+
+Caused by:
+    Syntax Error
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expected '>', got 'div'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:345:1]
+ [2m342[0m |         </div>
+ [2m343[0m | 
+ [2m344[0m |         <SectionSubscription />
+ [2m345[0m |       </div>
+     : [35;1m        ^^^[0m
+ [2m346[0m |     </>
+ [2m347[0m |   )
+ [2m348[0m | }
+     `----
+
+Caused by:
+    Syntax Error
+ ⨯ ./src/pages/posts/[slug].tsx
+Error:   [31mx[0m Expected '>', got 'div'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/posts/[slug].tsx[0m:345:1]
+ [2m342[0m |         </div>
+ [2m343[0m | 
+ [2m344[0m |         <SectionSubscription />
+ [2m345[0m |       </div>
+     : [35;1m        ^^^[0m
+ [2m346[0m |     </>
+ [2m347[0m |   )
+ [2m348[0m | }
+     `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 3.8s (7312 modules)
+ ✓ Compiled in 1867ms (7312 modules)
+ GET /blog 200 in 4642ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/build-your-private-ai-stack 200 in 9375ms
+ GET /blog 200 in 2646ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/deploy-ai-agent-without-coding-on-phala-cloud 200 in 13182ms
+ ✓ Compiled in 1913ms (7312 modules)
+ ✓ Compiled in 1764ms (7312 modules)
+
+🌼   daisyUI 4.12.24
+├─ ✔︎ prefix is enabled		daisyUI classnames must use d- prefix
+├─ ✔︎ 2 themes added		https://daisyui.com/docs/themes
+╰─ ★ Star daisyUI on GitHub	https://github.com/saadeghi/daisyui
+
+ ✓ Compiled in 3.6s (7312 modules)
+ ○ Compiling /tags/[slug] ...
+ ✓ Compiled /tags/[slug] in 512ms (7237 modules)
+ GET /tags/GPU 200 in 3738ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/gpu-tee-is-launched-on-phala-cloud-for-confidential-ai 200 in 7105ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/Phala-GPU-TEE-Deep-Dive 200 in 10325ms
+ ✓ Compiled in 3s (7275 modules)
+ ✓ Compiled in 2.1s (7275 modules)
+ ✓ Compiled in 1300ms (7275 modules)
+ ✓ Compiled in 2.8s (7275 modules)
+ ○ Compiling /blog ...
+ ✓ Compiled /blog in 2.7s (7237 modules)
+ GET /blog 200 in 8014ms
+ GET /blog 200 in 3414ms
+ ✓ Compiled in 5s (7275 modules)
+ ✓ Compiled in 1209ms (4203 modules)
+ ✓ Compiled in 1263ms (7275 modules)
+ ✓ Compiled in 1745ms (7276 modules)
+ ✓ Compiled in 2.7s (7276 modules)
+ ○ Compiling /blog ...
+ ✓ Compiled /blog in 978ms (7239 modules)
+ ✓ Compiled in 1312ms (7318 modules)
+ GET /blog 200 in 4471ms
+ ✓ Compiled in 1347ms (7318 modules)
+ ✓ Compiled in 5.9s (6978 modules)
+ ✓ Compiled in 6.7s (6978 modules)
+ ✓ Compiled in 3.9s (6978 modules)
+ ○ Compiling /api/posts ...
+ ✓ Compiled /api/posts in 2s (6906 modules)
+ GET /api/posts?cursor=1ee0317e-04a1-801d-875e-c5e4c384fc93 200 in 3055ms
+ GET /_next/data/development/tags/Web%203.json?slug=Web+3 200 in 1167ms
+ ○ Compiling /posts/[slug] ...
+ ✓ Compiled /posts/[slug] in 3.6s (7246 modules)
+ GET /posts/AWS-vs-Phala-Decentralized-TEE-Cloud 200 in 5873ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /_next/data/development/blog.json 200 in 2666ms
+ GET /blog 200 in 1875ms
+ GET /tags/Web%203 200 in 2829ms
+ GET /blog 200 in 1120ms
+ ✓ Compiled in 2.2s (3905 modules)
+ ✓ Compiled in 1223ms (3905 modules)
+ ⨯ ./src/pages/blog/index.tsx
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/blog/index.tsx[0m:168:1]
+ [2m165[0m |                   />
+ [2m166[0m |                 </section>
+ [2m167[0m |               </div>
+ [2m168[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m         </div>
+ [2m169[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         <SectionSubscription />
+ [2m170[0m |           </div>
+ [2m171[0m |         </>
+ [2m172[0m |       )
+     `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 4.2s (6978 modules)
+ ✓ Compiled in 4.1s (6978 modules)
+ ✓ Compiled /api/posts in 369ms (3080 modules)
+ GET /api/posts?cursor=1ee0317e-04a1-801d-875e-c5e4c384fc93 200 in 3606ms
+ ✓ Compiled in 5.2s (6976 modules)
+ ✓ Compiled in 1008ms (3904 modules)
+ ✓ Compiled in 3s (6976 modules)
+ ✓ Compiled in 982ms (3904 modules)
+ ✓ Compiled in 2.2s (6976 modules)
+ ✓ Compiled in 1306ms (6976 modules)
+ ✓ Compiled in 1866ms (6976 modules)
+ ✓ Compiled in 1301ms (6976 modules)
+ ✓ Compiled in 3.5s (6978 modules)
+ ✓ Compiled in 2.3s (6978 modules)
+ ✓ Compiled in 2.4s (6978 modules)
+ GET /_next/data/development/tags/Phala%20Cloud.json?slug=Phala+Cloud 200 in 1312ms
+ ✓ Compiled in 3.1s (6978 modules)
+ ✓ Compiled in 1859ms (6978 modules)
+ ✓ Compiled in 1357ms (6978 modules)
+ ✓ Compiled in 2s (6978 modules)
+ ○ Compiling /api/posts ...
+ ✓ Compiled /api/posts in 2.6s (3080 modules)
+ GET /api/posts?cursor=1e30317e-04a1-8083-963d-f86b0f7166df&tag=Phala+Cloud 200 in 5469ms
+ ✓ Compiled in 5.6s (6985 modules)
+ ⨯ ./src/pages/blog/index.tsx
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m             )'
+    ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/blog/index.tsx[0m:92:1]
+ [2m89[0m |                   {pages.map((page) => (
+ [2m90[0m |                     <Card key={page.id} page={page} />
+ [2m91[0m |                   ))}
+ [2m92[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m             </section>
+ [2m93[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m             <div
+ [2m94[0m |                   className={cn(
+ [2m95[0m |                     'pt-20 pb-10 w-full flex items-center justify-center'
+ [2m96[0m |                   )}
+    `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 2.9s (6985 modules)
+ GET /tags/Phala%20Cloud 200 in 2381ms
+ ⨯ ./src/pages/tags/[slug].tsx
+Error:   [31mx[0m Expected '</', got ')'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/tags/[slug].tsx[0m:103:1]
+ [2m100[0m |                   <Card key={page.id} page={page} />
+ [2m101[0m |                 ))}
+ [2m102[0m |               </section>
+ [2m103[0m |             ) : (
+     : [35;1m            ^[0m
+ [2m104[0m |               <section className="mt-8">
+ [2m105[0m |                 <p className="font-bold text-center text-green-800">No posts</p>
+ [2m106[0m |               </section>
+     `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 2.1s (6985 modules)
+ GET /tags/Phala%20Cloud 200 in 5997ms
+ ⨯ ./src/pages/blog/index.tsx
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/Users/marvin/website-nextjs/src/pages/blog/index.tsx[0m:130:1]
+ [2m127[0m |                   />
+ [2m128[0m |                 </section>
+ [2m129[0m |               </div>
+ [2m130[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m         </div>
+ [2m131[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         <SectionSubscription />
+ [2m132[0m |           </div>
+ [2m133[0m |         </>
+ [2m134[0m |       )
+     `----
+
+Caused by:
+    Syntax Error
+ ○ Compiling /_error ...
+ GET /tags/Phala%20Cloud 500 in 19205ms
+ ✓ Compiled /_error in 26.1s (7427 modules)
+ GET /blog 200 in 3398ms
+ ✓ Compiled in 15.2s (6978 modules)
+ ✓ Compiled in 4.8s (6978 modules)
+ ✓ Compiled in 1507ms (6978 modules)
+ ✓ Compiled in 3.6s (6978 modules)
+ ✓ Compiled in 1439ms (6978 modules)
+ ✓ Compiled in 10.9s (6978 modules)
+ ✓ Compiled in 2.8s (6978 modules)
+ ✓ Compiled in 3.2s (6978 modules)
+ ✓ Compiled in 2.2s (6978 modules)
+ GET /_next/data/development/tags/AI.json?slug=AI 200 in 2046ms
+ ✓ Compiled in 9.8s (6978 modules)
+ ○ Compiling /api/posts ...
+ ✓ Compiled /api/posts in 1284ms (3080 modules)
+ GET /api/posts?cursor=1960317e-04a1-8030-bedb-dd88b820f286&tag=AI 200 in 1922ms
+ ✓ Compiled in 2.3s (6985 modules)
+ ✓ Compiled in 3.1s (6985 modules)
+ GET /blog 200 in 4310ms
+ ✓ Compiled in 5.6s (6978 modules)
+ ○ Compiling /api/posts ...
+ ✓ Compiled /api/posts in 1420ms (3080 modules)
+ GET /api/posts?cursor=1ee0317e-04a1-801d-875e-c5e4c384fc93 200 in 2017ms
+ ✓ Compiled in 2.6s (6985 modules)
+ ○ Compiling /posts/[slug] ...
+ ✓ Compiled /posts/[slug] in 7.6s (7239 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (/Users/src/pages/_document.tsx:425:8)
+    at html
+    at Html (/Users/src/pages/_document.tsx:1163:7)
+    at Document (/Users/src/pages/_document.tsx:1195:16)
+ GET /posts/developer-guide-build-a-flash-vrf-from-template-on-phala-cloud 200 in 16962ms
+ GET /blog 200 in 6536ms
+ ✓ Compiled in 13.9s (7200 modules)
+ GET /blog 200 in 7826ms

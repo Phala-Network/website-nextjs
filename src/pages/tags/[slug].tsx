@@ -38,25 +38,19 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
         <meta name="robots" content="noindex" />
       </Head>
       <div
-        className={cn(
-          'bg-gradient-to-b from-green-600 to-green-500'
-        )}
+        style={{
+          background: `
+            radial-gradient(1200px 600px at 70% 35%, rgba(199,255,170,0.7), rgba(255,255,255,0) 60%),
+            linear-gradient(180deg, #ffffff, #f9fff0 40%, #ffffff 70%)
+          `,
+          minHeight: '100vh'
+        }}
       >
-        <div
-          className={cn(
-            'safe-viewport',
-            'grid grid-cols-2 lg:grid-cols-20 3xl:grid-cols-24',
-            'py-32'
-          )}
-        >
-          <div
-            className={cn(
-              'col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18'
-            )}
-          >
+        <section className="py-32">
+          <div className="container max-w-7xl mx-auto px-4">
             <section
               className={cn(
-                'bg-[#EBFDB9] rounded-3xl',
+                'bg-[#EBFDB9] rounded-xl',
                 'grid grid-cols-1 md:grid-cols-3 gap-y-4',
                 'p-12'
               )}
@@ -83,7 +77,7 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
                   className={cn(
                     'py-4 px-10 h-fit',
                     'bg-green-500 text-green-800 text-xl font-bold',
-                    'rounded-[160px]'
+                    'rounded-lg'
                   )}
                 >
                   Back to Blog
@@ -91,17 +85,11 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
               </div>
             </section>
             {pages.length > 0 ? (
-              <section
-                className={cn(
-                  'grid mt-8',
-                  'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-                  'gap-4'
-                )}
-              >
+              <div className="grid gap-x-4 gap-y-8 md:grid-cols-2 lg:gap-x-6 lg:gap-y-12 xl:grid-cols-2 2xl:grid-cols-2 mt-8">
                 {pages.map((page) => (
                   <Card key={page.id} page={page} />
                 ))}
-              </section>
+              </div>
             ) : (
               <section className="mt-8">
                 <p className="font-bold text-center text-green-800">No posts</p>
@@ -114,7 +102,7 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
                     'py-4 px-16',
                     'inline-flex flex-row items-center justify-center',
                     'bg-white text-green-800 text-xl font-bold',
-                    'rounded-[160px]',
+                    'rounded-lg',
                     isLoading ? 'opacity-75' : null
                   )}
                   onClick={load}
@@ -136,7 +124,7 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
               ) : null}
             </div>
           </div>
-        </div>
+        </section>
         <SectionSubscription />
       </div>
     </>
