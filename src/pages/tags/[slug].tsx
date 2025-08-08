@@ -2,6 +2,7 @@ import Head from 'next/head'
 import type { GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { ImSpinner2 } from 'react-icons/im'
+import { BiRss } from 'react-icons/bi'
 import { motion } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
@@ -38,86 +39,73 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
         <meta name="robots" content="noindex" />
       </Head>
       <div
-        className={cn(
-          'bg-gradient-to-b from-green-600 to-green-500'
-        )}
+        style={{
+          background: `
+            radial-gradient(1200px 600px at 70% 35%, rgba(199,255,170,0.7), rgba(255,255,255,0) 60%),
+            linear-gradient(180deg, #ffffff, #f9fff0 40%, #ffffff 70%)
+          `,
+          minHeight: '100vh'
+        }}
       >
-        <div
-          className={cn(
-            'safe-viewport',
-            'grid grid-cols-2 lg:grid-cols-20 3xl:grid-cols-24',
-            'py-32'
-          )}
-        >
-          <div
-            className={cn(
-              'col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18'
-            )}
-          >
-            <section
-              className={cn(
-                'bg-[#EBFDB9] rounded-3xl',
-                'grid grid-cols-1 md:grid-cols-3 gap-y-4',
-                'p-12'
-              )}
-            >
-              <div className="col-span-2 flex flex-col gap-4">
-                <nav className="text-sm text-black-600 flex gap-2">
-                  <a href="/blog">Blog</a>
-                  <span>/</span>
-                  <span>{slug}</span>
-                </nav>
-                <h1
-                  className={cn(
-                    'text-black-850 text-xl',
-                    'text-4xl lg:text-5xl',
-                    'font-black capitalize'
-                  )}
-                >
-                  {slug}
-                </h1>
+        <section className="py-32">
+          <div className="container max-w-7xl mx-auto px-4">
+            <div className="mb-8 md:mb-14 lg:mb-16">
+              <div className="flex items-start justify-between gap-8">
+                <div>
+                  <nav className="text-sm text-gray-600 flex gap-2 mb-4">
+                    <a href="/blog" className="hover:underline">Blog</a>
+                    <span>/</span>
+                    <span className="capitalize">{slug}</span>
+                  </nav>
+                  <h1 className="mb-4 w-full text-4xl font-medium md:mb-5 md:text-5xl lg:mb-6 lg:text-6xl capitalize">
+                    {slug}
+                  </h1>
+                </div>
+                <div>
+                  <a
+                    href="/blog"
+                    className={cn(
+                      "flex items-center gap-2 pl-5 pr-6 py-2 transition-all",
+                      "rounded-lg border bg-white border-[#526420] text-[#526420] font-bold",
+                      "hover:bg-[#EBFDB9]",
+                    )}
+                  >
+                    <span>← Back to Blog</span>
+                  </a>
+                </div>
               </div>
-              <div className="flex md:justify-end">
-                <a
-                  href="/blog"
-                  className={cn(
-                    'py-4 px-10 h-fit',
-                    'bg-green-500 text-green-800 text-xl font-bold',
-                    'rounded-[160px]'
-                  )}
-                >
-                  Back to Blog
-                </a>
-              </div>
-            </section>
+            </div>
             {pages.length > 0 ? (
-              <section
-                className={cn(
-                  'grid mt-8',
-                  'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-                  'gap-4'
-                )}
-              >
+              <div className="grid gap-x-4 gap-y-8 md:grid-cols-2 lg:gap-x-6 lg:gap-y-12 xl:grid-cols-2 2xl:grid-cols-2 mt-8">
                 {pages.map((page) => (
                   <Card key={page.id} page={page} />
                 ))}
-              </section>
+              </div>
             ) : (
-              <section className="mt-8">
-                <p className="font-bold text-center text-green-800">No posts</p>
-              </section>
+              <div className="mt-8">
+                <p className="font-bold text-center text-gray-600">No posts found for this tag.</p>
+              </div>
             )}
-            <div className="flex items-center justify-center py-8">
+            <div
+              className={cn(
+                'pt-20 pb-10 w-full flex items-center justify-center'
+              )}
+            >
               {hasMore ? (
                 <button
                   className={cn(
                     'py-4 px-16',
                     'inline-flex flex-row items-center justify-center',
                     'bg-white text-green-800 text-xl font-bold',
-                    'rounded-[160px]',
+                    'rounded-lg',
                     isLoading ? 'opacity-75' : null
                   )}
-                  onClick={load}
+                  onClick={() => {
+                    load()
+                    if (typeof window !== 'undefined' && (window as any).umami) {
+                      (window as any).umami.track('tag_load_more', { tag: slug })
+                    }
+                  }}
                   disabled={isLoading}
                 >
                   <motion.span
@@ -131,12 +119,12 @@ export default function TagPage({ slug, initialPages, nextCursor }: Props) {
                   >
                     <ImSpinner2 className="h-5 w-5 text-brand-700 animate-spin" />
                   </motion.span>
-                  Load More
+                  View More Posts
                 </button>
               ) : null}
             </div>
           </div>
-        </div>
+        </section>
         <SectionSubscription />
       </div>
     </>
