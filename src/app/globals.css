@@ -1,4 +1,5 @@
 @import '@fontsource/montserrat/latin.css';
+@import '@fontsource/inter/latin.css';
 @import '@fontsource/open-sans/latin.css';
 
 @tailwind base;
@@ -77,6 +78,71 @@
   .no-scrollbar {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+  }
+}
+
+/* Fix Notion list spacing */
+@layer components {
+  .prose ul,
+  .prose ol,
+  .notion_page_body ul,
+  .notion_page_body ol {
+    margin: 1rem 0 !important;
+    padding-left: 1.5rem !important;
+  }
+  
+  .prose ul li,
+  .prose ol li,
+  .notion_page_body ul li,
+  .notion_page_body ol li,
+  .notion_bulleted_list_item,
+  .notion_numbered_list_item {
+    margin: 0.125rem 0 !important;
+    margin-top: 0.125rem !important;
+    margin-bottom: 0.125rem !important;
+    padding: 0 !important;
+    line-height: 1.5 !important;
+  }
+  
+  .prose ul li p,
+  .prose ol li p,
+  .notion_page_body ul li p,
+  .notion_page_body ol li p,
+  .notion_bulleted_list_item p,
+  .notion_numbered_list_item p {
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    line-height: inherit !important;
+  }
+
+  /* Fix code styling */
+  .prose pre {
+    background-color: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 0.5rem !important;
+    padding: 1rem !important;
+    overflow-x: auto !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .prose code {
+    background-color: #f1f5f9 !important;
+    padding: 0.125rem 0.25rem !important;
+    border-radius: 0.25rem !important;
+    font-size: 0.875rem !important;
+    color: #1e293b !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+  
+  .prose pre code {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    font-size: inherit !important;
+    color: inherit !important;
   }
 }
 
