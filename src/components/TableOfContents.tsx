@@ -130,7 +130,7 @@ export default function TableOfContents({ blocks }: TableOfContentsProps) {
       <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">
         On This Page
       </h3>
-      <nav className="space-y-1 max-h-96 overflow-y-auto">
+      <nav className="space-y-1 max-h-[60vh] overflow-y-auto">
         {headings.map((heading) => (
           <a
             key={heading.id}
