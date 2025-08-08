@@ -11,6 +11,11 @@ export interface GetPostList {
 }
 
 export async function getPostList(params: GetPostList): Promise<Post[]> {
+  // Return empty array if backend URL is not configured
+  if (!process.env.NOTION_BACKEND_PREFIX) {
+    return []
+  }
+  
   return await fetch(`${process.env.NOTION_BACKEND_PREFIX}/site/posts`, {
     method: 'POST',
     headers: {
@@ -20,4 +25,5 @@ export async function getPostList(params: GetPostList): Promise<Post[]> {
   })
     .then((response) => response.json())
     .then((data) => (data?.posts ?? []) as Post[])
+    .catch(() => []) // Return empty array on error
 }

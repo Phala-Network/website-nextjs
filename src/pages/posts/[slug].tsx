@@ -3,7 +3,8 @@ import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import { useHydrateAtoms } from 'jotai/utils'
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import { FiArrowLeft, FiArrowRight, FiClock, FiCalendar, FiTag } from 'react-icons/fi'
+import { BiRss } from 'react-icons/bi'
 import dayjs from 'dayjs'
 
 import { cn } from '@/lib/utils'
@@ -19,6 +20,8 @@ import { blocksAtom } from '@/components/notion-render/atoms'
 import TagLink from '@/components/TagLink'
 import SectionSubscription from '@/components/SectionSubscription'
 import PageCoverImage from '@/components/PageCoverImage'
+import { Button } from '@/components/ui/button'
+import TableOfContents from '@/components/TableOfContents'
 import '@/components/notion-render/styles.css'
 
 
@@ -41,7 +44,7 @@ function AboutLink({
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <a
-      className="text-center text-xs text-green-700 font-bold leading-none lg:border-r-[1px] border-green-700 w-1/2 lg:w-[136px] py-2 lg:py-0"
+      className="text-center text-xs text-green-700 font-medium leading-none hover:text-green-800 transition-colors px-3 py-2 rounded-md hover:bg-green-50"
       {...props}
     >
       {children}
@@ -58,24 +61,29 @@ const PostPage = ({
 }: Props) => {
   if (!page) {
     return (
-      <div className="max-w-3xl m-auto p-8">
-        <p>Woops! didn't find that post.</p>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center p-8">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Post not found</h1>
+          <p className="text-gray-600">The blog post you're looking for doesn't exist.</p>
+          <a href="/blog" className="mt-4 bg-phalaGreen-500 hover:bg-phalaGreen-600 text-black font-bold inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
+            ← Back to Blog
+          </a>
+        </div>
       </div>
     )
   }
+  
   useHydrateAtoms([[blocksAtom, page.blocks]])
   let id = page.id.replace(/\-/g, '')
   id = remap[id] || id
-  // const postCover = page.cover ? (
-  //   'external' in page.cover ? page.cover.external.url : page.cover.file.url
-  // ) : "https://phala.network/og-image.jpg"
   const postCover = `https://img0.phala.world/cover/1200x630/${id}.jpg?z=123`
+
   return (
     <>
       {page.title ? (
         <Head>
-          <title>{page.title}</title>
-          <meta name="theme-color" content="rgba(232, 233, 234, 1)" />
+          <title>{page.title} | Phala Network</title>
+          <meta name="theme-color" content="#CDFA50" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link
             ref="canonical"
@@ -87,14 +95,8 @@ const PostPage = ({
             title="Phala News"
             href="https://phala.network/rss.xml"
           />
-          <link
-            rel="alternate"
-            type="application/atom+xml"
-            title="Phala News"
-            href="https://phala.network/atom.xml"
-          />
           <meta property="og:title" content={page.title} />
-          {/* <meta property="og:description" content="Phala Network make smart contracts even smarter by providing decentralized compute." /> */}
+          <meta property="og:description" content="Discover the latest from Phala Network - the decentralized cloud for Web3." />
           <meta
             property="og:url"
             content={`https://phala.network/posts${page.slug}`}
@@ -104,191 +106,270 @@ const PostPage = ({
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
           <meta property="og:image:alt" content={page.title} />
-          <meta property="og:type" content="website" />
+          <meta property="og:type" content="article" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@PhalaNetwork" />
           <meta name="twitter:title" content={page.title} />
-          {/* <meta name="twitter:description" content="Phala Network make smart contracts even smarter by providing decentralized compute." /> */}
+          <meta name="twitter:description" content="Discover the latest from Phala Network - the decentralized cloud for Web3." />
           <meta name="twitter:image" content={postCover} />
-          <link
-            rel="icon"
-            href="/favicon.ico"
-            type="image/x-icon"
-            sizes="any"
-          />
         </Head>
       ) : null}
-      <div className={cn('bg-gradient-to-b from-green-600 to-green-500')}>
-        <div
-          className={cn(
-            'max-w-screen-xl mx-auto',
-            'grid gap-4 grid-cols-1 lg:grid-cols-12',
-            'py-32'
-          )}
-        >
-          <div className={cn('lg:col-span-8')}>
-            <nav
-              className={cn(
-                'bg-white lg:rounded-3xl',
-                'py-2 px-6',
-                'text-sm font-medium flex gap-2'
-              )}
-            >
-              <a href="/blog">Blog</a>
-              {page.publishedTime ? (
+
+      <div className="min-h-screen bg-[#F9F9F7]">
+        {/* Header with improved navigation */}
+        <div className="bg-white shadow-sm border-b border-green-100">
+          <div className="safe-viewport py-4">
+            <nav className="flex items-center gap-2 text-sm text-gray-600">
+              <a href="/blog" className="flex items-center gap-1 hover:text-green-700 transition-colors">
+                <FiArrowLeft className="w-4 h-4" />
+                Blog
+              </a>
+              {page.publishedTime && (
                 <>
-                  <span>/</span>
+                  <span className="text-gray-400">/</span>
                   <span>{dayjs(page.publishedTime).format('YYYY')}</span>
-                  <span>/</span>
-                  <span>{dayjs(page.publishedTime).format('MM')}</span>
+                  <span className="text-gray-400">/</span>
+                  <span>{dayjs(page.publishedTime).format('MMMM')}</span>
                 </>
-              ) : null}
-            </nav>
-            <article
-              className={cn(
-                'notion_page_body',
-                'bg-white lg:rounded-2xl p-2 mt-4'
               )}
-            >
-              {page.cover ? (
-                <div className={cn('lg:rounded-[1.75rem] overflow-hidden')}>
-                  <img
-                    className="w-full aspect-[872/487]"
-                    width={872}
-                    height={487}
-                    src={`https://img0.phala.world/cover/1744x974/${id}.jpg?z=123`}
-                    // src={`https://img0.phala.world/notion/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
-                    // src={`https://img0.phala.world/cover/${page.id}.jpg`}
-                    // src={
-                    //   page.id === '879ccad7-3aaf-4c7e-b043-d98a1b77ee7b'
-                    //     ? `https://img0.phala.world/cover/${page.id}.jpg`
-                    //     : `https://img0.phala.world/notion/resize:fill:1744:974:0/plain/https://img0.phala.world/cover/${page.id}.jpg`
-                    // }
-                  />
-                </div>
-              ) : null}
-              <div className="p-4 pt-0 lg:p-8">
-                <h1 className={cn('notion_page_title', 'text-3xl font-black')}>
-                  {page.title}
-                </h1>
-                <div className="flex flex-wrap items-center gap-3">
-                  {page.tags
-                    .filter((i) => i !== 'Changelog')
-                    .map((tag, i) => (
-                      <div key={`${i}`}>
-                        <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
-                          {tag}
-                        </TagLink>
-                      </div>
-                    ))}
-                </div>
-                <div className="my-6">
-                  <p className="text-sm font-medium">
-                    {dayjs(page.publishedTime).format('YYYY-MM-DD')}
-                  </p>
-                </div>
-                <main className="prose font-blog max-w-full">
-                  {renderBlocks(page.blocks)}
-                </main>
-                <div className="grid grid-cols-2 text-sm text-green-800 mt-8">
-                  {beforePages.length > 0 ? (
-                    <a
-                      className="col-start-1 flex items-center gap-1"
-                      href={`/posts${beforePages[0].slug}`}
-                    >
-                      <FiArrowLeft className="shrink-0" />
-                      <span className="line-clamp-1">
-                        {beforePages[0].title}
-                      </span>
-                    </a>
-                  ) : null}
-                  {nextPages.length > 0 ? (
-                    <a
-                      className="col-start-2 flex items-center gap-1 justify-end"
-                      href={`/posts${nextPages[0].slug}`}
-                    >
-                      <span className="line-clamp-1 text-right pr-2">
-                        {nextPages[0].title}
-                      </span>
-                      <FiArrowRight className="shrink-0" />
-                    </a>
-                  ) : null}
-                </div>
-              </div>
-            </article>
-            <section className="bg-white lg:rounded-3xl mt-4 py-8">
-              <div className="px-10">
-                <h1 className="text-2xl font-bold">About Phala</h1>
-                <div className="text-sm mt-4 flex flex-col gap-4">
-                  <p>
-                    Phala Network is a decentralized cloud that offers secure
-                    and scalable computing for Web3.
-                  </p>
-                  <p>
-                    With Phat Contracts, an innovative programming model
-                    enabling trustless off-chain computation, developers can
-                    create new Web3 use cases.
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-wrap mt-8 gap-y-4">
-                <AboutLink href="#section-subscription">Subscribe</AboutLink>
-                <AboutLink href="https://twitter.com/PhalaNetwork">
-                  Twitter
-                </AboutLink>
-                <AboutLink href="https://www.youtube.com/@PhalaNetwork">
-                  Youtube
-                </AboutLink>
-                <AboutLink href="https://github.com/phala-Network">
-                  Github
-                </AboutLink>
-              </div>
-              <div className="flex flex-wrap mt-4 gap-y-4">
-                <AboutLink href="https://discord.gg/phala-network">
-                  Discord
-                </AboutLink>
-                <AboutLink href="https://forum.phala.network/">Forum</AboutLink>
-                <AboutLink href="https://t.me/phalanetwork">Telegram</AboutLink>
-              </div>
-            </section>
-          </div>
-          <div className={cn('lg:col-span-4')}>
-            {recentPages.length > 0 ? (
-              <section className="bg-[#F5FEDC] lg:rounded-2xl p-8">
-                <h1 className="text-xl font-bold">Recent Posts</h1>
-                <div className="flex flex-col gap-5 mt-5">
-                  {recentPages.map((recentPage) => (
-                    <a href={`/posts${recentPage.slug}`} key={recentPage.id}>
-                      <p className="text-base text-green-800 font-medium">
-                        {recentPage.title}
-                      </p>
-                      <p className="text-xs text-green-700">
-                        {dayjs(recentPage.publishedTime).format('YYYY-MM-DD')}
-                      </p>
-                    </a>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-            {similarPages.length > 0 ? (
-              <section className="bg-[#F5FEDC] lg:rounded-2xl p-8 mt-4">
-                <h1 className="text-xl font-bold">Similar Posts</h1>
-                <div className="flex flex-col gap-5 mt-5">
-                  {similarPages.map((similarPage) => (
-                    <a href={`/posts${similarPage.slug}`} key={similarPage.id}>
-                      <p className="text-base text-green-800 font-medium">
-                        {similarPage.title}
-                      </p>
-                      <p className="text-xs text-green-700">
-                        {dayjs(similarPage.publishedTime).format('YYYY-MM-DD')}
-                      </p>
-                    </a>
-                  ))}
-                </div>
-              </section>
-            ) : null}
+            </nav>
           </div>
         </div>
+
+        <div className="safe-viewport py-8 lg:py-16">
+          <div className="max-w-7xl mx-auto">
+            {/* Left TOC - Sticky (Desktop only) */}
+            <aside className="hidden xl:block fixed left-8 top-1/2 transform -translate-y-1/2 w-60 z-10">
+              <TableOfContents blocks={page.blocks} />
+            </aside>
+            
+            <div className="grid gap-8 lg:gap-16 grid-cols-1 lg:grid-cols-5">
+              {/* Main Content - Original comfortable width */}
+              <article className="lg:col-span-4 space-y-8">
+                {/* Cover Image */}
+                {page.cover && (
+                  <div className="aspect-[16/9] rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-green-100 to-green-200">
+                    <img
+                      className="w-full h-full object-cover"
+                      width={800}
+                      height={450}
+                      src={`https://img0.phala.world/cover/1744x974/${id}.jpg?z=123`}
+                      alt={page.title}
+                    />
+                  </div>
+                )}
+
+                {/* Article Header */}
+                <header className="space-y-6">
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {page.tags
+                      .filter((tag) => tag !== 'Changelog')
+                      .map((tag, i) => (
+                        <a key={i} href={`/tags/${encodeURIComponent(tag)}`}>
+                          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-[#F9F9F7] text-[#C4F144] border border-[#C4F144] hover:bg-[#C4F144] hover:text-gray-900 transition-colors">
+                            <FiTag className="w-3 h-3" />
+                            {tag}
+                          </span>
+                        </a>
+                      ))
+                    }
+                  </div>
+
+                  {/* Title */}
+                  <h1 className="text-4xl lg:text-5xl font-black text-gray-900 leading-tight font-montserrat">
+                    {page.title}
+                  </h1>
+
+                  {/* Meta Info */}
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 border-b border-gray-200 pb-6">
+                    <div className="flex items-center gap-1">
+                      <FiCalendar className="w-4 h-4" />
+                      <span>{dayjs(page.publishedTime).format('MMMM DD, YYYY')}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <FiClock className="w-4 h-4" />
+                      <span>5 min read</span>
+                    </div>
+                  </div>
+                </header>
+
+                {/* Article Content */}
+                <div className="prose prose-lg max-w-none font-inter">
+                  <style jsx>{`
+                    .prose {
+                      --tw-prose-headings: #1f2937;
+                      --tw-prose-body: #374151;
+                      --tw-prose-links: #16a34a;
+                      --tw-prose-bold: #1f2937;
+                      --tw-prose-bullets: #16a34a;
+                      --tw-prose-quotes: #6b7280;
+                      --tw-prose-code: #1f2937;
+                      --tw-prose-pre-bg: #f8fafc;
+                      --tw-prose-pre-code: #374151;
+                    }
+                  `}</style>
+                  {renderBlocks(page.blocks)}
+                </div>
+
+                {/* Navigation */}
+                <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-gray-200">
+                  {beforePages.length > 0 && (
+                    <a
+                      href={`/posts${beforePages[0].slug}`}
+                      className="flex-1 h-auto p-4 text-left justify-start hover:bg-green-50 border border-green-200 rounded-md transition-colors block"
+                    >
+                      <div className="flex items-start gap-3">
+                        <FiArrowLeft className="w-5 h-5 mt-0.5 text-green-600 flex-shrink-0" />
+                        <div>
+                          <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">Previous</div>
+                          <div className="text-sm font-medium text-gray-900 line-clamp-2">{beforePages[0].title}</div>
+                        </div>
+                      </div>
+                    </a>
+                  )}
+                  
+                  {nextPages.length > 0 && (
+                    <a
+                      href={`/posts${nextPages[0].slug}`}
+                      className="flex-1 h-auto p-4 text-right justify-end hover:bg-green-50 border border-green-200 rounded-md transition-colors block"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="text-right">
+                          <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">Next</div>
+                          <div className="text-sm font-medium text-gray-900 line-clamp-2">{nextPages[0].title}</div>
+                        </div>
+                        <FiArrowRight className="w-5 h-5 mt-0.5 text-green-600 flex-shrink-0" />
+                      </div>
+                    </a>
+                  )}
+                </div>
+
+                {/* About Phala Footer */}
+                <footer className="pt-12 border-t border-gray-200 space-y-6">
+                  <div className="prose prose-lg max-w-none">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">About Phala Network</h3>
+                    <p className="text-gray-600">
+                      Phala Network is a decentralized cloud that offers secure and scalable computing for Web3. 
+                      With Phat Contracts, an innovative programming model enabling trustless off-chain computation, 
+                      developers can create new Web3 use cases.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-6 text-sm">
+                    <AboutLink href="https://twitter.com/PhalaNetwork">Twitter</AboutLink>
+                    <AboutLink href="https://discord.gg/phala-network">Discord</AboutLink>
+                    <AboutLink href="https://github.com/phala-Network">GitHub</AboutLink>
+                    <AboutLink href="https://t.me/phalanetwork">Telegram</AboutLink>
+                    <AboutLink href="https://www.youtube.com/@PhalaNetwork">YouTube</AboutLink>
+                    <AboutLink href="https://forum.phala.network/">Forum</AboutLink>
+                  </div>
+
+                  <div className="pt-4">
+                    <a 
+                      href="#section-subscription" 
+                      className="bg-phalaGreen-500 hover:bg-phalaGreen-600 text-black font-bold inline-flex items-center justify-center gap-2 rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-6 py-2"
+                    >
+                      <BiRss className="w-4 h-4" />
+                      Subscribe to Updates
+                    </a>
+                  </div>
+                </footer>
+              </article>
+
+              {/* Right Sidebar - Recent & Related Posts */}
+              <aside className="lg:col-span-1 space-y-6 xl:hidden">
+                {/* Recent Posts */}
+                {recentPages.length > 0 && (
+                  <div className="border-l-2 border-gray-200 pl-4">
+                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Recent Posts</h3>
+                    <nav className="space-y-2">
+                      {recentPages.map((recentPage) => (
+                        <a 
+                          href={`/posts${recentPage.slug}`} 
+                          key={recentPage.id}
+                          className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                        >
+                          <div className="font-medium mb-1">{recentPage.title}</div>
+                          <div className="text-xs text-gray-400">
+                            {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
+                          </div>
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                )}
+
+                {/* Related Posts */}
+                {similarPages.length > 0 && (
+                  <div className="border-l-2 border-gray-200 pl-4">
+                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Related Posts</h3>
+                    <nav className="space-y-2">
+                      {similarPages.map((similarPage) => (
+                        <a 
+                          href={`/posts${similarPage.slug}`} 
+                          key={similarPage.id}
+                          className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                        >
+                          <div className="font-medium mb-1">{similarPage.title}</div>
+                          <div className="text-xs text-gray-400">
+                            {dayjs(similarPage.publishedTime).format('MMM DD, YYYY')}
+                          </div>
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                )}
+              </aside>
+              
+              {/* Desktop Fixed Right Sidebar */}
+              <aside className="hidden xl:block fixed right-8 top-32 w-60 space-y-6">
+                {/* Recent Posts */}
+                {recentPages.length > 0 && (
+                  <div className="border-l-2 border-gray-200 pl-4">
+                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Recent Posts</h3>
+                    <nav className="space-y-2">
+                      {recentPages.map((recentPage) => (
+                        <a 
+                          href={`/posts${recentPage.slug}`} 
+                          key={recentPage.id}
+                          className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                        >
+                          <div className="font-medium mb-1">{recentPage.title}</div>
+                          <div className="text-xs text-gray-400">
+                            {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
+                          </div>
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                )}
+
+                {/* Related Posts */}
+                {similarPages.length > 0 && (
+                  <div className="border-l-2 border-gray-200 pl-4">
+                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Related Posts</h3>
+                    <nav className="space-y-2">
+                      {similarPages.map((similarPage) => (
+                        <a 
+                          href={`/posts${similarPage.slug}`} 
+                          key={similarPage.id}
+                          className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                        >
+                          <div className="font-medium mb-1">{similarPage.title}</div>
+                          <div className="text-xs text-gray-400">
+                            {dayjs(similarPage.publishedTime).format('MMM DD, YYYY')}
+                          </div>
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                )}
+              </aside>
+            </div>
+          </div>
+        </div>
+
         <SectionSubscription />
       </div>
     </>
@@ -319,7 +400,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   if (error) {
     console.error(error)
   }
-  if (pages.length === 0) {
+  if (!pages || pages.length === 0) {
     return {
       notFound: true,
     }

@@ -1,8 +1,9 @@
 import { useMemo } from 'react'
 import { useAtomValue } from 'jotai'
 import { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+// Temporarily disabled to fix import issues
+// import LiteYouTubeEmbed from 'react-lite-youtube-embed'
+// import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
 import { BlockAtom } from './atoms'
 import RichText from './RichText'
@@ -29,11 +30,9 @@ const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
   return (
     <div className="notion_video_container">
       {provider === 'youtube' ? (
-        <LiteYouTubeEmbed
-          id={id}
-          title=""
-          poster="sddefault"
-        />
+        <div className="aspect-video bg-gray-100 flex items-center justify-center rounded-lg">
+          <p className="text-gray-600">YouTube Video: {id}</p>
+        </div>
       ) : null}
       {provider === null ? (<video controls src={id} className={`notion_video`} />) : null}
       {
