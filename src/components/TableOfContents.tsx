@@ -126,25 +126,23 @@ export default function TableOfContents({ blocks }: TableOfContentsProps) {
   }
   
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-lg border border-gray-100 p-4 shadow-sm">
-      <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">
-        On This Page
-      </h3>
-      <nav className="space-y-1 max-h-[60vh] overflow-y-auto">
+    <>
+      <h3 className="text-lg font-bold text-gray-900 mb-4">On This Page</h3>
+      <nav className="space-y-2">
         {headings.map((heading) => (
           <a
             key={heading.id}
             href={`#${heading.id}`}
             onClick={(e) => handleClick(heading.id, e)}
             className={`
-              block py-1 text-xs transition-colors leading-relaxed
+              block py-1 text-sm transition-colors leading-relaxed
               ${heading.level === 1 ? 'font-medium' : ''}
-              ${heading.level === 2 ? 'pl-3' : ''}
-              ${heading.level === 3 ? 'pl-6' : ''}
+              ${heading.level === 2 ? 'pl-4' : ''}
+              ${heading.level === 3 ? 'pl-8' : ''}
               ${
                 activeId === heading.id
-                  ? 'text-[#C4F144] font-medium border-l-2 border-[#C4F144] -ml-2 pl-2'
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'text-[#C4F144] font-medium'
+                  : 'text-gray-600 hover:text-gray-900'
               }
             `}
           >
@@ -152,6 +150,6 @@ export default function TableOfContents({ blocks }: TableOfContentsProps) {
           </a>
         ))}
       </nav>
-    </div>
+    </>
   )
 }
