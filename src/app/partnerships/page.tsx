@@ -7,6 +7,15 @@ import { FiExternalLink } from 'react-icons/fi'
 import { cn } from '@/lib/utils'
 import PartnerTagFilter from '@/components/PartnerTagFilter'
 
+interface PartnerItem {
+  name: string
+  url: string
+  icon: string
+  description: string
+  tags: string[]
+  post?: string
+}
+
 function PartnerCard({ title, url, description, src, tags, post, isLarge = false }: {
   title: string,
   url: string,
@@ -25,9 +34,7 @@ function PartnerCard({ title, url, description, src, tags, post, isLarge = false
         "bg-background border-border group flex flex-col items-start justify-between rounded-md border p-4 transition-all duration-300 hover:text-black md:p-6",
         cardHeight
       )}
-      style={{
-        '--hover-bg': '#C4F142'
-      }}
+      style={{} as React.CSSProperties}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = '#C4F142'
       }}
@@ -94,7 +101,7 @@ function PartnerCard({ title, url, description, src, tags, post, isLarge = false
   )
 }
 
-const items = [
+const items: PartnerItem[] = [
   {
     name: 'Nvidia',
     url: 'https://www.nvidia.com/',
@@ -448,15 +455,15 @@ export default function Page() {
           {/* Mobile view */}
           <div className="md:hidden">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {filteredItems.map(({ name, url, icon, description, tags, post }, idx) => (
+              {filteredItems.map((item, idx) => (
                 <PartnerCard
                   key={idx}
-                  title={name}
-                  url={url}
-                  description={description}
-                  src={icon}
-                  post={post}
-                  tags={tags}
+                  title={item.name}
+                  url={item.url}
+                  description={item.description}
+                  src={item.icon}
+                  post={item.post}
+                  tags={item.tags}
                 />
               ))}
             </div>
@@ -468,15 +475,15 @@ export default function Page() {
             {filteredItems.length > 0 && (
               <div className="pb-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  {filteredItems.slice(0, 2).map(({ name, url, icon, description, tags, post }, idx) => (
+                  {filteredItems.slice(0, 2).map((item, idx) => (
                     <PartnerCard
                       key={idx}
-                      title={name}
-                      url={url}
-                      description={description}
-                      src={icon}
-                      post={post}
-                      tags={tags}
+                      title={item.name}
+                      url={item.url}
+                      description={item.description}
+                      src={item.icon}
+                      post={item.post}
+                      tags={item.tags}
                       isLarge={true}
                     />
                   ))}
@@ -488,15 +495,15 @@ export default function Page() {
             {filteredItems.length > 2 && (
               <div className="pb-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {filteredItems.slice(2).map(({ name, url, icon, description, tags, post }, idx) => (
+                  {filteredItems.slice(2).map((item, idx) => (
                     <PartnerCard
                       key={idx + 2}
-                      title={name}
-                      url={url}
-                      description={description}
-                      src={icon}
-                      post={post}
-                      tags={tags}
+                      title={item.name}
+                      url={item.url}
+                      description={item.description}
+                      src={item.icon}
+                      post={item.post}
+                      tags={item.tags}
                     />
                   ))}
                 </div>
