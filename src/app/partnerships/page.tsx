@@ -117,8 +117,22 @@ const items: PartnerItem[] = [
   {
     name: 'OpenRouter',
     url: 'https://openrouter.ai',
-    icon: '/partnerships/openrouter.jpg',
+    icon: 'https://pbs.twimg.com/profile_images/1682268668321726464/NEb6_n7n_400x400.jpg',
     description: 'OpenRouter provides a unified API that gives you access to hundreds of AI models through a single endpoint, while automatically handling fallbacks and selecting the most cost-effective options.',
+    tags: ['AI'],
+  },
+  {
+    name: 'OODA',
+    url: 'https://ooda.ai/',
+    icon: 'https://ooda.ai/og.png',
+    description: 'OODA AI is a Nasdaq-listed (Nasdaq First North Growth Market) AI Company with global operations focused on AI Applications, API:s and Agents—offering GDPR-grade data security and decentralized AI computing.',
+    tags: ['AI'],
+  },
+  {
+    name: 'PublicAI',
+    url: 'https://publicai.io/',
+    icon: 'https://media.licdn.com/dms/image/v2/D560BAQG9Ifw4kYP7HA/company-logo_200_200/company-logo_200_200/0/1706963733723/publicai01_logo?e=2147483647&v=beta&t=kKYtkysyTbgZaqZHL9CB4ySYwVMcW5RYGGfMXi_vwzs',
+    description: 'PublicAI revolutionizes the AI ecosystem by delivering premium, on-demand AI training data while enabling individuals worldwide to monetize their expertise.',
     tags: ['AI'],
   },
   {
@@ -369,9 +383,58 @@ const items: PartnerItem[] = [
   {
     name: 'Blorm',
     url: 'https://blorm.xyz/',
-    icon: '/partnerships/blorm.jpg',
+    icon: 'https://pbs.twimg.com/profile_images/1881444664894787584/NwQgFyQI_400x400.jpg',
     description: 'Blorm is forming blockchain information. a blorm is an onchain action.',
     tags: ['AI'],
+  },
+  {
+    name: 'Xtrace',
+    url: 'https://xtrace.ai/',
+    icon: 'https://pbs.twimg.com/profile_images/1884384610345537536/8gisKzpa_400x400.jpg',
+    description: 'Building the privacy layer for AI. Memory, search, encryption - all in one SDK.',
+    tags: ['AI', 'RAG'],
+  },
+  {
+    name: 'Crossmint',
+    url: 'https://www.crossmint.com/',
+    icon: 'https://mintlify.s3.us-west-1.amazonaws.com/crossmint/logo/crossmint-light.png',
+    description: 'Crossmint is an all-in-one platform that simplifies building onchain applications for businesses.',
+    tags: ['Financial'],
+  },
+  {
+    name: 'Intel',
+    url: 'https://www.intel.com/',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg',
+    description: 'Intel® Trust Domain Extension (Intel® TDX) allows you to deploy hardware-isolated confidential virtual machines (CVMs) called trust domains (TDs).',
+    tags: ['CPU'],
+  },
+  {
+    name: 'Microsoft Startup',
+    url: 'https://www.microsoft.com/en-us/startups#startup-spotlight',
+    icon: 'https://msblogs.thesourcemediaassets.com/2018/02/Microsoft-for-Startups.jpg',
+    description: 'Microsoft offers advanced supercomputing and industry-leading security and privacy, along with access to the latest AI models and developer tools so you can build faster and stay ahead the curve.',
+    tags: ['CPU'],
+  },
+  {
+    name: 'NanoGPT',
+    url: 'https://nano-gpt.com/',
+    icon: 'https://pbs.twimg.com/profile_images/1929504325727920128/U7GrZyCS_400x400.jpg',
+    description: 'Access ChatGPT and all other text and image models. Anonymous, private, pay-per-prompt using Nano, other crypto, or credit cards!',
+    tags: ['AI'],
+  },
+  {
+    name: 'Magic Link',
+    url: 'https://magic.link/',
+    icon: 'https://pbs.twimg.com/profile_images/1886512117307637760/x1XH8c5N_400x400.jpg',
+    description: 'Magic started in 2018 with a vision to simplify wallets, which at the time were the worst part of going onchain. Users loved our product. Some in the industry said it wouldn\'t succeed. They were wrong. We invented a multi-billion dollar category.',
+    tags: ['Financial'],
+  },
+  {
+    name: 'Rabbi',
+    url: 'https://koshercapital.net',
+    icon: 'https://koshercapital.net/assets/kosher_capital_logo_black_bis-BDjT3v3G.png',
+    description: 'Trading Agent Framework',
+    tags: ['AI', 'Financial'],
   }
 ]
 
