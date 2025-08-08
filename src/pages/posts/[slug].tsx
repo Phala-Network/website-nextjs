@@ -138,14 +138,14 @@ const PostPage = ({
 
         <div className="safe-viewport py-8 lg:py-16">
           <div className="max-w-7xl mx-auto">
-            {/* Left TOC - Sticky (Desktop only) */}
-            <aside className="hidden xl:block fixed left-8 top-1/2 transform -translate-y-1/2 w-60 z-10">
-              <TableOfContents blocks={page.blocks} />
-            </aside>
-            
-            <div className="grid gap-8 lg:gap-16 grid-cols-1 lg:grid-cols-5">
-              {/* Main Content - Original comfortable width */}
-              <article className="lg:col-span-4 space-y-8">
+            <div className="grid gap-8 lg:gap-16 grid-cols-1 lg:grid-cols-5 xl:grid-cols-7">
+              {/* Left TOC - Grid column (Desktop only) */}
+              <aside className="hidden xl:block xl:col-span-1 lg:sticky lg:top-8 lg:self-start">
+                <TableOfContents blocks={page.blocks} />
+              </aside>
+              
+              {/* Main Content */}
+              <article className="lg:col-span-4 xl:col-span-4 space-y-8">
                 {/* Cover Image */}
                 {page.cover && (
                   <div className="aspect-[16/9] rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-green-100 to-green-200">
@@ -278,52 +278,7 @@ const PostPage = ({
               </article>
 
               {/* Right Sidebar - Recent & Related Posts */}
-              <aside className="lg:col-span-1 space-y-6 xl:hidden">
-                {/* Recent Posts */}
-                {recentPages.length > 0 && (
-                  <div className="border-l-2 border-gray-200 pl-4">
-                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Recent Posts</h3>
-                    <nav className="space-y-2">
-                      {recentPages.map((recentPage) => (
-                        <a 
-                          href={`/posts${recentPage.slug}`} 
-                          key={recentPage.id}
-                          className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                        >
-                          <div className="font-medium mb-1">{recentPage.title}</div>
-                          <div className="text-xs text-gray-400">
-                            {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
-                          </div>
-                        </a>
-                      ))}
-                    </nav>
-                  </div>
-                )}
-
-                {/* Related Posts */}
-                {similarPages.length > 0 && (
-                  <div className="border-l-2 border-gray-200 pl-4">
-                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Related Posts</h3>
-                    <nav className="space-y-2">
-                      {similarPages.map((similarPage) => (
-                        <a 
-                          href={`/posts${similarPage.slug}`} 
-                          key={similarPage.id}
-                          className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                        >
-                          <div className="font-medium mb-1">{similarPage.title}</div>
-                          <div className="text-xs text-gray-400">
-                            {dayjs(similarPage.publishedTime).format('MMM DD, YYYY')}
-                          </div>
-                        </a>
-                      ))}
-                    </nav>
-                  </div>
-                )}
-              </aside>
-              
-              {/* Desktop Fixed Right Sidebar */}
-              <aside className="hidden xl:block fixed right-8 top-32 w-60 space-y-6">
+              <aside className="lg:col-span-1 xl:col-span-2 space-y-6 lg:sticky lg:top-8 lg:self-start">
                 {/* Recent Posts */}
                 {recentPages.length > 0 && (
                   <div className="border-l-2 border-gray-200 pl-4">
