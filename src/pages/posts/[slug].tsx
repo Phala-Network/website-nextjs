@@ -1,9 +1,9 @@
-import React, { AnchorHTMLAttributes } from 'react'
+import React, { AnchorHTMLAttributes, useEffect, useState } from 'react'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import { useHydrateAtoms } from 'jotai/utils'
-import { FiArrowLeft, FiArrowRight, FiClock, FiCalendar, FiTag } from 'react-icons/fi'
+import { FiArrowLeft, FiArrowRight, FiClock, FiCalendar, FiTag, FiCopy, FiCheck } from 'react-icons/fi'
 import { BiRss } from 'react-icons/bi'
 import dayjs from 'dayjs'
 
@@ -74,6 +74,78 @@ const PostPage = ({
   }
   
   useHydrateAtoms([[blocksAtom, page.blocks]])
+  
+  // State for copy for AI button
+  const [isCopyingForAI, setIsCopyingForAI] = useState(false)
+  
+  // Copy content for AI function
+  const copyForAI = async () => {
+    setIsCopyingForAI(true)
+    try {
+      // Create markdown content
+      const markdownContent = `# ${page.title}
+
+**Published:** ${dayjs(page.publishedTime).format('MMMM DD, YYYY')}
+**Tags:** ${page.tags.join(', ')}
+**URL:** https://phala.network/posts${page.slug}
+
+---
+
+${page.markdown}`
+
+      await navigator.clipboard.writeText(markdownContent)
+      
+      // Reset after 2 seconds
+      setTimeout(() => {
+        setIsCopyingForAI(false)
+      }, 2000)
+    } catch (err) {
+      console.error('Failed to copy content for AI:', err)
+      setIsCopyingForAI(false)
+    }
+  }
+  
+  // Add copy buttons to code blocks
+  useEffect(() => {
+    const addCopyButtons = () => {
+      const codeBlocks = document.querySelectorAll('pre code, .notion_code')
+      codeBlocks.forEach((codeBlock) => {
+        const pre = codeBlock.closest('pre') || codeBlock.parentElement
+        if (!pre || pre.querySelector('.copy-button')) return // Skip if button already exists
+        
+        const button = document.createElement('button')
+        button.className = 'copy-button absolute top-2 right-2 p-2 rounded-md bg-gray-800 hover:bg-gray-700 text-white transition-colors z-10 opacity-0 group-hover:opacity-100'
+        button.innerHTML = '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>'
+        button.title = 'Copy code'
+        
+        // Make pre container relative and add group class
+        pre.style.position = 'relative'
+        pre.classList.add('group')
+        
+        button.addEventListener('click', async () => {
+          const code = codeBlock.textContent || ''
+          try {
+            await navigator.clipboard.writeText(code)
+            button.innerHTML = '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>'
+            button.style.backgroundColor = '#10b981'
+            setTimeout(() => {
+              button.innerHTML = '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>'
+              button.style.backgroundColor = ''
+            }, 2000)
+          } catch (err) {
+            console.error('Failed to copy code:', err)
+          }
+        })
+        
+        pre.appendChild(button)
+      })
+    }
+    
+    // Add copy buttons when component mounts and after content changes
+    const timer = setTimeout(addCopyButtons, 500)
+    return () => clearTimeout(timer)
+  }, [page.blocks])
+  
   let id = page.id.replace(/\-/g, '')
   id = remap[id] || id
   const postCover = `https://img0.phala.world/cover/1200x630/${id}.jpg?z=123`
@@ -116,36 +188,30 @@ const PostPage = ({
       ) : null}
 
       <div className="min-h-screen bg-[#F9F9F7]">
-        {/* Header with improved navigation */}
-        <div className="bg-white shadow-sm border-b border-green-100">
-          <div className="safe-viewport py-4">
-            <nav className="flex items-center gap-2 text-sm text-gray-600">
-              <a href="/blog" className="flex items-center gap-1 hover:text-green-700 transition-colors">
-                <FiArrowLeft className="w-4 h-4" />
-                Blog
-              </a>
-              {page.publishedTime && (
-                <>
-                  <span className="text-gray-400">/</span>
-                  <span>{dayjs(page.publishedTime).format('YYYY')}</span>
-                  <span className="text-gray-400">/</span>
-                  <span>{dayjs(page.publishedTime).format('MMMM')}</span>
-                </>
-              )}
-            </nav>
-          </div>
-        </div>
+        {/* Spacer for fixed navbar */}
+        <div className="h-16 lg:h-20"></div>
 
-        <div className="safe-viewport py-8 lg:py-16">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid gap-8 lg:gap-16 grid-cols-1 lg:grid-cols-5 xl:grid-cols-7">
-              {/* Left TOC - Grid column (Desktop only) */}
-              <aside className="hidden xl:block xl:col-span-1 lg:sticky lg:top-8 lg:self-start">
-                <TableOfContents blocks={page.blocks} />
-              </aside>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+          {/* Breadcrumb - positioned on top of banner area */}
+          <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
+            <a href="/blog" className="flex items-center gap-1 hover:text-[#C4F144] transition-colors">
+              <FiArrowLeft className="w-4 h-4" />
+              Blog
+            </a>
+            {page.publishedTime && (
+              <>
+                <span className="text-gray-400">/</span>
+                <span>{dayjs(page.publishedTime).format('YYYY')}</span>
+                <span className="text-gray-400">/</span>
+                <span>{dayjs(page.publishedTime).format('MMMM')}</span>
+              </>
+            )}
+          </nav>
+          
+          <div className="lg:grid lg:grid-cols-12 lg:gap-12">
               
               {/* Main Content */}
-              <article className="lg:col-span-4 xl:col-span-4 space-y-8">
+              <article className="lg:col-span-8 xl:col-span-9 space-y-8">
                 {/* Cover Image */}
                 {page.cover && (
                   <div className="aspect-[16/9] rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-green-100 to-green-200">
@@ -167,7 +233,7 @@ const PostPage = ({
                       .filter((tag) => tag !== 'Changelog')
                       .map((tag, i) => (
                         <a key={i} href={`/tags/${encodeURIComponent(tag)}`}>
-                          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-[#F9F9F7] text-[#C4F144] border border-[#C4F144] hover:bg-[#C4F144] hover:text-gray-900 transition-colors">
+                          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-[#C4F144] text-black">
                             <FiTag className="w-3 h-3" />
                             {tag}
                           </span>
@@ -182,15 +248,37 @@ const PostPage = ({
                   </h1>
 
                   {/* Meta Info */}
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 border-b border-gray-200 pb-6">
-                    <div className="flex items-center gap-1">
-                      <FiCalendar className="w-4 h-4" />
-                      <span>{dayjs(page.publishedTime).format('MMMM DD, YYYY')}</span>
+                  <div className="flex flex-wrap items-center justify-between border-b border-gray-200 pb-6">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                      <div className="flex items-center gap-1">
+                        <FiCalendar className="w-4 h-4" />
+                        <span>{dayjs(page.publishedTime).format('MMMM DD, YYYY')}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FiClock className="w-4 h-4" />
+                        <span>5 min read</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <FiClock className="w-4 h-4" />
-                      <span>5 min read</span>
-                    </div>
+                    
+                    {/* Copy for AI Button */}
+                    <button
+                      onClick={copyForAI}
+                      disabled={isCopyingForAI}
+                      className="flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors disabled:opacity-50"
+                      title="Copy article content in markdown format for AI"
+                    >
+                      {isCopyingForAI ? (
+                        <>
+                          <FiCheck className="w-3 h-3" />
+                          Copied!
+                        </>
+                      ) : (
+                        <>
+                          <FiCopy className="w-3 h-3" />
+                          Copy for AI
+                        </>
+                      )}
+                    </button>
                   </div>
                 </header>
 
@@ -277,52 +365,67 @@ const PostPage = ({
                 </footer>
               </article>
 
-              {/* Right Sidebar - Recent & Related Posts */}
-              <aside className="lg:col-span-1 xl:col-span-2 space-y-6 lg:sticky lg:top-8 lg:self-start">
-                {/* Recent Posts */}
-                {recentPages.length > 0 && (
-                  <div className="border-l-2 border-gray-200 pl-4">
-                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Recent Posts</h3>
-                    <nav className="space-y-2">
-                      {recentPages.map((recentPage) => (
-                        <a 
-                          href={`/posts${recentPage.slug}`} 
-                          key={recentPage.id}
-                          className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                        >
-                          <div className="font-medium mb-1">{recentPage.title}</div>
-                          <div className="text-xs text-gray-400">
-                            {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
-                          </div>
-                        </a>
-                      ))}
-                    </nav>
-                  </div>
-                )}
-
-                {/* Related Posts */}
-                {similarPages.length > 0 && (
-                  <div className="border-l-2 border-gray-200 pl-4">
-                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Related Posts</h3>
-                    <nav className="space-y-2">
-                      {similarPages.map((similarPage) => (
-                        <a 
-                          href={`/posts${similarPage.slug}`} 
-                          key={similarPage.id}
-                          className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                        >
-                          <div className="font-medium mb-1">{similarPage.title}</div>
-                          <div className="text-xs text-gray-400">
-                            {dayjs(similarPage.publishedTime).format('MMM DD, YYYY')}
-                          </div>
-                        </a>
-                      ))}
-                    </nav>
-                  </div>
-                )}
+              {/* Sidebar */}
+              <aside className="lg:col-span-4 xl:col-span-3 space-y-6">
+                {/* Table of Contents */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 lg:sticky lg:top-32">
+                  <TableOfContents blocks={page.blocks} />
+                </div>
               </aside>
-            </div>
           </div>
+
+          {/* Related Posts Section - After main content */}
+          {(recentPages.length > 0 || similarPages.length > 0) && (
+            <div className="mt-16 pt-8 border-t border-gray-200">
+              <div className="grid gap-8 lg:grid-cols-2">
+                  {/* Recent Posts */}
+                  {recentPages.length > 0 && (
+                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                      <h3 className="text-lg font-bold text-gray-900 mb-4">Recent Posts</h3>
+                      <div className="space-y-4">
+                        {recentPages.map((recentPage) => (
+                          <a 
+                            href={`/posts${recentPage.slug}`} 
+                            key={recentPage.id}
+                            className="block p-3 rounded-lg hover:bg-green-50 transition-colors"
+                          >
+                            <h4 className="text-sm font-medium text-gray-900 line-clamp-2 mb-1">
+                              {recentPage.title}
+                            </h4>
+                            <p className="text-xs text-gray-500">
+                              {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
+                            </p>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Related Posts */}
+                  {similarPages.length > 0 && (
+                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                      <h3 className="text-lg font-bold text-gray-900 mb-4">Related Posts</h3>
+                      <div className="space-y-4">
+                        {similarPages.map((similarPage) => (
+                          <a 
+                            href={`/posts${similarPage.slug}`} 
+                            key={similarPage.id}
+                            className="block p-3 rounded-lg hover:bg-green-50 transition-colors"
+                          >
+                            <h4 className="text-sm font-medium text-gray-900 line-clamp-2 mb-1">
+                              {similarPage.title}
+                            </h4>
+                            <p className="text-xs text-gray-500">
+                              {dayjs(similarPage.publishedTime).format('MMM DD, YYYY')}
+                            </p>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
         </div>
 
         <SectionSubscription />
