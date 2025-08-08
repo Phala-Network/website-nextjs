@@ -28,6 +28,7 @@ function PartnerCard({ title, url, description, src, tags, post, isLarge = false
   const cardHeight = isLarge ? "h-96" : "h-80"
   const logoSize = isLarge ? "h-28 w-28" : "h-20 w-20"
   
+  
   return (
     <div
       className={cn(
@@ -53,7 +54,11 @@ function PartnerCard({ title, url, description, src, tags, post, isLarge = false
           src={src}
           alt={title}
           className={cn(
-            "object-contain transition-all duration-300 [filter:brightness(0)] group-hover:[filter:brightness(1)] dark:invert",
+            "object-contain transition-all duration-300",
+            // Simple approach: make logos visible with good contrast
+            "opacity-75 saturate-0 group-hover:opacity-100 group-hover:saturate-100",
+            // Ensure visibility on both light and dark backgrounds
+            "contrast-125 brightness-75 group-hover:contrast-100 group-hover:brightness-100",
             logoSize
           )}
         />
@@ -105,14 +110,14 @@ const items: PartnerItem[] = [
   {
     name: 'Nvidia',
     url: 'https://www.nvidia.com/',
-    icon: '/partnerships/Nvidia.webp',
+    icon: '/partnerships/nvidia.webp',
     description: 'NVIDIA Inception Program is designed to help startups accelerate innovation and growth.',
     tags: ['AI'],
   },
   {
     name: 'OpenRouter',
     url: 'https://openrouter.ai',
-    icon: '/partnerships/OpenRouter.jpg',
+    icon: '/partnerships/openrouter.jpg',
     description: 'OpenRouter provides a unified API that gives you access to hundreds of AI models through a single endpoint, while automatically handling fallbacks and selecting the most cost-effective options.',
     tags: ['AI'],
   },
@@ -126,21 +131,21 @@ const items: PartnerItem[] = [
   {
     name: 'Succinct',
     url: 'https://www.succinct.xyz/',
-    icon: '/partnerships/Succinct.svg',
+    icon: '/partnerships/succinct.svg',
     description: 'Succinct is dedicated to build the novel ZK technologies, such as SP1, which is a performant, open-source zero-knowledge virtual machine (zkVM)',
     tags: ['ZK'],
   },
   {
     name: 'Vana',
     url: 'https://www.vana.org/',
-    icon: '/partnerships/Vana.jpg',
+    icon: '/partnerships/vana.jpg',
     description: 'Vana is the first network for user-owned data. It transforms how data is owned, shared, and monetized. The Vana L1 enables users to pool their data in DataDAOs while maintaining control and privacy.',
     tags: ['AI', 'Data'],
   },
   {
     name: 'Nethermind',
     url: 'https://www.nethermind.io/',
-    icon: '/partnerships/Nethermind.png',
+    icon: '/partnerships/nethermind.png',
     description: 'Nethermind is a blockchain infrastructure provider whose vision is to empower enterprises and developers worldwide to access and build on decentralized systems.',
     tags: ['AI', 'Blockchain', 'ZK'],
   },
@@ -154,14 +159,14 @@ const items: PartnerItem[] = [
   {
     name: 'Flashbots',
     url: 'https://www.flashbots.net/',
-    icon: '/partnerships/Flashbots.png',
+    icon: '/partnerships/flashbots.png',
     description: 'Flashbots is a research and development organization formed to mitigate the negative externalities posed by Maximal Extractable Value (MEV) to stateful blockchains, starting with Ethereum.',
     tags: ['Blockchain', 'Financial'],
   },
   {
     name: 'ElizaOS',
     url: 'https://www.elizaos.ai/',
-    icon: '/partnerships/ElizaOS.png',
+    icon: '/partnerships/elizaos.png',
     description: 'Eliza is a pioneering venture capital firm that operates as a decentralized autonomous organization (DAO), leveraging the power of artificial intelligence to revolutionize investment strategies and foster an open-source community around AI agents.',
     tags: ['AI'],
   },
@@ -203,7 +208,7 @@ const items: PartnerItem[] = [
   {
     name: 'Hyperbolic',
     url: 'https://hyperbolic.xyz/',
-    icon: '/partnerships/Hyperbolic.png',
+    icon: '/partnerships/hyperbolic.png',
     description: 'Hyperbolic unites global compute to provide accessible, affordable, and scalable GPU resources and AI services. Start in seconds, and keep running.',
     tags: ['AI', 'GPU'],
   },
@@ -238,21 +243,21 @@ const items: PartnerItem[] = [
   {
     name: 'Morpheus',
     url: 'https://mor.org/',
-    icon: '/partnerships/Morpheus.png',
+    icon: '/partnerships/morpheus.png',
     description: 'Morpheus is designed to incentivize the first peer-to-peer network of personal general-purpose AIs, known as Smart Agents, capable of executing Smart Contracts on behalf of users.',
     tags: ['AI'],
   },
   {
     name: 'Artela',
     url: 'https://artela.network/',
-    icon: '/partnerships/Artela.png',
+    icon: '/partnerships/artela.png',
     description: 'Artela is an extensible Layer 1 blockchain with parallel execution and interoperable virtual machines. It pioneers the EVM++ pattern, enabling modular, customizable, and scalable dApps.',
     tags: ['AI', 'Blockchain'],
   },
   {
     name: 'Allora',
     url: 'https://www.allora.network/',
-    icon: '/partnerships/Allora.png',
+    icon: '/partnerships/allora.png',
     description: 'Allora is a self-improving decentralized AI network. Allora enables applications to leverage smarter, more secure AI through a self-improving network of ML models. By combining innovations in crowdsourced intelligence, reinforcement learning, and regret minimization, Allora unlocks a vast new design space of applications at the intersection of crypto and AI.',
     tags: ['AI'],
   },
@@ -294,63 +299,63 @@ const items: PartnerItem[] = [
   {
     name: 'Fairblock',
     url: 'https://www.fairblock.network/',
-    icon: '/partnerships/Fairblock.webp',
+    icon: '/partnerships/fairblock.webp',
     description: 'Fairblock leverages confidential computing to mitigate centralized risks and prevent information leakage and manipulation in decentralized applications. This unlocks credible and confidential DeFi mechanisms and AI models.',
     tags: ['FHE', 'MPC'],
   },
   {
     name: 'CrunchDAO',
     url: 'https://www.crunchdao.com/',
-    icon: '/partnerships/CrunchDAO.jpg',
+    icon: '/partnerships/crunchdao.jpg',
     description: 'CrunchDAO leverages the collective intelligence of data scientists to develop machine learning models and trading signals that generate profits in varying market conditions.',
     tags: ['AI', 'DAO'],
   },
   {
     name: 'Streamr',
     url: 'https://streamr.network/',
-    icon: '/partnerships/Streamr.svg',
+    icon: '/partnerships/streamr.svg',
     description: 'Streamr is a decentralized network purpose-built for real-time data streaming. It uses a peer-to-peer (P2P) architecture and a publish/subscribe (pub/sub) model, allowing data producers to broadcast streams that applications and nodes can subscribe to and consume instantly.',
     tags: ['Data'],
   },
   {
     name: 'Sentient',
     url: 'https://sentigen.ai/',
-    icon: '/partnerships/Sentient.jpg',
+    icon: '/partnerships/sentient.jpg',
     description: 'Sentient Foundation is a non-profit initiative pioneering a new era in AI, aiming to empower communities to build what it calls "Loyal AI" – AI systems that are community-built, community-aligned, and community-owned.',
     tags: ['AI'],
   },
   {
     name: 'Newton',
     url: 'https://magic.link/',
-    icon: '/partnerships/Newton.svg',
+    icon: '/partnerships/newton.svg',
     description: 'Magic Labs\' Newton is a platform for agentic automation in crypto, built to simplify user interactions across DeFi and Web3.',
     tags: ['AI', 'Agent', 'Financial'],
   },
   {
     name: 'Mira',
     url: 'https://mira.network/',
-    icon: '/partnerships/Mira.jpg',
+    icon: '/partnerships/mira.jpg',
     description: 'Mira makes AI reliable, by verifying outputs and actions at every step using collective intelligence',
     tags: ['AI'],
   },
   {
     name: 'Holoworld',
     url: 'https://www.holoworld.com/',
-    icon: '/partnerships/Holoworld.png',
+    icon: '/partnerships/holoworld.png',
     description: 'Holoworld lets anyone create intelligent virtual beings, or AI agents, that can talk, act, and engage across different platforms—no coding required.',
     tags: ['AI', 'Agent'],
   },
   {
     name: 'Swarms',
     url: 'https://www.swarms.xyz/',
-    icon: '/partnerships/Swarms.png',
+    icon: '/partnerships/swarms.png',
     description: 'The Enterprise-Grade Production-Ready Multi-Agent Orchestration Framework.',
     tags: ['AI', 'Agent'],
   },
   {
     name: 'Ritual',
     url: 'https://ritual.net/',
-    icon: '/partnerships/Ritual.jpg',
+    icon: '/partnerships/ritual.jpg',
     description: 'Ritual is the network for open AI infrastructure. We build groundbreaking, new architecture on a crowdsourced governance layer aimed to handle safety, funding, alignment, and model evolution.',
     tags: ['AI'],
   },
@@ -364,7 +369,7 @@ const items: PartnerItem[] = [
   {
     name: 'Blorm',
     url: 'https://blorm.xyz/',
-    icon: '/partnerships/Blorm.jpg',
+    icon: '/partnerships/blorm.jpg',
     description: 'Blorm is forming blockchain information. a blorm is an onchain action.',
     tags: ['AI'],
   }
