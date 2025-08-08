@@ -26,30 +26,7 @@ import { ChangelogIcon } from '@/components/icons'
 import { AnimatedDetails } from './Details'
 
 function Banner() {
-  const pathname = usePathname()
-  if (pathname === '/ai') {
-    return null
-  }
-  return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 flex justify-center pb-1 sm:px-6 sm:pb-5 xl:px-8 z-50 max-w-full">
-      <div
-        className={cn(
-          "pointer-events-auto",
-          "bg-ai-agent rounded-xs",
-          "p-0.5",
-        )}
-      >
-        <div className="px-12 py-2.5 sm:py-3 bg-blackAlpha-600 rounded-xs m-auto">
-          <p className="text-sm leading-6 text-white">
-            <a href="https://docs.phala.network/overview/phala-network/confidential-ai-inference" target="_blank" rel="noopener noreferrer">
-              Build with GPU TEE
-              &nbsp;<span aria-hidden="true">&rarr;</span>
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  )
+  return null
 }
 
 
