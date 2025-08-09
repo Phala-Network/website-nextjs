@@ -3,11 +3,11 @@ import { cn } from '@/lib/utils'
 
 export default function FinalCTA() {
   return (
-    <section className="w-full py-12 px-2 sm:px-8 lg:px-12">
+    <section className="w-full py-24 px-2 sm:px-8 lg:px-12">
       <div className="max-w-4xl mx-auto">
         <div
           className={cn(
-            'dark overflow-hidden rounded-lg relative bg-card',
+            'dark overflow-hidden rounded-lg relative bg-card text-foreground',
             'bg-[url("/next/cta-bg.png")] bg-[length:400px_auto] md:bg-[length:auto_440px] bg-right-top bg-no-repeat',
             'before:absolute',
             'max-md:before:left-0 max-md:before:top-[200px] max-md:before:w-full max-md:before:h-[240px]',

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import PageCoverImage from '@/components/PageCoverImage'
 import PageContent from '@/components/PageContent'
+import PageCoverImage from '@/components/PageCoverImage'
 import attempt from '@/lib/attempt-promise'
 import {
   getParsedPagesByProperties,
@@ -86,14 +86,14 @@ export default async function StaticPage({ params }: Props) {
     >
       <div
         className={cn(
-          'safe-viewport',
-          'grid grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 gap-4',
+          'container',
+          'grid grid-cols-1 lg:grid-cols-20 2xl:grid-cols-24 gap-4',
           'py-32',
         )}
       >
         <div
           className={cn(
-            'col-start-1 lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18',
+            'col-start-1 lg:col-span-18 lg:col-start-2 2xl:col-start-4 2xl:col-span-18',
           )}
         >
           <article

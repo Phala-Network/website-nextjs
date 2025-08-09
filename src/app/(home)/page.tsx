@@ -1,3 +1,4 @@
+import CreamContainer from '@/components/cream-container'
 import ConfidentialAIModelsSection from './ConfidentialAIModelsSection'
 import FAQ from './faq'
 import FinalCTA from './final-cta'
@@ -6,22 +7,8 @@ import Hero from './hero'
 import Logos from './logos'
 import PrivateCloudComputeSection from './PrivateCloudComputeSection'
 import ProvenAtScaleSection from './ProvenAtScaleSection'
-import RealWorldUseCasesSection from './RealWorldSuccessStoriesSection'
+import SuccessStoriesSection from './success-stories'
 import TrustSteps from './trust-steps'
-
-// export const metadata: Metadata = {
-//   alternates: {
-//     canonical: 'https://phala.network',
-//     types: {
-//       'application/rss+xml': [
-//         { url: 'https://phala.network/rss.xml', title: 'Phala News' },
-//       ],
-//       'application/atom+xml': [
-//         { url: 'https://phala.network/atom.xml', title: 'Phala News' },
-//       ],
-//     },
-//   },
-// }
 
 export default function HomePage() {
   return (
@@ -33,9 +20,11 @@ export default function HomePage() {
       <GPUComparisonSection />
       <PrivateCloudComputeSection />
       <ProvenAtScaleSection />
-      <RealWorldUseCasesSection />
-      <FAQ />
-      <FinalCTA />
+      <SuccessStoriesSection />
+      <CreamContainer variant="bottom" className="w-full">
+        <FAQ />
+        <FinalCTA />
+      </CreamContainer>
     </div>
   )
 }

@@ -1,22 +1,22 @@
-import React from 'react'
-import { notFound } from 'next/navigation'
-import { Metadata } from 'next'
 import dayjs from 'dayjs'
+import type { Metadata } from 'next'
+import type React from 'react'
 
-import { cn } from '@/lib/utils'
+import { renderBlocks } from '@/components/notion-render/Block'
+import PageCoverImage from '@/components/PageCoverImage'
+import TagLink from '@/components/TagLink'
 import attempt from '@/lib/attempt-promise'
 import {
-  queryDatabase,
   getParsedPage,
-  ParsedPage,
-  ParsedListPage,
+  type ParsedListPage,
+  type ParsedPage,
+  queryDatabase,
 } from '@/lib/notion-client'
-import { renderBlocks } from '@/components/notion-render/Block'
-import TagLink from '@/components/TagLink'
-import PageCoverImage from '@/components/PageCoverImage'
+import { cn } from '@/lib/utils'
 import '@/components/notion-render/styles.css'
-import NotionBlocksProvider from '@/components/notion-render/NotionBlocksProvider'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+
+import NotionBlocksProvider from '@/components/notion-render/NotionBlocksProvider'
 
 interface Props {
   params: Promise<{ id: string }>
@@ -48,19 +48,17 @@ function AboutLink({
 }
 
 async function getPostPreviewData(id: string): Promise<PostData | null> {
-  const [error, page] = await attempt(
-    getParsedPage(id)
-  )
-  
+  const [error, page] = await attempt(getParsedPage(id))
+
   if (error) {
     console.error(error)
     return null
   }
-  
+
   if (!page) {
     return null
   }
-  
+
   const baseFilters = [
     {
       property: 'Status',
@@ -81,7 +79,7 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
       },
     },
   ]
-  
+
   const { pages: recentPages } = await queryDatabase({
     database_id: process.env.NOTION_POSTS_DATABASE_ID!,
     filter: {
@@ -95,7 +93,7 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
     ],
     page_size: 3,
   })
-  
+
   let similarPages: ParsedListPage[] = []
   if (page.tags.length > 0) {
     const result = await queryDatabase({
@@ -121,10 +119,10 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
     })
     similarPages = result.pages
   }
-  
+
   let beforePages: ParsedListPage[] = []
   let nextPages: ParsedListPage[] = []
-  
+
   if (page.publishedTime) {
     const { pages: nextPagesResult } = await queryDatabase({
       database_id: process.env.NOTION_POSTS_DATABASE_ID!,
@@ -148,7 +146,7 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
       page_size: 1,
     })
     nextPages = nextPagesResult
-    
+
     const { pages: beforePagesResult } = await queryDatabase({
       database_id: process.env.NOTION_POSTS_DATABASE_ID!,
       filter: {
@@ -174,7 +172,7 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
     })
     beforePages = beforePagesResult
   }
-  
+
   return {
     page,
     recentPages,
@@ -187,18 +185,20 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
   const postData = await getPostPreviewData(id)
-  
+
   if (!postData) {
     return {
       title: 'Preview Not Found',
     }
   }
-  
+
   const { page } = postData
-  const postCover = page.cover ? (
-    'external' in page.cover ? page.cover.external.url : page.cover.file.url
-  ) : "https://phala.network/og-image.jpg"
-  
+  const postCover = page.cover
+    ? 'external' in page.cover
+      ? page.cover.external.url
+      : page.cover.file.url
+    : 'https://phala.network/og-image.jpg'
+
   return {
     title: page.title,
     openGraph: {
@@ -237,7 +237,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PostPreviewPage({ params }: Props) {
   const { id } = await params
   const postData = await getPostPreviewData(id)
-  
+
   if (!postData) {
     return (
       <div className="max-w-3xl m-auto p-8">
@@ -245,7 +245,7 @@ export default async function PostPreviewPage({ params }: Props) {
       </div>
     )
   }
-  
+
   const {
     page,
     recentPages = [],
@@ -253,30 +253,26 @@ export default async function PostPreviewPage({ params }: Props) {
     beforePages = [],
     nextPages = [],
   } = postData
-  
+
   return (
-    <div
-      className={cn(
-        'bg-linear-to-b from-green-600 to-green-500'
-      )}
-    >
+    <div className={cn('bg-linear-to-b from-green-600 to-green-500')}>
       <div
         className={cn(
-          'lg:safe-viewport',
-          'grid grid-cols-1 lg:grid-cols-20 3xl:grid-cols-24 gap-4',
-          'py-32'
+          'lg:container',
+          'grid grid-cols-1 lg:grid-cols-20 2xl:grid-cols-24 gap-4',
+          'py-32',
         )}
       >
         <div
           className={cn(
-            'col-start-1 lg:col-span-11 lg:col-start-2 3xl:col-start-4 3xl:col-span-11'
+            'col-start-1 lg:col-span-11 lg:col-start-2 2xl:col-start-4 2xl:col-span-11',
           )}
         >
           <nav
             className={cn(
               'bg-white lg:rounded-3xl',
               'py-2 px-6',
-              'text-sm font-medium flex gap-2'
+              'text-sm font-medium flex gap-2',
             )}
           >
             <a href="/blog">Blog</a>
@@ -292,13 +288,11 @@ export default async function PostPreviewPage({ params }: Props) {
           <article
             className={cn(
               'notion_page_body',
-              'bg-white lg:rounded-3xl p-2 mt-4'
+              'bg-white lg:rounded-3xl p-2 mt-4',
             )}
           >
             {page.cover ? (
-              <div
-                className={cn('lg:rounded-3xl overflow-hidden')}
-              >
+              <div className={cn('lg:rounded-3xl overflow-hidden')}>
                 <PageCoverImage
                   className="w-full aspect-856/442"
                   page={page}
@@ -312,13 +306,15 @@ export default async function PostPreviewPage({ params }: Props) {
                 {page.title}
               </h1>
               <div className="flex flex-wrap items-center gap-3">
-                {page.tags.filter(i => i !== 'Changelog').map((tag, i) => (
-                  <div key={`${i}`}>
-                    <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
-                      {tag}
-                    </TagLink>
-                  </div>
-                ))}
+                {page.tags
+                  .filter((i) => i !== 'Changelog')
+                  .map((tag, i) => (
+                    <div key={`${i}`}>
+                      <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
+                        {tag}
+                      </TagLink>
+                    </div>
+                  ))}
               </div>
               <div className="my-6">
                 <p className="text-sm font-medium">
@@ -337,9 +333,7 @@ export default async function PostPreviewPage({ params }: Props) {
                     href={`/posts${beforePages[0].slug}`}
                   >
                     <FiArrowLeft className="shrink-0" />
-                    <span className="line-clamp-1">
-                      {beforePages[0].title}
-                    </span>
+                    <span className="line-clamp-1">{beforePages[0].title}</span>
                   </a>
                 ) : null}
                 {nextPages.length > 0 ? (
@@ -361,13 +355,13 @@ export default async function PostPreviewPage({ params }: Props) {
               <h1 className="text-2xl font-bold">About Phala</h1>
               <div className="text-sm mt-4 flex flex-col gap-4">
                 <p>
-                  Phala Network is a decentralized cloud that offers secure
-                  and scalable computing for Web3.
+                  Phala Network is a decentralized cloud that offers secure and
+                  scalable computing for Web3.
                 </p>
                 <p>
-                  With Phat Contracts, an innovative programming model
-                  enabling trustless off-chain computation, developers can
-                  create new Web3 use cases.
+                  With Phat Contracts, an innovative programming model enabling
+                  trustless off-chain computation, developers can create new
+                  Web3 use cases.
                 </p>
               </div>
             </div>
