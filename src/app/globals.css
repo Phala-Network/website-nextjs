@@ -2,9 +2,6 @@
 
 @custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
-@plugin 'daisyui' {
-  prefix: 'd-';
-}
 @plugin 'tailwindcss-animate';
 @import './legacy-theme.css';
 @import './legacy-components.css';
