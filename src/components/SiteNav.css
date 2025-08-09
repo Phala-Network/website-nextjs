@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@reference '../app/globals.css';
 
 .site-hamburger-menu .menu {
   background-color: transparent;
@@ -41,13 +39,12 @@
   stroke-dashoffset: -134;
 }
 
-
 /*
  * Site Nav Drawer
  */
 
 .site-nav-drawer {
-  @apply fixed left-0 top-0 w-screen h-screen z-40 rounded-l-5xl bg-black-150;
+  @apply fixed left-0 top-0 w-screen h-screen z-40 rounded-l-[2rem] bg-black-150;
   width: 120vw;
   max-height: -webkit-fill-available;
   will-change: transform;
@@ -70,7 +67,7 @@
 }
 
 .site-nav-drawer details summary::-webkit-details-marker {
-  display:none;
+  display: none;
 }
 
 .site-nav-drawer summary svg {

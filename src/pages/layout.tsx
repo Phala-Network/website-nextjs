@@ -1,20 +1,18 @@
-import React from 'react'
 import Script from 'next/script'
+import type React from 'react'
 
-import SiteNav from '@/components/SiteNav'
-import SiteFooter from '@/components/SiteFooter'
 import ScrollToTop from '@/components/ScrollToTop'
+import SiteFooter from '@/components/SiteFooter'
+import SiteNav from '@/components/SiteNav'
+import fontVariables from '@/lib/fonts'
 
 import 'swiper/css'
 import '@/app/globals.css'
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <div className={fontVariables}>
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
         <>
           <Script
@@ -36,7 +34,6 @@ export default function Layout({
       {children}
       <SiteFooter />
       <ScrollToTop />
-    </>
+    </div>
   )
 }
-

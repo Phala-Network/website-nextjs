@@ -1,5 +1,4 @@
-@tailwind utilities;
-
+@reference './globals.css';
 
 .code-viewer {
   @apply border border-solid border-blackAlpha-200 bg-whiteAlpha-200 rounded-[20px] w-8/12 shadow-lg;
@@ -14,7 +13,8 @@
 /* .section-hero */
 
 .section-hero .stats-text-shadow {
-  text-shadow: 0px 4px 10px rgba(255, 255, 255, 0.40), 0px 10px 15px rgba(255, 255, 255, 0.20), 0px 0px 0px rgba(255, 255, 255, 0.10);
+  text-shadow: 0px 4px 10px rgba(255, 255, 255, 0.4),
+    0px 10px 15px rgba(255, 255, 255, 0.2), 0px 0px 0px rgba(255, 255, 255, 0.1);
 }
 
 /* .section-features */
@@ -67,16 +67,14 @@
 
 .blueprint-details summary {
   @apply text-xl font-black uppercase list-none transition-all cursor-pointer;
-  @apply text-phat-600 ;
+  @apply text-phat-600;
 }
 
-.blueprint-details.active summary
-{
+.blueprint-details.active summary {
   @apply text-black transition-all;
 }
 
-.blueprint-details:hover summary
-{
+.blueprint-details:hover summary {
   @apply text-whiteAlpha-900 transition-all;
 }
 
@@ -135,7 +133,6 @@
 
 .blueprint-card .img {
   @apply transition-all;
-
 }
 .blueprint-card:hover .img {
   @apply -rotate-12;
@@ -200,7 +197,6 @@
   @apply text-3xl xl:text-5xl font-black uppercase;
 }
 
-
 .partnership-logo-container {
   @apply flex justify-center items-center h-20 w-20 bg-whiteAlpha-50 border border-whiteAlpha-200 rounded grayscale transition-all;
 }
@@ -214,36 +210,86 @@
   height: 48px;
   background-image: url('/partnerships/sprite.png?v=2');
   background-repeat: no-repeat;
-  background-size: 240px 240px;  /* 5 * 80px */
+  background-size: 240px 240px; /* 5 * 80px */
   display: inline-block;
 }
 
-.partnership-logo-flockio { background-position: 0 0; }
-.partnership-logo-gmnetwork { background-position: -48px 0; }
-.partnership-logo-iotex { background-position: -96px 0; }
-.partnership-logo-pond { background-position: -144px 0; }
-.partnership-logo-mindnetwork { background-position: -192px 0; }
+.partnership-logo-flockio {
+  background-position: 0 0;
+}
+.partnership-logo-gmnetwork {
+  background-position: -48px 0;
+}
+.partnership-logo-iotex {
+  background-position: -96px 0;
+}
+.partnership-logo-pond {
+  background-position: -144px 0;
+}
+.partnership-logo-mindnetwork {
+  background-position: -192px 0;
+}
 
-.partnership-logo-awesomeqa { background-position: 0 -48px; }
-.partnership-logo-theoriq { background-position: -48px -48px; }
-.partnership-logo-nevermined { background-position: -96px -48px; }
-.partnership-logo-magnetai { background-position: -144px -48px; }
-.partnership-logo-onfinality { background-position: -192px -48px; }
+.partnership-logo-awesomeqa {
+  background-position: 0 -48px;
+}
+.partnership-logo-theoriq {
+  background-position: -48px -48px;
+}
+.partnership-logo-nevermined {
+  background-position: -96px -48px;
+}
+.partnership-logo-magnetai {
+  background-position: -144px -48px;
+}
+.partnership-logo-onfinality {
+  background-position: -192px -48px;
+}
 
-.partnership-logo-zurf { background-position: 0 -96px; }
-.partnership-logo-huddle01 { background-position: -48px -96px; }
-.partnership-logo-airstack { background-position: -96px -96px; }
-.partnership-logo-dmail { background-position: -144px -96px; }
-.partnership-logo-sygma { background-position: -192px -96px; }
+.partnership-logo-zurf {
+  background-position: 0 -96px;
+}
+.partnership-logo-huddle01 {
+  background-position: -48px -96px;
+}
+.partnership-logo-airstack {
+  background-position: -96px -96px;
+}
+.partnership-logo-dmail {
+  background-position: -144px -96px;
+}
+.partnership-logo-sygma {
+  background-position: -192px -96px;
+}
 
-.partnership-logo-index { background-position: 0 -144px; }
-.partnership-logo-polygon { background-position: -48px -144px; }
-.partnership-logo-polkadot { background-position: -96px -144px; }
-.partnership-logo-base { background-position: -144px -144px; }
-.partnership-logo-thegraph { background-position: -192px -144px; }
+.partnership-logo-index {
+  background-position: 0 -144px;
+}
+.partnership-logo-polygon {
+  background-position: -48px -144px;
+}
+.partnership-logo-polkadot {
+  background-position: -96px -144px;
+}
+.partnership-logo-base {
+  background-position: -144px -144px;
+}
+.partnership-logo-thegraph {
+  background-position: -192px -144px;
+}
 
-.partnership-logo-lens { background-position: 0 -192px; }
-.partnership-logo-farcaster { background-position: -48px -192px; }
-.partnership-logo-hackachain { background-position: -96px -192px; }
-.partnership-logo-developerdao { background-position: -144px -192px; }
-.partnership-logo-easya { background-position: -192px -192px; }
+.partnership-logo-lens {
+  background-position: 0 -192px;
+}
+.partnership-logo-farcaster {
+  background-position: -48px -192px;
+}
+.partnership-logo-hackachain {
+  background-position: -96px -192px;
+}
+.partnership-logo-developerdao {
+  background-position: -144px -192px;
+}
+.partnership-logo-easya {
+  background-position: -192px -192px;
+}
