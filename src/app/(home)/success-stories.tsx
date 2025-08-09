@@ -14,10 +14,10 @@ import {
 } from '@/components/ui/carousel'
 import { cn } from '@/lib/utils'
 
-const story1 = '/next/story-1.png'
-const story2 = '/next/story-2.png'
-const story3 = '/next/story-3.png'
-const story4 = '/next/story-4.png'
+const story1 = '/home/story-1.png'
+const story2 = '/home/story-2.png'
+const story3 = '/home/story-3.png'
+const story4 = '/home/story-4.png'
 
 interface SuccessStory {
   id: string
