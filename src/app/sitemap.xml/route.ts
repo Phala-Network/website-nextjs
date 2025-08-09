@@ -1,10 +1,7 @@
-import type { GetServerSidePropsContext } from 'next'
 import * as R from 'ramda'
-
 import { notion, queryDatabase, type ParsedListPage } from '@/lib/notion-client'
 
-//pages/sitemap.xml.js
-const WEBSITE_URL = 'https://phala.network';
+const WEBSITE_URL = 'https://phala.network'
 
 function generateSiteMap(tags: string[], posts: ParsedListPage[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -94,21 +91,15 @@ async function retrievePosts() {
   return pages
 }
 
-export async function getServerSideProps({ res }: GetServerSidePropsContext) {
+export async function GET() {
   const tags = await retrieveTags()
   const posts = await retrievePosts()
   const sitemap = generateSiteMap(tags, posts)
 
-  res.setHeader('Content-Type', 'text/xml')
-  res.setHeader('Cache-Control', 's-maxage=1800')
-  res.write(sitemap)
-  res.end()
-
-  return {
-    props: {},
-  }
-}
-
-export default function SiteMap() {
-  // getServerSideProps will do the heavy lifting
+  return new Response(sitemap, {
+    headers: {
+      'Content-Type': 'text/xml',
+      'Cache-Control': 's-maxage=1800',
+    },
+  })
 }
