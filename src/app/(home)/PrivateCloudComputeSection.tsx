@@ -4,10 +4,10 @@ import { FaArrowRight } from 'react-icons/fa6'
 
 import { cn } from '@/lib/utils'
 
-const imgFrame3 = '/4c5a655e8f124c01bb08649227d5f622682046ee.svg'
-const imgFrame4 = '/2aaff35c0fc27f5446d1a0a31bd402e68ec9e2af.svg'
-const imgFrame5 = '/8270c125b1785e2086622b7e4494849892e36de4.svg'
-const imgImage339 = '/5045da53fab3577aa583ac31db1c55f854bbb843.png'
+const imgFrame3 = 'https://placehold.co/400'
+const imgFrame4 = 'https://placehold.co/400'
+const imgFrame5 = 'https://placehold.co/400'
+const imgImage339 = 'https://placehold.co/400'
 
 interface Tab {
   id: string
