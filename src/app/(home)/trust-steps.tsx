@@ -114,14 +114,14 @@ export default function TrustSteps() {
   }, [])
 
   return (
-    <div className="w-full py-12 px-2 sm:px-8 lg:px-12">
-      <div className="max-w-2xl lg:max-w-6xl mx-auto">
+    <div className="w-full py-24 max-w-6xl mx-auto">
+      <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-16 lg:gap-8">
           <div className="max-sm:px-4">
             <h2 className="font-bold text-2xl md:text-3xl">
               When Your Users Trust AI
             </h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground text-lg font-medium">
               Trust creates a powerful cycle that drives business growth and
               market leadership
             </p>
