@@ -42,7 +42,7 @@ export default function FAQ() {
           <h1 className="mt-4 text-3xl md:text-4xl font-bold">
             Common Questions & Answers
           </h1>
-          <p className="mt-6 font-medium text-muted-foreground">
+          <p className="mt-5 text-lg font-medium text-muted-foreground">
             Find out all the essential details about our platform and how it can
             serve your needs.
           </p>
@@ -55,7 +55,7 @@ export default function FAQ() {
               </span>
               <div>
                 <div className="mb-2 flex items-center justify-between">
-                  <h3 className="font-semibold">{faq.question}</h3>
+                  <h3 className="font-semibold font-sans">{faq.question}</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
               </div>
