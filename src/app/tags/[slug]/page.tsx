@@ -55,7 +55,7 @@ async function getTagData(slug: string) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   return {
-    title: `${slug} - Phala Network`,
+    title: slug,
     robots: 'noindex',
     alternates: {
       canonical: `https://phala.network/tags/${encodeURIComponent(slug)}`,
