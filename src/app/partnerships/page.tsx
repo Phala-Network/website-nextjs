@@ -6,6 +6,7 @@ import { FiExternalLink } from 'react-icons/fi'
 
 import { cn } from '@/lib/utils'
 import PartnerTagFilter from '@/components/PartnerTagFilter'
+import {Button} from '@/components/ui/button'
 
 interface PartnerItem {
   name: string
@@ -449,9 +450,11 @@ function LatestNews() {
         </h2>
       </header>
       <div className="mt-16 flex flex-col lg:flex-row gap-4 justify-center">
-        <Link href="/tags/Partnerships" className="btn btn-rounded btn-purple px-12">
-          View Partnership News
-        </Link>
+        <Button asChild>
+          <Link href="/tags/Partnerships">
+            View Partnership News
+          </Link>
+        </Button>
       </div>
     </section>
   )
