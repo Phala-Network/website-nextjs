@@ -16,7 +16,10 @@ export const metadata: Metadata = {
 }
 
 const DstackPage = async () => {
-  if (process.env.VERCEL_TARGET_ENV !== 'preview') {
+  if (
+    process.env.VERCEL_TARGET_ENV !== 'preview' &&
+    process.env.NODE_ENV !== 'development'
+  ) {
     notFound()
   }
 

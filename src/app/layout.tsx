@@ -1,5 +1,5 @@
 import { GoogleTagManager } from '@next/third-parties/google'
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import Script from 'next/script'
 
 import Footer from '@/components/footer'
@@ -8,10 +8,6 @@ import ScrollToTop from '@/components/ScrollToTop'
 import fontVariables from '@/lib/fonts'
 
 import './globals.css'
-
-export const viewport: Viewport = {
-  themeColor: 'rgba(232, 233, 234, 1)',
-}
 
 export const metadata: Metadata = {
   title: {
