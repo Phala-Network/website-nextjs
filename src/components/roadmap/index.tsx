@@ -8,7 +8,7 @@ import DotBackground from '@/components/DotBackground'
 import RoadmapSvg from './svg'
 import './style.css'
 
-export const Roadmap = () => {
+const Roadmap = () => {
   const ref = useRef<any>(null)
   const panzoomRef = useRef<any>(null)
   const [isFullscreen, setFullscreen] = useState(false)
@@ -20,7 +20,7 @@ export const Roadmap = () => {
       initialX: 0,
       initialY: 0,
       zoomDoubleClickSpeed: 1,
-      beforeMouseDown: function() {
+      beforeMouseDown: function () {
         return false
       },
     })
@@ -41,7 +41,7 @@ export const Roadmap = () => {
     panzoomRef.current.zoomTo(
       ref.current.offsetWidth / 2,
       ref.current.offsetHeight / 2,
-      1 + 0.5,
+      1 + 0.5
     )
   }
 
@@ -49,18 +49,42 @@ export const Roadmap = () => {
     panzoomRef.current.zoomTo(
       ref.current.offsetWidth / 2,
       ref.current.offsetHeight / 2,
-      1 - 0.5,
+      1 - 0.5
     )
   }
 
   const handleFullscreen = () => {
     // @ts-ignore
-    if (document.fullscreenElement === null || document.webkitIsFullScreen === false) {
+    if (
+      document.fullscreenElement === null ||
       // @ts-ignore
-      document.documentElement.requestFullscreen ? document.documentElement.requestFullscreen() : document.documentElement.webkitRequestFullscreen ? document.documentElement.webkitRequestFullscreen() : document.documentElement.mozRequestFullScreen ? document.documentElement.mozRequestFullScreen() : document.documentElement.msRequestFullscreen && document.documentElement.msRequestFullscreen()
+      document.webkitIsFullScreen === false
+    ) {
+      // @ts-ignore
+      document.documentElement.requestFullscreen
+        ? document.documentElement.requestFullscreen()
+      // @ts-ignore
+        : document.documentElement.webkitRequestFullscreen
+      // @ts-ignore
+        ? document.documentElement.webkitRequestFullscreen()
+      // @ts-ignore
+        : document.documentElement.mozRequestFullScreen
+      // @ts-ignore
+        ? document.documentElement.mozRequestFullScreen()
+      // @ts-ignore
+        : document.documentElement.msRequestFullscreen &&
+      // @ts-ignore
+          document.documentElement.msRequestFullscreen()
     } else {
       // @ts-ignore
-      document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen ? document.webkitExitFullscreen() : document.mozCancelFullScreen && document.mozCancelFullScreen()
+      document.exitFullscreen
+        ? document.exitFullscreen()
+      // @ts-ignore
+        : document.webkitExitFullscreen
+      // @ts-ignore
+        ? document.webkitExitFullscreen()
+      // @ts-ignore
+        : document.mozCancelFullScreen && document.mozCancelFullScreen()
     }
   }
 
@@ -94,13 +118,17 @@ export const Roadmap = () => {
         </div>
         <div className="roadmap-tools-group">
           <button
-            className={cn("roadmap-tool roadmap-tool-fullscreen", isFullscreen ? 'active' : '')}
+            className={cn(
+              'roadmap-tool roadmap-tool-fullscreen',
+              isFullscreen ? 'active' : ''
+            )}
             onClick={handleFullscreen}
           >
             <svg viewBox="0 0 14 14">
               <polyline points="1,5.2 1,1 5.2,1"></polyline>
               <polyline points="8.8,1 13,1 13,5.2"></polyline>
-              <polyline points="13,8.8 13,13 8.8,13"></polyline> <polyline points="5.2,13 1,13 1,8.8"></polyline>
+              <polyline points="13,8.8 13,13 8.8,13"></polyline>{' '}
+              <polyline points="5.2,13 1,13 1,8.8"></polyline>
             </svg>
           </button>
         </div>
