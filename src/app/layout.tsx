@@ -29,6 +29,17 @@ export const metadata: Metadata = {
   twitter: {
     site: '@PhalaNetwork',
   },
+  alternates: {
+    canonical: 'https://phala.network',
+    types: {
+      'application/rss+xml': [
+        { url: 'https://phala.network/rss.xml', title: 'Phala News' },
+      ],
+      'application/atom+xml': [
+        { url: 'https://phala.network/atom.xml', title: 'Phala News' },
+      ],
+    },
+  },
 }
 
 export default function RootLayout({

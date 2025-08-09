@@ -65,7 +65,7 @@ export default function GPUComparisonSection() {
               </div>
 
               <div className="mt-10">
-                <p className="text-[#61645b] font-blog mb-4">
+                <p className="text-[#61645b] mb-4">
                   Phala connects you to hardware-secured GPU servers for
                   instant, private AI computing. 100% confidential with only 5%
                   performance trade-off.
@@ -75,7 +75,7 @@ export default function GPUComparisonSection() {
                   Learn more about NVIDIA Confidential Compute
                   <FaArrowRight className="w-3 h-3" />
                 </a>
-                {/* <p className="text-[#61645b] text-xs font-blog">
+                {/* <p className="text-[#61645b] text-xs">
                   Start in seconds, run confidentially for as long as you need.
                 </p> */}
               </div>

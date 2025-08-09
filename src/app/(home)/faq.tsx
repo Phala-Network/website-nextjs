@@ -35,8 +35,8 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="w-full pt-8 sm:pt-12 px-2 sm:px-8 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full py-24 max-w-(--breakpoint-xl) mx-auto">
+      <div className="container mx-auto">
         <div className="text-center">
           <Badge className="text-xs font-medium">FAQ</Badge>
           <h1 className="mt-4 text-3xl md:text-4xl font-bold">

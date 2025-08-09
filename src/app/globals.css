@@ -6,22 +6,16 @@
 @import './theme/colors.css';
 @import './theme/typography.css';
 
-@theme {
-  /* TODO: remove */
-  --breakpoint-3xl: 120rem;
-}
-
 @utility container {
   margin-inline: auto;
-  @apply px-4 sm:px-8 lg:px-12;
+  @apply px-4 sm:px-6;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body,
-  .dark {
+  body {
     @apply bg-background text-foreground;
   }
   h1,
@@ -153,14 +147,4 @@ details > summary {
 }
 details > summary::-webkit-details-marker {
   display: none;
-}
-
-/**
- *
- * Helpers
- *
- */
-
-.safe-viewport {
-  @apply w-full max-w-[1760px] mx-auto px-6 lg:px-9 xl:px-10 3xl:px-0;
 }
