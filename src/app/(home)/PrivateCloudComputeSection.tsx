@@ -102,13 +102,11 @@ export default function PrivateCloudComputeSection() {
             <h3 className="font-semibold text-2xl md:text-3xl text-[#1e2119]">
               Phala Cloud
             </h3>
-            <p className="text-[#61645b] mt-4 font-blog">
+            <p className="text-[#61645b] mt-4">
               All-in-one confidential compute platform for AI workloads
             </p>
 
-            <p className="text-[#61645b] mt-4 font-blog">
-              Starting at $50.37/month
-            </p>
+            <p className="text-[#61645b] mt-4">Starting at $50.37/month</p>
 
             <a
               href="https://cloud.phala.network"

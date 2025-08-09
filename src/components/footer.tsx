@@ -97,7 +97,7 @@ const socialLinks = [
 
 const SiteFooter: React.FC = () => {
   return (
-    <section className="bg-muted py-12 sm:py-16 md:py-24">
+    <section className="py-12 sm:py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-6">
         {/* Logo and newsletter section */}
         <div className="mb-10 flex flex-col items-start justify-between gap-10 border-b pb-10 sm:mb-16 sm:pb-12 lg:flex-row">

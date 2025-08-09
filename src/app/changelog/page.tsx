@@ -65,14 +65,14 @@ export default async function ChangelogPage() {
     <div>
       <div
         className={cn(
-          'safe-viewport',
-          'grid grid-cols-2 lg:grid-cols-20 3xl:grid-cols-24',
+          'container',
+          'grid grid-cols-2 lg:grid-cols-20 2xl:grid-cols-24',
           'py-32',
         )}
       >
         <div
           className={cn(
-            'col-start-1 col-span-full lg:col-span-18 lg:col-start-2 3xl:col-start-4 3xl:col-span-18',
+            'col-start-1 col-span-full lg:col-span-18 lg:col-start-2 2xl:col-start-4 2xl:col-span-18',
           )}
         >
           <header className="flex flex-row items-center justify-between gap-4">

@@ -55,7 +55,7 @@ export default function ProvenAtScaleSection() {
                 className="h-1.5 rounded-full w-12 mb-6"
                 style={{ backgroundColor: stat.color }}
               ></div>
-              <p className="text-[#61645b] font-blog mt-auto whitespace-pre-line max-md:text-sm">
+              <p className="text-[#61645b] mt-auto whitespace-pre-line max-md:text-sm">
                 {stat.description}
               </p>
             </div>
