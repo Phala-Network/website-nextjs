@@ -54,7 +54,7 @@ const LogoRow = ({ companies, gridCols }: LogoRowProps) => (
         <img
           src={company.logo}
           alt={`${company.name} logo`}
-          className="max-w-[140px] max-h-[50px] object-contain grayscale transition-opacity hover:opacity-70 opacity-90 block w-full h-full"
+          className="max-w-[140px] max-h-[50px] object-contain grayscale transition-opacity hover:opacity-90 opacity-50 block w-full h-full"
         />
       </a>
     ))}
@@ -66,7 +66,7 @@ const Logos = () => {
     <section className="py-12 w-full">
       <div className="container space-y-10 flex flex-col items-center">
         <div className="text-center">
-          <h2 className="mb-4 font-bold text-balance text-3xl lg:text-4xl">
+          <h2 className="mb-4 font-bold text-balance text-2xl md:text-3xl">
             Trusted by more than <span className="text-primary-400">5000+</span>{' '}
             users
           </h2>

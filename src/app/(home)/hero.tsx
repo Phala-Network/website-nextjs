@@ -7,12 +7,12 @@ export default function Hero() {
   return (
     <>
       <Head>
-        <link rel="preload" href="/next/hero-bg.png" as="image" />
+        <link rel="preload" href="/home/hero-bg.png" as="image" />
       </Head>
       <div className="w-full bg-background">
         <div
           className={cn(
-            "w-full max-w-screen-2xl mx-auto pt-24 bg-[url('/next/hero-bg.png')] bg-right-bottom bg-no-repeat relative",
+            "w-full max-w-screen-2xl mx-auto pt-24 bg-[url('/home/hero-bg.png')] bg-right-bottom bg-no-repeat relative",
             'h-[700px] sm:h-[800px] xl:h-[680px]',
             'bg-[length:400px_auto] sm:bg-[length:600px_auto] md:bg-[length:680px_auto] lg:bg-[length:800px_auto] xl:bg-[length:984px_auto]',
           )}
@@ -28,7 +28,7 @@ export default function Hero() {
               <h2 className="font-semibold text-xl md:text-2xl">
                 Build AI People Can Trust
               </h2>
-              <p className="text-sm sm:text-base">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 Hardware-secured compute platform that delivers verifiable AI
                 with enterprise-grade privacy. Deploy confidential AI models
                 with TEE protection in minutes, not months.

@@ -1,8 +1,7 @@
 import CreamContainer from '@/components/cream-container'
-import ConfidentialAIModelsSection from './ConfidentialAIModelsSection'
+import ConfidentialAI from './confidential-ai'
 import FAQ from './faq'
 import FinalCTA from './final-cta'
-import GPUComparisonSection from './GPUComparisonSection'
 import Hero from './hero'
 import Logos from './logos'
 import PrivateCloudComputeSection from './PrivateCloudComputeSection'
@@ -16,8 +15,7 @@ export default function HomePage() {
       <Hero />
       <TrustSteps />
       <Logos />
-      <ConfidentialAIModelsSection />
-      <GPUComparisonSection />
+      <ConfidentialAI />
       <PrivateCloudComputeSection />
       <ProvenAtScale />
       <SuccessStories />

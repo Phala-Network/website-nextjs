@@ -179,8 +179,8 @@ function SiteNav() {
                 {(!open || !submenu) && (
                   <>
                     <Logo url="/">
-                      <LogoImageDesktop src="/next/logo.svg" alt="Phala" />
-                      <LogoImageMobile src="/next/logo.svg" alt="Phala" />
+                      <LogoImageDesktop src="/home/logo.svg" alt="Phala" />
+                      <LogoImageMobile src="/home/logo.svg" alt="Phala" />
                     </Logo>
                   </>
                 )}
@@ -206,7 +206,7 @@ function SiteNav() {
                         <div className="border-input bg-background overflow-clip rounded-lg border">
                           <div>
                             <img
-                              src="/next/cta-bg.png"
+                              src="/home/cta-bg.png"
                               alt="Solutions overview"
                               className="h-[190px] w-[398px] object-cover object-center"
                             />
@@ -543,7 +543,7 @@ function SiteNav() {
                 <a href="/solutions" className="block space-y-6 px-8 py-8">
                   <div className="w-full overflow-clip rounded-lg">
                     <img
-                      src="/next/cta-bg.png"
+                      src="/home/cta-bg.png"
                       alt="Solutions overview"
                       className="aspect-2/1 h-full w-full object-cover object-center"
                     />
