@@ -98,13 +98,13 @@ const rows: Row[] = [
 
 function StatusIcon({ status }: { status: Status }) {
   if (status === 'good') {
-    return <CheckCircle className="size-5 text-success" />
+    return <CheckCircle className="size-5 text-green-500" />
   }
   if (status === 'bad') {
     return <CircleMinus className="size-5 text-destructive" />
   }
   if (status === 'warn') {
-    return <AlertCircle className="size-5 text-warning" />
+    return <AlertCircle className="size-5 text-yellow-500" />
   }
   return <HelpCircle className="size-5 text-muted-foreground" />
 }
