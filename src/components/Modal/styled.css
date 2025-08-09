@@ -1,3 +1,0 @@
-:root:has(:is(.d-modal-open, .d-modal:target, .d-modal-toggle:checked + .d-modal, .d-modal[open])) {
-  overflow: visible !important;
-}

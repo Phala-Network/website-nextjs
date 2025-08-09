@@ -1,14 +1,46 @@
 import { GoogleTagManager } from '@next/third-parties/google'
+import type { Metadata } from 'next'
 import Script from 'next/script'
 
+import Footer from '@/components/footer'
+import Nav from '@/components/nav'
 import ScrollToTop from '@/components/ScrollToTop'
-import SiteFooter from '@/components/SiteFooter'
-import SiteNav from '@/components/SiteNav'
 import fontVariables from '@/lib/fonts'
 
-import 'swiper/css'
-import 'swiper/css/free-mode'
 import './globals.css'
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Phala',
+    default: 'Phala: The New Cloud for Confidential AI',
+  },
+  description:
+    'Phala is the new cloud for confidential AI helping build AI people can trust.',
+  keywords: [
+    'Phala',
+    'Confidential AI',
+    'TEE',
+    'GPU TEE',
+    'Confidential Computing',
+    'Web3',
+    'Verifiable Compute',
+    'Phala Network',
+  ],
+  twitter: {
+    site: '@PhalaNetwork',
+  },
+  alternates: {
+    canonical: 'https://phala.network',
+    types: {
+      'application/rss+xml': [
+        { url: 'https://phala.network/rss.xml', title: 'Phala News' },
+      ],
+      'application/atom+xml': [
+        { url: 'https://phala.network/atom.xml', title: 'Phala News' },
+      ],
+    },
+  },
+}
 
 export default function RootLayout({
   children,
@@ -17,11 +49,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={fontVariables}>
-      {process.env.NEXT_PUBLIC_GTM_ID ? (
+      {process.env.NEXT_PUBLIC_GTM_ID && (
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
-      ) : null}
+      )}
       <body>
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
@@ -37,10 +69,10 @@ export default function RootLayout({
               `}
             </Script>
           </>
-        ) : null}
+        )}
         {children}
-        <SiteNav />
-        <SiteFooter />
+        <Nav />
+        <Footer />
         <ScrollToTop />
       </body>
     </html>

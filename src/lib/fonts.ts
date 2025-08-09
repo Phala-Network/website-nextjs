@@ -4,13 +4,11 @@ import { cn } from '@/lib/utils'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
-  // weight: ['600'],
   variable: '--display-family',
 })
 
 const inter = Inter({
   subsets: ['latin'],
-  // weight: ['400'],
   variable: '--text-family',
 })
 

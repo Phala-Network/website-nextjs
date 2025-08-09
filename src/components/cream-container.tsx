@@ -1,12 +1,12 @@
-import React from 'react';
+import type React from 'react'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 type CreamContainerProps = {
-  children: React.ReactNode;
-  variant?: 'top' | 'bottom';
-  className?: string;
-};
+  children: React.ReactNode
+  variant?: 'top' | 'bottom'
+  className?: string
+}
 
 const CreamContainer = ({
   children,
@@ -16,7 +16,7 @@ const CreamContainer = ({
   return (
     <div
       className={cn(
-        'relative mx-2.5 mt-2.5 lg:mx-4',
+        'relative',
         variant === 'top' &&
           'from-cream via-background to-background/80 rounded-t-[36px] rounded-b-2xl bg-linear-to-b via-20%',
         variant === 'bottom' &&
@@ -26,7 +26,7 @@ const CreamContainer = ({
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default CreamContainer;
+export default CreamContainer
