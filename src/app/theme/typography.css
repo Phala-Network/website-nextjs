@@ -1,0 +1,19 @@
+/* https://www.styleglide.ai/themes */
+:root {
+  --display-weight: 600;
+  --text-weight: 400;
+}
+
+@theme inline {
+  --font-display: var(--display-family);
+  --font-text: var(--text-family);
+}
+
+@layer base {
+  .font-display {
+    font-weight: var(--display-weight);
+  }
+  .font-text {
+    font-weight: var(--text-weight);
+  }
+}
