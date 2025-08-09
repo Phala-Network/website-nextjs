@@ -31,6 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </>
       ) : null}
       {children}
+      <SiteNav />
       <SiteFooter />
       <ScrollToTop />
     </div>
