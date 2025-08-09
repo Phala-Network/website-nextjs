@@ -106,7 +106,7 @@ async function getBlogData() {
 }
 
 export const metadata: Metadata = {
-  title: 'Blog - Phala Network',
+  title: 'Blog ',
   alternates: {
     types: {
       'application/rss+xml': 'https://phala.network/rss.xml',

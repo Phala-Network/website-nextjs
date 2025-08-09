@@ -46,7 +46,7 @@ async function getChangelogData() {
 }
 
 export const metadata: Metadata = {
-  title: 'Changelog - Phala Network',
+  title: 'Changelog ',
   robots: 'noindex',
   alternates: {
     types: {
@@ -62,7 +62,7 @@ export default async function ChangelogPage() {
   const { initialPages, nextCursor } = await getChangelogData()
 
   return (
-    <div className={cn('bg-linear-to-b from-green-600 to-green-500')}>
+    <div>
       <div
         className={cn(
           'safe-viewport',
