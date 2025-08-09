@@ -259,6 +259,38 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
         '/posts/agent-wars-shaping-the-future-of-ai-and-web3-with-tokenization',
       permanent: false,
     },
+
+    // New redirects - August 2025
+    {
+      source: '/confidential-computation-with-tee',
+      destination: 'https://cloud.phala.network/features/gpu-tee',
+      permanent: false,
+    },
+    {
+      source: '/phat-contract',
+      destination: '/confidential-vm',
+      permanent: false,
+    },
+    {
+      source: '/phat-contract-directory',
+      destination: '/confidential-vm',
+      permanent: false,
+    },
+    {
+      source: '/modular-coprocessor',
+      destination: '/confidential-vm',
+      permanent: false,
+    },
+    {
+      source: '/ai',
+      destination: '/confidential-vm',
+      permanent: false,
+    },
+    {
+      source: '/faucet',
+      destination: 'https://app.phala.network',
+      permanent: false,
+    },
   ]
 }
 
