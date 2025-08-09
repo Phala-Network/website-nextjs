@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import CreamContainer from '@/components/cream-container'
 import { getGitHubStars } from '@/lib/github-stars'
@@ -7,7 +8,7 @@ import { Compare3 as Compare } from './compare'
 import { Cta3 as Cta } from './cta'
 import { Hero24 as Hero } from './hero'
 import { Feature102 as Launch } from './launch'
-import { Logos9 as Logos } from './logos'
+// import { Logos9 as Logos } from './logos'
 import TrustCenter from './trust-center'
 
 export const metadata: Metadata = {
@@ -15,6 +16,10 @@ export const metadata: Metadata = {
 }
 
 const DstackPage = async () => {
+  if (process.env.VERCEL_TARGET_ENV !== 'preview') {
+    notFound()
+  }
+
   const starCount = await getGitHubStars()
 
   return (
@@ -25,7 +30,7 @@ const DstackPage = async () => {
         <TrustCenter />
         <AuditReport />
       </CreamContainer>
-      <Logos />
+      {/* <Logos /> */}
       <CreamContainer variant="bottom">
         <Compare />
         <Cta />
