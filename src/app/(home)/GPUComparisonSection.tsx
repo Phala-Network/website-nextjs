@@ -1,6 +1,6 @@
 import { FaArrowRight } from 'react-icons/fa6'
 
-const imgNvidiaH200GpuServer1 = '/724d3964c4ded64d3d0133d6cf395023b9e40ee8.png'
+const imgNvidiaH200GpuServer1 = 'https://placehold.co/400'
 
 export default function GPUComparisonSection() {
   return (

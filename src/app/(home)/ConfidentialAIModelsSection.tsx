@@ -1,6 +1,6 @@
 import { FaArrowRight } from 'react-icons/fa6'
 
-const imgFrame1 = '/ea668913d179f8aacbd5e322833632916f8d23e0.svg'
+const imgFrame1 = 'https://placehold.co/400'
 
 interface ModelCard {
   id: string
