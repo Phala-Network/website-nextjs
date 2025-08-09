@@ -8,7 +8,7 @@ export default function FinalCTA() {
         <div
           className={cn(
             'dark overflow-hidden rounded-lg relative bg-card text-foreground',
-            'bg-[url("/next/cta-bg.png")] bg-[length:400px_auto] md:bg-[length:auto_440px] bg-right-top bg-no-repeat',
+            'bg-[url("/home/cta-bg.png")] bg-[length:400px_auto] md:bg-[length:auto_440px] bg-right-top bg-no-repeat',
             'before:absolute',
             'max-md:before:left-0 max-md:before:top-[200px] max-md:before:w-full max-md:before:h-[240px]',
             'md:before:top-0 md:before:right-[220px] md:before:h-full md:before:w-[240px]',

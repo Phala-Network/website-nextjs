@@ -103,8 +103,8 @@ const SiteFooter: React.FC = () => {
         <div className="mb-10 flex flex-col items-start justify-between gap-10 border-b pb-10 sm:mb-16 sm:pb-12 lg:flex-row">
           <div className="w-full max-w-full md:max-w-2xs lg:max-w-sm">
             <Logo url="/" className="mb-6">
-              <LogoImageDesktop src="/next/logo.svg" alt="Phala" />
-              <LogoImageMobile src="/next/logo.svg" alt="Phala" />
+              <LogoImageDesktop src="/home/logo.svg" alt="Phala" />
+              <LogoImageMobile src="/home/logo.svg" alt="Phala" />
             </Logo>
 
             <p className="mb-8 text-base text-muted-foreground">

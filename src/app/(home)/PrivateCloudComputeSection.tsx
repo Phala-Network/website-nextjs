@@ -147,7 +147,7 @@ export default function PrivateCloudComputeSection() {
                 Write code, dockerize, <br />
                 and deploy it as trustless TEE apps
               </h4>
-              <img src="/next/docker.svg" alt="" className="w-[140px]" />
+              <img src="/home/docker.svg" alt="" className="w-[140px]" />
             </div>
 
             <div className="bg-[#B1DC37] rounded-md absolute left-[24px] md:left-[40px] right-[24px] md:right-[40px] top-[50%] border-[#C4F144B2] border-[12px] h-[300px] flex flex-col">
