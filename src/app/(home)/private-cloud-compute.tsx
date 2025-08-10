@@ -14,21 +14,24 @@ const tabsData = [
     label: 'Easy',
     description: 'Build in minutes, ship fast',
     icon: Zap,
-    color: '#C0E735',
+    bg: 'bg-[#C0E735]',
+    activeBg: 'data-[state=active]:bg-[#C0E735]',
   },
   {
     id: 'open',
     label: 'Open',
     description: 'Open source and transparent',
     icon: Globe,
-    color: '#98DCFF',
+    bg: 'bg-[#98DCFF]',
+    activeBg: 'data-[state=active]:bg-[#98DCFF]',
   },
   {
     id: 'private',
     label: 'Private',
     description: 'Privacy-first architecture',
     icon: Shield,
-    color: '#AFBEFE',
+    bg: 'bg-[#AFBEFE]',
+    activeBg: 'data-[state=active]:bg-[#AFBEFE]',
   },
 ]
 
@@ -95,7 +98,7 @@ export default function PrivateCloudCompute() {
         {/* New Tabs Section */}
         <div className="mt-6">
           <Tabs defaultValue="easy" className="gap-6">
-            <TabsList className="flex h-auto w-full flex-col gap-6 bg-background md:flex-row">
+            <TabsList className="flex h-auto w-full shadow">
               {tabsData.map((tab) => {
                 const IconComponent = tab.icon
                 return (
@@ -103,51 +106,54 @@ export default function PrivateCloudCompute() {
                     key={tab.id}
                     value={tab.id}
                     className={cn(
-                      'flex w-full flex-col items-start justify-start gap-1 rounded-md border p-4 text-left whitespace-normal bg-muted shadow',
-                      `data-[state=active]:border-${tab.color}`,
+                      'flex w-full gap-1 rounded-md p-2 md:p-4 text-left group transition cursor-pointer',
+                      'hover:border border-none',
+                      tab.activeBg,
+                      'bg-radial-[at_top_center] from-white/60 to-transparent',
                     )}
                   >
                     <div className="flex items-center gap-2 lg:gap-4">
                       <span
-                        className="flex size-8 items-center justify-center rounded-full lg:size-10"
-                        style={{ backgroundColor: tab.color }}
+                        className={cn(
+                          'flex size-8 items-center justify-center rounded-full lg:size-10 group-data-[state=active]:bg-muted/70 shrink-0 transition',
+                          tab.bg,
+                        )}
                       >
-                        <IconComponent className="size-4 text-white" />
+                        <IconComponent className="size-4 text-white group-data-[state=active]:text-foreground transition" />
                       </span>
-                      <h3 className="text-lg font-semibold md:text-2xl lg:text-xl">
-                        {tab.label}
-                      </h3>
+                      <div>
+                        <h3 className="md:text-lg font-semibold">
+                          {tab.label}
+                        </h3>
+                        <p className="font-normal text-muted-foreground max-lg:hidden">
+                          {tab.description}
+                        </p>
+                      </div>
                     </div>
-                    <p className="font-normal text-muted-foreground md:block">
-                      {tab.description}
-                    </p>
                   </TabsTrigger>
                 )
               })}
             </TabsList>
             <TabsContent value="easy">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="aspect-video rounded-md object-cover">
-                  <img
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-                    alt=""
-                  />
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="aspect-476/400 rounded-lg shadow md:col-span-2 bg-muted"></div>
+                <div className="aspect-226/400 rounded-lg shadow bg-muted"></div>
+                <div className="aspect-226/400 rounded-lg shadow bg-muted"></div>
               </div>
             </TabsContent>
             <TabsContent value="open">
-              <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg"
-                alt=""
-                className="aspect-video rounded-md object-cover"
-              />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="aspect-630/520 rounded-lg shadow md:col-span-2 bg-muted"></div>
+                <div className="aspect-305/520 rounded-lg shadow bg-muted"></div>
+                <div className="aspect-305/520 rounded-lg shadow bg-muted"></div>
+              </div>
             </TabsContent>
             <TabsContent value="private">
-              <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg"
-                alt=""
-                className="aspect-video rounded-md object-cover"
-              />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="aspect-630/520 rounded-lg shadow md:col-span-2 bg-muted"></div>
+                <div className="aspect-305/520 rounded-lg shadow bg-muted"></div>
+                <div className="aspect-305/520 rounded-lg shadow bg-muted"></div>
+              </div>
             </TabsContent>
           </Tabs>
         </div>
