@@ -123,7 +123,7 @@ export default function TrustSteps() {
             </h2>
             <p className="mt-4 text-muted-foreground text-lg font-medium">
               Trust creates a powerful cycle that drives business growth and
-              market leadership
+              market leadership.
             </p>
             <div className="space-y-6 lg:space-y-10 mt-6 lg:mt-10">
               {DATA.map((step, index) => (
@@ -154,11 +154,7 @@ export default function TrustSteps() {
                 ))}
               </TabsList>
             </Tabs>
-            <div
-              className={cn(
-                'rounded-lg overflow-hidden aspect-[1174/1080] bg-card shadow-xl',
-              )}
-            >
+            <div className="rounded-lg overflow-hidden aspect-[1174/1080] bg-card shadow">
               <video
                 ref={videoRef}
                 className="block w-full h-full"

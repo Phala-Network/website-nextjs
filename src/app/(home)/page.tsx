@@ -4,7 +4,7 @@ import FAQ from './faq'
 import FinalCTA from './final-cta'
 import Hero from './hero'
 import Logos from './logos'
-import PrivateCloudComputeSection from './PrivateCloudComputeSection'
+import PrivateCloudCompute from './private-cloud-compute'
 import ProvenAtScale from './proven-at-scale'
 import SuccessStories from './success-stories'
 import TrustSteps from './trust-steps'
@@ -16,7 +16,7 @@ export default function HomePage() {
       <TrustSteps />
       <Logos />
       <ConfidentialAI />
-      <PrivateCloudComputeSection />
+      <PrivateCloudCompute />
       <ProvenAtScale />
       <SuccessStories />
       <CreamContainer variant="bottom" className="w-full">
