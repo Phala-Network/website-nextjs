@@ -17,7 +17,7 @@ const tabsData = [
   {
     id: 'easy',
     label: 'Easy',
-    description: 'Build in minutes, ship fast',
+    description: 'Build in minutes',
     icon: Zap,
     bg: 'bg-[#C0E735]',
     activeBg: 'data-[state=active]:bg-[#C0E735]/90',
@@ -25,7 +25,7 @@ const tabsData = [
   {
     id: 'open',
     label: 'Open',
-    description: 'Open source and transparent',
+    description: 'Audit everything',
     icon: Globe,
     bg: 'bg-[#98DCFF]',
     activeBg: 'data-[state=active]:bg-[#98DCFF]/90',
@@ -33,7 +33,7 @@ const tabsData = [
   {
     id: 'private',
     label: 'Private',
-    description: 'Privacy-first architecture',
+    description: 'Hardware-level security',
     icon: Shield,
     bg: 'bg-[#AFBEFE]',
     activeBg: 'data-[state=active]:bg-[#AFBEFE]/90',
@@ -147,11 +147,12 @@ export default function PrivateCloudCompute() {
                   rel="noopener noreferrer"
                   className="block h-110 rounded-lg shadow md:col-span-2 bg-muted px-6 py-8 relative overflow-hidden"
                 >
-                  <div className="flex justify-between items-center gap-4">
-                    <h4 className="text-lg font-medium text-muted-foreground max-w-xs text-balance">
+                  <div className="flex flex-col items-center gap-4">
+                    <h4 className="text-lg font-medium text-muted-foreground max-w-xs text-center">
                       <span className="text-foreground">
                         Write code, dockerize,
                       </span>{' '}
+                      <br />
                       and deploy it as trustless TEE apps.
                     </h4>
                     <div className="flex items-center gap-4 shrink-0">
@@ -170,7 +171,7 @@ export default function PrivateCloudCompute() {
                     </div>
                   </div>
 
-                  <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-primary/40 rounded-3xl h-full shadow">
+                  <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-primary/50 rounded-3xl h-full shadow">
                     <Terminal startOnView>
                       <TypingAnimation>
                         &gt; npx phala cvms create -n app
@@ -204,7 +205,7 @@ export default function PrivateCloudCompute() {
                       the pain of hardware maintenance.
                     </span>
                   </h4>
-                  <div className="absolute top-1/3 left-0 right-0 px-6">
+                  <div className="absolute top-2/5 left-0 right-0 px-6">
                     <div className="flex items-center gap-2">
                       <div className="size-12 rounded-full bg-background flex items-center justify-center border">
                         {/** biome-ignore lint/performance/noImgElement: svg */}
@@ -246,7 +247,7 @@ export default function PrivateCloudCompute() {
                     in minutes.
                   </h4>
 
-                  <div className="absolute top-1/3 left-6 p-3 bg-primary/40 rounded-3xl h-full shadow">
+                  <div className="absolute top-2/5 left-6 p-3 bg-primary/50 rounded-3xl h-full shadow">
                     <div className="bg-background h-full rounded-2xl aspect-video bg-contain bg-no-repeat bg-top-left bg-[url('/home/templates.png')]"></div>
                   </div>
                 </a>
@@ -254,16 +255,134 @@ export default function PrivateCloudCompute() {
             </TabsContent>
             <TabsContent value="open">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="h-110 rounded-lg shadow md:col-span-2 bg-muted"></div>
-                <div className="h-110 rounded-lg shadow bg-muted"></div>
-                <div className="h-110 rounded-lg shadow bg-muted"></div>
+                <a
+                  href="https://tee-visualization.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-110 rounded-lg shadow md:col-span-2 bg-muted relative py-8 px-6 overflow-hidden"
+                >
+                  <h4 className="text-lg font-medium text-muted-foreground text-center mt-6">
+                    Explore{' '}
+                    <span className="text-foreground">the chain of trust</span>{' '}
+                    <br />
+                    in TEE trust center.
+                  </h4>
+                  <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-[#98DCFF]/50 rounded-3xl h-full shadow">
+                    <div className="bg-background w-full h-full rounded-2xl bg-contain bg-no-repeat bg-top-left bg-[url('/home/trust-center.png')]"></div>
+                  </div>
+                </a>
+                <a
+                  href="https://proof.t16z.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-110 rounded-lg shadow bg-muted px-6 py-8 relative overflow-hidden"
+                >
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                    <span className="text-foreground">
+                      Live attestation and verification
+                    </span>{' '}
+                    for every running workload.
+                  </h4>
+                  <div className="absolute top-2/5 left-6 bottom-0 right-0 pt-3 pl-3 bg-[#98DCFF]/50 rounded-tl-3xl shadow">
+                    <div className="text-white bg-[#7FBCFA]/90 h-full w-full rounded-tl-2xl bg-contain bg-no-repeat bg-top-left pt-4 pl-4">
+                      <div className="max-w-[180px]">
+                        <p className="text-lg font-semibold">
+                          Real-time Transparency
+                        </p>
+                        <p className="text-sm font-medium mt-4">
+                          Live attestation and verification
+                        </p>
+                        <ul className="text-sm mt-10 list-disc list-inside">
+                          <li>10K+ daily attestations</li>
+                          <li>Public verification</li>
+                          <li>Audit trails</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="/dstack"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-110 rounded-lg shadow bg-muted px-6 py-8 relative overflow-hidden bg-[url('/home/dstack-bg.png')] bg-[length:210px_auto] bg-no-repeat bg-bottom-right"
+                >
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                    <span className="text-foreground">
+                      Fully open-source infrastructure
+                    </span>{' '}
+                    you can audit, fork, and customize.
+                  </h4>
+                </a>
               </div>
             </TabsContent>
             <TabsContent value="private">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="h-110 rounded-lg shadow md:col-span-2 bg-muted"></div>
-                <div className="h-110 rounded-lg shadow bg-muted"></div>
-                <div className="h-110 rounded-lg shadow bg-muted"></div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 py-8">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                    <span className="text-foreground">
+                      Hardware-level isolation
+                    </span>{' '}
+                    using Trusted Execution Environments.
+                  </h4>
+                  <div className="absolute top-2/5 left-6 bottom-0 right-0 pt-3 pl-3 bg-[#AFBEFE]/50 rounded-tl-3xl shadow">
+                    <div className="text-white bg-[#9DA9F0] h-full w-full rounded-tl-2xl bg-contain bg-no-repeat bg-top-left pt-6 pl-6">
+                      <p className="text-lg font-semibold">TEE Protection</p>
+                      <p className="text-sm font-medium mt-4">
+                        Hardware-level isolation
+                      </p>
+                      <ul className="text-sm mt-18 list-disc list-inside">
+                        <li>CPU/GPU TEE</li>
+                        <li>5% overhead</li>
+                        <li>Zero breaches</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="h-80 md:h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 py-8">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                    <span className="text-foreground">
+                      Zero-trust key management
+                    </span>{' '}
+                    with customer-controlled encryption keys.
+                  </h4>
+                  <div className="absolute top-2/5 left-0 bottom-0 pt-3 bg-[#AFBEFE]/50 w-full shadow">
+                    <div className="w-full h-full">
+                      <video
+                        src="/home/flow-tee.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        preload="auto"
+                        playsInline
+                        className="w-full h-full object-cover object-left-bottom"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 py-8">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                    Cloud convenience with{' '}
+                    <span className="text-foreground">
+                      on-premise privacy guarantees.
+                    </span>
+                  </h4>
+                  <div className="absolute top-2/5 left-0 bottom-0 right-6 pt-3 pr-3 bg-[#AFBEFE]/50 rounded-tr-3xl shadow">
+                    <div className="text-white bg-[#9DA9F0] h-full w-full rounded-tr-2xl bg-contain bg-no-repeat bg-top-left pt-6 pl-6">
+                      <p className="text-lg font-semibold">
+                        Private as On-Premise
+                      </p>
+                      <p className="text-sm font-medium mt-4">
+                        Enterprise-grade privacy
+                      </p>
+                      <ul className="text-sm mt-18 list-disc list-inside">
+                        <li>500+ teams</li>
+                        <li>$2M ARR</li>
+                        <li>Enterprise grade</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </TabsContent>
           </Tabs>

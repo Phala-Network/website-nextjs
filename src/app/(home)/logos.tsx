@@ -36,7 +36,7 @@ const companyRows = logoRows.map((row) => ({
 
 interface LogoRowProps {
   companies: CompanyData[]
-  gridCols: 'string'
+  gridCols: string
 }
 
 const LogoRow = ({ companies, gridCols }: LogoRowProps) => (
