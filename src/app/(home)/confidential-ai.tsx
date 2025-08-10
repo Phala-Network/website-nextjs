@@ -166,7 +166,7 @@ export default function ConfidentialAI() {
           <h2 className="mb-2 text-center text-3xl font-bold text-balance lg:text-4xl">
             Confidential AI
           </h2>
-          <p className="text-center text-muted-foreground text-lg md:text-xl font-medium">
+          <p className="text-center text-muted-foreground text-lg md:text-xl font-medium text-balance">
             Pre-configured secure AI models ready to deploy with
             hardware-secured GPU servers for instant, private AI computing.
           </p>
@@ -352,13 +352,13 @@ export default function ConfidentialAI() {
                 {/* GPU TEE Row */}
                 <div className="grid grid-cols-[80px_1fr_1fr] gap-3 sm:gap-8 pb-4 items-center">
                   <div className="font-medium text-sm flex items-center gap-1">
-                    <span>GPU TEE</span>
                     {/** biome-ignore lint/performance/noImgElement: svg */}
                     <img
                       src="/home/icon.svg"
                       alt="GPU TEE"
                       className="size-4"
                     />
+                    <span>GPU TEE</span>
                   </div>
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-xs">
