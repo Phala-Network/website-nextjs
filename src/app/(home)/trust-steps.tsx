@@ -115,13 +115,13 @@ export default function TrustSteps() {
 
   return (
     <div className="w-full py-24 max-w-6xl mx-auto">
-      <div className="container">
+      <section className="container">
         <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-16 lg:gap-8">
           <div className="max-sm:px-4">
             <h2 className="font-bold text-2xl md:text-3xl">
               When Your Users Trust AI
             </h2>
-            <p className="mt-4 text-muted-foreground text-lg font-medium">
+            <p className="mt-4 text-muted-foreground text-lg md:text-xl font-medium">
               Trust creates a powerful cycle that drives business growth and
               market leadership.
             </p>
@@ -135,26 +135,25 @@ export default function TrustSteps() {
               ))}
             </div>
           </div>
-          <div className="space-y-2">
-            <Tabs
-              defaultValue={flows[0].title}
-              className="w-full"
-              value={flowTitle}
-              onValueChange={handleTabChange}
-            >
-              <TabsList className="w-full">
-                {flows.map((flow) => (
-                  <TabsTrigger
-                    key={flow.title}
-                    value={flow.title}
-                    className={cn('flex-1 transition-all', flow.className)}
-                  >
-                    {flow.title}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
-            <div className="rounded-lg overflow-hidden aspect-[1174/1080] bg-card shadow">
+
+          <Tabs
+            defaultValue={flows[0].title}
+            className="w-full"
+            value={flowTitle}
+            onValueChange={handleTabChange}
+          >
+            <TabsList className="w-full">
+              {flows.map((flow) => (
+                <TabsTrigger
+                  key={flow.title}
+                  value={flow.title}
+                  className={cn('flex-1 transition-all', flow.className)}
+                >
+                  {flow.title}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            <div className="rounded-lg overflow-hidden aspect-[1174/1080] bg-card shadow-lg">
               <video
                 ref={videoRef}
                 className="block w-full h-full"
@@ -168,9 +167,9 @@ export default function TrustSteps() {
                 <source src="/home/flow.mp4" type="video/mp4" />
               </video>
             </div>
-          </div>
+          </Tabs>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

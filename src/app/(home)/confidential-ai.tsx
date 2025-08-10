@@ -160,18 +160,18 @@ export default function ConfidentialAI() {
   }, [carouselApi])
 
   return (
-    <section className="py-32">
+    <section className="py-24 max-w-5xl mx-auto">
       <div className="container">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-4">
           <h2 className="mb-2 text-center text-3xl font-bold text-balance lg:text-4xl">
             Confidential AI
           </h2>
-          <p className="text-center text-muted-foreground text-lg font-medium">
+          <p className="text-center text-muted-foreground text-lg md:text-xl font-medium">
             Pre-configured secure AI models ready to deploy with
             hardware-secured GPU servers for instant, private AI computing.
           </p>
         </div>
-        <div className="mx-auto mt-12 flex max-w-5xl grid-cols-1 flex-col gap-6 lg:grid lg:grid-cols-7">
+        <div className="mx-auto mt-12 flex grid-cols-1 flex-col gap-6 lg:grid lg:grid-cols-7">
           <div className="col-span-7 grid overflow-hidden rounded-lg bg-muted sm:grid-cols-2 shadow">
             <div className="flex flex-col justify-between p-8 lg:p-12">
               <div>
