@@ -21,11 +21,11 @@ const createCompanyData = (partnerNames: string[]): CompanyData[] =>
 const logoRows = [
   {
     partners: ['Nvidia', 'OpenRouter', 'OODA', 'PublicAI'],
-    gridCols: 4,
+    gridCols: 'sm:grid-cols-4',
   },
   {
     partners: ['Near', 'Vana', 'Nethermind', 'ElizaOS', '0G'],
-    gridCols: 5,
+    gridCols: 'sm:grid-cols-5',
   },
 ]
 
@@ -36,12 +36,12 @@ const companyRows = logoRows.map((row) => ({
 
 interface LogoRowProps {
   companies: CompanyData[]
-  gridCols: number
+  gridCols: 'string'
 }
 
 const LogoRow = ({ companies, gridCols }: LogoRowProps) => (
   <div
-    className={`grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-8 max-md:w-full sm:grid-cols-${gridCols} md:gap-x-20`}
+    className={`grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-8 max-md:w-full ${gridCols} md:gap-x-20`}
   >
     {companies.map((company) => (
       <a
