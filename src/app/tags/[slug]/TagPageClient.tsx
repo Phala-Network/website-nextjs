@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { ImSpinner2 } from 'react-icons/im'
 
 import Card from '@/components/Card'

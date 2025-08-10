@@ -1,5 +1,4 @@
 'use client'
-import { useMotionValueEvent, useScroll } from 'framer-motion'
 import {
   ArrowUpRight,
   BarChart,
@@ -14,6 +13,7 @@ import {
   Menu,
   X,
 } from 'lucide-react'
+import { useMotionValueEvent, useScroll } from 'motion/react'
 import { useState } from 'react'
 
 import { Logo, LogoImageDesktop, LogoImageMobile } from '@/components/logo'

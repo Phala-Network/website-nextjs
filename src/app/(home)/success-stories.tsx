@@ -158,11 +158,11 @@ export default function SuccessStoriesSection() {
     <section className="py-24 w-full max-w-(--breakpoint-xl) mx-auto">
       <div className="container">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
-          <div className="flex flex-col gap-4 max-w-3xl">
+          <div className="flex flex-col gap-4 max-w-4xl">
             <h2 className="text-3xl font-bold md:text-4xl">
               Real-World Success Stories
             </h2>
-            <p className="text-muted-foreground font-medium text-lg md:text-xl">
+            <p className="text-muted-foreground font-medium text-lg md:text-xl text-balance">
               Discover how leading companies are leveraging Phala's confidential
               AI to build exceptional digital experiences while maintaining
               complete data privacy and regulatory compliance.

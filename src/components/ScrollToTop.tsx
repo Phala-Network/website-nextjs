@@ -1,29 +1,21 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { motion } from 'motion/react'
+import { useEffect, useState } from 'react'
 import { AiOutlineArrowUp } from 'react-icons/ai'
-import { motion } from 'framer-motion'
-
-type Props = React.ComponentPropsWithoutRef<'button'> & {
-  top?: number
-  smooth?: boolean
-}
 
 function scrollToTop(smooth: boolean = false) {
   if (smooth) {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     })
   } else {
     document.documentElement.scrollTop = 0
   }
 }
 
-const ScrollToTop = ({
-  top = 20,
-  smooth = true,
-}) => {
+const ScrollToTop = ({ top = 20, smooth = true }) => {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
