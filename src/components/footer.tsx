@@ -32,8 +32,11 @@ const navigation = [
         name: 'Docs',
         href: 'https://docs.phala.network/?utm_source=phala.network&utm_medium=site-nav',
       },
-      { name: 'CLI', href: '/cli' },
-      { name: 'SDK', href: '/sdk' },
+      {
+        name: 'CLI',
+        href: 'https://docs.phala.network/phala-cloud/phala-cloud-cli/overview',
+      },
+      // { name: 'SDK', href: '/dstack' },
       { name: 'GitHub', href: 'https://github.com/Phala-Network/' },
       {
         name: 'Community',

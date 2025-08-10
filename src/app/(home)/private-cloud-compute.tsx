@@ -2,6 +2,11 @@
 import Lottie from 'lottie-react'
 import { ChevronRight, Globe, Shield, Zap } from 'lucide-react'
 
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from '@/components/magicui/terminal'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -15,7 +20,7 @@ const tabsData = [
     description: 'Build in minutes, ship fast',
     icon: Zap,
     bg: 'bg-[#C0E735]',
-    activeBg: 'data-[state=active]:bg-[#C0E735]',
+    activeBg: 'data-[state=active]:bg-[#C0E735]/90',
   },
   {
     id: 'open',
@@ -23,7 +28,7 @@ const tabsData = [
     description: 'Open source and transparent',
     icon: Globe,
     bg: 'bg-[#98DCFF]',
-    activeBg: 'data-[state=active]:bg-[#98DCFF]',
+    activeBg: 'data-[state=active]:bg-[#98DCFF]/90',
   },
   {
     id: 'private',
@@ -31,13 +36,13 @@ const tabsData = [
     description: 'Privacy-first architecture',
     icon: Shield,
     bg: 'bg-[#AFBEFE]',
-    activeBg: 'data-[state=active]:bg-[#AFBEFE]',
+    activeBg: 'data-[state=active]:bg-[#AFBEFE]/90',
   },
 ]
 
 export default function PrivateCloudCompute() {
   return (
-    <div className="w-full max-w-5xl mx-auto py-24">
+    <div className="w-full max-w-6xl mx-auto py-24">
       <section className="container">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
           <h2 className="text-center text-3xl font-bold text-balance lg:text-4xl">
@@ -136,23 +141,129 @@ export default function PrivateCloudCompute() {
             </TabsList>
             <TabsContent value="easy">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="aspect-476/400 rounded-lg shadow md:col-span-2 bg-muted"></div>
-                <div className="aspect-226/400 rounded-lg shadow bg-muted"></div>
-                <div className="aspect-226/400 rounded-lg shadow bg-muted"></div>
+                <a
+                  href="https://docs.phala.network/phala-cloud/phala-cloud-cli/overview"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-110 rounded-lg shadow md:col-span-2 bg-muted px-6 py-8 relative overflow-hidden"
+                >
+                  <div className="flex justify-between items-center gap-4">
+                    <h4 className="text-lg font-medium text-muted-foreground max-w-xs text-balance">
+                      <span className="text-foreground">
+                        Write code, dockerize,
+                      </span>{' '}
+                      and deploy it as trustless TEE apps.
+                    </h4>
+                    <div className="flex items-center gap-4 shrink-0">
+                      {/** biome-ignore lint/performance/noImgElement: svg */}
+                      <img
+                        src="/home/docker-mark-blue.svg"
+                        alt="docker"
+                        className="w-8 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition"
+                      />
+                      {/** biome-ignore lint/performance/noImgElement: svg */}
+                      <img
+                        src="/home/kubernetes.svg"
+                        alt="kubernetes"
+                        className="w-8 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-primary/40 rounded-3xl h-full shadow">
+                    <Terminal startOnView>
+                      <TypingAnimation>
+                        &gt; npx phala cvms create -n app
+                      </TypingAnimation>
+                      <AnimatedSpan>Name for the CVM: app</AnimatedSpan>
+                      <AnimatedSpan>
+                        Path to your Docker Compose file: compose.yml
+                      </AnimatedSpan>
+                      <AnimatedSpan className="text-muted-foreground">
+                        Fetching available TEEPods...
+                      </AnimatedSpan>
+                      <AnimatedSpan className="text-muted-foreground">
+                        Getting public key from CVM...
+                      </AnimatedSpan>
+                      <AnimatedSpan className="text-muted-foreground">
+                        Encrypting environment variables...
+                      </AnimatedSpan>
+                      <AnimatedSpan className="text-muted-foreground">
+                        Creating CVM...
+                      </AnimatedSpan>
+                      <AnimatedSpan className="text-green-500">
+                        CVM created successfully! ✓
+                      </AnimatedSpan>
+                    </Terminal>
+                  </div>
+                </a>
+                <div className="h-110 rounded-lg shadow bg-muted px-6 py-8 relative">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                    We deal with{' '}
+                    <span className="text-foreground">
+                      the pain of hardware maintenance.
+                    </span>
+                  </h4>
+                  <div className="absolute top-1/3 left-0 right-0 px-6">
+                    <div className="flex items-center gap-2">
+                      <div className="size-12 rounded-full bg-background flex items-center justify-center border">
+                        {/** biome-ignore lint/performance/noImgElement: svg */}
+                        <img
+                          src="/home/intel.svg"
+                          alt="intel"
+                          className="w-8"
+                        />
+                      </div>
+                      <div className="size-12 rounded-full bg-background flex items-center justify-center border">
+                        {/** biome-ignore lint/performance/noImgElement: svg */}
+                        <img src="/home/amd.svg" alt="amd" className="w-8" />
+                      </div>
+                      <div className="size-12 rounded-full bg-background flex items-center justify-center border">
+                        {/** biome-ignore lint/performance/noImgElement: svg */}
+                        <img
+                          src="/home/nvidia.svg"
+                          alt="nvidia"
+                          className="w-7"
+                        />
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground mt-2 text-sm pl-2">
+                      have their own TEE.
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="https://cloud.phala.network/templates"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-110 rounded-lg shadow bg-muted px-6 py-8 relative overflow-hidden"
+                >
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                    Deploy{' '}
+                    <span className="text-foreground">
+                      production-grade TEE workloads
+                    </span>{' '}
+                    in minutes.
+                  </h4>
+
+                  <div className="absolute top-1/3 left-6 p-3 bg-primary/40 rounded-3xl h-full shadow">
+                    <div className="bg-background h-full rounded-2xl aspect-video bg-contain bg-no-repeat bg-top-left bg-[url('/home/templates.png')]"></div>
+                  </div>
+                </a>
               </div>
             </TabsContent>
             <TabsContent value="open">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="aspect-630/520 rounded-lg shadow md:col-span-2 bg-muted"></div>
-                <div className="aspect-305/520 rounded-lg shadow bg-muted"></div>
-                <div className="aspect-305/520 rounded-lg shadow bg-muted"></div>
+                <div className="h-110 rounded-lg shadow md:col-span-2 bg-muted"></div>
+                <div className="h-110 rounded-lg shadow bg-muted"></div>
+                <div className="h-110 rounded-lg shadow bg-muted"></div>
               </div>
             </TabsContent>
             <TabsContent value="private">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="aspect-630/520 rounded-lg shadow md:col-span-2 bg-muted"></div>
-                <div className="aspect-305/520 rounded-lg shadow bg-muted"></div>
-                <div className="aspect-305/520 rounded-lg shadow bg-muted"></div>
+                <div className="h-110 rounded-lg shadow md:col-span-2 bg-muted"></div>
+                <div className="h-110 rounded-lg shadow bg-muted"></div>
+                <div className="h-110 rounded-lg shadow bg-muted"></div>
               </div>
             </TabsContent>
           </Tabs>

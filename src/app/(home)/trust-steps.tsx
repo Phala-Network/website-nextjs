@@ -67,7 +67,7 @@ const StepItem = ({ step, isLast }: StepItemProps) => {
             isLast ? 'from-primary/40 to-background' : ''
           }`}
         />
-        <div className="bg-background relative z-0 grid size-11 place-content-center rounded-full border-4">
+        <div className="bg-background relative grid size-11 place-content-center rounded-full border-4">
           <p className="text-lg font-bold font-heading">{step.id}</p>
         </div>
       </div>
