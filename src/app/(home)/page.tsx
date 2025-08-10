@@ -1,4 +1,5 @@
 import CreamContainer from '@/components/cream-container'
+import { DashedLine } from '@/components/dashed-line'
 import ConfidentialAI from './confidential-ai'
 import FAQ from './faq'
 import FinalCTA from './final-cta'
@@ -15,6 +16,12 @@ export default function HomePage() {
       <Hero />
       <TrustSteps />
       <Logos />
+      <div className="relative flex items-center justify-center max-w-5xl mx-auto mt-12">
+        <DashedLine className="text-muted-foreground" />
+        <span className="bg-background text-muted-foreground absolute px-3 font-mono text-sm font-medium tracking-wide">
+          Build AI People Can Trust.
+        </span>
+      </div>
       <ConfidentialAI />
       <PrivateCloudCompute />
       <ProvenAtScale />

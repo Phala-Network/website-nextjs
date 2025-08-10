@@ -10,7 +10,7 @@ export default function Hero() {
         <link rel="preload" href="/home/hero-bg.png" as="image" />
       </Head>
       <div className="w-full bg-background">
-        <div
+        <section
           className={cn(
             "w-full max-w-screen-2xl mx-auto pt-24 bg-[url('/home/hero-bg.png')] bg-right-bottom bg-no-repeat relative",
             'h-[700px] sm:h-[800px] xl:h-[680px]',
@@ -44,7 +44,7 @@ export default function Hero() {
               </Button>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </>
   )

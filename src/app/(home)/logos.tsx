@@ -70,7 +70,7 @@ const Logos = () => {
             Trusted by more than <span className="text-primary-400">5000+</span>{' '}
             users
           </h2>
-          <p className="text-muted-foreground text-lg font-medium">
+          <p className="text-muted-foreground text-lg md:text-xl font-medium">
             Trusted by industry leaders and developers worldwide.
           </p>
         </div>
