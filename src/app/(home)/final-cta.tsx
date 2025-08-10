@@ -3,8 +3,8 @@ import { cn } from '@/lib/utils'
 
 export default function FinalCTA() {
   return (
-    <section className="w-full py-24 px-2 sm:px-8 lg:px-12">
-      <div className="max-w-4xl mx-auto">
+    <section className="w-full max-w-5xl mx-auto py-24">
+      <div className="container">
         <div
           className={cn(
             'dark overflow-hidden rounded-lg relative bg-card text-foreground',

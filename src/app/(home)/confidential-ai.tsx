@@ -166,7 +166,7 @@ export default function ConfidentialAI() {
           <h2 className="mb-2 text-center text-3xl font-bold text-balance lg:text-4xl">
             Confidential AI
           </h2>
-          <p className="text-center text-muted-foreground lg:text-lg">
+          <p className="text-center text-muted-foreground text-lg font-medium">
             Pre-configured secure AI models ready to deploy with
             hardware-secured GPU servers for instant, private AI computing.
           </p>
@@ -285,7 +285,7 @@ export default function ConfidentialAI() {
               height={852}
               src="/home/gpu.png"
               alt="NVIDIA H200 GPU TEE"
-              className="max-h-72 w-full border-b object-cover bg-card"
+              className="max-h-72 w-full border-b object-cover bg-card select-none"
             />
             <div className="p-8 lg:p-12">
               <div className="mb-4 text-xs text-muted-foreground">

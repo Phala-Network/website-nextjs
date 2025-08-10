@@ -1,8 +1,12 @@
 'use client'
+import Lottie from 'lottie-react'
+import { ChevronRight } from 'lucide-react'
 import { useState } from 'react'
-import { FaArrowRight } from 'react-icons/fa6'
 
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import animationData from './deploy-animation.json'
 
 const imgFrame3 = 'https://placehold.co/400'
 const imgFrame4 = 'https://placehold.co/400'
@@ -71,49 +75,65 @@ export function TabSwitch({
   )
 }
 
-export default function PrivateCloudComputeSection() {
+export default function PrivateCloudCompute() {
   const [activeTab, setActiveTab] = useState<string>('easy')
 
   return (
-    <div className="w-full py-4 sm:py-8 lg:py-16 px-2 sm:px-8 lg:px-12">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Title */}
-        <h2 className="mx-auto text-center text-3xl md:text-4xl lg:text-5xl font-semibold mb-8 lg:mb-12">
-          Private Cloud Compute
-        </h2>
+    <div className="w-full max-w-7xl mx-auto">
+      <div className="container">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
+          <h2 className="text-center text-3xl font-bold text-balance lg:text-4xl">
+            Private Cloud Compute
+          </h2>
+          <p className="text-center text-muted-foreground text-lg font-medium">
+            All-in-one confidential compute platform for AI workloads.
+          </p>
+        </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-4 sm:gap-8 mb-8 lg:mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 mt-12 max-w-5xl mx-auto rounded-3xl border bg-muted p-2 shadow">
           {/* Left Column - Demo Card */}
-          <div className="rounded-sm lg:h-[420px] relative overflow-hidden bg-gradient-to-t from-[#7ca328e0] to-[#b9e730d1]">
-            {/* Demo Content */}
-            <div className="relative w-full h-full pt-4 px-4 sm:pt-8 sm:px-8 flex justify-center">
-              <div className="rounded-t-lg pt-3 px-3 bg-background/50 w-full max-w-[530px] aspect-[530/400]">
-                <div className="bg-background rounded-t w-full h-full">
-                  <div className="px-6 py-4 border-b">
-                    <p className="font-semibold text-[#1e2119]">Phala Cloud</p>
-                  </div>
-                </div>
+
+          <Card className="relative rounded-2xl border pt-8 pb-0 overflow-hidden">
+            <CardContent className="flex h-full w-full items-center justify-center p-0">
+              <div className="absolute top-4 left-4 flex items-center gap-2">
+                <div className="size-3.5 rounded-full bg-red-500" />
+                <div className="size-3.5 rounded-full bg-yellow-500" />
+                <div className="size-3.5 rounded-full bg-green-500" />
               </div>
-            </div>
-          </div>
+              {/* Browser Window Content */}
+              <div className="aspect-video">
+                <Lottie animationData={animationData} loop={true} />
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Right Column - Info Card */}
-          <div className="bg-background rounded-sm p-6 md:p-10 w-full h-[280px] lg:h-[420px] flex flex-col">
-            <h3 className="font-semibold text-2xl md:text-3xl text-[#1e2119]">
-              Phala Cloud
+          <div className="flex flex-col items-start p-8 lg:p-12">
+            <h3 className="font-semibold text-xl md:text-2xl">
+              Confidential VM
             </h3>
-            <p className="text-[#61645b] mt-4">
-              All-in-one confidential compute platform for AI workloads
+
+            <p className="text-muted-foreground text-lg font-medium mt-2">
+              Starting at $50.37/month
             </p>
 
-            <p className="text-[#61645b] mt-4">Starting at $50.37/month</p>
+            <p className="text-muted-foreground mt-4">
+              Deploy arbitrary containerized app to TEE in minutes. No steep
+              learning curve. No hardware maintenance costs. Just focus on
+              delivery.
+            </p>
 
-            <a
-              href="https://cloud.phala.network"
-              className="text-gray-800 font-semibold flex items-center gap-2 hover:underline mt-auto"
-            >
-              Start building <FaArrowRight className="w-4 h-4" />
-            </a>
+            <Button variant="outline" asChild className="mt-8 lg:mt-auto">
+              <a
+                href="https://cloud.phala.network/features/confidential-vm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn more
+                <ChevronRight className="ml-1 h-4" />
+              </a>
+            </Button>
           </div>
         </div>
 
@@ -184,7 +204,7 @@ export default function PrivateCloudComputeSection() {
                   <img src={imgFrame5} alt="" className="w-10 h-10" />
                 </div>
               </div>
-              <p className="text-[#61645b] text-base font-normal">
+              <p className="text-muted-foreground text-base font-normal">
                 Major cloud providers have their own TEE
               </p>
             </div>
