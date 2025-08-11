@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="w-full bg-background">
         <section
           className={cn(
-            "w-full max-w-screen-2xl mx-auto pt-24 bg-[url('/home/hero-bg.png')] bg-right-bottom bg-no-repeat relative",
+            "w-full max-w-screen-2xl mx-auto -mt-16 pt-24 bg-[url('/home/hero-bg.png')] bg-right-bottom bg-no-repeat relative",
             'h-[700px] sm:h-[800px] xl:h-[680px]',
             'bg-[length:400px_auto] sm:bg-[length:600px_auto] md:bg-[length:680px_auto] lg:bg-[length:800px_auto] xl:bg-[length:984px_auto]',
           )}
