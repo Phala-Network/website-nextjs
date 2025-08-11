@@ -105,13 +105,7 @@ async function getBlogData() {
 }
 
 export const metadata: Metadata = {
-  title: 'Blog ',
-  alternates: {
-    types: {
-      'application/rss+xml': 'https://phala.network/rss.xml',
-      'application/atom+xml': 'https://phala.network/atom.xml',
-    },
-  },
+  title: 'Blog',
 }
 
 export const revalidate = 3600

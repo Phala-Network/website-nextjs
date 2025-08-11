@@ -13,7 +13,7 @@ import { Feature102 as Launch } from './launch'
 import TrustCenter from './trust-center'
 
 export const metadata: Metadata = {
-  title: 'Dstack | Phala',
+  title: 'Dstack',
 }
 
 const DstackPage = async () => {
@@ -25,7 +25,7 @@ const DstackPage = async () => {
 
   return (
     <>
-      <CreamContainer className="via-muted to-muted/80 pt-32">
+      <CreamContainer className="via-muted to-muted/80 pt-32 -mt-16">
         <Hero starCount={starCount} />
         <Launch />
         <TrustCenter />

@@ -47,14 +47,8 @@ async function getChangelogData() {
 }
 
 export const metadata: Metadata = {
-  title: 'Changelog ',
+  title: 'Changelog',
   robots: 'noindex',
-  alternates: {
-    types: {
-      'application/rss+xml': 'https://phala.network/changelog/rss.xml',
-      'application/atom+xml': 'https://phala.network/changelog/atom.xml',
-    },
-  },
 }
 
 export const revalidate = 3600

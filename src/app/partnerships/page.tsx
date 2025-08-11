@@ -8,7 +8,7 @@ import PartnershipsClient from './partnerships-client'
 export const metadata: Metadata = {
   title: 'Partners with Trust',
   description:
-    "Explore Phala Network's trusted partnerships across AI, blockchain, security, and decentralized computing. Join our ecosystem of innovative partners building the future of Web3.",
+    "Explore Phala's trusted partnerships across AI, blockchain, security, and decentralized computing. Join our ecosystem of innovative partners building the future of Web3.",
 }
 
 export default function Page() {

@@ -3,7 +3,7 @@ import * as R from 'ramda'
 import { env } from '@/env'
 import { notion, type ParsedListPage, queryDatabase } from '@/lib/notion-client'
 
-const WEBSITE_URL = 'https://phala.network'
+const WEBSITE_URL = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 function generateSiteMap(tags: string[], posts: ParsedListPage[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>

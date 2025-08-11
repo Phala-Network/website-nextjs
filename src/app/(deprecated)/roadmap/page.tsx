@@ -1,15 +1,14 @@
-import { type Metadata } from 'next'
+import type { Metadata } from 'next'
+
 import Roadmap from '@/components/roadmap'
 
 export const metadata: Metadata = {
-  title: 'Roadmap | Phala Network',
+  title: 'Roadmap',
   alternates: {
-    canonical: "https://phala.network/roadmap",
-  }
+    canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/roadmap`,
+  },
 }
 
 export default function Page() {
-  return (
-    <Roadmap />
-  )
+  return <Roadmap />
 }
