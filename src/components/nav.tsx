@@ -166,8 +166,8 @@ function SiteNav() {
   return (
     <div
       className={cn(
-        'w-screen fixed top-0 left-0 transition-[background-color] duration-100',
-        hasScrolled && 'bg-white/80 backdrop-blur-sm',
+        'w-screen fixed top-0 left-0 transition',
+        hasScrolled && 'bg-background/75 backdrop-blur-sm',
       )}
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 md:px-12">
