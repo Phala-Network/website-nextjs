@@ -199,14 +199,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const postCover = `https://img0.phala.world/cover/1200x630/${id}.jpg?z=123`
 
   return {
-    title: `${page.title} | Phala Network`,
-    description:
-      'Discover the latest from Phala Network - the decentralized cloud for Web3.',
+    title: page.title,
     openGraph: {
-      title: page.title,
-      description:
-        'Discover the latest from Phala Network - the decentralized cloud for Web3.',
-      url: `https://phala.network/posts${page.slug}`,
+      url: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts${page.slug}`,
       locale: 'en_US',
       images: [
         {
@@ -220,20 +215,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@PhalaNetwork',
-      title: page.title,
-      description:
-        'Discover the latest from Phala Network - the decentralized cloud for Web3.',
       images: [postCover],
     },
     alternates: {
-      canonical: `https://phala.network/posts${page.slug}`,
-      types: {
-        'application/rss+xml': 'https://phala.network/rss.xml',
-      },
-    },
-    other: {
-      'theme-color': '#CDFA50',
+      canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts${page.slug}`,
     },
   }
 }
@@ -249,10 +234,7 @@ export default async function PostPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-[#F9F9F7]">
-      {/* Spacer for fixed navbar */}
-      <div className="h-16 lg:h-20"></div>
-
+    <div className="min-h-screen">
       <PostPageClient {...postData} />
     </div>
   )

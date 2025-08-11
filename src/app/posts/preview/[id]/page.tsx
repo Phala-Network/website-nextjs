@@ -198,39 +198,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? 'external' in page.cover
       ? page.cover.external.url
       : page.cover.file.url
-    : 'https://phala.network/og-image.jpg'
+    : undefined
 
   return {
     title: page.title,
     openGraph: {
-      title: page.title,
-      url: `https://phala.network/posts${page.slug}`,
+      url: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts${page.slug}`,
       locale: 'en_US',
-      images: [
-        {
-          url: postCover,
-          width: 1200,
-          height: 630,
-          alt: page.title,
-        },
-      ],
+      images: postCover
+        ? [
+            {
+              url: postCover,
+              width: 1200,
+              height: 630,
+              alt: page.title,
+            },
+          ]
+        : undefined,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@PhalaNetwork',
-      title: page.title,
-      images: [postCover],
+      images: postCover ? [postCover] : undefined,
     },
     alternates: {
-      canonical: `https://phala.network/posts${page.slug}`,
-      types: {
-        'application/rss+xml': 'https://phala.network/rss.xml',
-        'application/atom+xml': 'https://phala.network/atom.xml',
-      },
-    },
-    other: {
-      'theme-color': 'rgba(232, 233, 234, 1)',
+      canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts${page.slug}`,
     },
   }
 }
@@ -351,41 +343,6 @@ export default async function PostPreviewPage({ params }: Props) {
               </div>
             </div>
           </article>
-          <section className="bg-white lg:rounded-3xl mt-4 py-8">
-            <div className="px-10">
-              <h1 className="text-2xl font-bold">About Phala</h1>
-              <div className="text-sm mt-4 flex flex-col gap-4">
-                <p>
-                  Phala Network is a decentralized cloud that offers secure and
-                  scalable computing for Web3.
-                </p>
-                <p>
-                  With Phat Contracts, an innovative programming model enabling
-                  trustless off-chain computation, developers can create new
-                  Web3 use cases.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-wrap mt-8 gap-y-4">
-              <AboutLink href="#section-subscription">Subscribe</AboutLink>
-              <AboutLink href="https://twitter.com/PhalaNetwork">
-                Twitter
-              </AboutLink>
-              <AboutLink href="https://www.youtube.com/@PhalaNetwork">
-                Youtube
-              </AboutLink>
-              <AboutLink href="https://github.com/phala-Network">
-                Github
-              </AboutLink>
-            </div>
-            <div className="flex flex-wrap mt-4 gap-y-4">
-              <AboutLink href="https://discord.gg/phala-network">
-                Discord
-              </AboutLink>
-              <AboutLink href="https://forum.phala.network/">Forum</AboutLink>
-              <AboutLink href="https://t.me/phalanetwork">Telegram</AboutLink>
-            </div>
-          </section>
         </div>
         <div className={cn('lg:col-span-7')}>
           {recentPages.length > 0 ? (

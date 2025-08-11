@@ -16,6 +16,7 @@ import {
 import { renderBlocks } from '@/components/notion-render/Block'
 import NotionBlocksProvider from '@/components/notion-render/NotionBlocksProvider'
 import TableOfContents from '@/components/TableOfContents'
+import { env } from '@/env'
 import type { ParsedListPage, ParsedPage } from '@/lib/notion-client'
 
 const remap: Readonly<Record<string, string>> = {
@@ -64,7 +65,7 @@ export default function PostPageClient({
 
 **Published:** ${dayjs(page.publishedTime).format('MMMM DD, YYYY')}
 **Tags:** ${page.tags.join(', ')}
-**URL:** https://phala.network/posts${page.slug}
+**URL:** https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts${page.slug}
 
 ---
 
@@ -289,39 +290,10 @@ ${page.markdown}`
 
           {/* About Phala Footer */}
           <footer className="pt-12 border-t border-gray-200 space-y-6">
-            <div className="prose prose-lg max-w-none">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                About Phala Network
-              </h3>
-              <p className="text-gray-600">
-                Phala Network is a decentralized cloud that offers secure and
-                scalable computing for Web3. With Phat Contracts, an innovative
-                programming model enabling trustless off-chain computation,
-                developers can create new Web3 use cases.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-6 text-sm">
-              <AboutLink href="https://twitter.com/PhalaNetwork">
-                Twitter
-              </AboutLink>
-              <AboutLink href="https://discord.gg/phala-network">
-                Discord
-              </AboutLink>
-              <AboutLink href="https://github.com/phala-Network">
-                GitHub
-              </AboutLink>
-              <AboutLink href="https://t.me/phalanetwork">Telegram</AboutLink>
-              <AboutLink href="https://www.youtube.com/@PhalaNetwork">
-                YouTube
-              </AboutLink>
-              <AboutLink href="https://forum.phala.network/">Forum</AboutLink>
-            </div>
-
             <div className="pt-4">
               <a
                 href="#section-subscription"
-                className="bg-primary-500 hover:bg-primary-600 text-black font-bold inline-flex items-center justify-center gap-2 rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-6 py-2"
+                className="bg-primary hover:bg-primary-600 text-black font-bold inline-flex items-center justify-center gap-2 rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-6 py-2"
               >
                 <BiRss className="w-4 h-4" />
                 Subscribe to Updates
