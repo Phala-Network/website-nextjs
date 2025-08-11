@@ -29,10 +29,10 @@ export default function FinalCTA() {
                 deploying trustworthy AI in production
               </p>
               <div className="flex gap-3 items-center">
-                <Button>
+                <Button asChild>
                   <a href="https://cloud.phala.network/register">Get started</a>
                 </Button>
-                <Button variant="secondary">
+                <Button variant="secondary" asChild>
                   <Link href="/contact">Request a demo</Link>
                 </Button>
               </div>
