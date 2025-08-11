@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import { BiRss } from 'react-icons/bi'
 
+import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 import ChangelogClientWrapper from './ChangelogClientWrapper'
 
 async function getChangelogData() {
   const { next_cursor, pages } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       and: [
         {

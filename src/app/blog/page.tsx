@@ -4,15 +4,14 @@ import { BiRss } from 'react-icons/bi'
 
 import Banners from '@/components/Banners'
 import TagSearch from '@/components/TagSearch'
+import { env } from '@/env'
 import { notion, queryDatabase } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 import BlogClientWrapper from './BlogClientWrapper'
 
-type Props = {}
-
 async function retrieveTags() {
   const database = await notion.databases.retrieve({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
   })
   const tags = R.without(
     ['Changelog', 'Pinned'],
@@ -27,7 +26,7 @@ async function retrieveTags() {
 async function getBlogData() {
   const tags = await retrieveTags()
   const queryBannerPages = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       or: [
         {
@@ -59,7 +58,7 @@ async function getBlogData() {
     page_size: 5,
   })
   const { next_cursor, pages } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       and: [
         {

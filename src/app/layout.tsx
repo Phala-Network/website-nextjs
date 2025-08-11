@@ -5,8 +5,8 @@ import Script from 'next/script'
 import Footer from '@/components/footer'
 import Nav from '@/components/nav'
 import ScrollToTop from '@/components/ScrollToTop'
+import { env } from '@/env'
 import fontVariables from '@/lib/fonts'
-
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     site: '@PhalaNetwork',
   },
   alternates: {
-    canonical: 'https://phala.network',
+    // canonical: 'https://phala.network',
     types: {
       'application/rss+xml': [
         { url: 'https://phala.network/rss.xml', title: 'Phala News' },
@@ -49,14 +49,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={fontVariables}>
-      {process.env.NEXT_PUBLIC_GTM_ID && (
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      {env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />
       )}
       <body className="pt-16">
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        {env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
               strategy="afterInteractive"
             />
             <Script id="google-analytics" strategy="afterInteractive">
@@ -65,7 +65,7 @@ export default function RootLayout({
                 function gtag(){window.dataLayer.push(arguments);}
                 gtag('js', new Date());
 
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+                gtag('config', '${env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
               `}
             </Script>
           </>
