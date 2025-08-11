@@ -35,12 +35,12 @@ export async function getBlogFeed() {
 
   const feed = new Feed({
     title: 'Phala News',
-    description: 'Latest updates from Phala Network',
+    description: 'Latest updates from Phala',
     id: `${SITE_URL}/blog`,
     link: `${SITE_URL}/blog`,
     image: `${SITE_URL}/logo.svg`,
     favicon: `${SITE_URL}/favicon.ico`,
-    copyright: `All rights reserved ${new Date().getFullYear()}, Phala Network`,
+    copyright: `All rights reserved ${new Date().getFullYear()}, Phala`,
     feedLinks: {
       rss2: `${SITE_URL}/rss.xml`,
       atom: `${SITE_URL}/atom.xml`,
@@ -96,12 +96,12 @@ export async function getChangelogFeed() {
 
   const feed = new Feed({
     title: 'Phala Changelog',
-    description: 'The product changelog of Phala Network',
+    description: 'The product changelog of Phala',
     id: `${SITE_URL}/changelog`,
     link: `${SITE_URL}/changelog`,
     image: `${SITE_URL}/logo.svg`,
     favicon: `${SITE_URL}/favicon.ico`,
-    copyright: `All rights reserved ${new Date().getFullYear()}, Phala Network`,
+    copyright: `All rights reserved ${new Date().getFullYear()}, Phala`,
     feedLinks: {
       rss2: `${SITE_URL}/changelog/rss.xml`,
       atom: `${SITE_URL}/changelog/atom.xml`,

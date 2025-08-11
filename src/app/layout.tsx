@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     'TEE',
     'GPU TEE',
     'Confidential Computing',
-    'Web3',
     'Verifiable Compute',
     'Phala Network',
   ],
@@ -30,13 +29,19 @@ export const metadata: Metadata = {
     site: '@PhalaNetwork',
   },
   alternates: {
-    // canonical: 'https://phala.network',
+    canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
     types: {
       'application/rss+xml': [
-        { url: 'https://phala.network/rss.xml', title: 'Phala News' },
+        {
+          url: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/rss.xml`,
+          title: 'Phala News',
+        },
       ],
       'application/atom+xml': [
-        { url: 'https://phala.network/atom.xml', title: 'Phala News' },
+        {
+          url: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/atom.xml`,
+          title: 'Phala News',
+        },
       ],
     },
   },

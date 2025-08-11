@@ -53,17 +53,6 @@ export type ParsedBlock = BlockObjectResponse & {
   children?: ParsedBlock[]
 }
 
-export function removeMediumFormat(url: string): string {
-  const regex = /^https?:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^/]+)$/
-  const match = url.match(regex)
-  if (match && match.length === 3) {
-    const formatPart = match[1]
-    const baseUrl = url.replace(formatPart, '')
-    return baseUrl
-  }
-  return url
-}
-
 export function isMediumUrl(url: string): boolean {
   const regex = /^https?:\/\/[\w.-]+\.medium\.com/
   return regex.test(url)

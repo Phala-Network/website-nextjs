@@ -1,14 +1,21 @@
 import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import {
-  type ParsedListPage,
-  type ParsedPage,
-  removeMediumFormat,
-} from '@/lib/notion-client'
+import type { ParsedListPage, ParsedPage } from '@/lib/notion-client'
 
 interface ProxyImageOptions {
   width: number
   height: number
+}
+
+function removeMediumFormat(url: string): string {
+  const regex = /^https?:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^/]+)$/
+  const match = url.match(regex)
+  if (match && match.length === 3) {
+    const formatPart = match[1]
+    const baseUrl = url.replace(formatPart, '')
+    return baseUrl
+  }
+  return url
 }
 
 export function buildProxyImageUrl(

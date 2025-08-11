@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: slug,
     robots: 'noindex',
     alternates: {
-      canonical: `https://phala.network/tags/${encodeURIComponent(slug)}`,
+      canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/tags/${encodeURIComponent(slug)}`,
     },
   }
 }
