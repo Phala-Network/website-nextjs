@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import { ParsedListPage } from '@/lib/notion-client'
+import type { ParsedListPage } from '@/lib/notion-client'
 
 export default function useQueryPosts({
   initialPages,
@@ -26,7 +26,7 @@ export default function useQueryPosts({
       `/api/posts?${new URLSearchParams({
         cursor,
         ...params,
-      })}`
+      })}`,
     )
     const data = await res.json()
     setPages([...pages, ...data.pages])

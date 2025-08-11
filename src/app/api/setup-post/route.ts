@@ -1,16 +1,22 @@
+import { collectPaginatedAPI, isFullPage } from '@notionhq/client'
 import OpenAI from 'openai'
 import type { ChatCompletionMessageParam } from 'openai/resources/chat'
-import { isFullPage, collectPaginatedAPI } from '@notionhq/client'
 
-import { notion, n2m } from '@/lib/notion-client'
-import { generateSlug } from '@/lib/utils'
 import attempt from '@/lib/attempt-promise'
+import { n2m, notion } from '@/lib/notion-client'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || '',
 })
 
-const SUMMARY_PROMPT = 'Summarise the content in 150 to 200 words. Do not generate a summary in list format. Only provide the generated summary as the response, do not start your responses with an introductory sentence.'
+const SUMMARY_PROMPT =
+  'Summarise the content in 150 to 200 words. Do not generate a summary in list format. Only provide the generated summary as the response, do not start your responses with an introductory sentence.'
+
+function generateSlug(title: string): string {
+  const sanitizedTitle = title.toLowerCase().replace(/[^\w\d\s]+/g, '')
+  const slug = sanitizedTitle.replace(/\s+/g, '-')
+  return slug
+}
 
 export async function POST(req: Request) {
   const json = await req.json()
@@ -30,16 +36,20 @@ export async function POST(req: Request) {
   }
   const properties: Record<string, any> = {
     'Custom URL': {
-      rich_text: [{
-        text: { content: `/${generateSlug(title)}` }
-      }]
-    }
+      rich_text: [
+        {
+          text: { content: `/${generateSlug(title)}` },
+        },
+      ],
+    },
   }
   if (process.env.OPENAI_API_KEY) {
     const blocks = await collectPaginatedAPI(notion.blocks.children.list, {
       block_id: page.id,
     })
-    const markdown = n2m.toMarkdownString((await n2m.blocksToMarkdown(blocks))).parent
+    const markdown = n2m.toMarkdownString(
+      await n2m.blocksToMarkdown(blocks),
+    ).parent
     const messages: ChatCompletionMessageParam[] = [
       { role: 'system', content: SUMMARY_PROMPT },
       { role: 'user', content: markdown },
@@ -49,18 +59,25 @@ export async function POST(req: Request) {
       messages,
     })
     properties['Summary'] = {
-      rich_text: [{
-        text: { content: completion.choices[0].message.content }
-      }]
+      rich_text: [
+        {
+          text: { content: completion.choices[0].message.content },
+        },
+      ],
     }
   }
-  const [, res] = await attempt(notion.pages.update({
-    page_id: page.id,
-    properties,
-  }))
-  return new Response(JSON.stringify({
-    succeed: !!res,
-  }), {
-    status: 200,
-  })
+  const [, res] = await attempt(
+    notion.pages.update({
+      page_id: page.id,
+      properties,
+    }),
+  )
+  return new Response(
+    JSON.stringify({
+      succeed: !!res,
+    }),
+    {
+      status: 200,
+    },
+  )
 }

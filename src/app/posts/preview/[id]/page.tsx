@@ -17,6 +17,7 @@ import '@/components/notion-render/styles.css'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 
 import NotionBlocksProvider from '@/components/notion-render/NotionBlocksProvider'
+import { env } from '@/env'
 
 interface Props {
   params: Promise<{ id: string }>
@@ -81,7 +82,7 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
   ]
 
   const { pages: recentPages } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       and: [...baseFilters],
     },
@@ -97,7 +98,7 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
   let similarPages: ParsedListPage[] = []
   if (page.tags.length > 0) {
     const result = await queryDatabase({
-      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      database_id: env.NOTION_POSTS_DATABASE_ID,
       filter: {
         and: [
           ...baseFilters,
@@ -125,7 +126,7 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
 
   if (page.publishedTime) {
     const { pages: nextPagesResult } = await queryDatabase({
-      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      database_id: env.NOTION_POSTS_DATABASE_ID,
       filter: {
         and: [
           ...baseFilters,
@@ -148,7 +149,7 @@ async function getPostPreviewData(id: string): Promise<PostData | null> {
     nextPages = nextPagesResult
 
     const { pages: beforePagesResult } = await queryDatabase({
-      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      database_id: env.NOTION_POSTS_DATABASE_ID,
       filter: {
         and: [
           ...baseFilters,
