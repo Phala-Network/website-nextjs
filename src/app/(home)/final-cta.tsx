@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -27,8 +29,12 @@ export default function FinalCTA() {
                 deploying trustworthy AI in production
               </p>
               <div className="flex gap-3 items-center">
-                <Button>Get started</Button>
-                <Button variant="secondary">Request a demo</Button>
+                <Button>
+                  <a href="https://cloud.phala.network/register">Get started</a>
+                </Button>
+                <Button variant="secondary">
+                  <Link href="/contact">Request a demo</Link>
+                </Button>
               </div>
               <p className="text-muted-foreground text-xs mt-4">
                 No credit card required. Deploy your first model in 5 minutes.
