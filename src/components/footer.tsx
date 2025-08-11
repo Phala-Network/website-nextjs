@@ -222,7 +222,7 @@ const SiteFooter: React.FC = () => {
             © {new Date().getFullYear()} Phala. All rights reserved.{' '}
             <a
               href="/privacy"
-              className="text-foreground underline underline-offset-4 transition-colors hover:text-primary"
+              className="text-foreground underline underline-offset-4 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -231,7 +231,7 @@ const SiteFooter: React.FC = () => {
             {' • '}
             <a
               href="/terms"
-              className="text-foreground underline underline-offset-4 transition-colors hover:text-primary"
+              className="text-foreground underline underline-offset-4 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >

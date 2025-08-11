@@ -40,7 +40,12 @@ export default function Hero() {
               <Button size="lg" className="shrink-0" asChild>
                 <a href="https://cloud.phala.network/register">Get started</a>
               </Button>
-              <Button size="lg" variant="outline" className="max-sm:px-6">
+              <Button
+                size="lg"
+                variant="outline"
+                className="max-sm:px-6"
+                asChild
+              >
                 <Link href="/contact">Request a demo</Link>
               </Button>
             </div>
