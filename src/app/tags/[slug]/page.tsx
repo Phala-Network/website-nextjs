@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 import TagPageClient from './TagPageClient'
@@ -25,7 +26,7 @@ async function getTagData(slug: string) {
   ]
 
   const { pages, next_cursor } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       and: [
         ...baseFilters,

@@ -1,8 +1,8 @@
+import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { useAtomValue } from 'jotai'
-import { type ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { buildProxyImageUrl } from '@/lib/utils'
-import { BlockAtom } from './atoms'
+import { buildProxyImageUrl } from '@/lib/image'
+import type { BlockAtom } from './atoms'
 import RichText from './RichText'
 
 const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
@@ -12,11 +12,7 @@ const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
   return (
     <div className="notion_image_container">
       <figure>
-        <img
-          className="m-auto"
-          src={imageUrl}
-          alt={caption}
-        />
+        <img className="m-auto" src={imageUrl} alt={caption} />
         {caption && (
           <figcaption className="notion_caption">
             <RichText rich_text={block.image.caption} />

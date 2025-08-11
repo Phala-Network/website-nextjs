@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 
 import PageContent from '@/components/PageContent'
 import PageCoverImage from '@/components/PageCoverImage'
+import { env } from '@/env'
 import attempt from '@/lib/attempt-promise'
 import {
   getParsedPagesByProperties,
@@ -18,7 +19,7 @@ interface Props {
 async function getPageData(slug: string): Promise<ParsedPage | null> {
   const [error, pages] = await attempt(
     getParsedPagesByProperties({
-      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      database_id: env.NOTION_POSTS_DATABASE_ID,
       properties: {
         'Custom URL': `/${slug}`,
         Status: {

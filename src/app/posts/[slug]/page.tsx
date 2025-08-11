@@ -1,17 +1,17 @@
-import React from 'react'
-import { notFound } from 'next/navigation'
-import { Metadata } from 'next'
 import dayjs from 'dayjs'
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
-import { cn } from '@/lib/utils'
 import attempt from '@/lib/attempt-promise'
 import {
-  queryDatabase,
   getParsedPagesByProperties,
-  ParsedPage,
-  ParsedListPage,
+  type ParsedListPage,
+  type ParsedPage,
+  queryDatabase,
 } from '@/lib/notion-client'
 import '@/components/notion-render/styles.css'
+
+import { env } from '@/env'
 import PostPageClient from './PostPageClient'
 
 const remap: Readonly<Record<string, string>> = {
@@ -34,22 +34,22 @@ interface PostData {
 async function getPostData(slug: string): Promise<PostData | null> {
   const [error, pages] = await attempt(
     getParsedPagesByProperties({
-      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      database_id: env.NOTION_POSTS_DATABASE_ID,
       properties: {
         'Custom URL': `/${slug}`,
       },
-    })
+    }),
   )
-  
+
   if (error) {
     console.error(error)
     return null
   }
-  
+
   if (!pages || pages.length === 0) {
     return null
   }
-  
+
   const page = pages[0]
   const baseFilters = [
     {
@@ -77,10 +77,10 @@ async function getPostData(slug: string): Promise<PostData | null> {
       },
     },
   ]
-  
+
   // Get recent pages
   const { pages: recentPages } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       and: [...baseFilters],
     },
@@ -92,12 +92,12 @@ async function getPostData(slug: string): Promise<PostData | null> {
     ],
     page_size: 3,
   })
-  
+
   // Get similar pages
   let similarPages: ParsedListPage[] = []
   if (page.tags.length > 0) {
     const result = await queryDatabase({
-      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      database_id: env.NOTION_POSTS_DATABASE_ID,
       filter: {
         and: [
           ...baseFilters,
@@ -119,14 +119,14 @@ async function getPostData(slug: string): Promise<PostData | null> {
     })
     similarPages = result.pages
   }
-  
+
   // Get navigation pages
   let beforePages: ParsedListPage[] = []
   let nextPages: ParsedListPage[] = []
-  
+
   if (page.publishedTime) {
     const { pages: nextPagesResult } = await queryDatabase({
-      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      database_id: env.NOTION_POSTS_DATABASE_ID,
       filter: {
         and: [
           ...baseFilters,
@@ -147,9 +147,9 @@ async function getPostData(slug: string): Promise<PostData | null> {
       page_size: 1,
     })
     nextPages = nextPagesResult
-    
+
     const { pages: beforePagesResult } = await queryDatabase({
-      database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+      database_id: env.NOTION_POSTS_DATABASE_ID,
       filter: {
         and: [
           ...baseFilters,
@@ -173,7 +173,7 @@ async function getPostData(slug: string): Promise<PostData | null> {
     })
     beforePages = beforePagesResult
   }
-  
+
   return {
     page,
     recentPages,
@@ -186,24 +186,26 @@ async function getPostData(slug: string): Promise<PostData | null> {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const postData = await getPostData(slug)
-  
+
   if (!postData) {
     return {
       title: 'Post Not Found',
     }
   }
-  
+
   const { page } = postData
-  let id = page.id.replace(/\-/g, '')
+  let id = page.id.replace(/-/g, '')
   id = remap[id] || id
   const postCover = `https://img0.phala.world/cover/1200x630/${id}.jpg?z=123`
-  
+
   return {
     title: `${page.title} | Phala Network`,
-    description: 'Discover the latest from Phala Network - the decentralized cloud for Web3.',
+    description:
+      'Discover the latest from Phala Network - the decentralized cloud for Web3.',
     openGraph: {
       title: page.title,
-      description: 'Discover the latest from Phala Network - the decentralized cloud for Web3.',
+      description:
+        'Discover the latest from Phala Network - the decentralized cloud for Web3.',
       url: `https://phala.network/posts${page.slug}`,
       locale: 'en_US',
       images: [
@@ -220,7 +222,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       site: '@PhalaNetwork',
       title: page.title,
-      description: 'Discover the latest from Phala Network - the decentralized cloud for Web3.',
+      description:
+        'Discover the latest from Phala Network - the decentralized cloud for Web3.',
       images: [postCover],
     },
     alternates: {
@@ -240,18 +243,17 @@ export const revalidate = 7200
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
   const postData = await getPostData(slug)
-  
+
   if (!postData) {
     notFound()
   }
-  
+
   return (
     <div className="min-h-screen bg-[#F9F9F7]">
       {/* Spacer for fixed navbar */}
       <div className="h-16 lg:h-20"></div>
-      
+
       <PostPageClient {...postData} />
-      
     </div>
   )
 }

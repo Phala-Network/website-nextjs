@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import CreamContainer from '@/components/cream-container'
+import { env } from '@/env'
 import { getGitHubStars } from '@/lib/github-stars'
 import AuditReport from './audit-report'
 import { Compare3 as Compare } from './compare'
@@ -16,10 +17,7 @@ export const metadata: Metadata = {
 }
 
 const DstackPage = async () => {
-  if (
-    process.env.VERCEL_TARGET_ENV !== 'preview' &&
-    process.env.NODE_ENV !== 'development'
-  ) {
+  if (env.VERCEL_ENV !== 'preview' && env.NODE_ENV !== 'development') {
     notFound()
   }
 

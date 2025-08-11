@@ -1,5 +1,7 @@
 import * as R from 'ramda'
-import { notion, queryDatabase, type ParsedListPage } from '@/lib/notion-client'
+
+import { env } from '@/env'
+import { notion, type ParsedListPage, queryDatabase } from '@/lib/notion-client'
 
 const WEBSITE_URL = 'https://phala.network'
 
@@ -43,27 +45,30 @@ function generateSiteMap(tags: string[], posts: ParsedListPage[]) {
        <url>
          <loc>${`${WEBSITE_URL}/posts${slug}`}</loc>
        </url>
-     `;
+     `
        })
        .join('')}
    </urlset>
- `;
+ `
 }
 
 async function retrieveTags() {
   const database = await notion.databases.retrieve({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
   })
-  const tags = R.without(['Changelog'], R.map(
-    R.prop('name'),
-    R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database)
-  ))
+  const tags = R.without(
+    ['Changelog'],
+    R.map(
+      R.prop('name'),
+      R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database),
+    ),
+  )
   return tags
 }
 
 async function retrievePosts() {
   const { pages } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       and: [
         {
