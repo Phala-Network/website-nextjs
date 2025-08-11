@@ -1,10 +1,9 @@
 'use client'
 
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { FaArrowRight } from 'react-icons/fa6'
 
+import { SuccessStoryCard } from '@/components/success-story-card'
 import { Button } from '@/components/ui/button'
 import type { CarouselApi } from '@/components/ui/carousel'
 import {
@@ -12,125 +11,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import { cn } from '@/lib/utils'
-
-const story1 = '/home/story-1.png'
-const story2 = '/home/story-2.png'
-const story3 = '/home/story-3.png'
-const story4 = '/home/story-4.png'
-
-interface SuccessStory {
-  id: string
-  category: string
-  title: string
-  quote: string
-  stats: string[]
-  bgColor: string
-  bgImage: string
-  href: string
-  isDark?: boolean
-}
-
-const successStories: SuccessStory[] = [
-  {
-    id: '1',
-    category: 'Financial\nServices',
-    title: 'Major Investment Bank',
-    quote:
-      '"Phala enabled us to process sensitive trading data with AI while maintaining complete regulatory compliance. We\'ve reduced compliance costs by 40% while improving model accuracy."',
-    stats: ['• Risk Management AI', '• $2B+ Assets Under Management'],
-    bgColor: 'bg-[#f3f3f3]',
-    bgImage: story1,
-    href: '/blog/financial-services-case-study',
-  },
-  {
-    id: '2',
-    category: 'Healthcare\nResearch',
-    title: 'Research Consortium',
-    quote:
-      '"Multi-party collaboration on patient data without privacy compromise. Accelerated drug discovery by 60% while maintaining HIPAA compliance."',
-    stats: ['• 5 Hospital Network', '• 100K+ Patient Records'],
-    bgColor: 'bg-[#a7518d]',
-    bgImage: story2,
-    href: '/blog/healthcare-research-case-study',
-    isDark: true,
-  },
-  {
-    id: '3',
-    category: 'AI SaaS\nPlatform',
-    title: 'Enterprise Software Company',
-    quote:
-      '"Phala\'s confidential AI helped us land Fortune 500 clients who required verifiable data protection. Increased enterprise sales by 300%."',
-    stats: ['• B2B AI Platform', '• 50+ Enterprise Clients'],
-    bgColor: 'bg-[#5159a1]',
-    bgImage: story3,
-    href: '/blog/ai-saas-platform-case-study',
-    isDark: true,
-  },
-  {
-    id: '4',
-    category: 'Decentralized\nAI',
-    title: 'DeFi Protocol',
-    quote:
-      '"Built autonomous trading agents with verifiable execution. Users trust our AI because they can verify every decision on-chain."',
-    stats: ['• Autonomous Agents', '• $50M+ TVL'],
-    bgColor: 'bg-[#3e3e3e]',
-    bgImage: story4,
-    href: '/blog/defi-protocol-case-study',
-  },
-]
-
-interface SuccessStoryCardProps {
-  story: SuccessStory
-}
-
-const SuccessStoryCard = ({ story }: SuccessStoryCardProps) => (
-  <Link
-    href={story.href}
-    className="block"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <div
-      className={cn(
-        story.bgColor,
-        story.isDark && 'dark',
-        'text-foreground relative overflow-hidden rounded-xl aspect-400/560 bg-cover bg-muted bg-left-bottom p-6 flex flex-col',
-      )}
-      style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('${story.bgImage}')`,
-      }}
-    >
-      {/* Category */}
-      <div className="flex items-start mb-auto">
-        <div className="font-semibold text-xl md:text-2xl whitespace-pre-line flex-1">
-          {story.category}
-        </div>
-        <div className="bg-white/80 rounded-full p-3 flex items-center justify-center shrink-0">
-          <FaArrowRight className="w-4 h-4 text-black" />
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex flex-col gap-4 mb-6">
-        <div className="font-medium">{story.title}</div>
-        <div className="text-sm line-clamp-3">{story.quote}</div>
-      </div>
-
-      {/* Stats */}
-      <div className="flex flex-col gap-1 mb-4">
-        {story.stats.map((stat, index) => (
-          <div
-            key={`${story.id}-stat-${index}`}
-            className="text-sm text-muted-foreground"
-          >
-            {stat}
-          </div>
-        ))}
-      </div>
-    </div>
-  </Link>
-)
+import { successStories } from '@/data/success-stories-data'
 
 export default function SuccessStoriesSection() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>()
@@ -199,7 +80,12 @@ export default function SuccessStoriesSection() {
       <div className="hidden xl:block w-full">
         <div className="grid grid-cols-4 gap-5 container">
           {successStories.map((story) => (
-            <SuccessStoryCard key={story.id} story={story} />
+            <SuccessStoryCard
+              key={story.id}
+              story={story}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
           ))}
         </div>
       </div>
@@ -219,7 +105,11 @@ export default function SuccessStoriesSection() {
           <CarouselContent className="ml-0 mr-4">
             {successStories.map((story) => (
               <CarouselItem key={story.id} className="max-w-[309px]">
-                <SuccessStoryCard story={story} />
+                <SuccessStoryCard
+                  story={story}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
               </CarouselItem>
             ))}
           </CarouselContent>
