@@ -221,7 +221,7 @@ const SiteFooter: React.FC = () => {
           <p className="order-2 text-center text-sm text-muted-foreground sm:text-left md:order-1">
             © {new Date().getFullYear()} Phala. All rights reserved.{' '}
             <a
-              href="https://cloud.phala.network/privacy"
+              href="/privacy"
               className="text-foreground underline underline-offset-4 transition-colors hover:text-primary"
               target="_blank"
               rel="noopener noreferrer"
@@ -230,7 +230,7 @@ const SiteFooter: React.FC = () => {
             </a>
             {' • '}
             <a
-              href="https://cloud.phala.network/terms"
+              href="/terms"
               className="text-foreground underline underline-offset-4 transition-colors hover:text-primary"
               target="_blank"
               rel="noopener noreferrer"

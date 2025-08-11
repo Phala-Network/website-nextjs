@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -36,11 +37,11 @@ export default function Hero() {
             </div>
 
             <div className="flex gap-3 items-start mt-12">
-              <Button size="lg" className="shrink-0">
-                Get started
+              <Button size="lg" className="shrink-0" asChild>
+                <a href="https://cloud.phala.network/register">Get started</a>
               </Button>
               <Button size="lg" variant="outline" className="max-sm:px-6">
-                Request a demo
+                <Link href="/contact">Request a demo</Link>
               </Button>
             </div>
           </div>
