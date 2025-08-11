@@ -1,3 +1,5 @@
+'use client'
+
 import type React from 'react'
 import {
   FaDiscord,
@@ -8,6 +10,7 @@ import {
 } from 'react-icons/fa6'
 
 import { Logo, LogoImageDesktop, LogoImageMobile } from '@/components/logo'
+import { useSubscribe } from '@/hooks/useSubscribe'
 
 const navigation = [
   {
@@ -36,6 +39,7 @@ const navigation = [
         name: 'CLI',
         href: 'https://docs.phala.network/phala-cloud/phala-cloud-cli/overview',
       },
+      // TODO: add SDK page
       // { name: 'SDK', href: '/dstack' },
       { name: 'GitHub', href: 'https://github.com/Phala-Network/' },
       {
@@ -99,6 +103,22 @@ const socialLinks = [
 ]
 
 const SiteFooter: React.FC = () => {
+  const { onSubmit, isLoading, message, error, isSucceed, isError, dismiss } =
+    useSubscribe()
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const email = formData.get('email') as string
+    onSubmit(email)
+  }
+
+  const handleInputChange = () => {
+    if (isSucceed || isError) {
+      dismiss()
+    }
+  }
+
   return (
     <section className="py-12 sm:py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-6">
@@ -117,19 +137,41 @@ const SiteFooter: React.FC = () => {
             <p className="mb-2 font-medium">Subscribe to our newsletter</p>
 
             {/* Newsletter subscription */}
-            <div className="flex w-full gap-3 max-w-md">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex h-10 flex-1 rounded-md border border-input bg-background px-4 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-sm"
-              />
-              <button
-                type="button"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary py-2 font-medium whitespace-nowrap text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 px-4 text-sm"
-              >
-                Subscribe
-              </button>
-            </div>
+            <form onSubmit={handleSubmit} className="w-full max-w-md">
+              <div className="flex w-full gap-3">
+                <input
+                  type="email"
+                  name="email"
+                  id="newsletter-email"
+                  autoComplete="email"
+                  placeholder="Your email"
+                  disabled={isLoading}
+                  onChange={handleInputChange}
+                  className="flex h-10 flex-1 rounded-md border border-input bg-background px-4 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-sm"
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary py-2 font-medium whitespace-nowrap text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 px-4 text-sm"
+                >
+                  {isLoading ? 'Subscribing...' : 'Subscribe'}
+                </button>
+              </div>
+
+              {/* Success message */}
+              {isSucceed && (
+                <div className="mt-2 text-sm text-green-600 dark:text-green-400">
+                  {message}
+                </div>
+              )}
+
+              {/* Error message */}
+              {isError && (
+                <div className="mt-2 text-sm text-red-600 dark:text-red-400">
+                  {error}
+                </div>
+              )}
+            </form>
           </div>
 
           {/* Navigation Section */}
