@@ -7,6 +7,7 @@ import {
   Building2,
   Cloud,
   Code,
+  File,
   Menu,
   Shield,
   SquareArrowOutUpRight,
@@ -85,7 +86,7 @@ const Navbar1 = ({
           title: 'Confidential VM',
           description: 'Trusted execution environments for secure computing',
           icon: <Shield className="size-5 shrink-0" />,
-          url: 'https://cloud.phala.network/features/confidential-vm',
+          url: '/confidential-vm',
         },
         {
           title: 'Confidential AI (Models)',
@@ -97,7 +98,7 @@ const Navbar1 = ({
           title: 'DStack',
           description: 'Decentralized compute infrastructure',
           icon: <Cloud className="size-5 shrink-0" />,
-          url: 'https://github.com/dstack-TEE/dstack',
+          url: '/dstack',
         },
       ],
     },
@@ -106,7 +107,7 @@ const Navbar1 = ({
       url: '#',
       items: [
         {
-          title: 'Case Studies',
+          title: 'Success Stories',
           description: 'Real-world implementations and success stories',
           icon: <Building2 className="size-5 shrink-0" />,
           url: '/success-stories',
@@ -121,13 +122,7 @@ const Navbar1 = ({
           title: 'Blog',
           description: 'Latest insights and updates',
           icon: <BookOpen className="size-5 shrink-0" />,
-          url: 'https://phala.network/blog',
-        },
-        {
-          title: 'Success Stories',
-          description: 'See how organizations use Phala Network',
-          icon: <Book className="size-5 shrink-0" />,
-          url: '/success-stories',
+          url: '/blog',
         },
       ],
     },
@@ -154,10 +149,16 @@ const Navbar1 = ({
           url: 'https://cloud.phala.network/templates',
         },
         {
-          title: 'Status Page',
+          title: 'Service Status',
           description: 'Check service status and uptime',
           icon: <Trees className="size-5 shrink-0" />,
           url: 'https://status.phala.network/',
+        },
+        {
+          title: 'Startup Program',
+          description: 'Get free credits for your startup',
+          icon: <File className="size-5 shrink-0" />,
+          url: '/startup-program',
         },
       ],
     },
@@ -205,7 +206,7 @@ const Navbar1 = ({
     },
     {
       title: 'Pricing',
-      url: 'https://cloud.phala.network/pricing',
+      url: '/pricing',
     },
   ],
   auth = {
