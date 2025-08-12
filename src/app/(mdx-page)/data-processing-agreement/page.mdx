@@ -1,0 +1,203 @@
+export const metadata = {
+  title: 'Data Processing Agreement',
+  description: 'Phala data processing agreement',
+}
+
+# Phala Cloud Data Processing Agreement (DPA)
+
+**Effective Date:** 14th June, 2025
+
+**Parties:**  
+- **Controller:** The customer agreeing to the Phala Cloud Terms of Service  
+- **Processor:** Hashforest Technology LLC, located in California, United States  
+
+This Data Processing Agreement ("DPA") forms part of the Terms of Service or other written or electronic agreement between the Controller and Processor (the “Agreement”) and reflects the parties’ agreement with respect to the processing of Personal Data in accordance with applicable Data Protection Laws.
+
+## 1. Definitions
+
+For the purpose of this DPA, the terms below shall have the meanings set forth in the GDPR:
+
+- **"Data Protection Laws"** means all applicable data protection and privacy legislation, including the GDPR.
+- **"GDPR"** means Regulation (EU) 2016/679 (General Data Protection Regulation).
+- **"Personal Data", "Data Subject", "Processing", "Controller", "Processor", "Supervisory Authority"** shall have the meanings set out in the GDPR.
+- **"Sub-processor"** means any third party engaged by the Processor to process Personal Data on behalf of the Controller.
+- **"Standard Contractual Clauses (SCCs)"** means the clauses adopted by the European Commission under Decision (EU) 2021/914.
+
+## 2. Scope and Roles
+
+This DPA applies where Processor Processes Personal Data on behalf of Controller in the course of providing the Services. Controller is the Data Controller and retains full control over the Personal Data, and Processor acts as a Data Processor on behalf of Controller.
+
+## 3. Controller Instructions
+
+Processor will process Personal Data only in accordance with the documented instructions of Controller unless otherwise required by law. If Processor reasonably believes that an instruction violates Data Protection Laws, it will notify Controller promptly.
+
+## 4. Compliance with Laws
+
+Each party will comply with its respective obligations under Data Protection Laws. Controller represents that it has the legal authority to disclose and instruct the Processing of Personal Data under this DPA.
+
+## 5. Processor Obligations
+
+Processor shall:
+
+- Ensure that persons authorized to process Personal Data are under an appropriate confidentiality obligation.
+- Implement technical and organizational measures to ensure a level of security appropriate to the risk.
+- Process Personal Data only for the purposes of providing the Services, unless otherwise instructed by Controller or required by law.
+- Assist Controller in responding to requests from Data Subjects in accordance with Section 9.
+- Assist Controller with DPIAs and consultations with Supervisory Authorities, to the extent required and reasonably feasible.
+- Not use Personal Data for model training, analytics, benchmarking, or product improvement, unless expressly authorized by Controller.
+
+## 6. Data Access and Confidentiality
+
+**Data Confidentiality by Design**  
+Processor implements controls and infrastructure designed to enforce data isolation and limit access to Personal Data. In production environments, confidential computing technology (e.g., Trusted Execution Environments) is used to isolate workloads at the hardware level. Processor personnel do not access customer data content unless explicitly authorized by Controller.
+
+## 7. Sub-processors
+
+Controller authorizes Processor to engage Sub-processors to provide the Services. The current list includes:
+
+- Google Cloud Platform
+- LinkedIn
+- PostHog
+- Stripe
+- Attio
+- HubSpot
+- Fingerprint
+
+Processor shall enter into written agreements with Sub-processors imposing data protection obligations substantially similar to those in this DPA. Processor remains liable for the performance of Sub-processors.
+
+Processor will notify Controller of any intended additions or replacements to the list of Sub-processors, giving Controller an opportunity to object on data protection grounds.
+
+## 8. International Data Transfers
+
+Processor may process Personal Data outside the EEA, including in the United States. Where such transfers occur, Processor shall ensure appropriate safeguards, including execution of Standard Contractual Clauses adopted by the European Commission.
+
+> Standard Contractual Clauses adopted by the European Commission pursuant to Commission Decision (EU) 2021/914, including Annex I (Parties and Processing Details), Annex II (Technical and Organizational Measures), and Annex III (Sub-Processors), are incorporated by reference.  
+> Full text available at: [https://eur-lex.europa.eu/eli/dec_impl/2021/914/oj](https://eur-lex.europa.eu/eli/dec_impl/2021/914/oj)  
+> A signed version with SCCs can be provided upon request.
+
+## 9. Data Subject Rights
+
+Processor will assist Controller in responding to requests from Data Subjects exercising their rights under Data Protection Laws, including rights of access, rectification, erasure, and portability. Assistance is limited to what is technically feasible, and Processor will not respond directly to Data Subjects without prior written authorization from Controller.
+
+Currently, such requests are supported via Processor’s ticket-based support process.
+
+## 10. Data Logging and Retention
+
+**Operational Logging and Minimization**  
+Processor maintains operational logs strictly necessary for infrastructure health, performance monitoring, and security incident detection. These logs:
+
+- Do not contain client content, prompts, or outputs;
+- Are retained for no more than **24 hours**, after which they are automatically purged or anonymized;
+- Are protected with access control and are not linked to customer identities;
+- May be retained longer only when required for ongoing forensic investigation and subject to Controller's notice.
+
+## 11. Data Portability and Export
+Where technically feasible, Processor shall assist Controller in exporting Personal Data in a structured, commonly used, and machine-readable format (e.g., JSON or CSV), consistent with the capabilities of the Services.
+
+## 12. Security Measures
+
+Processor implements appropriate technical and organizational measures, as described in **Annex II**, to ensure a level of security appropriate to the risk. These measures include data encryption, access control, and use of hardware-based confidential computing environments.
+
+## 13. Data Breach Notification
+
+In the event of a Personal Data Breach affecting Controller’s Personal Data, Processor shall notify Controller without undue delay, and in any event within 72 hours of becoming aware. Such notice shall include:
+
+- Nature of the breach;
+- Likely consequences;
+- Measures taken or proposed to address the breach;
+- A contact point for further information.
+
+## 14. Return and Deletion of Data
+
+Upon termination of the Services, Processor shall delete all Personal Data, unless retention is required by applicable law. Upon request, Processor will provide Controller with a 30-day transition period to export any Personal Data before deletion.
+
+## 15. Audit Rights
+
+Controller may audit Processor’s compliance with this DPA:
+
+- No more than once per 12-month period;
+- With at least 30 days’ prior written notice;
+- During normal business hours;
+- In a manner that minimizes disruption to Processor's operations.
+
+If available, Processor may satisfy audit obligations by providing relevant third-party audit reports (e.g., SOC 2 Type II) as part of its certification program.
+
+## 16. Limitation of Liability
+
+Each party’s liability under this DPA shall be subject to the limitations of liability in the Agreement. Processor shall not be liable for indirect, incidental, or consequential damages, and shall only be liable for direct damages arising from breach of this DPA.
+
+## 17. Governing Law
+
+This DPA shall be governed by the laws of the State of California, United States, unless otherwise required by Data Protection Laws.
+
+## Annex I – Processing Details
+
+- **Nature and Purpose:** Provision of confidential computing services, including secure execution of customer workloads.
+- **Categories of Data Subjects:** As determined by the Controller.
+- **Categories of Personal Data:** As provided by Controller through the Services.
+- **Duration:** For the term of the Agreement and up to 30 days post-termination.
+- **Data Locations:**  
+  Personal Data is processed in data centers located in the **United States**, **France**, **Germany**, and **other jurisdictions within the European Economic Area (EEA)**, depending on infrastructure availability and operational requirements. Processor maintains an internal inventory of processing locations and ensures that any cross-border data transfers comply with applicable Data Protection Laws.
+
+## Annex II – Technical and Organizational Measures
+
+- End-to-end encryption (TLS 1.3, AES-256 at rest)
+- Hardware-isolated execution environments (e.g., SGX, TDX, GPU Confidential Computing)
+- Access control using least-privilege principles
+- Continuous security monitoring and alerting
+- Logging with automatic **24-hour** retention and anonymization
+- Regular penetration testing and vulnerability assessments
+- Incident response procedures and breach reporting within 72 hours
+
+## Annex III – Sub-Processors
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Purpose</th>
+      <th>Jurisdiction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Infrastructure hosting</td>
+      <td>US, EU</td>
+    </tr>
+    <tr>
+      <td>LinkedIn</td>
+      <td>Marketing analytics</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>PostHog</td>
+      <td>Product analytics</td>
+      <td>US/EU</td>
+    </tr>
+    <tr>
+      <td>Stripe</td>
+      <td>Payment processing</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>Attio</td>
+      <td>CRM</td>
+      <td>UK</td>
+    </tr>
+    <tr>
+      <td>HubSpot</td>
+      <td>CRM/Marketing</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <td>Fingerprint</td>
+      <td>Security analytics</td>
+      <td>US</td>
+    </tr>
+  </tbody>
+</table>
+
+## Contact
+
+For data protection inquiries, please contact: <a href="mailto:cloud@phala.network">cloud@phala.network</a>
