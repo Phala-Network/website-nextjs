@@ -1,4 +1,3 @@
-import CreamContainer from '@/components/cream-container'
 import { DashedLine } from '@/components/dashed-line'
 import FinalCTA from '@/components/final-cta'
 import ConfidentialAI from './confidential-ai'
@@ -16,7 +15,7 @@ export default function HomePage() {
       <Hero />
       <TrustSteps />
       <Logos />
-      <div className="relative flex items-center justify-center max-w-5xl mx-auto mt-12">
+      <div className="relative flex items-center justify-center max-w-7xl mx-auto mt-12">
         <DashedLine className="text-muted-foreground" />
         <span className="bg-background text-muted-foreground absolute px-3 font-mono text-sm font-medium tracking-wide">
           Build AI People Can Trust.
@@ -26,10 +25,9 @@ export default function HomePage() {
       <PrivateCloudCompute />
       <ProvenAtScale />
       <SuccessStories />
-      <CreamContainer variant="bottom" className="w-full">
-        <FAQ />
-        <FinalCTA />
-      </CreamContainer>
+
+      <FAQ />
+      <FinalCTA />
     </div>
   )
 }

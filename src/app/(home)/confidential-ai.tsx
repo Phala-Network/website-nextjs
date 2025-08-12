@@ -111,7 +111,7 @@ const ModelCard = ({ model }: { model: ModelCard }) => (
   >
     <div className="bg-background w-[260px] flex-shrink-0 overflow-hidden rounded-sm flex flex-col p-6 relative">
       {/* Logo/Icon */}
-      <div className="bg-background rounded-full size-16 flex items-center justify-center border mb-6 sm:mb-12 shrink-0">
+      <div className="bg-background rounded-full size-16 flex items-center justify-center border mb-6 sm:mb-12 xl:mb-20 shrink-0">
         {/** biome-ignore lint/performance/noImgElement: svg */}
         <img alt={model.name} className="size-10" src={model.logo} />
       </div>
@@ -119,21 +119,23 @@ const ModelCard = ({ model }: { model: ModelCard }) => (
       {/* Content - grows to fill available space */}
       <div className="flex-1 flex flex-col">
         {/* Title */}
-        <div className="font-semibold text-lg mb-3">{model.name}</div>
+        <div className="font-semibold text-lg mb-3 xl:text-xl line-clamp-1">
+          {model.name}
+        </div>
 
         {/* Context */}
         <div className="text-sm font-medium mb-3">{model.context}</div>
 
         {/* Pricing */}
         <div className="space-y-1 mb-6">
-          <div className="text-xs text-muted-foreground">
+          <div className="text-sm text-muted-foreground">
             {model.inputPrice}
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-sm text-muted-foreground">
             {model.outputPrice}
           </div>
         </div>
-        <div className="text-xs text-muted-foreground">{model.updatedDate}</div>
+        <div className="text-sm text-muted-foreground">{model.updatedDate}</div>
       </div>
     </div>
   </a>
@@ -160,9 +162,9 @@ export default function ConfidentialAI() {
   }, [carouselApi])
 
   return (
-    <section className="py-24 max-w-5xl mx-auto">
+    <section className="py-24 max-w-7xl mx-auto">
       <div className="container">
-        <div className="mx-auto flex max-w-2xl flex-col items-center gap-4">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
           <h2 className="mb-2 text-center text-3xl font-bold text-balance lg:text-4xl">
             Confidential AI
           </h2>
@@ -175,7 +177,7 @@ export default function ConfidentialAI() {
           <div className="col-span-7 grid overflow-hidden rounded-lg bg-muted sm:grid-cols-2 shadow">
             <div className="flex flex-col justify-between p-8 lg:p-12">
               <div>
-                <div className="mb-4 text-xs text-muted-foreground">
+                <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
                   CONFIDENTIAL AI MODELS
                 </div>
                 <h3 className="mb-2 text-xl font-semibold lg:text-2xl">
@@ -184,7 +186,7 @@ export default function ConfidentialAI() {
                   </span>{' '}
                   ready to use
                 </h3>
-                <p className="text-sm text-muted-foreground lg:text-base">
+                <p className="text-sm text-muted-foreground lg:text-base xl:text-lg">
                   Access pre-configured confidential AI models with complete
                   privacy protection.
                 </p>
@@ -285,10 +287,10 @@ export default function ConfidentialAI() {
               height={852}
               src="/home/gpu.png"
               alt="NVIDIA H200 GPU TEE"
-              className="max-h-72 w-full border-b object-cover bg-card select-none"
+              className="h-64 w-full border-b object-cover bg-card select-none"
             />
             <div className="p-8 lg:p-12">
-              <div className="mb-4 text-xs text-muted-foreground">
+              <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
                 NVIDIA H200 GPU TEE
               </div>
               <h3 className="mb-2 text-xl font-semibold lg:text-2xl">
@@ -299,91 +301,105 @@ export default function ConfidentialAI() {
               </h3>
             </div>
           </a>
-          <div className="flex flex-col justify-between overflow-hidden rounded-lg bg-muted p-8 lg:col-span-4 lg:p-12 shadow">
-            <div>
-              <div className="mb-4 text-xs text-muted-foreground">
-                PERFORMANCE VS PRIVACY
-              </div>
-              <h3 className="mb-2 text-xl font-semibold lg:text-2xl">
-                100% privacy{' '}
-                <span className="text-muted-foreground">
-                  with only 5% performance trade-off
-                </span>
-              </h3>
+          <div className="min-h-96 flex flex-col justify-between overflow-hidden rounded-lg bg-muted p-8 lg:col-span-4 lg:p-12 shadow">
+            <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
+              PERFORMANCE VS PRIVACY
+            </div>
+            <h3 className="text-xl font-semibold lg:text-2xl">
+              100% privacy{' '}
+              <span className="text-muted-foreground">
+                with only 5% performance trade-off
+              </span>
+            </h3>
 
-              <div className="mt-8 space-y-4">
-                {/* Column Headers */}
-                <div className="grid grid-cols-[80px_1fr_1fr] gap-3 sm:gap-8 pb-2 border-b">
-                  <div className="text-sm font-medium text-muted-foreground">
-                    Solution
-                  </div>
-                  <div className="text-sm font-medium text-muted-foreground text-center">
-                    Performance
-                  </div>
-                  <div className="text-sm font-medium text-muted-foreground text-center">
-                    Privacy
-                  </div>
-                </div>
-
-                {/* Native GPU Row */}
-                <div className="grid grid-cols-[80px_1fr_1fr] gap-3 sm:gap-8 pb-4 items-center border-b">
-                  <div className="font-medium text-sm">Native GPU</div>
-                  <div className="space-y-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-muted-foreground max-sm:hidden">
-                        Native
-                      </span>
-                      <span className="font-medium ml-auto">100%</span>
-                    </div>
-                    <div className="bg-blue-400 h-2 rounded-full"></div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="text-muted-foreground flex items-center gap-1 max-sm:hidden">
-                        <span className="hidden sm:inline">Data exposed</span>
-                        <CircleAlert size={10} />
-                      </div>
-                      <span className="font-medium ml-auto">0%</span>
-                    </div>
-                    <div className="bg-primary-200 h-2 rounded-full"></div>
-                  </div>
-                </div>
-
-                {/* GPU TEE Row */}
-                <div className="grid grid-cols-[80px_1fr_1fr] gap-3 sm:gap-8 pb-4 items-center">
-                  <div className="font-medium text-sm flex items-center gap-1">
-                    {/** biome-ignore lint/performance/noImgElement: svg */}
-                    <img
-                      src="/home/icon.svg"
-                      alt="GPU TEE"
-                      className="size-4"
-                    />
-                    <span>GPU TEE</span>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-muted-foreground max-sm:hidden">
-                        Nearly native
-                      </span>
-                      <span className="font-medium ml-auto">95%</span>
-                    </div>
-                    <div className="bg-blue-100 h-2 rounded-full">
-                      <div className="bg-blue-400 h-2 rounded-full w-[95%]"></div>
-                    </div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-muted-foreground max-sm:hidden">
-                        Fully private
-                      </span>
-                      <span className="font-medium ml-auto">100%</span>
-                    </div>
-                    <div className="bg-primary-500 h-2 rounded-full"></div>
-                  </div>
-                </div>
+            <div className="flex items-center w-full flex-1">
+              <div className="w-full">
+                <table className="w-full border-collapse [&_td,th]:py-3 xl:[&_td,th]:py-4 [&_td,th]:px-2 xl:[&_td,th]:px-4">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-sm font-medium text-muted-foreground text-left pb-2 min-w-25 xl:min-w-32">
+                        Solution
+                      </th>
+                      <th className="text-sm font-medium text-muted-foreground text-center pb-2 w-1/2">
+                        Performance
+                      </th>
+                      <th className="text-sm font-medium text-muted-foreground text-center pb-2 w-1/2">
+                        Privacy
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-border">
+                      <td className="font-medium text-sm">Native GPU</td>
+                      <td>
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-muted-foreground max-sm:hidden">
+                              Native
+                            </span>
+                            <span className="font-medium ml-auto">100%</span>
+                          </div>
+                          <div className="bg-blue-400 h-2 rounded-full"></div>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <div className="text-muted-foreground flex items-center gap-1 max-sm:hidden">
+                              <span className="hidden sm:inline">
+                                Data exposed
+                              </span>
+                              <CircleAlert size={10} />
+                            </div>
+                            <span className="font-medium ml-auto">0%</span>
+                          </div>
+                          <div className="bg-primary-200 h-2 rounded-full"></div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td>
+                        <div className="font-medium text-sm flex items-center gap-1">
+                          {/** biome-ignore lint/performance/noImgElement: svg */}
+                          <img
+                            src="/home/icon.svg"
+                            alt="GPU TEE"
+                            className="size-4 shrink-0"
+                          />
+                          <span>GPU TEE</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-muted-foreground max-sm:hidden">
+                              Nearly native
+                            </span>
+                            <span className="font-medium ml-auto">95%</span>
+                          </div>
+                          <div className="bg-blue-100 h-2 rounded-full">
+                            <div className="bg-blue-400 h-2 rounded-full w-[95%]"></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-muted-foreground max-sm:hidden">
+                              Fully private
+                            </span>
+                            <span className="font-medium ml-auto">100%</span>
+                          </div>
+                          <div className="bg-primary-500 h-2 rounded-full"></div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-            <div className="mt-6 sm:mt-8">
+
+            <div className="mt-2">
               <Button variant="outline" asChild>
                 <a
                   href="https://cloud.phala.network/features/gpu-tee"

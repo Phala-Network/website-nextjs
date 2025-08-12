@@ -28,21 +28,19 @@ const ScrollToTop = ({ top = 20, smooth = true }) => {
   }, [top])
 
   return (
-    <>
-      <motion.button
-        className="fixed z-10 w-12 h-12 bg-white drop-shadow rounded-2xl right-8 bottom-8 flex items-center justify-center"
-        onClick={() => scrollToTop(smooth)}
-        aria-label="Scroll to top"
-        variants={{
-          visible: { opacity: 1 },
-          hidden: { opacity: 0 },
-        }}
-        initial="hidden"
-        animate={visible ? 'visible' : 'hidden'}
-      >
-        <AiOutlineArrowUp size={16} color="#000" />
-      </motion.button>
-    </>
+    <motion.button
+      className="fixed w-12 h-12 bg-white drop-shadow rounded-2xl right-8 bottom-8 flex items-center justify-center"
+      onClick={() => scrollToTop(smooth)}
+      aria-label="Scroll to top"
+      variants={{
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
+      }}
+      initial="hidden"
+      animate={visible ? 'visible' : 'hidden'}
+    >
+      <AiOutlineArrowUp size={16} color="#000" />
+    </motion.button>
   )
 }
 
