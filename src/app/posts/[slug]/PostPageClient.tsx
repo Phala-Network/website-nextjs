@@ -1,6 +1,7 @@
 'use client'
 
 import dayjs from 'dayjs'
+import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 import {
   FiArrowLeft,
@@ -200,7 +201,7 @@ ${page.markdown}`
   const renderPostNavigation = () => (
     <nav className="flex flex-col sm:flex-row gap-4 pt-8 border-t mt-8">
       {beforePages.length > 0 && (
-        <a
+        <Link
           href={`/posts${beforePages[0].slug}`}
           className="flex-1 p-4 border rounded-md block"
         >
@@ -215,11 +216,11 @@ ${page.markdown}`
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       )}
 
       {nextPages.length > 0 && (
-        <a
+        <Link
           href={`/posts${nextPages[0].slug}`}
           className="flex-1 p-4 text-right border rounded-md block"
         >
@@ -234,7 +235,7 @@ ${page.markdown}`
             </div>
             <FiArrowRight className="w-5 h-5 mt-0.5 shrink-0" />
           </div>
-        </a>
+        </Link>
       )}
     </nav>
   )
@@ -306,7 +307,7 @@ ${page.markdown}`
         </header>
 
         {/* Main Layout */}
-        <div className="flex gap-8 max-lg:flex-col">
+        <div className="flex gap-8 items-start max-lg:flex-col">
           {/* Article Content */}
           <article className="w-full max-w-prose">
             {page.cover && (
@@ -344,7 +345,7 @@ ${page.markdown}`
           </article>
 
           {/* Sidebar */}
-          <aside className="space-y-4 sticky lg:top-20 lg:max-w-sm w-full">
+          <aside className="space-y-4 lg:sticky lg:top-20 lg:max-w-sm w-full">
             {/* Table of Contents */}
             {renderTableOfContents()}
 
@@ -356,7 +357,7 @@ ${page.markdown}`
                 </h3>
                 <div className="space-y-4">
                   {recentPages.map((recentPage) => (
-                    <a
+                    <Link
                       href={`/posts${recentPage.slug}`}
                       key={recentPage.id}
                       className="block"
@@ -367,7 +368,7 @@ ${page.markdown}`
                       <p className="text-xs text-muted-foreground">
                         {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
                       </p>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -381,7 +382,7 @@ ${page.markdown}`
                 </h3>
                 <div className="space-y-4">
                   {similarPages.map((similarPage) => (
-                    <a
+                    <Link
                       href={`/posts${similarPage.slug}`}
                       key={similarPage.id}
                       className="block"
@@ -394,7 +395,7 @@ ${page.markdown}`
                           'MMM DD, YYYY',
                         )}
                       </p>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
