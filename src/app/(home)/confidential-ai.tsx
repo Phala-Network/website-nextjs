@@ -270,7 +270,7 @@ export default function ConfidentialAI() {
             </div>
           </div>
           <a
-            href="https://cloud.phala.network/features/gpu-tee"
+            href="/confidential-ai"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative overflow-hidden rounded-lg bg-muted lg:col-span-3 shadow"
@@ -402,7 +402,7 @@ export default function ConfidentialAI() {
             <div className="mt-2">
               <Button variant="outline" asChild>
                 <a
-                  href="https://cloud.phala.network/features/gpu-tee"
+                  href="/confidential-ai"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
