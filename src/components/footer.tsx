@@ -120,124 +120,128 @@ const SiteFooter: React.FC = () => {
   }
 
   return (
-    <section className="py-12 sm:py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-5 md:px-6">
-        {/* Logo and newsletter section */}
-        <div className="mb-10 flex flex-col items-start justify-between gap-10 border-b pb-10 sm:mb-16 sm:pb-12 lg:flex-row">
-          <div className="w-full max-w-full md:max-w-2xs lg:max-w-sm">
-            <Logo url="/" className="mb-6">
-              <LogoImageDesktop src="/home/logo.svg" alt="Phala" />
-              <LogoImageMobile src="/home/logo.svg" alt="Phala" />
-            </Logo>
+    <section className="py-12 sm:py-16 md:py-24 bg-muted">
+      <div className="mx-auto max-w-7xl">
+        <div className="container">
+          {/* Logo and newsletter section */}
+          <div className="mb-10 flex flex-col items-start justify-between gap-10 border-b pb-10 sm:mb-16 sm:pb-12 lg:flex-row">
+            <div className="w-full max-w-full md:max-w-2xs lg:max-w-sm">
+              <Logo url="/" className="mb-6">
+                <LogoImageDesktop src="/home/logo.svg" alt="Phala" />
+                <LogoImageMobile src="/home/logo.svg" alt="Phala" />
+              </Logo>
 
-            <p className="mb-8 text-base text-muted-foreground">
-              Build AI People Can Trust.
-            </p>
+              <p className="mb-8 text-base text-muted-foreground">
+                Build AI People Can Trust.
+              </p>
 
-            <p className="mb-2 font-medium">Subscribe to our newsletter</p>
+              <p className="mb-2 font-medium">Subscribe to our newsletter</p>
 
-            {/* Newsletter subscription */}
-            <form onSubmit={handleSubmit} className="w-full max-w-md">
-              <div className="flex w-full gap-3">
-                <input
-                  type="email"
-                  name="email"
-                  id="newsletter-email"
-                  autoComplete="email"
-                  placeholder="Your email"
-                  disabled={isLoading}
-                  onChange={handleInputChange}
-                  className="flex h-10 flex-1 rounded-md border border-input bg-background px-4 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-sm"
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary py-2 font-medium whitespace-nowrap text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 px-4 text-sm"
+              {/* Newsletter subscription */}
+              <form onSubmit={handleSubmit} className="w-full max-w-md">
+                <div className="flex w-full gap-3">
+                  <input
+                    type="email"
+                    name="email"
+                    id="newsletter-email"
+                    autoComplete="email"
+                    placeholder="Your email"
+                    disabled={isLoading}
+                    onChange={handleInputChange}
+                    className="flex h-10 flex-1 rounded-md border border-input bg-background px-4 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-sm"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary py-2 font-medium whitespace-nowrap text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 px-4 text-sm"
+                  >
+                    {isLoading ? 'Subscribing...' : 'Subscribe'}
+                  </button>
+                </div>
+
+                {/* Success message */}
+                {isSucceed && (
+                  <div className="mt-2 text-sm text-green-600 dark:text-green-400">
+                    {message}
+                  </div>
+                )}
+
+                {/* Error message */}
+                {isError && (
+                  <div className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    {error}
+                  </div>
+                )}
+              </form>
+            </div>
+
+            {/* Navigation Section */}
+            <div className="w-full border-t pt-8 lg:border-t-0 lg:pt-0">
+              <nav className="grid w-full gap-x-12 gap-y-8 grid-cols-2 md:w-auto md:grid-cols-4">
+                {navigation.map((section) => (
+                  <div key={section.title} className="min-w-[140px]">
+                    <h2 className="mb-4 font-semibold font-sans">
+                      {section.title}
+                    </h2>
+                    <ul className="space-y-0.5 text-sm">
+                      {section.links.map((link) => (
+                        <li key={link.name}>
+                          <a
+                            href={link.href}
+                            className="inline-block py-1 text-muted-foreground transition-colors duration-200 hover:text-foreground active:text-primary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <div className="order-1 mb-6 flex w-full items-center justify-center gap-6 md:justify-start md:order-2 md:mb-0 md:w-auto">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-label={`Visit our ${link.name} page`}
+                  className="rounded-full p-3 text-muted-foreground transition-all duration-200 hover:bg-accent hover:text-foreground active:bg-accent/70"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  {isLoading ? 'Subscribing...' : 'Subscribe'}
-                </button>
-              </div>
-
-              {/* Success message */}
-              {isSucceed && (
-                <div className="mt-2 text-sm text-green-600 dark:text-green-400">
-                  {message}
-                </div>
-              )}
-
-              {/* Error message */}
-              {isError && (
-                <div className="mt-2 text-sm text-red-600 dark:text-red-400">
-                  {error}
-                </div>
-              )}
-            </form>
-          </div>
-
-          {/* Navigation Section */}
-          <div className="w-full border-t pt-8 lg:border-t-0 lg:pt-0">
-            <nav className="grid w-full gap-x-12 gap-y-8 grid-cols-2 md:w-auto md:grid-cols-4">
-              {navigation.map((section) => (
-                <div key={section.title} className="min-w-[140px]">
-                  <h2 className="mb-4 font-semibold">{section.title}</h2>
-                  <ul className="space-y-0.5 text-sm">
-                    {section.links.map((link) => (
-                      <li key={link.name}>
-                        <a
-                          href={link.href}
-                          className="inline-block py-1 text-muted-foreground transition-colors duration-200 hover:text-foreground active:text-primary"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <link.icon className="h-6 w-6 sm:h-5 sm:w-5" />
+                </a>
               ))}
-            </nav>
-          </div>
-        </div>
+            </div>
 
-        {/* Bottom Section */}
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="order-1 mb-6 flex w-full items-center justify-center gap-6 md:justify-start md:order-2 md:mb-0 md:w-auto">
-            {socialLinks.map((link) => (
+            {/* Copyright - Below on mobile, left on desktop */}
+            <p className="order-2 text-center text-sm text-muted-foreground sm:text-left md:order-1">
+              © {new Date().getFullYear()} Phala. All rights reserved.{' '}
               <a
-                key={link.href}
-                href={link.href}
-                aria-label={`Visit our ${link.name} page`}
-                className="rounded-full p-3 text-muted-foreground transition-all duration-200 hover:bg-accent hover:text-foreground active:bg-accent/70"
-                rel="noopener noreferrer"
+                href="/privacy"
+                className="text-foreground underline underline-offset-4 transition-colors"
                 target="_blank"
+                rel="noopener noreferrer"
               >
-                <link.icon className="h-6 w-6 sm:h-5 sm:w-5" />
+                Privacy
               </a>
-            ))}
+              {' • '}
+              <a
+                href="/terms"
+                className="text-foreground underline underline-offset-4 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Terms
+              </a>
+            </p>
           </div>
-
-          {/* Copyright - Below on mobile, left on desktop */}
-          <p className="order-2 text-center text-sm text-muted-foreground sm:text-left md:order-1">
-            © {new Date().getFullYear()} Phala. All rights reserved.{' '}
-            <a
-              href="/privacy"
-              className="text-foreground underline underline-offset-4 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Privacy
-            </a>
-            {' • '}
-            <a
-              href="/terms"
-              className="text-foreground underline underline-offset-4 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Terms
-            </a>
-          </p>
         </div>
       </div>
     </section>

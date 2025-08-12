@@ -1,4 +1,3 @@
-import CreamContainer from '@/components/cream-container'
 import FinalCTA from '@/components/final-cta'
 
 export default function SuccessStoriesLayout({
@@ -10,9 +9,7 @@ export default function SuccessStoriesLayout({
     <div className="min-h-screen mt-16">
       {children}
 
-      <CreamContainer variant="bottom" className="w-full">
-        <FinalCTA />
-      </CreamContainer>
+      <FinalCTA />
     </div>
   )
 }

@@ -32,10 +32,9 @@ const DstackPage = async () => {
         <AuditReport />
       </CreamContainer>
       {/* <Logos /> */}
-      <CreamContainer variant="bottom">
-        <Compare />
-        <Cta />
-      </CreamContainer>
+
+      <Compare />
+      <Cta />
     </>
   )
 }

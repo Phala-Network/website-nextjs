@@ -42,7 +42,7 @@ const tabsData = [
 
 export default function PrivateCloudCompute() {
   return (
-    <div className="w-full max-w-6xl mx-auto py-24">
+    <div className="w-full max-w-7xl mx-auto py-24">
       <section className="container">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
           <h2 className="text-center text-3xl font-bold text-balance lg:text-4xl">
@@ -54,7 +54,7 @@ export default function PrivateCloudCompute() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 mt-12 mx-auto rounded-3xl bg-primary/70 p-2 shadow gap-2 bg-radial-[at_top_center] from-white/60 to-transparent">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[30rem_1fr] mt-12 mx-auto rounded-3xl bg-primary/70 p-2 shadow gap-2 bg-radial-[at_top_center] from-white/60 to-transparent">
           {/* Left Column - Demo Card */}
 
           <Card className="relative rounded-2xl pt-8 pb-0 overflow-hidden">
@@ -77,7 +77,7 @@ export default function PrivateCloudCompute() {
               Confidential VM
             </h3>
 
-            <p className="text-muted-foreground text-lg font-medium mt-2">
+            <p className="text-muted-foreground text-lg font-medium mt-2 xl:text-xl">
               Starting at $50.37/month
             </p>
 
@@ -127,7 +127,7 @@ export default function PrivateCloudCompute() {
                         <IconComponent className="size-4 text-white group-data-[state=active]:text-foreground transition" />
                       </span>
                       <div>
-                        <h3 className="md:text-lg font-semibold">
+                        <h3 className="md:text-lg font-semibold xl:text-xl">
                           {tab.label}
                         </h3>
                         <p className="font-normal text-muted-foreground max-lg:hidden">
@@ -148,7 +148,7 @@ export default function PrivateCloudCompute() {
                   className="block h-110 rounded-lg shadow md:col-span-2 bg-muted px-6 py-8 relative overflow-hidden"
                 >
                   <div className="flex flex-col items-center gap-4">
-                    <h4 className="text-lg font-medium text-muted-foreground max-w-xs text-center">
+                    <h4 className="text-lg font-medium text-muted-foreground max-w-xs text-center xl:text-xl">
                       <span className="text-foreground">
                         Write code, dockerize,
                       </span>{' '}
@@ -198,14 +198,14 @@ export default function PrivateCloudCompute() {
                     </Terminal>
                   </div>
                 </a>
-                <div className="h-110 rounded-lg shadow bg-muted px-6 py-8 relative">
-                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                <div className="h-110 rounded-lg shadow bg-muted px-6 xl:px-8 py-8 relative">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     We deal with{' '}
                     <span className="text-foreground">
                       the pain of hardware maintenance.
                     </span>
                   </h4>
-                  <div className="absolute top-2/5 left-0 right-0 px-6">
+                  <div className="absolute top-2/5 left-0 right-0 px-6 xl:px-8">
                     <div className="flex items-center gap-2">
                       <div className="size-12 rounded-full bg-background flex items-center justify-center border">
                         {/** biome-ignore lint/performance/noImgElement: svg */}
@@ -237,9 +237,9 @@ export default function PrivateCloudCompute() {
                   href="https://cloud.phala.network/templates"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-110 rounded-lg shadow bg-muted px-6 py-8 relative overflow-hidden"
+                  className="block h-110 rounded-lg shadow bg-muted px-6 xl:px-8 py-8 relative overflow-hidden"
                 >
-                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     Deploy{' '}
                     <span className="text-foreground">
                       production-grade TEE workloads
@@ -247,7 +247,7 @@ export default function PrivateCloudCompute() {
                     in minutes.
                   </h4>
 
-                  <div className="absolute top-2/5 left-6 p-3 bg-primary/50 rounded-3xl h-full shadow">
+                  <div className="absolute top-2/5 left-6 xl:left-8 p-3 bg-primary/50 rounded-3xl h-full shadow">
                     <div className="bg-background h-full rounded-2xl aspect-video bg-contain bg-no-repeat bg-top-left bg-[url('/home/templates.png')]"></div>
                   </div>
                 </a>
@@ -261,7 +261,7 @@ export default function PrivateCloudCompute() {
                   rel="noopener noreferrer"
                   className="block h-110 rounded-lg shadow md:col-span-2 bg-muted relative py-8 px-6 overflow-hidden"
                 >
-                  <h4 className="text-lg font-medium text-muted-foreground text-center mt-6">
+                  <h4 className="text-lg font-medium text-muted-foreground text-center mt-6 xl:text-xl">
                     Explore{' '}
                     <span className="text-foreground">the chain of trust</span>{' '}
                     <br />
@@ -275,15 +275,15 @@ export default function PrivateCloudCompute() {
                   href="https://proof.t16z.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-110 rounded-lg shadow bg-muted px-6 py-8 relative overflow-hidden"
+                  className="block h-110 rounded-lg shadow bg-muted px-6 xl:px-8 py-8 relative overflow-hidden"
                 >
-                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
                       Live attestation and verification
                     </span>{' '}
                     for every running workload.
                   </h4>
-                  <div className="absolute top-2/5 left-6 bottom-0 right-0 pt-3 pl-3 bg-[#98DCFF]/50 rounded-tl-3xl shadow">
+                  <div className="absolute top-2/5 left-6 xl:left-8 bottom-0 right-0 pt-3 pl-3 bg-[#98DCFF]/50 rounded-tl-3xl shadow">
                     <div className="text-white bg-[#7FBCFA]/90 h-full w-full rounded-tl-2xl bg-contain bg-no-repeat bg-top-left pt-4 pl-4">
                       <div className="max-w-[180px]">
                         <p className="text-lg font-semibold">
@@ -307,7 +307,7 @@ export default function PrivateCloudCompute() {
                   rel="noopener noreferrer"
                   className="block h-110 rounded-lg shadow bg-muted px-6 py-8 relative overflow-hidden bg-[url('/home/dstack-bg.png')] bg-[length:210px_auto] bg-no-repeat bg-bottom-right"
                 >
-                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
                       Fully open-source infrastructure
                     </span>{' '}
@@ -318,14 +318,14 @@ export default function PrivateCloudCompute() {
             </TabsContent>
             <TabsContent value="private">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 py-8">
-                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                <div className="h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
                       Hardware-level isolation
                     </span>{' '}
                     using Trusted Execution Environments.
                   </h4>
-                  <div className="absolute top-2/5 left-6 bottom-0 right-0 pt-3 pl-3 bg-[#AFBEFE]/50 rounded-tl-3xl shadow">
+                  <div className="absolute top-2/5 left-6 xl:left-8 bottom-0 right-0 pt-3 pl-3 bg-[#AFBEFE]/50 rounded-tl-3xl shadow">
                     <div className="text-white bg-[#9DA9F0] h-full w-full rounded-tl-2xl bg-contain bg-no-repeat bg-top-left pt-6 pl-6">
                       <p className="text-lg font-semibold">TEE Protection</p>
                       <p className="text-sm font-medium mt-4">
@@ -339,8 +339,8 @@ export default function PrivateCloudCompute() {
                     </div>
                   </div>
                 </div>
-                <div className="h-80 md:h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 py-8">
-                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                <div className="h-80 md:h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
                       Zero-trust key management
                     </span>{' '}
@@ -360,14 +360,14 @@ export default function PrivateCloudCompute() {
                     </div>
                   </div>
                 </div>
-                <div className="h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 py-8">
-                  <h4 className="text-lg font-medium text-muted-foreground text-balance">
+                <div className="h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
+                  <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     Cloud convenience with{' '}
                     <span className="text-foreground">
                       on-premise privacy guarantees.
                     </span>
                   </h4>
-                  <div className="absolute top-2/5 left-0 bottom-0 right-6 pt-3 pr-3 bg-[#AFBEFE]/50 rounded-tr-3xl shadow">
+                  <div className="absolute top-2/5 left-0 bottom-0 right-6 xl:right-8 pt-3 pr-3 bg-[#AFBEFE]/50 rounded-tr-3xl shadow">
                     <div className="text-white bg-[#9DA9F0] h-full w-full rounded-tr-2xl bg-contain bg-no-repeat bg-top-left pt-6 pl-6">
                       <p className="text-lg font-semibold">
                         Private as On-Premise

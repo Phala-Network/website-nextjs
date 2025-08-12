@@ -35,7 +35,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="w-full py-24 max-w-(--breakpoint-xl) mx-auto">
+    <section className="w-full py-24 max-w-7xl mx-auto">
       <div className="container mx-auto">
         <div className="text-center">
           <Badge className="text-xs font-medium">FAQ</Badge>
@@ -50,14 +50,16 @@ export default function FAQ() {
         <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
           {faqs.map((faq, index) => (
             <div key={faq.question} className="flex gap-4">
-              <span className="flex size-6 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-xs text-muted-foreground font-semibold">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-sm text-muted-foreground font-semibold">
                 {index + 1}
               </span>
               <div>
                 <div className="mb-2 flex items-center justify-between">
-                  <h3 className="font-semibold font-sans">{faq.question}</h3>
+                  <h3 className="font-semibold font-sans text-lg">
+                    {faq.question}
+                  </h3>
                 </div>
-                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                <p className="text-muted-foreground">{faq.answer}</p>
               </div>
             </div>
           ))}
