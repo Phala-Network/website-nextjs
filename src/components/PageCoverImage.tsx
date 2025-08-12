@@ -1,8 +1,5 @@
-import {
-  type ParsedPage,
-  type ParsedListPage,
-} from '@/lib/notion-client'
-import { buildProxyImageUrl } from '@/lib/utils'
+import { buildProxyImageUrl } from '@/lib/image'
+import type { ParsedListPage, ParsedPage } from '@/lib/notion-client'
 
 export default function PageCoverImage({
   page,
