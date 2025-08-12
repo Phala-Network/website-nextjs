@@ -63,17 +63,23 @@ const StepItem = ({ step, isLast }: StepItemProps) => {
     <div className="flex gap-4">
       <div className="relative">
         <div
-          className={`bg-primary/40 bg-gradient-to-b absolute h-full w-1 -translate-x-1/2 translate-y-11 left-1/2 ${
+          className={`bg-primary/40 bg-gradient-to-b absolute h-full w-1 -translate-x-1/2 translate-y-11 left-1/2 xl:translate-y-14 ${
             isLast ? 'from-primary/40 to-background' : ''
           }`}
         />
-        <div className="bg-background relative grid size-11 place-content-center rounded-full border-4">
-          <p className="text-lg font-bold font-heading">{step.id}</p>
+        <div className="bg-background relative grid size-11 xl:size-14 place-content-center rounded-full border-4">
+          <p className="text-xl font-bold font-display xl:text-2xl">
+            {step.id}
+          </p>
         </div>
       </div>
-      <div className="mt-2">
-        <p className="text-lg font-semibold font-heading">{step.title}</p>
-        <p className="text-muted-foreground mt-2">{step.description}</p>
+      <div className="mt-2 xl:mt-3">
+        <p className="text-xl font-semibold font-display xl:text-2xl">
+          {step.title}
+        </p>
+        <p className="text-muted-foreground mt-2 xl:text-lg">
+          {step.description}
+        </p>
       </div>
     </div>
   )
@@ -114,18 +120,18 @@ export default function TrustSteps() {
   }, [])
 
   return (
-    <div className="w-full py-24 max-w-6xl mx-auto">
+    <div className="w-full py-24 max-w-7xl mx-auto">
       <section className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-16 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[25rem_1fr] gap-16 xl:grid-cols-[30rem_1fr] xl:gap-24 lg:gap-8">
           <div className="max-sm:px-4">
-            <h2 className="font-bold text-2xl md:text-3xl">
+            <h2 className="font-bold text-2xl md:text-3xl xl:text-4xl">
               When Your Users Trust AI
             </h2>
             <p className="mt-4 text-muted-foreground text-lg md:text-xl font-medium">
               Trust creates a powerful cycle that drives business growth and
               market leadership.
             </p>
-            <div className="space-y-6 lg:space-y-10 mt-6 lg:mt-10">
+            <div className="space-y-6 lg:space-y-10 xl:space-y-12 mt-6 lg:mt-10 xl:mt-16">
               {DATA.map((step, index) => (
                 <StepItem
                   key={step.id}
@@ -142,12 +148,15 @@ export default function TrustSteps() {
             value={flowTitle}
             onValueChange={handleTabChange}
           >
-            <TabsList className="w-full">
+            <TabsList className="w-full xl:h-10">
               {flows.map((flow) => (
                 <TabsTrigger
                   key={flow.title}
                   value={flow.title}
-                  className={cn('flex-1 transition-all', flow.className)}
+                  className={cn(
+                    'flex-1 transition xl:text-base data-[state=active]:text-foreground text-muted-foreground',
+                    flow.className,
+                  )}
                 >
                   {flow.title}
                 </TabsTrigger>
