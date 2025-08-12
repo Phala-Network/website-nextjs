@@ -62,8 +62,9 @@ async function getTagData(slug: string) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
+  const decodedSlug = decodeURIComponent(slug)
   return {
-    title: slug,
+    title: decodedSlug,
     robots: 'noindex',
     alternates: {
       canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/tags/${encodeURIComponent(slug)}`,
@@ -74,7 +75,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export const revalidate = 3600
 
 export default async function TagPage({ params }: Props) {
-  const { slug } = await params
+  const { slug: encodedSlug } = await params
+  const slug = decodeURIComponent(encodedSlug)
   const { initialPages, nextCursor } = await getTagData(slug)
 
   return (
@@ -90,7 +92,9 @@ export default async function TagPage({ params }: Props) {
                   </BreadcrumbItem>
                   <BreadcrumbSeparator />
                   <BreadcrumbItem>
-                    <BreadcrumbPage className="capitalize">{slug}</BreadcrumbPage>
+                    <BreadcrumbPage className="capitalize">
+                      {slug}
+                    </BreadcrumbPage>
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>

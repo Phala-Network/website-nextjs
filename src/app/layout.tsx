@@ -18,11 +18,12 @@ export const metadata: Metadata = {
     'Phala is the new cloud for confidential AI helping build AI people can trust.',
   keywords: [
     'Phala',
-    'Confidential AI',
     'TEE',
+    'Confidential AI',
+    'Trusted AI',
+    'Confidential VM',
     'GPU TEE',
     'Confidential Computing',
-    'Verifiable Compute',
     'Phala Network',
   ],
   twitter: {
