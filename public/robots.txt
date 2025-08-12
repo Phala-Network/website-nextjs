@@ -1,6 +1,0 @@
-User-Agent: *
-
-Disallow:
-Disallow: /api/
-
-Sitemap: https://phala.network/sitemap.xml

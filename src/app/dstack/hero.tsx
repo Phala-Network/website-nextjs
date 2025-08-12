@@ -65,7 +65,12 @@ const Hero24 = ({ starCount }: Hero24Props) => {
             and secure data processing.
           </p>
           <div className="mt-8 flex gap-1 justify-center flex-col">
-            <Button className="mt-4" variant="outline" size="lg" asChild>
+            <Button
+              className="mt-4 border-black/60 border-2"
+              variant="outline"
+              size="lg"
+              asChild
+            >
               <a
                 href="https://github.com/Dstack-TEE/dstack"
                 target="_blank"
@@ -75,16 +80,21 @@ const Hero24 = ({ starCount }: Hero24Props) => {
                 <FaGithub className="size-5" />
                 <span>Dstack-TEE/dstack</span>
                 {starCount > 0 && (
-                  <div className="flex items-center gap-2 ml-1 border-l pl-2">
+                  <div className="flex items-center gap-2 ml-1 border-l border-black/60 pl-2">
                     <FaStar className="size-4 text-yellow-400" />
-                    <span className="text-sm text-muted-foreground/80">
+                    <span className="text-sm text-muted-foreground font-medium">
                       {new Intl.NumberFormat('en-US').format(starCount)}
                     </span>
                   </div>
                 )}
               </a>
             </Button>
-            <Button variant="ghost" size="lg" asChild>
+            <Button
+              variant="link"
+              className="text-foreground underline"
+              size="lg"
+              asChild
+            >
               <a
                 href="https://cloud.phala.network/"
                 target="_blank"
@@ -101,7 +111,7 @@ const Hero24 = ({ starCount }: Hero24Props) => {
             return (
               <div
                 key={feature.title}
-                className={`flex flex-col gap-3 p-5 md:gap-6 relative`}
+                className={`flex flex-col gap-3 p-5 md:p-8 md:gap-6 relative`}
               >
                 <Icon className="size-6 shrink-0" />
                 <div>
@@ -121,13 +131,13 @@ const Hero24 = ({ starCount }: Hero24Props) => {
                 {index === 0 && (
                   <DashedLine
                     orientation="horizontal"
-                    className="absolute bottom-0 w-[200%] max-md:hidden"
+                    className="absolute left-0 bottom-0 w-[200%] max-md:hidden"
                   />
                 )}
                 {index > 0 && (
                   <DashedLine
                     orientation="horizontal"
-                    className="absolute top-0 md:hidden"
+                    className="absolute left-0 top-0 md:hidden"
                   />
                 )}
               </div>

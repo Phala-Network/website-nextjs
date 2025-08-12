@@ -1,0 +1,139 @@
+export const metadata = {
+  title: 'Privacy Policy',
+  description: 'Phala privacy policy',
+}
+
+# PRIVACY POLICY
+
+<div style={{textAlign:"right", fontSize: "0.85rem"}}>
+<p><strong>Effective Date:</strong> January 1 2025 <br /><strong>Last Updated:</strong> Jun 11, 2025</p>
+</div>
+
+Welcome to Phala Cloud (cloud.phala.network) by Phala Network, a Trusted Execution Environment (TEE) cloud platform that offers secure, confidential computing solutions for various workloads ("Company," "we," "our," or "us"). We respect your privacy and are committed to protecting the personal information of our users ("User," "you," or "your"). This Privacy Policy describes how we collect, use, disclose, and protect your information when you use our services, including our website, platform, and associated products (collectively, the "Services"). By accessing or using our Services, you agree to this Privacy Policy and our Terms of Service.
+
+## 1. Scope
+
+1. This Privacy Policy applies to all of the services offered by Phala Cloud and its affiliates, including Hashforest Technology LLC, and services offered on third-party sites, such as analytics and advertising services. This Privacy Policy does not apply to services that have separate privacy policies that do not incorporate this Privacy Policy.
+
+2. This Privacy Policy does not apply to:
+
+    - The information practices of other companies and organizations that advertise our services.
+    - Services offered by other companies or individuals, including products or sites they offer that may include Phala Cloud services, or products or sites displayed to you in search results, or linked from our services.
+
+3. This Privacy Policy applies to all users of Phala Cloud and incorporates by reference the Privacy Policy of our parent entity. If there is a conflict between this Privacy Policy and the parent entity’s Privacy Policy, the terms of this Privacy Policy shall govern with respect to Phala Cloud.
+
+## 2. Information We Collect
+
+1. Automatically Collected Information
+
+    - We use third-party tools that track user behavior through cookies: Google Analytics	4 (GA4), PostHog, and Mailerlite (for mailing lists).
+    - We collect the following automatically: Cookies to store user preferences, IP addresses, browser User Agents, and header information for anti-spam purposes (retained for six months).
+
+2. Account Information: Email addresses serve as the unique identifier for user accounts.
+
+3. Payment Information: Payments, including credit card transactions, are processed via third-party payment platforms that may uniquely identify users.
+
+4. Business Information Storage: Phala Cloud employs Trusted Execution Environment (TEE) technology to store user business information securely. This data is not accessible to us and is permanently deleted upon user request. For clarity, the “User” is the client renting our cloud services.
+
+5. Data in TEE Applications
+
+    - Data in transmission: Applications deployed in TEE have a higher security and privacy guarantee. Inputs and outputs of the applications, including secret environment variables and the TEE-managed HTTPS connections, are end-to-end encrypted. Technically, the platform cannot access the raw content transmitted between the end user and the application in the TEE. The platform may retain encrypted inputs and outputs and metadata for the purpose of improving its operation and security.
+    - Data in use: **T**echnically, the platform doesn't have access to the data in use in the applications deployed in TEE. The memory data is encrypted with the TEE technology, and the CPU states are also isolated from hardware or software controlled by the platform.
+    - Data in storage: The data used by applications deployed in TEE is stored in encrypted volumes, protected by the TEE. The platform retains the encrypted data for the user but technically doesn't have access to the raw data.
+    - Debugging mode: An exception to the above data policy is that the platform may log into the TEE with debuggers (including remote shell access) **only when the user explicitly deploys the application in non-production mode** (e.g., VM images with "dev" in the name). This mode is intended for human intervention during development or testing. In this scenario, platform operators may modify the behavior of the software in the TEE and may access data in transmission, use, and storage in plain text.
+        **Note:** For confidential inference or large language model (LLM) usage, this same rule applies, as it is considered a specialized case under this general data policy.
+    - LLM Prompt & Request Privacy in TEE (Production Mode): When using models deployed in TEE production mode, we do not collect or store users’ prompts, inputs, or requests. These interactions are encrypted end-to-end and are processed entirely within the secure enclave. This ensures that user inputs for confidential inference tasks, including those sent to large language models (LLMs), are never visible to the platform or any third parties.
+
+## 3. Why Phala Cloud Collects Data: 
+We use data to build better services. The information we collect from all our services is used for the following purposes:
+
+1. Provide Our Services: We use your information to deliver our Services, such as processing transactions, verifying identities, and facilitating user interactions.
+
+2. Maintain & Improve Our Services: We use your information to ensure our Services function as intended, including tracking outages, troubleshooting issues reported by users, and making necessary improvements.
+
+3. Develop New Services: We analyze data from existing services to develop new features and functionalities that enhance user experience and security.
+
+4. Provide Personalized Services, Including Content and Communications: We use collected information to tailor recommendations, improve user interactions, and customize your experience. This includes personalized settings, account preferences, and tailored content.
+
+5. Measure Performance: We use analytics tools to understand how our Services are used. This helps us optimize functionality, assess engagement, and track interactions with features to enhance performance.
+
+6. Communicate with Users: We use your provided information, such as email addresses, to interact with you regarding security alerts, policy updates, and service-related matters. If you contact us, we maintain records of communications to resolve disputes and improve customer support.
+
+7. Ensure Security and Prevent Fraud: We process information to detect, prevent, and respond to fraud, unauthorized access, security threats, and technical issues that may compromise our users or Services and comply with legal obligations.
+
+8. Protect Phala Cloud, Users, and the Public: We process user data to ensure the safety and reliability of our Services. This includes detecting, preventing, and mitigating risks such as abuse, fraudulent activity, and security breaches. We use different technologies to process your information for these purposes, including automated analysis, security monitoring, and fraud detection mechanisms. If we need to process your information for purposes not covered in this Privacy Policy, we will notify you before doing so.
+
+## 4. Retaining Your Information
+
+1. We retain the data we collect for different periods of time depending on the type of data, its usage, and legal or business requirements:
+
+    - User-Controlled Deletion: Some data, such as personal information or uploaded content, can be deleted by users at any time. Users may also request deletion of account activity data or set it to be automatically deleted after a specified period.
+    - Automatic Deletion or Anonymization: Certain data, such as advertising logs, may be deleted or anonymized automatically after a set period.
+    - Retention Until Account Deletion: Some data, such as records of service usage, may be retained until the user deletes their account.
+    - Extended Retention for Legal and Security Purposes: In some cases, we retain data for longer periods when necessary for legitimate business or legal purposes, including fraud prevention, security monitoring, and compliance with financial or regulatory requirements.
+
+2. When users delete their data, we follow a structured deletion process to ensure that information is safely and completely removed from our active systems or retained only in anonymized form. We implement measures to prevent accidental or malicious deletion, which may result in slight delays between data deletion requests and full removal from active and backup systems. Users may contact us for more details regarding specific data retention periods.
+
+    - Cookies and tracking data: Retained based on third-party policies.
+    - IP logs for anti-spam purposes: Retained for six months.
+    - TEE-stored business information: Permanently deleted upon user request.
+
+## 5. Notices and User Obligations: 
+Users must notify Phala Cloud in writing of any suspected security breach, unauthorized access, or privacy-related concerns within **24 hours** of discovering the issue. Failure to provide timely notice may result in the waiver of any claims against Phala Cloud regarding the specific issue. Notices must be submitted via email to: cloud@phala.network.
+
+## 6. Acceptable Use and Regulatory Compliance
+
+To ensure fair access to free resources, Phala Cloud strictly prohibits deploying applications that involve proxy services, VPN tunneling, peer-to-peer (P2P) file sharing, or similar bandwidth-intensive or abuse-prone use cases. Violation of this policy may result in suspension or termination of service access without prior notice.
+
+Furthermore, Phala Cloud cooperates with regulatory authorities and reserves the right to proactively remove or suspend any applications deemed to present legal or regulatory risk, including but not limited to those that violate applicable laws, export controls, or regional restrictions.
+
+## 7. Sharing Your Information
+
+1. When You Share Your Information
+
+    - Many of our Services allow users to share information with others. Users have control over how their information is shared. For example, content shared publicly may become accessible through search engines.
+    - Users acknowledge that any information shared publicly through Phala Cloud Services may be indexed by third-party search engines and that Phala Cloud has no control over the removal of such content once it has been made publicly available.
+
+2. When Phala Cloud Shares Your Information: We do not share personal information with third parties except in the following circumstances:
+
+    - With Your Consent: We will share personal information outside of Phala Cloud when we have your explicit consent.
+    - For External Processing: We provide personal information to affiliates and other trusted third-party service providers to process it on our behalf, in compliance with this Privacy Policy and applicable data protection laws.
+    - For Legal Reasons: We will share personal information outside of Phala Cloud if we believe in good faith that disclosure is necessary to:
+        - Comply with applicable laws, regulations, legal processes, or enforceable governmental requests.
+        - Enforce our Terms of Service, including investigation of potential violations.
+        - Detect, prevent, or otherwise address fraud, security, or technical issues.
+        - Protect against harm to the rights, property, or safety of Phala Cloud, its users, or the public.
+    - Business Transfers: If Phala Cloud is involved in a merger, acquisition, or sale of assets, we will ensure the confidentiality of user information and provide notice before personal data is transferred or becomes subject to a different privacy policy.
+
+## 8. Third-Party Services:
+Phala Cloud integrates with third-party tools for analytics, email marketing, and payments. Phala Cloud is not responsible for third-party breaches, data misuse, or security failures. Users should review the privacy policies of these third parties.
+
+## 9. Limitation of Liability:
+Phala Cloud assumes no liability for the content users create, store, or share through our Services. Phala Cloud is not responsible for third-party breaches or data compromises. Phala Cloud shall not be liable for interruptions, delays, or inability to provide the Services due to reasons beyond its control, including but not limited to force majeure events, natural disasters, cyber-attacks, or governmental actions. To the maximum extent permitted by law, Phala Cloud’s total liability shall not exceed the amount paid by the User for the Services within the preceding three (3) months.
+
+## 10. Indemnification:
+Users agree to indemnify, defend, and hold harmless Phala Cloud, its affiliates, and its employees from any claims, damages, liabilities, or expenses arising from (but not limited to): (1) User’s misuse of the Services, (2) Violation of any terms or third-party rights, (3) Any legal claims brought against Phala Cloud due to user-generated content or business activities conducted through our platform.
+
+## 11. Dispute Resolution (ADR):
+Users must first attempt to resolve disputes through good faith negotiations. If unresolved within thirty (30) days, parties agree to mediation with costs shared equally. If mediation fails, disputes will be resolved through binding arbitration administered by JAMS under California law. Users waive their right to a jury trial in any dispute with Phala Cloud or its representatives.
+
+## 12. Service Termination Policy:
+Phala Cloud reserves the right to suspend or terminate a user’s access to our Services at our sole discretion, without notice, for any violation of this Privacy Policy or our Terms of Service. Users may terminate their use of Phala Cloud at any time. Upon termination, all stored business information in the TEE will be permanently deleted. Phala Cloud reserves the right to refuse service, suspend accounts, or delete content that violates applicable laws, regulations, or our internal policies. No refunds or compensation shall be granted upon termination of services unless required by law.
+
+## 13. Force Majeure:
+Phala Cloud shall not be liable for any failure or delay in the performance of its obligations under this Privacy Policy due to causes beyond its reasonable control, including but not limited to acts of God, natural disasters, pandemics, governmental restrictions, cyber-attacks, telecommunications failures, or power outages. In such cases, performance obligations shall be suspended for the duration of the force majeure event.
+
+## 14. Data Security:
+We employ industry-standard security measures to protect user information. However, no system is completely secure, and we cannot guarantee absolute security.
+
+## 15. User Rights:
+Users may opt out of marketing communications. Users may request deletion of their accounts, which includes permanent deletion of TEE-stored business data.
+
+## 16. Governing Law:
+This Privacy Policy shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law principles.
+
+## 17. Contact Information:
+For privacy inquiries or notifications, contact us at cloud@phala.network.
+
+## 18. Changes to this Policy:
+We may update this Privacy Policy periodically. We always indicate the date the last changes were published. If changes are significant, we will provide a more prominent notice (including, for certain services, email notification of Privacy Policy changes). Continued use of our Services after any updates to this Privacy Policy constitutes acceptance of the revised policy. If you do not agree to the changes, you should discontinue use of our Services.

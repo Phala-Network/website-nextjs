@@ -1,32 +1,34 @@
 import {
   Client,
   collectPaginatedAPI,
-  isFullPage,
   isFullBlock,
+  isFullPage,
 } from '@notionhq/client'
-import { NotionToMarkdown } from 'notion-to-md'
-import dayjs from 'dayjs'
-import {
-  PageObjectResponse,
+import type {
   BlockObjectResponse,
+  PageObjectResponse,
   QueryDatabaseParameters,
 } from '@notionhq/client/build/src/api-endpoints'
+import dayjs from 'dayjs'
+import { NotionToMarkdown } from 'notion-to-md'
 import * as R from 'ramda'
 
+import { env } from '@/env'
+
 export const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
+  auth: env.NOTION_TOKEN,
 })
 
 export const n2m = new NotionToMarkdown({
   notionClient: notion,
-  config:{
-    parseChildPages: false
-  }
+  config: {
+    parseChildPages: false,
+  },
 })
 
 export interface ParsedPage {
   id: string
-  cover: PageObjectResponse['cover'],
+  cover: PageObjectResponse['cover']
   title: string
   slug: string
   tags: string[]
@@ -38,7 +40,7 @@ export interface ParsedPage {
 
 export interface ParsedListPage {
   id: string
-  cover: PageObjectResponse['cover'],
+  cover: PageObjectResponse['cover']
   title: string
   slug: string
   tags: string[]
@@ -51,24 +53,13 @@ export type ParsedBlock = BlockObjectResponse & {
   children?: ParsedBlock[]
 }
 
-export function removeMediumFormat(url: string): string {
-  const regex = /^https?:\/\/[\w.-]+\.medium\.com(?:\/v2)?(.*?)\/([^\/]+)$/
-  const match = url.match(regex)
-  if (match && match.length === 3) {
-    const formatPart = match[1]
-    const baseUrl = url.replace(formatPart, '')
-    return baseUrl
-  }
-  return url
-}
-
 export function isMediumUrl(url: string): boolean {
   const regex = /^https?:\/\/[\w.-]+\.medium\.com/
   return regex.test(url)
 }
 
 export async function getParsedPage(
-  page_id: string
+  page_id: string,
 ): Promise<ParsedPage | null> {
   const page = await notion.pages.retrieve({ page_id })
   if (!isFullPage(page)) {
@@ -83,20 +74,30 @@ export async function getParsedPage(
   const title = R.pipe(
     R.pathOr([], ['Title', 'title']),
     R.map(R.prop('plain_text')),
-    R.join('')
+    R.join(''),
   )(page.properties)
   const slug = R.pipe(
     R.pathOr([], ['Custom URL', 'rich_text']),
     R.map(R.prop('plain_text')),
-    R.join(' ')
+    R.join(' '),
   )(page.properties).split('?')[0]
   const tags = R.map(
     R.prop('name'),
-    R.pathOr([], ['Tags', 'multi_select'], page.properties)
+    R.pathOr([], ['Tags', 'multi_select'], page.properties),
   )
-  const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], page.properties)
-  const status = R.pathOr('Drafting', ['Status', 'status', 'name'], page.properties)
-  const markdown = n2m.toMarkdownString((await n2m.blocksToMarkdown(blocks))).parent
+  const publishedTime = R.pathOr(
+    '',
+    ['Published Time', 'date', 'start'],
+    page.properties,
+  )
+  const status = R.pathOr(
+    'Drafting',
+    ['Status', 'status', 'name'],
+    page.properties,
+  )
+  const markdown = n2m.toMarkdownString(
+    await n2m.blocksToMarkdown(blocks),
+  ).parent
   return {
     id: page.id,
     cover: page.cover,
@@ -111,7 +112,7 @@ export async function getParsedPage(
 }
 
 async function parsePageBlock(
-  block: BlockObjectResponse
+  block: BlockObjectResponse,
 ): Promise<ParsedBlock> {
   const commonFields = {
     id: block.id,
@@ -165,7 +166,7 @@ async function parsePageBlock(
       ;((block: never) => {
         console.warn(
           { type: (block as { type: string }).type },
-          'Unknown block type.'
+          'Unknown block type.',
         )
       })(block as never)
       return {
@@ -176,7 +177,7 @@ async function parsePageBlock(
 
 async function withPotentialChildren(
   block: BlockObjectResponse,
-  commonFields: BlockObjectResponse
+  commonFields: BlockObjectResponse,
 ): Promise<ParsedBlock> {
   if (!block.has_children) {
     return {
@@ -189,7 +190,7 @@ async function withPotentialChildren(
     notion.blocks.children.list,
     {
       block_id: block.id,
-    }
+    },
   )) {
     if (isFullBlock(child)) {
       parsedChildren.push(await parsePageBlock(child))
@@ -218,9 +219,12 @@ export async function getParsedPagesByProperties({
     filter: {
       and: Object.entries(properties).map(([key, value]) => {
         if (typeof value === 'object') {
-          return Object.assign({
-            property: key,
-          }, value)
+          return Object.assign(
+            {
+              property: key,
+            },
+            value,
+          )
         }
         return {
           property: key,
@@ -233,7 +237,7 @@ export async function getParsedPagesByProperties({
   })
   const pages = (
     await Promise.all(
-      database.results.map((result) => getParsedPage(result.id))
+      database.results.map((result) => getParsedPage(result.id)),
     )
   ).filter(isParsedPage)
   return pages
@@ -250,14 +254,14 @@ export async function* iteratePaginatedWithRetries<
   Args extends {
     start_cursor?: string
   },
-  Item
+  Item,
 >(
   listFn: (args: Args) => Promise<IPaginatedList<Item>>,
   firstPageArgs: Args,
   options: { retries: number; timeout: number } = {
     retries: 5,
     timeout: 500,
-  }
+  },
 ): AsyncIterableIterator<Item> {
   let nextCursor: string | null | undefined = firstPageArgs.start_cursor
   let resultPageIdx = 0
@@ -274,7 +278,7 @@ export async function* iteratePaginatedWithRetries<
       } catch (error) {
         console.error(
           { error },
-          'Error while iterating on Notion paginated API.'
+          'Error while iterating on Notion paginated API.',
         )
         tries += 1
         if (tries >= options.retries) {
@@ -283,7 +287,6 @@ export async function* iteratePaginatedWithRetries<
         const sleepTime = options.timeout ** tries
         console.info(`Retrying after a delay of ${sleepTime} ms.`)
         await new Promise((resolve) => setTimeout(resolve, sleepTime))
-        continue
       }
     }
 
@@ -307,20 +310,28 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
     const title = R.pipe(
       R.pathOr([], ['Title', 'title']),
       R.map(R.prop('plain_text')),
-      R.join('')
+      R.join(''),
     )(properties).replace('&nbsp;', ' ')
     const slug = R.pipe(
       R.pathOr([], ['Custom URL', 'rich_text']),
       R.map(R.prop('plain_text')),
-      R.join(' ')
+      R.join(' '),
     )(properties).split('?')[0]
     const tags = R.map(
       R.prop('name'),
-      R.pathOr([], ['Tags', 'multi_select'], properties)
+      R.pathOr([], ['Tags', 'multi_select'], properties),
     )
-    const publishedTime = R.pathOr('', ['Published Time', 'date', 'start'], properties)
+    const publishedTime = R.pathOr(
+      '',
+      ['Published Time', 'date', 'start'],
+      properties,
+    )
     const publishedDate = dayjs(publishedTime).format('YYYY-MM-DD')
-    const createdTime = R.pathOr('', ['Created Time', 'created_time'], properties)
+    const createdTime = R.pathOr(
+      '',
+      ['Created Time', 'created_time'],
+      properties,
+    )
     pages.push({
       id,
       cover,
