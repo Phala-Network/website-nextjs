@@ -16,10 +16,10 @@ const navigation = [
   {
     title: 'Product',
     links: [
-      { name: 'Models', href: '/models' },
+      { name: 'Models', href: '/confidential-ai' },
       {
         name: 'GPU TEE Inference',
-        href: 'https://cloud.phala.network/features/gpu-tee',
+        href: '/confidential-ai',
       },
       {
         name: 'MCP Hosting',
