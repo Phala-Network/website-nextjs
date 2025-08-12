@@ -57,12 +57,12 @@ const ContactPage = () => {
                     </li>
                     <li>
                       <a
-                        href="https://cloud.phala.network/pricing"
+                        href="/pricing"
                         className="underline"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Pricing structure
+                        Pricing
                       </a>
                     </li>
                   </ul>

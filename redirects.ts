@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next'
 
+const CLOUD_URL = 'https://cloud.phala.network'
+
 const redirects: NonNullable<NextConfig['redirects']> = async () => {
   return [
     {
@@ -302,6 +304,23 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
     //   destination: 'https://docs.phala.network/phala-cloud/changelog',
     //   permanent: false,
     // },
+
+    // Redirects to the cloud
+    {
+      source: '/register',
+      destination: `${CLOUD_URL}/register`,
+      permanent: false,
+    },
+    {
+      source: '/login',
+      destination: `${CLOUD_URL}/login`,
+      permanent: false,
+    },
+    {
+      source: '/dashboard/:path*',
+      destination: `${CLOUD_URL}/dashboard/:path*`,
+      permanent: false,
+    },
   ]
 }
 
