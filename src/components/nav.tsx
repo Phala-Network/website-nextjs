@@ -122,7 +122,7 @@ const menu = [
         title: 'Guides',
         description: 'Step-by-step tutorials and best practices',
         icon: <GraduationCap className="size-5 shrink-0" />,
-        url: '/guides',
+        url: '/tags/Phala%20Cloud%20Guides',
       },
       {
         title: 'Templates',
@@ -300,7 +300,7 @@ const renderMenuItem = (item: MenuItem) => {
   if (item.items) {
     return (
       <NavigationMenuItem key={item.title}>
-        <NavigationMenuTrigger className="bg-transparent">
+        <NavigationMenuTrigger className="bg-transparent!">
           {item.title}
         </NavigationMenuTrigger>
         <NavigationMenuContent className="bg-popover text-popover-foreground">
@@ -320,7 +320,7 @@ const renderMenuItem = (item: MenuItem) => {
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
         href={item.url}
-        className="hover:bg-muted hover:text-accent-foreground group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
+        className="bg-transparent! hover:text-accent-foreground group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
         target={isExternalLink(item.url) ? '_blank' : undefined}
         rel={isExternalLink(item.url) ? 'noopener noreferrer' : undefined}
       >
