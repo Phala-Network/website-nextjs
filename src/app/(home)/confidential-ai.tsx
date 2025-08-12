@@ -402,7 +402,7 @@ export default function ConfidentialAI() {
             <div className="mt-2">
               <Button variant="outline" asChild>
                 <a
-                  href="/confidential-ai"
+                  href="https://arxiv.org/pdf/2409.03992"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
