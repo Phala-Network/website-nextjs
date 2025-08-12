@@ -89,7 +89,7 @@ export default function PrivateCloudCompute() {
 
             <Button variant="outline" asChild className="mt-8 lg:mt-auto">
               <a
-                href="https://cloud.phala.network/features/confidential-vm"
+                href="/confidential-vm"
                 target="_blank"
                 rel="noopener noreferrer"
               >
