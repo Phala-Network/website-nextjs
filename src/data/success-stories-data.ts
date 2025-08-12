@@ -28,7 +28,7 @@ export const successStories: SuccessStory[] = [
     description:
       "Phala enabled us to process sensitive trading data with AI while maintaining complete regulatory compliance. We've reduced compliance costs by 40% while improving model accuracy.",
     pdfPath:
-      '/success-stories-reports/Financial Services + Al with Compliance.pdf',
+      '/success-stories-reports/financial-services-ai-with-compliance.pdf',
   },
   {
     id: '2',
@@ -41,7 +41,7 @@ export const successStories: SuccessStory[] = [
     isDark: true,
     description:
       'Multi-party collaboration on patient data without privacy compromise. Accelerated drug discovery by 60% while maintaining HIPAA compliance.',
-    pdfPath: '/success-stories-reports/Secure Healthcare + AI with Phala.pdf',
+    pdfPath: '/success-stories-reports/secure-healthcare-ai-with-phala.pdf',
   },
   {
     id: '3',
@@ -55,7 +55,7 @@ export const successStories: SuccessStory[] = [
     description:
       "Phala's confidential AI helped us land Fortune 500 clients who required verifiable data protection. Increased enterprise sales by 300%.",
     pdfPath:
-      '/success-stories-reports/Privacy Computing for AI + SaaS Applications.pdf',
+      '/success-stories-reports/privacy-computing-for-ai-saas-applications.pdf',
   },
   {
     id: '4',
@@ -68,7 +68,7 @@ export const successStories: SuccessStory[] = [
     description:
       'Built autonomous trading agents with verifiable execution. Users trust our AI because they can verify every decision on-chain.',
     pdfPath:
-      '/success-stories-reports/The future of AI + Post-Cookie Era Marketing.pdf',
+      '/success-stories-reports/the-future-of-ai-post-cookie-era-marketing.pdf',
   },
 ]
 
