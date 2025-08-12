@@ -14,7 +14,7 @@ export default function StartupProgramPage() {
       <div className="w-full bg-background">
         <section className="w-full max-w-6xl mx-auto -mt-16 pt-24 relative">
           <div className="absolute right-0 top-0 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] bg-primary/10 rounded-full blur-3xl" />
-          <div className="container relative z-10 py-12 lg:py-24">
+          <div className="container relative py-12 lg:py-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
               {/* Left Side: Content */}
               <div className="max-w-2xl">
