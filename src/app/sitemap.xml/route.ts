@@ -12,13 +12,7 @@ function generateSiteMap(tags: string[], posts: ParsedListPage[]) {
        <loc>${WEBSITE_URL}</loc>
      </url>
      <url>
-       <loc>${WEBSITE_URL}/phat-contract</loc>
-     </url>
-     <url>
        <loc>${WEBSITE_URL}/blog</loc>
-     </url>
-     <url>
-       <loc>${WEBSITE_URL}/changelog</loc>
      </url>
      <url>
        <loc>${WEBSITE_URL}/rss.xml</loc>
@@ -27,10 +21,37 @@ function generateSiteMap(tags: string[], posts: ParsedListPage[]) {
        <loc>${WEBSITE_URL}/atom.xml</loc>
      </url>
      <url>
-       <loc>${WEBSITE_URL}/changelog/rss.xml</loc>
+       <loc>${WEBSITE_URL}/confidential-vm</loc>
      </url>
      <url>
-       <loc>${WEBSITE_URL}/changelog/atom.xml</loc>
+       <loc>${WEBSITE_URL}/confidential-ai</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/dstack</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/pricing</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/partnerships</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/success-stories</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/startup-program</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/contact</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/terms</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/privacy</loc>
+     </url>
+     <url>
+       <loc>${WEBSITE_URL}/data-processing-agreement</loc>
      </url>
       ${tags.map((tag) => {
         return `
