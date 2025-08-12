@@ -2,23 +2,13 @@
 
 @custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
-@plugin 'daisyui' {
-  prefix: 'd-';
-}
 @plugin 'tailwindcss-animate';
-@import './legacy-theme.css';
-@import './legacy-components.css';
 @import './theme/colors.css';
 @import './theme/typography.css';
 
-@theme {
-  /* TODO: remove */
-  --breakpoint-3xl: 120rem;
-}
-
 @utility container {
   margin-inline: auto;
-  @apply px-4 sm:px-8 lg:px-12;
+  @apply px-4 sm:px-6;
 }
 
 @layer base {
@@ -38,6 +28,7 @@
     h2,
     h3 {
       font-family: inherit;
+      scroll-margin-top: 5rem;
     }
   }
 }
@@ -54,90 +45,6 @@
 }
 
 /* Fix Notion list spacing */
-@layer components {
-  .prose ul,
-  .prose ol,
-  .notion_page_body ul,
-  .notion_page_body ol {
-    margin: 1rem 0 !important;
-    padding-left: 1.5rem !important;
-  }
-
-  .prose ul li,
-  .prose ol li,
-  .notion_page_body ul li,
-  .notion_page_body ol li,
-  .notion_bulleted_list_item,
-  .notion_numbered_list_item {
-    margin: 0.125rem 0 !important;
-    margin-top: 0.125rem !important;
-    margin-bottom: 0.125rem !important;
-    padding: 0 !important;
-    line-height: 1.5 !important;
-  }
-
-  .prose ul li p,
-  .prose ol li p,
-  .notion_page_body ul li p,
-  .notion_page_body ol li p,
-  .notion_bulleted_list_item p,
-  .notion_numbered_list_item p {
-    margin: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
-    line-height: inherit !important;
-  }
-
-  /* Fix code styling */
-  .prose pre {
-    background-color: #f8fafc !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 0.5rem !important;
-    padding: 1rem !important;
-    padding-right: 3rem !important; /* Space for copy button */
-    overflow-x: auto !important;
-    font-size: 0.875rem !important;
-    line-height: 1.5 !important;
-    position: relative !important;
-  }
-
-  .prose code {
-    background-color: #f1f5f9 !important;
-    padding: 0.125rem 0.25rem !important;
-    border-radius: 0.25rem !important;
-    font-size: 0.875rem !important;
-    color: #1e293b !important;
-    border: 1px solid #e2e8f0 !important;
-  }
-
-  .prose pre code {
-    background-color: transparent !important;
-    padding: 0 !important;
-    border: none !important;
-    font-size: inherit !important;
-    color: inherit !important;
-  }
-
-  /* Copy button styling */
-  .copy-button {
-    transition: all 0.2s ease;
-  }
-
-  .group:hover .copy-button {
-    opacity: 1 !important;
-  }
-
-  /* Notion code blocks */
-  .notion_code {
-    position: relative !important;
-  }
-
-  .notion_code .copy-button {
-    top: 0.5rem !important;
-    right: 0.5rem !important;
-  }
-}
 
 body {
   overflow-x: hidden;
@@ -159,96 +66,35 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-/**
- *
- * Helpers
- *
- */
-
-.safe-viewport {
-  @apply w-full max-w-[1760px] mx-auto px-6 lg:px-9 xl:px-10 3xl:px-0;
+:root {
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
-.untanglable {
-  @apply select-none pointer-events-none;
+.dark {
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
-.svg-black {
-  filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(13deg) brightness(98%)
-    contrast(105%);
-}
-
-/* #232323 */
-.svg-black-100 {
-  filter: invert(15%) sepia(2%) saturate(3%) hue-rotate(347deg) brightness(103%)
-    contrast(101%);
-}
-
-/* #fff */
-.svg-white {
-  filter: invert(100%) sepia(1%) saturate(7500%) hue-rotate(92deg)
-    brightness(114%) contrast(117%);
-}
-
-.svg-primary {
-  filter: invert(97%) sepia(57%) saturate(1234%) hue-rotate(19deg)
-    brightness(108%) contrast(95%);
-}
-
-.svg-secondary {
-  filter: invert(29%) sepia(79%) saturate(3185%) hue-rotate(249deg)
-    brightness(97%) contrast(100%);
-}
-
-.svg-gray-400 {
-  filter: invert(68%) sepia(18%) saturate(266%) hue-rotate(174deg)
-    brightness(97%) contrast(93%);
-}
-
-/* General Components */
-
-.btn-link {
-  @apply text-base font-normal inline-block relative;
-}
-
-.btn-link::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #262626;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.btn-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.page-footer .btn-link {
-  @apply text-gray-200 transition-all;
-}
-
-.page-footer .btn-link:hover {
-  @apply text-white;
-}
-
-.page-footer .btn-link::after {
-  background-color: #fff;
-}
-
-.btn-with-arrow {
-  @apply inline-flex flex-row items-center;
-}
-
-.btn-with-arrow .arrow {
-  @apply transition-all ml-1.5;
-}
-
-.btn-with-arrow:hover .arrow {
-  @apply translate-x-2;
+@theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }

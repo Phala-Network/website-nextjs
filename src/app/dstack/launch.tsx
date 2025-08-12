@@ -38,7 +38,7 @@ const Feature102 = () => {
               height={510}
               src="/dstack/step1.png"
               alt="Step 1"
-              className="z-10 aspect-video w-full rounded-xl border object-cover min-[960px]:h-56 min-[960px]:w-auto shadow-xs"
+              className="aspect-video w-full rounded-xl border object-cover min-[960px]:h-56 min-[960px]:w-auto shadow-xs"
             />
           </div>
           <div className="flex flex-col items-center justify-between min-[960px]:flex-row min-[960px]:gap-10">
@@ -68,7 +68,7 @@ const Feature102 = () => {
               height={462}
               src="/dstack/step2.png"
               alt="Step 2"
-              className="z-10 aspect-video w-full rounded-xl border object-cover min-[960px]:h-56 min-[960px]:w-auto shadow-xs"
+              className="aspect-video w-full rounded-xl border object-cover min-[960px]:h-56 min-[960px]:w-auto shadow-xs"
             />
           </div>
           <div className="flex flex-col items-center justify-between min-[960px]:flex-row min-[960px]:gap-10">
@@ -95,7 +95,7 @@ const Feature102 = () => {
               height={478}
               src="/dstack/step3.png"
               alt="Step 3"
-              className="z-10 aspect-video w-full rounded-xl border object-cover min-[960px]:h-56 min-[960px]:w-auto shadow-xs"
+              className="aspect-video w-full rounded-xl border object-cover min-[960px]:h-56 min-[960px]:w-auto shadow-xs"
             />
           </div>
         </div>

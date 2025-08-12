@@ -1,8 +1,8 @@
-import React from 'react'
+import type { BulletedListItemBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { useAtomValue } from 'jotai'
-import { BulletedListItemBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type React from 'react'
 
-import { BlockAtom } from './atoms'
+import type { BlockAtom } from './atoms'
 import RichText from './RichText'
 
 const BulletedListItem = ({
@@ -14,12 +14,10 @@ const BulletedListItem = ({
 }) => {
   const block = useAtomValue(theAtom) as BulletedListItemBlockObjectResponse
   return (
-    <ul className="notion_bulleted_list_container">
-      <li className="notion_bulleted_list_item">
-        <RichText rich_text={block.bulleted_list_item.rich_text} />
-      </li>
+    <li className="notion_bulleted_list_item">
+      <RichText rich_text={block.bulleted_list_item.rich_text} />
       {children}
-    </ul>
+    </li>
   )
 }
 
