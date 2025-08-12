@@ -1,8 +1,15 @@
 import type { Metadata } from 'next'
 
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
-import { cn } from '@/lib/utils'
 import TagPageClient from './TagPageClient'
 
 interface Props {
@@ -71,43 +78,25 @@ export default async function TagPage({ params }: Props) {
   const { initialPages, nextCursor } = await getTagData(slug)
 
   return (
-    <div
-      style={{
-        background: `
-          radial-gradient(1200px 600px at 70% 35%, rgba(199,255,170,0.7), rgba(255,255,255,0) 60%),
-          linear-gradient(180deg, #ffffff, #f9fff0 40%, #ffffff 70%)
-        `,
-        minHeight: '100vh',
-      }}
-    >
-      <section className="py-32">
-        <div className="container max-w-7xl mx-auto px-4">
+    <div className="min-h-screen">
+      <section className="py-32 max-w-7xl mx-auto">
+        <div className="container">
           <div className="mb-8 md:mb-14 lg:mb-16">
-            <div className="flex items-start justify-between gap-8">
-              <div>
-                <nav className="text-sm text-gray-600 flex gap-2 mb-4">
-                  <a href="/blog" className="hover:underline">
-                    Blog
-                  </a>
-                  <span>/</span>
-                  <span className="capitalize">{slug}</span>
-                </nav>
-                <h1 className="mb-4 w-full text-4xl font-medium md:mb-5 md:text-5xl lg:mb-6 lg:text-6xl capitalize">
-                  {slug}
-                </h1>
-              </div>
-              <div>
-                <a
-                  href="/blog"
-                  className={cn(
-                    'flex items-center gap-2 pl-5 pr-6 py-2 transition-all',
-                    'rounded-lg border bg-white border-primary-800 text-primary-800 font-bold',
-                    'hover:bg-[#EBFDB9]',
-                  )}
-                >
-                  <span>← Back to Blog</span>
-                </a>
-              </div>
+            <div>
+              <Breadcrumb className="mb-4">
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage className="capitalize">{slug}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+              <h1 className="mb-4 w-full text-4xl font-bold md:mb-5 md:text-5xl lg:mb-6 capitalize">
+                {slug}
+              </h1>
             </div>
           </div>
 

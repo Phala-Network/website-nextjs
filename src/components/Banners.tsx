@@ -41,56 +41,53 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
 
   return (
     <div className="w-full h-full">
-      <Carousel setApi={setApi} className={cn('w-full h-full', 'rounded-sm')}>
-        <CarouselContent className="-ml-0">
+      <Carousel setApi={setApi}>
+        <CarouselContent>
           {pages.map((page) => (
-            <CarouselItem
-              key={page.id}
-              className={cn(
-                'pl-0 w-full h-full bg-[#FAFEED]',
-                'rounded-sm p-2',
-              )}
-            >
-              <article
-                className={cn('w-full', 'grid grid-cols-1 lg:grid-cols-20')}
-              >
-                <div
-                  className={cn('lg:col-span-12', 'rounded-sm overflow-hidden')}
-                >
-                  <a href={`/posts${page.slug}`}>
-                    <img
-                      className="w-full aspect-872/487"
-                      width={872}
-                      height={487}
-                      src={`https://img0.phala.world/cover/1744x974/${page.id}.jpg`}
-                      alt={page.title}
-                    />
-                  </a>
-                </div>
-                <div
+            <CarouselItem key={page.id}>
+              <div className="p-2">
+                <article
                   className={cn(
-                    'lg:col-span-8',
-                    'flex flex-col justify-between',
-                    'p-4',
+                    'w-full bg-muted shadow rounded-2xl border',
+                    'grid grid-cols-1 lg:grid-cols-2',
                   )}
                 >
-                  <div className="flex flex-col gap-y-2">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      {page.tags.map((tag, i) => (
-                        <div key={`tag-${page.id}-${i}`}>
-                          <TagLink href={`/tags/${tag}`}>{tag}</TagLink>
-                        </div>
-                      ))}
+                  <div className="p-2">
+                    <div className={cn('rounded-sm overflow-hidden')}>
+                      <a href={`/posts${page.slug}`}>
+                        {/** biome-ignore lint/performance/noImgElement: no cdn */}
+                        <img
+                          className="w-full aspect-872/487"
+                          src={`https://img0.phala.world/cover/1744x974/${page.id}.jpg`}
+                          alt={page.title}
+                        />
+                      </a>
                     </div>
-                    <h2 className="font-bold text-2xl">
-                      <a href={`/posts${page.slug}`}>{page.title}</a>
-                    </h2>
                   </div>
-                  <div className="text-sm">
-                    <p>{page.publishedDate}</p>
+                  <div
+                    className={cn(
+                      'flex flex-col justify-between',
+                      'p-8 min-h-60',
+                    )}
+                  >
+                    <div className="flex flex-col gap-y-4">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {page.tags.map((tag, i) => (
+                          <div key={`tag-${page.id}-${i}`}>
+                            <TagLink href={`/tags/${tag}`}>{tag}</TagLink>
+                          </div>
+                        ))}
+                      </div>
+                      <h2 className="font-bold text-2xl">
+                        <a href={`/posts${page.slug}`}>{page.title}</a>
+                      </h2>
+                    </div>
+                    <div className="text-sm">
+                      <p>{page.publishedDate}</p>
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -99,12 +96,15 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
         <div className="flex justify-center gap-2">
           {pages.map((_, index) => (
             <button
-              key={`pagination-${index}`}
+              key={`pagination-${
+                // biome-ignore lint/suspicious/noArrayIndexKey: static
+                index
+              }`}
               type="button"
               onClick={() => scrollTo(index)}
               className={cn(
-                'w-3 h-3 rounded-full transition-colors',
-                index === selectedIndex ? 'bg-[#CDFA50]' : 'bg-white',
+                'w-3 h-3 rounded-full transition-colors border',
+                index === selectedIndex ? 'bg-primary-400' : 'bg-muted',
               )}
               aria-label={`Go to slide ${index + 1}`}
             />

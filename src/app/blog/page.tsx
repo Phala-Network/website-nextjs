@@ -4,6 +4,7 @@ import { BiRss } from 'react-icons/bi'
 
 import Banners from '@/components/Banners'
 import TagSearch from '@/components/TagSearch'
+import { Button } from '@/components/ui/button'
 import { env } from '@/env'
 import { notion, queryDatabase } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
@@ -114,38 +115,23 @@ export default async function BlogPage() {
   const { tags, initialPages, nextCursor, bannerPages } = await getBlogData()
 
   return (
-    <div
-      style={{
-        background: `
-          radial-gradient(1200px 600px at 70% 35%, rgba(199,255,170,0.7), rgba(255,255,255,0) 60%),
-          linear-gradient(180deg, #ffffff, #f9fff0 40%, #ffffff 70%)
-        `,
-        minHeight: '100vh',
-      }}
-    >
-      <section className="py-32">
-        <div className="container max-w-7xl mx-auto px-4">
+    <div className="min-h-screen">
+      <section className="py-32 max-w-7xl mx-auto">
+        <div className="container">
           <div className="mb-8 md:mb-14 lg:mb-16">
             <div className="flex items-start justify-between gap-8">
               <div>
-                <h1 className="mb-4 w-full text-4xl font-medium md:mb-5 md:text-5xl lg:mb-6 lg:text-6xl">
-                  Blog
+                <h1 className="mb-4 w-full text-4xl font-bold md:mb-5 md:text-5xl lg:mb-6">
+                  Phala Blog
                 </h1>
               </div>
               <div>
-                <a
-                  href="/atom.xml"
-                  target="_blank"
-                  rel="noopener"
-                  className={cn(
-                    'flex items-center gap-2 pl-5 pr-6 py-2 transition-all',
-                    'rounded-lg border bg-white border-primary-800 text-primary-800 font-bold',
-                    'hover:bg-[#EBFDB9]',
-                  )}
-                >
-                  <BiRss className="w-6 h-6" />
-                  <span>Subscribe</span>
-                </a>
+                <Button asChild size="lg">
+                  <a href="/atom.xml" target="_blank" rel="noopener">
+                    <BiRss className="w-6 h-6" />
+                    <span>Subscribe</span>
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -158,7 +144,7 @@ export default async function BlogPage() {
           />
           <section
             className={cn(
-              'bg-[#FAFEED] rounded-xl',
+              'bg-muted shadow rounded-2xl border',
               'flex flex-col items-center',
               'py-12 px-8',
             )}
