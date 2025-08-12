@@ -298,12 +298,11 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
       destination: 'https://docs.phala.network/phala-cloud/changelog',
       permanent: false,
     },
-    // TODO: rss.xml and atom.xml
-    // {
-    //   source: '/changelog/:path*',
-    //   destination: 'https://docs.phala.network/phala-cloud/changelog',
-    //   permanent: false,
-    // },
+    {
+      source: '/changelog/rss.xml',
+      destination: 'https://docs.phala.network/phala-cloud/changelog/rss.xml',
+      permanent: false,
+    },
 
     // Redirects to the cloud
     {
