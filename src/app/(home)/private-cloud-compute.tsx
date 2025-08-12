@@ -228,8 +228,9 @@ export default function PrivateCloudCompute() {
                         />
                       </div>
                     </div>
-                    <p className="text-muted-foreground mt-2 text-sm pl-2">
-                      have their own TEE.
+                    <p className="text-muted-foreground mt-4 text-sm">
+                      Too many TEE secured chip variants—Phala support all TEE
+                      chip types with one API.
                     </p>
                   </div>
                 </div>
@@ -342,9 +343,9 @@ export default function PrivateCloudCompute() {
                 <div className="h-80 md:h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
                   <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
-                      Zero-trust key management
+                      Only you can access your data
                     </span>{' '}
-                    with customer-controlled encryption keys.
+                    — no one else, not even us.
                   </h4>
                   <div className="absolute top-2/5 left-0 bottom-0 pt-3 bg-[#AFBEFE]/50 w-full shadow">
                     <div className="w-full h-full">
@@ -376,9 +377,9 @@ export default function PrivateCloudCompute() {
                         Enterprise-grade privacy
                       </p>
                       <ul className="text-sm mt-18 list-disc list-inside">
-                        <li>500+ teams</li>
-                        <li>$2M ARR</li>
-                        <li>Enterprise grade</li>
+                        <li>Trusted by 500+ teams</li>
+                        <li>$2M+ ARR proven market</li>
+                        <li>Enterprise-grade compliance</li>
                       </ul>
                     </div>
                   </div>
