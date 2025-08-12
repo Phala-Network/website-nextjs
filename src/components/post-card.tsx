@@ -1,4 +1,4 @@
-import TagLink from '@/components/TagLink'
+import TagLink from '@/components/tag-link'
 import type { ParsedListPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 
@@ -7,7 +7,7 @@ const remap: Readonly<Record<string, string>> = {
   '2300317e04a18074a132f0b95e4cc4d5': '2300317e-04a1-8074-a132-f0b95e4cc4d5',
 }
 
-export default function Card({ page }: { page: ParsedListPage }) {
+export default function PostCard({ page }: { page: ParsedListPage }) {
   if (!page) {
     return null
   }

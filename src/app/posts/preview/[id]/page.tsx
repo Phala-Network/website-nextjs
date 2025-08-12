@@ -4,7 +4,7 @@ import type React from 'react'
 
 import { renderBlocks } from '@/components/notion-render/Block'
 import PageCoverImage from '@/components/PageCoverImage'
-import TagLink from '@/components/TagLink'
+import TagLink from '@/components/tag-link'
 import attempt from '@/lib/attempt-promise'
 import {
   getParsedPage,

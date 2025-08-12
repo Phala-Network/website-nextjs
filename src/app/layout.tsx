@@ -4,7 +4,7 @@ import Script from 'next/script'
 
 import Footer from '@/components/footer'
 import Nav from '@/components/nav'
-import ScrollToTop from '@/components/ScrollToTop'
+import ScrollToTop from '@/components/scroll-to-top'
 import { env } from '@/env'
 import fontVariables from '@/lib/fonts'
 import './globals.css'

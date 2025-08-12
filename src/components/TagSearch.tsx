@@ -1,8 +1,8 @@
 'use client'
-import React, { useState } from 'react'
-import TagLink from '@/components/TagLink'
+import { useState } from 'react'
+
+import TagLink from '@/components/tag-link'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 interface Props {
   tags: string[]
@@ -11,13 +11,13 @@ interface Props {
 
 export default function TagSearch({ tags, priorityTags }: Props) {
   const [isExpanded, setIsExpanded] = useState(false)
-  
+
   // Filter priority tags to only include ones that exist in the tags array
-  const availablePriorityTags = priorityTags.filter(tag => tags.includes(tag))
-  
+  const availablePriorityTags = priorityTags.filter((tag) => tags.includes(tag))
+
   // Show priority tags by default, all tags when expanded
   const displayTags = isExpanded ? tags : availablePriorityTags
-  
+
   // Only show expand button if there are more tags than priority tags
   const hasMoreTags = tags.length > availablePriorityTags.length
 
@@ -26,13 +26,11 @@ export default function TagSearch({ tags, priorityTags }: Props) {
       <div className="flex flex-wrap gap-4 justify-center max-w-4xl">
         {displayTags.map((tag, i) => (
           <div key={`${i}`}>
-            <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
-              {tag}
-            </TagLink>
+            <TagLink href={`/tags/${encodeURIComponent(tag)}`}>{tag}</TagLink>
           </div>
         ))}
       </div>
-      
+
       {hasMoreTags && (
         <Button
           variant="outline"
