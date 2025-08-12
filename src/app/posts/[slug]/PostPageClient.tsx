@@ -14,7 +14,7 @@ import {
 
 import { renderBlocks } from '@/components/notion-render/Block'
 import NotionBlocksProvider from '@/components/notion-render/NotionBlocksProvider'
-import TagLink from '@/components/TagLink'
+import TagLink from '@/components/tag-link'
 import {
   Breadcrumb,
   BreadcrumbItem,
