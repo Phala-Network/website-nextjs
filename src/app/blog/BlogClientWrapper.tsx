@@ -2,7 +2,7 @@
 
 import { RefreshCcw } from 'lucide-react'
 
-import Card from '@/components/Card'
+import PostCard from '@/components/post-card'
 import { Button } from '@/components/ui/button'
 import useQueryPosts from '@/hooks/useQueryPosts'
 import type { ParsedListPage } from '@/lib/notion-client'
@@ -25,7 +25,7 @@ export default function BlogClientWrapper({ initialPages, nextCursor }: Props) {
     <>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 mt-8">
         {pages.map((page) => (
-          <Card key={page.id} page={page} />
+          <PostCard key={page.id} page={page} />
         ))}
       </div>
       <div

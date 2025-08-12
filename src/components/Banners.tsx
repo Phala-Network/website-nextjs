@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import TagLink from '@/components/TagLink'
+import TagLink from '@/components/tag-link'
 import {
   Carousel,
   type CarouselApi,
