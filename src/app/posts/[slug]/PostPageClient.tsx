@@ -1,8 +1,7 @@
 'use client'
 
 import dayjs from 'dayjs'
-import { type AnchorHTMLAttributes, useEffect, useState } from 'react'
-import { BiRss } from 'react-icons/bi'
+import { useCallback, useEffect, useState } from 'react'
 import {
   FiArrowLeft,
   FiArrowRight,
@@ -10,21 +9,36 @@ import {
   FiCheck,
   FiClock,
   FiCopy,
-  FiTag,
 } from 'react-icons/fi'
 
 import { renderBlocks } from '@/components/notion-render/Block'
 import NotionBlocksProvider from '@/components/notion-render/NotionBlocksProvider'
-import TableOfContents from '@/components/TableOfContents'
-import { env } from '@/env'
+import TagLink from '@/components/TagLink'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
+import { Button } from '@/components/ui/button'
 import type { ParsedListPage, ParsedPage } from '@/lib/notion-client'
+import { cn } from '@/lib/utils'
 
 const remap: Readonly<Record<string, string>> = {
   '2250317e04a18058a89af73b666d10e0': '2250317e-04a1-8058-a89a-f73b666d10e0',
   '2300317e04a18074a132f0b95e4cc4d5': '2300317e-04a1-8074-a132-f0b95e4cc4d5',
 }
 
+interface Heading {
+  id: string
+  text: string
+  level: number
+}
+
 interface Props {
+  url: string
   page: ParsedPage
   recentPages: ParsedListPage[]
   similarPages: ParsedListPage[]
@@ -32,293 +46,312 @@ interface Props {
   nextPages: ParsedListPage[]
 }
 
-function AboutLink({
-  children,
-  ...props
-}: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  return (
-    <a
-      className="text-center text-xs text-green-700 font-medium leading-none hover:text-green-800 transition-colors px-3 py-2 rounded-md hover:bg-green-50"
-      {...props}
-    >
-      {children}
-    </a>
-  )
-}
-
 export default function PostPageClient({
+  url,
   page,
   recentPages = [],
   similarPages = [],
   beforePages = [],
   nextPages = [],
 }: Props) {
-  // State for copy for AI button
+  const [activeSection, setActiveSection] = useState<string | null>(null)
+  const [headings, setHeadings] = useState<Heading[]>([])
   const [isCopyingForAI, setIsCopyingForAI] = useState(false)
 
+  // Extract headings from page content (only H2 headings)
+  const extractHeadings = useCallback(() => {
+    const headingElements = document.querySelectorAll('.notion_heading_2')
+    const extractedHeadings: Heading[] = []
+
+    headingElements.forEach((heading, index) => {
+      const text = heading.textContent?.trim() || ''
+      if (!text) return
+
+      let id = heading.id
+
+      // Create ID if it doesn't exist
+      if (!id) {
+        id = text
+          .toLowerCase()
+          .replace(/[^a-z0-9\s]/g, '')
+          .replace(/\s+/g, '-')
+          .substring(0, 50)
+
+        // Ensure uniqueness
+        if (extractedHeadings.find((h) => h.id === id)) {
+          id = `${id}-${index}`
+        }
+
+        heading.id = id
+      }
+
+      extractedHeadings.push({ id, text, level: 2 })
+    })
+
+    setHeadings(extractedHeadings)
+  }, [])
+
+  // Extract headings after content loads
+  useEffect(() => {
+    const timer = setTimeout(extractHeadings, 1000)
+    return () => clearTimeout(timer)
+  }, [extractHeadings])
+
+  // Table of Contents intersection observer with improved active section tracking
+  useEffect(() => {
+    if (headings.length === 0) return
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      const visibleEntries = entries.filter((entry) => entry.isIntersecting)
+
+      if (visibleEntries.length === 0) return
+
+      // If multiple sections are visible, prioritize the one closest to the top
+      let activeEntry = visibleEntries[0]
+      let minDistance = Math.abs(visibleEntries[0].boundingClientRect.top)
+
+      for (const entry of visibleEntries) {
+        const distance = Math.abs(entry.boundingClientRect.top)
+        if (distance < minDistance) {
+          minDistance = distance
+          activeEntry = entry
+        }
+      }
+
+      setActiveSection(activeEntry.target.id)
+    }
+
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      rootMargin: '-10% 0px -80% 0px',
+      threshold: [0, 0.25, 0.5, 0.75, 1],
+    })
+
+    // Observe all heading elements
+    headings.forEach(({ id }) => {
+      const element = document.getElementById(id)
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => observer.disconnect()
+  }, [headings])
+
   // Copy content for AI function
-  const copyForAI = async () => {
+  const copyForAI = useCallback(async () => {
     setIsCopyingForAI(true)
     try {
-      // Create markdown content
       const markdownContent = `# ${page.title}
 
 **Published:** ${dayjs(page.publishedTime).format('MMMM DD, YYYY')}
 **Tags:** ${page.tags.join(', ')}
-**URL:** https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts${page.slug}
+**URL:** ${url}/posts${page.slug}
 
 ---
 
 ${page.markdown}`
 
       await navigator.clipboard.writeText(markdownContent)
-
-      // Reset after 2 seconds
-      setTimeout(() => {
-        setIsCopyingForAI(false)
-      }, 2000)
+      setTimeout(() => setIsCopyingForAI(false), 2000)
     } catch (err) {
       console.error('Failed to copy content for AI:', err)
       setIsCopyingForAI(false)
     }
-  }
+  }, [page.title, page.publishedTime, page.tags, page.slug, page.markdown, url])
 
-  // Add copy buttons to code blocks
-  useEffect(() => {
-    const addCopyButtons = () => {
-      const codeBlocks = document.querySelectorAll('pre code, .notion_code')
-      codeBlocks.forEach((codeBlock) => {
-        const pre = codeBlock.closest('pre') || codeBlock.parentElement
-        if (!pre || pre.querySelector('.copy-button')) return // Skip if button already exists
+  // Get processed cover image ID
+  const coverImageId = (() => {
+    const id = page.id.replace(/-/g, '')
+    return remap[id] || id
+  })()
 
-        const button = document.createElement('button')
-        button.className =
-          'copy-button absolute top-2 right-2 p-2 rounded-md bg-gray-800 hover:bg-gray-700 text-white transition-colors opacity-0 group-hover:opacity-100'
-        button.innerHTML =
-          '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>'
-        button.title = 'Copy code'
+  // Render table of contents
+  const renderTableOfContents = () => (
+    <div className="bg-muted shadow rounded-2xl border p-6 max-lg:hidden">
+      <span className="font-semibold font-sans text-lg">On this page</span>
+      {headings.length > 0 ? (
+        <nav className="mt-4">
+          <ul className="space-y-2">
+            {headings.map((heading) => (
+              <li key={heading.id}>
+                <a
+                  href={`#${heading.id}`}
+                  className={cn(
+                    'text-sm line-clamp-1',
+                    activeSection === heading.id && 'font-semibold',
+                  )}
+                >
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : (
+        <div className="mt-4 text-sm text-muted-foreground">
+          Loading table of contents...
+        </div>
+      )}
+    </div>
+  )
 
-        // Make pre container relative and add group class
-        pre.style.position = 'relative'
-        pre.classList.add('group')
+  // Render post navigation
+  const renderPostNavigation = () => (
+    <nav className="flex flex-col sm:flex-row gap-4 pt-8 border-t mt-8">
+      {beforePages.length > 0 && (
+        <a
+          href={`/posts${beforePages[0].slug}`}
+          className="flex-1 p-4 border rounded-md block"
+        >
+          <div className="flex items-start gap-3">
+            <FiArrowLeft className="w-5 h-5 mt-0.5 shrink-0" />
+            <div>
+              <div className="text-xs text-muted-foreground font-medium uppercase">
+                Previous
+              </div>
+              <div className="text-sm font-medium line-clamp-2">
+                {beforePages[0].title}
+              </div>
+            </div>
+          </div>
+        </a>
+      )}
 
-        button.addEventListener('click', async () => {
-          const code = codeBlock.textContent || ''
-          try {
-            await navigator.clipboard.writeText(code)
-            button.innerHTML =
-              '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>'
-            button.style.backgroundColor = '#10b981'
-            setTimeout(() => {
-              button.innerHTML =
-                '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>'
-              button.style.backgroundColor = ''
-            }, 2000)
-          } catch (err) {
-            console.error('Failed to copy code:', err)
-          }
-        })
-
-        pre.appendChild(button)
-      })
-    }
-
-    // Add copy buttons when component mounts and after content changes
-    const timer = setTimeout(addCopyButtons, 500)
-    return () => clearTimeout(timer)
-  }, [page.blocks])
-
-  let id = page.id.replace(/-/g, '')
-  id = remap[id] || id
+      {nextPages.length > 0 && (
+        <a
+          href={`/posts${nextPages[0].slug}`}
+          className="flex-1 p-4 text-right border rounded-md block"
+        >
+          <div className="flex items-start gap-3">
+            <div className="text-right">
+              <div className="text-xs text-muted-foreground font-medium uppercase">
+                Next
+              </div>
+              <div className="text-sm font-medium line-clamp-2">
+                {nextPages[0].title}
+              </div>
+            </div>
+            <FiArrowRight className="w-5 h-5 mt-0.5 shrink-0" />
+          </div>
+        </a>
+      )}
+    </nav>
+  )
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
-      {/* Breadcrumb - positioned on top of banner area */}
-      <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-        <a
-          href="/blog"
-          className="flex items-center gap-1 hover:text-[#C4F144] transition-colors"
-        >
-          <FiArrowLeft className="w-4 h-4" />
-          Blog
-        </a>
-        {page.publishedTime && (
-          <>
-            <span className="text-gray-400">/</span>
-            <span>{dayjs(page.publishedTime).format('YYYY')}</span>
-            <span className="text-gray-400">/</span>
-            <span>{dayjs(page.publishedTime).format('MMMM')}</span>
-          </>
-        )}
-      </nav>
+    <section className="py-32 flex flex-col items-center">
+      <div className="mx-auto px-4 max-w-full">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb className="mb-8">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+            </BreadcrumbItem>
+            {page.publishedTime && (
+              <>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>
+                    {dayjs(page.publishedTime).format('YYYY')}
+                  </BreadcrumbPage>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>
+                    {dayjs(page.publishedTime).format('MMMM')}
+                  </BreadcrumbPage>
+                </BreadcrumbItem>
+              </>
+            )}
+          </BreadcrumbList>
+        </Breadcrumb>
 
-      <div className="lg:grid lg:grid-cols-12 lg:gap-12">
-        {/* Main Content */}
-        <article className="lg:col-span-8 xl:col-span-9 space-y-8">
-          {/* Cover Image */}
-          {page.cover && (
-            <div className="aspect-video rounded-2xl overflow-hidden shadow-lg bg-linear-to-br from-green-100 to-green-200">
-              <img
-                className="w-full h-full object-cover"
-                width={800}
-                height={450}
-                src={`https://img0.phala.world/cover/1744x974/${id}.jpg?z=123`}
-                alt={page.title}
-              />
+        {/* Article Header */}
+        <header className="mb-4 max-w-prose">
+          <h1 className="my-6 text-4xl font-bold">{page.title}</h1>
+
+          <div className="flex flex-wrap items-center justify-between">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1">
+                <FiCalendar className="w-4 h-4" />
+                <span>{dayjs(page.publishedTime).format('MMMM DD, YYYY')}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <FiClock className="w-4 h-4" />
+                <span>5 min read</span>
+              </div>
             </div>
-          )}
 
-          {/* Article Header */}
-          <header className="space-y-6">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={copyForAI}
+              disabled={isCopyingForAI}
+              title="Copy article content in markdown format for AI"
+            >
+              {isCopyingForAI ? (
+                <>
+                  <FiCheck className="w-3 h-3" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <FiCopy className="w-3 h-3" />
+                  Copy for AI
+                </>
+              )}
+            </Button>
+          </div>
+        </header>
+
+        {/* Main Layout */}
+        <div className="flex gap-8 max-lg:flex-col">
+          {/* Article Content */}
+          <article className="w-full max-w-prose">
+            {page.cover && (
+              // biome-ignore lint/performance/noImgElement: Using external CDN image
+              <img
+                src={`https://img0.phala.world/cover/1744x974/${coverImageId}.jpg?z=123`}
+                alt={page.title}
+                className="mb-8 mt-0 aspect-video w-full rounded-lg border object-cover"
+              />
+            )}
+
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-8">
               {page.tags
                 .filter((tag) => tag !== 'Changelog')
-                .map((tag, i) => (
-                  <a key={i} href={`/tags/${encodeURIComponent(tag)}`}>
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-[#C4F144] text-black">
-                      <FiTag className="w-3 h-3" />
-                      {tag}
-                    </span>
-                  </a>
+                .map((tag) => (
+                  <TagLink
+                    key={`tag-${tag}`}
+                    href={`/tags/${encodeURIComponent(tag)}`}
+                  >
+                    {tag}
+                  </TagLink>
                 ))}
             </div>
 
-            {/* Title */}
-            <h1 className="text-4xl lg:text-5xl font-black text-gray-900 leading-tight font-montserrat">
-              {page.title}
-            </h1>
-
-            {/* Meta Info */}
-            <div className="flex flex-wrap items-center justify-between border-b border-gray-200 pb-6">
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
-                <div className="flex items-center gap-1">
-                  <FiCalendar className="w-4 h-4" />
-                  <span>
-                    {dayjs(page.publishedTime).format('MMMM DD, YYYY')}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <FiClock className="w-4 h-4" />
-                  <span>5 min read</span>
-                </div>
-              </div>
-
-              {/* Copy for AI Button */}
-              <button
-                type="button"
-                onClick={copyForAI}
-                disabled={isCopyingForAI}
-                className="flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors disabled:opacity-50"
-                title="Copy article content in markdown format for AI"
-              >
-                {isCopyingForAI ? (
-                  <>
-                    <FiCheck className="w-3 h-3" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <FiCopy className="w-3 h-3" />
-                    Copy for AI
-                  </>
-                )}
-              </button>
+            {/* Article Content */}
+            <div className="prose">
+              <NotionBlocksProvider blocks={page.blocks}>
+                {renderBlocks(page.blocks)}
+              </NotionBlocksProvider>
             </div>
-          </header>
 
-          {/* Article Content */}
-          <div className="prose prose-lg max-w-none font-inter">
-            <style jsx>{`
-                .prose {
-                  --tw-prose-headings: #1f2937;
-                  --tw-prose-body: #374151;
-                  --tw-prose-links: #16a34a;
-                  --tw-prose-bold: #1f2937;
-                  --tw-prose-bullets: #16a34a;
-                  --tw-prose-quotes: #6b7280;
-                  --tw-prose-code: #1f2937;
-                  --tw-prose-pre-bg: #f8fafc;
-                  --tw-prose-pre-code: #374151;
-                }
-              `}</style>
-            <NotionBlocksProvider blocks={page.blocks}>
-              {renderBlocks(page.blocks)}
-            </NotionBlocksProvider>
-          </div>
+            {/* Post Navigation */}
+            {renderPostNavigation()}
+          </article>
 
-          {/* Navigation */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-gray-200">
-            {beforePages.length > 0 && (
-              <a
-                href={`/posts${beforePages[0].slug}`}
-                className="flex-1 h-auto p-4 text-left justify-start hover:bg-green-50 border border-green-200 rounded-md transition-colors block"
-              >
-                <div className="flex items-start gap-3">
-                  <FiArrowLeft className="w-5 h-5 mt-0.5 text-green-600 shrink-0" />
-                  <div>
-                    <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">
-                      Previous
-                    </div>
-                    <div className="text-sm font-medium text-gray-900 line-clamp-2">
-                      {beforePages[0].title}
-                    </div>
-                  </div>
-                </div>
-              </a>
-            )}
+          {/* Sidebar */}
+          <aside className="space-y-4 sticky lg:top-20 lg:max-w-sm w-full">
+            {/* Table of Contents */}
+            {renderTableOfContents()}
 
-            {nextPages.length > 0 && (
-              <a
-                href={`/posts${nextPages[0].slug}`}
-                className="flex-1 h-auto p-4 text-right justify-end hover:bg-green-50 border border-green-200 rounded-md transition-colors block"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="text-right">
-                    <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">
-                      Next
-                    </div>
-                    <div className="text-sm font-medium text-gray-900 line-clamp-2">
-                      {nextPages[0].title}
-                    </div>
-                  </div>
-                  <FiArrowRight className="w-5 h-5 mt-0.5 text-green-600 shrink-0" />
-                </div>
-              </a>
-            )}
-          </div>
-
-          {/* About Phala Footer */}
-          <footer className="pt-12 border-t border-gray-200 space-y-6">
-            <div className="pt-4">
-              <a
-                href="#section-subscription"
-                className="bg-primary hover:bg-primary-600 text-black font-bold inline-flex items-center justify-center gap-2 rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-6 py-2"
-              >
-                <BiRss className="w-4 h-4" />
-                Subscribe to Updates
-              </a>
-            </div>
-          </footer>
-        </article>
-
-        {/* Sidebar */}
-        <aside className="lg:col-span-4 xl:col-span-3 space-y-6">
-          {/* Table of Contents */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 lg:sticky lg:top-32">
-            <TableOfContents blocks={page.blocks} />
-          </div>
-        </aside>
-      </div>
-
-      {/* Related Posts Section - After main content */}
-      {(recentPages.length > 0 || similarPages.length > 0) && (
-        <div className="mt-16 pt-8 border-t border-gray-200">
-          <div className="grid gap-8 lg:grid-cols-2">
             {/* Recent Posts */}
             {recentPages.length > 0 && (
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
+              <div className="bg-muted shadow rounded-2xl border p-6">
+                <h3 className="text-lg font-semibold mb-4 font-sans">
                   Recent Posts
                 </h3>
                 <div className="space-y-4">
@@ -326,12 +359,12 @@ ${page.markdown}`
                     <a
                       href={`/posts${recentPage.slug}`}
                       key={recentPage.id}
-                      className="block p-3 rounded-lg hover:bg-green-50 transition-colors"
+                      className="block"
                     >
-                      <h4 className="text-sm font-medium text-gray-900 line-clamp-2 mb-1">
+                      <h4 className="text-sm font-medium line-clamp-2 mb-1">
                         {recentPage.title}
                       </h4>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
                       </p>
                     </a>
@@ -342,8 +375,8 @@ ${page.markdown}`
 
             {/* Related Posts */}
             {similarPages.length > 0 && (
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
+              <div className="bg-muted shadow rounded-2xl border p-6">
+                <h3 className="text-lg font-semibold mb-4 font-sans">
                   Related Posts
                 </h3>
                 <div className="space-y-4">
@@ -351,12 +384,12 @@ ${page.markdown}`
                     <a
                       href={`/posts${similarPage.slug}`}
                       key={similarPage.id}
-                      className="block p-3 rounded-lg hover:bg-green-50 transition-colors"
+                      className="block"
                     >
-                      <h4 className="text-sm font-medium text-gray-900 line-clamp-2 mb-1">
+                      <h4 className="text-sm font-medium line-clamp-2 mb-1">
                         {similarPage.title}
                       </h4>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         {dayjs(similarPage.publishedTime).format(
                           'MMM DD, YYYY',
                         )}
@@ -366,9 +399,9 @@ ${page.markdown}`
                 </div>
               </div>
             )}
-          </div>
+          </aside>
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   )
 }

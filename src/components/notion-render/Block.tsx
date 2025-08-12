@@ -62,6 +62,49 @@ export const renderBlock = (block: ParsedBlock) => {
   return <Block key={block.id} theAtom={blockAtom} />
 }
 
+const groupConsecutiveListItems = (blocks: ParsedBlock[]) => {
+  const grouped: (
+    | ParsedBlock
+    | {
+        type: 'list_group'
+        listType: 'bulleted' | 'numbered'
+        items: ParsedBlock[]
+        id: string
+      }
+  )[] = []
+  let i = 0
+
+  while (i < blocks.length) {
+    const block = blocks[i]
+
+    if (
+      block.type === 'bulleted_list_item' ||
+      block.type === 'numbered_list_item'
+    ) {
+      const listType =
+        block.type === 'bulleted_list_item' ? 'bulleted' : 'numbered'
+      const items: ParsedBlock[] = []
+
+      while (i < blocks.length && blocks[i].type === block.type) {
+        items.push(blocks[i])
+        i++
+      }
+
+      grouped.push({
+        type: 'list_group',
+        listType,
+        items,
+        id: `list-group-${items[0].id}`,
+      })
+    } else {
+      grouped.push(block)
+      i++
+    }
+  }
+
+  return grouped
+}
+
 export const renderBlocks = (blocks: ParsedBlock[]) => {
   const blocksWithListNumbers = useMemo(() => {
     const processBlocks = (items: ParsedBlock[]) => {
@@ -91,7 +134,28 @@ export const renderBlocks = (blocks: ParsedBlock[]) => {
     return processBlocks(blocks)
   }, [blocks])
 
-  return blocksWithListNumbers.map(renderBlock)
+  const groupedBlocks = useMemo(
+    () => groupConsecutiveListItems(blocksWithListNumbers),
+    [blocksWithListNumbers],
+  )
+
+  return groupedBlocks.map((item) => {
+    if ('type' in item && item.type === 'list_group') {
+      const ListContainer = item.listType === 'bulleted' ? 'ul' : 'ol'
+      const className =
+        item.listType === 'bulleted'
+          ? 'notion_bulleted_list_container'
+          : 'notion_numbered_list_container'
+
+      return (
+        <ListContainer key={item.id} className={className}>
+          {item.items.map(renderBlock)}
+        </ListContainer>
+      )
+    }
+
+    return renderBlock(item as ParsedBlock)
+  })
 }
 
 export default Block

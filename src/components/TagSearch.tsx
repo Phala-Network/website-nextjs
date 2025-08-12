@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import TagLink from '@/components/TagLink'
+import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -21,8 +22,8 @@ export default function TagSearch({ tags, priorityTags }: Props) {
   const hasMoreTags = tags.length > availablePriorityTags.length
 
   return (
-    <div className="flex flex-col items-center mt-12 w-full">
-      <div className="flex flex-wrap gap-3 justify-center">
+    <div className="flex flex-col items-center mt-8 w-full">
+      <div className="flex flex-wrap gap-4 justify-center max-w-4xl">
         {displayTags.map((tag, i) => (
           <div key={`${i}`}>
             <TagLink href={`/tags/${encodeURIComponent(tag)}`}>
@@ -33,16 +34,13 @@ export default function TagSearch({ tags, priorityTags }: Props) {
       </div>
       
       {hasMoreTags && (
-        <button
+        <Button
+          variant="outline"
           onClick={() => setIsExpanded(!isExpanded)}
-          className={cn(
-            "mt-4 px-4 py-2 text-sm font-medium rounded-lg transition-colors",
-            "bg-white border border-gray-300 text-gray-700",
-            "hover:bg-gray-50"
-          )}
+          className="mt-6"
         >
           {isExpanded ? 'Show Less' : `Show All (${tags.length})`}
-        </button>
+        </Button>
       )}
     </div>
   )
