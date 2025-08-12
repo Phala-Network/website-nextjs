@@ -61,7 +61,10 @@ const navigation = [
         name: 'Ambassador Program',
         href: 'https://github.com/Phala-Network/growth-program',
       },
-      { name: 'Changelog', href: '/changelog' },
+      {
+        name: 'Changelog',
+        href: 'https://docs.phala.network/phala-cloud/changelog',
+      },
       {
         name: 'Media Kit',
         href: 'https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq',
