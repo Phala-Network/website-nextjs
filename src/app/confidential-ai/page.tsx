@@ -57,9 +57,9 @@ const faqs = [
     answer: `Every inference includes a cryptographic proof that shows it ran securely inside a GPU TEE. You can verify both the platform's integrity and the result itself. So your users can trust the output, not just take it on faith.`,
   },
   {
-    question: 'What hardware does Phala Cloud use for GPU TEE Inference?',
+    question: 'What hardware does Phala use for GPU TEE Inference?',
     answer:
-      'Phala Cloud runs AI Inference tasks on TEE-enabled hardware such as Intel Xeon CPUs (for Intel TDX) and NVIDIA H100/H200 GPUs (NVIDIA Confidential Computing).',
+      'Phala runs AI Inference tasks on TEE-enabled hardware such as Intel Xeon CPUs (for Intel TDX) and NVIDIA H100/H200 GPUs (NVIDIA Confidential Computing).',
   },
   {
     question: 'How much does it cost to use GPU TEE Inference?',
@@ -69,79 +69,114 @@ const faqs = [
 
 export default function GpuTeePage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-(--breakpoint-lg)">
+    <div className="w-full bg-background">
       {/* Hero Section */}
-      <section className="text-center mb-16">
-        <h1 className="text-4xl font-semibold mb-4">GPU TEE Inference</h1>
-        <p className="mb-8 max-w-xl mx-auto">
-          Run AI models with hardware secured privacy and verifiable output. No
-          code change required.
-        </p>
-        <div className="flex justify-center space-x-4">
-          <Button asChild>
-            <Link href="/dashboard/gpu-tee">Get started</Link>
-          </Button>
-
-          <Button variant="outline" asChild>
-            <Link
-              href="https://docs.phala.network/overview/phala-network/gpu-tee"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn more
-            </Link>
-          </Button>
+      <section className="pt-24 pb-16 max-w-6xl mx-auto">
+        <div className="container">
+          <div className="flex flex-col items-center text-center">
+            <h1 className="text-4xl font-semibold text-balance lg:text-5xl mb-8">
+              GPU TEE Inference
+            </h1>
+            <p className="text-muted-foreground max-w-3xl mx-auto text-xl font-medium mb-12">
+              Run AI models with hardware secured privacy and verifiable output.
+              No code change required.
+            </p>
+            <div className="flex gap-3 items-start">
+              <Button size="lg" className="shrink-0" asChild>
+                <Link href="/dashboard/gpu-tee">Get started</Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="max-sm:px-6"
+                asChild
+              >
+                <Link
+                  href="https://docs.phala.network/overview/phala-network/gpu-tee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn more
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-center mb-12">Features</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="p-6 border rounded-lg shadow-xs text-center flex flex-col h-full"
-            >
-              <div className="grow">
-                <div className="flex justify-center mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="mb-4 text-left text-muted-foreground">
-                  {feature.description}
-                </p>
-              </div>
-              {feature.cta && (
-                <div className="mt-auto">
-                  <Button asChild variant="outline">
-                    <Link
-                      href={feature.cta}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Learn more
-                    </Link>
-                  </Button>
+      <section className="py-24 max-w-6xl mx-auto">
+        <div className="container">
+          <div className="mb-4 sm:mb-12">
+            <h2 className="text-center text-3xl font-bold md:text-4xl mb-4">
+              Features
+            </h2>
+            <p className="text-center text-muted-foreground font-medium text-lg md:text-xl">
+              Enterprise-grade privacy and verifiability for AI inference
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="p-8 border rounded-lg shadow-sm text-center flex flex-col h-full bg-card"
+              >
+                <div className="grow">
+                  <div className="flex justify-center mb-6">{feature.icon}</div>
+                  <h3 className="text-xl font-semibold mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-              )}
-            </div>
-          ))}
+                {feature.cta && (
+                  <div className="mt-8">
+                    <Button asChild variant="outline" className="w-full">
+                      <Link
+                        href={feature.cta}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Learn more
+                      </Link>
+                    </Button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section>
-        <h2 className="text-2xl font-semibold text-center mb-12">
-          Frequently Asked Questions
-        </h2>
-        <div className="max-w-3xl mx-auto space-y-6">
-          {faqs.map((faq, index) => (
-            <div key={index} className="border-b pb-4">
-              <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
-              <p className="text-muted-foreground whitespace-pre-line">
-                {faq.answer}
-              </p>
-            </div>
-          ))}
+      <section className="py-24 max-w-6xl mx-auto">
+        <div className="container">
+          <div className="mb-4 sm:mb-12">
+            <h2 className="text-center text-3xl font-bold md:text-4xl mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-center text-muted-foreground font-medium text-lg md:text-xl">
+              Everything you need to know about GPU TEE Inference
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-8">
+            {faqs.map((faq) => (
+              <div
+                key={faq.question}
+                className="border-b border-border pb-8 last:border-b-0"
+              >
+                <h3 className="text-xl font-semibold mb-4 text-foreground">
+                  {faq.question}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>
