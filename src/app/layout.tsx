@@ -57,7 +57,7 @@ export default function RootLayout({
       {env.NEXT_PUBLIC_GTM_ID && (
         <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />
       )}
-      <body className="pt-16">
+      <body>
         {env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <Script
@@ -75,9 +75,11 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        {children}
+        <div className="pt-16">
+          {children}
+          <Footer />
+        </div>
         <Nav />
-        <Footer />
         <ScrollToTop />
       </body>
     </html>

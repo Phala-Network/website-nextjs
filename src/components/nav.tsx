@@ -1,21 +1,27 @@
 'use client'
 
 import {
+  BarChart3,
   Book,
   BookOpen,
   Brain,
-  Building2,
-  Cloud,
-  Code,
-  File,
+  Coins,
+  Cpu,
+  GraduationCap,
+  Lightbulb,
   Menu,
-  Shield,
+  Network,
+  PackageOpen,
+  Play,
+  Rocket,
+  Search,
+  Server,
   SquareArrowOutUpRight,
-  Sunset,
-  Trees,
-  Zap,
+  Vote,
+  Wallet,
 } from 'lucide-react'
 import { useMotionValueEvent, useScroll } from 'motion/react'
+import Link from 'next/link'
 import { useState } from 'react'
 
 import {
@@ -50,170 +56,143 @@ interface MenuItem {
   items?: MenuItem[]
 }
 
-interface Navbar1Props {
-  logo?: {
-    url: string
-    src: string
-    alt: string
-    title: string
-  }
-  menu?: MenuItem[]
-  auth?: {
-    login: {
-      title: string
-      url: string
-    }
-    signup: {
-      title: string
-      url: string
-    }
-  }
-}
+const menu = [
+  {
+    title: 'Products',
+    url: '#',
+    items: [
+      {
+        title: 'Confidential VM',
+        description:
+          'Secure virtual machines with hardware-level privacy protection',
+        icon: <Server className="size-5 shrink-0" />,
+        url: '/confidential-vm',
+      },
+      {
+        title: 'Confidential AI Models, GPU TEE',
+        description: 'AI models with end-to-end privacy guarantees',
+        icon: <Brain className="size-5 shrink-0" />,
+        url: '/confidential-ai',
+      },
+      {
+        title: 'Open Source, dstack',
+        description:
+          'Open source, decentralized compute infrastructure for secure cloud computing',
+        icon: <PackageOpen className="size-5 shrink-0" />,
+        url: '/dstack',
+      },
+    ],
+  },
+  {
+    title: 'Solutions',
+    url: '#',
+    items: [
+      {
+        title: 'Success Stories',
+        description: 'Real-world implementations of privacy-first solutions',
+        icon: <Lightbulb className="size-5 shrink-0" />,
+        url: '/success-stories',
+      },
+      {
+        title: 'Apps Built on Phala',
+        description:
+          'Innovative applications powered by confidential computing',
+        icon: <Rocket className="size-5 shrink-0" />,
+        url: 'https://cloud.phala.network/explorer',
+      },
+      {
+        title: 'Blog',
+        description: 'Latest insights and updates from the Phala ecosystem',
+        icon: <BookOpen className="size-5 shrink-0" />,
+        url: '/blog',
+      },
+    ],
+  },
+  {
+    title: 'Developers',
+    url: '#',
+    items: [
+      {
+        title: 'Documentation',
+        description: 'Complete guides and API references for developers',
+        icon: <Book className="size-5 shrink-0" />,
+        url: 'https://docs.phala.network/?utm_source=phala.network&utm_medium=site-nav',
+      },
+      {
+        title: 'Guides',
+        description: 'Step-by-step tutorials and best practices',
+        icon: <GraduationCap className="size-5 shrink-0" />,
+        url: '/guides',
+      },
+      {
+        title: 'Templates',
+        description: 'Ready-to-use project templates and boilerplates',
+        icon: <Play className="size-5 shrink-0" />,
+        url: 'https://cloud.phala.network/templates',
+      },
+      {
+        title: 'Service Status',
+        description: 'Real-time monitoring of services and uptime',
+        icon: <BarChart3 className="size-5 shrink-0" />,
+        url: 'https://status.phala.network/',
+      },
+      {
+        title: 'Startup Program',
+        description: 'Free credits and support for your startup',
+        icon: <Rocket className="size-5 shrink-0" />,
+        url: '/startup-program',
+      },
+    ],
+  },
+  {
+    title: 'Network',
+    url: '#',
+    items: [
+      {
+        title: 'About Phala Network',
+        description: 'Learn about our mission and privacy-first technology',
+        icon: <Network className="size-5 shrink-0" />,
+        url: 'https://docs.phala.network/overview/phala-network?utm_source=phala.network&utm_medium=site-nav',
+      },
+      {
+        title: 'PHA Token',
+        description: 'Native token for ecosystem, staking, and governance',
+        icon: <Coins className="size-5 shrink-0" />,
+        url: 'https://docs.phala.network/overview/pha-token/introduction',
+      },
+      {
+        title: 'Wallet, Stake, Bridge',
+        description: 'Manage tokens, stake, and bridge across networks',
+        icon: <Wallet className="size-5 shrink-0" />,
+        url: 'https://app.phala.network/?utm_source=phala.network&utm_medium=site-nav',
+      },
+      {
+        title: 'Governance',
+        description: 'Participate in network decisions and proposals',
+        icon: <Vote className="size-5 shrink-0" />,
+        url: 'https://phala.subsquare.io/?utm_source=phala.network&utm_medium=site-nav',
+      },
+      {
+        title: 'Explorer',
+        description: 'Browse blockchain transactions and network activity',
+        icon: <Search className="size-5 shrink-0" />,
+        url: 'https://phala.subscan.io/',
+      },
+      {
+        title: 'Compute Provider',
+        description: 'Join as a provider and earn rewards',
+        icon: <Cpu className="size-5 shrink-0" />,
+        url: 'https://docs.phala.network/network/compute-providers/basic-info/introduction',
+      },
+    ],
+  },
+  {
+    title: 'Pricing',
+    url: '/pricing',
+  },
+]
 
-const Navbar1 = ({
-  logo = {
-    url: '/',
-    src: '/home/logo.svg',
-    alt: 'Phala',
-    title: 'Phala',
-  },
-  menu = [
-    {
-      title: 'Products',
-      url: '#',
-      items: [
-        {
-          title: 'Confidential VM',
-          description: 'Trusted execution environments for secure computing',
-          icon: <Shield className="size-5 shrink-0" />,
-          url: '/confidential-vm',
-        },
-        {
-          title: 'Confidential AI (Models)',
-          description: 'AI models with privacy guarantees',
-          icon: <Brain className="size-5 shrink-0" />,
-          url: '/confidential-ai',
-        },
-        {
-          title: 'DStack',
-          description: 'Decentralized compute infrastructure',
-          icon: <Cloud className="size-5 shrink-0" />,
-          url: '/dstack',
-        },
-      ],
-    },
-    {
-      title: 'Solutions',
-      url: '#',
-      items: [
-        {
-          title: 'Success Stories',
-          description: 'Real-world implementations and success stories',
-          icon: <Building2 className="size-5 shrink-0" />,
-          url: '/success-stories',
-        },
-        {
-          title: 'Apps Built on Phala',
-          description: 'Applications powered by our infrastructure',
-          icon: <Code className="size-5 shrink-0" />,
-          url: 'https://cloud.phala.network/explorer',
-        },
-        {
-          title: 'Blog',
-          description: 'Latest insights and updates',
-          icon: <BookOpen className="size-5 shrink-0" />,
-          url: '/blog',
-        },
-      ],
-    },
-    {
-      title: 'Developers',
-      url: '#',
-      items: [
-        {
-          title: 'Documentation',
-          description: 'Complete guides and API references',
-          icon: <Book className="size-5 shrink-0" />,
-          url: 'https://docs.phala.network/?utm_source=phala.network&utm_medium=site-nav',
-        },
-        {
-          title: 'Guides',
-          description: 'Step-by-step tutorials and guides',
-          icon: <Zap className="size-5 shrink-0" />,
-          url: '/guides',
-        },
-        {
-          title: 'Templates',
-          description: 'Ready-to-use project templates',
-          icon: <Code className="size-5 shrink-0" />,
-          url: 'https://cloud.phala.network/templates',
-        },
-        {
-          title: 'Service Status',
-          description: 'Check service status and uptime',
-          icon: <Trees className="size-5 shrink-0" />,
-          url: 'https://status.phala.network/',
-        },
-        {
-          title: 'Startup Program',
-          description: 'Get free credits for your startup',
-          icon: <File className="size-5 shrink-0" />,
-          url: '/startup-program',
-        },
-      ],
-    },
-    {
-      title: 'Network',
-      url: '#',
-      items: [
-        {
-          title: 'About Phala Network',
-          description: 'Learn about our mission and technology',
-          icon: <Building2 className="size-5 shrink-0" />,
-          url: 'https://docs.phala.network/overview/phala-network?utm_source=phala.network&utm_medium=site-nav',
-        },
-        {
-          title: 'PHA Token',
-          description: 'Native token of the Phala blockchain',
-          icon: <Zap className="size-5 shrink-0" />,
-          url: 'https://docs.phala.network/overview/pha-token/introduction',
-        },
-        {
-          title: 'Wallet, Stake, Bridge',
-          description: 'Manage your PHA tokens and assets',
-          icon: <Cloud className="size-5 shrink-0" />,
-          url: 'https://app.phala.network/?utm_source=phala.network&utm_medium=site-nav',
-        },
-        {
-          title: 'Governance',
-          description: 'Participate in network decisions',
-          icon: <Sunset className="size-5 shrink-0" />,
-          url: 'https://phala.subsquare.io/?utm_source=phala.network&utm_medium=site-nav',
-        },
-        {
-          title: 'Explorer',
-          description: 'View blockchain transactions and data',
-          icon: <BookOpen className="size-5 shrink-0" />,
-          url: 'https://phala.subscan.io/',
-        },
-        {
-          title: 'Compute Provider',
-          description: 'Learn about becoming a compute provider',
-          icon: <Code className="size-5 shrink-0" />,
-          url: 'https://docs.phala.network/network/compute-providers/basic-info/introduction',
-        },
-      ],
-    },
-    {
-      title: 'Pricing',
-      url: '/pricing',
-    },
-  ],
-  auth = {
-    login: { title: 'Sign in', url: '#' },
-    signup: { title: 'Contact', url: '/contact' },
-  },
-}: Navbar1Props) => {
+const Navbar1 = () => {
   const { scrollY } = useScroll()
   const [hasScrolled, setHasScrolled] = useState(false)
 
@@ -238,10 +217,10 @@ const Navbar1 = ({
           <nav className="hidden justify-between lg:flex h-16">
             <div className="flex items-center gap-6">
               {/* Logo */}
-              <a href={logo.url} className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2">
                 {/** biome-ignore lint/performance/noImgElement: svg */}
-                <img src={logo.src} className="h-8" alt={logo.alt} />
-              </a>
+                <img src="/home/logo.svg" className="h-8" alt="" />
+              </Link>
               <div className="flex items-center">
                 <NavigationMenu viewport={false}>
                   <NavigationMenuList>
@@ -251,11 +230,14 @@ const Navbar1 = ({
               </div>
             </div>
             <div className="flex gap-2 items-center">
-              <Button asChild variant="outline" size="sm">
-                <a href={auth.login.url}>{auth.login.title}</a>
+              <Button asChild variant="ghost">
+                <Link href="/contact">Contact</Link>
               </Button>
-              <Button asChild size="sm">
-                <a href={auth.signup.url}>{auth.signup.title}</a>
+              <Button asChild variant="ghost">
+                <a href="https://cloud.phala.network/login">Sign in</a>
+              </Button>
+              <Button asChild>
+                <a href="https://cloud.phala.network/register">Sign up</a>
               </Button>
             </div>
           </nav>
@@ -264,33 +246,34 @@ const Navbar1 = ({
           <div className="block lg:hidden">
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
-              <a href={logo.url} className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2 shrink-0">
                 {/** biome-ignore lint/performance/noImgElement: svg */}
-                <img src={logo.src} className="h-8" alt={logo.alt} />
-              </a>
-              <div className="flex gap-2 items-center">
-                <Button asChild variant="outline" size="sm">
-                  <a href={auth.login.url}>{auth.login.title}</a>
+                <img src="/home/logo.svg" className="h-8" alt="" />
+              </Link>
+              <div className="flex gap-1 items-center">
+                <Button asChild variant="ghost">
+                  <Link href="/contact">Contact</Link>
                 </Button>
-                <Button asChild size="sm">
-                  <a href={auth.signup.url}>{auth.signup.title}</a>
+                <Button asChild variant="ghost" className="max-sm:hidden">
+                  <a href="https://cloud.phala.network/login">Sign in</a>
                 </Button>
+                <Button asChild>
+                  <a href="https://cloud.phala.network/register">Sign up</a>
+                </Button>
+
                 <Sheet>
                   <SheetTrigger asChild>
-                    <Button variant="outline" size="icon">
+                    <Button variant="ghost" size="icon">
                       <Menu className="size-4" />
                     </Button>
                   </SheetTrigger>
                   <SheetContent className="overflow-y-auto">
                     <SheetHeader>
                       <SheetTitle>
-                        <a href={logo.url} className="flex items-center gap-2">
-                          <img
-                            src={logo.src}
-                            className="max-h-8 dark:invert"
-                            alt={logo.alt}
-                          />
-                        </a>
+                        <Link href="/" className="flex items-center gap-2">
+                          {/** biome-ignore lint/performance/noImgElement: svg */}
+                          <img src="/home/logo.svg" className="h-8" alt="" />
+                        </Link>
                       </SheetTitle>
                     </SheetHeader>
                     <div className="flex flex-col gap-6 p-4">
@@ -301,15 +284,6 @@ const Navbar1 = ({
                       >
                         {menu.map((item) => renderMobileMenuItem(item))}
                       </Accordion>
-
-                      <div className="flex flex-col gap-3">
-                        <Button asChild variant="outline">
-                          <a href={auth.login.url}>{auth.login.title}</a>
-                        </Button>
-                        <Button asChild>
-                          <a href={auth.signup.url}>{auth.signup.title}</a>
-                        </Button>
-                      </div>
                     </div>
                   </SheetContent>
                 </Sheet>
@@ -360,7 +334,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
   if (item.items) {
     return (
       <AccordionItem key={item.title} value={item.title} className="border-b-0">
-        <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
+        <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline font-sans">
           {item.title}
         </AccordionTrigger>
         <AccordionContent className="mt-2">
