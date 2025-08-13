@@ -11,7 +11,7 @@ import {
   type ParsedPage,
   queryDatabase,
 } from '@/lib/notion-client'
-import PostPageClient from './PostPageClient'
+import Post from './post'
 
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
@@ -33,7 +33,6 @@ interface PostData {
 }
 
 async function getPostData(slug: string): Promise<PostData | null> {
-  'use cache'
   const [error, pages] = await attempt(
     getParsedPagesByProperties({
       database_id: env.NOTION_POSTS_DATABASE_ID,
@@ -237,7 +236,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <div className="min-h-screen">
-      <PostPageClient url={baseUrl} {...postData} />
+      <Post url={baseUrl} {...postData} />
     </div>
   )
 }
