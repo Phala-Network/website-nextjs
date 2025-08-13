@@ -17,8 +17,6 @@ import { env } from '@/env'
 
 export const notion = new Client({
   auth: env.NOTION_TOKEN,
-  // Revalidate at most every 15 minutes
-  fetch: (url, init) => fetch(url, { ...init, next: { revalidate: 900 } }),
 })
 
 export const n2m = new NotionToMarkdown({
