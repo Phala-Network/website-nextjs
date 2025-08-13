@@ -7,9 +7,6 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   redirects,
-  experimental: {
-    useCache: true,
-  },
   async rewrites() {
     return [
       {

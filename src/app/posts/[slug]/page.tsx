@@ -1,4 +1,3 @@
-'use cache'
 import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'

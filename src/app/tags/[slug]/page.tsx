@@ -1,4 +1,3 @@
-'use cache'
 import type { Metadata } from 'next'
 
 import {
@@ -12,6 +11,8 @@ import {
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 import TagPageClient from './tag-page-client'
+
+export const revalidate = 60
 
 interface Props {
   params: Promise<{ slug: string }>
