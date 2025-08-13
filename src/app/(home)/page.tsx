@@ -11,7 +11,7 @@ import TrustSteps from './trust-steps'
 
 export default function HomePage() {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen bg-muted">
       <Hero />
       <TrustSteps />
       <Logos />
@@ -26,8 +26,10 @@ export default function HomePage() {
       <ProvenAtScale />
       <SuccessStories />
 
-      <FAQ />
-      <FinalCTA />
+      <div className="bg-background">
+        <FAQ />
+        <FinalCTA />
+      </div>
     </div>
   )
 }

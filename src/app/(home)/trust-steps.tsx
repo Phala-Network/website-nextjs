@@ -119,10 +119,10 @@ export default function TrustSteps() {
   }, [])
 
   return (
-    <div className="w-full py-24 max-w-7xl mx-auto">
+    <div className="py-24">
       <section className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-[25rem_1fr] gap-16 xl:grid-cols-[30rem_1fr] xl:gap-24 lg:gap-8">
-          <div className="max-sm:px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-[30rem_1fr] gap-16 xl:grid-cols-[35rem_1fr]">
+          <div className="px-4 sm:px-8 lg:pl-16">
             <h2 className="font-bold text-2xl md:text-3xl xl:text-4xl">
               When Your Users Trust AI
             </h2>

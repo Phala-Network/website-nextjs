@@ -20,7 +20,7 @@
   h1,
   h2,
   h3 {
-    @apply font-display tracking-tight;
+    /* @apply font-display tracking-tight; */
   }
   .prose {
     h1,
