@@ -1,3 +1,5 @@
+import { format } from 'date-fns'
+
 import TagLink from '@/components/tag-link'
 import type { ParsedListPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
@@ -62,7 +64,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
           </h2>
         </div>
         <div className="text-sm">
-          <p>{page.publishedDate}</p>
+          <p>{format(new Date(page.publishedDate), 'MMM dd, yyyy')}</p>
         </div>
       </div>
     </article>

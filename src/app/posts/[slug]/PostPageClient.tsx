@@ -1,7 +1,7 @@
 'use client'
 
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import dayjs from 'dayjs'
+import { format } from 'date-fns'
 import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
@@ -126,7 +126,7 @@ export default function PostPageClient({
     try {
       const markdownContent = `# ${page.title}
 
-**Published:** ${dayjs(page.publishedTime).format('MMMM DD, YYYY')}
+**Published:** ${format(new Date(page.publishedTime), 'MMMM dd, yyyy')}
 **Tags:** ${page.tags.join(', ')}
 **URL:** ${url}/posts${page.slug}
 
@@ -237,13 +237,13 @@ ${page.markdown}`
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbPage>
-                    {dayjs(page.publishedTime).format('YYYY')}
+                    {format(new Date(page.publishedTime), 'yyyy')}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbPage>
-                    {dayjs(page.publishedTime).format('MMMM')}
+                    {format(new Date(page.publishedTime), 'MMMM')}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </>
@@ -259,7 +259,9 @@ ${page.markdown}`
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
                 <FiCalendar className="w-4 h-4" />
-                <span>{dayjs(page.publishedTime).format('MMMM DD, YYYY')}</span>
+                <span>
+                  {format(new Date(page.publishedTime), 'MMMM dd, yyyy')}
+                </span>
               </div>
               <div className="flex items-center gap-1">
                 <FiClock className="w-4 h-4" />
@@ -353,7 +355,10 @@ ${page.markdown}`
                       {recentPage.title}
                     </h4>
                     <p className="text-xs text-muted-foreground">
-                      {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
+                      {format(
+                        new Date(recentPage.publishedTime),
+                        'MMM dd, yyyy',
+                      )}
                     </p>
                   </Link>
                 ))}
@@ -378,7 +383,10 @@ ${page.markdown}`
                       {similarPage.title}
                     </h4>
                     <p className="text-xs text-muted-foreground">
-                      {dayjs(similarPage.publishedTime).format('MMM DD, YYYY')}
+                      {format(
+                        new Date(similarPage.publishedTime),
+                        'MMM dd, yyyy',
+                      )}
                     </p>
                   </Link>
                 ))}
