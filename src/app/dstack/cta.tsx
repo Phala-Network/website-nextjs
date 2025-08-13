@@ -7,7 +7,7 @@ const Cta3 = () => {
   return (
     <section className="py-16 max-w-6xl mx-auto">
       <div className="container">
-        <div className="grid grid-cols-1 flex-col gap-10 rounded-lg border p-6 shadow-xs lg:grid-cols-2 lg:px-20 lg:py-16 bg-card">
+        <div className="grid grid-cols-1 flex-col gap-10 rounded-lg border p-6 lg:grid-cols-2 lg:px-20 lg:py-16 bg-card">
           <div>
             <h1 className="mb-2 text-2xl font-semibold lg:text-3xl">
               Ready for Confidential Computing?

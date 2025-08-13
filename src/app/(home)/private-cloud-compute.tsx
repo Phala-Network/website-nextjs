@@ -8,7 +8,6 @@ import {
   TypingAnimation,
 } from '@/components/magicui/terminal'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 import animationData from './deploy-animation.json'
@@ -54,11 +53,11 @@ export default function PrivateCloudCompute() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[30rem_1fr] mt-12 mx-auto rounded-3xl bg-primary/70 p-2 shadow gap-2 bg-radial-[at_top_center] from-white/60 to-transparent">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[30rem_1fr] mt-12 mx-auto rounded-3xl bg-primary/70 p-2 border gap-2 bg-radial-[at_top_center] from-white/60 to-transparent">
           {/* Left Column - Demo Card */}
 
-          <Card className="relative rounded-2xl pt-8 pb-0 overflow-hidden">
-            <CardContent className="flex h-full w-full items-center justify-center p-0">
+          <div className="relative rounded-2xl pt-8 pb-0 overflow-hidden border bg-card">
+            <div className="flex h-full w-full items-center justify-center p-0">
               <div className="absolute top-4 left-4 flex items-center gap-2">
                 <div className="size-3.5 rounded-full bg-red-400" />
                 <div className="size-3.5 rounded-full bg-yellow-400" />
@@ -68,8 +67,8 @@ export default function PrivateCloudCompute() {
               <div className="aspect-video">
                 <Lottie animationData={animationData} loop={true} />
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Right Column - Info Card */}
           <div className="flex flex-col items-start p-6 lg:p-10">
@@ -103,7 +102,7 @@ export default function PrivateCloudCompute() {
         {/* New Tabs Section */}
         <div className="mt-6">
           <Tabs defaultValue="easy" className="gap-6">
-            <TabsList className="flex h-auto w-full shadow">
+            <TabsList className="flex h-auto w-full border">
               {tabsData.map((tab) => {
                 const IconComponent = tab.icon
                 return (
@@ -145,7 +144,7 @@ export default function PrivateCloudCompute() {
                   href="https://docs.phala.network/phala-cloud/phala-cloud-cli/overview"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-110 rounded-lg shadow md:col-span-2 bg-muted px-6 py-8 relative overflow-hidden"
+                  className="block h-110 rounded-lg border md:col-span-2 bg-muted px-6 py-8 relative overflow-hidden"
                 >
                   <div className="flex flex-col items-center gap-4">
                     <h4 className="text-lg font-medium text-muted-foreground max-w-xs text-center xl:text-xl">
@@ -171,7 +170,7 @@ export default function PrivateCloudCompute() {
                     </div>
                   </div>
 
-                  <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-primary/50 rounded-3xl h-full shadow">
+                  <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-primary/50 rounded-3xl h-full">
                     <Terminal startOnView>
                       <TypingAnimation>
                         &gt; npx phala cvms create -n app
@@ -198,7 +197,7 @@ export default function PrivateCloudCompute() {
                     </Terminal>
                   </div>
                 </a>
-                <div className="h-110 rounded-lg shadow bg-muted px-6 xl:px-8 py-8 relative">
+                <div className="h-110 rounded-lg border bg-muted px-6 xl:px-8 py-8 relative">
                   <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     We deal with{' '}
                     <span className="text-foreground">
@@ -238,7 +237,7 @@ export default function PrivateCloudCompute() {
                   href="https://cloud.phala.network/templates"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-110 rounded-lg shadow bg-muted px-6 xl:px-8 py-8 relative overflow-hidden"
+                  className="block h-110 rounded-lg bg-muted px-6 xl:px-8 py-8 relative overflow-hidden border"
                 >
                   <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     Deploy{' '}
@@ -248,8 +247,8 @@ export default function PrivateCloudCompute() {
                     in minutes.
                   </h4>
 
-                  <div className="absolute top-2/5 left-6 xl:left-8 p-3 bg-primary/50 rounded-3xl h-full shadow">
-                    <div className="bg-background h-full rounded-2xl aspect-video bg-contain bg-no-repeat bg-top-left bg-[url('/home/templates.png')]"></div>
+                  <div className="absolute top-2/5 left-6 xl:left-8 p-3 bg-primary/50 rounded-3xl h-full">
+                    <div className="bg-background h-full rounded-2xl aspect-video bg-contain bg-no-repeat bg-top-left bg-[url('/home/templates.png')] border"></div>
                   </div>
                 </a>
               </div>
@@ -260,7 +259,7 @@ export default function PrivateCloudCompute() {
                   href="https://tee-visualization.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-110 rounded-lg shadow md:col-span-2 bg-muted relative py-8 px-6 overflow-hidden"
+                  className="block h-110 rounded-lg border md:col-span-2 bg-muted relative py-8 px-6 overflow-hidden"
                 >
                   <h4 className="text-lg font-medium text-muted-foreground text-center mt-6 xl:text-xl">
                     Explore{' '}
@@ -268,15 +267,15 @@ export default function PrivateCloudCompute() {
                     <br />
                     in TEE trust center.
                   </h4>
-                  <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-[#98DCFF]/50 rounded-3xl h-full shadow">
-                    <div className="bg-background w-full h-full rounded-2xl bg-contain bg-no-repeat bg-top-left bg-[url('/home/trust-center.png')]"></div>
+                  <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-[#98DCFF]/50 rounded-3xl h-full">
+                    <div className="bg-background w-full h-full rounded-2xl bg-contain bg-no-repeat bg-top-left bg-[url('/home/trust-center.png')] border"></div>
                   </div>
                 </a>
                 <a
                   href="https://proof.t16z.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-110 rounded-lg shadow bg-muted px-6 xl:px-8 py-8 relative overflow-hidden"
+                  className="block h-110 rounded-lg border bg-muted px-6 xl:px-8 py-8 relative overflow-hidden"
                 >
                   <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
@@ -284,7 +283,7 @@ export default function PrivateCloudCompute() {
                     </span>{' '}
                     for every running workload.
                   </h4>
-                  <div className="absolute top-2/5 left-6 xl:left-8 bottom-0 right-0 pt-3 pl-3 bg-[#98DCFF]/50 rounded-tl-3xl shadow">
+                  <div className="absolute top-2/5 left-6 xl:left-8 bottom-0 right-0 pt-3 pl-3 bg-[#98DCFF]/50 rounded-tl-3xl">
                     <div className="text-white bg-[#7FBCFA]/90 h-full w-full rounded-tl-2xl bg-contain bg-no-repeat bg-top-left pt-4 pl-4">
                       <div className="max-w-[180px]">
                         <p className="text-lg font-semibold">
@@ -306,7 +305,7 @@ export default function PrivateCloudCompute() {
                   href="/dstack"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-110 rounded-lg shadow bg-muted px-6 py-8 relative overflow-hidden bg-[url('/home/dstack-bg.png')] bg-[length:210px_auto] bg-no-repeat bg-bottom-right"
+                  className="block h-110 rounded-lg border bg-muted px-6 py-8 relative overflow-hidden bg-[url('/home/dstack-bg.png')] bg-[length:210px_auto] bg-no-repeat bg-bottom-right"
                 >
                   <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
@@ -319,14 +318,14 @@ export default function PrivateCloudCompute() {
             </TabsContent>
             <TabsContent value="private">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
+                <div className="h-110 rounded-lg border bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
                   <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
                       Hardware-level isolation
                     </span>{' '}
                     using Trusted Execution Environments.
                   </h4>
-                  <div className="absolute top-2/5 left-6 xl:left-8 bottom-0 right-0 pt-3 pl-3 bg-[#AFBEFE]/50 rounded-tl-3xl shadow">
+                  <div className="absolute top-2/5 left-6 xl:left-8 bottom-0 right-0 pt-3 pl-3 bg-[#AFBEFE]/50 rounded-tl-3xl border">
                     <div className="text-white bg-[#9DA9F0] h-full w-full rounded-tl-2xl bg-contain bg-no-repeat bg-top-left pt-6 pl-6">
                       <p className="text-lg font-semibold">TEE Protection</p>
                       <p className="text-sm font-medium mt-4">
@@ -340,14 +339,14 @@ export default function PrivateCloudCompute() {
                     </div>
                   </div>
                 </div>
-                <div className="h-80 md:h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
+                <div className="h-80 md:h-110 rounded-lg border bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
                   <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     <span className="text-foreground">
                       Only you can access your data
                     </span>{' '}
                     — no one else, not even us.
                   </h4>
-                  <div className="absolute top-2/5 left-0 bottom-0 pt-3 bg-[#AFBEFE]/50 w-full shadow">
+                  <div className="absolute top-2/5 left-0 bottom-0 pt-3 bg-[#AFBEFE]/50 w-full">
                     <div className="w-full h-full">
                       <video
                         src="/home/flow-tee.mp4"
@@ -361,14 +360,14 @@ export default function PrivateCloudCompute() {
                     </div>
                   </div>
                 </div>
-                <div className="h-110 rounded-lg shadow bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
+                <div className="h-110 rounded-lg border bg-muted relative overflow-hidden px-6 xl:px-8 py-8">
                   <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                     Cloud convenience with{' '}
                     <span className="text-foreground">
                       on-premise privacy guarantees.
                     </span>
                   </h4>
-                  <div className="absolute top-2/5 left-0 bottom-0 right-6 xl:right-8 pt-3 pr-3 bg-[#AFBEFE]/50 rounded-tr-3xl shadow">
+                  <div className="absolute top-2/5 left-0 bottom-0 right-6 xl:right-8 pt-3 pr-3 bg-[#AFBEFE]/50 rounded-tr-3xl">
                     <div className="text-white bg-[#9DA9F0] h-full w-full rounded-tr-2xl bg-contain bg-no-repeat bg-top-left pt-6 pl-6">
                       <p className="text-lg font-semibold">
                         Private as On-Premise

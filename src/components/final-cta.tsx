@@ -9,7 +9,7 @@ export default function FinalCTA() {
       <div className="container">
         <div
           className={cn(
-            'overflow-hidden rounded-lg relative bg-muted shadow',
+            'overflow-hidden rounded-lg relative bg-muted border',
             'bg-[url("/home/cta-bg.png")] bg-[length:400px_auto] md:bg-[length:auto_440px] bg-right-top bg-no-repeat',
             'before:absolute',
             'max-md:before:left-0 max-md:before:top-[170px] max-md:before:w-full max-md:before:h-[240px]',

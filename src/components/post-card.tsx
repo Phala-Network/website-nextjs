@@ -16,7 +16,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
   return (
     <article
       className={cn(
-        'bg-muted shadow rounded-2xl border p-3',
+        'bg-muted rounded-2xl border p-3',
         'flex flex-col',
         'h-full',
       )}

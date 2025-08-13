@@ -144,7 +144,7 @@ export default async function BlogPage() {
           />
           <section
             className={cn(
-              'bg-muted shadow rounded-2xl border',
+              'bg-muted rounded-2xl border',
               'flex flex-col items-center',
               'py-12 px-8',
             )}

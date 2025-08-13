@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { env } from '@/env'
 import attempt from '@/lib/attempt-promise'
 import {
   getParsedPagesByProperties,
@@ -9,9 +10,6 @@ import {
   type ParsedPage,
   queryDatabase,
 } from '@/lib/notion-client'
-import '@/components/notion-render/styles.css'
-
-import { env } from '@/env'
 import PostPageClient from './PostPageClient'
 
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
@@ -190,9 +188,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const postData = await getPostData(slug)
 
   if (!postData) {
-    return {
-      title: 'Post Not Found',
-    }
+    notFound()
   }
 
   const { page } = postData
@@ -224,8 +220,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
   }
 }
-
-export const revalidate = 7200
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params

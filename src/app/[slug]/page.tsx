@@ -10,7 +10,6 @@ import {
   type ParsedPage,
 } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
-import '@/components/notion-render/styles.css'
 
 interface Props {
   params: Promise<{ slug: string }>

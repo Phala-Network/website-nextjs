@@ -162,7 +162,7 @@ export default function TrustSteps() {
                 </TabsTrigger>
               ))}
             </TabsList>
-            <div className="rounded-lg overflow-hidden aspect-[1174/1080] bg-card shadow-lg">
+            <div className="rounded-lg overflow-hidden aspect-[1174/1080] bg-card">
               <video
                 ref={videoRef}
                 className="block w-full h-full"
