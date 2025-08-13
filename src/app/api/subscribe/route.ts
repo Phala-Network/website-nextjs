@@ -2,6 +2,7 @@ import type { ParseError } from '@effect/schema/ParseResult'
 import * as S from '@effect/schema/Schema'
 import { Cause, Effect, Exit } from 'effect'
 
+import { env } from '@/env'
 import { upsertSubscriber } from '@/lib/mailerlite'
 
 const SubscribeSchema = S.Struct({
@@ -28,7 +29,7 @@ const safeParseJson = (raw: unknown) =>
 export async function POST(req: Request) {
   const exit = await Effect.runPromiseExit(
     Effect.gen(function* (_) {
-      if (!process.env.MAILERLITE_GROUP_NEWSLETTER) {
+      if (!env.MAILERLITE_GROUP_NEWSLETTER) {
         return yield* _(Effect.die('MAILERLITE_GROUP_NEWSLETTER is not set.'))
       }
       const raw = yield* _(Effect.tryPromise(() => req.text()))
@@ -37,7 +38,7 @@ export async function POST(req: Request) {
       const result = yield* _(
         upsertSubscriber({
           ...decoded,
-          groups: [process.env.MAILERLITE_GROUP_NEWSLETTER],
+          groups: [env.MAILERLITE_GROUP_NEWSLETTER],
         }),
       )
       console.log('result', result)

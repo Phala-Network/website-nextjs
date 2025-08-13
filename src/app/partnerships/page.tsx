@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div>
+    <div className="-mt-16">
       <CreamContainer>
         <section className="py-16 sm:py-32">
           <div className="mx-auto max-w-6xl px-8">

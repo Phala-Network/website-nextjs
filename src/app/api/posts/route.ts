@@ -1,5 +1,6 @@
-import { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
+import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
 
+import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 
 export async function GET(request: Request) {
@@ -32,7 +33,7 @@ export async function GET(request: Request) {
     })
   }
   const { next_cursor, pages } = await queryDatabase({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter,
     sorts: [
       {
