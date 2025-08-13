@@ -322,7 +322,8 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       ['Published Time', 'date', 'start'],
       properties,
     )
-    const publishedDate = format(new Date(publishedTime), 'yyyy-MM-dd')
+    const publishedDate =
+      publishedTime && format(new Date(publishedTime), 'yyyy-MM-dd')
     const createdTime = R.pathOr(
       '',
       ['Created Time', 'created_time'],
