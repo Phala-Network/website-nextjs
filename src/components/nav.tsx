@@ -300,7 +300,17 @@ const renderMenuItem = (item: MenuItem) => {
   if (item.items) {
     return (
       <NavigationMenuItem key={item.title}>
-        <NavigationMenuTrigger className="bg-transparent!">
+        <NavigationMenuTrigger
+          className="bg-transparent!"
+          onClick={(e) => {
+            if (
+              'pointerType' in e.nativeEvent &&
+              e.nativeEvent.pointerType !== 'touch'
+            ) {
+              e.preventDefault()
+            }
+          }}
+        >
           {item.title}
         </NavigationMenuTrigger>
         <NavigationMenuContent className="bg-popover text-popover-foreground">

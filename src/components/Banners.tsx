@@ -48,7 +48,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
               <div className="p-2">
                 <article
                   className={cn(
-                    'w-full bg-muted shadow rounded-2xl border',
+                    'w-full bg-muted rounded-2xl border',
                     'grid grid-cols-1 lg:grid-cols-2',
                   )}
                 >
