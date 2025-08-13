@@ -1,4 +1,6 @@
+/** biome-ignore-all lint/style/noNonNullAssertion: for env variables */
 import createMDX from '@next/mdx'
+import { withPostHogConfig } from '@posthog/nextjs-config'
 import type { NextConfig } from 'next'
 
 import redirects from './redirects'
@@ -31,4 +33,9 @@ const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
 })
 
-export default withMDX(nextConfig)
+export default withPostHogConfig(withMDX(nextConfig), {
+  personalApiKey: process.env.POSTHOG_API_KEY!,
+  envId: process.env.POSTHOG_ENV_ID!,
+  host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+  sourcemaps: { enabled: process.env.VERCEL_ENV === 'production' },
+})
