@@ -13,7 +13,7 @@ interface Props {
   nextCursor: string
 }
 
-export default function BlogClientWrapper({ initialPages, nextCursor }: Props) {
+export default function List({ initialPages, nextCursor }: Props) {
   const {
     pages = [],
     isLoading,

@@ -8,8 +8,8 @@ import { Button } from '@/components/ui/button'
 import { env } from '@/env'
 import { notion, queryDatabase } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
-import BlogClientWrapper from './BlogClientWrapper'
 import Banners from './banner'
+import List from './list'
 
 async function retrieveTags() {
   const database = await notion.databases.retrieve({
@@ -137,10 +137,7 @@ export default async function BlogPage() {
           <section className={cn('mt-8')}>
             <Banners pages={bannerPages} />
           </section>
-          <BlogClientWrapper
-            initialPages={initialPages}
-            nextCursor={nextCursor}
-          />
+          <List initialPages={initialPages} nextCursor={nextCursor} />
           <section
             className={cn(
               'bg-muted rounded-2xl border',
