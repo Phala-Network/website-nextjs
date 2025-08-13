@@ -19,12 +19,12 @@ const flows: Flow[] = [
   {
     title: 'Financial + AI',
     className: 'data-[state=active]:bg-[#98DCFF]',
-    time: 12,
+    time: 13,
   },
   {
     title: 'Data + Model',
     className: 'data-[state=active]:bg-[#AFBEFE]',
-    time: 27,
+    time: 30,
   },
 ]
 
