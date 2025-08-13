@@ -263,7 +263,6 @@ async function* iteratePaginatedWithRetries<
   },
 ): AsyncIterableIterator<Item> {
   let nextCursor: string | null | undefined = firstPageArgs.start_cursor
-  let resultPageIdx = 0
   do {
     let tries = 0
     let response: IPaginatedList<Item> | null = null
@@ -295,7 +294,6 @@ async function* iteratePaginatedWithRetries<
 
     yield* response.results
     nextCursor = response.next_cursor
-    resultPageIdx += 1
   } while (nextCursor)
 }
 
