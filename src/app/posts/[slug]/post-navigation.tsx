@@ -15,6 +15,9 @@ function PostNavigation({ navigation }: PostNavigationProps) {
   const { beforePages, nextPages } = use(navigation)
 
   const placeholder = <div className="flex-1 p-4" />
+  if (beforePages.length === 0 && nextPages.length === 0) {
+    return null
+  }
 
   return (
     <nav className="flex flex-col sm:flex-row gap-8">
@@ -36,7 +39,7 @@ function PostNavigation({ navigation }: PostNavigationProps) {
 
       {nextPages.length > 0 ? (
         <Link
-          href={`/posts${beforePages[0].slug}`}
+          href={`/posts${nextPages[0].slug}`}
           className="flex-1 p-4 border rounded-lg space-y-2"
         >
           <div className="flex items-center gap-2 justify-end">
@@ -45,7 +48,7 @@ function PostNavigation({ navigation }: PostNavigationProps) {
           </div>
 
           <div className="font-medium line-clamp-1 text-right">
-            {beforePages[0].title}
+            {nextPages[0].title}
           </div>
         </Link>
       ) : (
