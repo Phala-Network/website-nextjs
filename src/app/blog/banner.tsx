@@ -1,5 +1,6 @@
 'use client'
 
+import { format } from 'date-fns'
 import { useEffect, useState } from 'react'
 
 import TagLink from '@/components/tag-link'
@@ -83,7 +84,9 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                       </h2>
                     </div>
                     <div className="text-sm">
-                      <p>{page.publishedDate}</p>
+                      <p>
+                        {format(new Date(page.publishedDate), 'MMM dd, yyyy')}
+                      </p>
                     </div>
                   </div>
                 </article>

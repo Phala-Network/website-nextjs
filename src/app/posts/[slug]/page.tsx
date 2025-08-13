@@ -1,5 +1,5 @@
 'use cache'
-import dayjs from 'dayjs'
+import { addSeconds, subSeconds } from 'date-fns'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -135,7 +135,10 @@ async function getPostData(slug: string): Promise<PostData | null> {
           {
             property: 'Published Time',
             date: {
-              on_or_after: dayjs(page.publishedTime).add(1, 'second').format(),
+              on_or_after: addSeconds(
+                new Date(page.publishedTime),
+                1,
+              ).toISOString(),
             },
           },
         ],
@@ -158,9 +161,10 @@ async function getPostData(slug: string): Promise<PostData | null> {
           {
             property: 'Published Time',
             date: {
-              on_or_before: dayjs(page.publishedTime)
-                .subtract(1, 'second')
-                .format(),
+              on_or_before: subSeconds(
+                new Date(page.publishedTime),
+                1,
+              ).toISOString(),
             },
           },
         ],
