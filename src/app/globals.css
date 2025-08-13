@@ -30,6 +30,9 @@
       scroll-margin-top: 5rem;
     }
   }
+  .prose a {
+    @apply break-all;
+  }
 }
 
 @layer utilities {
