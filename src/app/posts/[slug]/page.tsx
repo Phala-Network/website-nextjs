@@ -17,6 +17,8 @@ import PostNavigation from './post-navigation'
 import PostSuggestions from './post-suggestions'
 import { PostNavigationSkeleton, PostsSectionSkeleton } from './skeleton'
 
+export const revalidate = 7200
+
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 const remap: Readonly<Record<string, string>> = {

@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 
 import { SuccessStoryCard } from '@/components/success-story-card'
