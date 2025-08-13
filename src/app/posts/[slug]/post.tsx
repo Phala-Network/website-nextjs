@@ -170,13 +170,13 @@ ${page.markdown}`
             <>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>
+                <BreadcrumbPage suppressHydrationWarning>
                   {format(new Date(page.publishedTime), 'yyyy')}
                 </BreadcrumbPage>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>
+                <BreadcrumbPage suppressHydrationWarning>
                   {format(new Date(page.publishedTime), 'MMMM')}
                 </BreadcrumbPage>
               </BreadcrumbItem>
@@ -193,7 +193,7 @@ ${page.markdown}`
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <FiCalendar className="w-4 h-4" />
-              <span>
+              <span suppressHydrationWarning>
                 {format(new Date(page.publishedTime), 'MMMM dd, yyyy')}
               </span>
             </div>
