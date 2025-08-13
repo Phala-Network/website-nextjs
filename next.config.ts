@@ -13,15 +13,15 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/ingest/static/:path*',
+        source: '/relay-ph/static/:path*',
         destination: 'https://us-assets.i.posthog.com/static/:path*',
       },
       {
-        source: '/ingest/:path*',
+        source: '/relay-ph/:path*',
         destination: 'https://us.i.posthog.com/:path*',
       },
       {
-        source: '/ingest/flags',
+        source: '/relay-ph/flags',
         destination: 'https://us.i.posthog.com/flags',
       },
     ]
@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
 }
 
 const withMDX = createMDX({
-  extension: /\.(md|mdx)$/, 
+  extension: /\.(md|mdx)$/,
 })
 
 export default withMDX(nextConfig)

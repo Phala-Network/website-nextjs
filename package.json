@@ -14,7 +14,7 @@
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "15.4.6",
     "@next/third-parties": "15.4.6",
-    "@notionhq/client": "^2.3.0",
+    "@notionhq/client": "^4.0.1",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
