@@ -9,7 +9,7 @@ import type {
   PageObjectResponse,
   QueryDatabaseParameters,
 } from '@notionhq/client/build/src/api-endpoints'
-import dayjs from 'dayjs'
+import { format } from 'date-fns'
 import { NotionToMarkdown } from 'notion-to-md'
 import * as R from 'ramda'
 
@@ -326,7 +326,7 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       ['Published Time', 'date', 'start'],
       properties,
     )
-    const publishedDate = dayjs(publishedTime).format('YYYY-MM-DD')
+    const publishedDate = format(new Date(publishedTime), 'yyyy-MM-dd')
     const createdTime = R.pathOr(
       '',
       ['Created Time', 'created_time'],

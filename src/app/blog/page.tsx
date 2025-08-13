@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import * as R from 'ramda'
 import { BiRss } from 'react-icons/bi'
 
-import Banners from '@/components/Banners'
 import TagSearch from '@/components/TagSearch'
 import { Button } from '@/components/ui/button'
 import { env } from '@/env'
 import { notion, queryDatabase } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 import BlogClientWrapper from './BlogClientWrapper'
+import Banners from './banner'
 
 async function retrieveTags() {
   const database = await notion.databases.retrieve({
