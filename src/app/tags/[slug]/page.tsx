@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import * as R from 'ramda'
 
 import {
   Breadcrumb,
@@ -9,7 +10,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { env } from '@/env'
-import { queryDatabase } from '@/lib/notion-client'
+import { notion, queryDatabase } from '@/lib/notion-client'
 import TagPageClient from './tag-page-client'
 
 export const revalidate = 60
@@ -62,6 +63,20 @@ async function getTagData(slug: string) {
   }
 }
 
+async function retrieveTags() {
+  const database = await notion.databases.retrieve({
+    database_id: env.NOTION_POSTS_DATABASE_ID,
+  })
+  const tags = R.without(
+    ['Changelog', 'Pinned'],
+    R.map(
+      R.prop('name'),
+      R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database),
+    ),
+  )
+  return tags
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const decodedSlug = decodeURIComponent(slug)
@@ -71,6 +86,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/tags/${encodeURIComponent(slug)}`,
     },
   }
+}
+
+export async function generateStaticParams() {
+  const tags = await retrieveTags()
+  return tags.map((tag) => ({ slug: encodeURIComponent(tag) }))
 }
 
 export default async function TagPage({ params }: Props) {
