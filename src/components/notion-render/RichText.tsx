@@ -1,11 +1,11 @@
+import type { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
 import React from 'react'
-import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
 
 const RichText = ({ rich_text }: { rich_text: RichTextItemResponse[] }) => {
   return (
     <>
       {rich_text.map((rich_text_item, index) => {
-        if (!rich_text_item) return <></>
+        if (!rich_text_item) return null
         const { bold, italic, strikethrough, underline, code } =
           rich_text_item.annotations
         const color = rich_text_item.annotations.color.includes('background')
@@ -25,7 +25,11 @@ const RichText = ({ rich_text }: { rich_text: RichTextItemResponse[] }) => {
           text = <u>{text}</u>
         }
         if (code) {
-          text = <code className="whitespace-pre-wrap break-normal notion_inline_code">{text}</code>
+          text = (
+            <code className="whitespace-pre-wrap break-normal notion_inline_code">
+              {text}
+            </code>
+          )
         }
         if (rich_text_item.href) {
           text = (

@@ -1,17 +1,12 @@
-import React from 'react'
-import { useAtomValue } from 'jotai'
-import { ColumnBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 
 const Column = ({
-  theAtom,
+  block,
   children,
 }: {
-  theAtom: BlockAtom
+  block: ParsedBlock
   children: React.ReactNode
 }) => {
-  const block = useAtomValue(theAtom) as ColumnBlockObjectResponse
   return <div className="notion_column">{children}</div>
 }
 

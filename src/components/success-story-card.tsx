@@ -1,7 +1,6 @@
 'use client'
 
 import Link, { type LinkProps } from 'next/link'
-import type React from 'react'
 import { FaArrowRight } from 'react-icons/fa6'
 
 import type { SuccessStory } from '@/data/success-stories-data'

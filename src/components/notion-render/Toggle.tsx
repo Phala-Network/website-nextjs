@@ -1,25 +1,22 @@
-import { useAtomValue } from 'jotai'
-import { ToggleBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { ToggleBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
 const Toggle = ({
-  theAtom,
+  block,
   children,
 }: {
-  theAtom: BlockAtom
+  block: ParsedBlock
   children: React.ReactNode
 }) => {
-  const block = useAtomValue(theAtom) as ToggleBlockObjectResponse
+  const toggleBlock = block as ToggleBlockObjectResponse
   return (
     <details className="notion_toggle_container">
       <summary>
-        <RichText rich_text={block.toggle.rich_text} />
+        <RichText rich_text={toggleBlock.toggle.rich_text} />
       </summary>
-      <div className="pl-4">
-        {children}
-      </div>
+      <div className="pl-4">{children}</div>
     </details>
   )
 }

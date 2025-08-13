@@ -1,20 +1,19 @@
-import { useAtomValue } from 'jotai'
-import { QuoteBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { QuoteBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
 const Quote = ({
-  theAtom,
+  block,
   children,
 }: {
-  theAtom: BlockAtom
+  block: ParsedBlock
   children: React.ReactNode
 }) => {
-  const block = useAtomValue(theAtom) as QuoteBlockObjectResponse
+  const quoteBlock = block as QuoteBlockObjectResponse
   return (
     <blockquote className="notion_quote">
-      <RichText rich_text={block.quote.rich_text} />
+      <RichText rich_text={quoteBlock.quote.rich_text} />
       {children}
     </blockquote>
   )

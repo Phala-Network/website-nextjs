@@ -1,21 +1,17 @@
+import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { useMemo } from 'react'
-import { useAtomValue } from 'jotai'
-import { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-// Temporarily disabled to fix import issues
-// import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-// import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
-const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
-  const block = useAtomValue(theAtom) as VideoBlockObjectResponse
+const Video = ({ block }: { block: ParsedBlock }) => {
+  const videoBlock = block as VideoBlockObjectResponse
   // TODO Added test cases for it.
   const [provider, id] = useMemo(() => {
     const videoUrl: string =
-      block.video.type == 'external'
-        ? block.video.external.url
-        : `https://img0.phala.world/files/${block.id}.mp4`
+      videoBlock.video.type === 'external'
+        ? videoBlock.video.external.url
+        : `https://img0.phala.world/files/${videoBlock.id}.mp4`
     const url = new URL(videoUrl)
     if (videoUrl.indexOf('youtube.com') !== -1 && url.searchParams.has('v')) {
       return ['youtube', url.searchParams.get('v') as string]
@@ -26,7 +22,7 @@ const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
     } else {
       return [null, videoUrl]
     }
-  }, [block])
+  }, [videoBlock])
   return (
     <div className="notion_video_container">
       {provider === 'youtube' ? (
@@ -34,18 +30,16 @@ const Video = ({ theAtom }: { theAtom: BlockAtom }) => {
           <p className="text-gray-600">YouTube Video: {id}</p>
         </div>
       ) : null}
-      {provider === null ? (<video controls src={id} className={`notion_video`} />) : null}
-      {
-        provider === 'loom' ? (
-          <iframe
-            className="w-full aspect-video"
-            src={id}
-            allowFullScreen
-          />
-        ) : null
-      }
+      {provider === null ? (
+        <video controls src={id} className={`notion_video`} />
+      ) : null}
+      {provider === 'loom' ? (
+        <iframe className="w-full aspect-video" src={id} allowFullScreen />
+      ) : null}
       <span className="notion_caption">
-        {block.video.caption && <RichText rich_text={block.video.caption} />}
+        {videoBlock.video.caption && (
+          <RichText rich_text={videoBlock.video.caption} />
+        )}
       </span>
     </div>
   )
