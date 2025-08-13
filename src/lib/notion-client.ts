@@ -17,6 +17,8 @@ import { env } from '@/env'
 
 export const notion = new Client({
   auth: env.NOTION_TOKEN,
+  // Revalidate at most every 15 minutes
+  fetch: (url, init) => fetch(url, { ...init, next: { revalidate: 900 } }),
 })
 
 export const n2m = new NotionToMarkdown({
@@ -212,7 +214,6 @@ export async function getParsedPagesByProperties({
   database_id: string
   properties: Record<string, any>
 }): Promise<ParsedPage[]> {
-  'use cache'
   const database = await notion.databases.query({
     database_id,
     filter: {
@@ -298,7 +299,6 @@ async function* iteratePaginatedWithRetries<
 }
 
 export async function queryDatabase(args: QueryDatabaseParameters) {
-  'use cache'
   const database = await notion.databases.query(args)
   const { results = [], next_cursor } = database
   const pages = []
