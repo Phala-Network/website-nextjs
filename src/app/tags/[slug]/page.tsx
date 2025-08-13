@@ -1,3 +1,4 @@
+'use cache'
 import type { Metadata } from 'next'
 
 import {
@@ -10,7 +11,7 @@ import {
 } from '@/components/ui/breadcrumb'
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
-import TagPageClient from './TagPageClient'
+import TagPageClient from './tag-page-client'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -71,8 +72,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
   }
 }
-
-export const revalidate = 3600
 
 export default async function TagPage({ params }: Props) {
   const { slug: encodedSlug } = await params
