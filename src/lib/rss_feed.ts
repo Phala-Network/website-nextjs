@@ -30,7 +30,7 @@ export async function getBlogFeed() {
         direction: 'descending',
       },
     ],
-    page_size: 18,
+    page_size: 200,
   })
 
   const feed = new Feed({
