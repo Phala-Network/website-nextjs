@@ -39,14 +39,17 @@ const extractHeadings = (blocks: BlockObjectResponse[]) => {
   const extractedHeadings: Heading[] = []
   for (const block of blocks) {
     if (block.type === 'heading_2') {
-      const text = block.heading_2.rich_text[0].plain_text
+      const text = block.heading_2.rich_text
+        .map((item) => item.plain_text)
+        .join('')
       if (!text) continue
 
       const id = text
         .toLowerCase()
-        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/[^a-z0-9\s-]/g, '')
         .replace(/\s+/g, '-')
-        .substring(0, 50)
+        .replace(/-+/g, '-')
+        .trim()
 
       extractedHeadings.push({ id, text, level: 2 })
     }
@@ -85,9 +88,7 @@ export default function Post({ url, page }: Props) {
       setActiveSection(activeEntry.target.id)
     }
 
-    const observer = new IntersectionObserver(observerCallback, {
-      // rootMargin: '0px 0px -80% 0px',
-    })
+    const observer = new IntersectionObserver(observerCallback, {})
 
     // Observe all heading elements
     headings.forEach(({ id }) => {
