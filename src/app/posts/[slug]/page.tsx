@@ -1,6 +1,5 @@
 'use cache'
 import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
-import { addSeconds } from 'date-fns'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
@@ -128,13 +127,11 @@ async function getNavigationPosts(
 
   const query = (isBefore: boolean) => {
     const filter = getBaseFilter(page.slug)
+    const dateString = new Date(page.publishedTime).toISOString()
     filter.and.push({
       property: 'Published Time',
       date: {
-        on_or_after: addSeconds(
-          new Date(page.publishedTime),
-          isBefore ? -1 : 1,
-        ).toISOString(),
+        ...(isBefore ? { before: dateString } : { after: dateString }),
       },
     })
     return queryDatabase({
@@ -143,7 +140,7 @@ async function getNavigationPosts(
       sorts: [
         {
           property: 'Published Time',
-          direction: isBefore ? 'ascending' : 'descending',
+          direction: isBefore ? 'descending' : 'ascending',
         },
       ],
       page_size: 1,
