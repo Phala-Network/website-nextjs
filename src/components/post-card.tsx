@@ -65,7 +65,9 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
         </div>
         {page.publishedDate && (
           <div className="text-sm">
-            <p>{format(new Date(page.publishedDate), 'MMM dd, yyyy')}</p>
+            <p suppressHydrationWarning>
+              {format(new Date(page.publishedDate), 'MMM dd, yyyy')}
+            </p>
           </div>
         )}
       </div>

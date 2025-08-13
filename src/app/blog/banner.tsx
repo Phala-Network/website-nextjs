@@ -85,7 +85,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                     </div>
                     {page.publishedDate && (
                       <div className="text-sm">
-                        <p>
+                        <p suppressHydrationWarning>
                           {format(new Date(page.publishedDate), 'MMM dd, yyyy')}
                         </p>
                       </div>
