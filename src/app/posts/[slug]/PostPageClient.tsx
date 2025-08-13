@@ -1,8 +1,9 @@
 'use client'
 
+import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import dayjs from 'dayjs'
 import Link from 'next/link'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   FiArrowLeft,
   FiArrowRight,
@@ -47,6 +48,26 @@ interface Props {
   nextPages: ParsedListPage[]
 }
 
+const extractHeadings = (blocks: BlockObjectResponse[]) => {
+  const extractedHeadings: Heading[] = []
+  for (const block of blocks) {
+    if (block.type === 'heading_2') {
+      const text = block.heading_2.rich_text[0].plain_text
+      if (!text) continue
+
+      const id = text
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, '-')
+        .substring(0, 50)
+
+      extractedHeadings.push({ id, text, level: 2 })
+    }
+  }
+
+  return extractedHeadings
+}
+
 export default function PostPageClient({
   url,
   page,
@@ -56,47 +77,9 @@ export default function PostPageClient({
   nextPages = [],
 }: Props) {
   const [activeSection, setActiveSection] = useState<string | null>(null)
-  const [headings, setHeadings] = useState<Heading[]>([])
   const [isCopyingForAI, setIsCopyingForAI] = useState(false)
 
-  // Extract headings from page content (only H2 headings)
-  const extractHeadings = useCallback(() => {
-    const headingElements = document.querySelectorAll('.notion_heading_2')
-    const extractedHeadings: Heading[] = []
-
-    headingElements.forEach((heading, index) => {
-      const text = heading.textContent?.trim() || ''
-      if (!text) return
-
-      let id = heading.id
-
-      // Create ID if it doesn't exist
-      if (!id) {
-        id = text
-          .toLowerCase()
-          .replace(/[^a-z0-9\s]/g, '')
-          .replace(/\s+/g, '-')
-          .substring(0, 50)
-
-        // Ensure uniqueness
-        if (extractedHeadings.find((h) => h.id === id)) {
-          id = `${id}-${index}`
-        }
-
-        heading.id = id
-      }
-
-      extractedHeadings.push({ id, text, level: 2 })
-    })
-
-    setHeadings(extractedHeadings)
-  }, [])
-
-  // Extract headings after content loads
-  useEffect(() => {
-    const timer = setTimeout(extractHeadings, 1000)
-    return () => clearTimeout(timer)
-  }, [extractHeadings])
+  const headings = useMemo(() => extractHeadings(page.blocks), [page.blocks])
 
   // Table of Contents intersection observer with improved active section tracking
   useEffect(() => {
@@ -123,9 +106,7 @@ export default function PostPageClient({
     }
 
     const observer = new IntersectionObserver(observerCallback, {
-      root: null,
-      rootMargin: '-10% 0px -80% 0px',
-      threshold: [0, 0.25, 0.5, 0.75, 1],
+      // rootMargin: '0px 0px -80% 0px',
     })
 
     // Observe all heading elements
@@ -168,19 +149,22 @@ ${page.markdown}`
   })()
 
   // Render table of contents
-  const renderTableOfContents = () => (
-    <div className="bg-muted shadow rounded-2xl border p-6 max-lg:hidden">
-      <span className="font-semibold font-sans text-lg">On this page</span>
-      {headings.length > 0 ? (
+  const renderTableOfContents = () => {
+    if (headings.length === 0) return null
+
+    return (
+      <div>
+        <span className="font-semibold font-sans text-lg">On this page</span>
         <nav className="mt-4">
-          <ul className="space-y-2">
+          <ul className="space-y-4">
             {headings.map((heading) => (
               <li key={heading.id}>
                 <a
                   href={`#${heading.id}`}
                   className={cn(
-                    'text-sm line-clamp-1',
-                    activeSection === heading.id && 'font-semibold',
+                    'line-clamp-1 text-muted-foreground',
+                    activeSection === heading.id &&
+                      'font-medium text-foreground',
                   )}
                 >
                   {heading.text}
@@ -189,56 +173,55 @@ ${page.markdown}`
             ))}
           </ul>
         </nav>
-      ) : (
-        <div className="mt-4 text-sm text-muted-foreground">
-          Loading table of contents...
-        </div>
-      )}
-    </div>
-  )
+      </div>
+    )
+  }
 
   // Render post navigation
-  const renderPostNavigation = () => (
-    <nav className="flex flex-col sm:flex-row gap-4 pt-8 border-t mt-8">
-      {beforePages.length > 0 && (
-        <Link
-          href={`/posts${beforePages[0].slug}`}
-          className="flex-1 p-4 border rounded-md block"
-        >
-          <div className="flex items-start gap-3">
+  const renderPostNavigation = () => {
+    const placeholder = <div className="flex-1 p-4" />
+    return (
+      <nav className="flex flex-col sm:flex-row gap-8 pt-8 border-t mt-8">
+        {beforePages.length > 0 ? (
+          <Link
+            href={`/posts${beforePages[0].slug}`}
+            className="flex-1 p-4 flex border rounded-md gap-2"
+          >
             <FiArrowLeft className="w-5 h-5 mt-0.5 shrink-0" />
             <div>
               <div className="text-xs text-muted-foreground font-medium uppercase">
                 Previous
               </div>
-              <div className="text-sm font-medium line-clamp-2">
+              <div className="font-medium line-clamp-2">
                 {beforePages[0].title}
               </div>
             </div>
-          </div>
-        </Link>
-      )}
+          </Link>
+        ) : (
+          placeholder
+        )}
 
-      {nextPages.length > 0 && (
-        <Link
-          href={`/posts${nextPages[0].slug}`}
-          className="flex-1 p-4 text-right border rounded-md block"
-        >
-          <div className="flex items-start gap-3">
+        {nextPages.length > 0 ? (
+          <Link
+            href={`/posts${nextPages[0].slug}`}
+            className="flex-1 p-4 flex justify-end border rounded-md gap-2"
+          >
             <div className="text-right">
               <div className="text-xs text-muted-foreground font-medium uppercase">
                 Next
               </div>
-              <div className="text-sm font-medium line-clamp-2">
+              <div className="font-medium line-clamp-2">
                 {nextPages[0].title}
               </div>
             </div>
             <FiArrowRight className="w-5 h-5 mt-0.5 shrink-0" />
-          </div>
-        </Link>
-      )}
-    </nav>
-  )
+          </Link>
+        ) : (
+          placeholder
+        )}
+      </nav>
+    )
+  }
 
   return (
     <section className="py-32 flex flex-col items-center">
@@ -269,7 +252,7 @@ ${page.markdown}`
         </Breadcrumb>
 
         {/* Article Header */}
-        <header className="mb-4 max-w-prose">
+        <header className="mb-4 max-w-3xl">
           <h1 className="my-6 text-4xl font-bold">{page.title}</h1>
 
           <div className="flex flex-wrap items-center justify-between">
@@ -307,9 +290,9 @@ ${page.markdown}`
         </header>
 
         {/* Main Layout */}
-        <div className="flex gap-8 items-start max-lg:flex-col">
+        <div className="flex gap-16 items-start max-lg:flex-col">
           {/* Article Content */}
-          <article className="w-full max-w-prose">
+          <article className="w-full max-w-3xl">
             {page.cover && (
               // biome-ignore lint/performance/noImgElement: Using external CDN image
               <img
@@ -334,73 +317,74 @@ ${page.markdown}`
             </div>
 
             {/* Article Content */}
-            <div className="prose">
+            <div className="prose prose-lg max-w-3xl">
               <NotionBlocksProvider blocks={page.blocks}>
                 {renderBlocks(page.blocks)}
               </NotionBlocksProvider>
             </div>
-
-            {/* Post Navigation */}
-            {renderPostNavigation()}
           </article>
 
-          {/* Sidebar */}
-          <aside className="space-y-4 lg:sticky lg:top-20 lg:max-w-sm w-full">
+          {/* Sidebar - Now only Table of Contents */}
+          <aside className="space-y-4 lg:sticky lg:top-20 w-sm max-lg:hidden">
             {/* Table of Contents */}
             {renderTableOfContents()}
-
-            {/* Recent Posts */}
-            {recentPages.length > 0 && (
-              <div className="bg-muted shadow rounded-2xl border p-6">
-                <h3 className="text-lg font-semibold mb-4 font-sans">
-                  Recent Posts
-                </h3>
-                <div className="space-y-4">
-                  {recentPages.map((recentPage) => (
-                    <Link
-                      href={`/posts${recentPage.slug}`}
-                      key={recentPage.id}
-                      className="block"
-                    >
-                      <h4 className="text-sm font-medium line-clamp-2 mb-1">
-                        {recentPage.title}
-                      </h4>
-                      <p className="text-xs text-muted-foreground">
-                        {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Related Posts */}
-            {similarPages.length > 0 && (
-              <div className="bg-muted shadow rounded-2xl border p-6">
-                <h3 className="text-lg font-semibold mb-4 font-sans">
-                  Related Posts
-                </h3>
-                <div className="space-y-4">
-                  {similarPages.map((similarPage) => (
-                    <Link
-                      href={`/posts${similarPage.slug}`}
-                      key={similarPage.id}
-                      className="block"
-                    >
-                      <h4 className="text-sm font-medium line-clamp-2 mb-1">
-                        {similarPage.title}
-                      </h4>
-                      <p className="text-xs text-muted-foreground">
-                        {dayjs(similarPage.publishedTime).format(
-                          'MMM DD, YYYY',
-                        )}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
           </aside>
+        </div>
+
+        {/* Post Navigation */}
+        {renderPostNavigation()}
+
+        {/* Recent and Related Posts - Moved from sidebar */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {/* Recent Posts */}
+          {recentPages.length > 0 && (
+            <div className="bg-muted rounded-2xl border p-6">
+              <h3 className="text-lg font-semibold mb-4 font-sans">
+                Recent Posts
+              </h3>
+              <div className="space-y-4">
+                {recentPages.map((recentPage) => (
+                  <Link
+                    href={`/posts${recentPage.slug}`}
+                    key={recentPage.id}
+                    className="block"
+                  >
+                    <h4 className="font-medium line-clamp-2 mb-1">
+                      {recentPage.title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground">
+                      {dayjs(recentPage.publishedTime).format('MMM DD, YYYY')}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Related Posts */}
+          {similarPages.length > 0 && (
+            <div className="bg-muted rounded-2xl border p-6">
+              <h3 className="text-lg font-semibold mb-4 font-sans">
+                Related Posts
+              </h3>
+              <div className="space-y-4">
+                {similarPages.map((similarPage) => (
+                  <Link
+                    href={`/posts${similarPage.slug}`}
+                    key={similarPage.id}
+                    className="block"
+                  >
+                    <h4 className="font-medium line-clamp-2 mb-1">
+                      {similarPage.title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground">
+                      {dayjs(similarPage.publishedTime).format('MMM DD, YYYY')}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

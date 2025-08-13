@@ -23,7 +23,7 @@ interface ModelCard {
   updatedDate: string
 }
 
-const icons = [
+const icons: { name: string; icon: string }[] = [
   {
     name: 'OpenAI',
     icon: '/home/openai.svg',
@@ -174,7 +174,7 @@ export default function ConfidentialAI() {
           </p>
         </div>
         <div className="mx-auto mt-12 flex grid-cols-1 flex-col gap-6 lg:grid lg:grid-cols-7">
-          <div className="col-span-7 grid overflow-hidden rounded-lg bg-muted sm:grid-cols-2 shadow">
+          <div className="col-span-7 grid overflow-hidden rounded-lg bg-muted sm:grid-cols-2 lg:grid-cols-[30rem_1fr] border">
             <div className="flex flex-col justify-between p-8 lg:p-12">
               <div>
                 <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
@@ -196,7 +196,7 @@ export default function ConfidentialAI() {
                       key={icon.name}
                       className="size-8 bg-background p-1 border-2"
                     >
-                      <AvatarImage src={icon.icon} />
+                      <AvatarImage src={icon.icon} alt={icon.name} />
                       <AvatarFallback className="text-xs">
                         {icon.name}
                       </AvatarFallback>
@@ -273,7 +273,7 @@ export default function ConfidentialAI() {
             href="/confidential-ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden rounded-lg bg-muted lg:col-span-3 shadow"
+            className="group relative overflow-hidden rounded-lg bg-muted lg:col-span-3 border"
           >
             <Button
               variant="outline"
@@ -301,7 +301,7 @@ export default function ConfidentialAI() {
               </h3>
             </div>
           </a>
-          <div className="min-h-96 flex flex-col justify-between overflow-hidden rounded-lg bg-muted p-8 lg:col-span-4 lg:p-12 shadow">
+          <div className="min-h-96 flex flex-col justify-between overflow-hidden rounded-lg bg-muted p-8 lg:col-span-4 lg:p-12 border">
             <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
               PERFORMANCE VS PRIVACY
             </div>
