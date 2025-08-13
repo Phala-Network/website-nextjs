@@ -63,9 +63,11 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
             <a href={`/posts${page.slug}`}>{page.title}</a>
           </h2>
         </div>
-        <div className="text-sm">
-          <p>{format(new Date(page.publishedDate), 'MMM dd, yyyy')}</p>
-        </div>
+        {page.publishedDate && (
+          <div className="text-sm">
+            <p>{format(new Date(page.publishedDate), 'MMM dd, yyyy')}</p>
+          </div>
+        )}
       </div>
     </article>
   )
