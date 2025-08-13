@@ -1,21 +1,21 @@
 import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import { useAtomValue } from 'jotai'
 
 import { buildProxyImageUrl } from '@/lib/image'
-import type { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
-const Image = ({ theAtom }: { theAtom: BlockAtom }) => {
-  const block = useAtomValue(theAtom) as ImageBlockObjectResponse
-  const imageUrl = buildProxyImageUrl(block)
-  const caption = block.image.caption?.[0]?.plain_text ?? ''
+const Image = ({ block }: { block: ParsedBlock }) => {
+  const imageBlock = block as ImageBlockObjectResponse
+  const imageUrl = buildProxyImageUrl(imageBlock)
+  const caption = imageBlock.image.caption?.[0]?.plain_text ?? ''
   return (
     <div className="notion_image_container">
       <figure>
+        {/** biome-ignore lint/performance/noImgElement: dynamic image */}
         <img className="m-auto" src={imageUrl} alt={caption} />
         {caption && (
           <figcaption className="notion_caption">
-            <RichText rich_text={block.image.caption} />
+            <RichText rich_text={imageBlock.image.caption} />
           </figcaption>
         )}
       </figure>

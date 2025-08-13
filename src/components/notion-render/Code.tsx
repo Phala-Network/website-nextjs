@@ -1,22 +1,21 @@
 import type { CodeBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import { useAtomValue } from 'jotai'
 import { useState } from 'react'
 import { FiCheck, FiCopy, FiX } from 'react-icons/fi'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { github } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
+import type { ParsedBlock } from '@/lib/notion-client'
 import { Button } from '../ui/button'
-import type { BlockAtom } from './atoms'
 import RichText from './RichText'
 
-const Code = ({ theAtom }: { theAtom: BlockAtom }) => {
-  const block = useAtomValue(theAtom) as CodeBlockObjectResponse
+const Code = ({ block }: { block: ParsedBlock }) => {
+  const codeBlock = block as CodeBlockObjectResponse
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>(
     'idle',
   )
 
   const copyCode = async () => {
-    const code = block.code.rich_text[0]?.plain_text || ''
+    const code = codeBlock.code.rich_text[0]?.plain_text || ''
     if (!code.trim()) return
 
     try {
@@ -59,7 +58,7 @@ const Code = ({ theAtom }: { theAtom: BlockAtom }) => {
         {getCopyIcon()}
       </Button>
       <SyntaxHighlighter
-        language={block.code.language}
+        language={codeBlock.code.language}
         className="text-sm"
         customStyle={{
           padding: '1em',
@@ -68,11 +67,11 @@ const Code = ({ theAtom }: { theAtom: BlockAtom }) => {
         }}
         style={github}
       >
-        {block.code.rich_text[0].plain_text}
+        {codeBlock.code.rich_text[0].plain_text}
       </SyntaxHighlighter>
-      {block.code.caption && (
+      {codeBlock.code.caption && (
         <span className="notion_caption">
-          <RichText rich_text={block.code.caption} />
+          <RichText rich_text={codeBlock.code.caption} />
         </span>
       )}
     </div>

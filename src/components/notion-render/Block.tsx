@@ -1,10 +1,6 @@
-'use client'
-import { atom, useAtomValue } from 'jotai'
-import type React from 'react'
-import { createElement, useMemo } from 'react'
+import { createElement } from 'react'
 
 import type { ParsedBlock } from '@/lib/notion-client'
-import type { BlockAtom } from './atoms'
 import BulletedListItem from './BulletedListItem'
 import Callout from './Callout'
 import Code from './Code'
@@ -21,7 +17,7 @@ import Todo from './Todo'
 import Toggle from './Toggle'
 import Video from './Video'
 
-const RegistriedBlockRenderers = {
+const RegisteredBlockRenderers = {
   heading_1: Heading,
   heading_2: Heading,
   heading_3: Heading,
@@ -41,25 +37,22 @@ const RegistriedBlockRenderers = {
   table: Table,
 }
 
-const MissedBlockRenderer = ({ theAtom }: { theAtom: BlockAtom }) => {
-  const block = useAtomValue(theAtom)
+const MissedBlockRenderer = ({ block }: { block: ParsedBlock }) => {
   return <div>Block {block.type} not supported</div>
 }
 
-const Block = ({ theAtom }: { theAtom: BlockAtom }) => {
-  const block = useAtomValue(theAtom)
+const Block = ({ block }: { block: ParsedBlock }) => {
   const renderer =
-    RegistriedBlockRenderers[block.type as never] || MissedBlockRenderer
+    RegisteredBlockRenderers[block.type as never] || MissedBlockRenderer
   let children: React.ReactNode[] | undefined
   if (block.children) {
     children = renderBlocks(block.children)
   }
-  return createElement(renderer, { theAtom }, children)
+  return createElement(renderer, { block }, children)
 }
 
 const renderBlock = (block: ParsedBlock) => {
-  const blockAtom = useMemo(() => atom(block), [block])
-  return <Block key={block.id} theAtom={blockAtom} />
+  return <Block key={block.id} block={block} />
 }
 
 const groupConsecutiveListItems = (blocks: ParsedBlock[]) => {
@@ -106,38 +99,32 @@ const groupConsecutiveListItems = (blocks: ParsedBlock[]) => {
 }
 
 export const renderBlocks = (blocks: ParsedBlock[]) => {
-  const blocksWithListNumbers = useMemo(() => {
-    const processBlocks = (items: ParsedBlock[]) => {
-      let currentNumber = 1
+  const processBlocks = (items: ParsedBlock[]): ParsedBlock[] => {
+    let currentNumber = 1
 
-      return items.map((block) => {
-        const newBlock = { ...block }
+    return items.map((block) => {
+      const newBlock = { ...block }
 
-        if (newBlock.children && newBlock.children.length > 0) {
-          newBlock.children = processBlocks(newBlock.children)
-        }
+      if (newBlock.children && newBlock.children.length > 0) {
+        newBlock.children = processBlocks(newBlock.children)
+      }
 
-        if (newBlock.type === 'numbered_list_item') {
-          ;(
-            newBlock.numbered_list_item as unknown as {
-              listNumber: number
-            }
-          ).listNumber = currentNumber++
-        } else {
-          currentNumber = 1
-        }
+      if (newBlock.type === 'numbered_list_item') {
+        ;(
+          newBlock.numbered_list_item as unknown as {
+            listNumber: number
+          }
+        ).listNumber = currentNumber++
+      } else {
+        currentNumber = 1
+      }
 
-        return newBlock
-      })
-    }
+      return newBlock
+    })
+  }
 
-    return processBlocks(blocks)
-  }, [blocks])
-
-  const groupedBlocks = useMemo(
-    () => groupConsecutiveListItems(blocksWithListNumbers),
-    [blocksWithListNumbers],
-  )
+  const blocksWithListNumbers = processBlocks(blocks)
+  const groupedBlocks = groupConsecutiveListItems(blocksWithListNumbers)
 
   return groupedBlocks.map((item) => {
     if ('type' in item && item.type === 'list_group') {
