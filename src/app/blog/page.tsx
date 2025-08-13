@@ -1,4 +1,3 @@
-'use cache'
 import type { Metadata } from 'next'
 import * as R from 'ramda'
 import { BiRss } from 'react-icons/bi'
@@ -10,6 +9,8 @@ import { notion, queryDatabase } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 import Banners from './banner'
 import List from './list'
+
+export const revalidate = 60
 
 async function retrieveTags() {
   const database = await notion.databases.retrieve({
