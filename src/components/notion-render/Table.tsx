@@ -1,22 +1,21 @@
-import { useAtomValue } from 'jotai'
-import { TableBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { TableBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
-const Table = ({ theAtom }: { theAtom: BlockAtom }) => {
-  const block = useAtomValue(theAtom) as TableBlockObjectResponse
-  const has_column_header = block.table.has_column_header
-  const has_row_header = block.table.has_row_header
+const Table = ({ block }: { block: ParsedBlock }) => {
+  const tableBlock = block as TableBlockObjectResponse
+  const has_column_header = tableBlock.table.has_column_header
+  const has_row_header = tableBlock.table.has_row_header
   return (
     <table className="notion_table">
       <tbody>
         {/* @ts-ignore */}
-        {block.children?.map((row, i) => {
+        {tableBlock.children?.map((row, i) => {
           if (row) {
             return (
               <tr
-                key={row.id || `${block.id}-${i}`}
+                key={row.id || `${tableBlock.id}-${i}`}
                 className={
                   has_column_header && i === 0 ? 'notion_table_header' : ''
                 }
@@ -26,7 +25,7 @@ const Table = ({ theAtom }: { theAtom: BlockAtom }) => {
                   if (cell) {
                     return (
                       <td
-                        key={cell.id || `${block.id}-${i}-${j}`}
+                        key={cell.id || `${tableBlock.id}-${i}-${j}`}
                         className={`notion_table_cell ${
                           has_row_header && i === 0 ? 'notion_table_header' : ''
                         }`}

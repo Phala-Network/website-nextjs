@@ -1,25 +1,25 @@
-import React from 'react'
-import { useAtomValue } from 'jotai'
-import { CalloutBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { CalloutBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
 const Callout = ({
-  theAtom,
+  block,
   children,
 }: {
-  theAtom: BlockAtom
+  block: ParsedBlock
   children: React.ReactNode
 }) => {
-  const block = useAtomValue(theAtom) as CalloutBlockObjectResponse
+  const calloutBlock = block as CalloutBlockObjectResponse
   return (
     <div className="notion_callout">
       <div className="notion_callout_emoji text-xl mt-0.5">
-        {block.callout.icon?.type === 'emoji' ? block.callout.icon.emoji : ''}
+        {calloutBlock.callout.icon?.type === 'emoji'
+          ? calloutBlock.callout.icon.emoji
+          : ''}
       </div>
       <div className="notion_callout_text">
-        <RichText rich_text={block.callout.rich_text} />
+        <RichText rich_text={calloutBlock.callout.rich_text} />
       </div>
       {children}
     </div>

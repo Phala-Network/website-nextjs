@@ -1,5 +1,4 @@
 'use client'
-import type React from 'react'
 import { useCallback, useRef, useState } from 'react'
 
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'

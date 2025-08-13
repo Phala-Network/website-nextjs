@@ -1,14 +1,13 @@
-import { useAtomValue } from 'jotai'
-import { ParagraphBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { ParagraphBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
-const Paragraph = ({ theAtom }: { theAtom: BlockAtom }) => {
-  const block = useAtomValue(theAtom) as ParagraphBlockObjectResponse
+const Paragraph = ({ block }: { block: ParsedBlock }) => {
+  const paragraphBlock = block as ParagraphBlockObjectResponse
   return (
     <p className="whitespace-pre-wrap break-words notion_paragraph">
-      <RichText rich_text={block.paragraph.rich_text} />
+      <RichText rich_text={paragraphBlock.paragraph.rich_text} />
     </p>
   )
 }

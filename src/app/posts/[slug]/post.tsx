@@ -14,7 +14,6 @@ import {
 } from 'react-icons/fi'
 
 import { renderBlocks } from '@/components/notion-render/Block'
-import NotionBlocksProvider from '@/components/notion-render/NotionBlocksProvider'
 import TagLink from '@/components/tag-link'
 import {
   Breadcrumb,
@@ -320,9 +319,7 @@ ${page.markdown}`
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-3xl">
-              <NotionBlocksProvider blocks={page.blocks}>
-                {renderBlocks(page.blocks)}
-              </NotionBlocksProvider>
+              {renderBlocks(page.blocks)}
             </div>
           </article>
 

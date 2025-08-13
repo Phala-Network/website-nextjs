@@ -1,26 +1,25 @@
-import { useAtomValue } from 'jotai'
-import { ToDoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { ToDoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
 const Todo = ({
-  theAtom,
+  block,
   children,
 }: {
-  theAtom: BlockAtom
+  block: ParsedBlock
   children: React.ReactNode
 }) => {
-  const block = useAtomValue(theAtom) as ToDoBlockObjectResponse
+  const todoBlock = block as ToDoBlockObjectResponse
   return (
     <div className="notion_to_do_container">
       <input
         type="checkbox"
-        checked={block.to_do.checked}
+        checked={todoBlock.to_do.checked}
         readOnly
         className="notion_to_do"
       />
-      <RichText rich_text={block.to_do.rich_text} />
+      <RichText rich_text={todoBlock.to_do.rich_text} />
       {children}
     </div>
   )

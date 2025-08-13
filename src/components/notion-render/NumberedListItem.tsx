@@ -1,25 +1,23 @@
-import React from 'react'
-import { useAtomValue } from 'jotai'
-import { NumberedListItemBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { NumberedListItemBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
 const NumberedListItem = ({
-  theAtom,
+  block,
   children,
 }: {
-  theAtom: BlockAtom
+  block: ParsedBlock
   children: React.ReactNode
 }) => {
-  const block = useAtomValue(theAtom) as NumberedListItemBlockObjectResponse & {
+  const numberedListItem = block as NumberedListItemBlockObjectResponse & {
     numbered_list_item: {
       listNumber: number
     }
   }
   return (
     <li className="notion_numbered_list_item">
-      <RichText rich_text={block.numbered_list_item.rich_text} />
+      <RichText rich_text={numberedListItem.numbered_list_item.rich_text} />
       {children}
     </li>
   )

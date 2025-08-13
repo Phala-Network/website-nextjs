@@ -1,12 +1,10 @@
-import React from 'react'
-import { useAtomValue } from 'jotai'
-import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
+import type { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { BlockAtom } from './atoms'
+import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
 function generateId(richText: RichTextItemResponse[]): string {
-  const text = richText.map(item => item.plain_text).join('')
+  const text = richText.map((item) => item.plain_text).join('')
   return text
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
@@ -16,13 +14,12 @@ function generateId(richText: RichTextItemResponse[]): string {
 }
 
 const Heading = ({
-  theAtom,
+  block,
   children,
 }: {
-  theAtom: BlockAtom
+  block: ParsedBlock
   children: React.ReactNode
 }) => {
-  const block = useAtomValue(theAtom)
   const value = block[block.type as never] as {
     is_toggleable: boolean
     rich_text: RichTextItemResponse[]
@@ -41,25 +38,37 @@ const Heading = ({
   switch (block.type) {
     case 'heading_1':
       return (
-        <h1 id={headingId} className="whitespace-pre-wrap break-normal notion_heading_1">
+        <h1
+          id={headingId}
+          className="whitespace-pre-wrap break-normal notion_heading_1"
+        >
           <RichText rich_text={value.rich_text} />
         </h1>
       )
     case 'heading_2':
       return (
-        <h2 id={headingId} className="whitespace-pre-wrap break-normal notion_heading_2">
+        <h2
+          id={headingId}
+          className="whitespace-pre-wrap break-normal notion_heading_2"
+        >
           <RichText rich_text={value.rich_text} />
         </h2>
       )
     case 'heading_3':
       return (
-        <h3 id={headingId} className="whitespace-pre-wrap break-normal notion_heading_3">
+        <h3
+          id={headingId}
+          className="whitespace-pre-wrap break-normal notion_heading_3"
+        >
           <RichText rich_text={value.rich_text} />
         </h3>
       )
     default:
       return (
-        <h4 id={headingId} className={`whitespace-pre-wrap break-normal notion_${block.type}`}>
+        <h4
+          id={headingId}
+          className={`whitespace-pre-wrap break-normal notion_${block.type}`}
+        >
           <RichText rich_text={value.rich_text} />
         </h4>
       )
