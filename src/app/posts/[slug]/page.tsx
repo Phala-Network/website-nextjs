@@ -1,10 +1,12 @@
 'use cache'
-import { addSeconds, subSeconds } from 'date-fns'
+import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
+import { addSeconds } from 'date-fns'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
+import { Separator } from '@/components/ui/separator'
 import { env } from '@/env'
-import attempt from '@/lib/attempt-promise'
 import {
   getParsedPagesByProperties,
   type ParsedListPage,
@@ -12,6 +14,9 @@ import {
   queryDatabase,
 } from '@/lib/notion-client'
 import Post from './post'
+import PostNavigation from './post-navigation'
+import PostSuggestions from './post-suggestions'
+import { PostNavigationSkeleton, PostsSectionSkeleton } from './skeleton'
 
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
@@ -24,67 +29,62 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
-interface PostData {
-  page: ParsedPage
-  recentPages: ParsedListPage[]
-  similarPages: ParsedListPage[]
-  beforePages: ParsedListPage[]
-  nextPages: ParsedListPage[]
-}
-
-async function getPostData(slug: string): Promise<PostData | null> {
-  const [error, pages] = await attempt(
-    getParsedPagesByProperties({
-      database_id: env.NOTION_POSTS_DATABASE_ID,
-      properties: {
-        'Custom URL': `/${slug}`,
+// Base filters for published posts
+function getBaseFilter(excludeSlug?: string) {
+  const filter: QueryDatabaseParameters['filter'] = {
+    and: [
+      {
+        property: 'Status',
+        status: {
+          equals: 'Published',
+        },
       },
-    }),
-  )
-
-  if (error) {
-    console.error(error)
-    return null
+      {
+        property: 'Post Type',
+        select: {
+          equals: 'Post',
+        },
+      },
+      {
+        property: 'Tags',
+        multi_select: {
+          does_not_contain: 'Changelog',
+        },
+      },
+    ],
   }
 
-  if (!pages || pages.length === 0) {
-    return null
-  }
-
-  const page = pages[0]
-  const baseFilters = [
-    {
-      property: 'Status',
-      status: {
-        equals: 'Published',
-      },
-    },
-    {
-      property: 'Post Type',
-      select: {
-        equals: 'Post',
-      },
-    },
-    {
-      property: 'Tags',
-      multi_select: {
-        does_not_contain: 'Changelog',
-      },
-    },
-    {
+  if (excludeSlug) {
+    filter.and.push({
       property: 'Custom URL',
       rich_text: {
-        does_not_equal: page.slug,
+        does_not_equal: excludeSlug,
       },
-    },
-  ]
+    })
+  }
 
-  // Get recent pages
-  const { pages: recentPages } = await queryDatabase({
+  return filter
+}
+
+async function getPost(slug: string): Promise<ParsedPage> {
+  const pages = await getParsedPagesByProperties({
     database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: {
-      and: [...baseFilters],
+    properties: {
+      'Custom URL': `/${slug}`,
     },
+  })
+
+  if (pages.length === 0) {
+    notFound()
+  }
+
+  return pages[0]
+}
+
+async function getRecentPosts(excludeSlug?: string): Promise<ParsedListPage[]> {
+  const { pages } = await queryDatabase({
+    database_id: env.NOTION_POSTS_DATABASE_ID,
+    filter: getBaseFilter(excludeSlug),
     sorts: [
       {
         property: 'Published Time',
@@ -94,109 +94,77 @@ async function getPostData(slug: string): Promise<PostData | null> {
     page_size: 3,
   })
 
-  // Get similar pages
-  let similarPages: ParsedListPage[] = []
-  if (page.tags.length > 0) {
-    const result = await queryDatabase({
-      database_id: env.NOTION_POSTS_DATABASE_ID,
-      filter: {
-        and: [
-          ...baseFilters,
-          {
-            property: 'Tags',
-            multi_select: {
-              contains: page.tags[0],
-            },
-          },
-        ],
-      },
-      sorts: [
-        {
-          property: 'Published Time',
-          direction: 'descending',
-        },
-      ],
-      page_size: 3,
-    })
-    similarPages = result.pages
+  return pages
+}
+
+async function getSimilarPosts(page: ParsedPage): Promise<ParsedListPage[]> {
+  if (page.tags.length === 0) {
+    return []
+  }
+  const filter = getBaseFilter(page.slug)
+  filter.and.push({
+    property: 'Tags',
+    multi_select: {
+      contains: page.tags[0],
+    },
+  })
+
+  const { pages } = await queryDatabase({
+    database_id: env.NOTION_POSTS_DATABASE_ID,
+    filter,
+    sorts: [{ property: 'Published Time', direction: 'descending' }],
+    page_size: 3,
+  })
+
+  return pages
+}
+
+async function getNavigationPosts(
+  page: ParsedPage,
+): Promise<{ beforePages: ParsedListPage[]; nextPages: ParsedListPage[] }> {
+  if (!page.publishedTime) {
+    return { beforePages: [], nextPages: [] }
   }
 
-  // Get navigation pages
-  let beforePages: ParsedListPage[] = []
-  let nextPages: ParsedListPage[] = []
-
-  if (page.publishedTime) {
-    const { pages: nextPagesResult } = await queryDatabase({
-      database_id: env.NOTION_POSTS_DATABASE_ID,
-      filter: {
-        and: [
-          ...baseFilters,
-          {
-            property: 'Published Time',
-            date: {
-              on_or_after: addSeconds(
-                new Date(page.publishedTime),
-                1,
-              ).toISOString(),
-            },
-          },
-        ],
+  const query = (isBefore: boolean) => {
+    const filter = getBaseFilter(page.slug)
+    filter.and.push({
+      property: 'Published Time',
+      date: {
+        on_or_after: addSeconds(
+          new Date(page.publishedTime),
+          isBefore ? -1 : 1,
+        ).toISOString(),
       },
+    })
+    return queryDatabase({
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter,
       sorts: [
         {
           property: 'Published Time',
-          direction: 'descending',
+          direction: isBefore ? 'ascending' : 'descending',
         },
       ],
       page_size: 1,
     })
-    nextPages = nextPagesResult
-
-    const { pages: beforePagesResult } = await queryDatabase({
-      database_id: env.NOTION_POSTS_DATABASE_ID,
-      filter: {
-        and: [
-          ...baseFilters,
-          {
-            property: 'Published Time',
-            date: {
-              on_or_before: subSeconds(
-                new Date(page.publishedTime),
-                1,
-              ).toISOString(),
-            },
-          },
-        ],
-      },
-      sorts: [
-        {
-          property: 'Published Time',
-          direction: 'descending',
-        },
-      ],
-      page_size: 1,
-    })
-    beforePages = beforePagesResult
   }
+
+  const [beforeResult, nextResult] = await Promise.all([
+    query(true),
+    query(false),
+  ])
 
   return {
-    page,
-    recentPages,
-    similarPages,
-    beforePages,
-    nextPages,
+    beforePages: beforeResult.pages,
+    nextPages: nextResult.pages,
   }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const postData = await getPostData(slug)
+  const page = await getPost(slug)
 
-  if (!postData) {
-    notFound()
-  }
-
-  const { page } = postData
   let id = page.id.replace(/-/g, '')
   id = remap[id] || id
   const postCover = `https://img0.phala.world/cover/1200x630/${id}.jpg?z=123`
@@ -228,15 +196,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
-  const postData = await getPostData(slug)
+  const page = await getPost(slug)
 
-  if (!postData) {
-    notFound()
-  }
+  const recentPages = getRecentPosts(page.slug)
+  const similarPages = getSimilarPosts(page)
+  const navigation = getNavigationPosts(page)
 
   return (
-    <div className="min-h-screen">
-      <Post url={baseUrl} {...postData} />
+    <div className="min-h-screen py-24 max-w-7xl mx-auto">
+      <div className="container">
+        <Post url={baseUrl} page={page} />
+
+        <Separator className="my-12" />
+
+        {/* Post Navigation with Suspense */}
+        <Suspense fallback={<PostNavigationSkeleton />}>
+          <PostNavigation navigation={navigation} />
+        </Suspense>
+
+        {/* Recent and Related Posts with Suspense */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <Suspense fallback={<PostsSectionSkeleton title="Recent Posts" />}>
+            <PostSuggestions pages={recentPages} type="recent" />
+          </Suspense>
+
+          <Suspense fallback={<PostsSectionSkeleton title="Related Posts" />}>
+            <PostSuggestions pages={similarPages} type="related" />
+          </Suspense>
+        </div>
+      </div>
     </div>
   )
 }

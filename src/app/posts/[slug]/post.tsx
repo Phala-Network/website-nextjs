@@ -2,16 +2,8 @@
 
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { format } from 'date-fns'
-import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import {
-  FiArrowLeft,
-  FiArrowRight,
-  FiCalendar,
-  FiCheck,
-  FiClock,
-  FiCopy,
-} from 'react-icons/fi'
+import { FiCalendar, FiCheck, FiClock, FiCopy } from 'react-icons/fi'
 
 import { renderBlocks } from '@/components/notion-render/Block'
 import TagLink from '@/components/tag-link'
@@ -24,7 +16,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
-import type { ParsedListPage, ParsedPage } from '@/lib/notion-client'
+import type { ParsedPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 
 const remap: Readonly<Record<string, string>> = {
@@ -41,10 +33,6 @@ interface Heading {
 interface Props {
   url: string
   page: ParsedPage
-  recentPages: ParsedListPage[]
-  similarPages: ParsedListPage[]
-  beforePages: ParsedListPage[]
-  nextPages: ParsedListPage[]
 }
 
 const extractHeadings = (blocks: BlockObjectResponse[]) => {
@@ -67,14 +55,7 @@ const extractHeadings = (blocks: BlockObjectResponse[]) => {
   return extractedHeadings
 }
 
-export default function PostPageClient({
-  url,
-  page,
-  recentPages = [],
-  similarPages = [],
-  beforePages = [],
-  nextPages = [],
-}: Props) {
+export default function Post({ url, page }: Props) {
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [isCopyingForAI, setIsCopyingForAI] = useState(false)
 
@@ -176,221 +157,111 @@ ${page.markdown}`
     )
   }
 
-  // Render post navigation
-  const renderPostNavigation = () => {
-    const placeholder = <div className="flex-1 p-4" />
-    return (
-      <nav className="flex flex-col sm:flex-row gap-8 pt-8 border-t mt-8">
-        {beforePages.length > 0 ? (
-          <Link
-            href={`/posts${beforePages[0].slug}`}
-            className="flex-1 p-4 flex border rounded-md gap-2"
-          >
-            <FiArrowLeft className="w-5 h-5 mt-0.5 shrink-0" />
-            <div>
-              <div className="text-xs text-muted-foreground font-medium uppercase">
-                Previous
-              </div>
-              <div className="font-medium line-clamp-2">
-                {beforePages[0].title}
-              </div>
-            </div>
-          </Link>
-        ) : (
-          placeholder
-        )}
-
-        {nextPages.length > 0 ? (
-          <Link
-            href={`/posts${nextPages[0].slug}`}
-            className="flex-1 p-4 flex justify-end border rounded-md gap-2"
-          >
-            <div className="text-right">
-              <div className="text-xs text-muted-foreground font-medium uppercase">
-                Next
-              </div>
-              <div className="font-medium line-clamp-2">
-                {nextPages[0].title}
-              </div>
-            </div>
-            <FiArrowRight className="w-5 h-5 mt-0.5 shrink-0" />
-          </Link>
-        ) : (
-          placeholder
-        )}
-      </nav>
-    )
-  }
-
   return (
-    <section className="py-32 flex flex-col items-center">
-      <div className="mx-auto px-4 max-w-full">
-        {/* Breadcrumb Navigation */}
-        <Breadcrumb className="mb-8">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
-            </BreadcrumbItem>
-            {page.publishedTime && (
+    <section>
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb className="mb-8">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+          </BreadcrumbItem>
+          {page.publishedTime && (
+            <>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>
+                  {format(new Date(page.publishedTime), 'yyyy')}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>
+                  {format(new Date(page.publishedTime), 'MMMM')}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </>
+          )}
+        </BreadcrumbList>
+      </Breadcrumb>
+
+      {/* Article Header */}
+      <header className="mb-4 max-w-prose xl:max-w-3xl">
+        <h1 className="my-6 text-4xl font-bold">{page.title}</h1>
+
+        <div className="flex flex-wrap items-center justify-between">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-1">
+              <FiCalendar className="w-4 h-4" />
+              <span>
+                {format(new Date(page.publishedTime), 'MMMM dd, yyyy')}
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <FiClock className="w-4 h-4" />
+              <span>5 min read</span>
+            </div>
+          </div>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={copyForAI}
+            disabled={isCopyingForAI}
+            title="Copy article content in markdown format for AI"
+          >
+            {isCopyingForAI ? (
               <>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>
-                    {format(new Date(page.publishedTime), 'yyyy')}
-                  </BreadcrumbPage>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>
-                    {format(new Date(page.publishedTime), 'MMMM')}
-                  </BreadcrumbPage>
-                </BreadcrumbItem>
+                <FiCheck className="w-3 h-3" />
+                Copied!
+              </>
+            ) : (
+              <>
+                <FiCopy className="w-3 h-3" />
+                Copy for AI
               </>
             )}
-          </BreadcrumbList>
-        </Breadcrumb>
+          </Button>
+        </div>
+      </header>
 
-        {/* Article Header */}
-        <header className="mb-4 max-w-3xl">
-          <h1 className="my-6 text-4xl font-bold">{page.title}</h1>
+      {/* Main Layout */}
+      <div className="flex gap-16 items-start max-lg:flex-col">
+        {/* Article Content */}
+        <article className="w-full max-w-prose xl:max-w-3xl">
+          {page.cover && (
+            // biome-ignore lint/performance/noImgElement: Using external CDN image
+            <img
+              src={`https://img0.phala.world/cover/1744x974/${coverImageId}.jpg?z=123`}
+              alt={page.title}
+              className="mb-8 mt-0 aspect-video w-full rounded-lg border object-cover"
+            />
+          )}
 
-          <div className="flex flex-wrap items-center justify-between">
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <FiCalendar className="w-4 h-4" />
-                <span>
-                  {format(new Date(page.publishedTime), 'MMMM dd, yyyy')}
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <FiClock className="w-4 h-4" />
-                <span>5 min read</span>
-              </div>
-            </div>
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={copyForAI}
-              disabled={isCopyingForAI}
-              title="Copy article content in markdown format for AI"
-            >
-              {isCopyingForAI ? (
-                <>
-                  <FiCheck className="w-3 h-3" />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <FiCopy className="w-3 h-3" />
-                  Copy for AI
-                </>
-              )}
-            </Button>
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {page.tags
+              .filter((tag) => tag !== 'Changelog')
+              .map((tag) => (
+                <TagLink
+                  key={`tag-${tag}`}
+                  href={`/tags/${encodeURIComponent(tag)}`}
+                >
+                  {tag}
+                </TagLink>
+              ))}
           </div>
-        </header>
 
-        {/* Main Layout */}
-        <div className="flex gap-16 items-start max-lg:flex-col">
           {/* Article Content */}
-          <article className="w-full max-w-3xl">
-            {page.cover && (
-              // biome-ignore lint/performance/noImgElement: Using external CDN image
-              <img
-                src={`https://img0.phala.world/cover/1744x974/${coverImageId}.jpg?z=123`}
-                alt={page.title}
-                className="mb-8 mt-0 aspect-video w-full rounded-lg border object-cover"
-              />
-            )}
+          <div className="prose prose-lg max-w-3xl">
+            {renderBlocks(page.blocks)}
+          </div>
+        </article>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {page.tags
-                .filter((tag) => tag !== 'Changelog')
-                .map((tag) => (
-                  <TagLink
-                    key={`tag-${tag}`}
-                    href={`/tags/${encodeURIComponent(tag)}`}
-                  >
-                    {tag}
-                  </TagLink>
-                ))}
-            </div>
-
-            {/* Article Content */}
-            <div className="prose prose-lg max-w-3xl">
-              {renderBlocks(page.blocks)}
-            </div>
-          </article>
-
-          {/* Sidebar - Now only Table of Contents */}
-          <aside className="space-y-4 lg:sticky lg:top-20 w-sm max-lg:hidden">
-            {/* Table of Contents */}
-            {renderTableOfContents()}
-          </aside>
-        </div>
-
-        {/* Post Navigation */}
-        {renderPostNavigation()}
-
-        {/* Recent and Related Posts - Moved from sidebar */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          {/* Recent Posts */}
-          {recentPages.length > 0 && (
-            <div className="bg-muted rounded-2xl border p-6">
-              <h3 className="text-lg font-semibold mb-4 font-sans">
-                Recent Posts
-              </h3>
-              <div className="space-y-4">
-                {recentPages.map((recentPage) => (
-                  <Link
-                    href={`/posts${recentPage.slug}`}
-                    key={recentPage.id}
-                    className="block"
-                  >
-                    <h4 className="font-medium line-clamp-2 mb-1">
-                      {recentPage.title}
-                    </h4>
-                    <p className="text-xs text-muted-foreground">
-                      {format(
-                        new Date(recentPage.publishedTime),
-                        'MMM dd, yyyy',
-                      )}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Related Posts */}
-          {similarPages.length > 0 && (
-            <div className="bg-muted rounded-2xl border p-6">
-              <h3 className="text-lg font-semibold mb-4 font-sans">
-                Related Posts
-              </h3>
-              <div className="space-y-4">
-                {similarPages.map((similarPage) => (
-                  <Link
-                    href={`/posts${similarPage.slug}`}
-                    key={similarPage.id}
-                    className="block"
-                  >
-                    <h4 className="font-medium line-clamp-2 mb-1">
-                      {similarPage.title}
-                    </h4>
-                    <p className="text-xs text-muted-foreground">
-                      {format(
-                        new Date(similarPage.publishedTime),
-                        'MMM dd, yyyy',
-                      )}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
+        {/* Sidebar - Now only Table of Contents */}
+        <aside className="space-y-4 lg:sticky lg:top-20 flex-1 max-lg:hidden">
+          {/* Table of Contents */}
+          {renderTableOfContents()}
+        </aside>
       </div>
     </section>
   )
