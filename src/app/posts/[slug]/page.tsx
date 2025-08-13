@@ -202,7 +202,7 @@ export async function generateStaticParams() {
         direction: 'descending',
       },
     ],
-    page_size: 500, // Generate for most recent 500 posts
+    page_size: 1000, // Generate for most recent 1000 posts
   })
   return pages.map((page) => ({ slug: page.slug }))
 }
