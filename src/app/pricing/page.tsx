@@ -1,6 +1,7 @@
 'use client'
 
 import { Check } from 'lucide-react'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -9,6 +10,12 @@ import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
+
+export const metadata: Metadata = {
+  title: 'Pricing',
+  description:
+    'Simple, transparent pricing. Pay as you go pricing for every scale. Only pay for what you use, billed by the hour.',
+}
 
 const professionalInstances = [
   {
@@ -444,7 +451,10 @@ export default function PricingPage() {
               <div className="mt-6">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:divide-x">
                   {professionalInstances.map((instance) => (
-                    <div key={instance.name} className="lg:pr-6 pb-6 lg:pb-0 border-b lg:border-b-0 last:border-b-0">
+                    <div
+                      key={instance.name}
+                      className="lg:pr-6 pb-6 lg:pb-0 border-b lg:border-b-0 last:border-b-0"
+                    >
                       {instance.popular && (
                         <div className="absolute -top-6 left-3 w-full flex">
                           <Badge variant="secondary" className="text-xs">
@@ -703,9 +713,13 @@ export default function PricingPage() {
                 card.gradient,
               )}
             >
-              <div className="text-2xl md:text-3xl mb-4 md:mb-6">{card.icon}</div>
+              <div className="text-2xl md:text-3xl mb-4 md:mb-6">
+                {card.icon}
+              </div>
               <div className="space-y-2 mb-4 md:mb-6">
-                <h3 className="text-lg md:text-xl font-semibold">{card.title}</h3>
+                <h3 className="text-lg md:text-xl font-semibold">
+                  {card.title}
+                </h3>
                 <div className="text-primary-500 font-semibold">
                   {card.highlight}
                 </div>
