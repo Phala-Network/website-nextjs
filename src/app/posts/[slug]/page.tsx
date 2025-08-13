@@ -192,6 +192,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+export async function generateStaticParams() {
+  const { pages } = await queryDatabase({
+    database_id: env.NOTION_POSTS_DATABASE_ID,
+    filter: getBaseFilter(),
+    sorts: [
+      {
+        property: 'Published Time',
+        direction: 'descending',
+      },
+    ],
+    page_size: 500, // Generate for most recent 500 posts
+  })
+  return pages.map((page) => ({ slug: page.slug }))
+}
+
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
   const page = await getPost(slug)
