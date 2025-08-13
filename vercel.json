@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/stats/:match*",
-      "destination": "https://phala-umami.vercel.app/:match*"
-    }
-  ]
-}

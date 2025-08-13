@@ -7,7 +7,14 @@ export const env = createEnv({
     NODE_ENV: z.enum(['development', 'production']).optional(),
     NOTION_TOKEN: z.string(),
     NOTION_POSTS_DATABASE_ID: z.string(),
+
+    SUBSCAN_API_KEY: z.string().optional(),
+
+    IMGPROXY_URL: z.string().optional(),
     VERCEL_PROJECT_PRODUCTION_URL: z.string().default('phala.network'),
+
+    MAILERLITE_API_KEY: z.string().optional(),
+    MAILERLITE_GROUP_NEWSLETTER: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().optional(),

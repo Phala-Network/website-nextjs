@@ -7,7 +7,7 @@ import { FaArrowRight } from 'react-icons/fa6'
 import type { SuccessStory } from '@/data/success-stories-data'
 import { cn } from '@/lib/utils'
 
-export interface SuccessStoryCardProps
+interface SuccessStoryCardProps
   extends Omit<LinkProps, 'href'>,
     Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   story: SuccessStory

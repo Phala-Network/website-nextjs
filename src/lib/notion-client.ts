@@ -58,9 +58,7 @@ export function isMediumUrl(url: string): boolean {
   return regex.test(url)
 }
 
-export async function getParsedPage(
-  page_id: string,
-): Promise<ParsedPage | null> {
+async function getParsedPage(page_id: string): Promise<ParsedPage | null> {
   const page = await notion.pages.retrieve({ page_id })
   if (!isFullPage(page)) {
     console.warn('Page is not a full page.')
@@ -214,6 +212,7 @@ export async function getParsedPagesByProperties({
   database_id: string
   properties: Record<string, any>
 }): Promise<ParsedPage[]> {
+  'use cache'
   const database = await notion.databases.query({
     database_id,
     filter: {
@@ -250,7 +249,7 @@ interface IPaginatedList<T> {
   has_more: boolean
 }
 
-export async function* iteratePaginatedWithRetries<
+async function* iteratePaginatedWithRetries<
   Args extends {
     start_cursor?: string
   },
@@ -301,6 +300,7 @@ export async function* iteratePaginatedWithRetries<
 }
 
 export async function queryDatabase(args: QueryDatabaseParameters) {
+  'use cache'
   const database = await notion.databases.query(args)
   const { results = [], next_cursor } = database
   const pages = []

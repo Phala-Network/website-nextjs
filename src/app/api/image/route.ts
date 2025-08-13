@@ -1,7 +1,8 @@
-import * as R from 'ramda'
 import { NextResponse } from 'next/server'
+import * as R from 'ramda'
 
-import { notion, isMediumUrl } from '@/lib/notion-client'
+import { env } from '@/env'
+import { notion } from '@/lib/notion-client'
 
 export const revalidate = 300
 
@@ -25,12 +26,12 @@ export async function GET(request: Request) {
     const block = await notion.blocks.retrieve({ block_id })
     url = R.pathOr('', ['image', 'file', 'url'], block)
   }
-  if (process.env.IMGPROXY_URL) {
+  if (env.IMGPROXY_URL) {
     let resize = ''
     if (width && height) {
       resize = `/resize:${resizing_type}:${width}:${height}:0`
     }
-    url = `${process.env.IMGPROXY_URL}${resize}/plain/${url}`
+    url = `${env.IMGPROXY_URL}${resize}/plain/${url}`
   }
   return NextResponse.redirect(url)
 }

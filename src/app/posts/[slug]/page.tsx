@@ -1,3 +1,4 @@
+'use cache'
 import dayjs from 'dayjs'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -32,6 +33,7 @@ interface PostData {
 }
 
 async function getPostData(slug: string): Promise<PostData | null> {
+  'use cache'
   const [error, pages] = await attempt(
     getParsedPagesByProperties({
       database_id: env.NOTION_POSTS_DATABASE_ID,

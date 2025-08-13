@@ -43,7 +43,7 @@ interface Hero24Props {
 
 const Hero24 = ({ starCount }: Hero24Props) => {
   return (
-    <section className="pt-24 pb-16 max-w-6xl mx-auto">
+    <section className="pt-16 md:pt-24 pb-16 max-w-6xl mx-auto">
       <div className="container">
         <div className="flex flex-col items-center text-center">
           <Image

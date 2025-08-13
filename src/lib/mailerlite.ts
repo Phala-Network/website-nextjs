@@ -1,7 +1,9 @@
-import { Effect } from 'effect'
 import * as Schema from '@effect/schema/Schema'
+import { Effect } from 'effect'
 
-type JSONSerializablePrimitive = string | number | boolean | null | undefined;
+import { env } from '@/env'
+
+type JSONSerializablePrimitive = string | number | boolean | null | undefined
 
 const subscriberGroupSchema = Schema.Struct({
   id: Schema.String,
@@ -49,14 +51,14 @@ const subscriberSchema = Schema.Struct({
     phone: Schema.NullOr(Schema.String),
     state: Schema.NullOr(Schema.String),
     z_i_p: Schema.NullOr(Schema.String),
-  })
+  }),
 })
 
 //
 //
 //
 
-export interface UpsertSubscriberParams {
+interface UpsertSubscriberParams {
   email: string
   fields?: Record<string, JSONSerializablePrimitive>
   groups?: string[]
@@ -69,25 +71,28 @@ const upsertSubscriberResponseSchema = Schema.Struct({
   opted_ip: Schema.NullishOr(Schema.String),
 })
 
-export type UpsertSubscriberReturns = typeof upsertSubscriberResponseSchema.Type
+type UpsertSubscriberReturns = typeof upsertSubscriberResponseSchema.Type
 
-export function upsertSubscriber(params: UpsertSubscriberParams): Effect.Effect<UpsertSubscriberReturns> {
+export function upsertSubscriber(
+  params: UpsertSubscriberParams,
+): Effect.Effect<UpsertSubscriberReturns> {
   const { email, groups, ...fields } = params
+  if (!env.MAILERLITE_API_KEY) {
+    return Effect.die('MAILERLITE_API_KEY is not set.')
+  }
   return Effect.promise(async () => {
-    const resp = await fetch(
-      `https://connect.mailerlite.com/api/subscribers`, {
-        method: 'POST',
-        body: JSON.stringify({
-          email,
-          fields,
-          groups,
-        }),
-        headers: {
-          'Authorization': `Bearer ${process.env.MAILERLITE_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+    const resp = await fetch(`https://connect.mailerlite.com/api/subscribers`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        fields,
+        groups,
+      }),
+      headers: {
+        Authorization: `Bearer ${env.MAILERLITE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    })
     if (resp.status === 200 || resp.status === 201) {
       const data = await resp.json()
       console.log(data)
@@ -96,39 +101,3 @@ export function upsertSubscriber(params: UpsertSubscriberParams): Effect.Effect<
     throw new Error(`Failed to upsert subscriber: ${resp.statusText}`)
   })
 }
-
-//
-//
-//
-
-export interface AddSubscriberToGroupParams {
-  subscriberId: number
-  groupId: number
-}
-
-const addSubscriberToGroupResponseSchema = Schema.Struct({
-  data: subscriberSchema,
-})
-
-export type AddSubscriberToGroupReturns = typeof addSubscriberToGroupResponseSchema.Type
-
-export function addSubscriberToGroup(params: AddSubscriberToGroupParams): Effect.Effect<AddSubscriberToGroupReturns> {
-  const { subscriberId, groupId } = params
-  return Effect.promise(async () => {
-    const resp = await fetch(
-      `https://connect.mailerlite.com/api/subscribers/${subscriberId}/groups/${groupId}`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.MAILERLITE_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-    if (resp.status === 200 || resp.status === 201) {
-      const data = await resp.json()
-      return Schema.decodeUnknownSync(addSubscriberToGroupResponseSchema)(data)
-    }
-    throw new Error(`Failed to add subscriber to group: ${resp.statusText}`)
-  })
-}
-

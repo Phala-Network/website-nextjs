@@ -56,9 +56,6 @@ export default function TagPageClient({
             className={cn(isLoading ? 'opacity-75' : null)}
             onClick={() => {
               load()
-              if (typeof window !== 'undefined' && (window as any).umami) {
-                ;(window as any).umami.track('tag_load_more', { tag: slug })
-              }
             }}
             disabled={isLoading}
           >
