@@ -37,9 +37,6 @@ export default function BlogClientWrapper({ initialPages, nextCursor }: Props) {
             className={cn(isLoading ? 'opacity-75' : null)}
             onClick={() => {
               load()
-              if (typeof window !== 'undefined' && (window as any).umami) {
-                ;(window as any).umami.track('blog_load_more')
-              }
             }}
             disabled={isLoading}
           >

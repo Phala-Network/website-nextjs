@@ -2,7 +2,6 @@
 
 @custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
-@plugin 'tailwindcss-animate';
 @import './theme/colors.css';
 @import './theme/typography.css';
 

@@ -57,7 +57,7 @@ const Block = ({ theAtom }: { theAtom: BlockAtom }) => {
   return createElement(renderer, { theAtom }, children)
 }
 
-export const renderBlock = (block: ParsedBlock) => {
+const renderBlock = (block: ParsedBlock) => {
   const blockAtom = useMemo(() => atom(block), [block])
   return <Block key={block.id} theAtom={blockAtom} />
 }
@@ -157,5 +157,3 @@ export const renderBlocks = (blocks: ParsedBlock[]) => {
     return renderBlock(item as ParsedBlock)
   })
 }
-
-export default Block

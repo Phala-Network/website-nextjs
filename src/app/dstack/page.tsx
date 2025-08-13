@@ -12,6 +12,8 @@ import TrustCenter from './trust-center'
 
 export const metadata: Metadata = {
   title: 'Dstack',
+  description:
+    'Deploy secure applications with hardware-guaranteed privacy using TEE technology. Built for confidential AI, private cloud compute, and secure data processing.',
 }
 
 const DstackPage = async () => {

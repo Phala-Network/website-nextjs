@@ -2,6 +2,7 @@ import { collectPaginatedAPI, isFullPage } from '@notionhq/client'
 import OpenAI from 'openai'
 import type { ChatCompletionMessageParam } from 'openai/resources/chat'
 
+import { env } from '@/env'
 import attempt from '@/lib/attempt-promise'
 import { n2m, notion } from '@/lib/notion-client'
 
@@ -22,7 +23,7 @@ export async function POST(req: Request) {
   const json = await req.json()
   const { title } = json
   const database = await notion.databases.query({
-    database_id: process.env.NOTION_POSTS_DATABASE_ID!,
+    database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       property: 'title',
       rich_text: {

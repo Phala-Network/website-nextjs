@@ -1,3 +1,5 @@
+import { env } from '@/env'
+
 const PHALA_PARA_ID = 2035
 const PHALA_METADATA_ENDPOINT =
   'https://phala.webapi.subscan.io/api/scan/metadata'
@@ -41,7 +43,7 @@ const fetchXcm = async (endpoint: string, paraId: number) =>
     body: JSON.stringify({ para_id: paraId, row: 1 }),
     headers: {
       'content-type': 'application/json',
-      'X-API-Key': process.env.SUBSCAN_API_KEY as string,
+      'X-API-Key': env.SUBSCAN_API_KEY as string,
     },
     next: { revalidate: 300 },
   })

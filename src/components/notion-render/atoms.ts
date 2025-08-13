@@ -1,6 +1,6 @@
-import { atom, type Atom } from 'jotai'
+import { type Atom, atom } from 'jotai'
 
-import { ParsedBlock } from '@/lib/notion-client'
+import type { ParsedBlock } from '@/lib/notion-client'
 
 export type BlockAtom = Atom<ParsedBlock>
 

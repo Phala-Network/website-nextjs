@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
 // Poorman's Either
-export type SendPostFormResult =
+type SendPostFormResult =
   | { succeed: true; message: string }
   | { succeed: false; error: string }
 
