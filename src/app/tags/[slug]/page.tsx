@@ -66,7 +66,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const decodedSlug = decodeURIComponent(slug)
   return {
     title: decodedSlug,
-    robots: 'noindex',
     alternates: {
       canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/tags/${encodeURIComponent(slug)}`,
     },
