@@ -54,6 +54,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
+    "discord-interactions": "^4.3.0",
     "effect": "^3.17.6",
     "embla-carousel-react": "^8.6.0",
     "feed": "^4.2.2",
