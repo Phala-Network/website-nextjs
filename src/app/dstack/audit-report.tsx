@@ -16,14 +16,6 @@ const AuditReport = () => {
               Independent security audit by zkSecurity team. Review our
               comprehensive security analysis and recommendations.
             </p>
-            {/* <Alert>
-              <AlertTitle>Audit Status</AlertTitle>
-              <AlertDescription>
-                Completed by zkSecurity team. All critical and high-severity
-                issues have been addressed. Regular security reviews ensure
-                ongoing protection.
-              </AlertDescription>
-            </Alert> */}
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
               <Button asChild className="w-full sm:w-auto">
                 <a
@@ -39,6 +31,33 @@ const AuditReport = () => {
                   Download Report
                 </a>
               </Button>
+            </div>
+
+            <div className="flex flex-col gap-2 mt-8">
+              <p className="text-muted-foreground text-sm">Sponsored by</p>
+              <div className="flex items-center gap-10 mt-2">
+                <a href="https://phala.network" target="_blank" rel="noopener">
+                  <img className="h-6" src="/home/logo.svg" alt="Phala" />
+                </a>
+                <a
+                  href="https://www.flashbots.net"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    className="h-6"
+                    src="/partnerships/flashbots.svg"
+                    alt="Flashbots"
+                  />
+                </a>
+                <a href="https://near.org" target="_blank" rel="noopener">
+                  <img
+                    className="h-4"
+                    src="/partnerships/near.svg"
+                    alt="NEAR"
+                  />
+                </a>
+              </div>
             </div>
           </div>
           <a
