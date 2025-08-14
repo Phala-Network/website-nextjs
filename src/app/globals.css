@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "./theme/colors.css";
-@import "./theme/typography.css";
+@import 'tailwindcss';
+@import './theme/colors.css';
+@import './theme/typography.css';
 
 @custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
@@ -20,7 +20,7 @@
   h1,
   h2,
   h3 {
-    /* @apply font-display tracking-tight; */
+    @apply font-display tracking-tight;
   }
   .prose {
     h1,

@@ -172,14 +172,14 @@ export default function ConfidentialAI() {
           GPU servers for instant, private AI computing.
         </p>
       </div>
-      <div className="mx-auto mt-12 flex grid-cols-1 flex-col gap-6 lg:grid lg:grid-cols-7">
+      <div className="mx-auto mt-12 flex grid-cols-1 flex-col gap-5 lg:grid lg:grid-cols-7">
         <div className="col-span-7 grid overflow-hidden rounded-lg bg-card sm:grid-cols-2 lg:grid-cols-[30rem_1fr]">
           <div className="flex flex-col justify-between p-8 lg:p-12">
             <div>
-              <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
+              <div className="mb-4 text-xs text-muted-foreground lg:text-base">
                 CONFIDENTIAL AI MODELS
               </div>
-              <h3 className="mb-2 text-xl font-semibold lg:text-2xl">
+              <h3 className="mb-2 text-xl font-semibold lg:text-3xl">
                 <span className="text-muted-foreground">Secure AI models</span>{' '}
                 ready to use
               </h3>
@@ -287,10 +287,10 @@ export default function ConfidentialAI() {
             className="h-64 w-full object-cover bg-card select-none"
           />
           <div className="p-8 lg:p-12">
-            <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
+            <div className="mb-4 text-xs text-muted-foreground lg:text-base">
               NVIDIA H200 GPU TEE
             </div>
-            <h3 className="mb-2 text-xl font-semibold lg:text-2xl">
+            <h3 className="mb-2 text-xl font-semibold lg:text-3xl">
               <span className="text-muted-foreground">
                 Deploy Confidential GPUs,
               </span>{' '}
@@ -299,10 +299,10 @@ export default function ConfidentialAI() {
           </div>
         </a>
         <div className="min-h-96 flex flex-col justify-between overflow-hidden rounded-lg bg-card p-8 lg:col-span-4 lg:p-12">
-          <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
+          <div className="mb-4 text-xs text-muted-foreground lg:text-base">
             PERFORMANCE VS PRIVACY
           </div>
-          <h3 className="text-xl font-semibold lg:text-2xl">
+          <h3 className="text-xl font-semibold lg:text-3xl">
             100% privacy{' '}
             <span className="text-muted-foreground">
               with only 5% performance trade-off

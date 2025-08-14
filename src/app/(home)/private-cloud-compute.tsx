@@ -97,8 +97,8 @@ export default function PrivateCloudCompute() {
       </div>
 
       {/* New Tabs Section */}
-      <div className="mt-6">
-        <Tabs defaultValue="easy" className="gap-6">
+      <div className="mt-5">
+        <Tabs defaultValue="easy" className="gap-5">
           <TabsList className="flex h-auto w-full bg-card">
             {tabsData.map((tab) => {
               const IconComponent = tab.icon
@@ -136,7 +136,7 @@ export default function PrivateCloudCompute() {
             })}
           </TabsList>
           <TabsContent value="easy">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               <a
                 href="https://docs.phala.network/phala-cloud/phala-cloud-cli/overview"
                 target="_blank"
@@ -247,7 +247,7 @@ export default function PrivateCloudCompute() {
             </div>
           </TabsContent>
           <TabsContent value="open">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               <a
                 href="https://tee-visualization.vercel.app/"
                 target="_blank"
@@ -310,7 +310,7 @@ export default function PrivateCloudCompute() {
             </div>
           </TabsContent>
           <TabsContent value="private">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
               <div className="h-110 rounded-lg bg-card relative overflow-hidden px-6 xl:px-8 py-8">
                 <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                   <span className="text-foreground">
@@ -340,7 +340,7 @@ export default function PrivateCloudCompute() {
                   — no one else, not even us.
                 </h4>
                 <div className="absolute top-2/5 left-0 bottom-0 pt-3 bg-[#AFBEFE]/50 w-full">
-                  <div className="w-full h-full">
+                  <div className="w-full h-full bg-[#9DA9F0]">
                     <video
                       src="/home/flow-tee.mp4"
                       autoPlay
