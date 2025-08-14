@@ -120,7 +120,7 @@ export const adminPublishPost = async (
   try {
     const encodedSlug = encodeURIComponent(slug.replace(/^\//, ''))
     revalidatePath('/blog')
-    revalidatePath(`/posts${encodedSlug}`)
+    revalidatePath(`/posts/${encodedSlug}`)
     for (const tag of tags) {
       revalidatePath(`/tags/${encodeURIComponent(tag)}`)
     }
