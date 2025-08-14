@@ -13,7 +13,7 @@ import { env } from '@/env'
 import { notion, queryDatabase } from '@/lib/notion-client'
 import TagPageClient from './tag-page-client'
 
-export const revalidate = 60
+export const revalidate = 7200
 
 interface Props {
   params: Promise<{ slug: string }>
