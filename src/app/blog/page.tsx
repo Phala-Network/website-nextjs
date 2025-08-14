@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 import Banners from './banner'
 import List from './list'
 
-export const revalidate = 60
+export const revalidate = 7200
 
 async function retrieveTags() {
   const database = await notion.databases.retrieve({
