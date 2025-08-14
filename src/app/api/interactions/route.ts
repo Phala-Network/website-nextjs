@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
         data: { flags: 1 << 6 },
       })
     } else if (name === 'list') {
-      after(() => list(token, headersList.get('host')).catch(console.error))
+      after(() => list(token).catch(console.error))
 
       return Response.json({
         type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE,

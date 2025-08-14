@@ -117,7 +117,7 @@ export const adminPublishPost = async (
   )
 }
 
-export async function list(interactionToken: string, host: string) {
+export async function list(interactionToken: string) {
   const { DISCORD_APP_ID, NOTION_POSTS_DATABASE_ID, DISCORD_TOKEN } = env
   if (!DISCORD_APP_ID || !NOTION_POSTS_DATABASE_ID || !DISCORD_TOKEN) {
     throw new Error('Not configured')
@@ -150,7 +150,7 @@ export async function list(interactionToken: string, host: string) {
         content: pages
           .map(
             (page) =>
-              `[${page.title}](https://${host}/posts/preview/${page.id})`,
+              `[${page.title}](https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts/preview/${page.id})`,
           )
           .join('\n'),
         flags: 1 << 2,
