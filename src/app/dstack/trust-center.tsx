@@ -57,7 +57,7 @@ const TrustCenter = () => {
           </div>
 
           {/* Right side - Features */}
-          <div className="relative flex flex-1 flex-col justify-center space-y-4 max-lg:pt-10 lg:ps-10">
+          <div className="relative flex flex-1 flex-col justify-center space-y-4 max-lg:pt-10 lg:px-10">
             <DashedLine
               orientation="vertical"
               className="absolute top-0 left-0 max-lg:hidden"
