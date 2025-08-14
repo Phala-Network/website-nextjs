@@ -6,8 +6,6 @@ import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 import { adminPublishPost, list, verify } from './lib'
 
-export const runtime = 'edge'
-
 export async function POST(request: NextRequest) {
   const json = await request.json()
   const headersList = await headers()
@@ -33,16 +31,14 @@ export async function POST(request: NextRequest) {
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name, options } = data
     if ((name === 'publish' || name === 'update') && options.length > 0) {
-      after(() =>
-        adminPublishPost(options[0].value, token).catch(console.error),
-      )
+      after(adminPublishPost(options[0].value, token))
 
       return Response.json({
         type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE,
         data: { flags: 1 << 6 },
       })
     } else if (name === 'list') {
-      after(() => list(token).catch(console.error))
+      after(list(token))
 
       return Response.json({
         type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE,
