@@ -107,16 +107,15 @@ export const adminPublishPost = async (
   if (!result) {
     return response(`Error: Failed to update page`)
   }
-  try {
-    await Promise.all([
+
+  await attempt(
+    Promise.all([
       clearQueryDatabaseCache(),
       clearPagesByPropertiesCache({
         'Custom URL': slug,
       }),
-    ])
-  } catch {
-    return response(`Error: Failed to clear cache`)
-  }
+    ]),
+  )
 
   try {
     const encodedSlug = encodeURIComponent(slug.replace(/^\//, ''))
