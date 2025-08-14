@@ -1,3 +1,4 @@
+// Discord bot for publishing posts
 import { InteractionResponseType, InteractionType } from 'discord-interactions'
 import { headers } from 'next/headers'
 import { after, type NextRequest } from 'next/server'

@@ -33,10 +33,28 @@ export const adminPublishPost = async (
   interactionToken: string,
 ) => {
   const { DISCORD_APP_ID, DISCORD_TOKEN } = env
+  if (!DISCORD_APP_ID || !DISCORD_TOKEN) {
+    throw new Error('Not configured')
+  }
+  const response = (message: string) => {
+    fetch(
+      `https://discord.com/api/v10/webhooks/${DISCORD_APP_ID}/${interactionToken}/messages/@original`,
+      {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bot ${DISCORD_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: message,
+        }),
+      },
+    )
+  }
   const page = await notion.pages.retrieve({ page_id: pageId })
 
   if (!isFullPage(page)) {
-    throw new Error('Not a full page')
+    return response(`Error: Not a full page`)
   }
 
   let slug = R.map(
@@ -87,34 +105,30 @@ export const adminPublishPost = async (
     }),
   )
   if (!result) {
-    throw new Error('Failed to update page')
+    return response(`Error: Failed to update page`)
   }
-  await Promise.all([
-    clearQueryDatabaseCache(),
-    clearPagesByPropertiesCache({
-      'Custom URL': slug,
-    }),
-  ])
-
-  const encodedSlug = encodeURIComponent(slug.replace(/^\//, ''))
-  revalidatePath('/blog')
-  revalidatePath(`/posts${encodedSlug}`)
-  for (const tag of tags) {
-    revalidatePath(`/tags/${encodeURIComponent(tag)}`)
-  }
-  await fetch(
-    `https://discord.com/api/v10/webhooks/${DISCORD_APP_ID}/${interactionToken}/messages/@original`,
-    {
-      method: 'PATCH',
-      headers: {
-        Authorization: `Bot ${DISCORD_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        content: `Published: ${title}`,
+  try {
+    await Promise.all([
+      clearQueryDatabaseCache(),
+      clearPagesByPropertiesCache({
+        'Custom URL': slug,
       }),
-    },
-  )
+    ])
+  } catch {
+    return response(`Error: Failed to clear cache`)
+  }
+
+  try {
+    const encodedSlug = encodeURIComponent(slug.replace(/^\//, ''))
+    revalidatePath('/blog')
+    revalidatePath(`/posts${encodedSlug}`)
+    for (const tag of tags) {
+      revalidatePath(`/tags/${encodeURIComponent(tag)}`)
+    }
+  } catch {
+    return response(`Error: Failed to revalidate paths`)
+  }
+  return response(`Published: ${title}`)
 }
 
 export async function list(interactionToken: string) {
