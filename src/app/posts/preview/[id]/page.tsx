@@ -5,59 +5,50 @@ import { Separator } from '@/components/ui/separator'
 import { env } from '@/env'
 import {
   getNavigationPosts,
-  getPostBySlug,
+  getPostById,
   getPostMetadata,
   getRecentPosts,
   getSimilarPosts,
 } from '@/lib/post'
-import Post from '../post'
-import PostNavigation from '../post-navigation'
-import PostSuggestions from '../post-suggestions'
-import { PostNavigationSkeleton, PostsSectionSkeleton } from '../skeleton'
-
-export const revalidate = 7200
+import Post from '../../post'
+import PostNavigation from '../../post-navigation'
+import PostSuggestions from '../../post-suggestions'
+import { PostNavigationSkeleton, PostsSectionSkeleton } from '../../skeleton'
 
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 interface Props {
-  params: Promise<{ slug: string }>
+  params: Promise<{ id: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const page = await getPostBySlug(slug)
+  const { id } = await params
+  const page = await getPostById(id)
 
-  return getPostMetadata(page)
+  return getPostMetadata(page, true)
 }
 
-export async function generateStaticParams() {
-  const { queryDatabase } = await import('@/lib/notion-client')
-  const { getBaseFilter } = await import('@/lib/post')
-  const { pages } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: getBaseFilter(),
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 1000, // Generate for most recent 1000 posts
-  })
-  return pages.map((page) => ({ slug: page.slug }))
-}
+export default async function PostPreviewPage({ params }: Props) {
+  const { id } = await params
+  const page = await getPostById(id)
 
-export default async function PostPage({ params }: Props) {
-  const { slug } = await params
-  const page = await getPostBySlug(slug)
-
-  const recentPages = getRecentPosts(page.slug)
+  const recentPages = getRecentPosts(page.id)
   const similarPages = getSimilarPosts(page)
   const navigation = getNavigationPosts(page)
 
   return (
     <div className="min-h-screen py-24 max-w-7xl mx-auto">
       <div className="container">
+        {/* Preview Banner */}
+        <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-md">
+          <p className="text-yellow-800 font-medium">
+            🔍 Preview Mode - Status: {page.status}
+          </p>
+          <p className="text-yellow-700 text-sm">
+            This is a preview of the post.
+          </p>
+        </div>
+
         <Post url={baseUrl} page={page} />
 
         <Separator className="my-12" />

@@ -7,6 +7,7 @@ export const env = createEnv({
     NODE_ENV: z.enum(['development', 'production']).optional(),
     NOTION_TOKEN: z.string(),
     NOTION_POSTS_DATABASE_ID: z.string(),
+    NOTION_BACKEND_PREFIX: z.string(),
 
     SUBSCAN_API_KEY: z.string().optional(),
 
@@ -15,6 +16,10 @@ export const env = createEnv({
 
     MAILERLITE_API_KEY: z.string().optional(),
     MAILERLITE_GROUP_NEWSLETTER: z.string().optional(),
+
+    DISCORD_PUBLIC_KEY: z.string().optional(),
+    DISCORD_TOKEN: z.string().optional(),
+    DISCORD_APP_ID: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().optional(),
