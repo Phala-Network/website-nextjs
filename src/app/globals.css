@@ -1,9 +1,9 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+@import "./theme/colors.css";
+@import "./theme/typography.css";
 
 @custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
-@import './theme/colors.css';
-@import './theme/typography.css';
 
 @utility container {
   margin-inline: auto;
@@ -33,32 +33,14 @@
   .prose a {
     @apply break-all;
   }
-}
 
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  body {
+    overflow-x: hidden;
   }
 
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+  ::selection {
+    @apply bg-primary/40;
   }
-}
-
-/* Fix Notion list spacing */
-
-body {
-  overflow-x: hidden;
-}
-
-::-moz-selection {
-  /* Code for Firefox */
-  background: rgba(205, 250, 80, 0.5);
-}
-
-::selection {
-  background: rgba(205, 250, 80, 0.5);
 }
 
 details > summary {
@@ -66,37 +48,4 @@ details > summary {
 }
 details > summary::-webkit-details-marker {
   display: none;
-}
-
-:root {
-  --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
-}
-
-.dark {
-  --sidebar: hsl(240 5.9% 10%);
-  --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
-}
-
-@theme inline {
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
