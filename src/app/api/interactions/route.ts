@@ -1,20 +1,27 @@
 // Discord bot for publishing posts
 import { InteractionResponseType, InteractionType } from 'discord-interactions'
 import { headers } from 'next/headers'
-import { after, type NextRequest } from 'next/server'
+import { after } from 'next/server'
 
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 import { adminPublishPost, list, verify } from './lib'
 
-export async function POST(request: NextRequest) {
-  const json = await request.json()
-  const headersList = await headers()
+export async function POST(request: Request) {
   const { DISCORD_PUBLIC_KEY, NOTION_POSTS_DATABASE_ID } = env
   if (!DISCORD_PUBLIC_KEY || !NOTION_POSTS_DATABASE_ID) {
     return Response.json({ error: 'Not configured' }, { status: 500 })
   }
-  if (!verify(JSON.stringify(json), DISCORD_PUBLIC_KEY, headersList)) {
+
+  const headersList = await headers()
+  const json = await request.json()
+  const isSignatureValid = await verify(
+    JSON.stringify(json),
+    DISCORD_PUBLIC_KEY,
+    headersList,
+  )
+
+  if (!isSignatureValid) {
     return Response.json({ error: 'Bad signature' }, { status: 401 })
   }
 
