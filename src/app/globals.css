@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "./theme/colors.css";
-@import "./theme/typography.css";
+@import 'tailwindcss';
+@import './theme/colors.css';
+@import './theme/typography.css';
 
 @custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';

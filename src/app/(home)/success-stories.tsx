@@ -36,11 +36,11 @@ export default function SuccessStoriesSection() {
   }, [carouselApi])
 
   return (
-    <section className="py-24 w-full max-w-(--breakpoint-xl) mx-auto">
+    <section className="py-24">
       <div className="container">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4 max-xl:max-w-4xl">
-            <h2 className="text-3xl font-bold md:text-4xl">
+            <h2 className="text-3xl font-semibold md:text-4xl">
               Real-World Success Stories
             </h2>
             <p className="text-muted-foreground font-medium text-lg md:text-xl text-balance">
