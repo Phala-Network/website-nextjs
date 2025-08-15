@@ -66,7 +66,7 @@ const Logos = () => {
     <section className="py-12 w-full">
       <div className="container space-y-10 flex flex-col items-center">
         <div className="text-center">
-          <h2 className="mb-4 font-bold text-balance text-2xl md:text-3xl xl:text-4xl">
+          <h2 className="mb-4 font-semibold text-balance text-2xl md:text-3xl xl:text-4xl">
             Trusted by more than <span className="text-primary-400">5000+</span>{' '}
             users
           </h2>
