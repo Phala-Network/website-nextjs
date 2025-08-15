@@ -31,7 +31,7 @@ export default function SuccessStoriesPage() {
             </BreadcrumbList>
           </Breadcrumb>
 
-          <h1 className="text-3xl font-bold md:text-4xl">
+          <h1 className="text-3xl font-semibold md:text-4xl">
             Real-World Success Stories
           </h1>
           <p className="text-muted-foreground font-medium text-lg md:text-xl">

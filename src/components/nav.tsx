@@ -211,7 +211,7 @@ const Navbar1 = () => {
         hasScrolled && 'bg-background/75 backdrop-blur-sm',
       )}
     >
-      <div className="container">
+      <div className="max-w-(--breakpoint-2xl) mx-auto px-4 sm:px-6">
         <section>
           {/* Desktop Menu */}
           <nav className="hidden justify-between lg:flex h-16">

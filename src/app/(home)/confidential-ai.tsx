@@ -162,255 +162,251 @@ export default function ConfidentialAI() {
   }, [carouselApi])
 
   return (
-    <section className="py-24 max-w-7xl mx-auto">
-      <div className="container">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
-          <h2 className="mb-2 text-center text-3xl font-bold text-balance lg:text-4xl">
-            Confidential AI
-          </h2>
-          <p className="text-center text-muted-foreground text-lg md:text-xl font-medium text-balance">
-            Pre-configured secure AI models ready to deploy with
-            hardware-secured GPU servers for instant, private AI computing.
-          </p>
-        </div>
-        <div className="mx-auto mt-12 flex grid-cols-1 flex-col gap-6 lg:grid lg:grid-cols-7">
-          <div className="col-span-7 grid overflow-hidden rounded-lg bg-muted sm:grid-cols-2 lg:grid-cols-[30rem_1fr] border">
-            <div className="flex flex-col justify-between p-8 lg:p-12">
-              <div>
-                <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
-                  CONFIDENTIAL AI MODELS
-                </div>
-                <h3 className="mb-2 text-xl font-semibold lg:text-2xl">
-                  <span className="text-muted-foreground">
-                    Secure AI models
-                  </span>{' '}
-                  ready to use
-                </h3>
-                <p className="text-sm text-muted-foreground lg:text-base xl:text-lg">
-                  Access pre-configured confidential AI models with complete
-                  privacy protection.
-                </p>
-                <div className="flex flex-wrap -space-x-2 mt-4">
-                  {icons.map((icon) => (
-                    <Avatar
-                      key={icon.name}
-                      className="size-8 bg-background p-1 border-2"
-                    >
-                      <AvatarImage src={icon.icon} alt={icon.name} />
-                      <AvatarFallback className="text-xs">
-                        {icon.name}
-                      </AvatarFallback>
-                    </Avatar>
-                  ))}
-                </div>
+    <section className="py-24 container">
+      <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
+        <h2 className="mb-2 text-center text-3xl font-semibold text-balance lg:text-4xl">
+          Confidential AI
+        </h2>
+        <p className="text-center text-muted-foreground text-lg md:text-xl font-medium text-balance">
+          Pre-configured secure AI models ready to deploy with hardware-secured
+          GPU servers for instant, private AI computing.
+        </p>
+      </div>
+      <div className="mx-auto mt-12 flex grid-cols-1 flex-col gap-5 lg:grid lg:grid-cols-7">
+        <div className="col-span-7 grid overflow-hidden rounded-lg bg-card sm:grid-cols-2 lg:grid-cols-[30rem_1fr]">
+          <div className="flex flex-col justify-between p-8 lg:p-12">
+            <div>
+              <div className="mb-4 text-xs text-muted-foreground lg:text-base">
+                CONFIDENTIAL AI MODELS
               </div>
-              <div className="mt-6 sm:mt-8">
-                <Button variant="outline" asChild>
-                  <a
-                    href="https://redpill.ai/models"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Explore models
-                    <ChevronRight className="ml-1 h-4" />
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="bg-gradient-to-r from-blue-300 to-blue-400 relative overflow-hidden py-4 order-first w-full sm:order-last">
-              <div className="relative">
-                <Carousel
-                  setApi={setCarouselApi}
-                  opts={{
-                    align: 'start',
-                    dragFree: true,
-                  }}
-                >
-                  <CarouselContent className="ml-0">
-                    {modelCards.map((model) => (
-                      <CarouselItem
-                        key={model.id}
-                        className="basis-auto pl-4 last:pr-4"
-                      >
-                        <ModelCard model={model} />
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                </Carousel>
-              </div>
-              {/* Scroll buttons */}
-              <div className="absolute bottom-8 right-4 flex gap-2">
-                <Button
-                  size="icon"
-                  variant="secondary"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    carouselApi?.scrollPrev()
-                  }}
-                  disabled={!canScrollPrev}
-                  className="h-8 w-8 bg-white/90 hover:bg-white disabled:opacity-30 shadow-sm"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                </Button>
-                <Button
-                  size="icon"
-                  variant="secondary"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    carouselApi?.scrollNext()
-                  }}
-                  disabled={!canScrollNext}
-                  className="h-8 w-8 bg-white/90 hover:bg-white disabled:opacity-30 shadow-sm"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-          <a
-            href="/confidential-ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative overflow-hidden rounded-lg bg-muted lg:col-span-3 border"
-          >
-            <Button
-              variant="outline"
-              size="sm"
-              className="absolute top-7 right-10 transition-all duration-200 group-hover:opacity-100 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0"
-            >
-              <ChevronRight className="h-4" />
-            </Button>
-            <Image
-              width={1520}
-              height={852}
-              src="/home/gpu.png"
-              alt="NVIDIA H200 GPU TEE"
-              className="h-64 w-full border-b object-cover bg-card select-none"
-            />
-            <div className="p-8 lg:p-12">
-              <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
-                NVIDIA H200 GPU TEE
-              </div>
-              <h3 className="mb-2 text-xl font-semibold lg:text-2xl">
-                <span className="text-muted-foreground">
-                  Deploy Confidential GPUs,
-                </span>{' '}
-                On-Demand
+              <h3 className="mb-2 text-xl font-semibold lg:text-3xl">
+                <span className="text-muted-foreground">Secure AI models</span>{' '}
+                ready to use
               </h3>
-            </div>
-          </a>
-          <div className="min-h-96 flex flex-col justify-between overflow-hidden rounded-lg bg-muted p-8 lg:col-span-4 lg:p-12 border">
-            <div className="mb-4 text-xs text-muted-foreground xl:text-sm">
-              PERFORMANCE VS PRIVACY
-            </div>
-            <h3 className="text-xl font-semibold lg:text-2xl">
-              100% privacy{' '}
-              <span className="text-muted-foreground">
-                with only 5% performance trade-off
-              </span>
-            </h3>
-
-            <div className="flex items-center w-full flex-1">
-              <div className="w-full">
-                <table className="w-full border-collapse [&_td,th]:py-3 xl:[&_td,th]:py-4 [&_td,th]:px-2 xl:[&_td,th]:px-4">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-sm font-medium text-muted-foreground text-left pb-2 min-w-25 xl:min-w-32">
-                        Solution
-                      </th>
-                      <th className="text-sm font-medium text-muted-foreground text-center pb-2 w-1/2">
-                        Performance
-                      </th>
-                      <th className="text-sm font-medium text-muted-foreground text-center pb-2 w-1/2">
-                        Privacy
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-border">
-                      <td className="font-medium text-sm">Native GPU</td>
-                      <td>
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between text-xs">
-                            <span className="text-muted-foreground max-sm:hidden">
-                              Native
-                            </span>
-                            <span className="font-medium ml-auto">100%</span>
-                          </div>
-                          <div className="bg-blue-400 h-2 rounded-full"></div>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between text-xs">
-                            <div className="text-muted-foreground flex items-center gap-1 max-sm:hidden">
-                              <span className="hidden sm:inline">
-                                Data exposed
-                              </span>
-                              <CircleAlert size={10} />
-                            </div>
-                            <span className="font-medium ml-auto">0%</span>
-                          </div>
-                          <div className="bg-primary-200 h-2 rounded-full"></div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b border-border">
-                      <td>
-                        <div className="font-medium text-sm flex items-center gap-1">
-                          {/** biome-ignore lint/performance/noImgElement: svg */}
-                          <img
-                            src="/home/icon.svg"
-                            alt="GPU TEE"
-                            className="size-4 shrink-0"
-                          />
-                          <span>GPU TEE</span>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between text-xs">
-                            <span className="text-muted-foreground max-sm:hidden">
-                              Nearly native
-                            </span>
-                            <span className="font-medium ml-auto">95%</span>
-                          </div>
-                          <div className="bg-blue-100 h-2 rounded-full">
-                            <div className="bg-blue-400 h-2 rounded-full w-[95%]"></div>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between text-xs">
-                            <span className="text-muted-foreground max-sm:hidden">
-                              Fully private
-                            </span>
-                            <span className="font-medium ml-auto">100%</span>
-                          </div>
-                          <div className="bg-primary-500 h-2 rounded-full"></div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <p className="text-sm text-muted-foreground lg:text-base xl:text-lg">
+                Access pre-configured confidential AI models with complete
+                privacy protection.
+              </p>
+              <div className="flex flex-wrap -space-x-2 mt-4">
+                {icons.map((icon) => (
+                  <Avatar
+                    key={icon.name}
+                    className="size-8 bg-background p-1 border-2"
+                  >
+                    <AvatarImage src={icon.icon} alt={icon.name} />
+                    <AvatarFallback className="text-xs">
+                      {icon.name}
+                    </AvatarFallback>
+                  </Avatar>
+                ))}
               </div>
             </div>
-
-            <div className="mt-2">
+            <div className="mt-6 sm:mt-8">
               <Button variant="outline" asChild>
                 <a
-                  href="https://arxiv.org/pdf/2409.03992"
+                  href="https://redpill.ai/models"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Learn more
+                  Explore models
                   <ChevronRight className="ml-1 h-4" />
                 </a>
               </Button>
             </div>
+          </div>
+          <div className="bg-gradient-to-r from-blue-300 to-blue-400 relative overflow-hidden py-4 order-first w-full sm:order-last">
+            <div className="relative">
+              <Carousel
+                setApi={setCarouselApi}
+                opts={{
+                  align: 'start',
+                  dragFree: true,
+                }}
+              >
+                <CarouselContent className="ml-0">
+                  {modelCards.map((model) => (
+                    <CarouselItem
+                      key={model.id}
+                      className="basis-auto pl-4 last:pr-4"
+                    >
+                      <ModelCard model={model} />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+            </div>
+            {/* Scroll buttons */}
+            <div className="absolute bottom-8 right-4 flex gap-2">
+              <Button
+                size="icon"
+                variant="secondary"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  carouselApi?.scrollPrev()
+                }}
+                disabled={!canScrollPrev}
+                className="h-8 w-8 bg-white/90 hover:bg-white disabled:opacity-30 shadow-sm"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                size="icon"
+                variant="secondary"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  carouselApi?.scrollNext()
+                }}
+                disabled={!canScrollNext}
+                className="h-8 w-8 bg-white/90 hover:bg-white disabled:opacity-30 shadow-sm"
+              >
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
+        <a
+          href="/confidential-ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative overflow-hidden rounded-lg bg-card lg:col-span-3"
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            className="absolute top-7 right-10 transition-all duration-200 group-hover:opacity-100 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0"
+          >
+            <ChevronRight className="h-4" />
+          </Button>
+          <Image
+            width={1520}
+            height={852}
+            src="/home/gpu.png"
+            alt="NVIDIA H200 GPU TEE"
+            className="h-64 w-full object-cover bg-card select-none"
+          />
+          <div className="p-8 lg:p-12">
+            <div className="mb-4 text-xs text-muted-foreground lg:text-base">
+              NVIDIA H200 GPU TEE
+            </div>
+            <h3 className="mb-2 text-xl font-semibold lg:text-3xl">
+              <span className="text-muted-foreground">
+                Deploy Confidential GPUs,
+              </span>{' '}
+              On-Demand
+            </h3>
+          </div>
+        </a>
+        <div className="min-h-96 flex flex-col justify-between overflow-hidden rounded-lg bg-card p-8 lg:col-span-4 lg:p-12">
+          <div className="mb-4 text-xs text-muted-foreground lg:text-base">
+            PERFORMANCE VS PRIVACY
+          </div>
+          <h3 className="text-xl font-semibold lg:text-3xl">
+            100% privacy{' '}
+            <span className="text-muted-foreground">
+              with only 5% performance trade-off
+            </span>
+          </h3>
+
+          <div className="flex items-center w-full flex-1">
+            <div className="w-full">
+              <table className="w-full border-collapse [&_td,th]:py-3 xl:[&_td,th]:py-4 [&_td,th]:px-2 xl:[&_td,th]:px-4">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-sm font-medium text-muted-foreground text-left pb-2 min-w-25 xl:min-w-32">
+                      Solution
+                    </th>
+                    <th className="text-sm font-medium text-muted-foreground text-center pb-2 w-1/2">
+                      Performance
+                    </th>
+                    <th className="text-sm font-medium text-muted-foreground text-center pb-2 w-1/2">
+                      Privacy
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border">
+                    <td className="font-medium text-sm">Native GPU</td>
+                    <td>
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-muted-foreground max-sm:hidden">
+                            Native
+                          </span>
+                          <span className="font-medium ml-auto">100%</span>
+                        </div>
+                        <div className="bg-blue-400 h-2 rounded-full"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between text-xs">
+                          <div className="text-muted-foreground flex items-center gap-1 max-sm:hidden">
+                            <span className="hidden sm:inline">
+                              Data exposed
+                            </span>
+                            <CircleAlert size={10} />
+                          </div>
+                          <span className="font-medium ml-auto">0%</span>
+                        </div>
+                        <div className="bg-primary-200 h-2 rounded-full"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td>
+                      <div className="font-medium text-sm flex items-center gap-1">
+                        {/** biome-ignore lint/performance/noImgElement: svg */}
+                        <img
+                          src="/home/icon.svg"
+                          alt="GPU TEE"
+                          className="size-4 shrink-0"
+                        />
+                        <span>GPU TEE</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-muted-foreground max-sm:hidden">
+                            Nearly native
+                          </span>
+                          <span className="font-medium ml-auto">95%</span>
+                        </div>
+                        <div className="bg-blue-100 h-2 rounded-full">
+                          <div className="bg-blue-400 h-2 rounded-full w-[95%]"></div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-muted-foreground max-sm:hidden">
+                            Fully private
+                          </span>
+                          <span className="font-medium ml-auto">100%</span>
+                        </div>
+                        <div className="bg-primary-500 h-2 rounded-full"></div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="mt-2">
+            <Button variant="outline" asChild>
+              <a
+                href="https://arxiv.org/pdf/2409.03992"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn more
+                <ChevronRight className="ml-1 h-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </div>
