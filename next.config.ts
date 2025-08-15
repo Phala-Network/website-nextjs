@@ -2,6 +2,7 @@
 import createMDX from '@next/mdx'
 import { withPostHogConfig } from '@posthog/nextjs-config'
 import type { NextConfig } from 'next'
+import remarkGfm from 'remark-gfm'
 
 import redirects from './redirects'
 
@@ -31,6 +32,9 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: [remarkGfm],
+  },
 })
 
 export default withPostHogConfig(withMDX(nextConfig), {
