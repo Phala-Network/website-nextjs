@@ -11,6 +11,7 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel'
 import type { ParsedListPage } from '@/lib/notion-client'
+import { coverRemap } from '@/lib/post-client'
 import { cn } from '@/lib/utils'
 
 export default function Banners({ pages }: { pages: ParsedListPage[] }) {
@@ -59,7 +60,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                         {/** biome-ignore lint/performance/noImgElement: no cdn */}
                         <img
                           className="w-full aspect-872/487"
-                          src={`https://img0.phala.world/cover/1744x974/${page.id}.jpg`}
+                          src={`https://img0.phala.world/cover/1744x974/${coverRemap[page.id] || page.id}.jpg`}
                           alt={page.title}
                         />
                       </a>
