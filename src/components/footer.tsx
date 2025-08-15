@@ -212,7 +212,7 @@ const SiteFooter: React.FC = () => {
 
         {/* Bottom Section */}
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="order-1 mb-6 flex w-full items-center justify-center gap-6 md:justify-start md:order-2 md:mb-0 md:w-auto">
+          <div className="order-1 mb-6 flex w-full items-center justify-center gap-2 sm:gap-4 md:gap-6 md:justify-start md:order-2 md:mb-0 md:w-auto">
             {socialLinks.map((link) => (
               <a
                 key={link.href}
