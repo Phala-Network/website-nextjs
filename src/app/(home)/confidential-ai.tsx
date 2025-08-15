@@ -164,7 +164,7 @@ export default function ConfidentialAI() {
   return (
     <section className="py-24 container">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
-        <h2 className="mb-2 text-center text-3xl font-bold text-balance lg:text-4xl">
+        <h2 className="mb-2 text-center text-3xl font-semibold text-balance lg:text-4xl">
           Confidential AI
         </h2>
         <p className="text-center text-muted-foreground text-lg md:text-xl font-medium text-balance">

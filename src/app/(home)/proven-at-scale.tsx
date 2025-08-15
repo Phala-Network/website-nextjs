@@ -35,7 +35,7 @@ export default function ProvenAtScaleSection() {
       <div className="container">
         {/* Section Header */}
         <div className="mb-4 sm:mb-12">
-          <h1 className="text-center text-3xl font-bold md:text-4xl mb-4">
+          <h1 className="text-center text-3xl font-semibold md:text-4xl mb-4">
             Proven at Scale
           </h1>
           <p className="text-center text-muted-foreground font-medium text-lg md:text-xl">

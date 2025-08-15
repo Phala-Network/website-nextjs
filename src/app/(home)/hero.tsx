@@ -10,15 +10,15 @@ export default function Hero() {
     <div className="bg-background">
       <div
         className={cn(
-          "max-w-(--breakpoint-2xl) mx-auto bg-[url('/home/hero-bg.png')]",
+          "max-w-[120rem] mx-auto bg-[url('/home/hero-bg.png')]",
           'bg-right-bottom bg-no-repeat relative',
-          'max-sm:pb-[100%] sm:h-[800px] xl:h-[680px]',
+          'max-sm:pb-[70%] sm:h-[800px] xl:h-[680px]',
           'bg-[length:120%_auto] sm:bg-[length:600px_auto] md:bg-[length:680px_auto] lg:bg-[length:800px_auto] xl:bg-[length:984px_auto]',
         )}
       >
         <div className="container -mt-16">
           <section className="pt-16">
-            <div className="pt-12 lg:pt-16 lg:pl-16">
+            <div className="pt-12 lg:pt-24 xl:pt-28 lg:pl-8">
               <div className="flex flex-col max-sm:items-center max-sm:text-center">
                 <h1 className="font-bold text-3xl/tight sm:text-4xl/tight md:text-5xl/tight">
                   The New Cloud for

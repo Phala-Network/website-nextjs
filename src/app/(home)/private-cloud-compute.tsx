@@ -43,7 +43,7 @@ export default function PrivateCloudCompute() {
   return (
     <section className="py-24 container">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
-        <h2 className="text-center text-3xl font-bold text-balance lg:text-4xl">
+        <h2 className="text-center text-3xl font-semibold text-balance lg:text-4xl">
           Private Cloud Compute
         </h2>
         <p className="text-center text-muted-foreground text-lg md:text-xl font-medium">

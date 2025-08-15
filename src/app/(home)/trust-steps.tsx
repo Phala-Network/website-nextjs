@@ -123,7 +123,7 @@ export default function TrustSteps() {
       <section className="container">
         <div className="grid grid-cols-1 lg:grid-cols-[30rem_1fr] gap-16 xl:grid-cols-[35rem_1fr]">
           <div className="px-4 sm:px-8 lg:pl-16">
-            <h2 className="font-bold text-2xl md:text-3xl xl:text-4xl">
+            <h2 className="font-semibold text-2xl md:text-3xl xl:text-4xl">
               When Your Users Trust AI
             </h2>
             <p className="mt-4 text-muted-foreground text-lg md:text-xl font-medium">
