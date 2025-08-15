@@ -2,6 +2,7 @@
 
 import {
   FaDiscord,
+  FaLinkedin,
   FaRss,
   FaTelegram,
   FaXTwitter,
@@ -100,6 +101,11 @@ const socialLinks = [
     name: 'YouTube',
     icon: FaYoutube,
     href: 'https://www.youtube.com/@PhalaNetwork',
+  },
+  {
+    name: 'LinkedIn',
+    icon: FaLinkedin,
+    href: 'https://www.linkedin.com/company/phala-network',
   },
   { name: 'RSS', icon: FaRss, href: '/rss.xml' },
 ]
