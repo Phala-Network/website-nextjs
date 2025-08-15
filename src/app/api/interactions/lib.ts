@@ -5,12 +5,7 @@ import * as R from 'ramda'
 
 import { env } from '@/env'
 import attempt from '@/lib/attempt-promise'
-import {
-  clearPagesByPropertiesCache,
-  clearQueryDatabaseCache,
-  notion,
-  queryDatabase,
-} from '@/lib/notion-client'
+import { notion, queryDatabase } from '@/lib/notion-client'
 import { generateSlug } from '@/lib/post'
 
 export const verify = async (
@@ -107,13 +102,6 @@ export const adminPublishPost = async (
   if (!result) {
     return response(`Error: Failed to update page`)
   }
-
-  await Promise.allSettled([
-    clearQueryDatabaseCache(),
-    clearPagesByPropertiesCache({
-      'Custom URL': slug,
-    }),
-  ])
 
   try {
     const encodedSlug = encodeURIComponent(slug.replace(/^\//, ''))

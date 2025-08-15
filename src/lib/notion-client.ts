@@ -58,7 +58,9 @@ export function isMediumUrl(url: string): boolean {
   return regex.test(url)
 }
 
-export async function getParsedPage(page_id: string): Promise<ParsedPage | null> {
+export async function getParsedPage(
+  page_id: string,
+): Promise<ParsedPage | null> {
   const page = await notion.pages.retrieve({ page_id })
   if (!isFullPage(page)) {
     console.warn('Page is not a full page.')
@@ -246,51 +248,6 @@ interface IPaginatedList<T> {
   results: T[]
   next_cursor: string | null
   has_more: boolean
-}
-
-export async function clearPagesByPropertiesCache(
-  // biome-ignore lint/suspicious/noExplicitAny: any
-  properties: Record<string, any>,
-): Promise<void> {
-  const { NOTION_BACKEND_PREFIX, NOTION_POSTS_DATABASE_ID } = env
-  const response = await fetch(
-    `${NOTION_BACKEND_PREFIX}/blog/cache/clear-pages-by-properties`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        database_id: NOTION_POSTS_DATABASE_ID,
-        properties,
-      }),
-    },
-  )
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to clear pages by properties cache: ${response.status} ${response.statusText}`,
-    )
-  }
-}
-
-export async function clearQueryDatabaseCache(): Promise<void> {
-  const { NOTION_BACKEND_PREFIX, NOTION_POSTS_DATABASE_ID } = env
-  if (!NOTION_BACKEND_PREFIX || !NOTION_POSTS_DATABASE_ID) {
-    throw new Error('Not configured')
-  }
-  const response = await fetch(
-    `${NOTION_BACKEND_PREFIX}/blog/cache/clear-query-database`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ database_id: NOTION_POSTS_DATABASE_ID }),
-    },
-  )
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to clear query database cache: ${response.status} ${response.statusText}`,
-    )
-  }
 }
 
 async function* iteratePaginatedWithRetries<
