@@ -55,6 +55,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "discord-interactions": "^4.3.0",
+    "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "feed": "^4.2.2",
     "input-otp": "^1.4.2",
@@ -84,6 +85,7 @@
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.12",
+    "tw-animate-css": "^1.3.6",
     "vaul": "^1.1.2",
     "zod": "^4.0.17"
   },
