@@ -31,7 +31,7 @@ export const adminPublishPost = async (
   if (!DISCORD_APP_ID || !DISCORD_TOKEN) {
     throw new Error('Not configured')
   }
-  const response = (message: string) => {
+  const response = (message: string) =>
     fetch(
       `https://discord.com/api/v10/webhooks/${DISCORD_APP_ID}/${interactionToken}/messages/@original`,
       {
@@ -40,12 +40,10 @@ export const adminPublishPost = async (
           Authorization: `Bot ${DISCORD_TOKEN}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          content: message,
-        }),
+        body: JSON.stringify({ content: message }),
       },
     )
-  }
+
   const page = await notion.pages.retrieve({ page_id: pageId })
 
   if (!isFullPage(page)) {
