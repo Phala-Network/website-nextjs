@@ -1,4 +1,4 @@
-import { revalidatePath } from 'next/cache'
+import { after } from 'next/server'
 import crypto from 'node:crypto'
 
 import { env } from '@/env'
@@ -13,7 +13,7 @@ interface VercelWebhookPayload {
   }
 }
 
-async function fetchRecentPostSlugs(limit = 200): Promise<string[]> {
+async function fetchRecentPostPaths(limit = 200): Promise<string[]> {
   try {
     const posts = await getRecentPosts(limit)
     return posts.map((post) => `/posts${post.slug}`)
@@ -23,7 +23,7 @@ async function fetchRecentPostSlugs(limit = 200): Promise<string[]> {
   }
 }
 
-async function fetchAllTagSlugs(): Promise<string[]> {
+async function fetchAllTagPaths(): Promise<string[]> {
   try {
     const tags = await retrieveTags()
     return tags.map((tag) => `/tags/${encodeURIComponent(tag)}`)
@@ -35,6 +35,38 @@ async function fetchAllTagSlugs(): Promise<string[]> {
 
 function sha1(data: Buffer, secret: string): string {
   return crypto.createHmac('sha1', secret).update(data).digest('hex')
+}
+
+async function warmUpUrls(
+  baseUrl: string,
+  paths: string[],
+): Promise<{ successful: number; failed: number }> {
+  const urls = paths.map((path) => `${baseUrl}${path}`)
+
+  const results = await Promise.allSettled(
+    urls.map((url) =>
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'User-Agent': 'ISR-Warmup-Bot/1.0',
+        },
+        signal: AbortSignal.timeout(30000),
+      }),
+    ),
+  )
+
+  let successful = 0
+  let failed = 0
+
+  results.forEach((result) => {
+    if (result.status === 'fulfilled' && result.value.ok) {
+      successful++
+    } else {
+      failed++
+    }
+  })
+
+  return { successful, failed }
 }
 
 export async function POST(request: Request) {
@@ -57,7 +89,6 @@ export async function POST(request: Request) {
 
   const json: VercelWebhookPayload = JSON.parse(rawBodyBuffer.toString('utf-8'))
 
-  // Only process deployment success events for production
   if (
     json.type !== 'deployment.promoted' ||
     json.payload.project.id !== VERCEL_PROJECT_ID
@@ -65,44 +96,63 @@ export async function POST(request: Request) {
     return new Response('Skipping')
   }
 
-  console.log('Starting ISR revalidation for production deployment')
+  // Run warm-up asynchronously after response
+  after(async () => {
+    console.log('Starting ISR warm-up for production deployment')
+    try {
+      const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
-  try {
-    // Revalidate blog page
-    revalidatePath('/blog')
+      // Get all paths to warm up
+      const [postPaths, tagPaths] = await Promise.all([
+        fetchRecentPostPaths(200),
+        fetchAllTagPaths(),
+      ])
 
-    // Fetch and revalidate recent posts
-    const postSlugs = await fetchRecentPostSlugs(200)
-    for (const slug of postSlugs) {
-      revalidatePath(slug)
+      console.log(
+        `Warming up ${postPaths.length} posts, ${tagPaths.length} tags, and 1 blog page`,
+      )
+
+      // Warm up all URLs in parallel
+      const [blogResult, postResults, tagResults] = await Promise.allSettled([
+        warmUpUrls(baseUrl, ['/blog']),
+        warmUpUrls(baseUrl, postPaths),
+        warmUpUrls(baseUrl, tagPaths),
+      ])
+
+      const summary = {
+        blog: {
+          successful:
+            blogResult.status === 'fulfilled' ? blogResult.value.successful : 0,
+          failed:
+            blogResult.status === 'fulfilled' ? blogResult.value.failed : 1,
+        },
+        posts: {
+          total: postPaths.length,
+          successful:
+            postResults.status === 'fulfilled'
+              ? postResults.value.successful
+              : 0,
+          failed:
+            postResults.status === 'fulfilled'
+              ? postResults.value.failed
+              : postPaths.length,
+        },
+        tags: {
+          total: tagPaths.length,
+          successful:
+            tagResults.status === 'fulfilled' ? tagResults.value.successful : 0,
+          failed:
+            tagResults.status === 'fulfilled'
+              ? tagResults.value.failed
+              : tagPaths.length,
+        },
+      }
+
+      console.log('ISR warm-up completed:', summary)
+    } catch (error) {
+      console.error('Error during ISR warm-up:', error)
     }
+  })
 
-    // Fetch and revalidate all tag pages
-    const tagSlugs = await fetchAllTagSlugs()
-    for (const slug of tagSlugs) {
-      revalidatePath(slug)
-    }
-
-    const summary = {
-      blog: 'revalidated',
-      posts: {
-        total: postSlugs.length,
-        revalidated: postSlugs.length,
-      },
-      tags: {
-        total: tagSlugs.length,
-        revalidated: tagSlugs.length,
-      },
-    }
-
-    console.log('ISR revalidation completed:', summary)
-
-    return Response.json('Webhook received')
-  } catch (error) {
-    console.error('Error during ISR revalidation:', error)
-    return Response.json(
-      { error: 'Internal server error during revalidation' },
-      { status: 500 },
-    )
-  }
+  return Response.json({ message: 'Webhook received, warm-up started' })
 }
