@@ -1,44 +1,13 @@
 import type { MetadataRoute } from 'next'
 
 import { env } from '@/env'
-import { queryDatabase } from '@/lib/notion-client'
-import { retrieveTags } from '@/lib/post'
+import { getRecentPosts, retrieveTags } from '@/lib/post'
 
 const WEBSITE_URL = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
-async function retrievePosts() {
-  const { pages } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          status: {
-            equals: 'Published',
-          },
-        },
-        {
-          property: 'Post Type',
-          select: {
-            equals: 'Post',
-          },
-        },
-      ],
-    },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 100,
-  })
-  return pages
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const tags = await retrieveTags()
-  const posts = await retrievePosts()
+  const posts = await getRecentPosts(200)
 
   const staticPages: MetadataRoute.Sitemap = [
     {
