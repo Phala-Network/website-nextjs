@@ -1,24 +1,10 @@
 import type { MetadataRoute } from 'next'
-import * as R from 'ramda'
 
 import { env } from '@/env'
-import { notion, queryDatabase } from '@/lib/notion-client'
+import { queryDatabase } from '@/lib/notion-client'
+import { retrieveTags } from '@/lib/post'
 
 const WEBSITE_URL = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
-
-async function retrieveTags() {
-  const database = await notion.databases.retrieve({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-  })
-  const tags = R.without(
-    ['Changelog'],
-    R.map(
-      R.prop('name'),
-      R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database),
-    ),
-  )
-  return tags
-}
 
 async function retrievePosts() {
   const { pages } = await queryDatabase({

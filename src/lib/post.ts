@@ -1,11 +1,13 @@
 import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import * as R from 'ramda'
 
 import { env } from '@/env'
 import {
   getParsedPage,
   getParsedPagesByProperties,
+  notion,
   type ParsedListPage,
   type ParsedPage,
   queryDatabase,
@@ -117,6 +119,7 @@ export async function getPostById(id: string): Promise<ParsedPage> {
 }
 
 export async function getRecentPosts(
+  size: number = 3,
   excludeSlug?: string,
 ): Promise<ParsedListPage[]> {
   const { pages } = await queryDatabase({
@@ -128,7 +131,7 @@ export async function getRecentPosts(
         direction: 'descending',
       },
     ],
-    page_size: 3,
+    page_size: size,
   })
 
   return pages
@@ -157,6 +160,20 @@ export async function getSimilarPosts(
   })
 
   return pages
+}
+
+export async function retrieveTags(): Promise<string[]> {
+  const database = await notion.databases.retrieve({
+    database_id: env.NOTION_POSTS_DATABASE_ID,
+  })
+  const tags = R.without(
+    ['Changelog', 'Pinned', 'not-listed'],
+    R.map(
+      R.prop('name'),
+      R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database),
+    ),
+  )
+  return tags
 }
 
 export async function getNavigationPosts(

@@ -12,7 +12,7 @@
       "!**/*.test.js",
       "**/special.test.js",
       "!test",
-      "!**/components/ui/**"
+      "!**/components/ui"
     ]
   },
   "formatter": {
@@ -50,7 +50,12 @@
         "organizeImports": {
           "level": "on",
           "options": {
-            "groups": [":PACKAGE:", ":BLANK_LINE:", "**"]
+            "groups": [
+              ":PACKAGE:",
+              ":PACKAGE_WITH_PROTOCOL:",
+              ":BLANK_LINE:",
+              "**"
+            ]
           }
         }
       }
