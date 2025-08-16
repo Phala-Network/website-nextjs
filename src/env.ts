@@ -20,6 +20,9 @@ export const env = createEnv({
     DISCORD_PUBLIC_KEY: z.string().optional(),
     DISCORD_TOKEN: z.string().optional(),
     DISCORD_APP_ID: z.string().optional(),
+
+    VERCEL_WEBHOOK_SECRET: z.string().optional(),
+    VERCEL_PROJECT_ID: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().optional(),
