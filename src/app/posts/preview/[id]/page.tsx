@@ -32,7 +32,7 @@ export default async function PostPreviewPage({ params }: Props) {
   const { id } = await params
   const page = await getPostById(id)
 
-  const recentPages = getRecentPosts(page.id)
+  const recentPages = getRecentPosts(3, page.slug)
   const similarPages = getSimilarPosts(page)
   const navigation = getNavigationPosts(page)
 

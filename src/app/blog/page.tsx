@@ -1,30 +1,16 @@
 import type { Metadata } from 'next'
-import * as R from 'ramda'
 import { BiRss } from 'react-icons/bi'
 
 import TagSearch from '@/components/TagSearch'
 import { Button } from '@/components/ui/button'
 import { env } from '@/env'
-import { notion, queryDatabase } from '@/lib/notion-client'
+import { queryDatabase } from '@/lib/notion-client'
+import { retrieveTags } from '@/lib/post'
 import { cn } from '@/lib/utils'
 import Banners from './banner'
 import List from './list'
 
 export const revalidate = 7200
-
-async function retrieveTags() {
-  const database = await notion.databases.retrieve({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-  })
-  const tags = R.without(
-    ['Changelog', 'Pinned'],
-    R.map(
-      R.prop('name'),
-      R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database),
-    ),
-  )
-  return tags
-}
 
 async function getBlogData() {
   const tags = await retrieveTags()
