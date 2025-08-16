@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import * as R from 'ramda'
 
 import {
   Breadcrumb,
@@ -10,7 +9,8 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { env } from '@/env'
-import { notion, queryDatabase } from '@/lib/notion-client'
+import { queryDatabase } from '@/lib/notion-client'
+import { retrieveTags } from '@/lib/post'
 import TagPageClient from './tag-page-client'
 
 export const revalidate = 7200
@@ -61,20 +61,6 @@ async function getTagData(slug: string) {
     initialPages: pages,
     nextCursor: next_cursor || '',
   }
-}
-
-async function retrieveTags() {
-  const database = await notion.databases.retrieve({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-  })
-  const tags = R.without(
-    ['Changelog', 'Pinned'],
-    R.map(
-      R.prop('name'),
-      R.pathOr([], ['properties', 'Tags', 'multi_select', 'options'], database),
-    ),
-  )
-  return tags
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
