@@ -37,7 +37,7 @@ export default async function PostPreviewPage({ params }: Props) {
   const navigation = getNavigationPosts(page)
 
   return (
-    <div className="min-h-screen py-24 max-w-7xl mx-auto">
+    <div className="min-h-screen py-12 md:py-24 max-w-7xl mx-auto">
       <div className="container">
         {/* Preview Banner */}
         <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-md">

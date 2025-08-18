@@ -44,7 +44,7 @@ export default async function PostPage({ params }: Props) {
   const navigation = getNavigationPosts(page)
 
   return (
-    <div className="min-h-screen py-24 max-w-7xl mx-auto">
+    <div className="min-h-screen py-12 md:py-24 max-w-7xl mx-auto">
       <div className="container">
         <Post url={baseUrl} page={page} />
 

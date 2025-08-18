@@ -102,7 +102,7 @@ export default async function BlogPage() {
 
   return (
     <div className="min-h-screen">
-      <section className="py-32 max-w-7xl mx-auto">
+      <section className="py-12 md:py-32 max-w-7xl mx-auto">
         <div className="container">
           <div className="mb-8 md:mb-14 lg:mb-16">
             <div className="flex items-start justify-between gap-8">
