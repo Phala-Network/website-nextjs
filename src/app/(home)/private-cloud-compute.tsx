@@ -1,6 +1,7 @@
 'use client'
 import Lottie from 'lottie-react'
 import { ChevronRight, Globe, Shield, Zap } from 'lucide-react'
+import { getImageProps } from 'next/image'
 
 import {
   AnimatedSpan,
@@ -9,6 +10,7 @@ import {
 } from '@/components/magicui/terminal'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { getBackgroundImage } from '@/lib/image'
 import { cn } from '@/lib/utils'
 import animationData from './deploy-animation.json'
 
@@ -40,6 +42,33 @@ const tabsData = [
 ]
 
 export default function PrivateCloudCompute() {
+  // Get optimized background images
+  const templatesImage = getImageProps({
+    alt: '',
+    width: 762,
+    height: 433,
+    src: '/home/templates.png',
+  })
+  const trustCenterImage = getImageProps({
+    alt: '',
+    width: 535,
+    height: 434,
+    src: '/home/trust-center.png',
+  })
+  const dstackBgImage = getImageProps({
+    alt: '',
+    width: 530,
+    height: 490,
+    src: '/home/dstack-bg.png',
+  })
+
+  const templatesBackgroundImage = getBackgroundImage(
+    templatesImage.props.srcSet,
+  )
+  const trustCenterBackgroundImage = getBackgroundImage(
+    trustCenterImage.props.srcSet,
+  )
+  const dstackBackgroundImage = getBackgroundImage(dstackBgImage.props.srcSet)
   return (
     <section className="py-24 container">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
@@ -241,7 +270,10 @@ export default function PrivateCloudCompute() {
                 </h4>
 
                 <div className="absolute top-2/5 left-6 xl:left-8 p-3 bg-primary/50 rounded-3xl h-full">
-                  <div className="bg-background h-full rounded-2xl aspect-video bg-contain bg-no-repeat bg-top-left bg-[url('/home/templates.png')] border"></div>
+                  <div
+                    className="bg-background h-full rounded-2xl aspect-video bg-contain bg-no-repeat bg-top-left border"
+                    style={{ backgroundImage: templatesBackgroundImage }}
+                  ></div>
                 </div>
               </a>
             </div>
@@ -261,7 +293,10 @@ export default function PrivateCloudCompute() {
                   in TEE trust center.
                 </h4>
                 <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-[#98DCFF]/50 rounded-3xl h-full">
-                  <div className="bg-background w-full h-full rounded-2xl bg-contain bg-no-repeat bg-top-left bg-[url('/home/trust-center.png')] border"></div>
+                  <div
+                    className="bg-background w-full h-full rounded-2xl bg-contain bg-no-repeat bg-top-left border"
+                    style={{ backgroundImage: trustCenterBackgroundImage }}
+                  ></div>
                 </div>
               </a>
               <a
@@ -298,7 +333,8 @@ export default function PrivateCloudCompute() {
                 href="/dstack"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block h-110 rounded-lg bg-card px-6 py-8 relative overflow-hidden bg-[url('/home/dstack-bg.png')] bg-[length:210px_auto] bg-no-repeat bg-bottom-right"
+                className="block h-110 rounded-lg bg-card px-6 py-8 relative overflow-hidden bg-[length:210px_auto] bg-no-repeat bg-bottom-right"
+                style={{ backgroundImage: dstackBackgroundImage }}
               >
                 <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                   <span className="text-foreground">
