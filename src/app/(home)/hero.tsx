@@ -1,14 +1,11 @@
 import { getImageProps } from 'next/image'
 import Link from 'next/link'
-import ReactDOM from 'react-dom'
 
 import { Button } from '@/components/ui/button'
 import { getBackgroundImage } from '@/lib/image'
 import { cn } from '@/lib/utils'
 
 export default function Hero() {
-  ReactDOM.preload('/home/hero-bg.png', { as: 'image' })
-
   const {
     props: { srcSet },
   } = getImageProps({
