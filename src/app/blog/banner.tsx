@@ -47,53 +47,51 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
         <CarouselContent>
           {pages.map((page) => (
             <CarouselItem key={page.id}>
-              <div className="p-2">
-                <article
+              <article
+                className={cn(
+                  'w-full bg-muted rounded-2xl border',
+                  'grid grid-cols-1 lg:grid-cols-2',
+                )}
+              >
+                <div className="p-2">
+                  <div className={cn('rounded-sm overflow-hidden')}>
+                    <a href={`/posts${page.slug}`}>
+                      {/** biome-ignore lint/performance/noImgElement: no cdn */}
+                      <img
+                        className="w-full aspect-872/487"
+                        src={`https://img0.phala.world/cover/1744x974/${coverRemap[page.id] || page.id}.jpg`}
+                        alt={page.title}
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div
                   className={cn(
-                    'w-full bg-muted rounded-2xl border',
-                    'grid grid-cols-1 lg:grid-cols-2',
+                    'flex flex-col justify-between',
+                    'p-8 min-h-60',
                   )}
                 >
-                  <div className="p-2">
-                    <div className={cn('rounded-sm overflow-hidden')}>
-                      <a href={`/posts${page.slug}`}>
-                        {/** biome-ignore lint/performance/noImgElement: no cdn */}
-                        <img
-                          className="w-full aspect-872/487"
-                          src={`https://img0.phala.world/cover/1744x974/${coverRemap[page.id] || page.id}.jpg`}
-                          alt={page.title}
-                        />
-                      </a>
+                  <div className="flex flex-col gap-y-4">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {page.tags.map((tag, i) => (
+                        <div key={`tag-${page.id}-${i}`}>
+                          <TagLink href={`/tags/${tag}`}>{tag}</TagLink>
+                        </div>
+                      ))}
                     </div>
+                    <h2 className="font-bold text-2xl">
+                      <a href={`/posts${page.slug}`}>{page.title}</a>
+                    </h2>
                   </div>
-                  <div
-                    className={cn(
-                      'flex flex-col justify-between',
-                      'p-8 min-h-60',
-                    )}
-                  >
-                    <div className="flex flex-col gap-y-4">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        {page.tags.map((tag, i) => (
-                          <div key={`tag-${page.id}-${i}`}>
-                            <TagLink href={`/tags/${tag}`}>{tag}</TagLink>
-                          </div>
-                        ))}
-                      </div>
-                      <h2 className="font-bold text-2xl">
-                        <a href={`/posts${page.slug}`}>{page.title}</a>
-                      </h2>
+                  {page.publishedDate && (
+                    <div className="text-sm">
+                      <p suppressHydrationWarning>
+                        {format(new Date(page.publishedDate), 'MMM dd, yyyy')}
+                      </p>
                     </div>
-                    {page.publishedDate && (
-                      <div className="text-sm">
-                        <p suppressHydrationWarning>
-                          {format(new Date(page.publishedDate), 'MMM dd, yyyy')}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </article>
-              </div>
+                  )}
+                </div>
+              </article>
             </CarouselItem>
           ))}
         </CarouselContent>
