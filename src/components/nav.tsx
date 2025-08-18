@@ -192,7 +192,7 @@ const menu = [
   },
 ]
 
-const Navbar1 = () => {
+const Navbar = () => {
   const { scrollY } = useScroll()
   const [hasScrolled, setHasScrolled] = useState(false)
 
@@ -408,4 +408,4 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
   )
 }
 
-export default Navbar1
+export default Navbar

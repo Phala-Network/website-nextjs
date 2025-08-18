@@ -1,20 +1,33 @@
+import { getImageProps } from 'next/image'
 import Link from 'next/link'
 import ReactDOM from 'react-dom'
 
 import { Button } from '@/components/ui/button'
+import { getBackgroundImage } from '@/lib/image'
 import { cn } from '@/lib/utils'
 
 export default function Hero() {
   ReactDOM.preload('/home/hero-bg.png', { as: 'image' })
+
+  const {
+    props: { srcSet },
+  } = getImageProps({
+    alt: '',
+    width: 984,
+    height: 800,
+    src: '/home/hero-bg.png',
+  })
+  const backgroundImage = getBackgroundImage(srcSet)
   return (
     <div className="bg-background">
       <div
         className={cn(
-          "max-w-[120rem] mx-auto bg-[url('/home/hero-bg.png')]",
+          'max-w-[120rem] mx-auto',
           'bg-right-bottom bg-no-repeat relative',
           'max-sm:pb-[70%] sm:h-[800px] xl:h-[680px]',
           'bg-[length:120%_auto] sm:bg-[length:600px_auto] md:bg-[length:680px_auto] lg:bg-[length:800px_auto] xl:bg-[length:984px_auto]',
         )}
+        style={{ backgroundImage }}
       >
         <div className="container -mt-16">
           <section className="pt-16">
