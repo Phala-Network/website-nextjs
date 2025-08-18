@@ -48,3 +48,18 @@ export function buildProxyImageUrl(
   // return `https://img0.phala.world/notion/f:jpeg/plain/https://img0.phala.world/files/${source.id}.jpg`
   return `https://img0.phala.world/files/${source.id}.jpg`
 }
+
+/**
+ * Converts Next.js getImageProps srcSet to CSS image-set() format
+ * for use with background-image property
+ */
+export function getBackgroundImage(srcSet = '') {
+  const imageSet = srcSet
+    .split(', ')
+    .map((str) => {
+      const [url, dpi] = str.split(' ')
+      return `url("${url}") ${dpi}`
+    })
+    .join(', ')
+  return `image-set(${imageSet})`
+}

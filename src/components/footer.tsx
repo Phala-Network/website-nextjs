@@ -129,10 +129,10 @@ const SiteFooter: React.FC = () => {
 
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-muted">
-      <div className="container">
+      <div className="max-w-(--breakpoint-2xl) mx-auto px-4 sm:px-6">
         {/* Logo and newsletter section */}
         <div className="mb-10 flex flex-col items-start justify-between gap-10 border-b pb-10 sm:mb-16 sm:pb-12 lg:flex-row">
-          <div className="w-full max-w-full md:max-w-2xs lg:max-w-sm">
+          <div className="w-full max-w-sm">
             <Logo url="/" className="mb-6">
               <LogoImageDesktop src="/home/logo.svg" alt="Phala" />
               <LogoImageMobile src="/home/logo.svg" alt="Phala" />
@@ -150,7 +150,6 @@ const SiteFooter: React.FC = () => {
                 <input
                   type="email"
                   name="email"
-                  id="newsletter-email"
                   autoComplete="email"
                   placeholder="Your email"
                   disabled={isLoading}
@@ -211,44 +210,60 @@ const SiteFooter: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="order-1 mb-6 flex w-full items-center justify-center gap-2 sm:gap-4 md:gap-6 md:justify-start md:order-2 md:mb-0 md:w-auto">
+        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <div className="order-1 flex items-center justify-center gap-2 md:gap-4 lg:gap-6 md:justify-start sm:order-2 shrink-0">
             {socialLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 aria-label={`Visit our ${link.name} page`}
-                className="rounded-full p-3 text-muted-foreground transition-all duration-200 hover:bg-accent hover:text-foreground active:bg-accent/70"
+                className="rounded-full p-3 text-muted-foreground transition duration-200 hover:bg-accent hover:text-foreground active:bg-accent/70"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <link.icon className="h-6 w-6 sm:h-5 sm:w-5" />
+                <link.icon className="size-6" />
               </a>
             ))}
           </div>
 
-          {/* Copyright - Below on mobile, left on desktop */}
-          <p className="order-2 text-center text-sm text-muted-foreground sm:text-left md:order-1">
-            © {new Date().getFullYear()} Phala. All rights reserved.{' '}
-            <a
-              href="/privacy"
-              className="text-foreground underline underline-offset-4 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Privacy
-            </a>
-            {' • '}
-            <a
-              href="/terms"
-              className="text-foreground underline underline-offset-4 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Terms
-            </a>
-          </p>
+          {/* Copyright and Status - Below on mobile, left on desktop */}
+          <div className="order-2 sm:order-1">
+            <div className="h-8 w-50 flex items-center justify-center">
+              <iframe
+                title="Phala Status"
+                className="scheme-light"
+                src="https://status.phala.network/badge?theme=light"
+                loading="lazy"
+                width="190"
+                height="30"
+              />
+            </div>
+          </div>
         </div>
+
+        <p
+          suppressHydrationWarning
+          className="mt-8 sm:mt-12 max-sm:text-center sm:pl-3 text-sm"
+        >
+          © {new Date().getFullYear()} Phala. All rights reserved.{' '}
+          <a
+            href="/privacy"
+            className="text-foreground underline underline-offset-4 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy
+          </a>
+          {' • '}
+          <a
+            href="/terms"
+            className="text-foreground underline underline-offset-4 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Terms
+          </a>
+        </p>
       </div>
     </section>
   )
