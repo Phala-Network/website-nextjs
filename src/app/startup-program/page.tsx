@@ -1,6 +1,8 @@
 'use client'
 import Cal from '@calcom/embed-react'
+import { getImageProps } from 'next/image'
 
+import { getBackgroundImage } from '@/lib/image'
 import { cn } from '@/lib/utils'
 import {
   OpenStartupProgramDialogButton,
@@ -9,6 +11,15 @@ import {
 import { Testimonial } from './testimonial'
 
 export default function StartupProgramPage() {
+  const {
+    props: { srcSet },
+  } = getImageProps({
+    alt: '',
+    width: 897,
+    height: 863,
+    src: '/home/cta-bg.png',
+  })
+  const backgroundImage = getBackgroundImage(srcSet)
   return (
     <div className="w-full min-h-screen">
       <div className="w-full bg-background">
@@ -385,12 +396,13 @@ export default function StartupProgramPage() {
           <div
             className={cn(
               'overflow-hidden rounded-lg relative bg-muted shadow',
-              'bg-[url("/home/cta-bg.png")] bg-[length:300px_auto] sm:bg-[length:400px_auto] md:bg-[length:auto_440px] bg-right-top bg-no-repeat',
+              'bg-[length:300px_auto] sm:bg-[length:400px_auto] md:bg-[length:auto_440px] bg-right-top bg-no-repeat',
               'before:absolute',
               'max-md:before:left-0 max-md:before:top-[170px] max-md:before:w-full max-md:before:h-[240px]',
               'md:before:top-0 md:before:right-[290px] md:before:h-full md:before:w-[240px]',
               'before:bg-gradient-to-t before:from-muted max-md:before:via-muted/80 before:to-transparent md:before:bg-gradient-to-r',
             )}
+            style={{ backgroundImage }}
           >
             <div className="relative w-full max-md:mt-[200px]">
               <div className="w-full p-8 lg:px-16 lg:h-80 flex flex-col">

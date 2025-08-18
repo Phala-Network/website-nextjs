@@ -1,9 +1,11 @@
 'use client'
 
 import Link, { type LinkProps } from 'next/link'
+import { getImageProps } from 'next/image'
 import { FaArrowRight } from 'react-icons/fa6'
 
 import type { SuccessStory } from '@/data/success-stories-data'
+import { getBackgroundImage } from '@/lib/image'
 import { cn } from '@/lib/utils'
 
 interface SuccessStoryCardProps
@@ -17,21 +19,30 @@ export const SuccessStoryCard = ({
   story,
   className,
   ...props
-}: SuccessStoryCardProps) => (
-  <Link
-    href={`/success-stories/${story.slug}`}
-    className={cn(
-      'block',
-      story.bgColor,
-      story.isDark && 'dark',
-      'text-foreground relative overflow-hidden rounded-xl aspect-400/560 bg-cover bg-muted bg-left-bottom p-6 flex flex-col',
-      className,
-    )}
-    style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('${story.bgImage}')`,
-    }}
-    {...props}
-  >
+}: SuccessStoryCardProps) => {
+  const {
+    props: { srcSet },
+  } = getImageProps({ 
+    alt: '', 
+    width: 400, 
+    height: 560, 
+    src: story.bgImage 
+  })
+  const backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), ${getBackgroundImage(srcSet)}`
+
+  return (
+    <Link
+      href={`/success-stories/${story.slug}`}
+      className={cn(
+        'block',
+        story.bgColor,
+        story.isDark && 'dark',
+        'text-foreground relative overflow-hidden rounded-xl aspect-400/560 bg-cover bg-muted bg-left-bottom p-6 flex flex-col',
+        className,
+      )}
+      style={{ backgroundImage }}
+      {...props}
+    >
     <div className="flex items-start mb-auto">
       <div className="font-semibold text-xl md:text-2xl whitespace-pre-line flex-1">
         {story.category}
@@ -56,5 +67,6 @@ export const SuccessStoryCard = ({
         </div>
       ))}
     </div>
-  </Link>
-)
+    </Link>
+  )
+}
