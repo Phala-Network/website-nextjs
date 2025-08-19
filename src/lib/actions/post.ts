@@ -1,13 +1,16 @@
+'use server'
+
 import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
 
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
+import type { GetPostsParams, GetPostsResult } from '@/lib/post'
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const cursor = searchParams.get('cursor')
-  const tag = searchParams.get('tag')
-  const page_size = searchParams.get('page_size') || 18
+export async function getPosts(
+  params: GetPostsParams = {},
+): Promise<GetPostsResult> {
+  const { cursor, tag, page_size = 18 } = params
+
   const filter: QueryDatabaseParameters['filter'] = {
     and: [
       {
@@ -24,14 +27,16 @@ export async function GET(request: Request) {
       },
     ],
   }
+
   if (tag) {
     filter.and.push({
       property: 'Tags',
       multi_select: {
-        contains: tag as string,
+        contains: tag,
       },
     })
   }
+
   const { next_cursor, pages } = await queryDatabase({
     database_id: env.NOTION_POSTS_DATABASE_ID,
     filter,
@@ -41,11 +46,9 @@ export async function GET(request: Request) {
         direction: 'descending',
       },
     ],
-    page_size: page_size as number,
-    start_cursor: cursor as string,
+    page_size,
+    start_cursor: cursor || undefined,
   })
 
-  return new Response(JSON.stringify({ pages, next_cursor }), {
-    status: 200,
-  })
+  return { pages, next_cursor }
 }

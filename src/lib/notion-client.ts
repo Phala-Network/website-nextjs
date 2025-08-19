@@ -19,7 +19,7 @@ export const notion = new Client({
   auth: env.NOTION_TOKEN,
 })
 
-export const n2m = new NotionToMarkdown({
+const n2m = new NotionToMarkdown({
   notionClient: notion,
   config: {
     parseChildPages: false,

@@ -357,7 +357,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <a
+    <Link
       key={item.title}
       href={item.url}
       className="text-md font-semibold flex items-center gap-2"
@@ -368,7 +368,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
       {isExternalLink(item.url) && (
         <SquareArrowOutUpRight className="size-3 text-muted-foreground" />
       )}
-    </a>
+    </Link>
   )
 }
 
@@ -384,7 +384,7 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
   const isExternal = isExternalLink(item.url)
 
   return (
-    <a
+    <Link
       className="hover:bg-muted hover:text-accent-foreground flex select-none flex-row gap-4 rounded-md p-3 leading-none no-underline outline-none transition-colors"
       href={item.url}
       target={isExternal ? '_blank' : undefined}
@@ -404,7 +404,7 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
           </p>
         )}
       </div>
-    </a>
+    </Link>
   )
 }
 
