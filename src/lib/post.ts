@@ -14,6 +14,18 @@ import {
 } from '@/lib/notion-client'
 import { coverRemap } from './post-client'
 
+// Types for posts action
+export type GetPostsParams = {
+  cursor?: string
+  tag?: string
+  page_size?: number
+}
+
+export type GetPostsResult = {
+  pages: ParsedListPage[]
+  next_cursor: string | null
+}
+
 export function generateSlug(title: string): string {
   const sanitizedTitle = title.toLowerCase().replace(/[^\w\d\s]+/g, '')
   const slug = sanitizedTitle.replace(/\s+/g, '-')
@@ -54,7 +66,7 @@ export function getPostMetadata(
   }
 }
 
-export function getBaseFilter(excludeSlug?: string) {
+function getBaseFilter(excludeSlug?: string) {
   const filter: QueryDatabaseParameters['filter'] = {
     and: [
       {

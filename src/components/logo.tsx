@@ -79,11 +79,7 @@ const LogoBrandDownload = ({
 
 const Logo = ({ url, className, children, ...props }: LogoProps) => {
   return (
-    <a
-      href={url}
-      className={cn('flex max-h-8 items-center gap-2', className)}
-      {...props}
-    >
+    <a href={url} className={cn('max-h-8', className)} {...props}>
       {children}
     </a>
   )

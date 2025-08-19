@@ -1,5 +1,9 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
+import { startTransition, useActionState, useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import {
   FaDiscord,
   FaLinkedin,
@@ -10,7 +14,14 @@ import {
 } from 'react-icons/fa6'
 
 import { Logo, LogoImageDesktop, LogoImageMobile } from '@/components/logo'
-import { useSubscribe } from '@/hooks/useSubscribe'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { subscribe } from '@/lib/actions/subscribe'
+import {
+  type SubscribeFormData,
+  type SubscribeState,
+  subscribeSchema,
+} from '@/lib/subscribe'
 
 const navigation = [
   {
@@ -111,20 +122,36 @@ const socialLinks = [
 ]
 
 const SiteFooter: React.FC = () => {
-  const { onSubmit, isLoading, message, error, isSucceed, isError, dismiss } =
-    useSubscribe()
+  const initialState: SubscribeState = { message: '', isError: false }
+  const [state, formAction, isPending] = useActionState(subscribe, initialState)
+  const [showMessages, setShowMessages] = useState(true)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const email = formData.get('email') as string
-    onSubmit(email)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<SubscribeFormData>({
+    resolver: zodResolver(subscribeSchema),
+  })
+
+  useEffect(() => {
+    if (state.message && !state.isError) {
+      reset()
+      setShowMessages(true)
+    }
+  }, [state.message, state.isError, reset])
+
+  const resetState = () => {
+    setShowMessages(false)
   }
 
-  const handleInputChange = () => {
-    if (isSucceed || isError) {
-      dismiss()
-    }
+  const onSubmit = async (data: SubscribeFormData) => {
+    const formData = new FormData()
+    formData.append('email', data.email)
+    startTransition(() => {
+      formAction(formData)
+    })
   }
 
   return (
@@ -132,7 +159,7 @@ const SiteFooter: React.FC = () => {
       <div className="max-w-(--breakpoint-2xl) mx-auto px-4 sm:px-6">
         {/* Logo and newsletter section */}
         <div className="mb-10 flex flex-col items-start justify-between gap-10 border-b pb-10 sm:mb-16 sm:pb-12 lg:flex-row">
-          <div className="w-full max-w-sm">
+          <div className="w-full max-w-sm flex flex-col items-start">
             <Logo url="/" className="mb-6">
               <LogoImageDesktop src="/home/logo.svg" alt="Phala" />
               <LogoImageMobile src="/home/logo.svg" alt="Phala" />
@@ -145,37 +172,48 @@ const SiteFooter: React.FC = () => {
             <p className="mb-2 font-medium">Subscribe to our newsletter</p>
 
             {/* Newsletter subscription */}
-            <form onSubmit={handleSubmit} className="w-full max-w-md">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
               <div className="flex w-full gap-3">
-                <input
+                <Input
                   type="email"
-                  name="email"
                   autoComplete="email"
                   placeholder="Your email"
-                  disabled={isLoading}
-                  onChange={handleInputChange}
-                  className="flex h-10 flex-1 rounded-md border border-input bg-background px-4 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-sm"
+                  disabled={isPending}
+                  {...register('email', {
+                    onChange: resetState,
+                  })}
                 />
-                <button
+                <Button
                   type="submit"
-                  disabled={isLoading}
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary py-2 font-medium whitespace-nowrap text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 px-4 text-sm"
+                  disabled={isPending}
+                  className="w-[100px]"
                 >
-                  {isLoading ? 'Subscribing...' : 'Subscribe'}
-                </button>
+                  {isPending ? (
+                    <AiOutlineLoading3Quarters className="h-4 w-4 animate-spin" />
+                  ) : (
+                    'Subscribe'
+                  )}
+                </Button>
               </div>
 
-              {/* Success message */}
-              {isSucceed && (
-                <div className="mt-2 text-sm text-green-600 dark:text-green-400">
-                  {message}
+              {/* Validation error */}
+              {errors.email && (
+                <div className="mt-2 text-sm text-red-600 dark:text-red-400">
+                  {errors.email.message}
                 </div>
               )}
 
-              {/* Error message */}
-              {isError && (
+              {/* Success message */}
+              {state.message && !state.isError && showMessages && (
+                <div className="mt-2 text-sm text-green-600 dark:text-green-400">
+                  {state.message}
+                </div>
+              )}
+
+              {/* Server error message */}
+              {state.message && state.isError && showMessages && (
                 <div className="mt-2 text-sm text-red-600 dark:text-red-400">
-                  {error}
+                  {state.message}
                 </div>
               )}
             </form>
