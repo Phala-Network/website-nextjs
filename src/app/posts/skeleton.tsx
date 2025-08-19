@@ -2,7 +2,7 @@ import { FiClock, FiTag } from 'react-icons/fi'
 
 import { Skeleton } from '@/components/ui/skeleton'
 
-export function PostCardSkeleton() {
+function PostCardSkeleton() {
   return (
     <div className="block">
       <Skeleton className="h-6 w-3/4 mb-1" />

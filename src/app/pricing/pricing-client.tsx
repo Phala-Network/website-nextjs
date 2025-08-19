@@ -1,7 +1,6 @@
 'use client'
 
 import { Check } from 'lucide-react'
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -10,12 +9,6 @@ import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
-
-export const metadata: Metadata = {
-  title: 'Pricing',
-  description:
-    'Simple, transparent pricing. Pay as you go pricing for every scale. Only pay for what you use, billed by the hour.',
-}
 
 const professionalInstances = [
   {

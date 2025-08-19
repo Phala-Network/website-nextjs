@@ -1,10 +1,11 @@
 'use client'
 
 import { RefreshCcw } from 'lucide-react'
+import { useState, useTransition } from 'react'
 
 import PostCard from '@/components/post-card'
 import { Button } from '@/components/ui/button'
-import useQueryPosts from '@/hooks/useQueryPosts'
+import { getPosts } from '@/lib/actions/post'
 import type { ParsedListPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 
@@ -14,12 +15,23 @@ interface Props {
 }
 
 export default function List({ initialPages, nextCursor }: Props) {
-  const {
-    pages = [],
-    isLoading,
-    load,
-    hasMore,
-  } = useQueryPosts({ initialPages, initialCursor: nextCursor })
+  const [pages, setPages] = useState(initialPages)
+  const [cursor, setCursor] = useState(nextCursor)
+  const [isPending, startTransition] = useTransition()
+
+  const loadMore = () => {
+    startTransition(async () => {
+      try {
+        const result = await getPosts({ cursor })
+        startTransition(() => {
+          setPages([...pages, ...result.pages])
+          setCursor(result.next_cursor || '')
+        })
+      } catch (error) {
+        console.error('Failed to load more posts:', error)
+      }
+    })
+  }
 
   return (
     <>
@@ -31,17 +43,15 @@ export default function List({ initialPages, nextCursor }: Props) {
       <div
         className={cn('pt-20 pb-10 w-full flex items-center justify-center')}
       >
-        {hasMore ? (
+        {cursor ? (
           <Button
             variant="outline"
-            className={cn(isLoading ? 'opacity-75' : null)}
-            onClick={() => {
-              load()
-            }}
-            disabled={isLoading}
+            className={cn(isPending ? 'opacity-75' : null)}
+            onClick={loadMore}
+            disabled={isPending}
           >
             <RefreshCcw
-              className={cn('h-5 w-5', isLoading ? 'animate-spin' : '')}
+              className={cn('h-5 w-5', isPending ? 'animate-spin' : '')}
             />
             Load more
           </Button>

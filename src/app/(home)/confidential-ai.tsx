@@ -2,6 +2,7 @@
 
 import { ArrowLeft, ArrowRight, ChevronRight, CircleAlert } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -266,11 +267,11 @@ export default function ConfidentialAI() {
             </div>
           </div>
         </div>
-        <a
+        <Link
           href="/confidential-ai"
+          className="group relative overflow-hidden rounded-lg bg-card lg:col-span-3"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative overflow-hidden rounded-lg bg-card lg:col-span-3"
         >
           <Button
             variant="outline"
@@ -297,7 +298,7 @@ export default function ConfidentialAI() {
               On-Demand
             </h3>
           </div>
-        </a>
+        </Link>
         <div className="min-h-96 flex flex-col justify-between overflow-hidden rounded-lg bg-card p-8 lg:col-span-4 lg:p-12">
           <div className="mb-4 text-xs text-muted-foreground lg:text-base">
             PERFORMANCE VS PRIVACY
