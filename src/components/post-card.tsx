@@ -1,4 +1,5 @@
 import { format } from 'date-fns'
+import Link from 'next/link'
 
 import TagLink from '@/components/tag-link'
 import type { ParsedListPage } from '@/lib/notion-client'
@@ -20,7 +21,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
       )}
     >
       <div className={cn('rounded-sm overflow-hidden')}>
-        <a href={`/posts${page.slug}`}>
+        <Link href={`/posts${page.slug}`}>
           {page.cover ? (
             <img
               className="w-full aspect-412/230"
@@ -44,7 +45,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
               src="/blog/default_cover.jpg"
             />
           )}
-        </a>
+        </Link>
       </div>
       <div className="grow flex flex-col gap-y-4 justify-between p-5">
         <div className="flex flex-col gap-y-4">
@@ -56,7 +57,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
             ))}
           </div>
           <h2 className="font-bold text-xl break-all">
-            <a href={`/posts${page.slug}`}>{page.title}</a>
+            <Link href={`/posts${page.slug}`}>{page.title}</Link>
           </h2>
         </div>
         {page.publishedDate && (

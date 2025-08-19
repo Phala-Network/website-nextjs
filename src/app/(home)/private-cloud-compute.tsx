@@ -2,6 +2,7 @@
 import Lottie from 'lottie-react'
 import { ChevronRight, Globe, Shield, Zap } from 'lucide-react'
 import { getImageProps } from 'next/image'
+import Link from 'next/link'
 
 import {
   AnimatedSpan,
@@ -113,14 +114,14 @@ export default function PrivateCloudCompute() {
           </p>
 
           <Button variant="outline" asChild className="mt-8 lg:mt-auto">
-            <a
+            <Link
               href="/confidential-vm"
               target="_blank"
               rel="noopener noreferrer"
             >
               Learn more
               <ChevronRight className="ml-1 h-4" />
-            </a>
+            </Link>
           </Button>
         </div>
       </div>
@@ -329,12 +330,12 @@ export default function PrivateCloudCompute() {
                   </div>
                 </div>
               </a>
-              <a
+              <Link
                 href="/dstack"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="block h-110 rounded-lg bg-card px-6 py-8 relative overflow-hidden bg-[length:210px_auto] bg-no-repeat bg-bottom-right"
                 style={{ backgroundImage: dstackBackgroundImage }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                   <span className="text-foreground">
@@ -342,7 +343,7 @@ export default function PrivateCloudCompute() {
                   </span>{' '}
                   you can audit, fork, and customize.
                 </h4>
-              </a>
+              </Link>
             </div>
           </TabsContent>
           <TabsContent value="private">

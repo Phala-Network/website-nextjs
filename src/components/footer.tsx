@@ -1,6 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
 import { startTransition, useActionState, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
@@ -284,23 +285,23 @@ const SiteFooter: React.FC = () => {
           className="mt-8 sm:mt-12 max-sm:text-center sm:pl-3 text-sm"
         >
           © {new Date().getFullYear()} Phala. All rights reserved.{' '}
-          <a
+          <Link
             href="/privacy"
             className="text-foreground underline underline-offset-4 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
             Privacy
-          </a>
+          </Link>
           {' • '}
-          <a
+          <Link
             href="/terms"
             className="text-foreground underline underline-offset-4 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
             Terms
-          </a>
+          </Link>
         </p>
       </div>
     </section>

@@ -1,6 +1,7 @@
 'use client'
 
 import { format } from 'date-fns'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import TagLink from '@/components/tag-link'
@@ -55,14 +56,14 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
               >
                 <div className="p-2">
                   <div className={cn('rounded-sm overflow-hidden')}>
-                    <a href={`/posts${page.slug}`}>
+                    <Link href={`/posts${page.slug}`}>
                       {/** biome-ignore lint/performance/noImgElement: no cdn */}
                       <img
                         className="w-full aspect-872/487"
                         src={`https://img0.phala.world/cover/1744x974/${coverRemap[page.id] || page.id}.jpg`}
                         alt={page.title}
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div

@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react'
+import Link from 'next/link'
 
 import Form from './form'
 
@@ -56,14 +57,14 @@ const ContactPage = () => {
                       </a>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href="/pricing"
                         className="underline"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Pricing
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -79,23 +80,23 @@ const ContactPage = () => {
               </div>
               <p className="text-xs text-muted-foreground px-4">
                 By submitting this form, you agree to our{' '}
-                <a
+                <Link
                   href="/terms"
+                  className="underline"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline"
                 >
                   Terms of Service
-                </a>{' '}
+                </Link>{' '}
                 and{' '}
-                <a
+                <Link
                   href="/privacy"
+                  className="underline"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline"
                 >
                   Privacy Policy
-                </a>
+                </Link>
                 .
               </p>
             </div>
