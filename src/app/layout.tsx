@@ -1,10 +1,9 @@
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import Script from 'next/script'
 
 import Footer from '@/components/footer'
 import Nav from '@/components/nav'
-import ScrollToTop from '@/components/scroll-to-top'
 import { env } from '@/env'
 import fontVariables from '@/lib/fonts'
 import './globals.css'
@@ -55,34 +54,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={fontVariables}>
-      {env.NEXT_PUBLIC_GTM_ID && (
-        <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />
-      )}
       <body>
-        {env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){window.dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', '${env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
-              `}
-            </Script>
-          </>
-        )}
         <div className="pt-16">
           {children}
           <Footer />
         </div>
         <Nav />
-        <ScrollToTop />
       </body>
+      {env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />
+      )}
+      {env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
+      {/* Mava Widget */}
+      {/** biome-ignore lint/correctness/useUniqueElementIds: Mava Widget */}
+      <Script
+        defer
+        src="https://widget.mava.app"
+        id="MavaWebChat"
+        widget-version="v2"
+        enable-sdk="true"
+        data-token="b8c2c9f39e3203bdedc5b5cb6c3039f24b264eb838294d0c2c8bfac576c49668"
+      />
     </html>
   )
 }
