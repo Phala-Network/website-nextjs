@@ -74,7 +74,7 @@ const ForEnterprises = () => {
             <h2 className="text-3xl font-medium md:text-4xl">
               Build Your Own PCC
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-balance">
               Go beyond shared APIs. With our Confidential GPUs, you can deploy
               private, fully-audited AI clouds, tailored to your business or
               product. It's the same technology behind Apple's Private Compute

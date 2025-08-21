@@ -55,7 +55,7 @@ const ModelCard = ({ model }: ModelCardProps) => {
             </AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-semibold line-clamp-1">{model.name}</h3>
+            <h4 className="font-medium line-clamp-1">{model.name}</h4>
             <div className="flex items-center gap-2 mt-1">
               {model.verifiable && (
                 <Badge

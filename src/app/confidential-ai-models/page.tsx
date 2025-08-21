@@ -28,7 +28,7 @@ export default async function ConfidentialAiModelsPage() {
         <ModelsMarquee models={models} />
         <Benefits />
         <Integrate />
-        <ModelsList models={models.slice(0, 18)} />
+        <ModelsList models={models.slice(0, 12)} />
         <ForEnterprises />
         <Faq />
         <FinalCTA />
