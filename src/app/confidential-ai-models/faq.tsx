@@ -14,45 +14,40 @@ interface FaqItem {
 const faqItems: FaqItem[] = [
   {
     id: 'faq-1',
-    question: 'What is a FAQ?',
+    question: 'How does Confidential AI ensure my data is truly private?',
     answer:
-      'A FAQ is a list of frequently asked questions and answers on a particular topic.',
+      'We use Trusted Execution Environments (TEEs) that create cryptographically secure enclaves. Your data is encrypted and processed inside these hardware-protected environments where even we cannot access it. Each computation generates a cryptographic proof that you can verify independently.',
   },
   {
     id: 'faq-2',
-    question: 'What is the purpose of a FAQ?',
+    question: 'Is there any performance impact compared to regular AI APIs?',
     answer:
-      'The purpose of a FAQ is to provide answers to common questions and help users find the information they need quickly and easily.',
+      'Minimal performance impact. Our confidential computing infrastructure is optimized for speed while maintaining the highest security standards.',
   },
   {
     id: 'faq-3',
-    question: 'How do I create a FAQ?',
+    question:
+      'How difficult is it to integrate Confidential AI into my existing application?',
     answer:
-      'To create a FAQ, you need to compile a list of common questions and answers on a particular topic and organize them in a clear and easy-to-navigate format.',
+      'Very easy! Simply replace your API endpoint. Zero code changes required. Works with existing SDKs and frameworks.',
   },
   {
     id: 'faq-4',
-    question: 'What are the benefits of a FAQ?',
+    question: 'What models are available through Confidential AI?',
     answer:
-      'The benefits of a FAQ include providing quick and easy access to information, reducing the number of support requests, and improving the overall user experience.',
+      'We support all major AI providers including OpenAI, Anthropic, Meta, Google, Mistral, and Alibaba models.',
   },
   {
     id: 'faq-5',
-    question: 'How should I organize my FAQ?',
+    question: 'How can I verify that my data was actually protected?',
     answer:
-      'You should organize your FAQ in a logical manner, grouping related questions together and ordering them from most basic to more advanced topics.',
+      'Every request generates cryptographic proof that you can verify independently. Our Trust Center provides real-time proof generation and audit-ready documentation.',
   },
   {
     id: 'faq-6',
-    question: 'How long should FAQ answers be?',
+    question: 'What are the pricing differences compared to standard AI APIs?',
     answer:
-      'FAQ answers should be concise and to the point, typically a few sentences or a short paragraph is sufficient for most questions.',
-  },
-  {
-    id: 'faq-7',
-    question: 'Should I include links in my FAQ?',
-    answer:
-      'Yes, including links to more detailed information or related resources can be very helpful for users who want to learn more about a particular topic.',
+      'Our pricing matches leading inference providers. Privacy protection comes at no additional cost - we believe security should be accessible to everyone, not a premium feature.',
   },
 ]
 
@@ -62,11 +57,10 @@ const Faq = () => {
       <div className="container space-y-16">
         <div className="mx-auto flex max-w-3xl flex-col text-left md:text-center">
           <h2 className="mb-3 text-3xl font-semibold md:mb-4 lg:mb-6 lg:text-4xl">
-            Frequently asked questions
+            Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground lg:text-lg">
-            Find answers to common questions about our products. Can't find what
-            you're looking for? Contact our support team.
+            Everything you need to know about Confidential AI
           </p>
         </div>
         <Accordion
