@@ -1,6 +1,5 @@
 import { isFullPage } from '@notionhq/client'
 import { verifyKey } from 'discord-interactions'
-import { revalidatePath } from 'next/cache'
 import * as R from 'ramda'
 
 import { env } from '@/env'
@@ -27,9 +26,10 @@ export const adminPublishPost = async (
   pageId: string,
   interactionToken: string,
 ) => {
-  const { DISCORD_APP_ID, DISCORD_TOKEN } = env
-  if (!DISCORD_APP_ID || !DISCORD_TOKEN) {
-    throw new Error('Not configured')
+  // Check required environment variables first
+  const { DISCORD_APP_ID, DISCORD_TOKEN, REVALIDATE_TOKEN } = env
+  if (!DISCORD_APP_ID || !DISCORD_TOKEN || !REVALIDATE_TOKEN) {
+    throw new Error('Discord configuration not found')
   }
   const response = (message: string) =>
     fetch(
@@ -103,12 +103,33 @@ export const adminPublishPost = async (
 
   try {
     const encodedSlug = encodeURIComponent(slug.replace(/^\//, ''))
-    revalidatePath('/blog')
-    revalidatePath(`/posts/${encodedSlug}`)
-    for (const tag of tags) {
-      revalidatePath(`/tags/${encodeURIComponent(tag)}`)
-    }
-  } catch {
+
+    // Revalidate blog page and related paths using the revalidate API
+    // This is necessary because revalidatePath() doesn't work in API route contexts
+    const baseUrl = new URL(
+      '/api/revalidate',
+      `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
+    )
+
+    // Set the revalidate token on the base URL for security
+    baseUrl.searchParams.set('token', REVALIDATE_TOKEN)
+
+    // Prevent double encoding of the path parameter
+    const baseUrlString = baseUrl.toString()
+
+    const revalidatePromises = [
+      // Revalidate the main blog listing page
+      fetch(`${baseUrlString}&path=/blog`),
+      // Revalidate the specific post page
+      fetch(`${baseUrlString}&path=/posts/${encodedSlug}`),
+      // Revalidate all tag pages for this post
+      ...tags.map((tag) => fetch(`${baseUrlString}&path=/tags/${tag}`)),
+    ]
+
+    // Wait for all revalidation requests to complete
+    await Promise.all(revalidatePromises)
+  } catch (error) {
+    console.error('Failed to revalidate paths:', error)
     return response(`Error: Failed to revalidate paths`)
   }
   return response(`Published: ${title}`)
