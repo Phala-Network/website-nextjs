@@ -25,7 +25,7 @@ type Response<T> = {
   }
 }
 
-export const icons: { name: string; icon: string }[] = [
+export const icons = [
   {
     name: 'openai',
     icon: '/confidential-ai-models/openai.svg',
@@ -78,7 +78,9 @@ export const icons: { name: string; icon: string }[] = [
     name: 'redpill',
     icon: '/confidential-ai-models/redpill.svg',
   },
-]
+] as const
+
+export const iconMap = new Map(icons.map((icon) => [icon.name, icon.icon]))
 
 export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
   const res = await fetch(
