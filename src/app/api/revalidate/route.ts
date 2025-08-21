@@ -1,4 +1,5 @@
 import { revalidatePath } from 'next/cache'
+import { after } from 'next/server'
 
 import { env } from '@/env'
 
@@ -29,6 +30,11 @@ export async function GET(request: Request) {
 
     // Revalidate the specified path
     revalidatePath(path)
+
+    after(() => {
+      const url = new URL(path, `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`)
+      return fetch(url.toString())
+    })
 
     return new Response(
       JSON.stringify({
