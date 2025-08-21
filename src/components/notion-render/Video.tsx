@@ -1,12 +1,13 @@
 import type { VideoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { useMemo } from 'react'
+import LiteYouTubeEmbed from 'react-lite-youtube-embed'
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
 import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
 const Video = ({ block }: { block: ParsedBlock }) => {
   const videoBlock = block as VideoBlockObjectResponse
-  // TODO Added test cases for it.
   const [provider, id] = useMemo(() => {
     const videoUrl: string =
       videoBlock.video.type === 'external'
@@ -25,11 +26,7 @@ const Video = ({ block }: { block: ParsedBlock }) => {
   }, [videoBlock])
   return (
     <div className="notion_video_container">
-      {provider === 'youtube' ? (
-        <div className="aspect-video bg-gray-100 flex items-center justify-center rounded-lg">
-          <p className="text-gray-600">YouTube Video: {id}</p>
-        </div>
-      ) : null}
+      {provider === 'youtube' ? <LiteYouTubeEmbed id={id} title="" /> : null}
       {provider === null ? (
         <video controls src={id} className={`notion_video`} />
       ) : null}
