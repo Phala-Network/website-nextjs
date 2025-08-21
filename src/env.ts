@@ -23,6 +23,8 @@ export const env = createEnv({
 
     VERCEL_WEBHOOK_SECRET: z.string().optional(),
     VERCEL_PROJECT_ID: z.string().optional(),
+
+    REVALIDATE_TOKEN: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().optional(),

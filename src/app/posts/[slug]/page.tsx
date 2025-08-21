@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const pages = await getRecentPosts(1000) // Generate for most recent 1000 posts
+  const pages = await getRecentPosts(100) // Generate for most recent 100 posts
   return pages.map((page) => ({ slug: page.slug }))
 }
 
