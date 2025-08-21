@@ -13,7 +13,7 @@ interface VercelWebhookPayload {
   }
 }
 
-async function fetchRecentPostPaths(limit = 200): Promise<string[]> {
+async function fetchRecentPostPaths(limit: number): Promise<string[]> {
   try {
     const posts = await getRecentPosts(limit)
     return posts.map((post) => `/posts${post.slug}`)
@@ -104,7 +104,7 @@ export async function POST(request: Request) {
 
       // Get all paths to warm up
       const [postPaths, tagPaths] = await Promise.all([
-        fetchRecentPostPaths(200),
+        fetchRecentPostPaths(50),
         fetchAllTagPaths(),
       ])
 

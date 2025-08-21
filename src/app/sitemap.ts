@@ -7,7 +7,7 @@ const WEBSITE_URL = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const tags = await retrieveTags()
-  const posts = await getRecentPosts(200)
+  const posts = await getRecentPosts(100)
 
   const staticPages: MetadataRoute.Sitemap = [
     {
