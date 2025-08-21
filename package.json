@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "next dev -H phala.localhost",
     "build": "next build",
-    "start": "next start",
-    "lint": "tsc --noEmit"
+    "start": "next start"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",

@@ -6,10 +6,10 @@ const Hero = () => {
   return (
     <section className="py-24">
       <div className="container">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
-          <div className="flex flex-col gap-12">
-            <h1 className="text-6xl/tight font-semibold">
-              Confidential <br /> AI Models
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
+          <div className="flex flex-col gap-6 lg:gap-10">
+            <h1 className="text-5xl/tight lg:text-6xl/tight font-semibold">
+              Confidential <br className="hidden lg:block" /> AI Models
             </h1>
             <p className="text-muted-foreground text-lg">
               Others claim privacy. We prove it. Access frontier AI models on

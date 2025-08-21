@@ -53,7 +53,7 @@ const faqItems: FaqItem[] = [
 
 const Faq = () => {
   return (
-    <section className="py-32">
+    <section className="py-24">
       <div className="container space-y-16">
         <div className="mx-auto flex max-w-3xl flex-col text-left md:text-center">
           <h2 className="mb-3 text-3xl font-semibold md:mb-4 lg:mb-6 lg:text-4xl">
@@ -71,7 +71,7 @@ const Faq = () => {
           {faqItems.map((item) => (
             <AccordionItem key={item.id} value={item.id}>
               <AccordionTrigger className="transition-opacity duration-200 hover:no-underline hover:opacity-60">
-                <div className="font-medium sm:py-1 lg:py-2 lg:text-lg">
+                <div className="font-medium sm:py-1 lg:py-2 lg:text-lg font-sans">
                   {item.question}
                 </div>
               </AccordionTrigger>
