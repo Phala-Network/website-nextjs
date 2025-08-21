@@ -7,6 +7,7 @@ import {
   Brain,
   Coins,
   Cpu,
+  Gpu,
   GraduationCap,
   Lightbulb,
   Menu,
@@ -69,10 +70,16 @@ const menu = [
         url: '/confidential-vm',
       },
       {
-        title: 'Confidential AI Models, GPU TEE',
+        title: 'GPU TEE',
+        description: 'GPU-based confidential computing',
+        icon: <Gpu className="size-5 shrink-0" />,
+        url: '/confidential-ai',
+      },
+      {
+        title: 'Confidential AI Models',
         description: 'AI models with end-to-end privacy guarantees',
         icon: <Brain className="size-5 shrink-0" />,
-        url: '/confidential-ai',
+        url: '/confidential-ai-models',
       },
       {
         title: 'Open Source, dstack',
