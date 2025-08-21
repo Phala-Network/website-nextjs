@@ -1,6 +1,6 @@
 import { Marquee } from '@/components/magicui/marquee'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { fetchAiModels, icons, type Model } from '@/lib/ai-models'
+import { icons, type Model } from '@/lib/ai-models'
 
 // ModelCard component
 interface ModelCardProps {
@@ -9,32 +9,38 @@ interface ModelCardProps {
 
 const ModelCard = ({ model }: ModelCardProps) => {
   return (
-    <div className="border-border flex max-w-72 gap-2 rounded-lg border p-4">
-      <Avatar className="size-8 p-1.5">
+    <div className="border-border flex max-w-72 gap-2 rounded-lg border p-4 items-center">
+      <Avatar className="size-10 p-1.5">
         <AvatarImage
-          src={icons.find((icon) => icon.name === model.provider)?.icon}
+          src={
+            icons.find((icon) =>
+              model.name.toLowerCase().includes(icon.name.toLowerCase()),
+            )?.icon
+          }
         />
         <AvatarFallback>
           {model.provider.slice(0, 2).toUpperCase()}
         </AvatarFallback>
       </Avatar>
-      <div className="flex flex-col gap-1 overflow-hidden flex-1">
-        <p className="text-sm font-medium line-clamp-1 mt-1.5">{model.name}</p>
+      <div className="flex flex-col overflow-hidden flex-1">
+        <p className="text-sm font-medium line-clamp-1">{model.name}</p>
         <p className="text-muted-foreground text-xs line-clamp-1">
           {model.provider}
           {model.verifiable && ` | GPU TEE`}
         </p>
-        <p className="text-muted-foreground text-sm line-clamp-2">
+        {/* <p className="text-muted-foreground text-sm line-clamp-2">
           {model.description}
-        </p>
+        </p> */}
       </div>
     </div>
   )
 }
 
-const ModelsMarquee = async () => {
-  const models = await fetchAiModels()
+interface ModelsMarqueeProps {
+  models: Model[]
+}
 
+const ModelsMarquee = ({ models }: ModelsMarqueeProps) => {
   const firstLine = models.slice(0, 10)
   const secondLine = models.slice(10, 20)
 

@@ -1,266 +1,154 @@
-'use client'
-
-import { GitPullRequest, Star } from 'lucide-react'
-import { useState } from 'react'
-
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { cn } from '@/lib/utils'
+import { icons, type Model } from '@/lib/ai-models'
 
-const categories = [
-  'React',
-  'TailwindCSS',
-  'TypeScript',
-  'Express',
-  'MongoDB',
-  'Python',
-]
-
-interface Project {
-  title: string
-  description: string
-  category: string[]
-  link: string
-  stars: number
-  contributions: number
-  pullRequests: number
-  role: 'author' | 'contributor'
+interface ModelCardProps {
+  model: Model
 }
 
-const projects: Project[] = [
-  {
-    title: 'react-portfolio',
-    description:
-      'A portfolio website built that showcases my projects and skills',
-    category: ['React', 'TailwindCSS', 'TypeScript'],
-    link: '#',
-    stars: 5,
-    contributions: 2,
-    pullRequests: 15,
-    role: 'author',
-  },
-  {
-    title: 'ai-chatbot',
-    description: 'Chatbot rich with AI features and a clean UI',
-    category: ['React', 'TailwindCSS', 'TypeScript', 'Python'],
-    link: '#',
-    stars: 86,
-    contributions: 12,
-    pullRequests: 43,
-    role: 'contributor',
-  },
-  {
-    title: 'task-manager-app',
-    description:
-      'Full-stack task management application with real-time updates',
-    category: ['React', 'Express', 'MongoDB', 'TypeScript'],
-    link: '#',
-    stars: 34,
-    contributions: 8,
-    pullRequests: 27,
-    role: 'contributor',
-  },
-  {
-    title: 'data-visualization-dashboard',
-    description: 'Interactive dashboard for visualizing complex datasets',
-    category: ['React', 'TypeScript', 'Python'],
-    link: '#',
-    stars: 92,
-    contributions: 15,
-    pullRequests: 56,
-    role: 'author',
-  },
-  {
-    title: 'e-commerce-platform',
-    description: 'Modern e-commerce platform with payment integration',
-    category: ['React', 'Express', 'MongoDB', 'TypeScript'],
-    link: '#',
-    stars: 127,
-    contributions: 23,
-    pullRequests: 89,
-    role: 'contributor',
-  },
-  {
-    title: 'social-media-analyzer',
-    description: 'Tool for analyzing social media trends and engagement',
-    category: ['Python', 'React', 'MongoDB'],
-    link: '#',
-    stars: 73,
-    contributions: 9,
-    pullRequests: 31,
-    role: 'author',
-  },
-  {
-    title: 'weather-forecast-app',
-    description: 'Real-time weather forecasting with interactive maps',
-    category: ['React', 'TypeScript', 'Python'],
-    link: '#',
-    stars: 45,
-    contributions: 7,
-    pullRequests: 22,
-    role: 'author',
-  },
-  {
-    title: 'inventory-management-system',
-    description: 'Enterprise-level inventory tracking and management solution',
-    category: ['React', 'Express', 'MongoDB', 'TypeScript'],
-    link: '#',
-    stars: 156,
-    contributions: 28,
-    pullRequests: 94,
-    role: 'contributor',
-  },
-  {
-    title: 'fitness-tracking-platform',
-    description: 'Comprehensive fitness and workout tracking application',
-    category: ['React', 'TailwindCSS', 'MongoDB'],
-    link: '#',
-    stars: 112,
-    contributions: 18,
-    pullRequests: 67,
-    role: 'author',
-  },
-  {
-    title: 'recipe-sharing-network',
-    description: 'Social platform for sharing and discovering recipes',
-    category: ['React', 'Express', 'MongoDB'],
-    link: '#',
-    stars: 89,
-    contributions: 14,
-    pullRequests: 41,
-    role: 'contributor',
-  },
-  {
-    title: 'budget-tracker',
-    description: 'Personal finance management and budgeting tool',
-    category: ['React', 'TypeScript', 'MongoDB'],
-    link: '#',
-    stars: 67,
-    contributions: 11,
-    pullRequests: 35,
-    role: 'author',
-  },
-  {
-    title: 'learning-management-system',
-    description: 'Educational platform for online course delivery',
-    category: ['React', 'Express', 'TypeScript', 'MongoDB'],
-    link: '#',
-    stars: 143,
-    contributions: 25,
-    pullRequests: 78,
-    role: 'contributor',
-  },
-]
+const formatContextLength = (length: number) => {
+  if (length >= 1000000) {
+    return `${(length / 1000000).toFixed(1)}M`
+  } else if (length >= 1000) {
+    return `${(length / 1000).toFixed(0)}K`
+  }
+  return length.toString()
+}
 
-const ModelsList = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [selectedRole, setSelectedRole] = useState<string>('all')
-  const [showAllProjects, setShowAllProjects] = useState(false)
+const formatPrice = (price: string) => {
+  if (!price || price === '0' || price === '0.0' || price === '0.00')
+    return 'Free'
+  // Convert to number and format with appropriate precision
+  const numPrice = parseFloat(price)
+  if (Number.isNaN(numPrice)) return price
+  if (numPrice < 0.001) return `${(numPrice * 1000000).toFixed(2)}M`
+  if (numPrice < 1) return `${(numPrice * 1000).toFixed(2)}K`
+  return numPrice.toFixed(4)
+}
 
-  const filteredProjects = projects.filter((project) => {
-    const matchesCategory =
-      selectedCategory === null || project.category.includes(selectedCategory)
-
-    const matchesRole = selectedRole === 'all' || project.role === selectedRole
-
-    return matchesCategory && matchesRole
-  })
-
+const ModelCard = ({ model }: ModelCardProps) => {
   return (
-    <section className="bg-muted/50 py-32">
-      <div className="container">
-        <h1 className="text-center text-3xl font-medium md:text-5xl">
-          Explore My Projects
-        </h1>
-        <div className="mt-10">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div
-              className="-mx-8 flex items-center gap-2 overflow-x-auto px-8"
-              style={{
-                scrollbarWidth: 'none',
-              }}
-            >
-              <Badge
-                variant={selectedCategory === null ? 'default' : 'outline'}
-                onClick={() => setSelectedCategory(null)}
-                className={cn(
-                  'cursor-pointer',
-                  selectedCategory !== null && 'bg-background',
-                )}
-              >
-                All
-              </Badge>
-              {categories.map((category) => (
+    <a
+      href={`https://redpill.ai/models/${model.slug}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block"
+    >
+      <div className="border-border bg-background flex flex-col gap-4 rounded-lg border p-6 hover:border-primary transition-colors h-full">
+        {/* Header with Avatar and Provider */}
+        <div className="flex items-center gap-3">
+          <Avatar className="size-12 p-2">
+            <AvatarImage
+              src={
+                icons.find(
+                  (icon) =>
+                    model.name
+                      .toLowerCase()
+                      .includes(icon.name.toLowerCase()) ||
+                    icon.name === model.provider.toLowerCase(),
+                )?.icon
+              }
+              alt={model.provider}
+            />
+            <AvatarFallback className="text-sm font-medium">
+              {model.provider.slice(0, 2).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg font-semibold line-clamp-1">{model.name}</h3>
+            <div className="flex items-center gap-2 mt-1">
+              {model.verifiable && (
                 <Badge
-                  key={category}
-                  variant={
-                    selectedCategory === category ? 'default' : 'outline'
-                  }
-                  onClick={() => setSelectedCategory(category)}
-                  className={cn(
-                    'cursor-pointer',
-                    selectedCategory !== category && 'bg-background',
-                  )}
+                  variant="outline"
+                  className="border-primary-500 text-primary-500"
                 >
-                  {category}
+                  GPU TEE
                 </Badge>
-              ))}
-            </div>
-            <Select
-              defaultValue={selectedRole}
-              onValueChange={(value) => setSelectedRole(value)}
-            >
-              <SelectTrigger className="bg-background md:max-w-40 lg:max-w-96">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All</SelectItem>
-                <SelectItem value="author">Author</SelectItem>
-                <SelectItem value="contributor">Contributor</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          {filteredProjects.length > 0 ? (
-            <>
-              <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {showAllProjects
-                  ? filteredProjects.map((project) => (
-                      <ProjectCard key={project.title} project={project} />
-                    ))
-                  : filteredProjects
-                      .slice(0, 9)
-                      .map((project) => (
-                        <ProjectCard key={project.title} project={project} />
-                      ))}
-              </div>
-              {filteredProjects.length > 9 && (
-                <div className="mt-10 flex justify-center">
-                  <Button
-                    variant="outline"
-                    onClick={() => setShowAllProjects(!showAllProjects)}
-                  >
-                    {showAllProjects ? 'Show Less' : 'View All Projects'}
-                  </Button>
-                </div>
               )}
-            </>
-          ) : (
-            <div className="mt-16 flex flex-col items-center justify-center text-center">
-              <h3 className="text-xl font-medium">No Results Found</h3>
-              <p className="text-muted-foreground mt-2 max-w-md">
-                No projects match your filters. Try adjusting your search
-                criteria or selecting a different category.
-              </p>
+              <Badge variant="outline">{model.slug}</Badge>
+            </div>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-muted-foreground text-sm line-clamp-2">
+          {model.description}
+        </p>
+
+        {/* Model Details */}
+        <div className="space-y-3">
+          {/* Pricing Information */}
+          {(model.promptPrice ||
+            model.completionPrice ||
+            model.imagePrice ||
+            model.requestPrice) && (
+            <div className="text-xs text-muted-foreground">
+              {formatContextLength(model.contextLength)} context
+              {model.promptPrice && model.promptPrice !== '0' && (
+                <span> | ${formatPrice(model.promptPrice)}/M input tokens</span>
+              )}
+              {model.completionPrice && model.completionPrice !== '0' && (
+                <span>
+                  {' '}
+                  | ${formatPrice(model.completionPrice)}/M output tokens
+                </span>
+              )}
+              {model.imagePrice && model.imagePrice !== '0' && (
+                <span> | ${formatPrice(model.imagePrice)}/M image tokens</span>
+              )}
+              {model.requestPrice && model.requestPrice !== '0' && (
+                <span> | ${formatPrice(model.requestPrice)}/request</span>
+              )}
             </div>
           )}
+        </div>
+      </div>
+    </a>
+  )
+}
+
+interface ModelsListProps {
+  models: Model[]
+}
+
+const ModelsList = ({ models }: ModelsListProps) => {
+  return (
+    <section className="py-24">
+      <div className="container">
+        <h1 className="text-center text-3xl font-medium lg:text-4xl mb-6">
+          Available Models
+        </h1>
+        <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+          Access the latest frontier AI models with cryptographic privacy
+          protection
+        </p>
+
+        {/* Models Grid */}
+        {models.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {models.map((model) => (
+              <ModelCard key={model.id} model={model} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-16 flex flex-col items-center justify-center text-center">
+            <h3 className="text-xl font-medium">No Models Found</h3>
+            <p className="text-muted-foreground mt-2 max-w-md">
+              No models are currently available. Please check back later.
+            </p>
+          </div>
+        )}
+
+        {/* View All Models Button */}
+        <div className="mt-8 text-center">
+          <a
+            href="https://redpill.ai/models"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          >
+            View All Models →
+          </a>
         </div>
       </div>
     </section>
@@ -268,32 +156,3 @@ const ModelsList = () => {
 }
 
 export default ModelsList
-
-const ProjectCard = ({ project }: { project: Project }) => {
-  return (
-    <a
-      href={project.link}
-      className="border-border bg-background flex flex-col justify-between gap-8 rounded-lg border p-5"
-    >
-      <div>
-        <div className="flex items-center justify-between gap-2">
-          <h3 className="text-lg font-medium">{project.title}</h3>
-          <span className="flex items-center gap-1 text-sm">
-            <Star className="size-4 fill-yellow-500 text-yellow-500" />
-            {project.stars}
-          </span>
-        </div>
-        <p className="text-muted-foreground mt-2">{project.description}</p>
-      </div>
-      <div className="flex items-center justify-between gap-2">
-        <Badge variant="outline">{project.role}</Badge>
-        <span className="text-muted-foreground flex items-center gap-3 text-sm">
-          <span className="flex items-center gap-1">
-            <GitPullRequest className="size-4" />
-            {project.pullRequests}
-          </span>
-        </span>
-      </div>
-    </a>
-  )
-}

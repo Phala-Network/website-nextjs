@@ -18,11 +18,11 @@ const Hero = () => {
             <div className="flex gap-4">
               <Button size="lg" asChild>
                 <a
-                  href="https://cloud.phala.network/dashboard/confidential-ai-api"
+                  href="https://redpill.ai/chat"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Start Building
+                  Private Chat
                 </a>
               </Button>
 

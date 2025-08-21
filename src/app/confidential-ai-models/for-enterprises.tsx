@@ -3,17 +3,17 @@
 import AutoScroll from 'embla-carousel-auto-scroll'
 import {
   Globe,
+  GlobeLock,
   MessagesSquare,
-  MoveRight,
-  PanelsTopLeft,
   PenTool,
-  ScissorsLineDashed,
+  Search,
   ShieldCheck,
   Users,
   Zap,
 } from 'lucide-react'
+import Link from 'next/link'
 
-import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
   Carousel,
@@ -23,96 +23,67 @@ import {
 
 const features = [
   {
-    title: 'Pixel-Perfect',
-    description: 'Begin our journey to build  outstanding websites.',
-    icon: <ScissorsLineDashed className="h-auto w-8 md:w-12" />,
+    title: 'Private Infrastructure',
+    description: 'Private dedicated infrastructure for your AI workloads.',
+    icon: <GlobeLock className="h-auto w-8 md:w-12" />,
   },
   {
-    title: 'SEO Optimized',
-    description: 'We ensure that your website ranks high on Google.',
-    icon: <Globe className="h-auto w-8 md:w-12" />,
-  },
-  {
-    title: 'Responsive',
-    description: 'Our websites look great on any device.',
-    icon: <PanelsTopLeft className="h-auto w-8 md:w-12" />,
-  },
-  {
-    title: 'Customizable',
-    description: 'We can tailor your website to your needs.',
+    title: 'Custom Models',
+    description: 'Deploy your own custom AI models securely.',
     icon: <PenTool className="h-auto w-8 md:w-12" />,
   },
   {
-    title: 'Fast Loading',
-    description: 'We ensure that your website loads quickly.',
-    icon: <Zap className="h-auto w-8 md:w-12" />,
-  },
-  {
-    title: 'Secure',
-    description: 'We take security seriously. Your data is safe with us.',
-    icon: <ShieldCheck className="h-auto w-8 md:w-12" />,
+    title: 'Full Audit Trails',
+    description: 'Complete compliance and audit documentation.',
+    icon: <Search className="h-auto w-8 md:w-12" />,
   },
   {
     title: '24/7 Support',
-    description: 'We are always here to help you. Reach out to us.',
+    description: 'Dedicated enterprise support team.',
     icon: <MessagesSquare className="h-auto w-8 md:w-12" />,
   },
   {
-    title: 'User-Friendly',
-    description: 'We make sure that your website is easy to use.',
+    title: 'Fast Performance',
+    description: 'Optimized for speed and efficiency.',
+    icon: <Zap className="h-auto w-8 md:w-12" />,
+  },
+  {
+    title: 'Secure Processing',
+    description: 'Hardware-protected confidential computing.',
+    icon: <ShieldCheck className="h-auto w-8 md:w-12" />,
+  },
+  {
+    title: 'Compliance Ready',
+    description: 'Meet regulatory requirements easily.',
+    icon: <Globe className="h-auto w-8 md:w-12" />,
+  },
+  {
+    title: 'Scalable Solution',
+    description: 'Grow with your business needs.',
     icon: <Users className="h-auto w-8 md:w-12" />,
   },
 ]
 
 const ForEnterprises = () => {
   return (
-    <section className="py-32">
+    <section className="py-24">
       <div className="container">
         <div className="grid items-center gap-20 md:grid-cols-2">
-          <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left">
-            <span className="inline-flex items-center -space-x-4">
-              <Avatar className="size-11 border lg:size-16">
-                <AvatarImage
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp"
-                  alt="placeholder"
-                />
-              </Avatar>
-              <Avatar className="size-11 border lg:size-16">
-                <AvatarImage
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-6.webp"
-                  alt="placeholder"
-                />
-              </Avatar>
-              <Avatar className="size-11 border lg:size-16">
-                <AvatarImage
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-3.webp"
-                  alt="placeholder"
-                />
-              </Avatar>
-            </span>
-            <h1 className="text-3xl font-semibold md:text-5xl">
-              Explore New Frontiers in Digital Innovation with Us
-            </h1>
-            <p className="text-muted-foreground md:text-lg">
-              Join our journey to craft highly optimized web experiences.
+          <div className="flex flex-col items-center gap-6 text-center md:items-start md:text-left">
+            <Badge variant="outline">Enterprise</Badge>
+            <h2 className="text-3xl font-medium md:text-4xl">
+              Build Your Own PCC
+            </h2>
+            <p className="text-muted-foreground">
+              Go beyond shared APIs. With our Confidential GPUs, you can deploy
+              private, fully-audited AI clouds, tailored to your business or
+              product. It's the same technology behind Apple's Private Compute
+              Cloud (PCC), but more open and transparent. Now available for your
+              own models and workloads.
             </p>
-            <Button size="lg" className="w-fit gap-2">
-              View Features <MoveRight className="h-auto w-5" />
+            <Button size="lg" asChild className="mt-4">
+              <Link href="/contact">Talk to Experts</Link>
             </Button>
-            <div className="grid grid-cols-2 justify-between gap-4 pt-10 text-left md:gap-20">
-              <div className="flex flex-col gap-1">
-                <h2 className="text-3xl font-semibold md:text-5xl">85%</h2>
-                <p className="text-muted-foreground md:text-lg">
-                  Conversion boost
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <h2 className="text-3xl font-semibold md:text-5xl">25k+</h2>
-                <p className="text-muted-foreground md:text-lg">
-                  Happy Customers
-                </p>
-              </div>
-            </div>
           </div>
           <div className="grid gap-4 md:gap-7 lg:grid-cols-2">
             <Carousel
