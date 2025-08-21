@@ -6,6 +6,9 @@ import ForEnterprises from './for-enterprises'
 import Hero from './hero'
 import Integrate from './integrate'
 import ModelsList from './models-list'
+import ModelsMarquee from './models-marquee'
+
+export const revalidate = 7200
 
 export const metadata: Metadata = {
   title: 'Confidential AI Models',
@@ -18,6 +21,7 @@ export default function ConfidentialAiModelsPage() {
     <div className="w-full bg-background">
       <div className="mx-auto max-w-7xl">
         <Hero />
+        <ModelsMarquee />
         <Benefits />
         <Integrate />
         <ModelsList />

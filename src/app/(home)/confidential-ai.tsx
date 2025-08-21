@@ -13,6 +13,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
+import { icons } from '@/lib/ai-models'
 
 interface ModelCard {
   id: string
@@ -24,42 +25,11 @@ interface ModelCard {
   updatedDate: string
 }
 
-const icons: { name: string; icon: string }[] = [
-  {
-    name: 'OpenAI',
-    icon: '/home/openai.svg',
-  },
-  {
-    name: 'Claude',
-    icon: '/home/claude-color.svg',
-  },
-  {
-    name: 'Gemini',
-    icon: '/home/gemini-color.svg',
-  },
-  {
-    name: 'Meta',
-    icon: '/home/meta-color.svg',
-  },
-  {
-    name: 'Qwen',
-    icon: '/home/qwen-color.svg',
-  },
-  {
-    name: 'DeepSeek',
-    icon: '/home/deepseek-color.svg',
-  },
-  {
-    name: 'Mistral',
-    icon: '/home/mistral-color.svg',
-  },
-]
-
 const modelCards: ModelCard[] = [
   {
     id: 'phala/gpt-oss-120b',
     name: 'GPT-OSS-120B',
-    logo: '/home/openai.svg',
+    logo: '/confidential-ai-models/openai.svg',
     context: '131K context',
     inputPrice: '$0.2/M input tokens',
     outputPrice: '$0.6/M output tokens',
@@ -68,7 +38,7 @@ const modelCards: ModelCard[] = [
   {
     id: 'phala/qwen3-coder',
     name: 'Qwen3 Coder',
-    logo: '/home/qwen-color.svg',
+    logo: '/confidential-ai-models/qwen.svg',
     context: '262K context',
     inputPrice: '$1.5/M input tokens',
     outputPrice: '$1.6/M output tokens',
@@ -77,7 +47,7 @@ const modelCards: ModelCard[] = [
   {
     id: 'anthropic/claude-sonnet-4',
     name: 'Claude Sonnet 4',
-    logo: '/home/claude-color.svg',
+    logo: '/confidential-ai-models/claude.svg',
     context: '200K context',
     inputPrice: '$3/M input tokens',
     outputPrice: '$15/M output tokens',
@@ -86,7 +56,7 @@ const modelCards: ModelCard[] = [
   {
     id: 'phala/llama-3.3-70b-instruct',
     name: 'Llama 3.3 70B Instruct',
-    logo: '/home/meta-color.svg',
+    logo: '/confidential-ai-models/meta.svg',
     context: '131K context',
     inputPrice: '$0.12/M input tokens',
     outputPrice: '$0.35/M output tokens',
@@ -95,7 +65,7 @@ const modelCards: ModelCard[] = [
   {
     id: 'phala/deepseek-chat-v3-0324',
     name: 'DeepSeek Chat V3 0324',
-    logo: '/home/deepseek-color.svg',
+    logo: '/confidential-ai-models/deepseek.svg',
     context: '163K context',
     inputPrice: '$0.49/M input tokens',
     outputPrice: '$1.14/M output tokens',
@@ -189,7 +159,7 @@ export default function ConfidentialAI() {
                 privacy protection.
               </p>
               <div className="flex flex-wrap -space-x-2 mt-4">
-                {icons.map((icon) => (
+                {icons.slice(0, 7).map((icon) => (
                   <Avatar
                     key={icon.name}
                     className="size-8 bg-background p-1 border-2"
