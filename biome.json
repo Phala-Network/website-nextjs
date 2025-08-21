@@ -12,7 +12,8 @@
       "!**/*.test.js",
       "**/special.test.js",
       "!test",
-      "!**/components/ui"
+      "!**/components/ui",
+      "!**/components/magicui"
     ]
   },
   "formatter": {
