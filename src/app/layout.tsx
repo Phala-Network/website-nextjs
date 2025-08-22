@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   ],
   twitter: {
     site: '@PhalaNetwork',
+    card: 'summary_large_image',
   },
   alternates: {
     canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
