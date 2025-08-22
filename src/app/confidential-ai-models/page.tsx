@@ -23,7 +23,7 @@ export default async function ConfidentialAiModelsPage() {
 
   return (
     <div className="w-full bg-background">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-(--breakpoint-2xl)">
         <Hero />
         <ModelsMarquee models={models} />
         <Benefits />
