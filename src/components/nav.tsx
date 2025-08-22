@@ -122,7 +122,7 @@ const menu = [
         title: 'Guides',
         description: 'Step-by-step tutorials and best practices',
         icon: <GraduationCap className="size-5 shrink-0" />,
-        url: '/tags/Phala%20Cloud%20Guides',
+        url: '/tags/Phala Cloud Guides',
       },
       {
         title: 'Templates',

@@ -64,10 +64,10 @@ async function getTagData(slug: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const decodedSlug = decodeURIComponent(slug)
+  const { slug: encodedSlug } = await params
+  const slug = decodeURIComponent(encodedSlug)
   return {
-    title: decodedSlug,
+    title: slug,
     alternates: {
       canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/tags/${encodeURIComponent(slug)}`,
     },
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const tags = await retrieveTags()
-  return tags.map((tag) => ({ slug: encodeURIComponent(tag) }))
+  return tags.map((tag) => ({ slug: tag }))
 }
 
 export default async function TagPage({ params }: Props) {
