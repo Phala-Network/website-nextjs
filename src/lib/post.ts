@@ -2,6 +2,7 @@ import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-end
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import * as R from 'ramda'
+import slugify from 'slugify'
 
 import { env } from '@/env'
 import {
@@ -27,8 +28,7 @@ export type GetPostsResult = {
 }
 
 export function generateSlug(title: string): string {
-  const sanitizedTitle = title.toLowerCase().replace(/[^\w\d\s]+/g, '')
-  const slug = sanitizedTitle.replace(/\s+/g, '-')
+  const slug = slugify(title, { lower: true, strict: true })
   return slug
 }
 
