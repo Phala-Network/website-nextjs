@@ -331,8 +331,8 @@ const Hero = () => {
     <section className="py-24">
       <div className="container">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] items-center">
-          <div className="flex flex-col gap-6 lg:gap-10">
-            <h1 className="text-5xl/tight lg:text-6xl/tight font-semibold">
+          <div className="flex flex-col gap-6 lg:gap-10 lg:pl-8">
+            <h1 className="text-3xl/snug sm:text-5xl/snug md:text-6xl/snug font-semibold">
               Confidential <br className="hidden lg:block" /> AI Models
             </h1>
             <p className="text-muted-foreground text-lg">
@@ -340,7 +340,10 @@ const Hero = () => {
               cloud, with proof that your data is protected end-to-end.
             </p>
             <div className="flex gap-4">
-              <Button size="lg" asChild>
+              <Button
+                size="lg"
+                className="shrink-0 w-full lg:h-12 lg:text-base sm:w-40"
+              >
                 <a
                   href="https://redpill.ai/chat"
                   target="_blank"
@@ -350,7 +353,11 @@ const Hero = () => {
                 </a>
               </Button>
 
-              <Button variant="outline" size="lg" asChild>
+              <Button
+                variant="outline"
+                size="lg"
+                className="max-sm:px-6 w-full sm:w-40 lg:h-12 lg:text-base lg:w-40"
+              >
                 <a
                   href="https://docs.phala.network/phala-cloud/confidential-ai/overview"
                   target="_blank"

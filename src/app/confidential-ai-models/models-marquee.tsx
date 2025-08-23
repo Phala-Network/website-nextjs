@@ -1,3 +1,5 @@
+import { Lock } from 'lucide-react'
+
 import { Marquee } from '@/components/magicui/marquee'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { icons, type Model } from '@/lib/ai-models'
@@ -10,21 +12,26 @@ interface ModelCardProps {
 const ModelCard = ({ model }: ModelCardProps) => {
   return (
     <div className="border-border flex max-w-72 gap-2 rounded-lg border p-4 items-center">
-      <Avatar className="size-10 p-1.5">
-        <AvatarImage
-          src={
-            icons.find((icon) =>
-              model.name.toLowerCase().includes(icon.name.toLowerCase()),
-            )?.icon
-          }
-        />
-        <AvatarFallback>
-          {model.provider.slice(0, 2).toUpperCase()}
-        </AvatarFallback>
-      </Avatar>
+      <div className="relative">
+        <Avatar className="size-12 p-1.5">
+          <AvatarImage
+            src={
+              icons.find((icon) =>
+                model.name.toLowerCase().includes(icon.name.toLowerCase()),
+              )?.icon
+            }
+          />
+          <AvatarFallback>
+            {model.provider.slice(0, 2).toUpperCase()}
+          </AvatarFallback>
+        </Avatar>
+        <div className="absolute -bottom-0.5 -right-0.5 bg-card border rounded-full p-1">
+          <Lock className="size-3 text-green-500" />
+        </div>
+      </div>
       <div className="flex flex-col overflow-hidden flex-1">
-        <p className="text-sm font-medium line-clamp-1">{model.name}</p>
-        <p className="text-muted-foreground text-xs line-clamp-1">
+        <p className="font-medium line-clamp-1">{model.name}</p>
+        <p className="text-muted-foreground text-sm line-clamp-1">
           {model.provider}
           {model.verifiable && ` | Encrypted`}
         </p>

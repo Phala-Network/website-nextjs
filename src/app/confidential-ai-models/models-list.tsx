@@ -1,3 +1,5 @@
+import { Lock } from 'lucide-react'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { icons, type Model } from '@/lib/ai-models'
@@ -35,23 +37,23 @@ const ModelCard = ({ model }: ModelCardProps) => {
       <div className="border-border bg-background flex flex-col gap-4 rounded-lg border p-6 hover:border-primary transition-colors h-full">
         {/* Header with Avatar and Provider */}
         <div className="flex items-center gap-3">
-          <Avatar className="size-12 p-2">
-            <AvatarImage
-              src={
-                icons.find(
-                  (icon) =>
-                    model.name
-                      .toLowerCase()
-                      .includes(icon.name.toLowerCase()) ||
-                    icon.name === model.provider.toLowerCase(),
-                )?.icon
-              }
-              alt={model.provider}
-            />
-            <AvatarFallback className="text-sm font-medium">
-              {model.provider.slice(0, 2).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
+          <div className="relative">
+            <Avatar className="size-12 p-1.5">
+              <AvatarImage
+                src={
+                  icons.find((icon) =>
+                    model.name.toLowerCase().includes(icon.name.toLowerCase()),
+                  )?.icon
+                }
+              />
+              <AvatarFallback>
+                {model.provider.slice(0, 2).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+            <div className="absolute -bottom-0.5 -right-0.5 bg-card border rounded-full p-1">
+              <Lock className="size-3 text-green-500" />
+            </div>
+          </div>
           <div className="flex-1 min-w-0">
             <h4 className="font-medium line-clamp-1">{model.name}</h4>
             <div className="flex items-center gap-2 mt-1">

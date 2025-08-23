@@ -86,7 +86,7 @@ const Integrate = () => {
               ))}
             </ul>
 
-            <div className="absolute top-44 left-8 w-full min-w-250 p-3 bg-primary/50 rounded-3xl">
+            <div className="absolute top-44 left-8 w-full min-w-250 p-3 bg-primary/25 rounded-3xl">
               <div
                 className="bg-background w-full aspect-video rounded-2xl bg-contain bg-no-repeat bg-top-left border"
                 style={{ backgroundImage: trustCenterBackgroundImage }}
