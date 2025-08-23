@@ -21,9 +21,7 @@ const formatPrice = (price: string) => {
   // Convert to number and format with appropriate precision
   const numPrice = parseFloat(price)
   if (Number.isNaN(numPrice)) return price
-  if (numPrice < 0.001) return `${(numPrice * 1000000).toFixed(2)}M`
-  if (numPrice < 1) return `${(numPrice * 1000).toFixed(2)}K`
-  return numPrice.toFixed(4)
+  return `${(numPrice * 1000000).toFixed(2)}/M`
 }
 
 const ModelCard = ({ model }: ModelCardProps) => {
@@ -62,7 +60,7 @@ const ModelCard = ({ model }: ModelCardProps) => {
                   variant="outline"
                   className="border-primary-500 text-primary-500"
                 >
-                  GPU TEE
+                  Encrypted
                 </Badge>
               )}
               <Badge variant="outline">{model.slug}</Badge>
@@ -85,19 +83,16 @@ const ModelCard = ({ model }: ModelCardProps) => {
             <div className="text-xs text-muted-foreground">
               {formatContextLength(model.contextLength)} context
               {model.promptPrice && model.promptPrice !== '0' && (
-                <span> | ${formatPrice(model.promptPrice)}/M input tokens</span>
+                <span> | ${formatPrice(model.promptPrice)} input tokens</span>
               )}
               {model.completionPrice && model.completionPrice !== '0' && (
                 <span>
                   {' '}
-                  | ${formatPrice(model.completionPrice)}/M output tokens
+                  | ${formatPrice(model.completionPrice)} output tokens
                 </span>
               )}
               {model.imagePrice && model.imagePrice !== '0' && (
-                <span> | ${formatPrice(model.imagePrice)}/M image tokens</span>
-              )}
-              {model.requestPrice && model.requestPrice !== '0' && (
-                <span> | ${formatPrice(model.requestPrice)}/request</span>
+                <span> | ${formatPrice(model.imagePrice)} image tokens</span>
               )}
             </div>
           )}
@@ -140,7 +135,7 @@ const ModelsList = ({ models }: ModelsListProps) => {
         )}
 
         {/* View All Models Button */}
-        <div className="mt-8 text-center">
+        {/* <div className="mt-8 text-center">
           <a
             href="https://redpill.ai/models"
             target="_blank"
@@ -149,7 +144,7 @@ const ModelsList = ({ models }: ModelsListProps) => {
           >
             View All Models →
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   )

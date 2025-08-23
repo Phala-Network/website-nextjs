@@ -31,12 +31,12 @@ export default function FinalCTA() {
         >
           <div className="relative w-full max-md:mt-[200px]">
             <div className="w-full p-8 lg:px-16 lg:h-80 flex flex-col">
-              <h3 className="mb-3 text-2xl font-bold md:mb-4 sm:text-4xl lg:mb-6">
+              <h3 className="mb-3 text-2xl font-semibold md:mb-4 sm:text-4xl lg:mb-6">
                 Ready to Build AI <br className="xl:hidden" />
                 People Trust?
               </h3>
               <p className="mb-8 text-muted-foreground lg:text-lg">
-                Join <span className="font-bold text-primary-500">500+</span>{' '}
+                Join <span className="font-medium text-primary-500">500+</span>{' '}
                 teams deploying trustworthy AI in production
               </p>
               <div className="flex gap-3 items-center mt-auto">

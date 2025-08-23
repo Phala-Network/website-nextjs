@@ -26,7 +26,7 @@ const ModelCard = ({ model }: ModelCardProps) => {
         <p className="text-sm font-medium line-clamp-1">{model.name}</p>
         <p className="text-muted-foreground text-xs line-clamp-1">
           {model.provider}
-          {model.verifiable && ` | GPU TEE`}
+          {model.verifiable && ` | Encrypted`}
         </p>
         {/* <p className="text-muted-foreground text-sm line-clamp-2">
           {model.description}
@@ -42,7 +42,7 @@ interface ModelsMarqueeProps {
 
 const ModelsMarquee = ({ models }: ModelsMarqueeProps) => {
   const firstLine = models.slice(0, 10)
-  const secondLine = models.slice(10, 20)
+  // const secondLine = models.slice(10, 20)
 
   return (
     <section>
@@ -52,11 +52,11 @@ const ModelsMarquee = ({ models }: ModelsMarqueeProps) => {
             <ModelCard key={model.id} model={model} />
           ))}
         </Marquee>
-        <Marquee reverse className="[--duration:30s]">
+        {/* <Marquee reverse className="[--duration:30s]">
           {secondLine.map((model) => (
             <ModelCard key={model.id} model={model} />
           ))}
-        </Marquee>
+        </Marquee> */}
         <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
         <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
       </div>

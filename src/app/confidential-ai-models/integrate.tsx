@@ -30,7 +30,7 @@ const Integrate = () => {
           </p>
         </div>
         <div className="mx-auto grid gap-10 lg:grid-cols-3">
-          <div className="order-1 flex flex-col gap-4 h-full min-h-96 items-center rounded-lg bg-muted p-8 lg:order-none">
+          <div className="order-1 flex flex-col gap-4 h-full min-h-108 items-center rounded-lg bg-muted p-8 lg:order-none">
             <div className="flex flex-col gap-4 mb-4 items-center">
               <p className="text-sm text-muted-foreground">
                 Supported providers:
@@ -47,7 +47,7 @@ const Integrate = () => {
               <div className="text-sm text-muted-foreground flex items-center gap-2">
                 <Unlock className="size-4" /> Traditional AI
               </div>
-              <code className="text-destructive bg-destructive/10 text-xs px-1 rounded-xs">
+              <code className="text-destructive bg-destructive/10 text-xs p-1 rounded-xs">
                 api.openai.com/v1/chat/completions
               </code>
             </div>
@@ -64,12 +64,12 @@ const Integrate = () => {
                 />{' '}
                 Phala Confidential AI
               </div>
-              <code className="text-green-500 bg-green-500/10 text-xs px-1 rounded-xs">
-                api.phala.network/v1/chat/completions
+              <code className="text-green-500 bg-green-500/10 text-xs p-1 rounded-xs">
+                encrypted-ai.phala.com/v1/chat/completions
               </code>
             </div>
           </div>
-          <div className="order-3 h-full min-h-96 rounded-lg bg-muted lg:order-none relative overflow-hidden p-8">
+          <div className="order-3 h-full min-h-108 rounded-lg bg-muted lg:order-none relative overflow-hidden p-8">
             <ul className="flex flex-col gap-2 w-fit mx-auto">
               {[
                 'Real-time proof generation',
@@ -86,14 +86,14 @@ const Integrate = () => {
               ))}
             </ul>
 
-            <div className="absolute top-36 left-8 w-full min-w-250 p-3 bg-primary/50 rounded-3xl">
+            <div className="absolute top-44 left-8 w-full min-w-250 p-3 bg-primary/50 rounded-3xl">
               <div
                 className="bg-background w-full aspect-video rounded-2xl bg-contain bg-no-repeat bg-top-left border"
                 style={{ backgroundImage: trustCenterBackgroundImage }}
               ></div>
             </div>
           </div>
-          <div className="order-5 min-h-80 h-full flex flex-col rounded-lg bg-muted p-8 lg:order-none">
+          <div className="order-5 min-h-108 h-full flex flex-col rounded-lg bg-muted p-8 lg:order-none">
             <p className="text-muted-foreground text-center">
               Enterprise features
             </p>
@@ -114,55 +114,55 @@ const Integrate = () => {
               ))}
             </ul>
 
-            <div className="flex justify-between items-center bg-card px-4 py-3 mt-8 rounded-lg gap-3">
+            <div className="flex justify-between items-center bg-card px-4 py-3 mt-auto rounded-lg gap-3">
               {/** biome-ignore lint/performance/noImgElement: svg */}
               <img
                 src={iconMap.get('openai')}
-                alt="GPT-4o"
+                alt="GPT OSS 120B"
                 className="size-6"
               />
               <div className="flex-1">
-                <div className="font-medium text-sm">GPT-4o</div>
+                <div className="font-medium text-sm">GPT OSS 120B</div>
                 <div className="text-muted-foreground text-xs">
                   Input / Output
                 </div>
               </div>
               <div className="font-medium text-muted-foreground text-sm">
-                $5 / $15
+                $0.14 / $0.49
               </div>
             </div>
-            <div className="flex justify-between items-center bg-card px-4 py-3 mt-4 rounded-lg gap-3">
+            <div className="flex justify-between items-center bg-card px-4 py-3 mt-5 rounded-lg gap-3">
+              {/** biome-ignore lint/performance/noImgElement: svg */}
+              <img
+                src={iconMap.get('qwen')}
+                alt="Qwen3 Coder"
+                className="size-6"
+              />
+              <div className="flex-1">
+                <div className="font-medium text-sm">Qwen3 Coder</div>
+                <div className="text-muted-foreground text-xs">
+                  Input / Output
+                </div>
+              </div>
+              <div className="font-medium text-muted-foreground text-sm">
+                $0.9 / $1.5
+              </div>
+            </div>
+            <div className="flex justify-between items-center bg-card px-4 py-3 mt-5 rounded-lg gap-3">
               {/** biome-ignore lint/performance/noImgElement: svg */}
               <img
                 src={iconMap.get('meta')}
-                alt="Llama-3.1-70B"
+                alt="Llama-3.3-70B"
                 className="size-6"
               />
               <div className="flex-1">
-                <div className="font-medium text-sm">Llama-3.1-70B</div>
+                <div className="font-medium text-sm">Llama 3.3 70B</div>
                 <div className="text-muted-foreground text-xs">
                   Input / Output
                 </div>
               </div>
               <div className="font-medium text-muted-foreground text-sm">
-                $0.35 / $0.4
-              </div>
-            </div>
-            <div className="flex justify-between items-center bg-card px-4 py-3 mt-4 rounded-lg gap-3">
-              {/** biome-ignore lint/performance/noImgElement: svg */}
-              <img
-                src={iconMap.get('claude')}
-                alt="Claude-3.5 Sonnet"
-                className="size-6"
-              />
-              <div className="flex-1">
-                <div className="font-medium text-sm">Claude-3.5 Sonnet</div>
-                <div className="text-muted-foreground text-xs">
-                  Input / Output
-                </div>
-              </div>
-              <div className="font-medium text-muted-foreground text-sm">
-                $3 / $15
+                $0.1 / $0.25
               </div>
             </div>
           </div>

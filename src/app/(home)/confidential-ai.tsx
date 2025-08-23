@@ -174,14 +174,10 @@ export default function ConfidentialAI() {
             </div>
             <div className="mt-6 sm:mt-8">
               <Button variant="outline" asChild>
-                <a
-                  href="https://redpill.ai/models"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/confidential-ai-models">
                   Explore models
                   <ChevronRight className="ml-1 h-4" />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
