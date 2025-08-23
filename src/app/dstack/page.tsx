@@ -22,7 +22,7 @@ const DstackPage = async () => {
 
   return (
     <>
-      <CreamContainer className="pt-16 -mt-16">
+      <CreamContainer className="pt-20 -mt-20">
         <Hero starCount={starCount} />
       </CreamContainer>
       <Features />

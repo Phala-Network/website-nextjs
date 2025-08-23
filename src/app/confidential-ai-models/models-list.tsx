@@ -110,7 +110,7 @@ const ModelsList = ({ models }: ModelsListProps) => {
   return (
     <section className="py-24">
       <div className="container">
-        <h1 className="text-center text-3xl font-medium lg:text-4xl mb-6">
+        <h1 className="text-center text-3xl font-semibold lg:text-4xl mb-6">
           Available Models
         </h1>
         <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">

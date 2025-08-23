@@ -20,7 +20,7 @@ const Integrate = () => {
     <section className="py-24">
       <div className="container">
         <div className="mx-auto mb-20 max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-medium lg:text-4xl">
+          <h2 className="mb-6 text-3xl font-semibold lg:text-4xl">
             Integrate in Minutes
           </h2>
           <p className="text-muted-foreground text-balance">
