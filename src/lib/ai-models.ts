@@ -82,6 +82,8 @@ export const icons = [
 
 export const iconMap = new Map(icons.map((icon) => [icon.name, icon.icon]))
 
+export type Icon = (typeof icons)[number]['name']
+
 export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
   const res = await fetch(
     `https://redpill.ai/api/trpc/models.list?input=%7B%22json%22%3A%7B%22take%22%3A${limit}%2C%22skip%22%3A${skip}%2C%22keyword%22%3A%22%22%2C%22verifiable%22%3Atrue%7D%7D`,
