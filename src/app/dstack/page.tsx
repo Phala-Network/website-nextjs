@@ -5,6 +5,7 @@ import { getGitHubStars } from '@/lib/github-stars'
 import AuditReport from './audit-report'
 import { Compare3 as Compare } from './compare'
 import { Cta3 as Cta } from './cta'
+import Features from './features'
 import { Hero24 as Hero } from './hero'
 import { Feature102 as Launch } from './launch'
 // import { Logos9 as Logos } from './logos'
@@ -21,12 +22,13 @@ const DstackPage = async () => {
 
   return (
     <>
-      <CreamContainer className="via-muted to-muted/80 pt-32 -mt-16">
+      <CreamContainer className="pt-20 -mt-20">
         <Hero starCount={starCount} />
-        <Launch />
-        <TrustCenter />
-        <AuditReport />
       </CreamContainer>
+      <Features />
+      <Launch />
+      <TrustCenter />
+      <AuditReport />
       {/* <Logos /> */}
 
       <Compare />
