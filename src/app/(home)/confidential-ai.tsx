@@ -1,6 +1,12 @@
 'use client'
 
-import { ArrowLeft, ArrowRight, ChevronRight, CircleAlert } from 'lucide-react'
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronRight,
+  CircleAlert,
+  Lock,
+} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -13,108 +19,36 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
+import { type Icon, iconMap, icons, type Model } from '@/lib/ai-models'
 
-interface ModelCard {
-  id: string
-  name: string
-  logo: string
-  context: string
-  inputPrice: string
-  outputPrice: string
-  updatedDate: string
-}
+const thumbnails: Icon[] = ['openai', 'google', 'deepseek', 'meta', 'qwen']
 
-const icons: { name: string; icon: string }[] = [
-  {
-    name: 'OpenAI',
-    icon: '/home/openai.svg',
-  },
-  {
-    name: 'Claude',
-    icon: '/home/claude-color.svg',
-  },
-  {
-    name: 'Gemini',
-    icon: '/home/gemini-color.svg',
-  },
-  {
-    name: 'Meta',
-    icon: '/home/meta-color.svg',
-  },
-  {
-    name: 'Qwen',
-    icon: '/home/qwen-color.svg',
-  },
-  {
-    name: 'DeepSeek',
-    icon: '/home/deepseek-color.svg',
-  },
-  {
-    name: 'Mistral',
-    icon: '/home/mistral-color.svg',
-  },
-]
-
-const modelCards: ModelCard[] = [
-  {
-    id: 'phala/gpt-oss-120b',
-    name: 'GPT-OSS-120B',
-    logo: '/home/openai.svg',
-    context: '131K context',
-    inputPrice: '$0.2/M input tokens',
-    outputPrice: '$0.6/M output tokens',
-    updatedDate: 'Updated Aug 6',
-  },
-  {
-    id: 'phala/qwen3-coder',
-    name: 'Qwen3 Coder',
-    logo: '/home/qwen-color.svg',
-    context: '262K context',
-    inputPrice: '$1.5/M input tokens',
-    outputPrice: '$1.6/M output tokens',
-    updatedDate: 'Updated Aug 1',
-  },
-  {
-    id: 'anthropic/claude-sonnet-4',
-    name: 'Claude Sonnet 4',
-    logo: '/home/claude-color.svg',
-    context: '200K context',
-    inputPrice: '$3/M input tokens',
-    outputPrice: '$15/M output tokens',
-    updatedDate: 'Updated May 25',
-  },
-  {
-    id: 'phala/llama-3.3-70b-instruct',
-    name: 'Llama 3.3 70B Instruct',
-    logo: '/home/meta-color.svg',
-    context: '131K context',
-    inputPrice: '$0.12/M input tokens',
-    outputPrice: '$0.35/M output tokens',
-    updatedDate: 'Updated Dec 6',
-  },
-  {
-    id: 'phala/deepseek-chat-v3-0324',
-    name: 'DeepSeek Chat V3 0324',
-    logo: '/home/deepseek-color.svg',
-    context: '163K context',
-    inputPrice: '$0.49/M input tokens',
-    outputPrice: '$1.14/M output tokens',
-    updatedDate: 'Updated Jun 25',
-  },
-]
-
-const ModelCard = ({ model }: { model: ModelCard }) => (
+const ModelCard = ({ model }: { model: Model }) => (
   <a
-    href={`https://redpill.ai/models/${model.id}`}
+    href={`https://redpill.ai/models/${model.slug}`}
     target="_blank"
     rel="noopener noreferrer"
     className="block"
   >
     <div className="bg-background w-[260px] flex-shrink-0 overflow-hidden rounded-sm flex flex-col p-6 relative">
-      {/* Logo/Icon */}
-      <div className="bg-background rounded-full size-16 flex items-center justify-center border mb-6 sm:mb-12 xl:mb-20 shrink-0">
-        {/** biome-ignore lint/performance/noImgElement: svg */}
-        <img alt={model.name} className="size-10" src={model.logo} />
+      {/* Logo/Icon with Lock Badge */}
+      <div className="bg-background rounded-full size-16 flex items-center justify-center border mb-6 sm:mb-12 xl:mb-20 shrink-0 relative">
+        <Avatar className="size-10">
+          <AvatarImage
+            src={
+              icons.find((icon) =>
+                model.name.toLowerCase().includes(icon.name.toLowerCase()),
+              )?.icon
+            }
+            alt={model.name}
+          />
+          <AvatarFallback>
+            {model.provider.slice(0, 2).toUpperCase()}
+          </AvatarFallback>
+        </Avatar>
+        <div className="absolute -bottom-0.5 -right-0.5 bg-card border rounded-full p-1">
+          <Lock className="size-3 text-green-500" />
+        </div>
       </div>
 
       {/* Content - grows to fill available space */}
@@ -125,24 +59,47 @@ const ModelCard = ({ model }: { model: ModelCard }) => (
         </div>
 
         {/* Context */}
-        <div className="text-sm font-medium mb-3">{model.context}</div>
+        <div className="text-sm font-medium mb-3">
+          {model.contextLength >= 1000000
+            ? `${(model.contextLength / 1000000).toFixed(1)}M context`
+            : `${(model.contextLength / 1000).toFixed(0)}K context`}
+        </div>
 
         {/* Pricing */}
         <div className="space-y-1 mb-6">
-          <div className="text-sm text-muted-foreground">
-            {model.inputPrice}
-          </div>
-          <div className="text-sm text-muted-foreground">
-            {model.outputPrice}
-          </div>
+          {model.promptPrice && model.promptPrice !== '0' && (
+            <div className="text-sm text-muted-foreground">
+              ${(parseFloat(model.promptPrice) * 1000000).toFixed(2)}/M input
+              tokens
+            </div>
+          )}
+          {model.completionPrice && model.completionPrice !== '0' && (
+            <div className="text-sm text-muted-foreground">
+              ${(parseFloat(model.completionPrice) * 1000000).toFixed(2)}/M
+              output tokens
+            </div>
+          )}
         </div>
-        <div className="text-sm text-muted-foreground">{model.updatedDate}</div>
+
+        {/* Encrypted Badge */}
+        {model.verifiable && (
+          <div className="mt-auto">
+            <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-50 border border-green-200 text-xs font-medium text-green-700">
+              <Lock className="size-3" />
+              Encrypted
+            </div>
+          </div>
+        )}
       </div>
     </div>
   </a>
 )
 
-export default function ConfidentialAI() {
+interface ConfidentialAIProps {
+  models: Model[]
+}
+
+export default function ConfidentialAI({ models }: ConfidentialAIProps) {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>()
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
@@ -189,82 +146,83 @@ export default function ConfidentialAI() {
                 privacy protection.
               </p>
               <div className="flex flex-wrap -space-x-2 mt-4">
-                {icons.map((icon) => (
+                {thumbnails.map((icon) => (
                   <Avatar
-                    key={icon.name}
+                    key={icon}
                     className="size-8 bg-background p-1 border-2"
                   >
-                    <AvatarImage src={icon.icon} alt={icon.name} />
-                    <AvatarFallback className="text-xs">
-                      {icon.name}
-                    </AvatarFallback>
+                    <AvatarImage src={iconMap.get(icon)} alt={icon} />
                   </Avatar>
                 ))}
               </div>
             </div>
             <div className="mt-6 sm:mt-8">
               <Button variant="outline" asChild>
-                <a
-                  href="https://redpill.ai/models"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/confidential-ai-models">
                   Explore models
                   <ChevronRight className="ml-1 h-4" />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
           <div className="bg-gradient-to-r from-blue-300 to-blue-400 relative overflow-hidden py-4 order-first w-full sm:order-last">
             <div className="relative">
-              <Carousel
-                setApi={setCarouselApi}
-                opts={{
-                  align: 'start',
-                  dragFree: true,
-                }}
-              >
-                <CarouselContent className="ml-0">
-                  {modelCards.map((model) => (
-                    <CarouselItem
-                      key={model.id}
-                      className="basis-auto pl-4 last:pr-4"
-                    >
-                      <ModelCard model={model} />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-              </Carousel>
+              {models.length === 0 ? (
+                <div className="flex items-center justify-center h-64">
+                  <div className="text-white text-lg">No models available</div>
+                </div>
+              ) : (
+                <Carousel
+                  setApi={setCarouselApi}
+                  opts={{
+                    align: 'start',
+                    dragFree: true,
+                  }}
+                >
+                  <CarouselContent className="ml-0">
+                    {models.map((model) => (
+                      <CarouselItem
+                        key={model.id}
+                        className="basis-auto pl-4 last:pr-4"
+                      >
+                        <ModelCard model={model} />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+              )}
             </div>
             {/* Scroll buttons */}
-            <div className="absolute bottom-8 right-4 flex gap-2">
-              <Button
-                size="icon"
-                variant="secondary"
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  carouselApi?.scrollPrev()
-                }}
-                disabled={!canScrollPrev}
-                className="h-8 w-8 bg-white/90 hover:bg-white disabled:opacity-30 shadow-sm"
-              >
-                <ArrowLeft className="h-4 w-4" />
-              </Button>
-              <Button
-                size="icon"
-                variant="secondary"
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  carouselApi?.scrollNext()
-                }}
-                disabled={!canScrollNext}
-                className="h-8 w-8 bg-white/90 hover:bg-white disabled:opacity-30 shadow-sm"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
+            {models.length > 0 && (
+              <div className="absolute bottom-8 right-4 flex gap-2">
+                <Button
+                  size="icon"
+                  variant="secondary"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    carouselApi?.scrollPrev()
+                  }}
+                  disabled={!canScrollPrev}
+                  className="h-8 w-8 bg-white/90 hover:bg-white disabled:opacity-30 shadow-sm"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </Button>
+                <Button
+                  size="icon"
+                  variant="secondary"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    carouselApi?.scrollNext()
+                  }}
+                  disabled={!canScrollNext}
+                  className="h-8 w-8 bg-white/90 hover:bg-white disabled:opacity-30 shadow-sm"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
           </div>
         </div>
         <Link

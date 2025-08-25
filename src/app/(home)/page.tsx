@@ -1,5 +1,6 @@
 import { DashedLine } from '@/components/dashed-line'
 import FinalCTA from '@/components/final-cta'
+import { fetchAiModels, type Model } from '@/lib/ai-models'
 import ConfidentialAI from './confidential-ai'
 import FAQ from './faq'
 import Hero from './hero'
@@ -9,7 +10,17 @@ import ProvenAtScale from './proven-at-scale'
 import SuccessStories from './success-stories'
 import TrustSteps from './trust-steps'
 
-export default function HomePage() {
+export const revalidate = 7200
+
+export default async function HomePage() {
+  // Fetch models for the ConfidentialAI section
+  let models: Model[] = []
+  try {
+    models = await fetchAiModels(10, 0)
+  } catch (error) {
+    console.error('Failed to fetch models:', error)
+  }
+
   return (
     <div className="w-full min-h-screen bg-muted">
       <Hero />
@@ -21,7 +32,7 @@ export default function HomePage() {
           Build AI People Can Trust.
         </span>
       </div>
-      <ConfidentialAI />
+      <ConfidentialAI models={models} />
       <PrivateCloudCompute />
       <ProvenAtScale />
       <SuccessStories />

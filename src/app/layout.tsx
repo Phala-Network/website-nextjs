@@ -54,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables}>
       <body>
-        <div className="pt-16">
+        <div className="pt-20">
           {children}
           <Footer />
         </div>

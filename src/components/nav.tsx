@@ -7,6 +7,7 @@ import {
   Brain,
   Coins,
   Cpu,
+  Gpu,
   GraduationCap,
   Lightbulb,
   Menu,
@@ -69,9 +70,15 @@ const menu = [
         url: '/confidential-vm',
       },
       {
-        title: 'Confidential AI Models, GPU TEE',
+        title: 'Confidential AI Models',
         description: 'AI models with end-to-end privacy guarantees',
         icon: <Brain className="size-5 shrink-0" />,
+        url: '/confidential-ai-models',
+      },
+      {
+        title: 'GPU TEE',
+        description: 'GPU-based confidential computing',
+        icon: <Gpu className="size-5 shrink-0" />,
         url: '/confidential-ai',
       },
       {
@@ -214,12 +221,12 @@ const Navbar = () => {
       <div className="max-w-(--breakpoint-2xl) mx-auto px-4 sm:px-6">
         <section>
           {/* Desktop Menu */}
-          <nav className="hidden justify-between lg:flex h-16">
-            <div className="flex items-center gap-6">
+          <nav className="hidden justify-between lg:flex h-20">
+            <div className="flex items-center gap-6 h-full">
               {/* Logo */}
               <Link href="/" className="flex items-center gap-2">
                 {/** biome-ignore lint/performance/noImgElement: svg */}
-                <img src="/home/logo.svg" className="h-8" alt="" />
+                <img src="/home/logo.svg" className="h-10" alt="" />
               </Link>
               <div className="flex items-center">
                 <NavigationMenu viewport={false}>
@@ -229,14 +236,14 @@ const Navbar = () => {
                 </NavigationMenu>
               </div>
             </div>
-            <div className="flex gap-2 items-center">
-              <Button asChild variant="ghost">
+            <div className="flex gap-2 items-center h-full">
+              <Button size="lg" asChild variant="ghost">
                 <Link href="/contact">Contact</Link>
               </Button>
-              <Button asChild variant="ghost">
+              <Button size="lg" asChild variant="ghost">
                 <a href="https://cloud.phala.network/login">Sign in</a>
               </Button>
-              <Button asChild>
+              <Button size="lg" asChild>
                 <a href="https://cloud.phala.network/register">Sign up</a>
               </Button>
             </div>
@@ -313,7 +320,7 @@ const renderMenuItem = (item: MenuItem) => {
         >
           {item.title}
         </NavigationMenuTrigger>
-        <NavigationMenuContent className="bg-popover text-popover-foreground">
+        <NavigationMenuContent className="bg-popover text-popover-foreground shadow-none!">
           <ul className="w-80">
             {item.items.map((subItem) => (
               <NavigationMenuLink key={subItem.title} asChild>
