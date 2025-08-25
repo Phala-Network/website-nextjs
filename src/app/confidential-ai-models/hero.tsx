@@ -116,14 +116,6 @@ const ProofBar = ({
             {session}
           </code>
         </div>
-        <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">
-            View proof
-          </Button>
-          <Button variant="outline" size="sm">
-            Copy quote
-          </Button>
-        </div>
       </motion.div>
     )}
   </AnimatePresence>
