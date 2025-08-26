@@ -239,10 +239,7 @@ ${page.markdown}`
             {page.tags
               .filter((tag) => tag !== 'Changelog')
               .map((tag) => (
-                <TagLink
-                  key={`tag-${tag}`}
-                  href={`/tags/${encodeURIComponent(tag)}`}
-                >
+                <TagLink key={`tag-${tag}`} href={`/tags/${tag}`}>
                   {tag}
                 </TagLink>
               ))}
