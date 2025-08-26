@@ -130,18 +130,16 @@ const SiteFooter: React.FC = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<SubscribeFormData>({
     resolver: zodResolver(subscribeSchema),
   })
 
   useEffect(() => {
-    if (state.message && !state.isError) {
-      reset()
+    if (state.message) {
       setShowMessages(true)
     }
-  }, [state.message, state.isError, reset])
+  }, [state.message])
 
   const resetState = () => {
     setShowMessages(false)
@@ -184,11 +182,7 @@ const SiteFooter: React.FC = () => {
                     onChange: resetState,
                   })}
                 />
-                <Button
-                  type="submit"
-                  disabled={isPending}
-                  className="w-[100px]"
-                >
+                <Button type="submit" disabled={isPending} className="w-24">
                   {isPending ? (
                     <AiOutlineLoading3Quarters className="h-4 w-4 animate-spin" />
                   ) : (
