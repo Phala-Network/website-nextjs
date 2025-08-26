@@ -26,6 +26,19 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+        ],
+      },
+    ]
+  },
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
 }

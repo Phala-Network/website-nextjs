@@ -14,8 +14,9 @@ export const env = createEnv({
     IMGPROXY_URL: z.string().optional(),
     VERCEL_PROJECT_PRODUCTION_URL: z.string().default('phala.network'),
 
-    MAILERLITE_API_KEY: z.string().optional(),
-    MAILERLITE_GROUP_NEWSLETTER: z.string().optional(),
+    CUSTOMERIO_SITE_ID: z.string().optional(),
+    CUSTOMERIO_API_KEY: z.string().optional(),
+    CUSTOMERIO_FORM_ID: z.string().optional(),
 
     DISCORD_PUBLIC_KEY: z.string().optional(),
     DISCORD_TOKEN: z.string().optional(),
