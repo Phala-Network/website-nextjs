@@ -26,7 +26,7 @@ async function fetchRecentPostPaths(limit: number): Promise<string[]> {
 async function fetchAllTagPaths(): Promise<string[]> {
   try {
     const tags = await retrieveTags()
-    return tags.map((tag) => `/tags/${encodeURIComponent(tag)}`)
+    return tags.map((tag) => `/tags/${tag}`)
   } catch (error) {
     console.error('Error fetching tags:', error)
     return []
@@ -41,7 +41,7 @@ async function warmUpUrls(
   baseUrl: string,
   paths: string[],
 ): Promise<{ successful: number; failed: number }> {
-  const urls = paths.map((path) => `${baseUrl}${path}`)
+  const urls = paths.map((path) => new URL(path, baseUrl).toString())
 
   const results = await Promise.allSettled(
     urls.map((url) =>

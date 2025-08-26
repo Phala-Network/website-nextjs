@@ -24,9 +24,9 @@ export default function TagSearch({ tags, priorityTags }: Props) {
   return (
     <div className="flex flex-col items-center mt-8 w-full">
       <div className="flex flex-wrap gap-4 justify-center max-w-4xl">
-        {displayTags.map((tag, i) => (
-          <div key={`${i}`}>
-            <TagLink href={`/tags/${encodeURIComponent(tag)}`}>{tag}</TagLink>
+        {displayTags.map((tag) => (
+          <div key={tag}>
+            <TagLink href={`/tags/${tag}`}>{tag}</TagLink>
           </div>
         ))}
       </div>

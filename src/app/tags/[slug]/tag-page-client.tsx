@@ -10,13 +10,13 @@ import type { ParsedListPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 
 interface Props {
-  slug: string
+  tag: string
   initialPages: ParsedListPage[]
   nextCursor: string
 }
 
 export default function TagPageClient({
-  slug,
+  tag,
   initialPages,
   nextCursor,
 }: Props) {
@@ -27,7 +27,7 @@ export default function TagPageClient({
   const loadMore = () => {
     startTransition(async () => {
       try {
-        const result = await getPosts({ cursor, tag: slug })
+        const result = await getPosts({ cursor, tag })
         startTransition(() => {
           setPages([...pages, ...result.pages])
           setCursor(result.next_cursor || '')
