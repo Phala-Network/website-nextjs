@@ -84,8 +84,13 @@ export const adminPublishPost = async (
     }
   }
 
-  if (!slug) {
-    slug = `/${generateSlug(title)}`
+  // Normalize and validate slug
+  const normalizedSlug = slug.replace(/^\//, '')
+  const validSlug = generateSlug(normalizedSlug)
+
+  // Update slug if needed and set properties
+  if (!slug || slug !== `/${validSlug}`) {
+    slug = `/${slug ? validSlug : generateSlug(title)}`
     properties['Custom URL'] = {
       rich_text: [{ text: { content: slug } }],
     }
@@ -102,28 +107,29 @@ export const adminPublishPost = async (
   }
 
   try {
-    const encodedSlug = encodeURIComponent(slug.replace(/^\//, ''))
-
     // Revalidate blog page and related paths using the revalidate API
     // This is necessary because revalidatePath() doesn't work in API route contexts
-    const baseUrl = new URL(
+    const apiUrl = new URL(
       '/api/revalidate',
       `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
     )
 
     // Set the revalidate token on the base URL for security
-    baseUrl.searchParams.set('token', REVALIDATE_TOKEN)
+    apiUrl.searchParams.set('token', REVALIDATE_TOKEN)
 
-    // Prevent double encoding of the path parameter
-    const baseUrlString = baseUrl.toString()
+    const getFetch = (path: string) => {
+      const url = new URL(apiUrl)
+      url.searchParams.set('path', path)
+      return fetch(url)
+    }
 
     const revalidatePromises = [
       // Revalidate the main blog listing page
-      fetch(`${baseUrlString}&path=/blog`),
+      getFetch('/blog'),
       // Revalidate the specific post page
-      fetch(`${baseUrlString}&path=/posts/${encodedSlug}`),
+      getFetch(`/posts/${slug.replace(/^\//, '')}`),
       // Revalidate all tag pages for this post
-      ...tags.map((tag) => fetch(`${baseUrlString}&path=/tags/${tag}`)),
+      ...tags.map((tag) => getFetch(`/tags/${tag}`)),
     ]
 
     // Wait for all revalidation requests to complete

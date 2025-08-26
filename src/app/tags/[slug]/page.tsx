@@ -19,7 +19,7 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
-async function getTagData(slug: string) {
+async function getTagData(tag: string) {
   const baseFilters = [
     {
       property: 'Status',
@@ -43,7 +43,7 @@ async function getTagData(slug: string) {
         {
           property: 'Tags',
           multi_select: {
-            contains: slug,
+            contains: tag,
           },
         },
       ],
@@ -64,12 +64,14 @@ async function getTagData(slug: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug: encodedSlug } = await params
-  const slug = decodeURIComponent(encodedSlug)
+  const { slug } = await params
   return {
     title: slug,
     alternates: {
-      canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/tags/${encodeURIComponent(slug)}`,
+      canonical: new URL(
+        `/tags/${slug}`,
+        `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
+      ).toString(),
     },
   }
 }
@@ -80,9 +82,9 @@ export async function generateStaticParams() {
 }
 
 export default async function TagPage({ params }: Props) {
-  const { slug: encodedSlug } = await params
-  const slug = decodeURIComponent(encodedSlug)
-  const { initialPages, nextCursor } = await getTagData(slug)
+  const { slug } = await params
+  const tag = decodeURIComponent(slug)
+  const { initialPages, nextCursor } = await getTagData(tag)
 
   return (
     <div className="min-h-screen">
@@ -98,19 +100,19 @@ export default async function TagPage({ params }: Props) {
                   <BreadcrumbSeparator />
                   <BreadcrumbItem>
                     <BreadcrumbPage className="capitalize">
-                      {slug}
+                      {tag}
                     </BreadcrumbPage>
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>
               <h1 className="mb-4 w-full text-4xl font-bold md:mb-5 md:text-5xl lg:mb-6 capitalize">
-                {slug}
+                {tag}
               </h1>
             </div>
           </div>
 
           <TagPageClient
-            slug={slug}
+            tag={tag}
             initialPages={initialPages}
             nextCursor={nextCursor}
           />
