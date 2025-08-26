@@ -3,31 +3,46 @@
 import { z } from 'zod'
 
 import { env } from '@/env'
-import {
-  type SubscribeState,
-  subscribeSchema,
-  upsertSubscriber,
-} from '@/lib/subscribe'
+import { type SubscribeState, subscribeSchema } from '@/lib/subscribe'
 
 export async function subscribe(
   _prevState: SubscribeState,
   formData: FormData,
 ): Promise<SubscribeState> {
+  const { CUSTOMERIO_SITE_ID, CUSTOMERIO_API_KEY, CUSTOMERIO_FORM_ID } = env
+  if (!CUSTOMERIO_FORM_ID || !CUSTOMERIO_SITE_ID || !CUSTOMERIO_API_KEY) {
+    return { message: 'Configuration error', isError: true }
+  }
   const rawData = {
-    email: formData.get('email') as string,
+    email: formData.get('email'),
   }
 
   try {
-    if (!env.MAILERLITE_GROUP_NEWSLETTER) {
-      return { message: 'Newsletter configuration error', isError: true }
+    const data = subscribeSchema.parse(rawData)
+
+    const credentials = `${CUSTOMERIO_SITE_ID}:${CUSTOMERIO_API_KEY}`
+    const base64Credentials = Buffer.from(credentials).toString('base64')
+
+    const response = await fetch(
+      `https://track.customer.io/api/v1/forms/${CUSTOMERIO_FORM_ID}/submit`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Basic ${base64Credentials}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: {
+            ...data,
+            timestamp: new Date().toISOString(),
+          },
+        }),
+      },
+    )
+
+    if (!response.ok) {
+      return { message: 'Internal Server Error', isError: true }
     }
-
-    const validatedData = subscribeSchema.parse(rawData)
-
-    await upsertSubscriber({
-      email: validatedData.email,
-      groups: [env.MAILERLITE_GROUP_NEWSLETTER],
-    })
 
     return { message: 'Subscribed.', isError: false }
   } catch (error) {
@@ -36,10 +51,6 @@ export async function subscribe(
         message: error.issues[0]?.message || 'Validation error',
         isError: true,
       }
-    }
-
-    if (error instanceof Error) {
-      return { message: error.message, isError: true }
     }
 
     return { message: 'Internal Server Error', isError: true }
