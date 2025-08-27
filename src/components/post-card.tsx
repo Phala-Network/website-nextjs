@@ -56,7 +56,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
               </div>
             ))}
           </div>
-          <h2 className="font-bold text-xl break-all">
+          <h2 className="font-bold text-lg">
             <Link href={`/posts${page.slug}`}>{page.title}</Link>
           </h2>
         </div>
