@@ -6,18 +6,19 @@ import {
 } from '@/components/comparison-template'
 
 export const metadata: Metadata = {
-  title: 'Phala vs AWS Nitro Enclaves - Confidential Computing Comparison',
+  title: 'Phala Cloud vs AWS Nitro Enclaves - Open Source Alternative',
   description:
-    'Compare Phala Network and AWS Nitro Enclaves for confidential computing. See the differences in governance, auditability, GPU TEE support, and vendor lock-in.',
+    'Phala Cloud is a fully open-source alternative to AWS Nitro Enclaves. Compare features, pricing, GPU TEE support, and multi-cloud flexibility. Choose the decentralized confidential computing solution.',
 }
 
 const awsNitroData: ComparisonData = {
   competitor: {
-    name: 'AWS Nitro',
+    name: 'AWS Nitro Enclaves',
     description: 'Enterprise-grade confidential computing',
   },
   hero: {
-    title: 'Phala vs AWS Nitro Enclaves',
+    alternativeText: 'AWS Nitro Enclaves alternative with full open-source solution',
+    title: 'Phala Cloud vs AWS Nitro Enclaves',
     subtitle: 'Open-source decentralized TEE meets enterprise confidential computing',
     bannerImage: '/compare-aws.png',
   },
@@ -104,9 +105,9 @@ const awsNitroData: ComparisonData = {
   ],
   sections: {
     whatIs: {
-      title: 'What is AWS Nitro?',
+      title: 'What are AWS Nitro Enclaves?',
       content:
-        "AWS Nitro Enclaves are Amazon's enterprise solution for confidential computing, providing hardware-isolated compute environments within EC2 instances. Built on custom Nitro hardware, they offer strong security guarantees with CPU and memory isolation. AWS Nitro excels at enterprise integration with comprehensive compliance certifications (HIPAA, PCI-DSS, SOC) and seamless connectivity to AWS services like KMS, S3, and RDS. It's the go-to choice for Fortune 500 companies already invested in the AWS ecosystem who need proven, supported confidential computing.",
+        "AWS Nitro Enclaves are Amazon's enterprise solution for confidential computing, providing hardware-isolated compute environments within EC2 instances. Built on custom Nitro hardware, they offer strong security guarantees with CPU and memory isolation. AWS Nitro Enclaves excel at enterprise integration with comprehensive compliance certifications (HIPAA, PCI-DSS, SOC) and seamless connectivity to AWS services like KMS, S3, and RDS. It's the go-to choice for Fortune 500 companies already invested in the AWS ecosystem who need proven, supported confidential computing.",
     },
     similar: {
       content: [
@@ -118,11 +119,24 @@ const awsNitroData: ComparisonData = {
     },
     different: {
       content: [
-        'Philosophy: AWS offers enterprise stability with SLAs; Phala provides open-source innovation and transparency',
-        'Infrastructure: AWS requires deep AWS expertise and vendor lock-in; Phala runs on any cloud or bare metal',
-        'AI Support: Phala pioneered GPU TEE support for confidential AI; AWS Nitro remains CPU-only',
-        'Verification: AWS keeps attestation internal; Phala publishes proofs on-chain for public audit',
-        'Cost Model: AWS has predictable enterprise pricing; Phala offers competitive community-driven economics',
+        'Philosophy: AWS Nitro Enclaves offer enterprise stability with SLAs; Phala Cloud provides open-source innovation and transparency',
+        'Infrastructure: AWS Nitro Enclaves require deep AWS expertise and vendor lock-in; Phala Cloud runs on any cloud or bare metal',
+        'AI Support: Phala Cloud pioneered GPU TEE support for confidential AI; AWS Nitro Enclaves remain CPU-only',
+        'Verification: AWS Nitro Enclaves keep attestation internal; Phala Cloud publishes proofs on-chain for public audit',
+        'Cost Model: AWS Nitro Enclaves have predictable enterprise pricing; Phala Cloud offers competitive community-driven economics',
+      ],
+    },
+    whyChoose: {
+      title: 'Choose Phala Cloud over AWS Nitro Enclaves',
+      content: [
+        'Complete open-source transparency - audit all code and infrastructure components',
+        'GPU TEE support for next-generation AI workloads with H100/H200 compatibility',
+        'Multi-cloud deployment flexibility - avoid vendor lock-in with AWS',
+        'Decentralized key management secured by Ethereum blockchain governance',
+        'Public attestation logs - real-time verification anyone can audit',
+        'Community-driven pricing - competitive rates without enterprise markup',
+        'Deploy anywhere - cloud, on-premise, or edge infrastructure',
+        'Full control over your confidential computing stack and data sovereignty',
       ],
     },
   },

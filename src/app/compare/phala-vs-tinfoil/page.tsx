@@ -6,9 +6,9 @@ import {
 } from '@/components/comparison-template'
 
 export const metadata: Metadata = {
-  title: 'Phala vs Tinfoil - Confidential AI Infrastructure Comparison',
+  title: 'Phala vs Tinfoil - Open Source Confidential AI Alternative',
   description:
-    'Compare Phala Network and Tinfoil for confidential AI workloads. See the differences in key management, auditability, governance, and platform flexibility.',
+    'Phala is an open-source alternative to Tinfoil for confidential AI. Compare infrastructure control, pricing models, deployment flexibility, and decentralized trust vs managed services.',
 }
 
 const tinfoilData: ComparisonData = {
@@ -17,6 +17,7 @@ const tinfoilData: ComparisonData = {
     description: 'Managed confidential AI platform',
   },
   hero: {
+    alternativeText: 'Tinfoil alternative with infrastructure control and transparency',
     title: 'Phala vs Tinfoil',
     subtitle: 'Decentralized infrastructure meets managed confidential AI services',
     bannerImage: '/compare-tinfoil.png',
@@ -118,11 +119,24 @@ const tinfoilData: ComparisonData = {
     },
     different: {
       content: [
-        'Developer Experience: Tinfoil offers instant OpenAI-compatible APIs; Phala requires infrastructure setup but provides full customization',
-        'Business Model: Tinfoil operates as a SaaS with monthly subscriptions; Phala uses decentralized tokenomics',
-        'Trust Architecture: Tinfoil requires trusting their company; Phala distributes trust across blockchain validators',
-        'Deployment Options: Tinfoil is cloud-only managed service; Phala supports on-premise, multi-cloud, and edge deployments',
-        'Innovation Focus: Tinfoil prioritizes ease-of-use; Phala emphasizes decentralization and transparency',
+        'Developer Experience: Tinfoil offers instant OpenAI-compatible APIs; Phala Cloud requires infrastructure setup but provides full customization',
+        'Business Model: Tinfoil operates as a SaaS with monthly subscriptions; Phala Cloud uses decentralized tokenomics',
+        'Trust Architecture: Tinfoil requires trusting their company; Phala Cloud distributes trust across blockchain validators',
+        'Deployment Options: Tinfoil is cloud-only managed service; Phala Cloud supports on-premise, multi-cloud, and edge deployments',
+        'Innovation Focus: Tinfoil prioritizes ease-of-use; Phala Cloud emphasizes decentralization and transparency',
+      ],
+    },
+    whyChoose: {
+      title: 'Choose Phala Cloud over Tinfoil',
+      content: [
+        'Full infrastructure control - deploy on your own hardware or any cloud provider',
+        'Transparent, pay-what-you-use pricing instead of subscription tiers',
+        'Open-source transparency - audit all code vs proprietary managed service',
+        'Decentralized trust model - no single company controls your confidential AI',
+        'Blockchain-secured key management instead of vendor-controlled keys',
+        'Deploy anywhere - on-premise, edge, or multi-cloud flexibility',
+        'Community governance - shape the platform development and roadmap',
+        'No vendor lock-in - migrate and scale without platform dependencies',
       ],
     },
   },

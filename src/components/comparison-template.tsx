@@ -20,6 +20,7 @@ export type ComparisonData = {
     description: string
   }
   hero: {
+    alternativeText?: string
     title: string
     subtitle: string
     bannerImage?: string
@@ -35,6 +36,10 @@ export type ComparisonData = {
       content: string[]
     }
     different: {
+      content: string[]
+    }
+    whyChoose?: {
+      title: string
       content: string[]
     }
   }
@@ -68,6 +73,11 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
           <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:gap-12">
             <div className="flex-1 md:max-w-2xl">
               <div className="flex flex-col items-start">
+                {data.hero.alternativeText && (
+                  <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">
+                    {data.hero.alternativeText}
+                  </div>
+                )}
                 <h1 className="mb-6 text-4xl leading-tight font-semibold tracking-tighter text-foreground lg:text-5xl xl:text-6xl">
                   {data.hero.title}
                 </h1>
@@ -259,6 +269,30 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
           </div>
         </div>
       </section>
+
+      {/* Why Choose Section */}
+      {data.sections.whyChoose && (
+        <section className="py-16">
+          <div className="container">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="mb-8 text-3xl font-semibold lg:text-4xl text-center">
+                {data.sections.whyChoose.title}
+              </h2>
+              <div className="grid gap-6 md:grid-cols-2">
+                {data.sections.whyChoose.content.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3 rounded-lg border bg-background p-6"
+                  >
+                    <CheckCircle className="mt-0.5 size-5 shrink-0 text-green-600" />
+                    <span className="text-base lg:text-lg leading-relaxed">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Final CTA */}
       <section className="py-20">

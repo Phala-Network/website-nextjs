@@ -6,9 +6,9 @@ import {
 } from '@/components/comparison-template'
 
 export const metadata: Metadata = {
-  title: 'Phala vs GCP Confidential VMs - Confidential Computing Comparison',
+  title: 'Phala Cloud vs GCP Confidential VMs - Open Source Alternative',
   description:
-    'Compare Phala Network and Google Cloud Confidential VMs for confidential computing. See the differences in key management, openness, audit capabilities, and cloud flexibility.',
+    'Phala Cloud is a decentralized alternative to GCP Confidential VMs. Compare features, GPU TEE support, multi-cloud flexibility, and transparent pricing. Choose open-source confidential computing.',
 }
 
 const gcpData: ComparisonData = {
@@ -17,7 +17,8 @@ const gcpData: ComparisonData = {
     description: 'Google\'s trusted cloud infrastructure',
   },
   hero: {
-    title: 'Phala vs GCP Confidential VMs',
+    alternativeText: 'GCP Confidential VMs alternative with decentralized trust',
+    title: 'Phala Cloud vs GCP Confidential VMs',
     subtitle: 'Decentralized confidential computing meets Google\'s enterprise security',
     bannerImage: '/compare-gcp.png',
   },
@@ -118,11 +119,24 @@ const gcpData: ComparisonData = {
     },
     different: {
       content: [
-        'Migration Path: GCP offers zero-code-change VM migration; Phala requires containerization but offers more flexibility',
-        'Trust Model: GCP relies on Google\'s reputation; Phala uses blockchain-based verification',
-        'AI Capabilities: Phala specializes in GPU TEE for AI; GCP focuses on traditional enterprise workloads',
-        'Pricing: GCP has premium pricing with enterprise SLAs; Phala offers competitive community pricing',
-        'Innovation Speed: GCP follows enterprise release cycles; Phala iterates rapidly with community feedback',
+        'Migration Path: GCP Confidential VMs offer zero-code-change VM migration; Phala Cloud requires containerization but offers more flexibility',
+        'Trust Model: GCP Confidential VMs rely on Google\'s reputation; Phala Cloud uses blockchain-based verification',
+        'AI Capabilities: Phala Cloud specializes in GPU TEE for AI; GCP Confidential VMs focus on traditional enterprise workloads',
+        'Pricing: GCP Confidential VMs have premium pricing with enterprise SLAs; Phala Cloud offers competitive community pricing',
+        'Innovation Speed: GCP Confidential VMs follow enterprise release cycles; Phala Cloud iterates rapidly with community feedback',
+      ],
+    },
+    whyChoose: {
+      title: 'Choose Phala Cloud over GCP Confidential VMs',
+      content: [
+        'Break free from Google vendor lock-in with multi-cloud deployment flexibility',
+        'GPU TEE support for confidential AI workloads with H100/H200 compatibility',
+        'Transparent, community-driven pricing without enterprise markup',
+        'Blockchain-secured key management instead of centralized Google control',
+        'Public attestation logs - verify everything on-chain vs private Google APIs',
+        'Deploy on any infrastructure - cloud, on-premise, or edge computing',
+        'Full open-source transparency - audit every component and process',
+        'Community governance - shape the platform instead of following corporate roadmaps',
       ],
     },
   },
