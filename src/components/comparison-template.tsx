@@ -22,7 +22,7 @@ export type ComparisonData = {
   hero: {
     alternativeText?: string
     title: string
-    subtitle: string
+    subtitle?: string
     bannerImage?: string
   }
   quickTakeaways: string[]
@@ -35,6 +35,13 @@ export type ComparisonData = {
     whatIsCompetitor: {
       title: string
       content: string
+    }
+    differentiators: {
+      title: string
+      content: {
+        title: string
+        description: string
+      }[]
     }
     howToChoose: {
       title: string
@@ -156,13 +163,6 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
                   </div>
                   <div className="rounded-t-lg bg-muted p-4 text-center">
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <Image
-                        src="/logo.svg"
-                        alt="Phala"
-                        width={24}
-                        height={24}
-                        className="size-6"
-                      />
                       <span className="font-semibold text-lg">Phala</span>
                     </div>
                     <p className="text-base text-muted-foreground">
@@ -260,23 +260,39 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
         </div>
       </section>
 
+      {/* Key Differentiators */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-8 text-3xl font-semibold lg:text-4xl text-center">
+              {data.sections.differentiators.title}
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2">
+              {data.sections.differentiators.content.map((item, index) => (
+                <div key={index} className="bg-background rounded-lg p-6 border">
+                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How to Choose */}
-      <section className="py-12 bg-muted/30">
+      <section className="py-12">
         <div className="container">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-4 text-2xl font-semibold lg:text-3xl">
               {data.sections.howToChoose.title}
             </h2>
-            <ul className="space-y-3">
+            <div className="space-y-4">
               {data.sections.howToChoose.content.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" />
-                  <span className="text-muted-foreground text-lg leading-relaxed">
-                    {item}
-                  </span>
-                </li>
+                <p key={index} className="text-muted-foreground text-lg leading-relaxed">
+                  {item}
+                </p>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -290,8 +306,7 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
             </h2>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-lg border bg-background p-6">
-                <h3 className="mb-3 font-semibold text-lg flex items-center gap-2">
-                  <Image src="/logo.svg" alt="Phala" width={20} height={20} />
+                <h3 className="mb-3 font-semibold text-lg">
                   Phala Cloud
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -323,9 +338,8 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
                 {data.sections.whyChoose.content.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-3 rounded-lg border bg-background p-6"
+                    className="rounded-lg border bg-background p-6"
                   >
-                    <CheckCircle className="mt-0.5 size-5 shrink-0 text-green-600" />
                     <span className="text-base lg:text-lg leading-relaxed">{item}</span>
                   </div>
                 ))}
