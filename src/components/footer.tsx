@@ -103,6 +103,15 @@ const navigation = [
       { name: 'Explorer', href: 'https://phala.subscan.io/' },
     ],
   },
+  {
+    title: 'Compare',
+    links: [
+      { name: 'vs AWS Nitro', href: '/compare/aws-nitro' },
+      { name: 'vs GCP Confidential', href: '/compare/gcp' },
+      { name: 'vs Tinfoil', href: '/compare/tinfoil' },
+      { name: 'All Comparisons', href: '/compare' },
+    ],
+  },
 ]
 
 const socialLinks = [
