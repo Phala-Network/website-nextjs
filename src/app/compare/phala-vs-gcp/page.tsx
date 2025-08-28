@@ -19,7 +19,6 @@ const gcpData: ComparisonData = {
   hero: {
     alternativeText: 'GCP Confidential VMs alternative with decentralized trust',
     title: 'Phala Cloud vs GCP Confidential VMs',
-    subtitle: 'Decentralized confidential computing meets Google\'s enterprise security',
     bannerImage: '/compare-gcp.png',
   },
   quickTakeaways: [
@@ -127,16 +126,12 @@ const gcpData: ComparisonData = {
       ],
     },
     whyChoose: {
-      title: 'Choose Phala Cloud over GCP Confidential VMs',
+      title: 'Why Choose Phala?',
       content: [
         'Break free from Google vendor lock-in with multi-cloud deployment flexibility',
         'GPU TEE support for confidential AI workloads with H100/H200 compatibility',
-        'Transparent, community-driven pricing without enterprise markup',
         'Blockchain-secured key management instead of centralized Google control',
-        'Public attestation logs - verify everything on-chain vs private Google APIs',
-        'Deploy on any infrastructure - cloud, on-premise, or edge computing',
         'Full open-source transparency - audit every component and process',
-        'Community governance - shape the platform instead of following corporate roadmaps',
       ],
     },
   },

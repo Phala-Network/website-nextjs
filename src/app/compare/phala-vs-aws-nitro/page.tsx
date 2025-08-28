@@ -19,7 +19,6 @@ const awsNitroData: ComparisonData = {
   hero: {
     alternativeText: 'AWS Nitro Enclaves alternative with full open-source solution',
     title: 'Phala Cloud vs AWS Nitro Enclaves',
-    subtitle: 'Open-source decentralized TEE meets enterprise confidential computing',
     bannerImage: '/compare-aws.png',
   },
   quickTakeaways: [
@@ -127,16 +126,12 @@ const awsNitroData: ComparisonData = {
       ],
     },
     whyChoose: {
-      title: 'Choose Phala Cloud over AWS Nitro Enclaves',
+      title: 'Why Choose Phala?',
       content: [
         'Complete open-source transparency - audit all code and infrastructure components',
         'GPU TEE support for next-generation AI workloads with H100/H200 compatibility',
         'Multi-cloud deployment flexibility - avoid vendor lock-in with AWS',
         'Decentralized key management secured by Ethereum blockchain governance',
-        'Public attestation logs - real-time verification anyone can audit',
-        'Community-driven pricing - competitive rates without enterprise markup',
-        'Deploy anywhere - cloud, on-premise, or edge infrastructure',
-        'Full control over your confidential computing stack and data sovereignty',
       ],
     },
   },

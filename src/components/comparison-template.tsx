@@ -73,17 +73,22 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
           <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:gap-12">
             <div className="flex-1 md:max-w-2xl">
               <div className="flex flex-col items-start">
-                {data.hero.alternativeText && (
-                  <div className="mb-4 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">
-                    {data.hero.alternativeText}
-                  </div>
-                )}
+                <div className="mb-2 text-sm font-medium text-foreground uppercase tracking-wide">
+                  Alternative
+                </div>
                 <h1 className="mb-6 text-4xl leading-tight font-semibold tracking-tighter text-foreground lg:text-5xl xl:text-6xl">
                   {data.hero.title}
                 </h1>
-                <p className="mb-8 text-lg text-muted-foreground lg:text-xl leading-relaxed">
-                  {data.hero.subtitle}
-                </p>
+                {data.hero.alternativeText && (
+                  <p className="mb-8 text-lg text-foreground lg:text-xl leading-relaxed font-medium">
+                    {data.hero.alternativeText}
+                  </p>
+                )}
+                {data.hero.subtitle && (
+                  <p className="mb-8 text-lg text-muted-foreground lg:text-xl leading-relaxed">
+                    {data.hero.subtitle}
+                  </p>
+                )}
                 <Button className="h-fit rounded-full px-7 py-4 text-sm font-semibold lg:text-base" asChild>
                   <a href={data.cta.href}>{data.cta.text}</a>
                 </Button>

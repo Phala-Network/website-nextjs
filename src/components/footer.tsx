@@ -104,12 +104,12 @@ const navigation = [
     ],
   },
   {
-    title: 'Compare',
+    title: 'Alternatives',
     links: [
-      { name: 'vs AWS Nitro', href: '/compare/aws-nitro' },
-      { name: 'vs GCP Confidential', href: '/compare/gcp' },
-      { name: 'vs Tinfoil', href: '/compare/tinfoil' },
-      { name: 'All Comparisons', href: '/compare' },
+      { name: 'vs AWS Nitro', href: '/compare/phala-vs-aws-nitro' },
+      { name: 'vs GCP Confidential', href: '/compare/phala-vs-gcp' },
+      { name: 'vs Tinfoil', href: '/compare/phala-vs-tinfoil' },
+      { name: 'All Alternatives', href: '/compare' },
     ],
   },
 ]

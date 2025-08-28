@@ -115,7 +115,7 @@ const menu = [
         url: '/blog',
       },
       {
-        title: 'Compare Solutions',
+        title: 'Compare Alternatives',
         description: 'See how Phala stacks up against other platforms',
         icon: <GitCompare className="size-5 shrink-0" />,
         url: '/compare',

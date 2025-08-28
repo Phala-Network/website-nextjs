@@ -19,7 +19,6 @@ const tinfoilData: ComparisonData = {
   hero: {
     alternativeText: 'Tinfoil alternative with infrastructure control and transparency',
     title: 'Phala vs Tinfoil',
-    subtitle: 'Decentralized infrastructure meets managed confidential AI services',
     bannerImage: '/compare-tinfoil.png',
   },
   quickTakeaways: [
@@ -127,15 +126,11 @@ const tinfoilData: ComparisonData = {
       ],
     },
     whyChoose: {
-      title: 'Choose Phala Cloud over Tinfoil',
+      title: 'Why Choose Phala?',
       content: [
         'Full infrastructure control - deploy on your own hardware or any cloud provider',
-        'Transparent, pay-what-you-use pricing instead of subscription tiers',
         'Open-source transparency - audit all code vs proprietary managed service',
         'Decentralized trust model - no single company controls your confidential AI',
-        'Blockchain-secured key management instead of vendor-controlled keys',
-        'Deploy anywhere - on-premise, edge, or multi-cloud flexibility',
-        'Community governance - shape the platform development and roadmap',
         'No vendor lock-in - migrate and scale without platform dependencies',
       ],
     },
