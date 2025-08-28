@@ -5,9 +5,9 @@ import { z } from 'zod'
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(['development', 'production']).optional(),
-    NOTION_TOKEN: z.string(),
-    NOTION_POSTS_DATABASE_ID: z.string(),
-    NOTION_BACKEND_PREFIX: z.string(),
+    NOTION_TOKEN: z.string().optional().default('dummy_token'),
+    NOTION_POSTS_DATABASE_ID: z.string().optional().default('dummy_id'),
+    NOTION_BACKEND_PREFIX: z.string().optional().default('https://phala.network'),
 
     SUBSCAN_API_KEY: z.string().optional(),
 
