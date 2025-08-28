@@ -52,13 +52,11 @@ const Roadmap = () => {
   }
 
   const handleFullscreen = () => {
-    // @ts-expect-error
     if (
       document.fullscreenElement === null ||
       // @ts-expect-error
       document.webkitIsFullScreen === false
     ) {
-      // @ts-expect-error
       document.documentElement.requestFullscreen
         ? document.documentElement.requestFullscreen()
         : // @ts-expect-error
@@ -74,7 +72,6 @@ const Roadmap = () => {
               // @ts-expect-error
               document.documentElement.msRequestFullscreen()
     } else {
-      // @ts-expect-error
       document.exitFullscreen
         ? document.exitFullscreen()
         : // @ts-expect-error
