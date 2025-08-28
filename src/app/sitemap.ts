@@ -1,13 +1,15 @@
 import type { MetadataRoute } from 'next'
 
 import { env } from '@/env'
-import { getRecentPosts, retrieveTags } from '@/lib/post'
+// Temporarily disabled - requires Notion API
+// import { getRecentPosts, retrieveTags } from '@/lib/post'
 
 const BASE_URL = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const tags = await retrieveTags()
-  const posts = await getRecentPosts(100)
+  // Temporarily disabled - requires Notion API
+  const tags: string[] = [] // await retrieveTags()
+  const posts: any[] = [] // await getRecentPosts(100)
 
   const staticPages: MetadataRoute.Sitemap = [
     {
