@@ -85,6 +85,15 @@ const navigation = [
     ],
   },
   {
+    title: 'Compare',
+    links: [
+      { name: 'vs AWS Nitro', href: '/compare/aws-nitro' },
+      { name: 'vs GCP Confidential', href: '/compare/gcp' },
+      { name: 'vs Tinfoil', href: '/compare/tinfoil' },
+      { name: 'All Comparisons', href: '/compare' },
+    ],
+  },
+  {
     title: 'Network',
     links: [
       { name: 'Phala App', href: 'https://app.phala.network/' },
