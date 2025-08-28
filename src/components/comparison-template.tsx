@@ -28,15 +28,22 @@ export type ComparisonData = {
   quickTakeaways: string[]
   features: ComparisonFeature[]
   sections: {
-    whatIs: {
+    whatIsPhala: {
       title: string
       content: string
     }
-    similar: {
+    whatIsCompetitor: {
+      title: string
+      content: string
+    }
+    howToChoose: {
+      title: string
       content: string[]
     }
-    different: {
-      content: string[]
+    pricing: {
+      title: string
+      phalaContent: string
+      competitorContent: string
     }
     whyChoose?: {
       title: string
@@ -225,30 +232,48 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
         </div>
       </section>
 
-      {/* What is X? Section */}
-      <section className="py-16 bg-muted/30">
+      {/* What does Phala do? */}
+      <section className="py-12 bg-muted/30">
         <div className="container">
           <div className="mx-auto max-w-4xl">
-            <h2 className="mb-6 text-3xl font-semibold lg:text-4xl">
-              {data.sections.whatIs.title}
+            <h2 className="mb-4 text-2xl font-semibold lg:text-3xl">
+              {data.sections.whatIsPhala.title}
             </h2>
-            <p className="text-muted-foreground text-xl lg:text-2xl leading-relaxed">
-              {data.sections.whatIs.content}
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              {data.sections.whatIsPhala.content}
             </p>
           </div>
         </div>
       </section>
 
-      {/* What's Similar? */}
-      <section className="py-16">
+      {/* What does Competitor do? */}
+      <section className="py-12">
         <div className="container">
           <div className="mx-auto max-w-4xl">
-            <h2 className="mb-6 text-3xl font-semibold lg:text-4xl">What's Similar?</h2>
+            <h2 className="mb-4 text-2xl font-semibold lg:text-3xl">
+              {data.sections.whatIsCompetitor.title}
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              {data.sections.whatIsCompetitor.content}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* How to Choose */}
+      <section className="py-12 bg-muted/30">
+        <div className="container">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-4 text-2xl font-semibold lg:text-3xl">
+              {data.sections.howToChoose.title}
+            </h2>
             <ul className="space-y-3">
-              {data.sections.similar.content.map((item, index) => (
+              {data.sections.howToChoose.content.map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <CheckCircle className="mt-1 size-5 shrink-0 text-green-600" />
-                  <span className="text-muted-foreground text-lg">{item}</span>
+                  <div className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" />
+                  <span className="text-muted-foreground text-lg leading-relaxed">
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -256,21 +281,32 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
         </div>
       </section>
 
-      {/* What's Different? */}
-      <section className="py-16 bg-muted/30">
+      {/* Pricing Comparison */}
+      <section className="py-12">
         <div className="container">
           <div className="mx-auto max-w-4xl">
-            <h2 className="mb-6 text-3xl font-semibold lg:text-4xl">What's Different?</h2>
-            <ul className="space-y-4">
-              {data.sections.different.content.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="mt-1 size-2 shrink-0 rounded-full bg-primary" />
-                  <span className="text-muted-foreground leading-relaxed text-lg">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <h2 className="mb-6 text-2xl font-semibold lg:text-3xl">
+              {data.sections.pricing.title}
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-lg border bg-background p-6">
+                <h3 className="mb-3 font-semibold text-lg flex items-center gap-2">
+                  <Image src="/logo.svg" alt="Phala" width={20} height={20} />
+                  Phala Cloud
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {data.sections.pricing.phalaContent}
+                </p>
+              </div>
+              <div className="rounded-lg border bg-background p-6">
+                <h3 className="mb-3 font-semibold text-lg">
+                  {data.competitor.name}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {data.sections.pricing.competitorContent}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

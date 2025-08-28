@@ -103,27 +103,27 @@ const awsNitroData: ComparisonData = {
     },
   ],
   sections: {
-    whatIs: {
+    whatIsPhala: {
+      title: 'What does Phala Cloud do?',
+      content: 'Phala Cloud is a decentralized confidential computing platform that enables developers to deploy AI applications with full privacy guarantees. Built on open-source technology, it provides GPU TEE support for confidential AI workloads, blockchain-secured key management, and multi-cloud deployment flexibility without vendor lock-in.',
+    },
+    whatIsCompetitor: {
       title: 'What are AWS Nitro Enclaves?',
-      content:
-        "AWS Nitro Enclaves are Amazon's enterprise solution for confidential computing, providing hardware-isolated compute environments within EC2 instances. Built on custom Nitro hardware, they offer strong security guarantees with CPU and memory isolation. AWS Nitro Enclaves excel at enterprise integration with comprehensive compliance certifications (HIPAA, PCI-DSS, SOC) and seamless connectivity to AWS services like KMS, S3, and RDS. It's the go-to choice for Fortune 500 companies already invested in the AWS ecosystem who need proven, supported confidential computing.",
+      content: "AWS Nitro Enclaves are Amazon's enterprise solution for confidential computing, providing hardware-isolated compute environments within EC2 instances. Built on custom Nitro hardware, they offer strong security guarantees with CPU and memory isolation, comprehensive compliance certifications, and seamless connectivity to AWS services.",
     },
-    similar: {
+    howToChoose: {
+      title: 'Phala vs AWS Nitro Enclaves: How to choose?',
       content: [
-        'Both provide hardware-based trusted execution environments for sensitive workloads',
-        'Both protect data in use from cloud provider access and other tenants',
-        'Both support remote attestation to verify enclave integrity',
-        'Both enable confidential computing without application redesign',
+        'Choose AWS Nitro Enclaves if you need enterprise support, existing AWS infrastructure integration, and compliance certifications',
+        'Choose Phala Cloud if you want open-source transparency, GPU TEE support for AI, multi-cloud flexibility, and decentralized governance',
+        'Consider your technical expertise: AWS requires deep AWS knowledge, while Phala offers simpler container-based deployment',
+        'Evaluate vendor lock-in: AWS ties you to their ecosystem, while Phala enables deployment anywhere'
       ],
     },
-    different: {
-      content: [
-        'Philosophy: AWS Nitro Enclaves offer enterprise stability with SLAs; Phala Cloud provides open-source innovation and transparency',
-        'Infrastructure: AWS Nitro Enclaves require deep AWS expertise and vendor lock-in; Phala Cloud runs on any cloud or bare metal',
-        'AI Support: Phala Cloud pioneered GPU TEE support for confidential AI; AWS Nitro Enclaves remain CPU-only',
-        'Verification: AWS Nitro Enclaves keep attestation internal; Phala Cloud publishes proofs on-chain for public audit',
-        'Cost Model: AWS Nitro Enclaves have predictable enterprise pricing; Phala Cloud offers competitive community-driven economics',
-      ],
+    pricing: {
+      title: 'Pricing Comparison',
+      phalaContent: 'Pay-what-you-use pricing starting from $0.10/hour for CPU TEE and $0.50/hour for GPU TEE. No upfront costs, enterprise contracts, or vendor lock-in fees. Transparent community-driven pricing.',
+      competitorContent: 'Enterprise pricing with AWS Premium Support fees, EC2 instance costs, plus Nitro Enclave compute charges. Requires AWS expertise and often involves long-term enterprise agreements.',
     },
     whyChoose: {
       title: 'Choose Phala over AWS Nitro Enclaves',

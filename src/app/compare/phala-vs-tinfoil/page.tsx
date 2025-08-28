@@ -103,27 +103,27 @@ const tinfoilData: ComparisonData = {
     },
   ],
   sections: {
-    whatIs: {
-      title: 'What is Tinfoil?',
-      content:
-        'Tinfoil is a developer-friendly confidential AI platform that makes GPU TEE deployment incredibly simple. With OpenAI-compatible endpoints and pre-deployed models like Llama and Mistral, developers can integrate confidential AI in minutes rather than weeks. Tinfoil excels at removing complexity - they handle hardware provisioning, driver compatibility, attestation flows, and model optimization. Their managed service approach with SOC2 compliance and enterprise SLAs makes them attractive for companies wanting confidential AI without infrastructure headaches. For teams prioritizing speed and simplicity over control, Tinfoil offers the fastest path to production.',
+    whatIsPhala: {
+      title: 'What does Phala Cloud do?',
+      content: 'Phala Cloud is a decentralized confidential computing platform that enables developers to deploy AI applications with full privacy guarantees. Built on open-source technology, it provides GPU TEE support for confidential AI workloads, blockchain-secured key management, and multi-cloud deployment flexibility without vendor lock-in.',
     },
-    similar: {
+    whatIsCompetitor: {
+      title: 'What does Tinfoil do?',
+      content: 'Tinfoil is a developer-friendly managed confidential AI platform that makes GPU TEE deployment simple. With OpenAI-compatible endpoints and pre-deployed models, developers can integrate confidential AI in minutes. Tinfoil handles hardware provisioning, driver compatibility, attestation flows, and model optimization as a fully managed service.',
+    },
+    howToChoose: {
+      title: 'Phala vs Tinfoil: How to choose?',
       content: [
-        'Both leverage NVIDIA H100 GPU TEEs for confidential AI inference',
-        'Both protect model weights and inference data from infrastructure providers',
-        'Both support popular AI models like Llama, Mistral, and custom models',
-        'Both enable confidential computing for sensitive AI workloads',
+        'Choose Tinfoil if you want instant deployment with OpenAI-compatible APIs and don\'t want to manage infrastructure',
+        'Choose Phala Cloud if you need full infrastructure control, open-source transparency, and deployment flexibility',
+        'Consider development speed: Tinfoil offers minutes to deployment, while Phala requires more setup but provides customization',
+        'Evaluate long-term strategy: Tinfoil creates vendor dependency, while Phala enables infrastructure sovereignty'
       ],
     },
-    different: {
-      content: [
-        'Developer Experience: Tinfoil offers instant OpenAI-compatible APIs; Phala Cloud requires infrastructure setup but provides full customization',
-        'Business Model: Tinfoil operates as a SaaS with monthly subscriptions; Phala Cloud uses decentralized tokenomics',
-        'Trust Architecture: Tinfoil requires trusting their company; Phala Cloud distributes trust across blockchain validators',
-        'Deployment Options: Tinfoil is cloud-only managed service; Phala Cloud supports on-premise, multi-cloud, and edge deployments',
-        'Innovation Focus: Tinfoil prioritizes ease-of-use; Phala Cloud emphasizes decentralization and transparency',
-      ],
+    pricing: {
+      title: 'Pricing Comparison',
+      phalaContent: 'Transparent pay-what-you-use pricing starting from $0.50/hour for GPU TEE. No subscription fees, setup costs, or vendor lock-in charges. Scale up or down instantly.',
+      competitorContent: 'Subscription-based pricing tiers with monthly commitments. Includes managed service premium but limits flexibility and requires ongoing subscription fees regardless of usage.',
     },
     whyChoose: {
       title: 'Choose Phala over Tinfoil',
