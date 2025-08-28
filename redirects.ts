@@ -257,19 +257,20 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
     },
     {
       source: '/agent-wars-shaping-the-future-of-ai-and-web3-with-tokenization',
-      destination: '/posts/agent-wars-shaping-the-future-of-ai-and-web3-with-tokenization',
+      destination:
+        '/posts/agent-wars-shaping-the-future-of-ai-and-web3-with-tokenization',
       permanent: false,
     },
     {
-      source: '/Dstack-Completes-Security-Audit-A-Milestone-for-Confidential-Cloud',
+      source:
+        '/Dstack-Completes-Security-Audit-A-Milestone-for-Confidential-Cloud',
       destination:
         '/posts/Dstack-Completes-Security-Audit-A-Milestone-for-Confidential-Cloud',
       permanent: false,
     },
     {
       source: '/guide-dynamic-nfts-web3-social-progression-games',
-      destination:
-        '/posts/guide-dynamic-nfts-web3-social-progression-games',
+      destination: '/posts/guide-dynamic-nfts-web3-social-progression-games',
       permanent: false,
     },
 

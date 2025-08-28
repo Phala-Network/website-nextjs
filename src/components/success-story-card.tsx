@@ -1,7 +1,7 @@
 'use client'
 
-import Link, { type LinkProps } from 'next/link'
 import { getImageProps } from 'next/image'
+import Link, { type LinkProps } from 'next/link'
 import { FaArrowRight } from 'react-icons/fa6'
 
 import type { SuccessStory } from '@/data/success-stories-data'
@@ -22,11 +22,11 @@ export const SuccessStoryCard = ({
 }: SuccessStoryCardProps) => {
   const {
     props: { srcSet },
-  } = getImageProps({ 
-    alt: '', 
-    width: 400, 
-    height: 560, 
-    src: story.bgImage 
+  } = getImageProps({
+    alt: '',
+    width: 400,
+    height: 560,
+    src: story.bgImage,
   })
   const backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), ${getBackgroundImage(srcSet)}`
 
@@ -43,30 +43,30 @@ export const SuccessStoryCard = ({
       style={{ backgroundImage }}
       {...props}
     >
-    <div className="flex items-start mb-auto">
-      <div className="font-semibold text-xl md:text-2xl whitespace-pre-line flex-1">
-        {story.category}
-      </div>
-      <div className="bg-white/80 rounded-full p-3 flex items-center justify-center shrink-0">
-        <FaArrowRight className="w-4 h-4 text-black" />
-      </div>
-    </div>
-
-    <div className="flex flex-col gap-4 mb-6">
-      <div className="font-medium">{story.title}</div>
-      <div className="text-sm line-clamp-3">{story.description}</div>
-    </div>
-
-    <div className="flex flex-col gap-1 mb-4">
-      {story.stats.map((stat, index) => (
-        <div
-          key={`${story.id}-stat-${index}`}
-          className="text-sm text-muted-foreground"
-        >
-          {stat}
+      <div className="flex items-start mb-auto">
+        <div className="font-semibold text-xl md:text-2xl whitespace-pre-line flex-1">
+          {story.category}
         </div>
-      ))}
-    </div>
+        <div className="bg-white/80 rounded-full p-3 flex items-center justify-center shrink-0">
+          <FaArrowRight className="w-4 h-4 text-black" />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4 mb-6">
+        <div className="font-medium">{story.title}</div>
+        <div className="text-sm line-clamp-3">{story.description}</div>
+      </div>
+
+      <div className="flex flex-col gap-1 mb-4">
+        {story.stats.map((stat, index) => (
+          <div
+            key={`${story.id}-stat-${index}`}
+            className="text-sm text-muted-foreground"
+          >
+            {stat}
+          </div>
+        ))}
+      </div>
     </Link>
   )
 }
