@@ -111,13 +111,34 @@ const gcpData: ComparisonData = {
       title: 'What are GCP Confidential VMs?',
       content: "Google Cloud Confidential VMs use AMD SEV and Intel TDX to encrypt VM memory during processing. GCP excels at enterprise features with seamless lift-and-shift migration, comprehensive compliance certifications, and deep integration with Google's ecosystem including BigQuery, Cloud Run, and Vertex AI.",
     },
-    howToChoose: {
-      title: 'Phala vs GCP Confidential VMs: How to choose?',
+    differentiators: {
+      title: 'Where GCP Confidential VMs Stop, Phala Keeps Going',
       content: [
-        'Choose GCP Confidential VMs if you need seamless VM migration, existing Google Cloud integration, and enterprise compliance certifications',
-        'Choose Phala Cloud if you want GPU TEE support for AI, multi-cloud flexibility, open-source transparency, and decentralized governance',
-        'Consider migration effort: GCP offers lift-and-shift, while Phala requires containerization but provides more deployment options',
-        'Evaluate vendor dependency: GCP locks you into Google\'s ecosystem, while Phala enables deployment anywhere'
+        {
+          title: 'GPU TEE for Confidential AI',
+          description: 'GCP Confidential VMs only protect CPU workloads. Their A3 GPU instances lack TEE protection, exposing AI models and data. Phala provides true GPU TEE with H100/H200, keeping your AI workloads confidential end-to-end.'
+        },
+        {
+          title: 'Break Free from Google Lock-in',
+          description: 'GCP ties you to Google\'s ecosystem with proprietary APIs and services. Phala uses standard TEE technologies, enabling deployment on any cloud or on-premises infrastructure without vendor dependency.'
+        },
+        {
+          title: 'Transparent vs Black Box',
+          description: 'Google\'s confidential computing relies on proprietary systems you cannot audit. Phala is fully open-source, allowing you to verify every component and process for true security transparency.'
+        },
+        {
+          title: 'Decentralized Trust Model',
+          description: 'GCP requires trusting Google as a centralized authority. Phala uses blockchain-secured attestation and key management, removing single points of control and enabling community-governed trust.'
+        }
+      ]
+    },
+    howToChoose: {
+      title: 'When to Choose Each Solution',
+      content: [
+        'Choose GCP Confidential VMs if you\'re already committed to Google Cloud, need easy lift-and-shift VM migration, and your workloads are CPU-only without AI/GPU requirements.',
+        'Choose Phala Cloud if you need confidential AI with GPU TEE support, want multi-cloud flexibility, or require infrastructure sovereignty with open-source transparency.',
+        'GCP offers convenient integration with Google services but creates vendor lock-in, while Phala requires containerization but provides true portability.',
+        'Consider control vs convenience: GCP manages everything but limits your options, while Phala gives you full control over your confidential computing infrastructure.'
       ],
     },
     pricing: {

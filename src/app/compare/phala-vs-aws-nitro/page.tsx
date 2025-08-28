@@ -111,13 +111,34 @@ const awsNitroData: ComparisonData = {
       title: 'What are AWS Nitro Enclaves?',
       content: "AWS Nitro Enclaves are Amazon's enterprise solution for confidential computing, providing hardware-isolated compute environments within EC2 instances. Built on custom Nitro hardware, they offer strong security guarantees with CPU and memory isolation, comprehensive compliance certifications, and seamless connectivity to AWS services.",
     },
-    howToChoose: {
-      title: 'Phala vs AWS Nitro Enclaves: How to choose?',
+    differentiators: {
+      title: 'Where AWS Nitro Stops, Phala Keeps Going',
       content: [
-        'Choose AWS Nitro Enclaves if you need enterprise support, existing AWS infrastructure integration, and compliance certifications',
-        'Choose Phala Cloud if you want open-source transparency, GPU TEE support for AI, multi-cloud flexibility, and decentralized governance',
-        'Consider your technical expertise: AWS requires deep AWS knowledge, while Phala offers simpler container-based deployment',
-        'Evaluate vendor lock-in: AWS ties you to their ecosystem, while Phala enables deployment anywhere'
+        {
+          title: 'Beyond CPU-Only Computing',
+          description: 'AWS Nitro Enclaves are limited to CPU workloads. Phala extends confidential computing to GPU TEE with H100/H200 support, enabling private AI inference and training at enterprise scale.'
+        },
+        {
+          title: 'Open-Source Transparency',
+          description: 'While AWS uses proprietary Nitro hardware and closed-source attestation, Phala provides fully auditable open-source infrastructure. Every component can be verified and deployed independently.'
+        },
+        {
+          title: 'Multi-Cloud Freedom',
+          description: 'AWS locks you into their ecosystem with Nitro-specific implementations. Phala runs anywhere - on-premises, AWS, GCP, or Azure - using standard TEE technologies like Intel TDX and AMD SEV.'
+        },
+        {
+          title: 'Decentralized Key Management',
+          description: 'AWS controls your keys through centralized KMS. Phala uses blockchain-secured governance where key management decisions are transparent and community-controlled, not controlled by a single company.'
+        }
+      ]
+    },
+    howToChoose: {
+      title: 'When to Choose Each Solution',
+      content: [
+        'Choose AWS Nitro Enclaves if you\'re already deep in the AWS ecosystem, need immediate enterprise support, and your confidential workloads are CPU-only with no AI/GPU requirements.',
+        'Choose Phala Cloud if you need GPU TEE support for AI workloads, want infrastructure sovereignty without vendor lock-in, or require full transparency through open-source auditability.',
+        'AWS Nitro requires significant AWS expertise and ties you to their proprietary platform, while Phala offers standard container deployment across any infrastructure.',
+        'Consider long-term flexibility: AWS creates dependency on their ecosystem, while Phala enables true multi-cloud portability and infrastructure control.'
       ],
     },
     pricing: {

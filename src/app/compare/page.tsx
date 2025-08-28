@@ -73,17 +73,17 @@ const tabs = [
 const comparisons = [
   {
     name: 'AWS Nitro Enclaves',
-    slug: 'aws-nitro',
+    slug: 'phala-vs-aws-nitro',
     description: 'Enterprise-grade confidential computing on AWS',
   },
   {
     name: 'GCP Confidential VMs',
-    slug: 'gcp',
+    slug: 'phala-vs-gcp',
     description: 'Google\'s AMD SEV-based confidential computing',
   },
   {
     name: 'Tinfoil Security',
-    slug: 'tinfoil',
+    slug: 'phala-vs-tinfoil',
     description: 'Managed confidential AI inference service',
   },
 ]

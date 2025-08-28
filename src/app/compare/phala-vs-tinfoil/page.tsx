@@ -111,13 +111,34 @@ const tinfoilData: ComparisonData = {
       title: 'What does Tinfoil do?',
       content: 'Tinfoil is a developer-friendly managed confidential AI platform that makes GPU TEE deployment simple. With OpenAI-compatible endpoints and pre-deployed models, developers can integrate confidential AI in minutes. Tinfoil handles hardware provisioning, driver compatibility, attestation flows, and model optimization as a fully managed service.',
     },
-    howToChoose: {
-      title: 'Phala vs Tinfoil: How to choose?',
+    differentiators: {
+      title: 'Where Tinfoil Stops, Phala Keeps Going',
       content: [
-        'Choose Tinfoil if you want instant deployment with OpenAI-compatible APIs and don\'t want to manage infrastructure',
-        'Choose Phala Cloud if you need full infrastructure control, open-source transparency, and deployment flexibility',
-        'Consider development speed: Tinfoil offers minutes to deployment, while Phala requires more setup but provides customization',
-        'Evaluate long-term strategy: Tinfoil creates vendor dependency, while Phala enables infrastructure sovereignty'
+        {
+          title: 'Infrastructure Control vs Managed Service',
+          description: 'Tinfoil offers convenience with fully managed services but limits customization. Phala provides both managed and self-hosted options, giving you full control over your infrastructure and deployment choices.'
+        },
+        {
+          title: 'Open Source vs Proprietary Core',
+          description: 'Tinfoil\'s core infrastructure is proprietary - you cannot audit or modify their systems. Phala is fully open-source, enabling complete transparency and the ability to customize every component.'
+        },
+        {
+          title: 'Decentralized Trust vs Company Reputation',
+          description: 'Tinfoil asks you to trust their company and infrastructure. Phala uses blockchain-secured attestation where trust is mathematically verifiable, not dependent on corporate reputation.'
+        },
+        {
+          title: 'Deployment Flexibility vs Vendor Lock-in',
+          description: 'Tinfoil restricts you to their cloud infrastructure. Phala enables deployment anywhere - your own hardware, any cloud provider, or hybrid setups - preventing vendor lock-in.'
+        }
+      ]
+    },
+    howToChoose: {
+      title: 'When to Choose Each Solution',
+      content: [
+        'Choose Tinfoil if you want the fastest path to confidential AI with minimal setup, don\'t need infrastructure control, and are comfortable with managed service limitations.',
+        'Choose Phala Cloud if you need infrastructure sovereignty, want to audit and customize your confidential computing stack, or require deployment flexibility across multiple environments.',
+        'Tinfoil optimizes for developer velocity with instant deployment, while Phala optimizes for long-term flexibility and control.',
+        'Consider your growth trajectory: Tinfoil may be simpler now but creates dependencies, while Phala requires more initial setup but scales with your needs.'
       ],
     },
     pricing: {
