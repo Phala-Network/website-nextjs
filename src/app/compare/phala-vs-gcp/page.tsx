@@ -126,7 +126,7 @@ const gcpData: ComparisonData = {
       ],
     },
     whyChoose: {
-      title: 'Why Choose Phala?',
+      title: 'Choose Phala over GCP Confidential VMs',
       content: [
         'Break free from Google vendor lock-in with multi-cloud deployment flexibility',
         'GPU TEE support for confidential AI workloads with H100/H200 compatibility',

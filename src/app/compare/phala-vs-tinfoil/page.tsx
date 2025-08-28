@@ -126,7 +126,7 @@ const tinfoilData: ComparisonData = {
       ],
     },
     whyChoose: {
-      title: 'Why Choose Phala?',
+      title: 'Choose Phala over Tinfoil',
       content: [
         'Full infrastructure control - deploy on your own hardware or any cloud provider',
         'Open-source transparency - audit all code vs proprietary managed service',

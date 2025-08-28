@@ -126,7 +126,7 @@ const awsNitroData: ComparisonData = {
       ],
     },
     whyChoose: {
-      title: 'Why Choose Phala?',
+      title: 'Choose Phala over AWS Nitro Enclaves',
       content: [
         'Complete open-source transparency - audit all code and infrastructure components',
         'GPU TEE support for next-generation AI workloads with H100/H200 compatibility',
