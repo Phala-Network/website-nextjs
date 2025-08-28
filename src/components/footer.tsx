@@ -62,6 +62,10 @@ const navigation = [
         name: 'Builders Program',
         href: 'https://docs.phala.network/network/references/archived-projects',
       },
+      {
+        name: 'Responsible Disclosure',
+        href: 'https://github.com/Phala-Network/phala-blockchain/blob/master/docs/responsible-disclosure.md',
+      },
     ],
   },
   {
