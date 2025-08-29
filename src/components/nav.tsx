@@ -7,6 +7,7 @@ import {
   Brain,
   Coins,
   Cpu,
+  GitCompare,
   Gpu,
   GraduationCap,
   Lightbulb,
@@ -113,6 +114,31 @@ const menu = [
         icon: <BookOpen className="size-5 shrink-0" />,
         url: '/blog',
       },
+      {
+        title: 'Compare',
+        description:
+          'See how Phala compares to other confidential computing solutions',
+        icon: <GitCompare className="size-5 shrink-0" />,
+        url: '/compare',
+        items: [
+          {
+            title: 'Phala vs AWS Nitro',
+            description: 'Open-source alternative to AWS Nitro Enclaves',
+            url: '/compare/phala-vs-aws-nitro',
+          },
+          {
+            title: 'Phala vs GCP Confidential VMs',
+            description:
+              'Decentralized alternative to Google Cloud confidential computing',
+            url: '/compare/phala-vs-gcp',
+          },
+          {
+            title: 'Phala vs Tinfoil',
+            description: 'Infrastructure control vs managed confidential AI',
+            url: '/compare/phala-vs-tinfoil',
+          },
+        ],
+      },
     ],
   },
   {
@@ -123,7 +149,7 @@ const menu = [
         title: 'Documentation',
         description: 'Complete guides and API references for developers',
         icon: <Book className="size-5 shrink-0" />,
-        url: 'https://docs.phala.network/?utm_source=phala.network&utm_medium=site-nav',
+        url: 'https://docs.phala.com/?utm_source=phala.network&utm_medium=site-nav',
       },
       {
         title: 'Guides',
@@ -159,13 +185,13 @@ const menu = [
         title: 'About Phala Network',
         description: 'Learn about our mission and privacy-first technology',
         icon: <Network className="size-5 shrink-0" />,
-        url: 'https://docs.phala.network/overview/phala-network?utm_source=phala.network&utm_medium=site-nav',
+        url: 'https://docs.phala.com/overview/phala-network?utm_source=phala.network&utm_medium=site-nav',
       },
       {
         title: 'PHA Token',
         description: 'Native token for ecosystem, staking, and governance',
         icon: <Coins className="size-5 shrink-0" />,
-        url: 'https://docs.phala.network/overview/pha-token/introduction',
+        url: 'https://docs.phala.com/overview/pha-token/introduction',
       },
       {
         title: 'Wallet, Stake, Bridge',
@@ -189,7 +215,7 @@ const menu = [
         title: 'Compute Provider',
         description: 'Join as a provider and earn rewards',
         icon: <Cpu className="size-5 shrink-0" />,
-        url: 'https://docs.phala.network/network/compute-providers/basic-info/introduction',
+        url: 'https://docs.phala.com/network/compute-providers/basic-info/introduction',
       },
     ],
   },
@@ -356,7 +382,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
         </AccordionTrigger>
         <AccordionContent className="mt-2">
           {item.items.map((subItem) => (
-            <SubMenuLink key={subItem.title} item={subItem} />
+            <MobileSubMenuLink key={subItem.title} item={subItem} />
           ))}
         </AccordionContent>
       </AccordionItem>
@@ -387,8 +413,102 @@ const isExternalLink = (url: string): boolean => {
   return false
 }
 
+const MobileSubMenuLink = ({ item }: { item: MenuItem }) => {
+  const isExternal = isExternalLink(item.url)
+
+  if (item.items) {
+    return (
+      <div className="space-y-2">
+        <div className="flex select-none flex-row gap-4 rounded-md p-2">
+          <div className="text-foreground">{item.icon}</div>
+          <div className="flex-1">
+            <div className="text-sm font-semibold">
+              <Link href={item.url} className="hover:text-accent-foreground">
+                {item.title}
+              </Link>
+            </div>
+            {item.description && (
+              <p className="text-muted-foreground text-sm leading-snug">
+                {item.description}
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="ml-9 space-y-1">
+          {item.items.map((subItem) => (
+            <Link
+              key={subItem.title}
+              href={subItem.url}
+              className="block text-sm text-muted-foreground hover:text-foreground p-2 rounded hover:bg-muted/50"
+            >
+              {subItem.title}
+            </Link>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <Link
+      className="hover:bg-muted hover:text-accent-foreground flex select-none flex-row gap-4 rounded-md p-2 leading-none no-underline outline-none transition-colors"
+      href={item.url}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+    >
+      <div className="text-foreground">{item.icon}</div>
+      <div className="flex-1">
+        <div className="text-sm font-semibold flex items-center gap-2">
+          {item.title}
+          {isExternal && (
+            <SquareArrowOutUpRight className="size-3 text-muted-foreground" />
+          )}
+        </div>
+        {item.description && (
+          <p className="text-muted-foreground text-sm leading-snug">
+            {item.description}
+          </p>
+        )}
+      </div>
+    </Link>
+  )
+}
+
 const SubMenuLink = ({ item }: { item: MenuItem }) => {
   const isExternal = isExternalLink(item.url)
+
+  if (item.items) {
+    return (
+      <div className="flex select-none flex-col rounded-md p-3 leading-none no-underline outline-none">
+        <div className="flex flex-row gap-4">
+          <div className="text-foreground">{item.icon}</div>
+          <div className="flex-1">
+            <div className="text-sm font-semibold flex items-center gap-2">
+              <Link href={item.url} className="hover:text-accent-foreground">
+                {item.title}
+              </Link>
+            </div>
+            {item.description && (
+              <p className="text-muted-foreground text-sm leading-snug">
+                {item.description}
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="ml-9 mt-2 space-y-1">
+          {item.items.map((subItem) => (
+            <Link
+              key={subItem.title}
+              href={subItem.url}
+              className="block text-sm text-muted-foreground hover:text-foreground p-1 rounded hover:bg-muted/50"
+            >
+              {subItem.title}
+            </Link>
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <Link

@@ -49,7 +49,7 @@ const ContactPage = () => {
                     <li>
                       <a
                         className="underline"
-                        href="https://docs.phala.network/phala-cloud/getting-started"
+                        href="https://docs.phala.com/phala-cloud/getting-started"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

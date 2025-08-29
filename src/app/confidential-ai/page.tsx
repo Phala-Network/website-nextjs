@@ -15,14 +15,14 @@ const features = [
     title: 'Drop-in Replacement for LLM API',
     description:
       "Enjoy the privacy and verifiability with zero cost. Our API is fully OpenAI-compatible. Just switch the endpoint and you're ready to go.",
-    cta: 'https://docs.phala.network/llm-in-gpu-tee/llm-in-tee#overview',
+    cta: 'https://docs.phala.com/llm-in-gpu-tee/llm-in-tee#overview',
     icon: <Replace className="w-12 h-12 text-blue-600 mb-4" />,
   },
   {
     title: "Don't Trust, Verify",
     description:
       'Every inference runs inside TEE. Data stays private and outputs are tamper-proof. You receive remote attestation to cryptographically verify the trustworthiness of each result.',
-    cta: 'https://docs.phala.network/llm-in-gpu-tee/llm-in-tee#get-tee-attestation-report',
+    cta: 'https://docs.phala.com/llm-in-gpu-tee/llm-in-tee#get-tee-attestation-report',
     icon: <ShieldCheck className="w-12 h-12 text-green-600 mb-4" />,
   },
   {
@@ -92,7 +92,7 @@ export default function GpuTeePage() {
                 asChild
               >
                 <Link
-                  href="https://docs.phala.network/overview/phala-network/gpu-tee"
+                  href="https://docs.phala.com/overview/phala-network/gpu-tee"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
