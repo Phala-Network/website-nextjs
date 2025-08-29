@@ -42,7 +42,7 @@ const Cta3 = () => {
 
           <div className="flex flex-col gap-4">
             <a
-              href="https://docs.phala.network/dstack/overview"
+              href="https://docs.phala.com/dstack/overview"
               target="_blank"
               rel="noopener noreferrer"
             >

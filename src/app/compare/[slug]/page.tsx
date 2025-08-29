@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { getComparisonData, validSlugs } from '@/data/comparisons'
-import ComparisonTemplate from './template'
+import Compare from './compare'
 
 interface ComparePageProps {
   params: Promise<{
@@ -38,5 +38,5 @@ export default async function ComparePage({ params }: ComparePageProps) {
     notFound()
   }
 
-  return <ComparisonTemplate data={data} />
+  return <Compare data={data} />
 }

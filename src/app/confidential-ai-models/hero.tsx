@@ -288,7 +288,7 @@ const Hero = () => {
                 className="max-sm:px-6 w-full sm:w-40 lg:h-12 lg:text-base lg:w-40"
               >
                 <a
-                  href="https://docs.phala.network/phala-cloud/confidential-ai/overview"
+                  href="https://docs.phala.com/phala-cloud/confidential-ai/overview"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

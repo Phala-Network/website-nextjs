@@ -168,7 +168,7 @@ export default function PrivateCloudCompute() {
           <TabsContent value="easy">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               <a
-                href="https://docs.phala.network/phala-cloud/phala-cloud-cli/overview"
+                href="https://docs.phala.com/phala-cloud/phala-cloud-cli/overview"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block h-110 rounded-lg md:col-span-2 px-6 py-8 relative overflow-hidden bg-card"

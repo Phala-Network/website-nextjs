@@ -183,7 +183,7 @@ const Compare3 = () => {
             <div className="flex items-center justify-center gap-2 rounded-b-2xl border-border bg-muted p-4">
               <Button className="w-full" asChild>
                 <a
-                  href="https://docs.phala.network/dstack/design-documents"
+                  href="https://docs.phala.com/dstack/design-documents"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
