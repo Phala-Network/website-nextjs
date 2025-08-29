@@ -8,7 +8,7 @@ import {
 export const metadata: Metadata = {
   title: 'Phala vs Tinfoil - Open Source Confidential AI Alternative',
   description:
-    'Phala is an open-source alternative to Tinfoil for confidential AI. Compare infrastructure control, pricing models, deployment flexibility, and decentralized trust vs managed services.',
+    'Phala is an open-source alternative to Tinfoil for confidential AI and private agents. Compare infrastructure control, pricing models, deployment flexibility, and decentralized trust vs managed services.',
 }
 
 const tinfoilData: ComparisonData = {
@@ -25,6 +25,7 @@ const tinfoilData: ComparisonData = {
     'Fully open-source with auditable code',
     'Customer-controlled key management',
     'GPU-TEE support for confidential AI',
+    'Private AI agents with tool use capabilities',
     'Real-time on-chain attestation',
     'Zero vendor lock-in',
     'Trust Center with 100% visible Chain of Trust',
@@ -65,6 +66,20 @@ const tinfoilData: ComparisonData = {
       phalaText: '10+ models + BYO',
       competitor: 'partial',
       competitorText: '10 models',
+    },
+    {
+      feature: 'Private AI Agents',
+      phala: 'good',
+      phalaText: 'Full agent support',
+      competitor: 'bad',
+      competitorText: 'Inference only',
+    },
+    {
+      feature: 'Tool Use & Browser',
+      phala: 'good',
+      phalaText: 'Computer use agents',
+      competitor: 'bad',
+      competitorText: 'Not supported',
     },
     {
       feature: 'Open Source',
@@ -109,11 +124,15 @@ const tinfoilData: ComparisonData = {
     },
     whatIsCompetitor: {
       title: 'What does Tinfoil do?',
-      content: 'Tinfoil is a developer-friendly managed confidential AI platform that makes GPU TEE deployment simple. With OpenAI-compatible endpoints and pre-deployed models, developers can integrate confidential AI in minutes. Tinfoil handles hardware provisioning, driver compatibility, attestation flows, and model optimization as a fully managed service.',
+      content: 'Tinfoil is a developer-friendly managed confidential AI platform that makes GPU TEE deployment simple. With OpenAI-compatible endpoints and pre-deployed models, developers can integrate confidential AI inference in minutes. Tinfoil handles hardware provisioning, driver compatibility, attestation flows, and model optimization as a fully managed service for inference workloads.',
     },
     differentiators: {
       title: 'Where Tinfoil Stops, Phala Keeps Going',
       content: [
+        {
+          title: 'Beyond Inference: Private Agents',
+          description: 'Tinfoil focuses on confidential AI inference. Phala extends beyond inference to support private AI agents that can interact with tools, browse the web, and perform complex multi-step tasks - all within TEE protection.'
+        },
         {
           title: 'Infrastructure Control vs Managed Service',
           description: 'Tinfoil offers convenience with fully managed services but limits customization. Phala provides both managed and self-hosted options, giving you full control over your infrastructure and deployment choices.'
