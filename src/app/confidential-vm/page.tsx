@@ -15,21 +15,21 @@ const features = [
     title: 'Instant Launch',
     description:
       'Deploy TEE apps in minutes, not weeks. Phala eliminates complex setup by supporting arbitrary Docker containers, saving you time, money, and engineering effort. You can focus on building, not infrastructure.',
-    cta: 'https://docs.phala.network/phala-cloud/getting-started/start-from-cloud-ui',
+    cta: 'https://docs.phala.com/phala-cloud/getting-started/start-from-cloud-ui',
     icon: <Rocket className="w-12 h-12 text-blue-600 mb-4" />,
   },
   {
     title: 'Full Chain of Trust',
     description:
       'From TEE attestation, key management infra, all the way to your source code, your TEE runs with security best practices enforced by default and backed by cryptographic proof.',
-    cta: 'https://docs.phala.network/dstack/design-documents/decentralized-root-of-trust',
+    cta: 'https://docs.phala.com/dstack/design-documents/decentralized-root-of-trust',
     icon: <ShieldCheck className="w-12 h-12 text-green-600 mb-4" />,
   },
   {
     title: 'Open Source Infra',
     description:
       "Built on dstack, the industry's most open TEE framework. Transparent, extensible, and self-hostable. No vendor lock-in, no hidden code. You have complete control over everything.",
-    cta: 'https://docs.phala.network/dstack/overview',
+    cta: 'https://docs.phala.com/dstack/overview',
     icon: <Code className="w-12 h-12 text-purple-600 mb-4" />,
   },
 ]
@@ -103,7 +103,7 @@ export default function ConfidentialVmPage() {
                 asChild
               >
                 <Link
-                  href="https://docs.phala.network/phala-cloud/getting-started"
+                  href="https://docs.phala.com/phala-cloud/getting-started"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

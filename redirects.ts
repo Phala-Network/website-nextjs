@@ -48,57 +48,57 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
     // the /miner page.
     {
       source: '/miner',
-      destination: 'https://docs.phala.network/compute-providers/basic-info',
+      destination: 'https://docs.phala.com/compute-providers/basic-info',
       permanent: false,
     },
     {
       source: '/zh/miner',
-      destination: 'https://docs.phala.network/compute-providers/basic-info',
+      destination: 'https://docs.phala.com/compute-providers/basic-info',
       permanent: false,
     },
     {
       source: '/en/miner',
-      destination: 'https://docs.phala.network/compute-providers/basic-info',
+      destination: 'https://docs.phala.com/compute-providers/basic-info',
       permanent: false,
     },
     {
       source: '/en/miner/',
-      destination: 'https://docs.phala.network/compute-providers/basic-info',
+      destination: 'https://docs.phala.com/compute-providers/basic-info',
       permanent: false,
     },
     // the /aboutUs page.
     {
       source: '/aboutUs',
-      destination: 'https://docs.phala.network/introduction/readme',
+      destination: 'https://docs.phala.com/introduction/readme',
       permanent: false,
     },
     {
       source: '/en/aboutUs',
-      destination: 'https://docs.phala.network/introduction/readme',
+      destination: 'https://docs.phala.com/introduction/readme',
       permanent: false,
     },
     {
       source: '/zh/aboutUs',
-      destination: 'https://docs.phala.network/introduction/readme',
+      destination: 'https://docs.phala.com/introduction/readme',
       permanent: false,
     },
     // the /node
     {
       source: '/node',
       destination:
-        'https://docs.phala.network/compute-providers/basic-info/worker-rewards',
+        'https://docs.phala.com/compute-providers/basic-info/worker-rewards',
       permanent: false,
     },
     {
       source: '/en/node',
       destination:
-        'https://docs.phala.network/compute-providers/basic-info/worker-rewards',
+        'https://docs.phala.com/compute-providers/basic-info/worker-rewards',
       permanent: false,
     },
     {
       source: '/zh/node',
       destination:
-        'https://docs.phala.network/compute-providers/basic-info/worker-rewards',
+        'https://docs.phala.com/compute-providers/basic-info/worker-rewards',
       permanent: false,
     },
     // The file download
@@ -257,19 +257,20 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
     },
     {
       source: '/agent-wars-shaping-the-future-of-ai-and-web3-with-tokenization',
-      destination: '/posts/agent-wars-shaping-the-future-of-ai-and-web3-with-tokenization',
+      destination:
+        '/posts/agent-wars-shaping-the-future-of-ai-and-web3-with-tokenization',
       permanent: false,
     },
     {
-      source: '/Dstack-Completes-Security-Audit-A-Milestone-for-Confidential-Cloud',
+      source:
+        '/Dstack-Completes-Security-Audit-A-Milestone-for-Confidential-Cloud',
       destination:
         '/posts/Dstack-Completes-Security-Audit-A-Milestone-for-Confidential-Cloud',
       permanent: false,
     },
     {
       source: '/guide-dynamic-nfts-web3-social-progression-games',
-      destination:
-        '/posts/guide-dynamic-nfts-web3-social-progression-games',
+      destination: '/posts/guide-dynamic-nfts-web3-social-progression-games',
       permanent: false,
     },
 
@@ -306,12 +307,12 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
     },
     {
       source: '/changelog',
-      destination: 'https://docs.phala.network/phala-cloud/changelog',
+      destination: 'https://docs.phala.com/phala-cloud/changelog',
       permanent: false,
     },
     {
       source: '/changelog/rss.xml',
-      destination: 'https://docs.phala.network/phala-cloud/changelog/rss.xml',
+      destination: 'https://docs.phala.com/phala-cloud/changelog/rss.xml',
       permanent: false,
     },
 

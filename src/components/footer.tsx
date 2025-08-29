@@ -45,11 +45,11 @@ const navigation = [
     links: [
       {
         name: 'Docs',
-        href: 'https://docs.phala.network/?utm_source=phala.network&utm_medium=site-nav',
+        href: 'https://docs.phala.com/?utm_source=phala.network&utm_medium=site-nav',
       },
       {
         name: 'CLI',
-        href: 'https://docs.phala.network/phala-cloud/phala-cloud-cli/overview',
+        href: 'https://docs.phala.com/phala-cloud/phala-cloud-cli/overview',
       },
       // TODO: add SDK page
       // { name: 'SDK', href: '/dstack' },
@@ -60,7 +60,7 @@ const navigation = [
       },
       {
         name: 'Builders Program',
-        href: 'https://docs.phala.network/network/references/archived-projects',
+        href: 'https://docs.phala.com/network/references/archived-projects',
       },
       {
         name: 'Responsible Disclosure',
@@ -79,7 +79,7 @@ const navigation = [
       },
       {
         name: 'Changelog',
-        href: 'https://docs.phala.network/phala-cloud/changelog',
+        href: 'https://docs.phala.com/phala-cloud/changelog',
       },
       {
         name: 'Media Kit',
@@ -94,7 +94,7 @@ const navigation = [
       { name: 'Phala App', href: 'https://app.phala.network/' },
       {
         name: 'Compute Provider',
-        href: 'https://docs.phala.network/network/compute-providers/basic-info/introduction',
+        href: 'https://docs.phala.com/network/compute-providers/basic-info/introduction',
       },
       {
         name: 'Dune Statistics',
