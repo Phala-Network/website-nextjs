@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 
+import { validSlugs as comparisonSlugs } from '@/data/comparisons'
 import { env } from '@/env'
 import { getRecentPosts, retrieveTags } from '@/lib/post'
 
@@ -66,6 +67,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    ...comparisonSlugs.map((slug): MetadataRoute.Sitemap[number] => ({
+      url: new URL(`/compare/${slug}`, BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })),
     {
       url: new URL('/startup-program', BASE_URL).toString(),
       lastModified: new Date(),

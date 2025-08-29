@@ -12,6 +12,7 @@ export type ComparisonData = {
   metadata: {
     title: string
     description: string
+    keywords: string[]
   }
   competitor: {
     name: string
@@ -79,6 +80,13 @@ export const comparisons: Record<ComparisonSlug, ComparisonData> = {
       title: 'Phala Cloud vs AWS Nitro Enclaves - Open Source Alternative',
       description:
         'Phala Cloud is a fully open-source alternative to AWS Nitro Enclaves. Compare features, pricing, GPU TEE support, and multi-cloud flexibility. Choose the decentralized confidential computing solution.',
+      keywords: [
+        'Phala',
+        'AWS Nitro Enclaves',
+        'Open Source',
+        'Confidential Computing',
+        'GPU TEE',
+      ],
     },
     competitor: {
       name: 'AWS Nitro Enclaves',
@@ -243,6 +251,13 @@ export const comparisons: Record<ComparisonSlug, ComparisonData> = {
       title: 'Phala Cloud vs GCP Confidential VMs - Open Source Alternative',
       description:
         'Phala Cloud is a decentralized alternative to GCP Confidential VMs. Compare features, GPU TEE support, multi-cloud flexibility, and transparent pricing. Choose open-source confidential computing.',
+      keywords: [
+        'Phala',
+        'GCP Confidential VMs',
+        'Open Source',
+        'Confidential Computing',
+        'GPU TEE',
+      ],
     },
     competitor: {
       name: 'GCP Confidential VMs',
@@ -407,6 +422,13 @@ export const comparisons: Record<ComparisonSlug, ComparisonData> = {
       title: 'Phala vs Tinfoil - Open Source Confidential AI Alternative',
       description:
         'Phala is an open-source alternative to Tinfoil for confidential AI and private agents. Compare infrastructure control, pricing models, deployment flexibility, and decentralized trust vs managed services.',
+      keywords: [
+        'Phala',
+        'Tinfoil',
+        'Open Source',
+        'Confidential Computing',
+        'GPU TEE',
+      ],
     },
     competitor: {
       name: 'Tinfoil',
