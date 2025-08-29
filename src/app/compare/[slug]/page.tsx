@@ -28,7 +28,20 @@ export async function generateMetadata({
     notFound()
   }
 
-  return comparison.metadata
+  return {
+    ...comparison.metadata,
+    openGraph: {
+      images: comparison.hero.bannerImage
+        ? [comparison.hero.bannerImage]
+        : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: comparison.hero.bannerImage
+        ? [comparison.hero.bannerImage]
+        : undefined,
+    },
+  }
 }
 
 export default async function ComparePage({ params }: ComparePageProps) {
