@@ -76,11 +76,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// Temporarily disabled for build without Notion credentials
-// export async function generateStaticParams() {
-//   const tags = await retrieveTags()
-//   return tags.map((tag) => ({ slug: tag }))
-// }
+export async function generateStaticParams() {
+  const tags = await retrieveTags()
+  return tags.map((tag) => ({ slug: tag }))
+}
 
 export default async function TagPage({ params }: Props) {
   const { slug } = await params

@@ -30,11 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return getPostMetadata(page)
 }
 
-// Temporarily disabled for build without Notion credentials
-// export async function generateStaticParams() {
-//   const pages = await getRecentPosts(100) // Generate for most recent 100 posts
-//   return pages.map((page) => ({ slug: page.slug }))
-// }
+export async function generateStaticParams() {
+  const pages = await getRecentPosts(100) // Generate for most recent 100 posts
+  return pages.map((page) => ({ slug: page.slug }))
+}
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params

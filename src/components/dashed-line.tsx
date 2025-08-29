@@ -1,15 +1,15 @@
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
 
 interface DashedLineProps {
-  orientation?: 'horizontal' | 'vertical'
-  className?: string
+  orientation?: 'horizontal' | 'vertical';
+  className?: string;
 }
 
 export const DashedLine = ({
   orientation = 'horizontal',
   className,
 }: DashedLineProps) => {
-  const isHorizontal = orientation === 'horizontal'
+  const isHorizontal = orientation === 'horizontal';
 
   return (
     <div
@@ -35,5 +35,5 @@ export const DashedLine = ({
         )}
       />
     </div>
-  )
-}
+  );
+};

@@ -1,10 +1,10 @@
 'use client'
 
+import { useRef, useLayoutEffect, useState } from 'react'
 import panzoom from 'panzoom'
-import { useLayoutEffect, useRef, useState } from 'react'
 
-import DotBackground from '@/components/DotBackground'
 import { cn } from '@/lib/utils'
+import DotBackground from '@/components/DotBackground'
 import RoadmapSvg from './svg'
 import './style.css'
 
@@ -20,7 +20,9 @@ const Roadmap = () => {
       initialX: 0,
       initialY: 0,
       zoomDoubleClickSpeed: 1,
-      beforeMouseDown: () => false,
+      beforeMouseDown: function () {
+        return false
+      },
     })
 
     const handler = () => {
@@ -39,7 +41,7 @@ const Roadmap = () => {
     panzoomRef.current.zoomTo(
       ref.current.offsetWidth / 2,
       ref.current.offsetHeight / 2,
-      1 + 0.5,
+      1 + 0.5
     )
   }
 
@@ -47,39 +49,42 @@ const Roadmap = () => {
     panzoomRef.current.zoomTo(
       ref.current.offsetWidth / 2,
       ref.current.offsetHeight / 2,
-      1 - 0.5,
+      1 - 0.5
     )
   }
 
   const handleFullscreen = () => {
+    // @ts-ignore
     if (
       document.fullscreenElement === null ||
-      // @ts-expect-error
+      // @ts-ignore
       document.webkitIsFullScreen === false
     ) {
+      // @ts-ignore
       document.documentElement.requestFullscreen
         ? document.documentElement.requestFullscreen()
-        : // @ts-expect-error
-          document.documentElement.webkitRequestFullscreen
-          ? // @ts-expect-error
-            document.documentElement.webkitRequestFullscreen()
-          : // @ts-expect-error
-            document.documentElement.mozRequestFullScreen
-            ? // @ts-expect-error
-              document.documentElement.mozRequestFullScreen()
-            : // @ts-expect-error
-              document.documentElement.msRequestFullscreen &&
-              // @ts-expect-error
-              document.documentElement.msRequestFullscreen()
+      // @ts-ignore
+        : document.documentElement.webkitRequestFullscreen
+      // @ts-ignore
+        ? document.documentElement.webkitRequestFullscreen()
+      // @ts-ignore
+        : document.documentElement.mozRequestFullScreen
+      // @ts-ignore
+        ? document.documentElement.mozRequestFullScreen()
+      // @ts-ignore
+        : document.documentElement.msRequestFullscreen &&
+      // @ts-ignore
+          document.documentElement.msRequestFullscreen()
     } else {
+      // @ts-ignore
       document.exitFullscreen
         ? document.exitFullscreen()
-        : // @ts-expect-error
-          document.webkitExitFullscreen
-          ? // @ts-expect-error
-            document.webkitExitFullscreen()
-          : // @ts-expect-error
-            document.mozCancelFullScreen && document.mozCancelFullScreen()
+      // @ts-ignore
+        : document.webkitExitFullscreen
+      // @ts-ignore
+        ? document.webkitExitFullscreen()
+      // @ts-ignore
+        : document.mozCancelFullScreen && document.mozCancelFullScreen()
     }
   }
 
@@ -115,7 +120,7 @@ const Roadmap = () => {
           <button
             className={cn(
               'roadmap-tool roadmap-tool-fullscreen',
-              isFullscreen ? 'active' : '',
+              isFullscreen ? 'active' : ''
             )}
             onClick={handleFullscreen}
           >

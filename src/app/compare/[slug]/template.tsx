@@ -2,66 +2,7 @@ import { AlertCircle, CheckCircle, CircleMinus } from 'lucide-react'
 import Image from 'next/image'
 
 import { Button } from '@/components/ui/button'
-
-export type ComparisonStatus = 'good' | 'bad' | 'partial'
-
-export type ComparisonFeature = {
-  feature: string
-  phala: ComparisonStatus
-  phalaText: string
-  competitor: ComparisonStatus
-  competitorText: string
-}
-
-export type ComparisonData = {
-  competitor: {
-    name: string
-    logo?: string
-    description: string
-  }
-  hero: {
-    alternativeText?: string
-    title: string
-    subtitle?: string
-    bannerImage?: string
-  }
-  quickTakeaways: string[]
-  features: ComparisonFeature[]
-  sections: {
-    whatIsPhala: {
-      title: string
-      content: string
-    }
-    whatIsCompetitor: {
-      title: string
-      content: string
-    }
-    differentiators: {
-      title: string
-      content: {
-        title: string
-        description: string
-      }[]
-    }
-    howToChoose: {
-      title: string
-      content: string[]
-    }
-    pricing: {
-      title: string
-      phalaContent: string
-      competitorContent: string
-    }
-    whyChoose?: {
-      title: string
-      content: string[]
-    }
-  }
-  cta: {
-    text: string
-    href: string
-  }
-}
+import type { ComparisonData, ComparisonStatus } from '@/data/comparisons'
 
 function StatusIcon({ status }: { status: ComparisonStatus }) {
   switch (status) {
@@ -78,7 +19,7 @@ interface ComparisonTemplateProps {
   data: ComparisonData
 }
 
-export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
+export default function ComparisonTemplate({ data }: ComparisonTemplateProps) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -103,7 +44,10 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
                     {data.hero.subtitle}
                   </p>
                 )}
-                <Button className="h-fit rounded-full px-7 py-4 text-sm font-semibold lg:text-base" asChild>
+                <Button
+                  className="h-fit rounded-full px-7 py-4 text-sm font-semibold lg:text-base"
+                  asChild
+                >
                   <a href={data.cta.href}>{data.cta.text}</a>
                 </Button>
               </div>
@@ -159,7 +103,9 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
                 {/* Table Header */}
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="p-4">
-                    <h3 className="font-semibold text-xl lg:text-2xl">Feature</h3>
+                    <h3 className="font-semibold text-xl lg:text-2xl">
+                      Feature
+                    </h3>
                   </div>
                   <div className="rounded-t-lg bg-muted p-4 text-center">
                     <div className="flex items-center justify-center gap-2 mb-2">
@@ -198,7 +144,9 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
                       className="grid grid-cols-3 gap-4 border-b border-border py-4"
                     >
                       <div className="flex items-center p-2">
-                        <span className="font-medium text-lg">{feature.feature}</span>
+                        <span className="font-medium text-lg">
+                          {feature.feature}
+                        </span>
                       </div>
                       <div className="flex flex-col items-center justify-center gap-2 bg-muted/50 p-4 rounded">
                         <StatusIcon status={feature.phala} />
@@ -269,9 +217,14 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
             </h2>
             <div className="grid gap-8 md:grid-cols-2">
               {data.sections.differentiators.content.map((item, index) => (
-                <div key={index} className="bg-background rounded-lg p-6 border">
+                <div
+                  key={index}
+                  className="bg-background rounded-lg p-6 border"
+                >
                   <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -288,7 +241,10 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
             </h2>
             <div className="space-y-4">
               {data.sections.howToChoose.content.map((item, index) => (
-                <p key={index} className="text-muted-foreground text-lg leading-relaxed">
+                <p
+                  key={index}
+                  className="text-muted-foreground text-lg leading-relaxed"
+                >
                   {item}
                 </p>
               ))}
@@ -306,9 +262,7 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
             </h2>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-lg border bg-background p-6">
-                <h3 className="mb-3 font-semibold text-lg">
-                  Phala Cloud
-                </h3>
+                <h3 className="mb-3 font-semibold text-lg">Phala Cloud</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {data.sections.pricing.phalaContent}
                 </p>
@@ -340,7 +294,9 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
                     key={index}
                     className="rounded-lg border bg-background p-6"
                   >
-                    <span className="text-base lg:text-lg leading-relaxed">{item}</span>
+                    <span className="text-base lg:text-lg leading-relaxed">
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>

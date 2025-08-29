@@ -1,6 +1,4 @@
-async function attempt<T>(
-  promise: Promise<T>,
-): Promise<[Error | undefined, T]> {
+async function attempt<T>(promise: Promise<T>): Promise<[Error | undefined, T]> {
   let error: Error | undefined
   let result
   try {
