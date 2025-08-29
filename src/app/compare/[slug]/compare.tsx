@@ -1,5 +1,6 @@
 import { AlertCircle, CheckCircle, CircleMinus } from 'lucide-react'
 import Image from 'next/image'
+import { Fragment } from 'react'
 
 import FinalCTA from '@/components/final-cta'
 import { Button } from '@/components/ui/button'
@@ -29,7 +30,7 @@ export default function Compare({ data }: CompareProps) {
           <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:gap-16">
             <div className="flex-1 md:max-w-2xl">
               <div className="flex flex-col items-start">
-                <h1 className="mb-6 text-4xl font-semibold tracking-tighter text-foreground sm:text-5xl xl:text-6xl">
+                <h1 className="mb-6 text-4xl font-semibold text-foreground sm:text-5xl/tight xl:text-6xl/tight">
                   {data.hero.title}
                 </h1>
                 {data.hero.alternativeText && (
@@ -49,13 +50,13 @@ export default function Compare({ data }: CompareProps) {
             </div>
             {data.hero.bannerImage && (
               <div className="flex-1 max-w-xl">
-                <div className="w-full rounded-2xl border overflow-hidden">
+                <div className="w-full rounded-sm border overflow-hidden">
                   <Image
                     src={data.hero.bannerImage}
                     alt={`${data.competitor.name} comparison`}
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
+                    width={1280}
+                    height={718}
+                    className="w-full h-auto object-video"
                   />
                 </div>
               </div>
@@ -64,60 +65,45 @@ export default function Compare({ data }: CompareProps) {
         </div>
       </section>
 
-      {/* Quick Takeaways */}
-      <section className="py-16">
-        <div className="container">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="mb-8 text-center text-3xl font-semibold lg:text-4xl">
+      {/* Main Content */}
+      <div className="container py-16">
+        <div className="mx-auto max-w-4xl">
+          {/* Quick Takeaways */}
+          <section className="mb-20">
+            <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
               Why Choose Phala?
             </h2>
-            <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
               {data.quickTakeaways.map((takeaway) => (
                 <div
                   key={takeaway}
-                  className="flex items-start gap-3 rounded-lg border p-4"
+                  className="flex items-start gap-3 rounded-lg border p-4 bg-background"
                 >
                   <CheckCircle className="mt-0.5 size-5 shrink-0 text-green-600" />
-                  <span className="text-sm sm:text-base">{takeaway}</span>
+                  <span className="text-base text-foreground leading-relaxed">
+                    {takeaway}
+                  </span>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Comparison Table */}
-      <section className="py-32 bg-muted/30">
-        <div className="container">
-          <div className="mx-auto max-w-6xl">
-            <div className="flex flex-col items-center gap-4 mb-12">
-              <h2 className="text-center text-4xl font-semibold sm:text-5xl">
-                Feature Comparison
-              </h2>
-              <p className="mt-2 text-center text-muted-foreground text-xl max-w-2xl">
-                See how Phala stacks up against the competition
-              </p>
-            </div>
+          {/* Comparison Table */}
+          <section className="mb-20">
+            <h2 className="mb-12 text-3xl font-semibold text-foreground leading-tight">
+              Feature Comparison
+            </h2>
             <div className="overflow-x-auto">
-              <div className="mt-14 grid min-w-2xl grid-cols-3">
+              <div className="grid min-w-2xl grid-cols-3">
                 {/* Header Row */}
-                <div className="border-b border-border p-5"></div>
-                <div className="flex flex-col items-center gap-2 rounded-t-2xl border-b border-border bg-muted p-5">
+                <div className="border-b border-border p-6"></div>
+                <div className="flex flex-col items-center gap-2 rounded-t-2xl border-b border-border bg-muted p-6">
                   <p className="text-lg font-semibold">Phala</p>
                   <p className="mt-1 text-center text-sm text-muted-foreground">
                     Open-source confidential AI
                   </p>
                 </div>
-                <div className="flex flex-col items-center gap-2 border-b border-border p-5">
-                  {data.competitor.logo && (
-                    <Image
-                      src={data.competitor.logo}
-                      alt={data.competitor.name}
-                      width={32}
-                      height={32}
-                      className="size-8"
-                    />
-                  )}
+                <div className="flex flex-col items-center gap-2 border-b border-border p-6">
                   <p className="text-lg font-semibold">
                     {data.competitor.name}
                   </p>
@@ -128,173 +114,165 @@ export default function Compare({ data }: CompareProps) {
 
                 {/* Feature Rows */}
                 {data.features.map((feature, index) => (
-                  <>
+                  <Fragment key={feature.feature}>
                     <div
-                      key={feature.feature}
-                      className={`flex items-center gap-2 p-5 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border'}`}
+                      className={`flex items-center gap-2 p-6 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border'}`}
                     >
-                      <span className="font-semibold">{feature.feature}</span>
+                      <span className="font-semibold text-foreground">
+                        {feature.feature}
+                      </span>
                     </div>
                     <div
-                      className={`flex flex-col items-center justify-center gap-2 bg-muted p-5 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border'}`}
+                      className={`flex flex-col items-center justify-center gap-2 bg-muted p-6 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border'}`}
                     >
                       <StatusIcon status={feature.phala} />
-                      <span className="text-xs text-muted-foreground text-center">
+                      <span className="text-sm text-muted-foreground text-center">
                         {feature.phalaText}
                       </span>
                     </div>
                     <div
-                      className={`flex flex-col items-center justify-center gap-2 p-5 ${index === data.features.length - 1 ? '' : 'border-b border-border'}`}
+                      className={`flex flex-col items-center justify-center gap-2 p-6 ${index === data.features.length - 1 ? '' : 'border-b border-border'}`}
                     >
                       <StatusIcon status={feature.competitor} />
-                      <span className="text-xs text-muted-foreground text-center">
+                      <span className="text-sm text-muted-foreground text-center">
                         {feature.competitorText}
                       </span>
                     </div>
-                  </>
+                  </Fragment>
                 ))}
 
                 {/* CTA Row */}
-                <div className="border-border p-5"></div>
-                <div className="flex items-center justify-center gap-2 rounded-b-2xl border-border bg-muted p-5">
+                <div className="border-border p-6"></div>
+                <div className="flex items-center justify-center gap-2 rounded-b-2xl border-border bg-muted p-6">
                   <Button className="w-full" asChild>
                     <a href={data.cta.href}>{data.cta.text}</a>
                   </Button>
                 </div>
-                <div className="p-5"></div>
+                <div className="p-6"></div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* What does Phala do? */}
-      <section className="py-20">
-        <div className="container">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-8 text-2xl font-semibold lg:text-3xl leading-tight">
+          {/* What does Phala do? */}
+          <section className="mb-20">
+            <h2 className="mb-6 text-3xl font-semibold text-foreground leading-tight">
               {data.sections.whatIsPhala.title}
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              {data.sections.whatIsPhala.content}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* What does Competitor do? */}
-      <section className="py-20 bg-muted/30">
-        <div className="container">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-8 text-2xl font-semibold lg:text-3xl leading-tight">
-              {data.sections.whatIsCompetitor.title}
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              {data.sections.whatIsCompetitor.content}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Differentiators */}
-      <section className="py-24">
-        <div className="container">
-          <div className="mx-auto max-w-4xl">
-            <div className="mb-16 text-center">
-              <h2 className="mb-4 text-3xl font-semibold lg:text-4xl leading-tight">
-                {data.sections.differentiators.title}
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Discover what sets Phala apart from the competition
+            <div className="prose prose-lg max-w-none">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {data.sections.whatIsPhala.content}
               </p>
             </div>
-            <div className="space-y-12">
+          </section>
+
+          {/* What does Competitor do? */}
+          <section className="mb-20">
+            <h2 className="mb-6 text-3xl font-semibold text-foreground leading-tight">
+              {data.sections.whatIsCompetitor.title}
+            </h2>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {data.sections.whatIsCompetitor.content}
+              </p>
+            </div>
+          </section>
+
+          {/* Key Differentiators */}
+          <section className="mb-20">
+            <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
+              {data.sections.differentiators.title}
+            </h2>
+
+            <div className="grid gap-6 md:grid-cols-2">
               {data.sections.differentiators.content.map((item) => (
-                <div key={item.title} className="max-w-none">
-                  <h3 className="text-xl font-semibold mb-4 leading-tight">
+                <div
+                  key={item.title}
+                  className="rounded-lg border bg-background p-6"
+                >
+                  <h3 className="text-xl font-semibold mb-4 text-foreground leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    {item.description}
-                  </p>
+                  <div className="prose prose-lg max-w-none">
+                    <p className="text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* How to Choose */}
-      <section className="py-20 bg-muted/30">
-        <div className="container">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="mb-8 text-3xl font-semibold lg:text-4xl">
+          {/* How to Choose */}
+          <section className="mb-20">
+            <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
               {data.sections.howToChoose.title}
             </h2>
-            <div className="space-y-6">
-              {data.sections.howToChoose.content.map((item, index) => (
-                <div key={item} className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-semibold">
-                    {index + 1}
+            <ol className="space-y-6 list-decimal list-outside ml-6">
+              {data.sections.howToChoose.content.map((item) => (
+                <li key={item} className="pl-2">
+                  <div className="prose prose-lg max-w-none">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {item}
+                    </p>
                   </div>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    {item}
-                  </p>
-                </div>
+                </li>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
+            </ol>
+          </section>
 
-      {/* Pricing Comparison */}
-      <section className="py-20">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="mb-12 text-center text-3xl font-semibold lg:text-4xl">
+          {/* Pricing Comparison */}
+          <section className="mb-20">
+            <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
               {data.sections.pricing.title}
             </h2>
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="rounded-xl border p-8">
-                <h3 className="mb-4 font-semibold text-xl">Phala Cloud</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  {data.sections.pricing.phalaContent}
-                </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-xl border p-8 bg-background">
+                <h3 className="mb-4 font-semibold text-xl text-foreground">
+                  Phala Cloud
+                </h3>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {data.sections.pricing.phalaContent}
+                  </p>
+                </div>
               </div>
-              <div className="rounded-xl border p-8">
-                <h3 className="mb-4 font-semibold text-xl">
+              <div className="rounded-xl border p-8 bg-background">
+                <h3 className="mb-4 font-semibold text-xl text-foreground">
                   {data.competitor.name}
                 </h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  {data.sections.pricing.competitorContent}
-                </p>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {data.sections.pricing.competitorContent}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Why Choose Section */}
-      {data.sections.whyChoose && (
-        <section className="py-32 bg-muted/30">
-          <div className="container">
-            <div className="mx-auto max-w-6xl">
-              <div className="flex flex-col items-center gap-4 mb-12">
-                <h2 className="text-center text-4xl font-semibold sm:text-5xl">
-                  {data.sections.whyChoose.title}
-                </h2>
-              </div>
-              <div className="grid gap-8 md:grid-cols-2">
+          {/* Why Choose Section */}
+          {data.sections.whyChoose && (
+            <section className="mb-20">
+              <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
+                {data.sections.whyChoose.title}
+              </h2>
+              <div className="grid gap-6 md:grid-cols-2">
                 {data.sections.whyChoose.content.map((item) => (
-                  <div key={item} className="rounded-lg border p-8">
-                    <span className="text-lg leading-relaxed">{item}</span>
+                  <div
+                    key={item}
+                    className="rounded-lg border p-8 bg-background"
+                  >
+                    <div className="prose prose-lg max-w-none">
+                      <span className="text-lg text-muted-foreground leading-relaxed">
+                        {item}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-      )}
+            </section>
+          )}
+        </div>
+      </div>
 
       {/* Final CTA */}
       <FinalCTA />

@@ -15,7 +15,6 @@ export type ComparisonData = {
   }
   competitor: {
     name: string
-    logo?: string
     description: string
   }
   hero: {
