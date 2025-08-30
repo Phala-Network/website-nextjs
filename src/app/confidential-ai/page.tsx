@@ -83,7 +83,9 @@ export default function GpuTeePage() {
             </p>
             <div className="flex gap-3 items-start">
               <Button size="lg" className="shrink-0" asChild>
-                <Link href="/dashboard/gpu-tee">Get started</Link>
+                <Link href="https://cloud.phala.network/gpu-tee">
+                  Get started
+                </Link>
               </Button>
               <Button
                 size="lg"
