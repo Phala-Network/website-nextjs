@@ -138,7 +138,7 @@ const GpuCard = ({ isMonthly }: { isMonthly: boolean }) => (
     </div>
 
     <Button className="w-full mt-6" asChild variant="outline">
-      <Link href="/register">Get Started</Link>
+      <Link href="https://cloud.phala.network/gpu-tee">Get Started</Link>
     </Button>
   </div>
 )
