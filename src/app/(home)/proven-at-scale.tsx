@@ -94,7 +94,7 @@ export default function ProvenAtScaleSection() {
             <div className="max-sm:max-w-[300px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {certifications.map((cert) => (
                 <div key={cert} className="flex items-center space-x-3">
-                  <CheckCircle className="size-4 text-green-500" />
+                  <CheckCircle className="size-4 text-primary-500" />
                   <span className="font-medium">{cert}</span>
                 </div>
               ))}
