@@ -1,10 +1,11 @@
 'use client'
-import { Bot, Loader2, Lock, User } from 'lucide-react'
+import { Bot, Loader2, Lock, Send, User } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 // --- Utility helpers ---
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
@@ -60,7 +61,7 @@ const ChatBubble = ({
       exit={{ opacity: 0, y: -8 }}
       className={`w-[calc(100%-10rem)] rounded-2xl px-3 sm:px-5 py-3 sm:py-4 border text-sm sm:text-base lg:text-lg ${
         // darker light bubble
-        `text-gray-900 ${dim ? 'opacity-60' : ''}`
+        `text-foreground ${dim ? 'opacity-60' : ''}`
       }`}
     >
       {children}
@@ -70,7 +71,7 @@ const ChatBubble = ({
 )
 
 const LockBadge = ({ label }: { label: string }) => (
-  <div className="flex items-center gap-2 text-xs font-medium tracking-wide text-gray-600">
+  <div className="flex items-center gap-2 text-xs font-medium tracking-wide text-muted-foreground">
     <Lock className="size-4 text-primary-500" />
     {label}
   </div>
@@ -107,12 +108,12 @@ const ProofBar = ({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 12 }}
         transition={{ duration: 0.4 }}
-        className="mt-3 sm:mt-5 rounded-xl border border-gray-200 bg-gray-50 backdrop-blur p-3 sm:p-4 text-xs text-gray-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0"
+        className="rounded-md border bg-muted p-3 sm:p-4 text-xs text-muted-foreground flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0"
       >
         <div className="flex items-center gap-2">
           <LockBadge label="TEE attestation: verified" />
-          <span className="text-gray-500">Session</span>
-          <code className="px-2 py-1 rounded bg-white border border-gray-200 font-mono text-xs">
+          <span className="text-muted-foreground">Session</span>
+          <code className="px-2 py-1 rounded bg-background border font-mono text-xs">
             {session}
           </code>
         </div>
@@ -126,6 +127,7 @@ const ConfidentialAI = () => {
     'idle' | 'typing' | 'aiThinking' | 'answer' | 'encrypting' | 'done'
   >('idle')
   const [typed, setTyped] = useState('')
+  const [chatMessage, setChatMessage] = useState('')
   const userLine = 'How do I migrate my app to private, zero‑trust AI?'
   const aiLine =
     "Here's a secure plan: route prompts via an E2E channel, run models inside Phala's TEE, attest before exec, disable logs & storage."
@@ -157,14 +159,26 @@ const ConfidentialAI = () => {
     playing.current = false
   }, [])
 
+  const handleChatSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (chatMessage.trim()) {
+      const encodedMessage = encodeURIComponent(chatMessage.trim())
+      window.open(
+        `https://redpill.ai/chat?message=${encodedMessage}`,
+        '_blank',
+        'noopener,noreferrer',
+      )
+    }
+  }
+
   useEffect(() => {
     run()
   }, [run])
 
   return (
-    <div className="w-full h-120 rounded-3xl border border-gray-200 bg-white backdrop-blur-xl overflow-hidden flex flex-col">
+    <div className="w-full h-140 rounded-3xl border border-border bg-background backdrop-blur-xl overflow-hidden flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between px-3 sm:px-5 py-3 sm:py-4 border-b border-gray-200 bg-gray-50">
+      <div className="flex items-center justify-between px-3 sm:px-5 py-3 sm:py-4 border-b border-border bg-muted">
         <div className="flex items-center gap-2 sm:gap-3">
           <Image
             src="/confidential-ai-models/phala.svg"
@@ -174,10 +188,10 @@ const ConfidentialAI = () => {
             className="sm:w-6 sm:h-6"
           />
           <div className="min-w-0">
-            <div className="font-semibold leading-tight text-gray-800 text-sm sm:text-base">
+            <div className="font-semibold leading-tight text-foreground text-sm sm:text-base">
               Phala Confidential AI
             </div>
-            <div className="text-xs sm:text-sm text-gray-500">
+            <div className="text-xs sm:text-sm text-muted-foreground">
               No storage · No logs · End‑to‑end encryption
             </div>
           </div>
@@ -192,7 +206,7 @@ const ConfidentialAI = () => {
       </div>
 
       {/* Conversation only */}
-      <div className="p-3 sm:p-6 lg:p-8 space-y-3 sm:space-y-4 bg-gradient-to-b from-gray-50 to-transparent flex-1 flex flex-col">
+      <div className="p-3 sm:p-6 lg:p-8 space-y-3 sm:space-y-4 flex-1 flex flex-col">
         <div className="flex-1 space-y-3 sm:space-y-4">
           <AnimatePresence initial={false}>
             <ChatBubble who="user" dim={step !== 'typing' && step !== 'idle'}>
@@ -250,6 +264,26 @@ const ConfidentialAI = () => {
         </div>
 
         <ProofBar visible={step === 'done'} session={sessionId} />
+        {/* Chat Input */}
+        <div className="">
+          <form onSubmit={handleChatSubmit} className="relative">
+            <Input
+              type="text"
+              placeholder="Start a private chat..."
+              value={chatMessage}
+              onChange={(e) => setChatMessage(e.target.value)}
+              className="w-full h-10 text-sm pr-12"
+            />
+            <Button
+              type="submit"
+              size="sm"
+              className="absolute right-1 top-1 h-8 w-8 p-0"
+              disabled={!chatMessage.trim()}
+            >
+              <Send className="w-4 h-4" />
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
   )
