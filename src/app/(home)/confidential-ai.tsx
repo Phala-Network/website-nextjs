@@ -47,7 +47,7 @@ const ModelCard = ({ model }: { model: Model }) => (
           </AvatarFallback>
         </Avatar>
         <div className="absolute -bottom-0.5 -right-0.5 bg-card border rounded-full p-1">
-          <Lock className="size-3 text-green-500" />
+          <Lock className="size-3 text-primary-500" />
         </div>
       </div>
 
