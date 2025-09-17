@@ -30,7 +30,7 @@ const Community6 = () => {
       icon: <FaDiscord className="h-8 w-8 text-foreground/80" />,
       title: "Discord",
       description: "Chat, share ideas, and get support from the community",
-      link: "https://discord.gg/phala",
+      link: "https://discord.com/invite/phala-network",
     },
     {
       icon: <FaLinkedin className="h-8 w-8 text-foreground/80" />,
