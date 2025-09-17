@@ -15,16 +15,16 @@ import * as R from 'ramda'
 
 import { env } from '@/env'
 
-export const notion = new Client({
+export const notion = env.NOTION_TOKEN ? new Client({
   auth: env.NOTION_TOKEN,
-})
+}) : null
 
-const n2m = new NotionToMarkdown({
+const n2m = notion ? new NotionToMarkdown({
   notionClient: notion,
   config: {
     parseChildPages: false,
   },
-})
+}) : null
 
 export interface ParsedPage {
   id: string
@@ -61,6 +61,7 @@ export function isMediumUrl(url: string): boolean {
 export async function getParsedPage(
   page_id: string,
 ): Promise<ParsedPage | null> {
+  if (!notion) return null
   const page = await notion.pages.retrieve({ page_id })
   if (!isFullPage(page)) {
     console.warn('Page is not a full page.')
@@ -95,9 +96,9 @@ export async function getParsedPage(
     ['Status', 'status', 'name'],
     page.properties,
   )
-  const markdown = n2m.toMarkdownString(
+  const markdown = n2m ? n2m.toMarkdownString(
     await n2m.blocksToMarkdown(blocks),
-  ).parent
+  ).parent : ''
   return {
     id: page.id,
     cover: page.cover,
@@ -214,6 +215,7 @@ export async function getParsedPagesByProperties({
   database_id: string
   properties: Record<string, any>
 }): Promise<ParsedPage[]> {
+  if (!notion) return []
   const database = await notion.databases.query({
     database_id,
     filter: {
@@ -299,6 +301,7 @@ async function* iteratePaginatedWithRetries<
 }
 
 export async function queryDatabase(args: QueryDatabaseParameters) {
+  if (!notion) return { next_cursor: null, pages: [] }
   const database = await notion.databases.query(args)
   const { results = [], next_cursor } = database
   const pages = []

@@ -20,6 +20,10 @@ interface Props {
 }
 
 async function getTagData(tag: string) {
+  if (!env.NOTION_POSTS_DATABASE_ID) {
+    return { initialPages: [], nextCursor: '' }
+  }
+
   const baseFilters = [
     {
       property: 'Status',
@@ -77,6 +81,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
+  if (!env.NOTION_POSTS_DATABASE_ID) {
+    return []
+  }
   const tags = await retrieveTags()
   return tags.map((tag) => ({ slug: tag }))
 }
