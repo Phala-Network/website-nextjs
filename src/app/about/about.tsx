@@ -84,7 +84,7 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="h-[380px] perspective-1000"
+      className="h-[280px] sm:h-[320px] md:h-[380px] perspective-1000"
     >
       <motion.div
         className="relative w-full h-full preserve-3d"
@@ -124,19 +124,19 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
               unoptimized
             />
             {/* Overlay with name and role */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-              <h3 className="text-white text-lg font-bold">{member.name}</h3>
-              <p className="text-white/80 text-sm">{member.role}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gradient-to-t from-black/60 to-transparent">
+              <h3 className="text-white text-sm md:text-lg font-bold">{member.name}</h3>
+              <p className="text-white/80 text-xs md:text-sm line-clamp-1">{member.role}</p>
             </div>
           </div>
         </div>
 
         {/* B Side - Back Card (photo with emoji animation around it) */}
         <Card className="absolute inset-0 backface-hidden rotate-y-180 border-2 bg-gradient-to-br from-primary/5 to-primary/10">
-          <CardContent className="p-4 h-full flex flex-col">
+          <CardContent className="p-2 md:p-4 h-full flex flex-col">
             {/* Photo with floating emojis around it - clickable to flip back */}
             <div
-              className="relative flex-1 w-full overflow-hidden mb-4 rounded-lg cursor-pointer"
+              className="relative flex-1 w-full overflow-hidden mb-2 md:mb-4 rounded-lg cursor-pointer"
               onClick={() => setIsFlipped(false)}
             >
               <Image
@@ -168,7 +168,7 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
               {memberEmojis.map((emoji, idx) => (
                 <motion.div
                   key={idx}
-                  className="absolute text-2xl select-none z-10"
+                  className="absolute text-lg md:text-2xl select-none z-10 hidden sm:block"
                   style={{
                     left: idx === 0 ? '10px' : idx === 1 ? 'calc(100% - 40px)' : idx === 2 ? '10px' : 'calc(100% - 40px)',
                     top: idx === 0 ? '10px' : idx === 1 ? '10px' : idx === 2 ? 'calc(100% - 40px)' : 'calc(100% - 40px)',
@@ -191,22 +191,22 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
               ))}
 
               {/* Name overlay on photo */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg">
-                <h3 className="text-white text-lg font-bold">{member.name}</h3>
-                <Badge className="mt-1" variant="secondary">{member.role}</Badge>
+              <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg">
+                <h3 className="text-white text-sm md:text-lg font-bold">{member.name}</h3>
+                <Badge className="mt-0.5 md:mt-1 text-xs" variant="secondary">{member.role}</Badge>
               </div>
             </div>
 
-            {/* Description */}
-            <div className="mb-3">
-              <p className="text-muted-foreground text-xs leading-relaxed line-clamp-3">
+            {/* Description - hide on small mobile */}
+            <div className="mb-2 md:mb-3 hidden sm:block">
+              <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2 md:line-clamp-3">
                 {member.description || `${member.name} is a valued member of the Phala Network team, contributing to our mission of building the future of confidential computing.`}
               </p>
             </div>
 
             {/* Social Links - with stopPropagation to prevent card flip */}
             <div
-              className="flex gap-2 justify-center flex-wrap"
+              className="flex gap-1 md:gap-2 justify-center flex-wrap"
               onClick={(e) => e.stopPropagation()}
             >
               {member.github && (
@@ -313,17 +313,17 @@ export default function About() {
       <PhalaMissionValues />
 
       {/* Team Section */}
-      <section id="team" className="py-20 container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Meet Our Team</h2>
-          <p className="text-xl text-muted-foreground mb-8">
+      <section id="team" className="py-10 md:py-20 container mx-auto px-4 md:px-6">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Meet Our Team</h2>
+          <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8">
             Click on any profile to learn more about our talented team members
           </p>
 
         </div>
 
         {/* Team Grid - Optimized cards without empty space */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
           {sortedTeam.map((member, index) => (
             <TeamMemberCard key={`${member.name}-${index}`} member={member} index={index} />
           ))}
