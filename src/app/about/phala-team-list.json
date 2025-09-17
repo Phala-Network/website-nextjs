@@ -5,6 +5,7 @@
         "name": "Hang Yin",
         "role": "Co-founder & CEO",
         "github": "h4x3rotab",
+        "linkedin": "https://linkedin.com/in/hang-yin",
         "twitter": "https://x.com/bgmshana",
         "description": "PhD in Computer Science with extensive experience in blockchain and distributed systems. Leading Phala's vision for privacy-preserving cloud computing."
       },
@@ -12,6 +13,7 @@
         "name": "Marvin Tong",
         "role": "Co-founder",
         "github": "Marvin-Cypher",
+        "linkedin": "https://linkedin.com/in/marvin-tong",
         "description": "Strategic leader focused on building partnerships and ecosystem growth for Phala Network's confidential computing infrastructure."
       }
     ],
@@ -20,12 +22,14 @@
         "name": "Zoé Meckbach",
         "role": "Chief Operating Officer",
         "github": "zoemeckbach",
+        "linkedin": "https://linkedin.com/in/zoe-meckbach",
         "description": "Operations expert driving organizational efficiency and growth strategies across all business units."
       },
       {
         "name": "Joshua Waller",
         "role": "Chief Technology Officer",
         "github": "hashwarlock",
+        "linkedin": "https://linkedin.com/in/joshua-waller",
         "twitter": "https://x.com/hashwarlock",
         "description": "Technology visionary leading Phala's technical architecture and engineering initiatives for next-generation TEE applications."
       }
@@ -35,18 +39,21 @@
         "name": "Doyle Guo",
         "role": "Director of Engineering",
         "github": "GuoGuo",
+        "linkedin": "https://linkedin.com/in/doyle-guo",
         "description": "Engineering leader with deep expertise in systems architecture and blockchain infrastructure development."
       },
       {
         "name": "Jayson McQuown",
         "role": "Lead Frontend Engineer",
         "github": "0xPhala",
+        "linkedin": "https://linkedin.com/in/jayson-mcquown",
         "description": "Frontend engineering specialist creating intuitive user experiences for complex blockchain applications."
       },
       {
         "name": "Dylan Kawalec",
         "role": "Senior Full Stack Engineer",
         "github": "chaoticbeauty",
+        "linkedin": "https://linkedin.com/in/dylan-kawalec",
         "twitter": "https://x.com/ChaoticBeautys",
         "description": "Full-stack developer with expertise in modern web technologies and decentralized application development."
       },
@@ -54,36 +61,42 @@
         "name": "Kevin Wang",
         "role": "Senior Backend Engineer",
         "github": "kvinwang",
+        "linkedin": "https://linkedin.com/in/kevin-wang",
         "description": "Backend systems expert specializing in scalable infrastructure and blockchain protocol development."
       },
       {
         "name": "Kinsley",
         "role": "Senior Backend Engineer",
         "github": "kingsleydon",
+        "linkedin": "https://linkedin.com/in/kinsley",
         "description": "Backend engineer focused on building robust and scalable systems for confidential computing workloads."
       },
       {
         "name": "Xiaolu Huang",
         "role": "Senior Backend Engineer",
         "github": "jasl",
+        "linkedin": "https://linkedin.com/in/xiaolu-huang",
         "description": "Systems engineer with expertise in distributed computing and blockchain infrastructure optimization."
       },
       {
         "name": "Hugo Quelin",
         "role": "Frontend Engineer",
         "github": "hugo-syn",
+        "linkedin": "https://linkedin.com/in/hugo-quelin",
         "description": "Frontend developer creating engaging user interfaces and experiences for Phala's applications."
       },
       {
         "name": "Paco",
         "role": "DevOps Engineer",
         "github": "paco0x",
+        "linkedin": "https://linkedin.com/in/paco",
         "description": "DevOps specialist ensuring reliable deployment and operation of Phala's infrastructure across global networks."
       },
       {
         "name": "Shelven Zhou",
         "role": "Senior Backend Engineer",
         "github": "shelvenzhou",
+        "linkedin": "https://linkedin.com/in/shelven-zhou",
         "twitter": "https://x.com/zhou49",
         "description": "Backend engineer with focus on consensus mechanisms and distributed system performance optimization."
       },
@@ -91,6 +104,7 @@
         "name": "Wenfeng Wang",
         "role": "Senior Blockchain Engineer",
         "github": "tolak",
+        "linkedin": "https://linkedin.com/in/wenfeng-wang",
         "twitter": "https://x.com/tolak_eth",
         "description": "Blockchain protocol engineer specializing in TEE integration and smart contract development."
       },
@@ -98,6 +112,7 @@
         "name": "Lee",
         "role": "Rust Developer",
         "github": "Leechael",
+        "linkedin": "https://linkedin.com/in/lee",
         "twitter": "https://x.com/Leechael",
         "description": "Rust systems programmer building high-performance components for Phala's confidential computing stack."
       }

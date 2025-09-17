@@ -33,6 +33,7 @@ function getImageFromFolder(memberName: string, folder: 'commercial' | 'lifestyl
     'shanyu-juneja': '/team/shanyu-juneja/teamshanyu.png',
     'kinsley': '/team/kinsley/teamkingsley.png',
     'zoe-meckbach': '/team/zoe-meckbach/teamzoe.png',
+    'zoé-meckbach': '/team/zoe-meckbach/teamzoe.png',
     'xiaolu-huang': '/team/xiaolu-huang/teamxiaolu.png',
     'joshua-waller': '/team/joshua-waller/teamjoshua.png',
     'dylan-kawalec': '/team/dylan-kawalec/teamdylan.png',
