@@ -15,7 +15,7 @@ import * as R from 'ramda'
 
 import { env } from '@/env'
 
-export const notion = (env.NOTION_TOKEN && env.NOTION_TOKEN !== 'dummy_token_for_build') ? new Client({
+export const notion = (env.NOTION_TOKEN && env.NOTION_TOKEN !== '' && env.NOTION_TOKEN !== 'dummy_token_for_build') ? new Client({
   auth: env.NOTION_TOKEN,
 }) : null
 

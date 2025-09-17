@@ -5,9 +5,9 @@ import { z } from 'zod'
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(['development', 'production']).optional(),
-    NOTION_TOKEN: z.string(),
-    NOTION_POSTS_DATABASE_ID: z.string(),
-    NOTION_BACKEND_PREFIX: z.string(),
+    NOTION_TOKEN: z.string().default(''),
+    NOTION_POSTS_DATABASE_ID: z.string().default(''),
+    NOTION_BACKEND_PREFIX: z.string().default('http://localhost:3000'),
 
     SUBSCAN_API_KEY: z.string().optional(),
 
