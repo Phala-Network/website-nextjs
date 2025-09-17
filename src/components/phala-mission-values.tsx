@@ -109,7 +109,7 @@ const PhalaMissionValues = () => {
                   <div className="absolute w-72 h-84 bg-white rounded-lg shadow-xl transform rotate-6 -translate-x-32 translate-y-12 z-0">
                     <div className="p-3 h-full">
                       <Image
-                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                        src="/team/commercial/_HE_0529.jpg"
                         alt="Team Photo"
                         width={280}
                         height={260}
@@ -124,7 +124,7 @@ const PhalaMissionValues = () => {
                   <div className="relative w-72 h-84 bg-white rounded-lg shadow-2xl transform -rotate-3 translate-x-32 -translate-y-12 z-20">
                     <div className="p-3 h-full">
                       <Image
-                        src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop"
+                        src="/team/commercial/IMG_6118.jpg"
                         alt="Team Photo"
                         width={280}
                         height={260}
@@ -161,7 +161,7 @@ const PhalaMissionValues = () => {
                   <div className="absolute w-72 h-84 bg-white rounded-lg shadow-xl transform rotate-5 -translate-x-28 translate-y-8 z-0">
                     <div className="p-3 h-full">
                       <Image
-                        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=600&fit=crop"
+                        src="/team/commercial/IMG_4247.JPG"
                         alt="Team Privacy"
                         width={280}
                         height={260}
@@ -176,7 +176,7 @@ const PhalaMissionValues = () => {
                   <div className="relative w-72 h-84 bg-white rounded-lg shadow-2xl transform -rotate-4 translate-x-28 -translate-y-8 z-20">
                     <div className="p-3 h-full">
                       <Image
-                        src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop"
+                        src="/team/commercial/IMG_7621 2.JPG"
                         alt="Team Privacy"
                         width={280}
                         height={260}
@@ -213,7 +213,7 @@ const PhalaMissionValues = () => {
                   <div className="absolute w-72 h-84 bg-white rounded-lg shadow-xl transform rotate-3 -translate-x-30 translate-y-10 z-0">
                     <div className="p-3 h-full">
                       <Image
-                        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop"
+                        src="/team/commercial/IMG_9885.JPG"
                         alt="Team Innovation"
                         width={280}
                         height={260}
@@ -228,7 +228,7 @@ const PhalaMissionValues = () => {
                   <div className="relative w-72 h-84 bg-white rounded-lg shadow-2xl transform -rotate-2 translate-x-30 -translate-y-10 z-20">
                     <div className="p-3 h-full">
                       <Image
-                        src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&fit=crop"
+                        src="/team/commercial/0fa4839d6aea9750447cf449235f710b.JPG"
                         alt="Team Innovation"
                         width={280}
                         height={260}

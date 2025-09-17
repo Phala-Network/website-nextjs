@@ -19,22 +19,23 @@ import { PhalaMissionValues } from "@/components/phala-mission-values";
 import { Community6 } from "@/components/community6";
 import teamData from "./phala-team-list.json";
 
-// Helper function - not used anymore since we use GitHub avatars
-// Keeping for reference but all images now use GitHub avatars or fallbacks
+// Helper function to get first image in folder
 function getImageFromFolder(memberName: string, folder: 'commercial' | 'lifestyle') {
-  // Return a placeholder since all local team images are Git LFS and won't work on Vercel
-  return null;
+  const memberFolder = memberName.toLowerCase().replace(/\s+/g, '-');
+
+  // Return expected path - you'll need to add the actual photos to these directories
+  return `/team/${memberFolder}/${folder}/photo.jpg`;
 }
 
 // Team member card with flip animation
 function TeamMemberCard({ member, index }: { member: any; index: number }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Use GitHub avatar as primary image source (since local images are Git LFS)
-  const githubAvatar = member.github ? `https://github.com/${member.github}.png?size=400` : null;
+  // Get commercial image path
+  const commercialImage = member.commercialImage || getImageFromFolder(member.name, 'commercial');
 
-  // For now, use GitHub avatar as the main image until Git LFS is resolved
-  const commercialImage = githubAvatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=400&background=random`;
+  // Fallback to GitHub avatar if no custom photos
+  const githubAvatar = member.github ? `https://github.com/${member.github}.png?size=400` : null;
 
   // Deterministic emojis based on member name (to avoid hydration mismatch)
   const personalityEmojis = ['🚀', '💡', '🎯', '⚡', '🌟', '🔥', '💫', '🎉', '🌈', '✨', '🎨', '🎪', '🎭', '🎸', '🎮', '📸', '🏃‍♂️', '🧠', '💪', '🌊'];
