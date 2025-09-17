@@ -27,7 +27,11 @@ const PhalaMissionValues = () => {
                     Building the Future of Confidential Computing
                   </h2>
                   <p className="text-muted-foreground">
-                    Since 2018, we've been pioneering the world's largest confidential computing cloud. From our early days exploring TEE technology to scaling trusted execution environments, launching Phala Network mainnet with $1M in seed funding, building the SGX network infrastructure, introducing Phat Contracts for off-chain computation, developing Docker TEE containers, advancing GPU TEE capabilities for AI workloads, and working toward Safe AGI - we're building the infrastructure that enables developers to create privacy-first applications at unprecedented scale.
+                    Phala Network is building the world's largest confidential computing cloud,
+                    enabling developers to build privacy-first applications at scale.
+                    Founded in 2018, we've grown from a small team of blockchain enthusiasts to a
+                    global network of contributors pushing the boundaries of what's possible with
+                    TEE technology and decentralized infrastructure.
                   </p>
                 </div>
               </TabsContent>

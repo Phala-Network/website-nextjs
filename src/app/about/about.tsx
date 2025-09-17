@@ -19,38 +19,11 @@ import { PhalaMissionValues } from "@/components/phala-mission-values";
 import { Community6 } from "@/components/community6";
 import teamData from "./phala-team-list.json";
 
-// Helper function to get first image in folder
+// Helper function - not used anymore since we use GitHub avatars
+// Keeping for reference but all images now use GitHub avatars or fallbacks
 function getImageFromFolder(memberName: string, folder: 'commercial' | 'lifestyle') {
-  const memberFolder = memberName.toLowerCase().replace(/\s+/g, '-');
-  // Try common image extensions
-  const extensions = ['jpg', 'jpeg', 'png', 'webp'];
-  const commonNames = ['photo', 'image', 'profile', 'headshot'];
-
-  // For specific known files, return direct paths
-  const knownImages: { [key: string]: string } = {
-    'doyle-guo-commercial': '/team/doyle-guo/commercial/Gemini_Generated_Image_42ey5j42ey5j42ey.png',
-    'shelven-zhou-commercial': '/team/shelven-zhou/commercial/WechatIMG35.jpeg',
-    'steven-liu-commercial': '/team/steven-liu/commercial/1713665910543.jpeg',
-    'maggie-liu-commercial': '/team/maggie-liu/commercial/Gemini_Generated_Image_emxrohemxrohemxr.png',
-    'shanyu-juneja-commercial': '/team/shanyu-juneja/commercial/Gemini_Generated_Image_kxg0irkxg0irkxg0.png',
-    'wenfeng-wang-commercial': '/team/wenfeng-wang/commercial/1730884566679.jpeg',
-    'zoe-meckbach-commercial': '/team/zoe-meckbach/commercial/Gemini_Generated_Image_hsawq2hsawq2hsaw.png',
-    'zoé-meckbach-commercial': '/team/zoe-meckbach/commercial/Gemini_Generated_Image_hsawq2hsawq2hsaw.png',
-    'xiaolu-huang-commercial': '/team/xiaolu-huang/commercial/Gemini_Generated_Image_33dpas33dpas33dp.png',
-    'joshua-waller-commercial': '/team/joshua-waller/commercial/Gemini_Generated_Image_siumy7siumy7sium.png',
-    'dylan-kawalec-commercial': '/team/dylan-kawalec/commercial/Gemini_Generated_Image_ok44gwok44gwok44.png',
-    'marvin-tong-commercial': '/team/marvin-tong/commercial/Marvin (BL).jpeg',
-    'kevin-wang-commercial': '/team/kevin-wang/commercial/Gemini_Generated_Image_boqi4uboqi4uboqi.png',
-    'jayson-mcquown-commercial': '/team/jayson-mcquown/commercial/Gemini_Generated_Image_mjiwz6mjiwz6mjiw.png',
-    'paco-commercial': '/team/paco/commercial/Gemini_Generated_Image_czmtplczmtplczmt.png',
-    'hugo-quelin-commercial': '/team/hugo-quelin/commercial/Gemini_Generated_Image_mw1l3fmw1l3fmw1l.png',
-    'hang-yin-commercial': '/team/hang-yin/commercial/IMG_7797.JPG',
-    'kinsley-commercial': '/team/kinsley/commercial/Gemini_Generated_Image_4i74uy4i74uy4i74 (1).png',
-    'lee-commercial': '/team/lee/commercial/Gemini_Generated_Image_z6pzlzz6pzlzz6pz.png',
-  };
-
-  const key = `${memberFolder}-${folder}`;
-  return knownImages[key] || `/team/${memberFolder}/${folder}/photo.jpg`;
+  // Return a placeholder since all local team images are Git LFS and won't work on Vercel
+  return null;
 }
 
 // Team member card with flip animation
