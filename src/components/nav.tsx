@@ -223,6 +223,10 @@ const menu = [
     title: 'Pricing',
     url: '/pricing',
   },
+  {
+    title: 'About Us',
+    url: '/about',
+  },
 ]
 
 const Navbar = () => {
@@ -240,7 +244,7 @@ const Navbar = () => {
   return (
     <div
       className={cn(
-        'w-screen fixed top-0 left-0 transition',
+        'w-screen fixed top-0 left-0 transition z-50',
         hasScrolled && 'bg-background/75 backdrop-blur-sm',
       )}
     >
