@@ -182,6 +182,12 @@ const menu = [
     url: '#',
     items: [
       {
+        title: 'About Us',
+        description: 'Meet the team building the future of confidential computing',
+        icon: <Network className="size-5 shrink-0" />,
+        url: '/about',
+      },
+      {
         title: 'About Phala Network',
         description: 'Learn about our mission and privacy-first technology',
         icon: <Network className="size-5 shrink-0" />,
@@ -240,7 +246,7 @@ const Navbar = () => {
   return (
     <div
       className={cn(
-        'w-screen fixed top-0 left-0 transition',
+        'w-screen fixed top-0 left-0 transition z-50',
         hasScrolled && 'bg-background/75 backdrop-blur-sm',
       )}
     >

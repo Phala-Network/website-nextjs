@@ -1,0 +1,171 @@
+{
+  "phala_team": {
+    "founders": [
+      {
+        "name": "Marvin Tong",
+        "role": "Co-Founder & CEO",
+        "github": "Marvin-Cypher",
+        "linkedin": "https://www.linkedin.com/in/marvintong/",
+        "twitter": "https://x.com/marvin_tong",
+        "image": "/team/photos/marvin.jpg",
+        "description": "Leading Phala Network's vision and strategic direction in confidential computing innovation"
+      },
+      {
+        "name": "Hang Yin",
+        "role": "Co-Founder & CTO",
+        "github": "h4x3rotab",
+        "linkedin": "https://cn.linkedin.com/in/hang-yin-167012a7",
+        "twitter": "https://x.com/bgmshana",
+        "contributions": 1040,
+        "image": "/team/photos/h4x3rotab.jpg",
+        "description": "Chief Technology Officer leading Phala's technical innovation and architecture"
+      }
+    ],
+    "leadership": [
+      {
+        "name": "Doyle Guo",
+        "role": "Chief Operating Officer (COO)",
+        "github": "doyleguo",
+        "linkedin": "https://www.linkedin.com/in/xudong-guo-0a75a222b/",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Managing operations and business strategy for Phala Network"
+      }
+    ],
+    "engineering": [
+      {
+        "name": "Kevin Wang",
+        "github": "kvinwang",
+        "profile_url": "https://github.com/kvinwang",
+        "contributions": 2670,
+        "role": "Lead Developer",
+        "image": "/team/photos/kvinwang.jpg",
+        "description": "Leading core development and technical architecture with 2670+ contributions"
+      },
+      {
+        "name": "Shelven Zhou",
+        "github": "shelvenzhou",
+        "linkedin": "https://www.linkedin.com/in/shunfan-zhou-4b4626201/",
+        "twitter": "https://x.com/zhou49",
+        "profile_url": "https://github.com/shelvenzhou",
+        "contributions": 271,
+        "role": "Lead Research",
+        "image": "/team/photos/shelvenzhou.jpg",
+        "description": "Leading research initiatives in confidential computing and blockchain security"
+      },
+      {
+        "name": "Wenfeng Wang",
+        "github": "tolak",
+        "linkedin": "https://www.linkedin.com/in/wenfeng-wang-ba7844139/",
+        "twitter": "https://x.com/tolak_eth",
+        "profile_url": "https://github.com/tolak",
+        "contributions": 169,
+        "role": "Project Manager & Developer",
+        "image": "/team/photos/tolak.jpg",
+        "description": "Project Manager and Developer overseeing technical deliverables and implementations"
+      },
+      {
+        "name": "Dylan Kawalec",
+        "github": "DylanCkawalec",
+        "linkedin": "https://www.linkedin.com/in/dylankawalec/",
+        "twitter": "https://x.com/ChaoticBeautys",
+        "profile_url": "https://github.com/DylanCkawalec",
+        "role": "Developer Relationship",
+        "location": "San Diego, California",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Managing developer relationships while specializing in ZK proofs and TEE architecture"
+      },
+      {
+        "name": "Joshua Waller",
+        "github": "HashWarlock",
+        "linkedin": "https://www.linkedin.com/in/joshua-waller-33935773/",
+        "twitter": "https://x.com/hashwarlock",
+        "profile_url": "https://github.com/HashWarlock",
+        "role": "Developer Relationship",
+        "location": "Dallas-Fort Worth Metroplex",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Developer relations expert, creator of Swanky Phala CLI Tool and autonomous AI agents"
+      },
+      {
+        "name": "Kinsley",
+        "github": "kingsleydon",
+        "profile_url": "https://github.com/kingsleydon",
+        "role": "Full Stack Developer",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Full stack developer building Phala's frontend and backend infrastructure"
+      },
+      {
+        "name": "Lee",
+        "github": "Leechael",
+        "twitter": "https://x.com/Leechael",
+        "profile_url": "https://github.com/Leechael",
+        "role": "Full Stack Developer",
+        "image": "/team/photos/leechael.jpg",
+        "description": "Full stack developer with deep expertise in blockchain and web technologies"
+      },
+      {
+        "name": "Paco",
+        "github": "pacoyang",
+        "profile_url": "https://github.com/pacoyang",
+        "role": "Full Stack Developer",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Full stack developer implementing core features across Phala's technology stack"
+      }
+    ],
+    "business_operations": [
+      {
+        "name": "Zoé Meckbach",
+        "role": "VP of Growth",
+        "linkedin": "https://www.linkedin.com/in/zoemeckbach/",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Leading growth initiatives and market expansion for Phala Network"
+      },
+      {
+        "name": "Steven Liu",
+        "linkedin": "https://www.linkedin.com/in/stevensyliu/",
+        "role": "Business Strategy",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Driving business strategy and strategic partnerships for Phala's growth"
+      },
+      {
+        "name": "Hugo Quelin",
+        "linkedin": "https://www.linkedin.com/in/hugo-quelin-62847952/",
+        "role": "Customer Success",
+        "location": "Mauritius",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Ensuring customer success by bridging Web2 and Web3 technologies"
+      },
+      {
+        "name": "Maggie Liu",
+        "github": "MaggiePhala",
+        "linkedin": "https://www.linkedin.com/in/maggie-liu-262054257/",
+        "twitter": "https://x.com/MQL677",
+        "role": "Community & Marketing",
+        "location": "Toronto, Ontario, Canada",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "University of Toronto graduate leading community engagement and marketing initiatives"
+      },
+      {
+        "name": "Jayson McQuown",
+        "linkedin": "https://www.linkedin.com/in/jayson-mcquown-71787313a/",
+        "role": "Director of Sales",
+        "location": "San Jose, California",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Director of Sales driving revenue growth and strategic partnerships from Silicon Valley"
+      },
+      {
+        "name": "Shanyu Juneja",
+        "linkedin": "https://www.linkedin.com/in/shanyujuneja/",
+        "role": "SDR & Security Engineer",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Sales Development Representative and Security Engineer ensuring secure customer onboarding"
+      },
+      {
+        "name": "Xiaolu Huang",
+        "twitter": "https://x.com/littlekiradeer",
+        "role": "Senior Product Manager",
+        "image": "/team/photos/placeholder.jpg",
+        "description": "Senior Product Manager with extensive experience from TikTok and Didi, driving product strategy"
+      }
+    ]
+  }
+}
