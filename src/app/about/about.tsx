@@ -41,7 +41,9 @@ function getImageFromFolder(memberName: string, folder: 'commercial' | 'lifestyl
     'kevin-wang': '/team/kevin-wang/teamkevin.png',
     'jayson-mcquown': '/team/jayson-mcquown/teamjayson.png',
     'paco': '/team/paco/teampaco.png',
-    'hugo-quelin': '/team/hugo-quelin/teamhugo.png'
+    'hugo-quelin': '/team/hugo-quelin/teamhugo.png',
+    'shelven-zhou': '/team/shelven-zhou/teamshelven.jpeg',
+    'wenfeng-wang': '/team/wenfeng-wang/teamwenfeng.jpeg'
   };
 
   return teamPhotos[memberFolder] || `/team/${memberFolder}/team${firstName}.png`;
