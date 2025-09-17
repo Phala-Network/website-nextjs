@@ -109,7 +109,7 @@ const PhalaMissionValues = () => {
                   <div className="absolute w-72 h-84 bg-white rounded-lg shadow-xl transform rotate-6 -translate-x-32 translate-y-12 z-0">
                     <div className="p-3 h-full">
                       <Image
-                        src="/team/commercial/_HE_0529.jpg"
+                        src="/team/whole team/IMG_1691.jpg"
                         alt="Team Photo"
                         width={280}
                         height={260}
@@ -124,7 +124,7 @@ const PhalaMissionValues = () => {
                   <div className="relative w-72 h-84 bg-white rounded-lg shadow-2xl transform -rotate-3 translate-x-32 -translate-y-12 z-20">
                     <div className="p-3 h-full">
                       <Image
-                        src="/team/commercial/IMG_6118.jpg"
+                        src="/team/whole team/20220414_110438.JPG"
                         alt="Team Photo"
                         width={280}
                         height={260}
@@ -161,7 +161,7 @@ const PhalaMissionValues = () => {
                   <div className="absolute w-72 h-84 bg-white rounded-lg shadow-xl transform rotate-5 -translate-x-28 translate-y-8 z-0">
                     <div className="p-3 h-full">
                       <Image
-                        src="/team/commercial/IMG_4247.JPG"
+                        src="/team/whole team/IMG_7446.JPG"
                         alt="Team Privacy"
                         width={280}
                         height={260}
@@ -176,7 +176,7 @@ const PhalaMissionValues = () => {
                   <div className="relative w-72 h-84 bg-white rounded-lg shadow-2xl transform -rotate-4 translate-x-28 -translate-y-8 z-20">
                     <div className="p-3 h-full">
                       <Image
-                        src="/team/commercial/IMG_7621 2.JPG"
+                        src="/team/whole team/IMG_7490.JPG"
                         alt="Team Privacy"
                         width={280}
                         height={260}
@@ -213,7 +213,7 @@ const PhalaMissionValues = () => {
                   <div className="absolute w-72 h-84 bg-white rounded-lg shadow-xl transform rotate-3 -translate-x-30 translate-y-10 z-0">
                     <div className="p-3 h-full">
                       <Image
-                        src="/team/commercial/IMG_9885.JPG"
+                        src="/team/whole team/IMG_9884.JPG"
                         alt="Team Innovation"
                         width={280}
                         height={260}
@@ -228,7 +228,7 @@ const PhalaMissionValues = () => {
                   <div className="relative w-72 h-84 bg-white rounded-lg shadow-2xl transform -rotate-2 translate-x-30 -translate-y-10 z-20">
                     <div className="p-3 h-full">
                       <Image
-                        src="/team/commercial/0fa4839d6aea9750447cf449235f710b.JPG"
+                        src="/team/whole team/IMG_4083.JPG"
                         alt="Team Innovation"
                         width={280}
                         height={260}

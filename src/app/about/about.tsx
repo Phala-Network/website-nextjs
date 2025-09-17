@@ -19,12 +19,32 @@ import { PhalaMissionValues } from "@/components/phala-mission-values";
 import { Community6 } from "@/components/community6";
 import teamData from "./phala-team-list.json";
 
-// Helper function to get first image in folder
+// Helper function to get team member photo
 function getImageFromFolder(memberName: string, folder: 'commercial' | 'lifestyle') {
   const memberFolder = memberName.toLowerCase().replace(/\s+/g, '-');
+  const firstName = memberName.split(' ')[0].toLowerCase();
 
-  // Return expected path - you'll need to add the actual photos to these directories
-  return `/team/${memberFolder}/${folder}/photo.jpg`;
+  // Map specific known team member photos
+  const teamPhotos: { [key: string]: string } = {
+    'doyle-guo': '/team/doyle-guo/teamxudong.png',
+    'steven-liu': '/team/steven-liu/teamsteven.png',
+    'lee': '/team/lee/teamlee.png',
+    'maggie-liu': '/team/maggie-liu/teammaggie.png',
+    'shanyu-juneja': '/team/shanyu-juneja/teamshanyu.png',
+    'kinsley': '/team/kinsley/teamkingsley.png',
+    'zoe-meckbach': '/team/zoe-meckbach/teamzoe.png',
+    'xiaolu-huang': '/team/xiaolu-huang/teamxiaolu.png',
+    'joshua-waller': '/team/joshua-waller/teamjoshua.png',
+    'dylan-kawalec': '/team/dylan-kawalec/teamdylan.png',
+    'marvin-tong': '/team/marvin-tong/teammarvin.png',
+    'hang-yin': '/team/hang-yin/teamhang.JPG',
+    'kevin-wang': '/team/kevin-wang/teamkevin.png',
+    'jayson-mcquown': '/team/jayson-mcquown/teamjayson.png',
+    'paco': '/team/paco/teampaco.png',
+    'hugo-quelin': '/team/hugo-quelin/teamhugo.png'
+  };
+
+  return teamPhotos[memberFolder] || `/team/${memberFolder}/team${firstName}.png`;
 }
 
 // Team member card with flip animation
