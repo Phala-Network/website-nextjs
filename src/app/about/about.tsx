@@ -57,11 +57,11 @@ function getImageFromFolder(memberName: string, folder: 'commercial' | 'lifestyl
 function TeamMemberCard({ member, index }: { member: any; index: number }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Get commercial image path
-  const commercialImage = member.commercialImage || getImageFromFolder(member.name, 'commercial');
-
-  // Fallback to GitHub avatar if no custom photos
+  // Use GitHub avatar as primary image source (since local images are Git LFS)
   const githubAvatar = member.github ? `https://github.com/${member.github}.png?size=400` : null;
+
+  // For now, use GitHub avatar as the main image until Git LFS is resolved
+  const commercialImage = githubAvatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=400&background=random`;
 
   // Deterministic emojis based on member name (to avoid hydration mismatch)
   const personalityEmojis = ['🚀', '💡', '🎯', '⚡', '🌟', '🔥', '💫', '🎉', '🌈', '✨', '🎨', '🎪', '🎭', '🎸', '🎮', '📸', '🏃‍♂️', '🧠', '💪', '🌊'];
