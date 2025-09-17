@@ -38,7 +38,7 @@ function getImageFromFolder(memberName: string, folder: 'commercial' | 'lifestyl
     'joshua-waller': '/team/joshua-waller/teamjoshua.png',
     'dylan-kawalec': '/team/dylan-kawalec/teamdylan.png',
     'marvin-tong': '/team/marvin-tong/teammarvin.png',
-    'hang-yin': '/hang-yin.jpg',
+    'hang-yin': '/team/hang-yin/teamhang.jpg',
     'kevin-wang': '/team/kevin-wang/teamkevin.png',
     'jayson-mcquown': '/team/jayson-mcquown/teamjayson.png',
     'paco': '/team/paco/teampaco.png',
