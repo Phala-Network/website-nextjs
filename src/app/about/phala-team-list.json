@@ -62,20 +62,17 @@
         "name": "Kevin Wang",
         "role": "Core Engineer",
         "github": "kvinwang",
-        "linkedin": "https://linkedin.com/in/kevin-wang",
         "description": "Backend systems expert specializing in scalable infrastructure and blockchain protocol development."
       },
       {
         "name": "Kinsley",
         "role": "Full Stack Engineer",
         "github": "kingsleydon",
-        "linkedin": "https://linkedin.com/in/kinsley",
         "description": "Backend engineer focused on building robust and scalable systems for confidential computing workloads."
       },
       {
         "name": "Xiaolu Huang",
         "role": "Product Manager",
-        "linkedin": "https://linkedin.com/in/xiaolu-huang",
         "twitter": "https://x.com/littlekiradeer",
         "description": "Systems engineer with expertise in distributed computing and blockchain infrastructure optimization."
       },
@@ -89,7 +86,6 @@
         "name": "Paco",
         "role": "Full Stack Engineer",
         "github": "pacoyang",
-        "linkedin": "https://linkedin.com/in/paco",
         "description": "DevOps specialist ensuring reliable deployment and operation of Phala's infrastructure across global networks."
       },
       {
@@ -112,7 +108,6 @@
         "name": "Lee",
         "role": "Full Stack Engineer",
         "github": "Leechael",
-        "linkedin": "https://linkedin.com/in/lee",
         "twitter": "https://x.com/Leechael",
         "description": "Rust systems programmer building high-performance components for Phala's confidential computing stack."
       }
