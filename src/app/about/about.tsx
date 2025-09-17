@@ -87,14 +87,16 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
       className="h-[380px] perspective-1000"
     >
       <motion.div
-        className="relative w-full h-full preserve-3d cursor-pointer"
+        className="relative w-full h-full preserve-3d"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-        onClick={() => setIsFlipped(!isFlipped)}
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* A Side - Front Card (always show name and role, no hover effect) */}
-        <div className="absolute inset-0 backface-hidden border-2 border-border hover:border-primary transition-colors duration-300 overflow-hidden rounded-lg bg-card">
+        <div
+          className="absolute inset-0 backface-hidden border-2 border-border hover:border-primary transition-colors duration-300 overflow-hidden rounded-lg bg-card cursor-pointer"
+          onClick={() => setIsFlipped(!isFlipped)}
+        >
           <div className="relative w-full h-full">
             {/* Main Photo - Commercial - Full card coverage */}
             <Image
@@ -132,8 +134,11 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
         {/* B Side - Back Card (photo with emoji animation around it) */}
         <Card className="absolute inset-0 backface-hidden rotate-y-180 border-2 bg-gradient-to-br from-primary/5 to-primary/10">
           <CardContent className="p-4 h-full flex flex-col">
-            {/* Photo with floating emojis around it */}
-            <div className="relative flex-1 w-full overflow-hidden mb-4 rounded-lg">
+            {/* Photo with floating emojis around it - clickable to flip back */}
+            <div
+              className="relative flex-1 w-full overflow-hidden mb-4 rounded-lg cursor-pointer"
+              onClick={() => setIsFlipped(false)}
+            >
               <Image
                 src={commercialImage}
                 alt={member.name}
@@ -199,8 +204,11 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
               </p>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-2 justify-center flex-wrap">
+            {/* Social Links - with stopPropagation to prevent card flip */}
+            <div
+              className="flex gap-2 justify-center flex-wrap"
+              onClick={(e) => e.stopPropagation()}
+            >
               {member.github && (
                 <Button size="sm" variant="outline" asChild>
                   <a href={`https://github.com/${member.github}`} target="_blank" rel="noopener noreferrer">
