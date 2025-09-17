@@ -15,7 +15,7 @@ import * as R from 'ramda'
 
 import { env } from '@/env'
 
-export const notion = env.NOTION_TOKEN ? new Client({
+export const notion = (env.NOTION_TOKEN && env.NOTION_TOKEN !== 'dummy_token_for_build') ? new Client({
   auth: env.NOTION_TOKEN,
 }) : null
 
@@ -180,7 +180,7 @@ async function withPotentialChildren(
   block: BlockObjectResponse,
   commonFields: BlockObjectResponse,
 ): Promise<ParsedBlock> {
-  if (!block.has_children) {
+  if (!block.has_children || !notion) {
     return {
       ...commonFields,
       [block.type]: block[block.type as never],
