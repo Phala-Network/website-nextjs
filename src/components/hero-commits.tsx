@@ -38,75 +38,76 @@ const HeroCommits = () => {
   } satisfies ChartConfig;
 
   return (
-    <section className="relative grid w-full overflow-hidden py-24 lg:py-32">
-      <div className="container relative z-10 h-full grid-cols-1 items-center justify-center gap-8">
+    <section className="relative grid w-full overflow-hidden py-12 md:py-24 lg:py-32">
+      <div className="container relative z-10 h-full grid-cols-1 items-center justify-center gap-6 md:gap-8 px-4 md:px-6">
         <div className="flex flex-col items-center justify-center text-center">
-          <div className="text-muted-foreground flex items-center justify-center gap-3 text-sm font-medium tracking-tight mb-4">
+          <div className="text-muted-foreground flex items-center justify-center gap-2 md:gap-3 text-xs md:text-sm font-medium tracking-tight mb-3 md:mb-4">
             <span className="inline-block size-2 rounded-full bg-green-500 animate-pulse" />
             <span className="uppercase">Building in Public Since 2018</span>
           </div>
-          <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-tight lg:text-6xl">
+          <h1 className="mt-3 md:mt-4 max-w-4xl text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight">
             6 Years of Commitment to{" "}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Confidential Computing
             </span>
           </h1>
-          <p className="text-muted-foreground mt-6 max-w-2xl text-lg">
+          <p className="text-muted-foreground mt-4 md:mt-6 max-w-2xl text-sm md:text-lg px-4">
             Over 30,000+ commits from our global team of 25+ engineers,
             building the future of privacy-preserving computation from our offices in San Francisco and Singapore.
           </p>
         </div>
 
-        {/* Stats Bar */}
-        <div className="mt-12 relative flex flex-wrap items-center justify-center gap-8 border-y py-6">
-          <div className="flex items-center gap-3">
-            <GitCommit className="h-5 w-5 text-primary" />
+        {/* Stats Bar - Mobile optimized */}
+        <div className="mt-8 md:mt-12 relative flex flex-wrap items-center justify-center gap-4 md:gap-8 border-y py-4 md:py-6">
+          <div className="flex items-center gap-2 md:gap-3">
+            <GitCommit className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
-              <div className="text-2xl font-bold">30,000+</div>
-              <div className="text-sm text-muted-foreground">Total Commits</div>
+              <div className="text-lg md:text-2xl font-bold">30K+</div>
+              <div className="text-xs md:text-sm text-muted-foreground">Commits</div>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <Users className="h-5 w-5 text-primary" />
+          <div className="flex items-center gap-2 md:gap-3">
+            <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
-              <div className="text-2xl font-bold">25+</div>
-              <div className="text-sm text-muted-foreground">Global Team</div>
+              <div className="text-lg md:text-2xl font-bold">25+</div>
+              <div className="text-xs md:text-sm text-muted-foreground">Team</div>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <Building className="h-5 w-5 text-primary" />
+          <div className="flex items-center gap-2 md:gap-3">
+            <Building className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
-              <div className="text-2xl font-bold">2</div>
-              <div className="text-sm text-muted-foreground">Main Offices</div>
+              <div className="text-lg md:text-2xl font-bold">2</div>
+              <div className="text-xs md:text-sm text-muted-foreground">Offices</div>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <Globe className="h-5 w-5 text-primary" />
+          <div className="flex items-center gap-2 md:gap-3">
+            <Globe className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
-              <div className="text-2xl font-bold">SF & SG</div>
-              <div className="text-sm text-muted-foreground">San Francisco & Singapore</div>
+              <div className="text-lg md:text-2xl font-bold">SF & SG</div>
+              <div className="text-xs md:text-sm text-muted-foreground hidden sm:block">San Francisco & Singapore</div>
+              <div className="text-xs md:text-sm text-muted-foreground sm:hidden">Global</div>
             </div>
           </div>
           <BgPattern />
         </div>
 
-        {/* Commit Chart */}
-        <div className="h-fit w-full rounded-2xl bg-card p-6 lg:h-[400px]">
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold">Commit History</h3>
-            <p className="text-sm text-muted-foreground">
-              Consistent development and innovation over 6 years
+        {/* Commit Chart - Mobile optimized */}
+        <div className="h-fit w-full rounded-xl md:rounded-2xl bg-card p-3 md:p-6 lg:h-[400px]">
+          <div className="mb-3 md:mb-4">
+            <h3 className="text-base md:text-lg font-semibold">Commit History</h3>
+            <p className="text-xs md:text-sm text-muted-foreground">
+              Consistent development over 6 years
             </p>
           </div>
-          <ChartContainer config={chartConfig} className="h-[300px] w-full">
+          <ChartContainer config={chartConfig} className="h-[250px] md:h-[300px] w-full">
             <BarChart
               accessibilityLayer
               data={chartData}
               margin={{
-                left: 12,
-                right: 12,
-                top: 12,
-                bottom: 12,
+                left: 8,
+                right: 8,
+                top: 8,
+                bottom: 8,
               }}
             >
               <CartesianGrid vertical={false} strokeDasharray="3 3" />
@@ -115,17 +116,20 @@ const HeroCommits = () => {
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
+                tick={{ fontSize: 12 }}
               />
               <YAxis
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
                 tickFormatter={(value) => `${value / 1000}k`}
+                tick={{ fontSize: 12 }}
+                width={40}
               />
               <ChartTooltip
                 content={
                   <ChartTooltipContent
-                    className="w-[200px]"
+                    className="w-[180px] md:w-[200px] text-xs md:text-sm"
                     nameKey="commits"
                     labelFormatter={(value, payload) => {
                       if (payload && payload[0]) {
@@ -140,21 +144,21 @@ const HeroCommits = () => {
               <Bar
                 dataKey="commits"
                 fill="hsl(var(--primary))"
-                radius={[8, 8, 0, 0]}
+                radius={[4, 4, 0, 0]}
               />
             </BarChart>
           </ChartContainer>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-          <Button size="lg" className="min-w-[200px]" asChild>
+        {/* Action Buttons - Mobile optimized */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mt-6 md:mt-8">
+          <Button size="lg" className="w-full sm:w-auto min-w-[200px]" asChild>
             <a href="https://github.com/Phala-Network" target="_blank" rel="noopener noreferrer">
               <GitCommit className="mr-2 h-4 w-4" />
               View GitHub
             </a>
           </Button>
-          <Button size="lg" variant="outline" className="min-w-[200px]" asChild>
+          <Button size="lg" variant="outline" className="w-full sm:w-auto min-w-[200px]" asChild>
             <a href="#team">
               <Users className="mr-2 h-4 w-4" />
               Meet the Team
@@ -162,7 +166,7 @@ const HeroCommits = () => {
           </Button>
         </div>
 
-        <div className="relative h-20 border mt-8">
+        <div className="relative h-12 md:h-20 border mt-6 md:mt-8">
           <BgPattern sideLines={false} />
         </div>
       </div>
