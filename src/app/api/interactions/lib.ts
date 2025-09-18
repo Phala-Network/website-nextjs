@@ -28,7 +28,7 @@ export const adminPublishPost = async (
 ) => {
   // Check required environment variables first
   const { DISCORD_APP_ID, DISCORD_TOKEN, REVALIDATE_TOKEN } = env
-  if (!DISCORD_APP_ID || !DISCORD_TOKEN || !REVALIDATE_TOKEN || !notion) {
+  if (!DISCORD_APP_ID || !DISCORD_TOKEN || !REVALIDATE_TOKEN) {
     throw new Error('Discord configuration not found')
   }
   const response = (message: string) =>

@@ -15,14 +15,14 @@ export async function GET(request: Request) {
   const block_id = searchParams.get('block_id')
   const page_id = searchParams.get('page_id')
   const path = searchParams.get('path')
-  if (page_id && notion) {
+  if (page_id) {
     const page = await notion.pages.retrieve({ page_id })
     if (path) {
       url = R.pathOr('', JSON.parse(path), page)
     } else {
       url = R.pathOr('', ['cover', 'file', 'url'], page)
     }
-  } else if (block_id && notion) {
+  } else if (block_id) {
     const block = await notion.blocks.retrieve({ block_id })
     url = R.pathOr('', ['image', 'file', 'url'], block)
   }

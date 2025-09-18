@@ -31,9 +31,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  if (!env.NOTION_POSTS_DATABASE_ID || env.NOTION_POSTS_DATABASE_ID === '') {
-    return []
-  }
   const pages = await getRecentPosts(100) // Generate for most recent 100 posts
   return pages.map((page) => ({ slug: page.slug }))
 }

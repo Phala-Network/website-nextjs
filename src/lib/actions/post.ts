@@ -9,10 +9,6 @@ import type { GetPostsParams, GetPostsResult } from '@/lib/post'
 export async function getPosts(
   params: GetPostsParams = {},
 ): Promise<GetPostsResult> {
-  if (!env.NOTION_POSTS_DATABASE_ID || env.NOTION_POSTS_DATABASE_ID === '') {
-    return { pages: [], next_cursor: null }
-  }
-
   const { cursor, tag, page_size = 18 } = params
 
   const filter: QueryDatabaseParameters['filter'] = {

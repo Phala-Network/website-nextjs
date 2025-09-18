@@ -103,10 +103,6 @@ function getBaseFilter(excludeSlug?: string) {
 }
 
 export async function getPostBySlug(slug: string): Promise<ParsedPage> {
-  if (!env.NOTION_POSTS_DATABASE_ID || env.NOTION_POSTS_DATABASE_ID === '') {
-    notFound()
-  }
-
   const pages = await getParsedPagesByProperties({
     database_id: env.NOTION_POSTS_DATABASE_ID,
     properties: {
@@ -138,10 +134,6 @@ export async function getRecentPosts(
   size: number = 3,
   excludeSlug?: string,
 ): Promise<ParsedListPage[]> {
-  if (!env.NOTION_POSTS_DATABASE_ID || env.NOTION_POSTS_DATABASE_ID === '') {
-    return []
-  }
-
   const { pages } = await queryDatabase({
     database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: getBaseFilter(excludeSlug),
@@ -160,7 +152,7 @@ export async function getRecentPosts(
 export async function getSimilarPosts(
   page: ParsedPage,
 ): Promise<ParsedListPage[]> {
-  if (!env.NOTION_POSTS_DATABASE_ID || env.NOTION_POSTS_DATABASE_ID === '' || page.tags.length === 0) {
+  if (page.tags.length === 0) {
     return []
   }
 
@@ -183,10 +175,6 @@ export async function getSimilarPosts(
 }
 
 export async function retrieveTags(): Promise<string[]> {
-  if (!notion || !env.NOTION_POSTS_DATABASE_ID || env.NOTION_POSTS_DATABASE_ID === '') {
-    return []
-  }
-
   const database = await notion.databases.retrieve({
     database_id: env.NOTION_POSTS_DATABASE_ID,
   })
@@ -203,7 +191,7 @@ export async function retrieveTags(): Promise<string[]> {
 export async function getNavigationPosts(
   page: ParsedPage,
 ): Promise<{ beforePages: ParsedListPage[]; nextPages: ParsedListPage[] }> {
-  if (!env.NOTION_POSTS_DATABASE_ID || env.NOTION_POSTS_DATABASE_ID === '' || !page.publishedTime) {
+  if (!page.publishedTime) {
     return { beforePages: [], nextPages: [] }
   }
 
