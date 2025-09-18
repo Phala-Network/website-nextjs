@@ -344,13 +344,13 @@ export default function About() {
             </p>
             <div className="flex gap-4 justify-center">
               <Button size="lg" asChild>
-                <Link href="/careers">
+                <Link href="https://www.linkedin.com/company/phala-network/jobs/">
                   <Rocket className="mr-2 h-4 w-4" />
                   View Open Positions
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="mailto:careers@phala.network">
+                <Link href="mailto:hire@phala.network">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Us
                 </Link>
