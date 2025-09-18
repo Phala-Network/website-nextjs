@@ -1,0 +1,139 @@
+{
+  "phala_team": {
+    "founders": [
+      {
+        "name": "Hang Yin",
+        "role": "Co-founder & CTO",
+        "github": "h4x3rotab",
+        "linkedin": "https://www.linkedin.com/in/hang-yin-167012a7/",
+        "twitter": "https://x.com/bgmshana",
+        "description": "Former Senior Software Engineer at Google, leading projects on Gmail intelligent semantic assistant. PhD in Computer Science with extensive experience in blockchain and distributed systems."
+      },
+      {
+        "name": "Marvin Tong",
+        "role": "Co-founder & CEO",
+        "github": "Marvin-Cypher",
+        "linkedin": "https://www.linkedin.com/in/marvintong/",
+        "twitter": "https://x.com/marvin_tong",
+        "description": "Former Senior Product Manager at Tencent & Didi. Strategic leader focused on building partnerships and ecosystem growth for Phala Network."
+      }
+    ],
+    "leadership": [
+      {
+        "name": "Zoé Meckbach",
+        "role": "VP of Growth",
+        "github": "zoemeckbach",
+        "linkedin": "https://www.linkedin.com/in/zora-meckbach/",
+        "twitter": "https://x.com/zoemcfox",
+        "description": "M.Sc. in Information & Cybersecurity and M.Sc. in International Business. Former Google applications analyst, now driving Phala's growth initiatives."
+      },
+      {
+        "name": "Doyle Guo",
+        "role": "COO",
+        "github": "doyleguo",
+        "linkedin": "https://www.linkedin.com/in/xudong-guo-0a75a222b/",
+        "description": "Former Senior Project Manager at Didi. Operations expert driving organizational efficiency and growth strategies across all business units."
+      },
+      {
+        "name": "Joshua Waller",
+        "role": "Developer Relations",
+        "github": "hashwarlock",
+        "linkedin": "https://www.linkedin.com/in/joshua-waller-33935773/",
+        "twitter": "https://x.com/hashwarlock",
+        "description": "Ex ForeScout Technologies Inc. and Dell. Leading developer relations and technical community engagement for Phala Network."
+      },
+      {
+        "name": "Shelven Zhou",
+        "role": "Lead Research",
+        "github": "shelvenzhou",
+        "linkedin": "https://www.linkedin.com/in/shunfan-zhou-4b4626201/",
+        "twitter": "https://x.com/zhou49",
+        "description": "Ph.D. in System Software and Security Laboratory, Fudan University. Lead author of USENIX Security '20 paper on Ethereum ecosystem security."
+      }
+    ],
+    "engineering": [
+      {
+        "name": "Jayson McQuown",
+        "role": "Director of Sales",
+        "linkedin": "https://www.linkedin.com/in/jayson-mcquown-71787313a/",
+        "description": "Business development and sales leader driving enterprise adoption and strategic partnerships for Phala's TEE solutions."
+      },
+      {
+        "name": "Dylan Kawalec",
+        "role": "Developer Relations",
+        "github": "DylanCkawalec",
+        "linkedin": "https://www.linkedin.com/in/dylankawalec/",
+        "twitter": "https://x.com/ChaoticBeautys",
+        "description": "Expert in ZK and cryptographic science. Ex BNB Chain, Ex CTO of Invo. Building developer tools and educational resources."
+      },
+      {
+        "name": "Kevin Wang",
+        "role": "Core Engineer",
+        "github": "kvinwang",
+        "description": "Backend systems expert specializing in Rust, scalable infrastructure, and security protocol development for TEE environments."
+      },
+      {
+        "name": "Kinsley",
+        "role": "Full Stack Engineer",
+        "github": "kingsleydon",
+        "description": "Full stack engineer focused on building robust and scalable systems for confidential computing workloads."
+      },
+      {
+        "name": "Xiaolu Huang",
+        "role": "Product Manager",
+        "twitter": "https://x.com/littlekiradeer",
+        "description": "Ex-Senior Product Manager at Didi, Baidu, and ByteDance. Leading product strategy for Phala's developer platform."
+      },
+      {
+        "name": "Hugo Quelin",
+        "role": "Customer Success",
+        "linkedin": "https://www.linkedin.com/in/hugo-quelin-62847952/",
+        "description": "Customer success specialist ensuring smooth onboarding and support for Phala Network's enterprise clients."
+      },
+      {
+        "name": "Paco",
+        "role": "Full Stack Engineer",
+        "github": "pacoyang",
+        "description": "Full stack developer with expertise in modern web technologies and decentralized application development."
+      },
+      {
+        "name": "Wenfeng Wang",
+        "role": "Core Engineer & AI Project Leader",
+        "github": "tolak",
+        "linkedin": "https://www.linkedin.com/in/wenfeng-wang-ba7844139/",
+        "twitter": "https://x.com/tolak_eth",
+        "description": "Leading AI initiatives and TEE integration for secure AI workloads. Expert in blockchain protocol and smart contract development."
+      },
+      {
+        "name": "Lee",
+        "role": "Full Stack Engineer",
+        "github": "Leechael",
+        "twitter": "https://x.com/Leechael",
+        "description": "Rust systems programmer building high-performance components for Phala's confidential computing infrastructure."
+      }
+    ],
+    "business_operations": [
+      {
+        "name": "Steven Liu",
+        "role": "Strategic",
+        "linkedin": "https://www.linkedin.com/in/stevensyliu/",
+        "description": "Strategic advisor driving business development and market expansion initiatives for Phala Network."
+      },
+      {
+        "name": "Maggie Liu",
+        "role": "Marketing & Community",
+        "github": "MaggiePhala",
+        "linkedin": "https://www.linkedin.com/in/maggie-liu-262054257/",
+        "twitter": "https://x.com/MQL677",
+        "description": "Ex Dev.rel for BNB Chain. Leading marketing strategy and community engagement for Phala's growing ecosystem."
+      },
+      {
+        "name": "Shanyu Juneja",
+        "role": "SDR",
+        "github": "terminalsin",
+        "linkedin": "https://www.linkedin.com/in/shanyujuneja/",
+        "description": "Sales development representative identifying and qualifying enterprise opportunities for Phala's confidential computing solutions."
+      }
+    ]
+  }
+}
