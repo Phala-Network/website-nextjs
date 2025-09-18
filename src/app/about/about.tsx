@@ -153,7 +153,8 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
                   `)}`
                 }
               }}
-              unoptimized
+              width={350}
+              height={376}
             />
             {/* Overlay with name and role */}
             <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gradient-to-t from-black/60 to-transparent">
@@ -200,7 +201,8 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
                     `)}`
                   }
                 }}
-                unoptimized
+                width={318}
+                height={177}
               />
 
               {/* Floating emojis around the photo */}
