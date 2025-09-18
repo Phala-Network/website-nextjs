@@ -223,6 +223,10 @@ const menu = [
     title: 'Pricing',
     url: '/pricing',
   },
+  {
+    title: 'About Us',
+    url: '/about',
+  },
 ]
 
 const Navbar = () => {
@@ -240,7 +244,7 @@ const Navbar = () => {
   return (
     <div
       className={cn(
-        'w-screen fixed top-0 left-0 transition',
+        'w-screen fixed top-0 left-0 transition z-50',
         hasScrolled && 'bg-background/75 backdrop-blur-sm',
       )}
     >
@@ -250,7 +254,7 @@ const Navbar = () => {
           <nav className="hidden justify-between lg:flex h-20">
             <div className="flex items-center gap-6 h-full">
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2 shrink-0">
                 {/** biome-ignore lint/performance/noImgElement: svg */}
                 <img src="/home/logo.svg" className="h-10" alt="" />
               </Link>
