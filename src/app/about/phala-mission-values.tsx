@@ -1,9 +1,10 @@
-"use client";
+'use client'
 
-import { ScrollableTabsList } from "@/components/shadcnblocks/scrollable-tabslist";
-import { ScrollBar } from "@/components/ui/scroll-area";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Image from "next/image";
+import Image from 'next/image'
+
+import { ScrollableTabsList } from '@/components/shadcnblocks/scrollable-tabslist'
+import { ScrollBar } from '@/components/ui/scroll-area'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 const PhalaMissionValues = () => {
   return (
@@ -27,10 +28,11 @@ const PhalaMissionValues = () => {
                     Building the Future of Confidential Computing
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground">
-                    Phala Network is building the world's largest confidential computing cloud,
-                    enabling developers to build privacy-first applications at scale.
-                    Founded in 2018, we've grown from a small team of blockchain enthusiasts to a
-                    global network of contributors pushing the boundaries of what's possible with
+                    Phala Network is building the world's largest confidential
+                    computing cloud, enabling developers to build privacy-first
+                    applications at scale. Founded in 2018, we've grown from a
+                    small team of blockchain enthusiasts to a global network of
+                    contributors pushing the boundaries of what's possible with
                     TEE technology and decentralized infrastructure.
                   </p>
                 </div>
@@ -47,9 +49,10 @@ const PhalaMissionValues = () => {
                     Privacy. Security. Trust.
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground">
-                    Building the infrastructure for confidential computing where sensitive data
-                    remains encrypted even during processing. We're creating a world where
-                    privacy isn't a luxury, but a fundamental right built into the architecture.
+                    Building the infrastructure for confidential computing where
+                    sensitive data remains encrypted even during processing.
+                    We're creating a world where privacy isn't a luxury, but a
+                    fundamental right built into the architecture.
                   </p>
                 </div>
               </TabsContent>
@@ -65,10 +68,11 @@ const PhalaMissionValues = () => {
                     Open Source. Decentralized. Future.
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground">
-                    Contributing to the decentralized ecosystem and pushing the boundaries of
-                    TEE and blockchain technology. Our commitment to open source drives
-                    innovation and enables developers worldwide to build the next generation
-                    of privacy-preserving applications.
+                    Contributing to the decentralized ecosystem and pushing the
+                    boundaries of TEE and blockchain technology. Our commitment
+                    to open source drives innovation and enables developers
+                    worldwide to build the next generation of privacy-preserving
+                    applications.
                   </p>
                 </div>
               </TabsContent>
@@ -116,7 +120,9 @@ const PhalaMissionValues = () => {
                         className="w-full h-32 sm:h-40 md:h-64 object-cover rounded"
                         unoptimized
                       />
-                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">Building together</p>
+                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">
+                        Building together
+                      </p>
                     </div>
                   </div>
 
@@ -131,7 +137,9 @@ const PhalaMissionValues = () => {
                         className="w-full h-32 sm:h-40 md:h-64 object-cover rounded"
                         unoptimized
                       />
-                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">Phala Network</p>
+                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">
+                        Phala Network
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -139,12 +147,20 @@ const PhalaMissionValues = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 bg-gradient-to-t from-black/60 to-transparent rounded-b-2xl md:rounded-b-3xl">
                   <div className="flex justify-between items-end text-white">
                     <div className="flex flex-col gap-0.5 md:gap-1.5">
-                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">6+</p>
-                      <p className="text-xs md:text-base font-medium">years building</p>
+                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">
+                        6+
+                      </p>
+                      <p className="text-xs md:text-base font-medium">
+                        years building
+                      </p>
                     </div>
                     <div className="flex flex-col gap-0.5 md:gap-1.5 text-right">
-                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">30K+</p>
-                      <p className="text-xs md:text-base font-medium">commits</p>
+                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">
+                        30K+
+                      </p>
+                      <p className="text-xs md:text-base font-medium">
+                        commits
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -168,7 +184,9 @@ const PhalaMissionValues = () => {
                         className="w-full h-32 sm:h-40 md:h-64 object-cover rounded"
                         unoptimized
                       />
-                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">Secure by design</p>
+                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">
+                        Secure by design
+                      </p>
                     </div>
                   </div>
 
@@ -183,7 +201,9 @@ const PhalaMissionValues = () => {
                         className="w-full h-32 sm:h-40 md:h-64 object-cover rounded"
                         unoptimized
                       />
-                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">Privacy first</p>
+                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">
+                        Privacy first
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -191,12 +211,20 @@ const PhalaMissionValues = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 bg-gradient-to-t from-black/60 to-transparent rounded-b-2xl md:rounded-b-3xl">
                   <div className="flex justify-between items-end text-white">
                     <div className="flex flex-col gap-0.5 md:gap-1.5">
-                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">TEE</p>
-                      <p className="text-xs md:text-base font-medium">Trusted Execution</p>
+                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">
+                        TEE
+                      </p>
+                      <p className="text-xs md:text-base font-medium">
+                        Trusted Execution
+                      </p>
                     </div>
                     <div className="flex flex-col gap-0.5 md:gap-1.5 text-right">
-                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">100%</p>
-                      <p className="text-xs md:text-base font-medium">confidential</p>
+                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">
+                        100%
+                      </p>
+                      <p className="text-xs md:text-base font-medium">
+                        confidential
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -220,7 +248,9 @@ const PhalaMissionValues = () => {
                         className="w-full h-32 sm:h-40 md:h-64 object-cover rounded"
                         unoptimized
                       />
-                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">Innovation hub</p>
+                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">
+                        Innovation hub
+                      </p>
                     </div>
                   </div>
 
@@ -235,7 +265,9 @@ const PhalaMissionValues = () => {
                         className="w-full h-32 sm:h-40 md:h-64 object-cover rounded"
                         unoptimized
                       />
-                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">Open source</p>
+                      <p className="text-center mt-1 md:mt-2 text-xs md:text-sm text-gray-600 font-handwriting hidden sm:block">
+                        Open source
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -243,12 +275,20 @@ const PhalaMissionValues = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 bg-gradient-to-t from-black/60 to-transparent rounded-b-2xl md:rounded-b-3xl">
                   <div className="flex justify-between items-end text-white">
                     <div className="flex flex-col gap-0.5 md:gap-1.5">
-                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">25+</p>
-                      <p className="text-xs md:text-base font-medium">team members</p>
+                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">
+                        25+
+                      </p>
+                      <p className="text-xs md:text-base font-medium">
+                        team members
+                      </p>
                     </div>
                     <div className="flex flex-col gap-0.5 md:gap-1.5 text-right">
-                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">OSS</p>
-                      <p className="text-xs md:text-base font-medium">open source</p>
+                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">
+                        OSS
+                      </p>
+                      <p className="text-xs md:text-base font-medium">
+                        open source
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -258,7 +298,7 @@ const PhalaMissionValues = () => {
         </Tabs>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { PhalaMissionValues };
+export { PhalaMissionValues }

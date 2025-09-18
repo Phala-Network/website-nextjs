@@ -1,56 +1,50 @@
-import {
-  FaDiscord,
-  FaGithub,
-  FaLinkedin,
-  FaSlack,
-  FaXTwitter,
-} from "react-icons/fa6";
-import { SiBluesky } from "react-icons/si";
+import { Code, Percent } from 'lucide-react'
+import { FaDiscord, FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6'
 
-import { Card } from "@/components/ui/card";
+import { Card } from '@/components/ui/card'
 
 const iconWrapper =
-  "mb-4 flex items-center justify-center h-16 w-16 rounded-full border-2 border-dotted border-muted-foreground/40 transition-colors duration-200";
+  'mb-4 flex items-center justify-center h-16 w-16 rounded-full border-2 border-dotted border-muted-foreground/40 transition-colors duration-200'
 
 const Community6 = () => {
   const communityCards = [
     {
       icon: <FaXTwitter className="h-8 w-8 text-foreground/80" />,
-      title: "Twitter",
-      description: "Follow us for updates, insights, and news",
-      link: "https://twitter.com/PhalaNetwork",
+      title: 'Twitter',
+      description: 'Follow us for updates, insights, and news',
+      link: 'https://twitter.com/PhalaNetwork',
     },
     {
       icon: <FaGithub className="h-8 w-8 text-foreground/80" />,
-      title: "GitHub",
-      description: "Contribute, report issues, and star the project",
-      link: "https://github.com/Phala-Network",
+      title: 'GitHub',
+      description: 'Contribute, report issues, and star the project',
+      link: 'https://github.com/Phala-Network',
     },
     {
       icon: <FaDiscord className="h-8 w-8 text-foreground/80" />,
-      title: "Discord",
-      description: "Chat, share ideas, and get support from the community",
-      link: "https://discord.com/invite/phala-network",
+      title: 'Discord',
+      description: 'Chat, share ideas, and get support from the community',
+      link: 'https://discord.com/invite/phala-network',
     },
     {
       icon: <FaLinkedin className="h-8 w-8 text-foreground/80" />,
-      title: "LinkedIn",
-      description: "Connect with us professionally and grow your network",
-      link: "https://linkedin.com/company/phala-network",
+      title: 'LinkedIn',
+      description: 'Connect with us professionally and grow your network',
+      link: 'https://linkedin.com/company/phala-network',
     },
     {
-      icon: <FaSlack className="h-8 w-8 text-foreground/80" />,
-      title: "Sales",
-      description: "Get in touch with our sales team",
-      link: "https://phala.com/contact",
+      icon: <Percent className="h-8 w-8 text-foreground/80" />,
+      title: 'Sales',
+      description: 'Get in touch with our sales team',
+      link: 'https://phala.com/contact',
     },
     {
-      icon: <SiBluesky className="h-8 w-8 text-foreground/80" />,
-      title: "Developer",
-      description: "Access our developer documentation",
-      link: "https://docs.phala.com/",
+      icon: <Code className="h-8 w-8 text-foreground/80" />,
+      title: 'Developer',
+      description: 'Access our developer documentation',
+      link: 'https://docs.phala.com/',
     },
-  ];
+  ]
 
   return (
     <section className="relative overflow-hidden rounded-3xl bg-background py-32 text-foreground">
@@ -86,7 +80,7 @@ const Community6 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Community6 };
+export { Community6 }

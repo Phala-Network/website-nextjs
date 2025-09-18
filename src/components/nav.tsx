@@ -254,7 +254,7 @@ const Navbar = () => {
           <nav className="hidden justify-between lg:flex h-20">
             <div className="flex items-center gap-6 h-full">
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2 shrink-0">
                 {/** biome-ignore lint/performance/noImgElement: svg */}
                 <img src="/home/logo.svg" className="h-10" alt="" />
               </Link>

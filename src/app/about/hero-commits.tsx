@@ -1,41 +1,69 @@
-"use client";
+'use client'
 
-import React from "react";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import { GitCommit, Globe, Users, Building } from "lucide-react";
+import { Building, GitCommit, Globe, Users } from 'lucide-react'
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from '@/components/ui/chart'
 
 const bgPattern = {
   backgroundImage:
-    "linear-gradient(135deg, var(--muted) 25%, transparent 25.5%, transparent 50%, var(--muted) 50.5%, var(--muted) 75%, transparent 75.5%, transparent)",
-  backgroundSize: "10px 10px",
-};
+    'linear-gradient(135deg, var(--muted) 25%, transparent 25.5%, transparent 50%, var(--muted) 50.5%, var(--muted) 75%, transparent 75.5%, transparent)',
+  backgroundSize: '10px 10px',
+}
 
 const HeroCommits = () => {
   // Sample commit data representing 6 years of building
   const chartData = [
-    { year: "2018", commits: 1200, label: "Inspired by using TEE to scale blockchain, founding team assembles" },
-    { year: "2019", commits: 2400, label: "Raised only $1M seed to kick off Phala Network vision" },
-    { year: "2020", commits: 3600, label: "Launched Phala Network as decentralized TEE cloud" },
-    { year: "2021", commits: 4800, label: "Built the biggest decentralized SGX Network" },
-    { year: "2022", commits: 5200, label: "Launched Phat Contracts for smart contract capabilities" },
-    { year: "2023", commits: 6100, label: "Developed Docker-based TEE services" },
-    { year: "2024", commits: 7200, label: "Pioneered GPU TEE for AI workloads" },
-  ];
+    {
+      year: '2018',
+      commits: 1200,
+      label:
+        'Inspired by using TEE to scale blockchain, founding team assembles',
+    },
+    {
+      year: '2019',
+      commits: 2400,
+      label: 'Raised only $1M seed to kick off Phala Network vision',
+    },
+    {
+      year: '2020',
+      commits: 3600,
+      label: 'Launched Phala Network as decentralized TEE cloud',
+    },
+    {
+      year: '2021',
+      commits: 4800,
+      label: 'Built the biggest decentralized SGX Network',
+    },
+    {
+      year: '2022',
+      commits: 5200,
+      label: 'Launched Phat Contracts for smart contract capabilities',
+    },
+    {
+      year: '2023',
+      commits: 6100,
+      label: 'Developed Docker-based TEE services',
+    },
+    {
+      year: '2024',
+      commits: 7200,
+      label: 'Pioneered GPU TEE for AI workloads',
+    },
+  ]
 
   const chartConfig = {
     commits: {
-      label: "Commits",
-      color: "hsl(var(--primary))",
+      label: 'Commits',
+      color: 'hsl(var(--primary))',
     },
-  } satisfies ChartConfig;
+  } satisfies ChartConfig
 
   return (
     <section className="relative grid w-full overflow-hidden py-12 md:py-24 lg:py-32">
@@ -46,46 +74,57 @@ const HeroCommits = () => {
             <span className="uppercase">Building in Public Since 2018</span>
           </div>
           <h1 className="mt-3 md:mt-4 max-w-4xl text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight">
-            6 Years of Commitment to{" "}
+            6 Years of Commitment to{' '}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Confidential Computing
             </span>
           </h1>
           <p className="text-muted-foreground mt-4 md:mt-6 max-w-2xl text-sm md:text-lg px-4">
-            Over 30,000+ commits from our global team of 25+ engineers,
-            building the future of privacy-preserving computation from our offices in San Francisco and Singapore.
+            Over 30,000+ commits from our global team of 25+ engineers, building
+            the future of privacy-preserving computation from our offices in San
+            Francisco and Singapore.
           </p>
         </div>
 
         {/* Stats Bar - Mobile optimized */}
-        <div className="mt-8 md:mt-12 relative flex flex-wrap items-center justify-center gap-4 md:gap-8 border-y py-4 md:py-6">
+        <div className="mt-8 md:mt-12 relative flex flex-wrap items-center justify-center gap-4 md:gap-8 border-y h-12 md:h-20">
           <div className="flex items-center gap-2 md:gap-3">
             <GitCommit className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
               <div className="text-lg md:text-2xl font-bold">30K+</div>
-              <div className="text-xs md:text-sm text-muted-foreground">Commits</div>
+              <div className="text-xs md:text-sm text-muted-foreground">
+                Commits
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-2 md:gap-3">
             <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
               <div className="text-lg md:text-2xl font-bold">25+</div>
-              <div className="text-xs md:text-sm text-muted-foreground">Team</div>
+              <div className="text-xs md:text-sm text-muted-foreground">
+                Team
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-2 md:gap-3">
             <Building className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
               <div className="text-lg md:text-2xl font-bold">2</div>
-              <div className="text-xs md:text-sm text-muted-foreground">Offices</div>
+              <div className="text-xs md:text-sm text-muted-foreground">
+                Offices
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-2 md:gap-3">
             <Globe className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
               <div className="text-lg md:text-2xl font-bold">SF & SG</div>
-              <div className="text-xs md:text-sm text-muted-foreground hidden sm:block">San Francisco & Singapore</div>
-              <div className="text-xs md:text-sm text-muted-foreground sm:hidden">Global</div>
+              <div className="text-xs md:text-sm text-muted-foreground hidden sm:block">
+                San Francisco & Singapore
+              </div>
+              <div className="text-xs md:text-sm text-muted-foreground sm:hidden">
+                Global
+              </div>
             </div>
           </div>
           <BgPattern />
@@ -94,12 +133,17 @@ const HeroCommits = () => {
         {/* Commit Chart - Mobile optimized */}
         <div className="h-fit w-full rounded-xl md:rounded-2xl bg-card p-3 md:p-6 lg:h-[400px]">
           <div className="mb-3 md:mb-4">
-            <h3 className="text-base md:text-lg font-semibold">Commit History</h3>
+            <h3 className="text-base md:text-lg font-semibold">
+              Commit History
+            </h3>
             <p className="text-xs md:text-sm text-muted-foreground">
               Consistent development over 6 years
             </p>
           </div>
-          <ChartContainer config={chartConfig} className="h-[250px] md:h-[300px] w-full">
+          <ChartContainer
+            config={chartConfig}
+            className="h-[250px] md:h-[300px] w-full"
+          >
             <BarChart
               accessibilityLayer
               data={chartData}
@@ -133,17 +177,17 @@ const HeroCommits = () => {
                     nameKey="commits"
                     labelFormatter={(value, payload) => {
                       if (payload && payload[0]) {
-                        const data = payload[0].payload;
-                        return `${value} - ${data.label}`;
+                        const data = payload[0].payload
+                        return `${value} - ${data.label}`
                       }
-                      return value;
+                      return value
                     }}
                   />
                 }
               />
               <Bar
                 dataKey="commits"
-                fill="hsl(var(--primary))"
+                fill="var(--secondary)"
                 radius={[4, 4, 0, 0]}
               />
             </BarChart>
@@ -153,12 +197,21 @@ const HeroCommits = () => {
         {/* Action Buttons - Mobile optimized */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mt-6 md:mt-8">
           <Button size="lg" className="w-full sm:w-auto min-w-[200px]" asChild>
-            <a href="https://github.com/Phala-Network" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/Phala-Network"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <GitCommit className="mr-2 h-4 w-4" />
               View GitHub
             </a>
           </Button>
-          <Button size="lg" variant="outline" className="w-full sm:w-auto min-w-[200px]" asChild>
+          <Button
+            size="lg"
+            variant="outline"
+            className="w-full sm:w-auto min-w-[200px]"
+            asChild
+          >
             <a href="#team">
               <Users className="mr-2 h-4 w-4" />
               Meet the Team
@@ -171,10 +224,10 @@ const HeroCommits = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { HeroCommits };
+export { HeroCommits }
 
 const BgPattern = ({ sideLines = true }: { sideLines?: boolean }) => {
   return (
@@ -217,5 +270,5 @@ const BgPattern = ({ sideLines = true }: { sideLines?: boolean }) => {
         <div className="absolute -right-20 z-10 h-[200vh] w-px border-l hidden lg:block" />
       )}
     </>
-  );
-};
+  )
+}
