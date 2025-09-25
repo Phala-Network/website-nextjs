@@ -107,8 +107,8 @@ const GpuCard = ({ isMonthly }: { isMonthly: boolean }) => (
       </span>
     </div>
     <p className="mt-1 text-muted-foreground text-sm">
-      6-Month Commitment Saving of{' '}
-      <span className="text-primary-500 font-semibold">19%</span>
+      <span className="text-primary-500 font-semibold">20%</span> saving on 6
+      month engagement
     </p>
 
     <div className="mt-6">
@@ -185,7 +185,13 @@ const ApiCard = () => (
     </div>
 
     <Button className="w-full mt-6" asChild variant="outline">
-      <Link href="/api-docs">View Documentation</Link>
+      <Link
+        href="https://docs.phala.com/phala-cloud/confidential-ai/confidential-model/confidential-ai-api"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View Documentation
+      </Link>
     </Button>
   </div>
 )
