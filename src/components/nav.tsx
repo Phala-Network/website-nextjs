@@ -109,6 +109,11 @@ const menu = [
         url: 'https://cloud.phala.network/explorer',
       },
       {
+        title: 'AI Wallet Copilot',
+        icon: <Wallet className="size-5 shrink-0" />,
+        url: 'https://d5be0b710ecaa77985cf148109b1591bbc7023d0-3000.dstack-pha-prod8.phala.network/',
+      },
+      {
         title: 'Blog',
         description: 'Latest insights and updates from the Phala ecosystem',
         icon: <BookOpen className="size-5 shrink-0" />,
