@@ -68,7 +68,7 @@ export const successStories: SuccessStory[] = [
     description:
       'Built autonomous trading agents with verifiable execution. Users trust our AI because they can verify every decision on-chain.',
     pdfPath:
-      '/success-stories-reports/the-future-of-ai-post-cookie-era-marketing.pdf',
+      '/success-stories-reports/2025RealCodeForRealdAGI.pdf',
   },
 ]
 

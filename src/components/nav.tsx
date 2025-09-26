@@ -110,6 +110,7 @@ const menu = [
       },
       {
         title: 'AI Wallet Copilot',
+        description: 'Intelligent wallet assistant with confidential AI',
         icon: <Wallet className="size-5 shrink-0" />,
         url: 'https://d5be0b710ecaa77985cf148109b1591bbc7023d0-3000.dstack-pha-prod8.phala.network/',
       },
