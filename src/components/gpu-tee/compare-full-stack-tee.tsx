@@ -15,15 +15,15 @@ export function CompareFullStackTEE() {
   const providers = [
     {
       name: 'Standard Cloud',
-      subtitle: 'No TEE',
+      subtitle: 'No Protection',
     },
     {
-      name: 'GPU-Only TEE',
-      subtitle: 'NVIDIA CC',
+      name: 'On-Prem GPU',
+      subtitle: 'Local Hardware',
     },
     {
       name: 'Phala Cloud',
-      subtitle: 'Full-Stack TEE',
+      subtitle: 'GPU TEE + CPU TEE',
       highlight: true,
     },
   ]
@@ -31,34 +31,56 @@ export function CompareFullStackTEE() {
   const metrics = [
     {
       name: 'CPU/Memory Protection',
-      values: ['bad', 'bad', 'good'],
-      details: ['None', 'Exposed', 'Intel TDX'],
+      values: ['bad', 'good', 'good'],
+      details: ['None', 'Physical', 'Intel TDX'],
     },
     {
       name: 'GPU Encryption',
-      values: ['bad', 'good', 'good'],
-      details: ['None', 'NVIDIA CC', 'NVIDIA CC'],
+      values: ['bad', 'bad', 'good'],
+      details: ['None', 'None', 'NVIDIA CC'],
     },
     {
       name: 'Full VM Isolation',
-      values: ['bad', 'bad', 'good'],
-      details: ['Standard', 'GPU only', 'Complete'],
+      values: ['bad', 'neutral', 'good'],
+      details: ['Standard VM', 'Physical', 'TDX + CC'],
     },
     {
       name: 'Attestation',
       values: ['bad', 'bad', 'good'],
-      details: ['None', 'GPU only', 'Dual Reports'],
+      details: ['None', 'None', 'Intel + NVIDIA'],
+    },
+    {
+      name: 'Verifiable Code Integrity',
+      values: ['bad', 'bad', 'good'],
+      details: ['None', 'Manual', 'Cryptographic'],
+    },
+    {
+      name: 'Cloud Convenience',
+      values: ['good', 'bad', 'good'],
+      details: ['Easy', 'DevOps burden', 'Managed'],
+    },
+    {
+      name: 'Costs',
+      values: ['neutral', 'bad', 'good'],
+      details: ['Variable', 'High CapEx', 'Pay-as-you-go'],
+    },
+    {
+      name: 'AI Use Cases',
+      values: ['neutral', 'neutral', 'good'],
+      details: ['Agent only', 'Inference/Fine-tune/Train', 'Agent/Inference/Fine-tune/Train'],
     },
   ]
 
   const getStatusIcon = (value: string) => {
     if (value === 'good') return <Check className="h-5 w-5 text-green-600" />
     if (value === 'bad') return <X className="h-5 w-5 text-red-600" />
+    if (value === 'neutral') return <div className="h-5 w-5 rounded-full bg-yellow-600/20 border-2 border-yellow-600" />
   }
 
   const getStatusColor = (value: string) => {
     if (value === 'good') return 'bg-green-50 dark:bg-green-950/20'
     if (value === 'bad') return 'bg-red-50 dark:bg-red-950/20'
+    if (value === 'neutral') return 'bg-yellow-50 dark:bg-yellow-950/20'
     return 'bg-muted/50'
   }
 
