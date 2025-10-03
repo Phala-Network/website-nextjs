@@ -25,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: new URL('/confidential-ai', BASE_URL).toString(),
+      url: new URL('/gpu-tee', BASE_URL).toString(),
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
