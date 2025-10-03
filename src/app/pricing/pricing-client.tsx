@@ -1,7 +1,7 @@
 'use client'
 
-import { Check } from 'lucide-react'
 import Link from 'next/link'
+import { Check } from 'lucide-react'
 import { useState } from 'react'
 
 import { Badge } from '@/components/ui/badge'
