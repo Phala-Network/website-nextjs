@@ -78,9 +78,26 @@ const menu = [
       },
       {
         title: 'GPU TEE',
-        description: 'GPU-based confidential computing',
+        description: 'Most Powerful AI GPUs. Most Secure Platform.',
         icon: <Gpu className="size-5 shrink-0" />,
-        url: '/confidential-ai',
+        url: '/gpu-tee',
+        items: [
+          {
+            title: 'NVIDIA H200',
+            description: 'Flagship AI GPU with 141GB HBM3e memory',
+            url: '/gpu-tee/h200',
+          },
+          {
+            title: 'NVIDIA H100',
+            description: 'Enterprise standard with proven performance',
+            url: '/gpu-tee/h100',
+          },
+          {
+            title: 'NVIDIA B200',
+            description: 'Next-gen Blackwell with 15x faster inference',
+            url: '/gpu-tee/b200',
+          },
+        ],
       },
       {
         title: 'Open Source, dstack',

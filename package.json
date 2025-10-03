@@ -13,6 +13,7 @@
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "15.5.2",
     "@notionhq/client": "^4.0.2",
+    "@number-flow/react": "^0.5.10",
     "@posthog/nextjs-config": "^1.2.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
