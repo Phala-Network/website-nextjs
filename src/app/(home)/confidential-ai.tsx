@@ -226,7 +226,7 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
           </div>
         </div>
         <Link
-          href="/confidential-ai"
+          href="/gpu-tee"
           className="group relative overflow-hidden rounded-lg bg-card lg:col-span-3"
           target="_blank"
           rel="noopener noreferrer"
