@@ -100,22 +100,31 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
   const phalaModels = apiData.data.filter(model => model.id.startsWith('phala/'))
 
   // Transform API response to match expected Model type
-  const models: Model[] = phalaModels.map((apiModel, index) => ({
-    id: index + 1,
-    slug: apiModel.id, // Keep full ID like "phala/gpt-oss-20b" for URL
-    name: apiModel.name,
-    provider: apiModel.name.split(':')[0] || 'Phala',
-    description: apiModel.description,
-    contextLength: apiModel.context_length,
-    promptPrice: apiModel.pricing.prompt,
-    completionPrice: apiModel.pricing.completion,
-    imagePrice: apiModel.pricing.image,
-    requestPrice: apiModel.pricing.request,
-    createdAt: new Date(apiModel.created * 1000).toISOString(),
-    updatedAt: new Date(apiModel.created * 1000).toISOString(),
-    enabled: true,
-    verifiable: true,
-  }))
+  const models: Model[] = phalaModels.map((apiModel, index) => {
+    // Extract provider from name (e.g., "OpenAI: GPT OSS 20B" -> "OpenAI")
+    const provider = apiModel.name.split(':')[0]?.trim() || 'Phala'
+    // Extract model name from ID (e.g., "phala/gpt-oss-20b" -> "gpt-oss-20b")
+    const modelName = apiModel.id.replace('phala/', '')
+    // Build slug as "provider/model-name" (e.g., "openai/gpt-oss-20b")
+    const slug = `${provider.toLowerCase()}/${modelName}`
+
+    return {
+      id: index + 1,
+      slug,
+      name: apiModel.name,
+      provider,
+      description: apiModel.description,
+      contextLength: apiModel.context_length,
+      promptPrice: apiModel.pricing.prompt,
+      completionPrice: apiModel.pricing.completion,
+      imagePrice: apiModel.pricing.image,
+      requestPrice: apiModel.pricing.request,
+      createdAt: new Date(apiModel.created * 1000).toISOString(),
+      updatedAt: new Date(apiModel.created * 1000).toISOString(),
+      enabled: true,
+      verifiable: true,
+    }
+  })
 
   // Apply pagination
   return models.slice(skip, skip + limit)
