@@ -102,7 +102,7 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
   // Transform API response to match expected Model type
   const models: Model[] = phalaModels.map((apiModel, index) => ({
     id: index + 1,
-    slug: apiModel.id.replace('phala/', ''),
+    slug: apiModel.id, // Keep full ID like "phala/gpt-oss-20b" for URL
     name: apiModel.name,
     provider: apiModel.name.split(':')[0] || 'Phala',
     description: apiModel.description,
