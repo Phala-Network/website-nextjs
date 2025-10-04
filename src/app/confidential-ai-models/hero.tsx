@@ -164,7 +164,7 @@ const ConfidentialAI = () => {
     if (chatMessage.trim()) {
       const encodedMessage = encodeURIComponent(chatMessage.trim())
       window.open(
-        `https://redpill.ai/chat?message=${encodedMessage}`,
+        `https://chat.redpill.ai/?message=${encodedMessage}`,
         '_blank',
         'noopener,noreferrer',
       )
@@ -308,7 +308,7 @@ const Hero = () => {
                 className="shrink-0 w-full lg:h-12 lg:text-base sm:w-40"
               >
                 <a
-                  href="https://redpill.ai/chat"
+                  href="https://chat.redpill.ai/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
