@@ -332,6 +332,12 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
       destination: `${CLOUD_URL}/dashboard/:path*`,
       permanent: false,
     },
+
+    {
+      source: '/confidential-ai',
+      destination: '/gpu-tee',
+      permanent: false,
+    },
   ]
 }
 

@@ -28,10 +28,10 @@ const navigation = [
   {
     title: 'Product',
     links: [
-      { name: 'Models', href: '/confidential-ai' },
+      { name: 'Models', href: '/confidential-ai-models' },
       {
         name: 'GPU TEE Inference',
-        href: '/confidential-ai',
+        href: '/gpu-tee',
       },
       {
         name: 'MCP Hosting',
