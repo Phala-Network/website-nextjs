@@ -33,22 +33,11 @@ export function GlobeNetwork({ nodes, onNodeClick, onGlobeReady }: GlobeNetworkP
       return
     }
 
-    // Add a small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      if (!containerRef.current) return
-      initGlobe()
-    }, 100)
-
-    const cleanup = () => {
-      clearTimeout(timer)
-      if (globeRef.current) {
-        globeRef.current._destructor()
-      }
-    }
-
     let globe: any = null
 
     const initGlobe = async () => {
+      // Wait longer to ensure React 19 hydration is complete
+      await new Promise(resolve => setTimeout(resolve, 500))
       console.log('initGlobe starting...')
       const GlobeGl = await import('globe.gl')
       const Globe = GlobeGl.default
@@ -367,7 +356,13 @@ export function GlobeNetwork({ nodes, onNodeClick, onGlobeReady }: GlobeNetworkP
       console.log('Globe created successfully')
     }
 
-    return cleanup
+    initGlobe()
+
+    return () => {
+      if (globeRef.current) {
+        globeRef.current._destructor()
+      }
+    }
   }, [nodes, onNodeClick, onGlobeReady, isMounted])
 
   if (!isMounted) {

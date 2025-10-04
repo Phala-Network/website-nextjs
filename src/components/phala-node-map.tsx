@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import { Cpu, Zap } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
+import { GlobeErrorBoundary } from '@/components/globe-error-boundary'
 import { type PhalaNode, phalaNodes } from '@/data/phala-nodes'
 
 const GlobeNetwork = dynamic(
@@ -107,19 +108,25 @@ export function PhalaNodeMap() {
         {/* Globe and Controls Layout */}
         <div className="flex gap-8 mb-16">
           {/* Globe.gl Globe - Square, 50% width */}
-          <div className="relative rounded-xl border overflow-hidden bg-background flex-shrink-0" style={{ width: '50%', aspectRatio: '1/1' }}>
-            <GlobeNetwork
-              nodes={phalaNodes}
-              onNodeClick={(node) => {
-                console.log('onNodeClick called with:', node)
-                setSelectedNode(node)
-                setSelectedLocation(node.location.city)
-              }}
-              onGlobeReady={(globe) => {
-                console.log('Globe ready, setting instance')
-                setGlobeInstance(globe)
-              }}
-            />
+          <div
+            className="relative rounded-xl border overflow-hidden bg-background flex-shrink-0"
+            style={{ width: '50%', aspectRatio: '1/1' }}
+            suppressHydrationWarning
+          >
+            <GlobeErrorBoundary>
+              <GlobeNetwork
+                nodes={phalaNodes}
+                onNodeClick={(node) => {
+                  console.log('onNodeClick called with:', node)
+                  setSelectedNode(node)
+                  setSelectedLocation(node.location.city)
+                }}
+                onGlobeReady={(globe) => {
+                  console.log('Globe ready, setting instance')
+                  setGlobeInstance(globe)
+                }}
+              />
+            </GlobeErrorBoundary>
           </div>
 
           {/* Right Side Panel */}
