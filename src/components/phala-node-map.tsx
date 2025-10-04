@@ -8,8 +8,8 @@ import { Card } from '@/components/ui/card'
 import { GlobeErrorBoundary } from '@/components/globe-error-boundary'
 import { type PhalaNode, phalaNodes } from '@/data/phala-nodes'
 
-const SimpleGlobe = dynamic(
-  () => import('@/components/simple-globe').then((mod) => mod.SimpleGlobe),
+const ReactGlobeNetwork = dynamic(
+  () => import('@/components/react-globe-network').then((mod) => mod.ReactGlobeNetwork),
   { ssr: false }
 )
 
@@ -114,16 +114,16 @@ export function PhalaNodeMap() {
             suppressHydrationWarning
           >
             <GlobeErrorBoundary>
-              <SimpleGlobe
+              <ReactGlobeNetwork
                 nodes={phalaNodes}
                 onNodeClick={(node) => {
                   console.log('onNodeClick called with:', node)
                   setSelectedNode(node)
                   setSelectedLocation(node.location.city)
                 }}
-                onGlobeReady={(controls) => {
+                onGlobeReady={(globe) => {
                   console.log('Globe ready, setting instance')
-                  setGlobeInstance(controls)
+                  setGlobeInstance(globe)
                 }}
               />
             </GlobeErrorBoundary>

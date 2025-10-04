@@ -76,6 +76,7 @@
     "react": "^19.1.1",
     "react-day-picker": "^9.9.0",
     "react-dom": "^19.1.1",
+    "react-globe.gl": "^2.36.0",
     "react-hook-form": "^7.62.0",
     "react-icons": "^5.5.0",
     "react-lite-youtube-embed": "^2.5.6",
