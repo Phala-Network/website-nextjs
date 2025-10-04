@@ -97,6 +97,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
+    "@tailwindcss/oxide": "^4.1.14",
     "@types/node": "^24.3.0",
     "@types/ramda": "^0.31.0",
     "@types/react-syntax-highlighter": "^15.5.13",
