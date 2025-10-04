@@ -11,7 +11,7 @@ interface ReactGlobeNetworkProps {
 }
 
 export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlobeNetworkProps) {
-  const globeRef = useRef<any>()
+  const globeRef = useRef<any>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [countriesData, setCountriesData] = useState<any>(null)
   const [isMounted, setIsMounted] = useState(false)
