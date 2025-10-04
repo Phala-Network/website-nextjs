@@ -63,7 +63,7 @@ function NodeMarkers({ nodes, onNodeClick }: { nodes: PhalaNode[], onNodeClick?:
 }
 
 export function SimpleGlobe({ nodes, onNodeClick, onGlobeReady }: SimpleGlobeProps) {
-  const controlsRef = useRef<any>()
+  const controlsRef = useRef<any>(null)
 
   return (
     <div className="w-full h-full">
