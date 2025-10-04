@@ -101,12 +101,26 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
 
   // Transform API response to match expected Model type
   const models: Model[] = phalaModels.map((apiModel, index) => {
-    // Extract provider from name (e.g., "OpenAI: GPT OSS 20B" -> "OpenAI")
-    const provider = apiModel.name.split(':')[0]?.trim() || 'Phala'
     // Extract model name from ID (e.g., "phala/gpt-oss-20b" -> "gpt-oss-20b")
     const modelName = apiModel.id.replace('phala/', '')
-    // Build slug as "provider/model-name" (e.g., "openai/gpt-oss-20b")
-    const slug = `${provider.toLowerCase()}/${modelName}`
+
+    // Extract provider and build slug
+    let provider: string
+    let slug: string
+
+    if (apiModel.name.includes(':')) {
+      // Format: "OpenAI: GPT OSS 20B" -> provider="OpenAI", slug="openai/gpt-oss-20b"
+      provider = apiModel.name.split(':')[0]?.trim() || 'Phala'
+      slug = `${provider.toLowerCase()}/${modelName}`
+    } else if (apiModel.name.includes('/')) {
+      // Format: "deepseek/deepseek-chat-v3-0324" -> provider="deepseek", slug="deepseek/deepseek-chat-v3-0324"
+      provider = apiModel.name.split('/')[0]?.trim() || 'Phala'
+      slug = apiModel.name.toLowerCase()
+    } else {
+      // Fallback: use model name as-is
+      provider = 'Phala'
+      slug = `phala/${modelName}`
+    }
 
     return {
       id: index + 1,
