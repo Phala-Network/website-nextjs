@@ -1,8 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import * as topojson from 'topojson-client'
-import * as THREE from 'three'
 import type { PhalaNode } from '@/data/phala-nodes'
 
 interface GlobeNetworkProps {
@@ -39,7 +37,13 @@ export function GlobeNetwork({ nodes, onNodeClick, onGlobeReady }: GlobeNetworkP
       // Wait longer to ensure React 19 hydration is complete
       await new Promise(resolve => setTimeout(resolve, 500))
       console.log('initGlobe starting...')
-      const GlobeGl = await import('globe.gl')
+
+      // Dynamically import all dependencies to avoid any SSR issues
+      const [GlobeGl, topojson, THREE] = await Promise.all([
+        import('globe.gl'),
+        import('topojson-client'),
+        import('three')
+      ])
       const Globe = GlobeGl.default
 
       if (!containerRef.current) return
