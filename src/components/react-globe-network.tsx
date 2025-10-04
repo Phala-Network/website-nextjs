@@ -12,15 +12,30 @@ interface ReactGlobeNetworkProps {
 
 export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlobeNetworkProps) {
   const globeRef = useRef<any>()
+  const containerRef = useRef<HTMLDivElement>(null)
   const [countriesData, setCountriesData] = useState<any>(null)
   const [isMounted, setIsMounted] = useState(false)
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
-  // Wait for mount
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
-  // Load countries data
+  useEffect(() => {
+    if (!containerRef.current) return
+
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const { width, height } = containerRef.current.getBoundingClientRect()
+        setDimensions({ width, height })
+      }
+    }
+
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
+    return () => window.removeEventListener('resize', updateDimensions)
+  }, [isMounted])
+
   useEffect(() => {
     if (!isMounted) return
 
@@ -29,25 +44,30 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
       .then(setCountriesData)
   }, [isMounted])
 
-  // Notify parent when globe is ready
   useEffect(() => {
-    if (globeRef.current && onGlobeReady) {
+    if (globeRef.current && onGlobeReady && countriesData) {
       onGlobeReady(globeRef.current)
     }
-  }, [onGlobeReady])
+  }, [onGlobeReady, countriesData])
 
-  if (!isMounted) {
+  if (!isMounted || !countriesData) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-muted/20">
+      <div ref={containerRef} className="w-full h-full flex items-center justify-center bg-muted/20">
         <div className="text-muted-foreground">Loading globe...</div>
       </div>
     )
   }
 
-  // 1 GPU = 200 vCPUs equivalent
+  if (dimensions.width === 0 || dimensions.height === 0) {
+    return (
+      <div ref={containerRef} className="w-full h-full flex items-center justify-center bg-muted/20">
+        <div className="text-muted-foreground">Initializing...</div>
+      </div>
+    )
+  }
+
   const GPU_TO_VCPU_RATIO = 200
 
-  // Create node data map - group by location
   const nodesByLocation = new Map<string, PhalaNode[]>()
   nodes.forEach((node) => {
     const key = `${node.location.city}-${node.location.countryCode}`
@@ -56,7 +76,6 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
     nodesByLocation.set(key, group)
   })
 
-  // Create location metadata for polygon coloring
   const locationMeta = new Map<string, any>()
   nodesByLocation.forEach((locationNodes, key) => {
     const hasGPU = locationNodes.some(n => n.serverType === 'GPU TEE')
@@ -77,7 +96,6 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
     })
   })
 
-  // Build country node map
   const countryNodeMap = new Map<string, any>()
   locationMeta.forEach((meta) => {
     const countryCode = meta.countryCode
@@ -94,10 +112,8 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
     countryData.locations.push(meta)
   })
 
-  // HTML markers data
   const markersData = Array.from(locationMeta.values())
 
-  // Ripples data
   const ringsData = markersData.map(loc => ({
     lat: loc.lat,
     lng: loc.lon,
@@ -107,7 +123,6 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
     color: loc.color
   }))
 
-  // Arc data - random connections between locations
   const arcData: any[] = []
   const locations = Array.from(locationMeta.values())
   locations.forEach(sourceLocation => {
@@ -129,75 +144,68 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
   })
 
   return (
-    <Globe
-      ref={globeRef}
-      backgroundColor="rgba(0,0,0,0)"
-      globeImageUrl="//cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg"
-
-      // Hexed polygons (Layer 1)
-      hexPolygonsData={countriesData?.features}
-      hexPolygonResolution={3}
-      hexPolygonMargin={0.3}
-      hexPolygonColor={(d: any) => {
-        let countryCode = d.properties.ISO_A2
-
-        // Handle France special case
-        if (countryCode === '-99' && d.properties.ADMIN === 'France') {
-          countryCode = 'FR'
-        }
-
-        const nodeData = countryNodeMap.get(countryCode)
-        if (!nodeData) return '#6a6a6a'
-        return nodeData.hasGPU ? '#8DD7FF' : '#BAE730'
-      }}
-
-      // HTML markers (Layer 2)
-      htmlElementsData={markersData}
-      htmlLat={(d: any) => d.lat}
-      htmlLng={(d: any) => d.lon}
-      htmlElement={(d: any) => {
-        const wrapper = document.createElement('div')
-        wrapper.style.width = '40px'
-        wrapper.style.height = '40px'
-        wrapper.style.display = 'flex'
-        wrapper.style.alignItems = 'center'
-        wrapper.style.justifyContent = 'center'
-        wrapper.style.cursor = 'pointer'
-
-        const el = document.createElement('div')
-        el.style.width = '16px'
-        el.style.height = '16px'
-        el.style.borderRadius = '50%'
-        el.style.backgroundColor = d.color
-        el.style.border = '2px solid white'
-        el.style.boxShadow = `0 0 15px ${d.color}`
-        el.style.pointerEvents = 'none'
-
-        wrapper.appendChild(el)
-        wrapper.addEventListener('click', (e) => {
-          e.stopPropagation()
-          if (onNodeClick && d.nodes[0]) {
-            onNodeClick(d.nodes[0])
+    <div ref={containerRef} className="w-full h-full">
+      <Globe
+        ref={globeRef}
+        width={dimensions.width}
+        height={dimensions.height}
+        backgroundColor="rgba(0,0,0,0)"
+        globeImageUrl="//cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg"
+        hexPolygonsData={countriesData?.features}
+        hexPolygonResolution={3}
+        hexPolygonMargin={0.3}
+        hexPolygonColor={(d: any) => {
+          let countryCode = d.properties.ISO_A2
+          if (countryCode === '-99' && d.properties.ADMIN === 'France') {
+            countryCode = 'FR'
           }
-        })
-        return wrapper
-      }}
+          const nodeData = countryNodeMap.get(countryCode)
+          if (!nodeData) return '#6a6a6a'
+          return nodeData.hasGPU ? '#8DD7FF' : '#BAE730'
+        }}
+        htmlElementsData={markersData}
+        htmlLat={(d: any) => d.lat}
+        htmlLng={(d: any) => d.lon}
+        htmlElement={(d: any) => {
+          const wrapper = document.createElement('div')
+          wrapper.style.width = '40px'
+          wrapper.style.height = '40px'
+          wrapper.style.display = 'flex'
+          wrapper.style.alignItems = 'center'
+          wrapper.style.justifyContent = 'center'
+          wrapper.style.cursor = 'pointer'
 
-      // Ripples (Layer 3)
-      ringsData={ringsData}
-      ringColor={(d: any) => d.color}
-      ringMaxRadius="maxR"
-      ringPropagationSpeed="propagationSpeed"
-      ringRepeatPeriod="repeatPeriod"
+          const el = document.createElement('div')
+          el.style.width = '16px'
+          el.style.height = '16px'
+          el.style.borderRadius = '50%'
+          el.style.backgroundColor = d.color
+          el.style.border = '2px solid white'
+          el.style.boxShadow = `0 0 15px ${d.color}`
+          el.style.pointerEvents = 'none'
 
-      // Arcs (Layer 4)
-      arcsData={arcData}
-      arcColor="color"
-      arcDashLength={0.4}
-      arcDashGap={0.2}
-      arcDashAnimateTime={2000}
-      arcStroke={0.5}
-      arcAltitude={0.3}
-    />
+          wrapper.appendChild(el)
+          wrapper.addEventListener('click', (e) => {
+            e.stopPropagation()
+            if (onNodeClick && d.nodes[0]) {
+              onNodeClick(d.nodes[0])
+            }
+          })
+          return wrapper
+        }}
+        ringsData={ringsData}
+        ringColor={(d: any) => d.color}
+        ringMaxRadius="maxR"
+        ringPropagationSpeed="propagationSpeed"
+        ringRepeatPeriod="repeatPeriod"
+        arcsData={arcData}
+        arcColor="color"
+        arcDashLength={0.4}
+        arcDashGap={0.2}
+        arcDashAnimateTime={2000}
+        arcStroke={0.5}
+        arcAltitude={0.3}
+      />
+    </div>
   )
 }
