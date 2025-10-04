@@ -15,14 +15,22 @@ export type Model = {
   verifiable: boolean
 }
 
-type Response<T> = {
-  result: {
-    data: {
-      json: {
-        data: T[]
-      }
-    }
+type ApiModel = {
+  id: string
+  name: string
+  created: number
+  context_length: number
+  pricing: {
+    prompt: string
+    completion: string
+    image: string
+    request: string
   }
+  description: string
+}
+
+type ApiResponse = {
+  data: ApiModel[]
 }
 
 export const icons = [
@@ -85,9 +93,30 @@ export const iconMap = new Map(icons.map((icon) => [icon.name, icon.icon]))
 export type Icon = (typeof icons)[number]['name']
 
 export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
-  const res = await fetch(
-    `https://redpill.ai/api/trpc/models.list?input=%7B%22json%22%3A%7B%22take%22%3A${limit}%2C%22skip%22%3A${skip}%2C%22keyword%22%3A%22%22%2C%22verifiable%22%3Atrue%7D%7D`,
-  )
-  const data: Response<Model> = await res.json()
-  return data.result.data.json.data
+  const res = await fetch('https://api.redpill.ai/v1/models')
+  const apiData: ApiResponse = await res.json()
+
+  // Filter only phala models
+  const phalaModels = apiData.data.filter(model => model.id.startsWith('phala/'))
+
+  // Transform API response to match expected Model type
+  const models: Model[] = phalaModels.map((apiModel, index) => ({
+    id: index + 1,
+    slug: apiModel.id.replace('phala/', ''),
+    name: apiModel.name,
+    provider: apiModel.name.split(':')[0] || 'Phala',
+    description: apiModel.description,
+    contextLength: apiModel.context_length,
+    promptPrice: apiModel.pricing.prompt,
+    completionPrice: apiModel.pricing.completion,
+    imagePrice: apiModel.pricing.image,
+    requestPrice: apiModel.pricing.request,
+    createdAt: new Date(apiModel.created * 1000).toISOString(),
+    updatedAt: new Date(apiModel.created * 1000).toISOString(),
+    enabled: true,
+    verifiable: true,
+  }))
+
+  // Apply pagination
+  return models.slice(skip, skip + limit)
 }
