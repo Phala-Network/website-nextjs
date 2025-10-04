@@ -33,6 +33,19 @@ export function GlobeNetwork({ nodes, onNodeClick, onGlobeReady }: GlobeNetworkP
       return
     }
 
+    // Add a small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      if (!containerRef.current) return
+      initGlobe()
+    }, 100)
+
+    const cleanup = () => {
+      clearTimeout(timer)
+      if (globeRef.current) {
+        globeRef.current._destructor()
+      }
+    }
+
     let globe: any = null
 
     const initGlobe = async () => {
@@ -354,14 +367,16 @@ export function GlobeNetwork({ nodes, onNodeClick, onGlobeReady }: GlobeNetworkP
       console.log('Globe created successfully')
     }
 
-    initGlobe()
-
-    return () => {
-      if (globeRef.current) {
-        globeRef.current._destructor()
-      }
-    }
+    return cleanup
   }, [nodes, onNodeClick, onGlobeReady, isMounted])
+
+  if (!isMounted) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-muted/20">
+        <div className="text-muted-foreground">Loading globe...</div>
+      </div>
+    )
+  }
 
   return (
     <div
