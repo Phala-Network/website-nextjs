@@ -117,10 +117,13 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
       provider = apiModel.name.split('/')[0]?.trim() || 'Phala'
       slug = apiModel.name.toLowerCase()
     } else {
-      // Fallback: extract provider from first word (e.g., "Qwen2.5 7B Instruct" -> "qwen")
-      const firstWord = apiModel.name.split(' ')[0]?.trim().toLowerCase() || 'phala'
-      provider = apiModel.name.split(' ')[0]?.trim() || 'Phala'
-      slug = `${firstWord}/${modelName}`
+      // Fallback: extract provider from first word, removing version numbers
+      // e.g., "Qwen2.5 7B Instruct" -> "qwen"
+      const firstWord = apiModel.name.split(' ')[0]?.trim() || 'Phala'
+      // Remove version numbers from provider (e.g., "Qwen2.5" -> "Qwen")
+      const providerClean = firstWord.replace(/[0-9.]+$/, '')
+      provider = providerClean || firstWord
+      slug = `${providerClean.toLowerCase()}/${modelName}`
     }
 
     return {
