@@ -1,43 +1,58 @@
 'use client'
 
-import { Server } from 'lucide-react'
 import { useState } from 'react'
-
-import { Globe } from '@/components/magicui/globe'
+import { Cpu, Zap } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
+import { ClientOnly } from '@/components/client-only'
+import { GlobeNetwork } from '@/components/globe-network'
 import { type PhalaNode, phalaNodes } from '@/data/phala-nodes'
+
+// Country flag emojis
+const countryFlags: Record<string, string> = {
+  US: '🇺🇸',
+  GB: '🇬🇧',
+  IN: '🇮🇳',
+  FR: '🇫🇷',
+}
 
 export function PhalaNodeMap() {
   const [selectedNode, setSelectedNode] = useState<PhalaNode | null>(null)
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(null)
+  const [filterType, setFilterType] = useState<'all' | 'GPU' | 'CPU'>('all')
+  const [globeInstance, setGlobeInstance] = useState<any>(null)
 
-  // Convert nodes to globe markers
-  const markers = phalaNodes.map((node) => ({
-    location: [node.location.lat, node.location.lon] as [number, number],
-    size: node.serverType === 'GPU TEE' ? 0.08 : 0.05,
-  }))
+  // Get unique locations
+  const locations = Array.from(new Set(phalaNodes.map((n) => n.location.city))).sort()
 
-  // Group nodes by location for better display
-  const nodesByLocation = phalaNodes.reduce(
-    (acc, node) => {
-      const key = `${node.location.lat},${node.location.lon}`
-      if (!acc[key]) {
-        acc[key] = []
-      }
-      acc[key].push(node)
-      return acc
-    },
-    {} as Record<string, PhalaNode[]>,
-  )
+  // Filter nodes by selected location and type
+  const filteredNodes = phalaNodes.filter((node) => {
+    const locationMatch = selectedLocation ? node.location.city === selectedLocation : true
+    const typeMatch =
+      filterType === 'all'
+        ? true
+        : filterType === 'GPU'
+          ? node.serverType === 'GPU TEE'
+          : node.serverType === 'TDX'
+    return locationMatch && typeMatch
+  })
 
-  const locations = Object.entries(nodesByLocation).map(([key, nodes]) => ({
-    location: key,
-    nodes,
-    primary: nodes[0],
-  }))
+  // Calculate total stats based on vCPU and GPU requirements
+  const totalVCPUs = phalaNodes.reduce((sum, node) => {
+    // For CPU nodes, use cores count as vCPUs
+    return sum + (node.cores || 0)
+  }, 0)
+
+  const totalGPUs = phalaNodes.reduce((sum, node) => {
+    // Each GPU node has 8 H200 GPUs
+    return sum + (node.gpuCount || 0)
+  }, 0)
+
+  const uniqueLocations = new Set(phalaNodes.map((n) => `${n.location.city},${n.location.country}`))
+    .size
 
   return (
-    <section className="py-32 bg-muted/30">
+    <section className="py-32 bg-background relative overflow-hidden">
       <div className="container">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <p className="bg-muted mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-wider">
@@ -47,184 +62,240 @@ export function PhalaNodeMap() {
             Phala Cloud Worldwide Network
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our distributed infrastructure spans multiple continents, providing
-            low-latency access to confidential computing resources globally
+            Our distributed infrastructure spans multiple continents, providing low-latency access to
+            confidential computing resources globally
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Globe Visualization */}
-          <div className="relative flex items-center justify-center min-h-[600px]">
-            <Globe
-              className="top-0"
-              config={{
-                phi: 0,
-                theta: 0.3,
-                dark: 1,
-                diffuse: 3,
-                mapSamples: 16000,
-                mapBrightness: 1.5,
-                baseColor: [1, 1, 1],
-                markerColor: [251 / 255, 146 / 255, 60 / 255],
-                glowColor: [1, 1, 1],
-              }}
-              markers={markers}
-            />
+        {/* Stats */}
+        <div className="grid gap-6 md:grid-cols-3 mb-16">
+          <Card className="p-6">
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="rounded-full bg-primary/10 p-3 mb-3">
+                <Cpu className="h-6 w-6 text-primary" />
+              </div>
+              <p className="text-4xl font-bold text-primary mb-1">{totalVCPUs}</p>
+              <p className="text-sm text-muted-foreground">Total vCPUs</p>
+            </div>
+          </Card>
+          <Card className="p-6">
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="rounded-full bg-primary/10 p-3 mb-3">
+                <Zap className="h-6 w-6 text-primary" />
+              </div>
+              <p className="text-4xl font-bold text-primary mb-1">{totalGPUs}</p>
+              <p className="text-sm text-muted-foreground">Total H200 GPUs</p>
+            </div>
+          </Card>
+          <Card className="p-6">
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="rounded-full bg-primary/10 p-3 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="text-4xl font-bold text-primary mb-1">{uniqueLocations}</p>
+              <p className="text-sm text-muted-foreground">Global Locations</p>
+            </div>
+          </Card>
+        </div>
+
+        {/* Globe and Controls Layout */}
+        <div className="flex gap-8 mb-16">
+          {/* Globe.gl Globe - Square, 50% width */}
+          <div className="relative rounded-xl border overflow-hidden bg-background flex-shrink-0" style={{ width: '50%', aspectRatio: '1/1' }}>
+            <ClientOnly>
+              <GlobeNetwork
+                nodes={phalaNodes}
+                onNodeClick={(node) => {
+                  console.log('onNodeClick called with:', node)
+                  setSelectedNode(node)
+                  setSelectedLocation(node.location.city)
+                }}
+                onGlobeReady={(globe) => {
+                  console.log('Globe ready, setting instance')
+                  setGlobeInstance(globe)
+                }}
+              />
+            </ClientOnly>
           </div>
 
-          {/* Node List */}
-          <div className="flex flex-col gap-4 max-h-[600px] overflow-y-auto pr-4">
-            <div className="mb-4">
-              <h3 className="text-2xl font-bold mb-2">Active Nodes</h3>
-              <div className="flex gap-2 text-sm text-muted-foreground">
-                <Badge variant="secondary">
-                  {phalaNodes.filter((n) => n.serverType === 'TDX').length} TDX
-                  Nodes
-                </Badge>
-                <Badge variant="secondary">
-                  {phalaNodes.filter((n) => n.serverType === 'GPU TEE').length}{' '}
-                  GPU TEE Nodes
-                </Badge>
-                <Badge variant="secondary">
-                  {locations.length} Locations
-                </Badge>
-              </div>
-            </div>
+          {/* Right Side Panel */}
+          <div className="flex flex-col gap-4 flex-1">
+            <Card className="p-6">
+              <h3 className="text-xl font-bold mb-4">Filter Nodes</h3>
 
-            {locations.map(({ location, nodes, primary }) => (
-              <Card
-                key={location}
-                className="p-6 hover:bg-muted/50 transition-colors cursor-pointer"
-                onClick={() => setSelectedNode(primary)}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
-                    <Server className="size-6 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
+              {/* Type Filter */}
+              <div className="mb-4">
+                <p className="text-sm font-medium mb-2">Node Type</p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setFilterType('all')}
+                    className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                      filterType === 'all'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted hover:bg-muted/80'
+                    }`}
+                  >
+                    All
+                  </button>
+                  <button
+                    onClick={() => setFilterType('GPU')}
+                    className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                      filterType === 'GPU'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-muted hover:bg-muted/80'
+                    }`}
+                  >
+                    GPU
+                  </button>
+                  <button
+                    onClick={() => setFilterType('CPU')}
+                    className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                      filterType === 'CPU'
+                        ? 'bg-green-400 text-black'
+                        : 'bg-muted hover:bg-muted/80'
+                    }`}
+                  >
+                    CPU
+                  </button>
+                </div>
+              </div>
+
+              {/* Location Filter */}
+              <div>
+                <p className="text-sm font-medium mb-2">Location</p>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedLocation(null)}
+                    className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                      selectedLocation === null
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted hover:bg-muted/80'
+                    }`}
+                  >
+                    All
+                  </button>
+                  {locations.map((location) => (
+                    <button
+                      key={location}
+                      onClick={() => setSelectedLocation(location)}
+                      className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                        selectedLocation === location
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-muted hover:bg-muted/80'
+                      }`}
+                    >
+                      {location}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </Card>
+
+            {/* Node List */}
+            <Card className="p-6 flex-1">
+              <h3 className="text-xl font-bold mb-4">
+                Nodes ({filteredNodes.length})
+              </h3>
+              <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2">
+                {filteredNodes.map((node) => (
+                  <button
+                    key={node.name}
+                    onClick={() => {
+                      setSelectedNode(node)
+                      // Rotate globe to node location
+                      if (globeInstance) {
+                        globeInstance.pointOfView({
+                          lat: node.location.lat,
+                          lng: node.location.lon,
+                          altitude: 2
+                        }, 1000) // 1000ms transition
+                      }
+                    }}
+                    className={`w-full p-3 rounded-lg border-2 transition-all text-left hover:border-primary hover:shadow-md ${
+                      selectedNode?.name === node.name
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border bg-background'
+                    }`}
+                  >
                     <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-semibold">
-                        {primary.location.city}, {primary.location.countryCode}
-                      </h4>
+                      <span className="text-xl">{countryFlags[node.location.countryCode]}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-sm truncate">{node.productName}</p>
+                        <p className="text-xs text-muted-foreground">{node.location.city}</p>
+                      </div>
                       <Badge
-                        variant={
-                          primary.serverType === 'GPU TEE'
-                            ? 'default'
-                            : 'secondary'
-                        }
+                        variant={node.serverType === 'GPU TEE' ? 'default' : 'secondary'}
+                        className="text-xs shrink-0"
                       >
-                        {primary.serverType}
+                        {node.serverType === 'GPU TEE' ? 'GPU' : 'CPU'}
                       </Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      {primary.operator}
-                    </p>
+                    <div className="text-xs text-muted-foreground">
+                      {node.hardware}
+                      {node.cores && ` • ${node.cores} cores`}
+                      {node.gpuCount && ` • ${node.gpuType} x${node.gpuCount}`}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </Card>
 
-                    {nodes.length === 1 ? (
-                      <NodeDetails node={nodes[0]} />
-                    ) : (
-                      <div className="space-y-2">
-                        <p className="text-xs font-medium text-muted-foreground">
-                          {nodes.length} nodes at this location
-                        </p>
-                        {nodes.map((node) => (
-                          <div
-                            key={node.name}
-                            className="text-xs p-2 bg-muted/30 rounded"
-                          >
-                            <div className="font-mono font-semibold mb-1">
-                              {node.name}
-                            </div>
-                            <NodeDetails node={node} compact />
-                          </div>
-                        ))}
-                      </div>
-                    )}
+            {/* Selected Node Details */}
+            {selectedNode && (
+              <Card className="p-6">
+                <h3 className="text-lg font-bold mb-3">Node Details</h3>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Product</p>
+                    <p className="font-medium">{selectedNode.productName}</p>
                   </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Hardware</p>
+                    <p className="font-medium">{selectedNode.hardware}</p>
+                  </div>
+                  {selectedNode.cores && (
+                    <div>
+                      <p className="text-sm text-muted-foreground">Cores</p>
+                      <p className="font-medium">{selectedNode.cores}</p>
+                    </div>
+                  )}
+                  {selectedNode.gpuCount && (
+                    <div>
+                      <p className="text-sm text-muted-foreground">GPUs</p>
+                      <p className="font-medium">
+                        {selectedNode.gpuType} × {selectedNode.gpuCount}
+                      </p>
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-sm text-muted-foreground">Memory</p>
+                    <p className="font-medium">{selectedNode.ram}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Location</p>
+                    <p className="font-medium">
+                      {selectedNode.location.city}, {selectedNode.location.country}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Operator</p>
+                    <p className="font-medium">{selectedNode.operator}</p>
+                  </div>
+                  {selectedNode.remark && (
+                    <div>
+                      <p className="text-sm text-muted-foreground">Notes</p>
+                      <p className="font-medium text-sm">{selectedNode.remark}</p>
+                    </div>
+                  )}
                 </div>
               </Card>
-            ))}
+            )}
           </div>
         </div>
 
-        {/* Stats Summary */}
-        <div className="mt-16 grid gap-6 md:grid-cols-4">
-          <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">
-              {phalaNodes.length}
-            </div>
-            <div className="text-sm text-muted-foreground">Active Nodes</div>
-          </Card>
-          <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">
-              {locations.length}
-            </div>
-            <div className="text-sm text-muted-foreground">
-              Global Locations
-            </div>
-          </Card>
-          <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">
-              {
-                phalaNodes.filter((n) => n.gpuCount && n.gpuCount > 0)
-                  .length
-              }
-            </div>
-            <div className="text-sm text-muted-foreground">GPU TEE Nodes</div>
-          </Card>
-          <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">
-              99.9%
-            </div>
-            <div className="text-sm text-muted-foreground">Uptime SLA</div>
-          </Card>
-        </div>
       </div>
     </section>
-  )
-}
-
-function NodeDetails({
-  node,
-  compact = false,
-}: {
-  node: PhalaNode
-  compact?: boolean
-}) {
-  const specs = []
-
-  if (node.hardware) specs.push(node.hardware)
-  if (node.cores) specs.push(`${node.cores} cores`)
-  if (node.gpuCount && node.gpuType)
-    specs.push(`${node.gpuType} x${node.gpuCount}`)
-  if (node.ram) specs.push(node.ram)
-
-  return (
-    <div className={compact ? 'space-y-0.5' : 'space-y-1'}>
-      {specs.length > 0 && (
-        <p className={compact ? 'text-xs' : 'text-sm'}>
-          <span className="text-muted-foreground">Hardware: </span>
-          <span className="font-medium">{specs.join(' • ')}</span>
-        </p>
-      )}
-      {node.host && (
-        <p className={compact ? 'text-xs' : 'text-sm'}>
-          <span className="text-muted-foreground">Host: </span>
-          <span className="font-mono text-xs">{node.host}</span>
-        </p>
-      )}
-      {node.ip && (
-        <p className={compact ? 'text-xs' : 'text-sm'}>
-          <span className="text-muted-foreground">IP: </span>
-          <span className="font-mono text-xs">{node.ip}</span>
-        </p>
-      )}
-      {node.remark && (
-        <p className={compact ? 'text-xs' : 'text-sm'}>
-          <span className="text-muted-foreground">Note: </span>
-          <span className="italic">{node.remark}</span>
-        </p>
-      )}
-    </div>
   )
 }
