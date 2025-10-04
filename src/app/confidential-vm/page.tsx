@@ -23,6 +23,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import { PhalaNodeMap } from '@/components/phala-node-map'
 import { cn } from '@/lib/utils'
 
 const DEPLOYMENT_STEPS = [
@@ -817,6 +818,7 @@ export default function ConfidentialVmPage() {
     <div className="w-full bg-background">
       <HeroSection />
       <MultiTEESection />
+      <PhalaNodeMap />
       <DeploymentSection />
       <BenefitsSection />
       <FAQSection />
