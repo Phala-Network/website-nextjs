@@ -117,9 +117,10 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
       provider = apiModel.name.split('/')[0]?.trim() || 'Phala'
       slug = apiModel.name.toLowerCase()
     } else {
-      // Fallback: use model name as-is
-      provider = 'Phala'
-      slug = `phala/${modelName}`
+      // Fallback: extract provider from first word (e.g., "Qwen2.5 7B Instruct" -> "qwen")
+      const firstWord = apiModel.name.split(' ')[0]?.trim().toLowerCase() || 'phala'
+      provider = apiModel.name.split(' ')[0]?.trim() || 'Phala'
+      slug = `${firstWord}/${modelName}`
     }
 
     return {
