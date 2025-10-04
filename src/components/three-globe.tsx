@@ -190,9 +190,9 @@ function ConnectionLines({ nodes }: { nodes: PhalaNode[] }) {
         const geometry = new THREE.BufferGeometry().setFromPoints(points)
 
         return (
-          <line key={index} geometry={geometry}>
+          <line_ key={index} geometry={geometry}>
             <lineBasicMaterial color={line.color} transparent opacity={0.15} />
-          </line>
+          </line_>
         )
       })}
     </group>
