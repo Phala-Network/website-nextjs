@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as topojson from 'topojson-client'
 import * as THREE from 'three'
 import type { PhalaNode } from '@/data/phala-nodes'
@@ -14,10 +14,18 @@ interface GlobeNetworkProps {
 export function GlobeNetwork({ nodes, onNodeClick, onGlobeReady }: GlobeNetworkProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const globeRef = useRef<any>(null)
+  const [isMounted, setIsMounted] = useState(false)
 
   console.log('GlobeNetwork component rendered with', nodes.length, 'nodes')
 
+  // Wait for component to mount before initializing globe
   useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+
     console.log('useEffect running, containerRef.current:', containerRef.current)
 
     if (!containerRef.current) {
@@ -353,7 +361,7 @@ export function GlobeNetwork({ nodes, onNodeClick, onGlobeReady }: GlobeNetworkP
         globeRef.current._destructor()
       }
     }
-  }, [nodes, onNodeClick, onGlobeReady])
+  }, [nodes, onNodeClick, onGlobeReady, isMounted])
 
   return (
     <div
