@@ -9,6 +9,7 @@ import redirects from './redirects'
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  reactStrictMode: false,
   redirects,
   async rewrites() {
     return [

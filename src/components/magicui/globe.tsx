@@ -60,7 +60,7 @@ export function Globe({ className, config = {}, markers = [] }: GlobeProps) {
 
   const onRender = useCallback(
     (state: Record<string, any>) => {
-      if (!pointerInteracting.current) phi += 0.005
+      // Removed auto-rotation - only rotate when user drags
       state.phi = phi + r.get()
       state.width = width * 2
       state.height = width * 2
@@ -97,7 +97,7 @@ export function Globe({ className, config = {}, markers = [] }: GlobeProps) {
   return (
     <div
       className={cn(
-        'absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[600px]',
+        'absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[900px]',
         className,
       )}
     >
