@@ -29,6 +29,7 @@ const countryFlags: Record<string, string> = {
 
 export function PhalaNodeMap() {
   const [selectedNode, setSelectedNode] = useState<PhalaNode | null>(null)
+  const [selectedNodeName, setSelectedNodeName] = useState<string | null>(null)
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null)
   const [filterType, setFilterType] = useState<'all' | 'GPU' | 'CPU'>('all')
   const [globeInstance, setGlobeInstance] = useState<any>(null)
@@ -125,6 +126,7 @@ export function PhalaNodeMap() {
                 onNodeClick={(node) => {
                   console.log('onNodeClick called with:', node)
                   setSelectedNode(node)
+                  setSelectedNodeName(node.name)
                   setSelectedLocation(node.location.city)
                 }}
                 onGlobeReady={(globe) => {
@@ -145,7 +147,10 @@ export function PhalaNodeMap() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => setSelectedNode(null)}
+                      onClick={() => {
+                        setSelectedNode(null)
+                        setSelectedNodeName(null)
+                      }}
                       className="gap-1"
                     >
                       <ArrowLeft className="h-4 w-4" />
@@ -292,6 +297,7 @@ export function PhalaNodeMap() {
                     key={node.name}
                     onClick={() => {
                       setSelectedNode(node)
+                      setSelectedNodeName(node.name)
                       // Rotate globe to node location
                       if (globeInstance) {
                         globeInstance.pointOfView({
@@ -302,7 +308,7 @@ export function PhalaNodeMap() {
                       }
                     }}
                     className={`w-full p-3 rounded-lg border-2 transition-all text-left hover:border-primary hover:shadow-md ${
-                      selectedNode?.name === node.name
+                      selectedNodeName === node.name
                         ? 'border-primary bg-primary/5'
                         : 'border-border bg-background'
                     }`}
