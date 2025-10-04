@@ -2,9 +2,15 @@
 
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
-import { Cpu, Zap } from 'lucide-react'
+import { Cpu, Zap, Filter, ArrowLeft } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { Button } from '@/components/ui/button'
 import { GlobeErrorBoundary } from '@/components/globe-error-boundary'
 import { type PhalaNode, phalaNodes } from '@/data/phala-nodes'
 
@@ -129,85 +135,158 @@ export function PhalaNodeMap() {
             </GlobeErrorBoundary>
           </div>
 
-          {/* Right Side Panel */}
-          <div className="flex flex-col gap-4 flex-1">
-            <Card className="p-6">
-              <h3 className="text-xl font-bold mb-4">Filter Nodes</h3>
-
-              {/* Type Filter */}
-              <div className="mb-4">
-                <p className="text-sm font-medium mb-2">Node Type</p>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setFilterType('all')}
-                    className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                      filterType === 'all'
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted hover:bg-muted/80'
-                    }`}
-                  >
-                    All
-                  </button>
-                  <button
-                    onClick={() => setFilterType('GPU')}
-                    className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                      filterType === 'GPU'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-muted hover:bg-muted/80'
-                    }`}
-                  >
-                    GPU
-                  </button>
-                  <button
-                    onClick={() => setFilterType('CPU')}
-                    className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                      filterType === 'CPU'
-                        ? 'bg-green-400 text-black'
-                        : 'bg-muted hover:bg-muted/80'
-                    }`}
-                  >
-                    CPU
-                  </button>
-                </div>
-              </div>
-
-              {/* Location Filter */}
-              <div>
-                <p className="text-sm font-medium mb-2">Location</p>
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    onClick={() => setSelectedLocation(null)}
-                    className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                      selectedLocation === null
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted hover:bg-muted/80'
-                    }`}
-                  >
-                    All
-                  </button>
-                  {locations.map((location) => (
-                    <button
-                      key={location}
-                      onClick={() => setSelectedLocation(location)}
-                      className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                        selectedLocation === location
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted hover:bg-muted/80'
-                      }`}
+          {/* Right Side Panel - Same height as globe */}
+          <div className="flex flex-col gap-4 flex-1" style={{ aspectRatio: '1/1' }}>
+            {/* Node Details Card - Always visible, takes full height */}
+            <Card className="p-6 flex flex-col h-full">
+              {selectedNode ? (
+                <>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setSelectedNode(null)}
+                      className="gap-1"
                     >
-                      {location}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </Card>
+                      <ArrowLeft className="h-4 w-4" />
+                      Back
+                    </Button>
+                    <h3 className="text-lg font-bold">Node Details</h3>
+                  </div>
+                  <div className="space-y-3 flex-1 overflow-y-auto">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Product</p>
+                      <p className="font-medium">{selectedNode.productName}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Hardware</p>
+                      <p className="font-medium">{selectedNode.hardware}</p>
+                    </div>
+                    {selectedNode.cores && (
+                      <div>
+                        <p className="text-sm text-muted-foreground">Cores</p>
+                        <p className="font-medium">{selectedNode.cores}</p>
+                      </div>
+                    )}
+                    {selectedNode.gpuCount && (
+                      <div>
+                        <p className="text-sm text-muted-foreground">GPUs</p>
+                        <p className="font-medium">
+                          {selectedNode.gpuType} × {selectedNode.gpuCount}
+                        </p>
+                      </div>
+                    )}
+                    <div>
+                      <p className="text-sm text-muted-foreground">Memory</p>
+                      <p className="font-medium">{selectedNode.ram}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Location</p>
+                      <p className="font-medium">
+                        {selectedNode.location.city}, {selectedNode.location.country}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Operator</p>
+                      <p className="font-medium">{selectedNode.operator}</p>
+                    </div>
+                    {selectedNode.remark && (
+                      <div>
+                        <p className="text-sm text-muted-foreground">Notes</p>
+                        <p className="font-medium text-sm">{selectedNode.remark}</p>
+                      </div>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Header with Filter */}
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-bold">
+                      Nodes ({filteredNodes.length})
+                    </h3>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button variant="outline" size="sm" className="gap-2">
+                          <Filter className="h-4 w-4" />
+                          Filter
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-80" align="end">
+                        <div className="space-y-4">
+                          {/* Type Filter */}
+                          <div>
+                            <p className="text-sm font-medium mb-2">Node Type</p>
+                            <div className="flex gap-2">
+                              <button
+                                onClick={() => setFilterType('all')}
+                                className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                                  filterType === 'all'
+                                    ? 'bg-primary text-primary-foreground'
+                                    : 'bg-muted hover:bg-muted/80'
+                                }`}
+                              >
+                                All
+                              </button>
+                              <button
+                                onClick={() => setFilterType('GPU')}
+                                className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                                  filterType === 'GPU'
+                                    ? 'bg-blue-500 text-white'
+                                    : 'bg-muted hover:bg-muted/80'
+                                }`}
+                              >
+                                GPU
+                              </button>
+                              <button
+                                onClick={() => setFilterType('CPU')}
+                                className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                                  filterType === 'CPU'
+                                    ? 'bg-green-400 text-black'
+                                    : 'bg-muted hover:bg-muted/80'
+                                }`}
+                              >
+                                CPU
+                              </button>
+                            </div>
+                          </div>
 
-            {/* Node List */}
-            <Card className="p-6 flex-1">
-              <h3 className="text-xl font-bold mb-4">
-                Nodes ({filteredNodes.length})
-              </h3>
-              <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2">
+                          {/* Location Filter */}
+                          <div>
+                            <p className="text-sm font-medium mb-2">Location</p>
+                            <div className="flex flex-wrap gap-2">
+                              <button
+                                onClick={() => setSelectedLocation(null)}
+                                className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                                  selectedLocation === null
+                                    ? 'bg-primary text-primary-foreground'
+                                    : 'bg-muted hover:bg-muted/80'
+                                }`}
+                              >
+                                All
+                              </button>
+                              {locations.map((location) => (
+                                <button
+                                  key={location}
+                                  onClick={() => setSelectedLocation(location)}
+                                  className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                                    selectedLocation === location
+                                      ? 'bg-primary text-primary-foreground'
+                                      : 'bg-muted hover:bg-muted/80'
+                                  }`}
+                                >
+                                  {location}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+
+                  {/* Node List */}
+                  <div className="space-y-2 flex-1 overflow-y-auto pr-2">
                 {filteredNodes.map((node) => (
                   <button
                     key={node.name}
@@ -248,59 +327,10 @@ export function PhalaNodeMap() {
                     </div>
                   </button>
                 ))}
-              </div>
+                  </div>
+                </>
+              )}
             </Card>
-
-            {/* Selected Node Details */}
-            {selectedNode && (
-              <Card className="p-6">
-                <h3 className="text-lg font-bold mb-3">Node Details</h3>
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Product</p>
-                    <p className="font-medium">{selectedNode.productName}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Hardware</p>
-                    <p className="font-medium">{selectedNode.hardware}</p>
-                  </div>
-                  {selectedNode.cores && (
-                    <div>
-                      <p className="text-sm text-muted-foreground">Cores</p>
-                      <p className="font-medium">{selectedNode.cores}</p>
-                    </div>
-                  )}
-                  {selectedNode.gpuCount && (
-                    <div>
-                      <p className="text-sm text-muted-foreground">GPUs</p>
-                      <p className="font-medium">
-                        {selectedNode.gpuType} × {selectedNode.gpuCount}
-                      </p>
-                    </div>
-                  )}
-                  <div>
-                    <p className="text-sm text-muted-foreground">Memory</p>
-                    <p className="font-medium">{selectedNode.ram}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Location</p>
-                    <p className="font-medium">
-                      {selectedNode.location.city}, {selectedNode.location.country}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Operator</p>
-                    <p className="font-medium">{selectedNode.operator}</p>
-                  </div>
-                  {selectedNode.remark && (
-                    <div>
-                      <p className="text-sm text-muted-foreground">Notes</p>
-                      <p className="font-medium text-sm">{selectedNode.remark}</p>
-                    </div>
-                  )}
-                </div>
-              </Card>
-            )}
           </div>
         </div>
 
