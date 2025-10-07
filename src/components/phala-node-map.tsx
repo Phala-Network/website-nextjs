@@ -1,22 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { ArrowLeft, Cpu, Filter, Zap } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import { Cpu, Zap, Filter, ArrowLeft } from 'lucide-react'
+import { useState } from 'react'
+
+import { GlobeErrorBoundary } from '@/components/globe-error-boundary'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { Button } from '@/components/ui/button'
-import { GlobeErrorBoundary } from '@/components/globe-error-boundary'
 import { type PhalaNode, phalaNodes } from '@/data/phala-nodes'
 
 const ReactGlobeNetwork = dynamic(
-  () => import('@/components/react-globe-network').then((mod) => mod.ReactGlobeNetwork),
-  { ssr: false }
+  () =>
+    import('@/components/react-globe-network').then(
+      (mod) => mod.ReactGlobeNetwork,
+    ),
+  { ssr: false },
 )
 
 // Country flag emojis
@@ -35,11 +39,15 @@ export function PhalaNodeMap() {
   const [globeInstance, setGlobeInstance] = useState<any>(null)
 
   // Get unique locations
-  const locations = Array.from(new Set(phalaNodes.map((n) => n.location.city))).sort()
+  const locations = Array.from(
+    new Set(phalaNodes.map((n) => n.location.city)),
+  ).sort()
 
   // Filter nodes by selected location and type
   const filteredNodes = phalaNodes.filter((node) => {
-    const locationMatch = selectedLocation ? node.location.city === selectedLocation : true
+    const locationMatch = selectedLocation
+      ? node.location.city === selectedLocation
+      : true
     const typeMatch =
       filterType === 'all'
         ? true
@@ -60,8 +68,9 @@ export function PhalaNodeMap() {
     return sum + (node.gpuCount || 0)
   }, 0)
 
-  const uniqueLocations = new Set(phalaNodes.map((n) => `${n.location.city},${n.location.country}`))
-    .size
+  const uniqueLocations = new Set(
+    phalaNodes.map((n) => `${n.location.city},${n.location.country}`),
+  ).size
 
   return (
     <section className="py-32 bg-background relative overflow-hidden">
@@ -74,8 +83,8 @@ export function PhalaNodeMap() {
             Phala Cloud Worldwide Network
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our distributed infrastructure spans multiple continents, providing low-latency access to
-            confidential computing resources globally
+            Our distributed infrastructure spans multiple continents, providing
+            low-latency access to confidential computing resources globally
           </p>
         </div>
 
@@ -86,7 +95,9 @@ export function PhalaNodeMap() {
               <div className="rounded-full bg-primary/10 p-3 mb-3">
                 <Cpu className="h-6 w-6 text-primary" />
               </div>
-              <p className="text-4xl font-bold text-primary mb-1">{totalVCPUs}</p>
+              <p className="text-4xl font-bold text-primary mb-1">
+                {totalVCPUs}
+              </p>
               <p className="text-sm text-muted-foreground">Total vCPUs</p>
             </div>
           </Card>
@@ -95,18 +106,33 @@ export function PhalaNodeMap() {
               <div className="rounded-full bg-primary/10 p-3 mb-3">
                 <Zap className="h-6 w-6 text-primary" />
               </div>
-              <p className="text-4xl font-bold text-primary mb-1">{totalGPUs}</p>
+              <p className="text-4xl font-bold text-primary mb-1">
+                {totalGPUs}
+              </p>
               <p className="text-sm text-muted-foreground">Total H200 GPUs</p>
             </div>
           </Card>
           <Card className="p-6">
             <div className="flex flex-col items-center justify-center text-center">
               <div className="rounded-full bg-primary/10 p-3 mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
-              <p className="text-4xl font-bold text-primary mb-1">{uniqueLocations}</p>
+              <p className="text-4xl font-bold text-primary mb-1">
+                {uniqueLocations}
+              </p>
               <p className="text-sm text-muted-foreground">Global Locations</p>
             </div>
           </Card>
@@ -138,7 +164,10 @@ export function PhalaNodeMap() {
           </div>
 
           {/* Right Side Panel - Same height as globe */}
-          <div className="flex flex-col gap-4 flex-1" style={{ aspectRatio: '1/1' }}>
+          <div
+            className="flex flex-col gap-4 flex-1"
+            style={{ aspectRatio: '1/1' }}
+          >
             {/* Node Details Card - Always visible, takes full height */}
             <Card className="p-6 flex flex-col h-full">
               {selectedNode ? (
@@ -188,17 +217,16 @@ export function PhalaNodeMap() {
                     <div>
                       <p className="text-sm text-muted-foreground">Location</p>
                       <p className="font-medium">
-                        {selectedNode.location.city}, {selectedNode.location.country}
+                        {selectedNode.location.city},{' '}
+                        {selectedNode.location.country}
                       </p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Operator</p>
-                      <p className="font-medium">{selectedNode.operator}</p>
                     </div>
                     {selectedNode.remark && (
                       <div>
                         <p className="text-sm text-muted-foreground">Notes</p>
-                        <p className="font-medium text-sm">{selectedNode.remark}</p>
+                        <p className="font-medium text-sm">
+                          {selectedNode.remark}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -221,7 +249,9 @@ export function PhalaNodeMap() {
                         <div className="space-y-4">
                           {/* Type Filter */}
                           <div>
-                            <p className="text-sm font-medium mb-2">Node Type</p>
+                            <p className="text-sm font-medium mb-2">
+                              Node Type
+                            </p>
                             <div className="flex gap-2">
                               <button
                                 onClick={() => setFilterType('all')}
@@ -292,54 +322,67 @@ export function PhalaNodeMap() {
 
                   {/* Node List */}
                   <div className="space-y-2 flex-1 overflow-y-auto pr-2">
-                {filteredNodes.map((node) => (
-                  <button
-                    key={node.name}
-                    onClick={() => {
-                      setSelectedNode(node)
-                      setSelectedNodeName(node.name)
-                      // Rotate globe to node location
-                      if (globeInstance) {
-                        globeInstance.pointOfView({
-                          lat: node.location.lat,
-                          lng: node.location.lon,
-                          altitude: 2
-                        }, 1000) // 1000ms transition
-                      }
-                    }}
-                    className={`w-full p-3 rounded-lg border-2 transition-all text-left hover:border-primary hover:shadow-md ${
-                      selectedNodeName === node.name
-                        ? 'border-primary bg-primary/5'
-                        : 'border-border bg-background'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xl">{countryFlags[node.location.countryCode]}</span>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-sm truncate">{node.productName}</p>
-                        <p className="text-xs text-muted-foreground">{node.location.city}</p>
-                      </div>
-                      <Badge
-                        variant={node.serverType === 'GPU TEE' ? 'default' : 'secondary'}
-                        className="text-xs shrink-0"
+                    {filteredNodes.map((node) => (
+                      <button
+                        key={node.name}
+                        onClick={() => {
+                          setSelectedNode(node)
+                          setSelectedNodeName(node.name)
+                          // Rotate globe to node location
+                          if (globeInstance) {
+                            globeInstance.pointOfView(
+                              {
+                                lat: node.location.lat,
+                                lng: node.location.lon,
+                                altitude: 2,
+                              },
+                              1000,
+                            ) // 1000ms transition
+                          }
+                        }}
+                        className={`w-full p-3 rounded-lg border-2 transition-all text-left hover:border-primary hover:shadow-md ${
+                          selectedNodeName === node.name
+                            ? 'border-primary bg-primary/5'
+                            : 'border-border bg-background'
+                        }`}
                       >
-                        {node.serverType === 'GPU TEE' ? 'GPU' : 'CPU'}
-                      </Badge>
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      {node.hardware}
-                      {node.cores && ` • ${node.cores} cores`}
-                      {node.gpuCount && ` • ${node.gpuType} x${node.gpuCount}`}
-                    </div>
-                  </button>
-                ))}
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xl">
+                            {countryFlags[node.location.countryCode]}
+                          </span>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-sm truncate">
+                              {node.productName}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              {node.location.city}
+                            </p>
+                          </div>
+                          <Badge
+                            variant={
+                              node.serverType === 'GPU TEE'
+                                ? 'default'
+                                : 'secondary'
+                            }
+                            className="text-xs shrink-0"
+                          >
+                            {node.serverType === 'GPU TEE' ? 'GPU' : 'CPU'}
+                          </Badge>
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          {node.hardware}
+                          {node.cores && ` • ${node.cores} cores`}
+                          {node.gpuCount &&
+                            ` • ${node.gpuType} x${node.gpuCount}`}
+                        </div>
+                      </button>
+                    ))}
                   </div>
                 </>
               )}
             </Card>
           </div>
         </div>
-
       </div>
     </section>
   )
