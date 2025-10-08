@@ -1,0 +1,127 @@
+import type { Metadata } from "next";
+import Script from "next/script";
+
+import { Hero219 } from "@/components/solutions/hero219";
+import { Feature206 } from "@/components/solutions/feature206";
+import { Feature282 } from "@/components/solutions/feature282";
+import { Feature172 } from "@/components/solutions/feature172";
+import { Feature284 } from "@/components/solutions/feature284";
+import { Feature280 } from "@/components/solutions/feature280";
+import { Casestudies3 } from "@/components/solutions/casestudies3";
+import { Codeexample1 } from "@/components/solutions/codeexample1";
+import { Feature161 } from "@/components/solutions/feature161";
+import { Faq14 } from "@/components/solutions/faq14";
+import { Cta4 } from "@/components/solutions/cta4";
+
+import { privateAIDataContent } from "./content";
+
+export const metadata: Metadata = {
+  title: privateAIDataContent.seo.title,
+  description: privateAIDataContent.seo.description,
+  keywords: privateAIDataContent.seo.keywords,
+  openGraph: {
+    title: privateAIDataContent.seo.title,
+    description: privateAIDataContent.seo.description,
+    type: "website",
+    url: "https://phala.com/solutions/private-ai-data",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: privateAIDataContent.seo.title,
+    description: privateAIDataContent.seo.description,
+  },
+};
+
+function generateProductSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: privateAIDataContent.seo.title,
+    description: privateAIDataContent.seo.description,
+    brand: {
+      "@type": "Organization",
+      name: "Phala Network",
+    },
+    offers: {
+      "@type": "Offer",
+      url: "https://phala.com/solutions/private-ai-data",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+  };
+}
+
+function generateFAQSchema() {
+  const allFAQs = privateAIDataContent.faqs.flatMap((cat) => cat.items);
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: allFAQs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export default function PrivateAIDataPage() {
+  const content = privateAIDataContent;
+
+  return (
+    <>
+      <Script
+        id="product-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateProductSchema()),
+        }}
+      />
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateFAQSchema()),
+        }}
+      />
+
+      {/* Hero - hero219 */}
+      <Hero219 {...content.hero} />
+      
+      {/* Why It Matters - feature206 */}
+      <Feature206 {...content.why} />
+      
+      {/* Encryption Showcase - feature282 */}
+      <Feature282 />
+      
+      {/* How It Works - feature172 */}
+      <Feature172 {...content.how} />
+      
+      {/* Use Cases - feature284 */}
+      <Feature284 useCases={content.useCases} />
+      
+      {/* Additional Use Cases - feature280 */}
+      <Feature280 />
+      
+      {/* Success Stories - casestudies3 */}
+      <Casestudies3 
+        featuredCasestudy={content.stories.featured}
+        casestudies={content.stories.additional}
+      />
+      
+      {/* Dev Experience - codeexample1 */}
+      <Codeexample1 {...content.devExp} />
+      
+      {/* Proof & Compliance - feature161 */}
+      <Feature161 />
+      
+      {/* FAQs - faq14 */}
+      <Faq14 faqs={content.faqs} />
+      
+      {/* Final CTA - cta4 */}
+      <Cta4 {...content.cta} />
+    </>
+  );
+}
