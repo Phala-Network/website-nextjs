@@ -1,6 +1,20 @@
 import { cn } from "@/lib/utils";
 
-const topItems = [
+interface FeatureItem {
+  title: string;
+  description: string;
+  images: { src: string; alt: string; className?: string }[];
+  className?: string;
+  fade: string[];
+}
+
+interface Feature172Props {
+  title?: string;
+  topItems?: FeatureItem[];
+  bottomItems?: FeatureItem[];
+}
+
+const DEFAULT_TOP_ITEMS: FeatureItem[] = [
   {
     title: "Deploy your workload.",
     description:
@@ -59,7 +73,7 @@ const topItems = [
   },
 ];
 
-const bottomItems = [
+const DEFAULT_BOTTOM_ITEMS: FeatureItem[] = [
   {
     title: "Send sensitive data.",
     description:
@@ -107,12 +121,16 @@ const bottomItems = [
   },
 ];
 
-function Feature172() {
+function Feature172({
+  title = "How It Works",
+  topItems = DEFAULT_TOP_ITEMS,
+  bottomItems = DEFAULT_BOTTOM_ITEMS
+}: Feature172Props = {}) {
   return (
     <section className="py-32">
       <div className="container">
         <h2 className="text-center text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl">
-          How It Works
+          {title}
         </h2>
 
         <div className="mt-8 md:mt-12 lg:mt-20">

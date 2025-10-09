@@ -15,35 +15,34 @@ import { Button } from "@/components/ui/button";
 
 const integrations = [
   {
-    name: "Storage",
-    description: "Store your videos in your favorite storage solution.",
-    icon: Cloud,
-  },
-  {
-    name: "AI",
-    description: "Use AI to generate videos, images, and more.",
+    name: "LoRA/PEFT",
+    description: "Parameter-efficient fine-tuning with sealed checkpoints in TEEs.",
     icon: Sparkles,
   },
   {
-    name: "Video Editing",
-    description: "Edit your videos with your favorite video editing software.",
-    icon: Video,
+    name: "Per-Tenant Models",
+    description: "Separate fine-tuned models for each customer with data isolation.",
+    icon: Cloud,
   },
   {
-    name: "Video Hosting",
-    description: "Host your videos on your favorite video hosting solution.",
+    name: "Dataset Privacy",
+    description: "Training data never leaves encrypted TEE memory during fine-tuning.",
     icon: CloudCog,
   },
   {
-    name: "Social Media",
-    description: "Share your videos on your favorite social media platforms.",
+    name: "Model IP Protection",
+    description: "Weights and gradients protected with hardware encryption.",
     icon: Share2,
   },
   {
-    name: "Analytics",
-    description:
-      "Track video performance with your favorite analytics solution.",
+    name: "Attestation Proofs",
+    description: "Cryptographic verification of every fine-tuning job.",
     icon: ChartLine,
+  },
+  {
+    name: "Zero Data Leakage",
+    description: "Operators cannot access your proprietary training data or weights.",
+    icon: Video,
   },
 ];
 

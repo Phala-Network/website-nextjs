@@ -4,20 +4,61 @@ interface Feature206Props {
   title: string;
   description: string;
   points?: string[];
+  images?: string[];
 }
 
-const Feature206 = ({ title, description, points }: Feature206Props) => {
+const Feature206 = ({ title, description, points, images }: Feature206Props) => {
   // Map points to the 8-grid layout (4 cards + 4 images)
   const cards = points && points.length >= 4 ? [
-    { title: points[0], color: "bg-muted/50", textColor: "text-foreground" },
-    { title: points[1], color: "bg-primary", textColor: "text-primary-foreground" },
-    { title: points[2], color: "bg-primary", textColor: "text-primary-foreground" },
-    { title: points[3], color: "bg-muted/50", textColor: "text-foreground" },
+    {
+      title: points[0],
+      description: "Traditional cloud infrastructure exposes sensitive information to operators and administrators.",
+      color: "bg-muted/50",
+      textColor: "text-foreground"
+    },
+    {
+      title: points[1],
+      description: "Hardware-enforced isolation prevents unauthorized access while maintaining computational efficiency.",
+      color: "bg-primary",
+      textColor: "text-primary-foreground"
+    },
+    {
+      title: points[2],
+      description: "End-to-end encryption protects data in transit, at rest, and critically during computation.",
+      color: "bg-primary",
+      textColor: "text-primary-foreground"
+    },
+    {
+      title: points[3],
+      description: "Cryptographic verification ensures code integrity and proves execution in genuine TEE hardware.",
+      color: "bg-muted/50",
+      textColor: "text-foreground"
+    },
   ] : [
-    { title: "Privacy regulations prevent data sharing", color: "bg-muted/50", textColor: "text-foreground" },
-    { title: "IP protection demands prevent collaboration", color: "bg-primary", textColor: "text-primary-foreground" },
-    { title: "Centralized AI exposes business intelligence", color: "bg-primary", textColor: "text-primary-foreground" },
-    { title: "Traditional methods require trust", color: "bg-muted/50", textColor: "text-foreground" },
+    {
+      title: "Privacy regulations prevent data sharing",
+      description: "Data sharing blocked by privacy, IP protection, and compliance requirements.",
+      color: "bg-muted/50",
+      textColor: "text-foreground"
+    },
+    {
+      title: "IP protection demands prevent collaboration",
+      description: "Enable secure collaboration while protecting proprietary information.",
+      color: "bg-primary",
+      textColor: "text-primary-foreground"
+    },
+    {
+      title: "Centralized AI exposes business intelligence",
+      description: "Hardware-enforced isolation prevents unauthorized access to sensitive data.",
+      color: "bg-primary",
+      textColor: "text-primary-foreground"
+    },
+    {
+      title: "Traditional methods require trust",
+      description: "Cryptographic verification ensures code integrity and data protection.",
+      color: "bg-muted/50",
+      textColor: "text-foreground"
+    },
   ];
 
   return (
@@ -36,7 +77,7 @@ const Feature206 = ({ title, description, points }: Feature206Props) => {
         </div>
         <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-ee1-cRqJQtA-unsplash.jpg"
+            src={images?.[0] || "/solutions/justice.png"}
             alt="Data security"
             className="aspect-square size-full rounded-2xl object-cover md:order-1 xl:order-1"
           />
@@ -44,12 +85,15 @@ const Feature206 = ({ title, description, points }: Feature206Props) => {
             <h3 className={`text-2xl ${cards[0].textColor}`}>{cards[0].title}</h3>
             <div className="">
               <p className={`mb-8 ${cards[0].textColor === "text-foreground" ? "text-muted-foreground" : "text-primary-foreground/80"}`}>
-                Data sharing blocked by privacy, IP protection, and compliance requirements.
+                {cards[0].description}
               </p>
+              <a href="#" className={`text-sm underline ${cards[0].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
+                More Information
+              </a>
             </div>
           </div>
           <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-Ych4LcKFA5E-unsplash.jpg"
+            src={images?.[1] || "/solutions/hermes.png"}
             alt="Confidential computing"
             className="aspect-square size-full rounded-2xl object-cover md:order-4 xl:order-3"
           />
@@ -57,13 +101,16 @@ const Feature206 = ({ title, description, points }: Feature206Props) => {
             <h3 className={`text-2xl ${cards[1].textColor}`}>{cards[1].title}</h3>
             <div className="">
               <p className={`mb-8 ${cards[1].textColor === "text-foreground" ? "text-muted-foreground" : "text-primary-foreground/80"}`}>
-                Enable secure collaboration while protecting proprietary information.
+                {cards[1].description}
               </p>
+              <a href="#" className={`text-sm underline ${cards[1].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
+                More Information
+              </a>
             </div>
           </div>
 
           <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-8FIN2qa2vQM-unsplash.jpg"
+            src={images?.[2] || "/solutions/apollo.png"}
             alt="Zero-trust architecture"
             className="aspect-square size-full rounded-2xl object-cover md:order-5 xl:order-6"
           />
@@ -71,12 +118,15 @@ const Feature206 = ({ title, description, points }: Feature206Props) => {
             <h3 className={`text-2xl ${cards[2].textColor}`}>{cards[2].title}</h3>
             <div className="">
               <p className={`mb-8 ${cards[2].textColor === "text-foreground" ? "text-muted-foreground" : "text-primary-foreground/80"}`}>
-                Hardware-enforced isolation prevents unauthorized access to sensitive data.
+                {cards[2].description}
               </p>
+              <a href="#" className={`text-sm underline ${cards[2].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
+                More Information
+              </a>
             </div>
           </div>
           <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-ZXLGP2Qh3Mo-unsplash.jpg"
+            src={images?.[3] || "/solutions/athena.png"}
             alt="Attestation"
             className="aspect-square size-full rounded-2xl object-cover md:order-8"
           />
@@ -84,8 +134,11 @@ const Feature206 = ({ title, description, points }: Feature206Props) => {
             <h3 className={`text-2xl ${cards[3].textColor}`}>{cards[3].title}</h3>
             <div className="">
               <p className={`mb-8 ${cards[3].textColor === "text-foreground" ? "text-muted-foreground" : "text-primary-foreground/80"}`}>
-                Cryptographic verification ensures code integrity and data protection.
+                {cards[3].description}
               </p>
+              <a href="#" className={`text-sm underline ${cards[3].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
+                More Information
+              </a>
             </div>
           </div>
         </div>

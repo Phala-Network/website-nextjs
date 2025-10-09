@@ -5,7 +5,19 @@ import { cn } from "@/lib/utils";
 
 import { GlowingEffect } from "@/components/aceternity/glowing-effect";
 
-const featureData = [
+interface FeatureData {
+  desc: string;
+  img: string;
+  title: string;
+  badgeTitle?: string;
+  gridClass?: string;
+}
+
+interface Feature284Props {
+  features?: FeatureData[];
+}
+
+const defaultFeatures: FeatureData[] = [
   {
     desc: "Train proprietary LLMs on confidential datasets without exposing raw data to cloud providers.",
     img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img1.jpeg",
@@ -43,12 +55,12 @@ const featureData = [
   },
 ];
 
-const Feature284 = () => {
+const Feature284 = ({ features = defaultFeatures }: Feature284Props) => {
   return (
     <section className="h-full overflow-hidden py-32">
       <div className="container flex h-full w-full items-center justify-center">
         <div className="grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-4 md:grid-cols-2 lg:h-[800px] lg:grid-cols-4">
-          {featureData.map((feature, index) => (
+          {features.map((feature, index) => (
             <div
               key={index}
               className={cn(

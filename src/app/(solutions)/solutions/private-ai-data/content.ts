@@ -45,6 +45,12 @@ export const privateAIDataContent: SolutionContent = {
       "Centralized AI exposes sensitive business intelligence",
       "Traditional methods require trust in third parties",
     ],
+    images: [
+      "/solutions/data/1.png",
+      "/solutions/data/2.png",
+      "/solutions/data/3.png",
+      "/solutions/data/4.png",
+    ],
   },
 
   how: {
@@ -114,30 +120,30 @@ export const privateAIDataContent: SolutionContent = {
 
   stories: {
     featured: {
-      logo: "/success-stories/vana-logo.svg",
+      logo: "/partnerships/vana.svg",
       company: "Vana",
       tags: "DATA SOVEREIGNTY / USER-OWNED AI",
       title: "User-owned data pools & collective model training",
       subtitle: "via confidential compute.",
-      image: "/success-stories/vana-preview.jpg",
-      link: "/success-stories/vana",
+      image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+      link: "https://www.vana.org/",
     },
     additional: [
       {
-        logo: "/success-stories/rena-logo.svg",
-        company: "Rena Labs",
-        tags: "MULTI-PARTY COMPUTE / DATA ROOMS",
+        logo: "/partnerships/primus.png",
+        company: "Primus Labs",
+        tags: "MULTI-PARTY COMPUTE / zkTLS",
         title: "Neutral TEE data rooms",
         subtitle: "for multi-party analytics and training.",
-        link: "/success-stories/rena-labs",
+        link: "https://primuslabs.xyz/",
       },
       {
-        logo: "/success-stories/blue-nexus-logo.svg",
-        company: "Blue Nexus",
+        logo: "/partnerships/public-ai.svg",
+        company: "PublicAI",
         tags: "AI MARKETPLACES / PRIVACY-FIRST",
         title: "Privacy-first AI marketplaces",
         subtitle: "backed by Phala infrastructure.",
-        link: "/success-stories/blue-nexus",
+        link: "https://publicai.io/",
       },
     ],
   },

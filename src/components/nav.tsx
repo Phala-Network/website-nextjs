@@ -132,19 +132,19 @@ const menu = [
         title: 'Fine-Tuned Models',
         description: 'Private model customization on proprietary data',
         icon: <Sparkles className="size-5 shrink-0" />,
-        url: '/solutions/fine-tuned',
+        url: '/solutions/fine-tuned-models',
       },
       {
         title: 'Confidential Training',
         description: 'Large-scale model training with encrypted gradients',
         icon: <Layers className="size-5 shrink-0" />,
-        url: '/solutions/training',
+        url: '/solutions/confidential-training',
       },
       {
         title: 'AI Agents',
         description: 'Verifiable agent execution with on-chain attestation',
         icon: <Bot className="size-5 shrink-0" />,
-        url: '/solutions/ai-agent',
+        url: '/solutions/ai-agents',
       },
       {
         title: 'Success Stories',

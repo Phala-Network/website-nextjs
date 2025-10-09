@@ -12,12 +12,24 @@ import { useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 
-const integrations = [
+interface Integration {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  tags: string[];
+}
+
+interface Feature65Props {
+  integrations?: Integration[];
+}
+
+const defaultIntegrations: Integration[] = [
   {
     title: "Hardware Security",
     description:
       "CPU-level memory encryption with Intel TDX and AMD SEV keeps your computations invisible to infrastructure operators.",
-    image: <SwatchBook className="h-8 w-8" />,
+    icon: "swatchbook",
     color: "bg-red-400",
     tags: [
       "Features",
@@ -31,7 +43,7 @@ const integrations = [
     title: "Remote Attestation",
     description:
       "Cryptographic proofs verify your code runs in genuine TEE hardware before you send any sensitive data.",
-    image: <GitBranch className="h-8 w-8" />,
+    icon: "gitbranch",
     color: "bg-blue-400",
     tags: [
       "Features",
@@ -45,7 +57,7 @@ const integrations = [
     title: "Developer Experience",
     description:
       "Deploy with familiar tools and workflows—Docker containers, REST APIs, and standard SDKs work out of the box.",
-    image: <Sparkles className="h-8 w-8" />,
+    icon: "sparkles",
     color: "bg-yellow-400",
     tags: [
       "Features",
@@ -59,7 +71,7 @@ const integrations = [
     title: "Enterprise Ready",
     description:
       "SOC 2 Type II compliance, audit trails, and 24/7 support for production workloads at any scale.",
-    image: <GanttChartSquareIcon className="h-8 w-8" />,
+    icon: "ganttchart",
     color: "bg-green-400",
     tags: [
       "Features",
@@ -71,7 +83,22 @@ const integrations = [
   },
 ];
 
-const Feature65 = () => {
+const getIcon = (iconName: string) => {
+  switch (iconName) {
+    case "swatchbook":
+      return <SwatchBook className="h-8 w-8" />;
+    case "gitbranch":
+      return <GitBranch className="h-8 w-8" />;
+    case "sparkles":
+      return <Sparkles className="h-8 w-8" />;
+    case "ganttchart":
+      return <GanttChartSquareIcon className="h-8 w-8" />;
+    default:
+      return <SwatchBook className="h-8 w-8" />;
+  }
+};
+
+const Feature65 = ({ integrations = defaultIntegrations }: Feature65Props) => {
   const [activeTabId, setActiveTabId] = useState<number | null>(null);
 
   return (
@@ -89,7 +116,7 @@ const Feature65 = () => {
                   <h3 className="text-xl font-bold">{item.title}</h3>
                 </div>
                 <div className="flex items-center gap-6">
-                  {item.image}
+                  {getIcon(item.icon)}
                   <div
                     className="bg-background flex h-12 w-12 items-center justify-center rounded-lg lg:hidden"
                     onClick={() =>
