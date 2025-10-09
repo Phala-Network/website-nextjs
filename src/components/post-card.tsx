@@ -21,7 +21,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
       )}
     >
       <div className={cn('rounded-sm overflow-hidden')}>
-        <Link href={`/posts${page.slug}`}>
+        <Link href={`/posts/${page.slug}`}>
           {page.cover ? (
             <img
               className="w-full aspect-412/230"
@@ -57,7 +57,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
             ))}
           </div>
           <h2 className="font-bold text-lg">
-            <Link href={`/posts${page.slug}`}>{page.title}</Link>
+            <Link href={`/posts/${page.slug}`}>{page.title}</Link>
           </h2>
         </div>
         {page.publishedDate && (

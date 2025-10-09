@@ -16,7 +16,7 @@ interface VercelWebhookPayload {
 async function fetchRecentPostPaths(limit: number): Promise<string[]> {
   try {
     const posts = await getRecentPosts(limit)
-    return posts.map((post) => `/posts${post.slug}`)
+    return posts.map((post) => `/posts/${post.slug}`)
   } catch (error) {
     console.error('Error fetching posts:', error)
     return []

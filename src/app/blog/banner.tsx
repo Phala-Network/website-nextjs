@@ -56,7 +56,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
               >
                 <div className="p-2">
                   <div className={cn('rounded-sm overflow-hidden')}>
-                    <Link href={`/posts${page.slug}`}>
+                    <Link href={`/posts/${page.slug}`}>
                       {/** biome-ignore lint/performance/noImgElement: no cdn */}
                       <img
                         className="w-full aspect-872/487"
@@ -81,7 +81,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                       ))}
                     </div>
                     <h2 className="font-bold text-2xl">
-                      <a href={`/posts${page.slug}`}>{page.title}</a>
+                      <a href={`/posts/${page.slug}`}>{page.title}</a>
                     </h2>
                   </div>
                   {page.publishedDate && (

@@ -23,7 +23,7 @@ function PostNavigation({ navigation }: PostNavigationProps) {
     <nav className="flex flex-col sm:flex-row gap-8">
       {beforePages.length > 0 ? (
         <Link
-          href={`/posts${beforePages[0].slug}`}
+          href={`/posts/${beforePages[0].slug}`}
           className="flex-1 p-4 border rounded-lg space-y-2"
         >
           <div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ function PostNavigation({ navigation }: PostNavigationProps) {
 
       {nextPages.length > 0 ? (
         <Link
-          href={`/posts${nextPages[0].slug}`}
+          href={`/posts/${nextPages[0].slug}`}
           className="flex-1 p-4 border rounded-lg space-y-2"
         >
           <div className="flex items-center gap-2 justify-end">

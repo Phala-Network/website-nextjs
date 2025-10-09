@@ -50,8 +50,8 @@ export async function getBlogFeed() {
   pages.forEach((post) => {
     feed.addItem({
       title: post.title,
-      id: `${SITE_URL}/posts${post.slug}`,
-      link: `${SITE_URL}/posts${post.slug}`,
+      id: `${SITE_URL}/posts/${post.slug}`,
+      link: `${SITE_URL}/posts/${post.slug}`,
       // description: post.title,
       date: new Date(post.publishedTime),
     })

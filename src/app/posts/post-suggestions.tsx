@@ -29,7 +29,7 @@ export default function PostSuggestions({ pages, type }: PostSuggestionsProps) {
       </h3>
       <div className="space-y-4">
         {pagesData.map((page) => (
-          <Link href={`/posts${page.slug}`} key={page.id} className="block">
+          <Link href={`/posts/${page.slug}`} key={page.id} className="block">
             <h4 className="font-medium line-clamp-2 mb-1">{page.title}</h4>
             {page.publishedTime && (
               <p

@@ -105,7 +105,7 @@ export default function Post({ url, page }: Props) {
 
 **Published:** ${format(new Date(page.publishedTime), 'MMMM dd, yyyy')}
 **Tags:** ${page.tags.join(', ')}
-**URL:** ${url}/posts${page.slug}
+**URL:** ${url}/posts/${page.slug}
 
 ---
 

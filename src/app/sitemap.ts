@@ -19,6 +19,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
+      url: new URL('/about', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: new URL('/confidential-vm', BASE_URL).toString(),
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -26,6 +32,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: new URL('/gpu-tee', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: new URL('/gpu-tee/h100', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: new URL('/gpu-tee/h200', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: new URL('/gpu-tee/b200', BASE_URL).toString(),
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
@@ -114,7 +138,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const postPages = posts.map(
     ({ slug, publishedTime }): MetadataRoute.Sitemap[number] => ({
-      url: new URL(`/posts${slug}`, BASE_URL).toString(),
+      url: new URL(`/posts/${slug}`, BASE_URL).toString(),
       lastModified: publishedTime ? new Date(publishedTime) : new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,

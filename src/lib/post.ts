@@ -43,7 +43,7 @@ export function getPostMetadata(
   return {
     title: page.title,
     openGraph: {
-      url: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts${page.slug}`,
+      url: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts/${page.slug}`,
       locale: 'en_US',
       images: [
         {
@@ -60,7 +60,7 @@ export function getPostMetadata(
       images: [postCover],
     },
     alternates: {
-      canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts${page.slug}`,
+      canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/posts/${page.slug}`,
     },
     ...(isPreview && { robots: { index: false, follow: false } }),
   }
@@ -91,10 +91,12 @@ function getBaseFilter(excludeSlug?: string) {
   }
 
   if (excludeSlug) {
+    // Notion stores slugs with leading /, so we need to add it back for the query
+    const notionSlug = excludeSlug.startsWith('/') ? excludeSlug : `/${excludeSlug}`
     filter.and.push({
       property: 'Custom URL',
       rich_text: {
-        does_not_equal: excludeSlug,
+        does_not_equal: notionSlug,
       },
     })
   }
@@ -103,10 +105,11 @@ function getBaseFilter(excludeSlug?: string) {
 }
 
 export async function getPostBySlug(slug: string): Promise<ParsedPage> {
+  // Notion stores slugs with leading /, so we need to add it back for the query
   const pages = await getParsedPagesByProperties({
     database_id: env.NOTION_POSTS_DATABASE_ID,
     properties: {
-      'Custom URL': `/${slug}`,
+      'Custom URL': slug.startsWith('/') ? slug : `/${slug}`,
     },
   })
 
