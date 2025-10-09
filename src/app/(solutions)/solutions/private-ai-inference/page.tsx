@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import { Hero225 } from "@/components/solutions/hero225";
 import { Feature206 } from "@/components/solutions/feature206";
 import { Feature282 } from "@/components/solutions/feature282";
-import { Feature284 } from "@/components/solutions/feature284";
-import { Feature280 } from "@/components/solutions/feature280";
 import { Casestudies3 } from "@/components/solutions/casestudies3";
 import { Codeexample1 } from "@/components/solutions/codeexample1";
-import { Feature161 } from "@/components/solutions/feature161";
+import { Compliance5 } from "@/components/solutions/compliance5";
 import { Faq14 } from "@/components/solutions/faq14";
 import { Cta4 } from "@/components/solutions/cta4";
 import ModelsList from "@/app/confidential-ai-models/models-list";
 import { fetchAiModels } from "@/lib/ai-models";
+import SuccessStoriesSection from "@/app/(home)/success-stories";
+import { UnifiedInterfacePhala } from "@/components/solutions/unified-interface-phala";
+import { SolutionsPhala } from "@/components/solutions/solutions-phala";
+import { ApiCodeExamplesPhala } from "@/components/solutions/api-code-examples-phala";
 
 export const metadata: Metadata = {
   title: "Private AI Inference: Confidential LLM Serving",
@@ -41,6 +43,12 @@ export default async function PrivateAIInferencePage() {
           "/solutions/inference/3.png",
           "/solutions/inference/4.png",
         ]}
+        links={[
+          "https://security.apple.com/blog/private-cloud-compute/",
+          "https://www.anthropic.com/research/confidential-inference-trusted-vms",
+          "https://openrouter.ai/docs/features/zdr",
+          "https://docs.phala.com/phala-cloud/confidential-ai/overview",
+        ]}
       />
       <Feature282
         badge="Confidential Serving"
@@ -56,104 +64,19 @@ export default async function PrivateAIInferencePage() {
         ]}
       />
       <ModelsList models={models} />
-      <Feature284
-        features={[
-          {
-            desc: "Zero-logging assistants for consumers & NGOs. Privacy as a fundamental human right built into the infrastructure.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img1.jpeg",
-            title: "Privacy as a Human Right",
-            badgeTitle: "USE CASE",
-            gridClass: "md:col-span-1",
-          },
-          {
-            desc: "Protected PHI inference with HIPAA compliance. Clinic-side deployments with hardware-enforced confidentiality.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img7.jpeg",
-            title: "Healthcare Inference",
-            badgeTitle: "USE CASE",
-            gridClass: "lg:col-span-2",
-          },
-          {
-            desc: "Privileged document Q&A and drafting with strict confidentiality. Attorney-client privilege maintained in TEEs.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img11.jpeg",
-            title: "Legal AI",
-            badgeTitle: "USE CASE",
-            gridClass: "md:col-span-1 lg:row-span-2",
-          },
-          {
-            desc: "Enterprise prompts with IP protection. Keep strategic queries and business logic confidential from cloud operators.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img2.jpeg",
-            title: "Enterprise AI",
-            badgeTitle: "USE CASE",
-            gridClass: "lg:col-span-2",
-          },
-          {
-            desc: "Verifiable agent inference with on-chain attestations. Private ML SDK for autonomous agents with cryptographic proofs.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img4.jpeg",
-            title: "Agent Inference",
-            badgeTitle: "USE CASE",
-            gridClass: "md:col-span-1",
-          },
-        ]}
-      />
-      <Feature280
-        title="Trusted by Privacy-First Teams"
-        subtitle="TESTIMONIALS"
-        features={[
-          "Zero-logging by design",
-          "OpenAI-compatible API",
-          "Hardware attestation",
-          "HIPAA/SOC2 ready",
-          "Multi-tenant isolation",
-          "Enterprise SLA",
-          "24/7 monitoring",
-          "Audit trails",
-          "Key management",
-          "mTLS encryption",
-          "Rate limiting",
-          "Usage analytics"
-        ]}
-        cards={[
-          {
-            id: 0,
-            name: "Dr. Sarah Martinez",
-            designation: "Chief Medical Officer",
-            content: (
-              <p>
-                HIPAA compliance out of the box. <span className="bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500">Patient data stays encrypted</span> even during inference—our clinic's privacy requirements finally met.
-              </p>
-            ),
-          },
-          {
-            id: 1,
-            name: "James Wong",
-            designation: "Enterprise Security Lead",
-            content: (
-              <p>
-                Migrated our legal AI to Phala TEEs. <span className="bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500">Attorney-client privilege</span> is now hardware-enforced, not just policy-based.
-              </p>
-            ),
-          },
-          {
-            id: 2,
-            name: "Maria Rodriguez",
-            designation: "AI Product Manager",
-            content: (
-              <p>
-                The OpenAI-compatible API made migration seamless. <span className="bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500">Zero code changes</span> and our customers love the privacy guarantee.
-              </p>
-            ),
-          },
-        ]}
-      />
+      <SuccessStoriesSection />
+      <UnifiedInterfacePhala />
+      <ApiCodeExamplesPhala />
+      <SolutionsPhala />
       <Casestudies3
         featuredCasestudy={{
           logo: "/partnerships/ooda.svg",
           company: "OODA AI",
-          tags: "INFRASTRUCTURE / GPU TEE",
-          title: "Decentralized GPUs with Phala-grade privacy.",
-          subtitle: "Private GPU inference with hardware attestation guarantees",
-          image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-          link: "https://ooda.ai/",
+          tags: "NASDAQ LISTED / GPU TEE",
+          title: "NASDAQ-listed OODA AI partners with Phala",
+          subtitle: "Decentralized GPUs with hardware attestation guarantees",
+          image: "/partnerships/ooda-banner.jpeg",
+          link: "https://phala.com/posts/nasdaq-listed-OODA-AI-partners-with-phala",
         }}
         casestudies={[
           {
@@ -163,7 +86,7 @@ export default async function PrivateAIInferencePage() {
             title: "Private ML SDK—verifiable agent inference.",
             subtitle: "Zero-knowledge inference for autonomous agents",
             image: "",
-            link: "https://near.org/",
+            link: "https://x.com/NEARWEEK/status/1902013456393334999",
           },
           {
             logo: "/partnerships/open-router.svg",
@@ -172,92 +95,75 @@ export default async function PrivateAIInferencePage() {
             title: "Confidential route for enterprise prompts.",
             subtitle: "TEE-protected LLM gateway with attestation",
             image: "",
-            link: "https://openrouter.ai",
+            link: "https://openrouter.ai/provider/phala",
           },
         ]}
       />
-      <Codeexample1
-        badge="OpenAI-Compatible Endpoint"
-        title="DEPLOY INFERENCE"
-        subtitle="IN 5 MINUTES"
-        description="Deploy OpenAI-compatible inference endpoints with hardware attestation. Run encrypted inference on GPU TEEs with verifiable execution."
-        buttonText="View API Docs"
-        buttonUrl="https://docs.phala.network"
-        filename="deploy-inference.sh"
-        language="bash"
-        code={`# Deploy confidential LLM inference
-docker run -d \\
-  --name phala-inference \\
-  --device=/dev/tdx_guest \\
-  --gpus all \\
-  -e MODEL=llama-3-70b \\
-  -e OPENAI_API_KEY=your-key \\
-  -p 8000:8000 \\
-  phalanetwork/inference:latest
-
-# Get attestation quote
-curl http://localhost:8000/v1/attestation
-
-# OpenAI-compatible inference
-curl http://localhost:8000/v1/chat/completions \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "model": "llama-3-70b",
-    "messages": [{"role": "user", "content": "Analyze this contract..."}]
-  }'`}
-      />
-      <Feature161
-        title="Verifiable & Compliant"
-        description="Remote attestation receipts, SOC 2 Type II compliance, and cryptographic audit trails for HIPAA/GDPR workflows."
-        primaryButtonText="Get Attestation Report"
-        primaryButtonUrl="https://cloud.phala.network/attestation"
-        secondaryButtonText="Compliance Docs"
-        secondaryButtonUrl="https://docs.phala.network/compliance"
-      />
+      <Compliance5 />
       <Faq14
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about Private AI Inference"
         faqItems={[
           {
-            category: "PERFORMANCE",
+            category: "Privacy & Security Guarantees",
             items: [
               {
-                question: "What's the latency/throughput overhead of TEEs?",
-                answer: "GPU TEE overhead is typically 5-15% compared to bare metal. Memory encryption happens at hardware speed with Intel TDX/AMD SEV, so the performance impact is minimal for most inference workloads."
+                question: "How does Phala ensure truly private inference?",
+                answer: "Phala uses GPU Trusted Execution Environments (TEEs) with Intel TDX and AMD SEV to encrypt all prompts, outputs, and model weights during inference. Not even cloud providers or system administrators can access data in use—only the attested enclave can decrypt your inputs."
               },
               {
-                question: "Can I use multiple GPUs for inference?",
-                answer: "Yes, Phala supports multi-GPU TEE deployments with hardware-isolated tensor parallelism. Each GPU runs in its own encrypted enclave with verifiable attestation."
+                question: "Can cloud providers or Phala operators see my prompts?",
+                answer: "No. Hardware-level memory encryption (Intel TDX/AMD SEV) prevents any operator—including Phala, cloud providers, or root users—from reading runtime memory. Data is encrypted from the moment it enters the TEE until it leaves."
+              },
+              {
+                question: "How are GPU model weights protected?",
+                answer: "Model weights are loaded directly into encrypted GPU memory inside TEEs. They never touch disk or CPU in plaintext. Each deployment is sealed with cryptographic measurements (mrenclave) you can verify before sending data."
+              },
+              {
+                question: "What are attestation proofs, and how do I verify them?",
+                answer: "Attestation proofs are cryptographic signatures from the CPU/GPU proving the exact code and environment running inside the TEE. Verify them via /v1/attestation endpoints before sending prompts—ensuring no tampering or backdoors exist."
               }
             ]
           },
           {
-            category: "SECURITY & PRIVACY",
+            category: "Developer Experience",
             items: [
               {
-                question: "How are logs handled?",
-                answer: "Zero-logging by design. Inference requests never touch disk in plaintext. Usage receipts are generated with cryptographic proofs but contain no prompt content."
+                question: "How long does it take to deploy a private inference endpoint?",
+                answer: "Under 5 minutes. Use Docker containers with pre-configured TEE images, or deploy via Phala Cloud's one-click interface. No custom firmware or low-level TEE programming required."
               },
               {
-                question: "What prevents operators from seeing prompts?",
-                answer: "Hardware memory encryption in TEEs prevents any access to runtime state, including prompts and outputs. Remote attestation proves the correct code is running before you send data."
+                question: "Do I need to modify my existing OpenAI-compatible code?",
+                answer: "No. Phala provides drop-in OpenAI-compatible API endpoints (base_url = https://api.redpill.ai/v1). Use the same SDKs (openai-python, openai-node) and just point to Phala's attested endpoints."
               },
               {
-                question: "Can we pin model versions to measurements?",
-                answer: "Yes, each model deployment generates a unique measurement (mrenclave). You can verify the exact model version via remote attestation before sending prompts."
+                question: "Can I bring my own fine-tuned model weights?",
+                answer: "Yes. Upload weights encrypted with your key, and Phala will load them into TEE memory without ever decrypting them in transit. Use /v1/attestation to verify the deployment before sending prompts."
+              },
+              {
+                question: "What's the latency overhead of TEE inference?",
+                answer: "5-15% compared to bare-metal GPUs. Memory encryption happens at hardware speed with Intel TDX/AMD SEV, so most workloads see negligible impact. Batching and caching reduce overhead further."
               }
             ]
           },
           {
-            category: "INTEGRATION",
+            category: "Industry Use Cases",
             items: [
               {
-                question: "Is the API OpenAI-compatible?",
-                answer: "Yes, drop-in replacement for OpenAI API endpoints. Use the same SDKs and client libraries—just point to Phala's attested endpoints."
+                question: "Can I use this for healthcare/law firm AI assistants?",
+                answer: "Yes. Private inference is ideal for HIPAA/GDPR-regulated industries. Patient records or legal documents never leave the TEE in plaintext, and attestation proofs provide audit trails for compliance."
               },
               {
-                question: "How do we verify the enclave we interact with?",
-                answer: "Each endpoint exposes /v1/attestation with Intel DCAP or AMD SEV-SNP quotes. Verify the measurement matches your expected code hash before sending requests."
+                question: "How does this help with internal document Q&A chatbots?",
+                answer: "Embed your internal docs (HR policies, financial reports) into TEE-protected RAG pipelines. Employees query via private endpoints, and neither Phala nor cloud providers can read the documents or queries."
+              },
+              {
+                question: "What's the maximum prompt/document size I can send?",
+                answer: "Up to 128k tokens for most models (e.g., Qwen2.5-72B, DeepSeek-V3). For longer documents, use chunking strategies or contact us for enterprise deployments with extended context windows."
+              },
+              {
+                question: "Are there production deployments using this today?",
+                answer: "Yes. OpenRouter uses Phala for confidential enterprise routes, NEAR AI for verifiable ML inference, and OODA AI (NASDAQ-listed) for decentralized GPU TEE deployments. See case studies above."
               }
             ]
           }
