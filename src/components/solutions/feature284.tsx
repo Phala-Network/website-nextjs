@@ -6,15 +6,25 @@ import { cn } from "@/lib/utils";
 import { GlowingEffect } from "@/components/aceternity/glowing-effect";
 
 interface FeatureData {
-  desc: string;
-  img: string;
+  desc?: string;
+  description?: string;
+  img?: string;
   title: string;
   badgeTitle?: string;
   gridClass?: string;
+  benefit?: string;
+}
+
+interface UseCaseData {
+  title: string;
+  description: string;
+  benefit: string;
+  img?: string;
 }
 
 interface Feature284Props {
   features?: FeatureData[];
+  useCases?: UseCaseData[];
 }
 
 const defaultFeatures: FeatureData[] = [
@@ -55,12 +65,32 @@ const defaultFeatures: FeatureData[] = [
   },
 ];
 
-const Feature284 = ({ features = defaultFeatures }: Feature284Props) => {
+const Feature284 = ({ features, useCases }: Feature284Props) => {
+  // Convert useCases to features format if provided
+  const displayFeatures = useCases
+    ? useCases.map((useCase, index) => {
+        const gridClasses = [
+          "md:col-span-1",
+          "lg:col-span-2",
+          "md:col-span-1 lg:row-span-2",
+          "lg:col-span-2",
+          "md:col-span-1",
+        ];
+        return {
+          title: useCase.title,
+          desc: useCase.description,
+          img: useCase.img || defaultFeatures[index]?.img || "",
+          badgeTitle: "USE CASE",
+          gridClass: gridClasses[index] || "md:col-span-1",
+        };
+      })
+    : features || defaultFeatures;
+
   return (
     <section className="h-full overflow-hidden py-32">
       <div className="container flex h-full w-full items-center justify-center">
         <div className="grid w-full max-w-6xl grid-cols-1 grid-rows-2 gap-4 md:grid-cols-2 lg:h-[800px] lg:grid-cols-4">
-          {features.map((feature, index) => (
+          {displayFeatures.map((feature, index) => (
             <div
               key={index}
               className={cn(
@@ -93,7 +123,7 @@ const Feature284 = ({ features = defaultFeatures }: Feature284Props) => {
               <h3 className="mt-4 text-2xl font-semibold tracking-tight">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground">{feature.desc}</p>
+              <p className="text-muted-foreground">{feature.desc || feature.description}</p>
             </div>
           ))}
         </div>

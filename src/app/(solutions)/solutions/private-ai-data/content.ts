@@ -51,6 +51,12 @@ export const privateAIDataContent: SolutionContent = {
       "/solutions/data/3.png",
       "/solutions/data/4.png",
     ],
+    links: [
+      "https://phala.com/success-stories/healthcare-research",
+      "https://www.ibm.com/docs/en/aix/7.3.0?topic=network-internet-protocol-security",
+      "https://phala.com/success-stories/ai-saas-platform",
+      "https://phala.com/success-stories/ai-saas-platform",
+    ],
   },
 
   how: {
@@ -93,28 +99,39 @@ export const privateAIDataContent: SolutionContent = {
 
   useCases: [
     {
-      title: "Data Marketplace",
+      title: "Confidential AI Training",
       description:
-        "Multi-party joins with revocable policies. Revenue share without raw data exchange.",
-      benefit: "Monetize data without losing control",
+        "Train proprietary LLMs on confidential datasets without exposing raw data to cloud providers.",
+      benefit: "Secure model training",
+      img: "/solutions/data/usecases/train.png",
     },
     {
-      title: "Sensitive Data Analytics",
+      title: "Private Inference",
       description:
-        "PII, financial, and medical analysis with built-in confidentiality.",
-      benefit: "GDPR/HIPAA-compliant insights",
+        "Deploy inference APIs for healthcare, finance, or legal AI where model weights and user prompts must remain encrypted end-to-end.",
+      benefit: "End-to-end encryption",
+      img: "/solutions/data/usecases/inference.png",
     },
     {
-      title: "Private RAG",
+      title: "Federated Learning",
       description:
-        "Retrieve from private corp wikis, CRM, and docs inside enclaves.",
-      benefit: "Secure knowledge retrieval",
+        "Run federated analytics on multi-party datasets—each party keeps data local while TEEs combine insights securely.",
+      benefit: "Multi-party collaboration",
+      img: "/solutions/data/usecases/federated.png",
     },
     {
-      title: "Cross-Organization Collaboration",
+      title: "Data Clean Rooms",
       description:
-        "Combine datasets from multiple organizations without exposing proprietary data.",
-      benefit: "Unlock collaborative insights",
+        "Enable secure multi-party computation for joint data analysis without revealing individual contributions.",
+      benefit: "Privacy-preserving analytics",
+      img: "/solutions/data/usecases/cleanroom.png",
+    },
+    {
+      title: "Regulatory Compliance",
+      description:
+        "Process regulated data (GDPR, HIPAA) in the cloud while maintaining compliance and zero-trust security.",
+      benefit: "Compliant cloud processing",
+      img: "/solutions/data/usecases/regulatory.png",
     },
   ],
 
@@ -125,25 +142,25 @@ export const privateAIDataContent: SolutionContent = {
       tags: "DATA SOVEREIGNTY / USER-OWNED AI",
       title: "User-owned data pools & collective model training",
       subtitle: "via confidential compute.",
-      image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-      link: "https://www.vana.org/",
+      image: "/partnerships/vana-pic.png",
+      link: "https://phala.com/posts/phala-network-and-vana-network-join-forces-to-usher-in-new-era-for-decentralized-data-privacy",
     },
     additional: [
       {
-        logo: "/partnerships/primus.png",
-        company: "Primus Labs",
-        tags: "MULTI-PARTY COMPUTE / zkTLS",
-        title: "Neutral TEE data rooms",
-        subtitle: "for multi-party analytics and training.",
-        link: "https://primuslabs.xyz/",
+        logo: "/partnerships/rena.jpg",
+        company: "Rena Labs",
+        tags: "VERIFIABLE AI / zkTLS",
+        title: "Verifiable AI responses",
+        subtitle: "with proof of data source.",
+        link: "https://x.com/Rena_labs/status/1963602045128093837",
       },
       {
-        logo: "/partnerships/public-ai.svg",
-        company: "PublicAI",
-        tags: "AI MARKETPLACES / PRIVACY-FIRST",
-        title: "Privacy-first AI marketplaces",
-        subtitle: "backed by Phala infrastructure.",
-        link: "https://publicai.io/",
+        logo: "/partnerships/xtrace.jpg",
+        company: "Xtrace",
+        tags: "LLM OBSERVABILITY / PRIVACY",
+        title: "Private LLM observability",
+        subtitle: "without exposing prompts.",
+        link: "https://docs.xtrace.ai/manual_rst/configuration.html",
       },
     ],
   },
@@ -264,52 +281,77 @@ if (verification.verified) {
 
   faqs: [
     {
-      category: "SECURITY & PRIVACY",
+      category: "DATA PRIVACY & ARCHITECTURE",
       items: [
         {
-          question: "What prevents operators from seeing my data?",
+          question: "How does Phala keep my data private during computation?",
           answer:
-            "Hardware-based Trusted Execution Environments (TEEs) encrypt data in-use. Operators only see encrypted memory. Remote attestation proves the correct code is running before any data is processed.",
+            "Phala runs every workload inside a Trusted Execution Environment (TEE). Data, model, and code are decrypted only inside this enclave's CPU memory and are re-encrypted before leaving. Neither cloud operators nor Phala nodes can access the plaintext at any point.",
         },
         {
-          question: "How do we verify the enclave code?",
+          question: "What's the difference between data encryption and confidential computing?",
           answer:
-            "Each enclave produces a cryptographic measurement (MRENCLAVE) that uniquely identifies the code. You verify this measurement matches your expected policy before sharing any data keys with the enclave.",
+            "Encryption protects data at rest and in transit. Confidential computing extends that protection to 'data in use.' Even while an AI model processes the data, the enclave keeps it sealed from the host OS, hypervisor, and other tenants.",
         },
         {
-          question: "How does key management work across parties?",
+          question: "Can Phala process encrypted data without decrypting it first?",
           answer:
-            "Each party encrypts their data with their own keys. The enclave requests keys from each party's KMS only after proving its identity via attestation. Keys are never stored—they're ephemeral within the TEE.",
+            "Yes—within the enclave the decryption keys are injected only after remote attestation proves the correct code is running. From the outside, the data remains opaque; decryption happens solely in verified hardware.",
+        },
+        {
+          question: "How is data deleted or retained after a computation?",
+          answer:
+            "When a task finishes, the enclave's memory is automatically cleared. Storage volumes can be configured for ephemeral or persistent use; all are encrypted with customer-owned keys so deletion is cryptographically final.",
         },
       ],
     },
     {
-      category: "TECHNICAL",
+      category: "COLLABORATION & DATA MARKETPLACE",
       items: [
         {
-          question: "What types of data workloads are supported?",
+          question: "Can multiple organizations collaborate without sharing raw data?",
           answer:
-            "RAG pipelines, SQL analytics, pandas/dataframe operations, model training, and custom Python/Node.js workloads. If it runs in a container, it can run confidentially.",
+            "Yes. Phala's 'compute-to-data' model lets each party keep its dataset local while a joint enclave aggregates gradients or insights. No participant ever gains access to another's raw files.",
         },
         {
-          question: "What's the performance overhead?",
+          question: "How do I monetize data safely through a marketplace on Phala?",
           answer:
-            "TEE overhead is typically 5-15% for CPU-bound workloads. Memory encryption adds minimal latency. For I/O-heavy workloads, the overhead is negligible.",
+            "Data providers publish encrypted datasets with usage policies enforced by smart contracts. Buyers run approved models against those datasets in enclaves and pay automatically for each job, while the raw content never leaves its owner.",
         },
         {
-          question: "Can we audit what happened inside the enclave?",
+          question: "What prevents others from reverse-engineering my datasets?",
           answer:
-            "Yes. Structured logs are emitted to an immutable audit trail. Attestation receipts prove what code ran, what policies were enforced, and what outputs were produced.",
+            "Enclaves disable debugging, tracing, and memory inspection. The only accessible output is the model result explicitly defined by the provider. Intermediate tensors and parameters stay sealed.",
+        },
+        {
+          question: "How does Phala handle data ownership and access rights?",
+          answer:
+            "Ownership is defined on-chain through tokenized access keys. Every compute job references these keys, producing auditable logs that prove who accessed what and under which policy.",
         },
       ],
     },
     {
-      category: "COMPLIANCE",
+      category: "COMPLIANCE & INTEGRATION",
       items: [
         {
-          question: "Is this GDPR/HIPAA compliant?",
+          question: "Is Phala compliant with GDPR, HIPAA, or other regulations?",
           answer:
-            "Phala's TEE architecture supports GDPR Article 32 (security of processing) and HIPAA's encryption requirements. Attestation provides the technical controls auditors need to verify data protection.",
+            "Phala's architecture supports compliance by design: data minimization, encryption, and deterministic audit trails. Actual certification depends on the workload and jurisdiction, but the platform satisfies the technical controls required by most frameworks.",
+        },
+        {
+          question: "Can I use Phala with my existing cloud or data lake?",
+          answer:
+            "Yes. Phala connectors let you attach S3, GCS, or on-prem sources through secure API gateways. Data stays encrypted until loaded into the enclave.",
+        },
+        {
+          question: "Does confidential computing affect model performance or cost?",
+          answer:
+            "Hardware-assisted TEEs add minimal overhead—typically <5%. GPU TEEs keep acceleration intact, so you pay roughly the same cloud rate while gaining privacy guarantees.",
+        },
+        {
+          question: "How can I verify that my computation truly ran inside a secure enclave?",
+          answer:
+            "Each job exposes a remote-attestation report signed by the CPU vendor. You or your clients can validate this proof to confirm the enclave type, firmware version, and the exact code hash that executed.",
         },
       ],
     },

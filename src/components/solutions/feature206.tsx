@@ -5,9 +5,10 @@ interface Feature206Props {
   description: string;
   points?: string[];
   images?: string[];
+  links?: string[];
 }
 
-const Feature206 = ({ title, description, points, images }: Feature206Props) => {
+const Feature206 = ({ title, description, points, images, links }: Feature206Props) => {
   // Map points to the 8-grid layout (4 cards + 4 images)
   const cards = points && points.length >= 4 ? [
     {
@@ -87,7 +88,7 @@ const Feature206 = ({ title, description, points, images }: Feature206Props) => 
               <p className={`mb-8 ${cards[0].textColor === "text-foreground" ? "text-muted-foreground" : "text-primary-foreground/80"}`}>
                 {cards[0].description}
               </p>
-              <a href="#" className={`text-sm underline ${cards[0].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
+              <a href={links?.[0] || "#"} className={`text-sm underline ${cards[0].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
                 More Information
               </a>
             </div>
@@ -103,7 +104,7 @@ const Feature206 = ({ title, description, points, images }: Feature206Props) => 
               <p className={`mb-8 ${cards[1].textColor === "text-foreground" ? "text-muted-foreground" : "text-primary-foreground/80"}`}>
                 {cards[1].description}
               </p>
-              <a href="#" className={`text-sm underline ${cards[1].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
+              <a href={links?.[1] || "#"} className={`text-sm underline ${cards[1].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
                 More Information
               </a>
             </div>
@@ -120,7 +121,7 @@ const Feature206 = ({ title, description, points, images }: Feature206Props) => 
               <p className={`mb-8 ${cards[2].textColor === "text-foreground" ? "text-muted-foreground" : "text-primary-foreground/80"}`}>
                 {cards[2].description}
               </p>
-              <a href="#" className={`text-sm underline ${cards[2].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
+              <a href={links?.[2] || "#"} className={`text-sm underline ${cards[2].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
                 More Information
               </a>
             </div>
@@ -136,7 +137,7 @@ const Feature206 = ({ title, description, points, images }: Feature206Props) => 
               <p className={`mb-8 ${cards[3].textColor === "text-foreground" ? "text-muted-foreground" : "text-primary-foreground/80"}`}>
                 {cards[3].description}
               </p>
-              <a href="#" className={`text-sm underline ${cards[3].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
+              <a href={links?.[3] || "#"} className={`text-sm underline ${cards[3].textColor === "text-foreground" ? "" : "text-primary-foreground/80"}`}>
                 More Information
               </a>
             </div>
