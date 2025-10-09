@@ -4,8 +4,29 @@ import { Button } from "@/components/ui/button";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const Codeexample3 = () => {
-  const deploymentCode = `# Deploy training job in TEE
+interface CodeBlock {
+  filename: string;
+  language: string;
+  code: string;
+  title?: string;
+  description?: string;
+}
+
+interface Codeexample3Props {
+  leftCode?: CodeBlock;
+  rightCode?: CodeBlock;
+}
+
+const Codeexample3 = ({
+  leftCode,
+  rightCode
+}: Codeexample3Props) => {
+  const defaultLeftCode: CodeBlock = {
+    title: "Deploy Training Jobs in TEEs",
+    description: "Use Docker containers to deploy confidential training jobs on encrypted datasets. Your training data and model weights stay encrypted in hardware TEEs with Intel TDX/AMD SEV. Monitor progress in real-time while maintaining zero-knowledge guarantees.",
+    filename: "deploy-training.sh",
+    language: "bash",
+    code: `# Deploy training job in TEE
 docker run -d \\
   --name phala-training \\
   --device=/dev/tdx_guest \\
@@ -22,9 +43,15 @@ docker logs -f phala-training
 # Epoch 1/3: Loss 0.524
 # Epoch 2/3: Loss 0.312
 # Epoch 3/3: Loss 0.189
-# Training complete! Model saved to /data/model.bin`;
+# Training complete! Model saved to /data/model.bin`
+  };
 
-  const verificationCode = `# Verify remote attestation
+  const defaultRightCode: CodeBlock = {
+    title: "Verify Hardware Attestation",
+    description: "Generate cryptographic proofs that your code runs in genuine TEE hardware with Intel DCAP or AMD SEV-SNP. Remote attestation provides zero-trust verification before processing sensitive data.",
+    filename: "verify-attestation.sh",
+    language: "bash",
+    code: `# Verify remote attestation
 curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -40,7 +67,11 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
   "code_hash": "0x1a2b3c4d5e6f...",
   "mrenclave": "a9f8e7d6c5b4...",
   "timestamp": "2025-01-15T10:30:00Z"
-}`;
+}`
+  };
+
+  const leftCodeBlock = leftCode || defaultLeftCode;
+  const rightCodeBlock = rightCode || defaultRightCode;
 
   return (
     <section className="py-32">
@@ -50,19 +81,16 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
             <span className="text-muted-foreground mb-6 text-xs uppercase">
               Deployment Example
             </span>
-            <h2 className="mb-4 text-4xl font-bold">Deploy Training Jobs in TEEs</h2>
+            <h2 className="mb-4 text-4xl font-bold">{leftCodeBlock.title}</h2>
             <p className="text-muted-foreground text-lg">
-              Use Docker containers to deploy confidential training jobs on encrypted datasets.
-              Your training data and model weights stay encrypted in hardware TEEs with
-              Intel TDX/AMD SEV. Monitor progress in real-time while maintaining
-              zero-knowledge guarantees.
+              {leftCodeBlock.description}
             </p>
             <div className="rounded-lg overflow-hidden bg-[#1e1e1e] border border-neutral-800 mt-6">
               <div className="flex items-center justify-between border-b border-neutral-800 px-4 py-2 bg-[#252525]">
-                <span className="text-sm text-neutral-400">deploy-training.sh</span>
+                <span className="text-sm text-neutral-400">{leftCodeBlock.filename}</span>
               </div>
               <SyntaxHighlighter
-                language="bash"
+                language={leftCodeBlock.language}
                 style={oneDark}
                 customStyle={{
                   margin: 0,
@@ -73,7 +101,7 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
                 }}
                 showLineNumbers={false}
               >
-                {deploymentCode}
+                {leftCodeBlock.code}
               </SyntaxHighlighter>
             </div>
           </div>
@@ -82,18 +110,16 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
             <span className="text-muted-foreground mb-6 text-xs uppercase">
               Verification Example
             </span>
-            <h2 className="mb-4 text-4xl font-bold">Verify TEE Attestation</h2>
+            <h2 className="mb-4 text-4xl font-bold">{rightCodeBlock.title}</h2>
             <p className="text-muted-foreground text-lg">
-              Before deploying sensitive data, verify that your training job runs in genuine
-              TEE hardware. Remote attestation provides cryptographic proof that your code
-              executes in an isolated, tamper-proof environment.
+              {rightCodeBlock.description}
             </p>
             <div className="rounded-lg overflow-hidden bg-[#1e1e1e] border border-neutral-800 mt-6">
               <div className="flex items-center justify-between border-b border-neutral-800 px-4 py-2 bg-[#252525]">
-                <span className="text-sm text-neutral-400">verify-attestation.sh</span>
+                <span className="text-sm text-neutral-400">{rightCodeBlock.filename}</span>
               </div>
               <SyntaxHighlighter
-                language="bash"
+                language={rightCodeBlock.language}
                 style={oneDark}
                 customStyle={{
                   margin: 0,
@@ -104,18 +130,10 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
                 }}
                 showLineNumbers={false}
               >
-                {verificationCode}
+                {rightCodeBlock.code}
               </SyntaxHighlighter>
             </div>
           </div>
-        </div>
-
-        <div className="mt-16 flex justify-center">
-          <Button size="lg" asChild>
-            <a href="https://docs.phala.network">
-              View Full Documentation
-            </a>
-          </Button>
         </div>
       </div>
     </section>

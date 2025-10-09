@@ -8,7 +8,23 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
-const FAQ_ITEMS = [
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface FaqCategory {
+  category: string;
+  items: FaqItem[];
+}
+
+interface Faq14Props {
+  title?: string;
+  subtitle?: string;
+  faqItems?: FaqCategory[];
+}
+
+const DEFAULT_FAQ_ITEMS: FaqCategory[] = [
   {
     category: "SUPPORT",
     items: [
@@ -66,21 +82,25 @@ const FAQ_ITEMS = [
   },
 ];
 
-export function Faq14() {
+export function Faq14({
+  title = "Frequently Asked Questions",
+  subtitle = "Everything you need to know about Charter",
+  faqItems = DEFAULT_FAQ_ITEMS
+}: Faq14Props) {
   return (
     <section className="relative py-32">
       <div className="container">
         <div className="text-center">
           <h1 className="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
-            Frequently Asked Questions
+            {title}
           </h1>
           <p className="mt-4 text-2xl text-muted-foreground md:text-3xl">
-            Everything you need to know about Charter
+            {subtitle}
           </p>
         </div>
 
         <div className="mx-auto mt-8 max-w-2xl space-y-12 md:mt-12 lg:mt-20">
-          {FAQ_ITEMS.map((category) => (
+          {faqItems.map((category) => (
             <Card key={category.category} className="border-hidden bg-muted">
               <CardHeader className="pb-0">
                 <h3 className="border-b pb-4 font-mono text-sm font-medium tracking-widest text-accent-foreground uppercase">

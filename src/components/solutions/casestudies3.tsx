@@ -17,33 +17,33 @@ interface Casestudies3Props {
 }
 
 const defaultFeaturedCasestudy: CasestudyItem = {
-  logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
-  company: "Acme",
-  tags: "ARTIFICIAL INTELLIGENCE / ENTERPRISE SOLUTIONS",
-  title: "Workflow Automation for the Digital Age.",
-  subtitle: "How to automate your workflow with AI.",
+  logo: "/partnerships/eliza-os.svg",
+  company: "ElizaOS",
+  tags: "ARTIFICIAL INTELLIGENCE / AUTONOMOUS AGENTS",
+  title: "Verifiable AI Agent Framework.",
+  subtitle: "Building decentralized AI agents with cryptographic proofs.",
   image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-  link: "https://shadcnblocks.com",
+  link: "https://www.elizaos.ai/",
 };
 
 const defaultCasestudies: CasestudyItem[] = [
   {
-    logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg",
-    company: "Super",
-    tags: "DATA MIGRATION / SOFTWARE SOLUTIONS",
-    title: "Enhance data migration with AI.",
-    subtitle: "A data migration platform toward a data-driven future.",
+    logo: "https://koshercapital.net/assets/kosher_capital_logo_black_bis-BDjT3v3G.png",
+    company: "Rabbi",
+    tags: "FINANCIAL AI / TRADING AGENTS",
+    title: "Confidential Trading Agents.",
+    subtitle: "Private key management in TEE enclaves.",
     image: "",
-    link: "https://shadcnblocks.com",
+    link: "https://koshercapital.net",
   },
   {
-    logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg",
-    company: "Advent",
-    tags: "ARTIFICIAL INTELLIGENCE / DATA SOLUTIONS",
-    title: "Strategic AI for a future-proof business.",
-    subtitle: "Mastering AI for more efficient operations.",
+    logo: "https://mintlify.s3.us-west-1.amazonaws.com/crossmint/logo/crossmint-light.png",
+    company: "Crossmint",
+    tags: "WEB3 INFRASTRUCTURE / ONCHAIN AGENTS",
+    title: "Secure Onchain Operations.",
+    subtitle: "Hardware-protected agent execution.",
     image: "",
-    link: "https://shadcnblocks.com",
+    link: "https://www.crossmint.com/",
   },
 ];
 
