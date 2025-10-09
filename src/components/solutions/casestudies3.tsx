@@ -70,7 +70,7 @@ const Casestudies3 = ({
                 </span>
                 <h2 className="mb-5 mt-4 text-balance text-2xl font-semibold sm:text-3xl sm:leading-10">
                   {featuredCasestudy.title}
-                  <span className="text-primary/80 group-hover:text-primary font-medium transition-colors duration-500 ease-out">
+                  <span className="text-primary group-hover:text-primary/90 font-medium transition-colors duration-500 ease-out">
                     {" "}
                     {featuredCasestudy.subtitle}
                   </span>

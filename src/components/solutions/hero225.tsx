@@ -8,35 +8,26 @@ import { Button } from "@/components/ui/button";
 
 const Hero225 = () => {
   const circle1Images = [
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/nextjs-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/react-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vue-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vite-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/spotify-icon.svg",
+    "https://api.iconify.design/simple-icons:openai.svg",
+    "https://api.iconify.design/simple-icons:anthropic.svg",
   ];
 
   const circle2Images = [
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/typescript-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/tailwind-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vercel-icon.svg",
+    "https://api.iconify.design/simple-icons:meta.svg", // Meta for Llama
+    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg",
   ];
 
   const circle3Images = [
+    "https://api.iconify.design/simple-icons:huggingface.svg",
     "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/notion-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/github-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/figma-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/slack-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/laravel-icon.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
   ];
 
   const circle4Images = [
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/gatsby-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/dropbox-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/brave-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vscode-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/sketch-icon.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg",
+    "https://api.iconify.design/simple-icons:openai.svg",
+    "https://api.iconify.design/simple-icons:anthropic.svg",
+    "https://api.iconify.design/simple-icons:meta.svg",
+    "https://api.iconify.design/simple-icons:huggingface.svg",
   ];
 
   return (
