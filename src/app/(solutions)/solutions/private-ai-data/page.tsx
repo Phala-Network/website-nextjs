@@ -4,12 +4,12 @@ import Script from "next/script";
 import { Hero219 } from "@/components/solutions/hero219";
 import { Feature206 } from "@/components/solutions/feature206";
 import { Feature282 } from "@/components/solutions/feature282";
-import { Feature172 } from "@/components/solutions/feature172";
+import { Codeexample5 } from "@/components/solutions/codeexample5";
 import { Feature284 } from "@/components/solutions/feature284";
 import { Feature280 } from "@/components/solutions/feature280";
 import { Casestudies3 } from "@/components/solutions/casestudies3";
 import { Codeexample1 } from "@/components/solutions/codeexample1";
-import { Feature161 } from "@/components/solutions/feature161";
+import { Compliance5 } from "@/components/solutions/compliance5";
 import { Faq14 } from "@/components/solutions/faq14";
 import { Cta4 } from "@/components/solutions/cta4";
 
@@ -97,7 +97,7 @@ export default function PrivateAIDataPage() {
       <Feature282 />
       
       {/* How It Works - feature172 */}
-      <Feature172 {...content.how} />
+      <Codeexample5 />
       
       {/* Use Cases - feature284 */}
       <Feature284 useCases={content.useCases} />
@@ -113,10 +113,10 @@ export default function PrivateAIDataPage() {
       
       {/* Dev Experience - codeexample1 */}
       <Codeexample1 {...content.devExp} />
-      
-      {/* Proof & Compliance - feature161 */}
-      <Feature161 />
-      
+
+      {/* Proof & Compliance - compliance5 */}
+      <Compliance5 />
+
       {/* FAQs - faq14 */}
       <Faq14 faqs={content.faqs} />
       

@@ -28,7 +28,7 @@ const defaultFeaturedCasestudy: CasestudyItem = {
 
 const defaultCasestudies: CasestudyItem[] = [
   {
-    logo: "https://koshercapital.net/assets/kosher_capital_logo_black_bis-BDjT3v3G.png",
+    logo: "/partnerships/rabbi.png",
     company: "Rabbi",
     tags: "FINANCIAL AI / TRADING AGENTS",
     title: "Confidential Trading Agents.",
@@ -37,7 +37,7 @@ const defaultCasestudies: CasestudyItem[] = [
     link: "https://koshercapital.net",
   },
   {
-    logo: "https://mintlify.s3.us-west-1.amazonaws.com/crossmint/logo/crossmint-light.png",
+    logo: "/partnerships/crossmint.png",
     company: "Crossmint",
     tags: "WEB3 INFRASTRUCTURE / ONCHAIN AGENTS",
     title: "Secure Onchain Operations.",
@@ -70,7 +70,7 @@ const Casestudies3 = ({
                 </span>
                 <h2 className="mb-5 mt-4 text-balance text-2xl font-semibold sm:text-3xl sm:leading-10">
                   {featuredCasestudy.title}
-                  <span className="text-primary/50 group-hover:text-primary/70 font-medium transition-colors duration-500 ease-out">
+                  <span className="text-primary/80 group-hover:text-primary font-medium transition-colors duration-500 ease-out">
                     {" "}
                     {featuredCasestudy.subtitle}
                   </span>
@@ -116,7 +116,7 @@ const Casestudies3 = ({
                     </span>
                     <h2 className="mb-5 mt-4 text-balance text-2xl font-semibold sm:text-3xl sm:leading-10">
                       {item.title}
-                      <span className="text-primary/50 group-hover:text-primary/70 font-medium transition-colors duration-500 ease-out">
+                      <span className="text-primary/80 group-hover:text-primary font-medium transition-colors duration-500 ease-out">
                         {" "}
                         {item.subtitle}
                       </span>

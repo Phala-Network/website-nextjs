@@ -94,40 +94,34 @@ export const Highlight = ({
 const CARDS = [
   {
     id: 0,
-    name: "Sarah Chen",
-    designation: "Product Manager",
+    name: "Anna Kazlauskas",
+    designation: "Founder of Vana",
     content: (
       <p>
-        The implementation was incredibly smooth.{" "}
-        <Highlight>We deployed in under 2 hours</Highlight> and the team loves
-        how intuitive the interface is. The responsive design works perfectly
-        across all devices.
+        A well-designed system (like Vana) uses both crypto consensus where you don't trust hardware, and{" "}
+        <Highlight>TEEs for privacy-specific applications</Highlight>
       </p>
     ),
   },
   {
     id: 1,
-    name: "Marcus Rodriguez",
-    designation: "Frontend Developer",
+    name: "Felix Meng",
+    designation: "Founder of Xtrace",
     content: (
       <p>
-        As a developer, I appreciate the clean code structure.{" "}
-        <Highlight>Easy to customize</Highlight> and the documentation is
-        comprehensive. The performance optimizations are noticeable in
-        production.
+        Phala made it possible for us to build an AI retrieval engine that never exposes what it sees. Our users trust Xtrace because{" "}
+        <Highlight>their private data stays encrypted, even while the model is thinking.</Highlight>
       </p>
     ),
   },
   {
     id: 2,
-    name: "Emily Watson",
-    designation: "UX Designer",
+    name: "Conan",
+    designation: "Founder of Rena Labs",
     content: (
       <p>
-        The accessibility features are outstanding.{" "}
-        <Highlight>WCAG compliant out of the box</Highlight> and the design
-        system is consistent. Our users with disabilities have given us
-        excellent feedback.
+        I'm totally TEE pilled. From OpenAI to Apple, both top-down and bottom-up,{" "}
+        <Highlight>the focus has shifted to making TEE tech actually usable and easy to integrate</Highlight>
       </p>
     ),
   },
