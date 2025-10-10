@@ -1,19 +1,16 @@
-"use client";
+'use client'
 
-import { ArrowRight } from "lucide-react";
-import React from "react";
+import { ArrowRight } from 'lucide-react'
 
-import { Globe } from "@/components/magicui/globe";
-import { Meteors } from "@/components/magicui/meteors";
-import { Button } from "@/components/ui/button";
+import { Globe } from '@/components/magicui/globe'
+import { Meteors } from '@/components/magicui/meteors'
+import { Button } from '@/components/ui/button'
 
 const Hero216 = () => {
   return (
     <section className="py-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
-        <p className="text-muted-foreground">
-          Confidential Training
-        </p>
+        <p className="text-muted-foreground">Confidential Training</p>
         <h1 className="max-w-3xl text-center font-calSans text-6xl md:text-7xl">
           Train Large-Scale Models in TEEs
         </h1>
@@ -35,7 +32,7 @@ const Hero216 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Hero216 };
+export { Hero216 }

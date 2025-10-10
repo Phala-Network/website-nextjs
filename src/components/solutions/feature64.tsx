@@ -1,5 +1,3 @@
-import { Badge } from "@/components/ui/badge";
-
 const Feature64 = () => {
   return (
     <section className="py-32">
@@ -9,7 +7,8 @@ const Feature64 = () => {
             Autonomous Agents
           </h3>
           <p className="text-muted-foreground lg:max-w-3xl lg:text-lg">
-            Self-operating agents that make decisions, execute transactions, and interact with blockchains autonomously in secure enclaves
+            Self-operating agents that make decisions, execute transactions, and
+            interact with blockchains autonomously in secure enclaves
           </p>
         </div>
         <div className="grid w-full gap-6 lg:grid-cols-7">
@@ -27,7 +26,8 @@ const Feature64 = () => {
             <div className="mt-auto flex flex-col">
               <p className="mb-2 text-sm font-semibold md:text-base">ElizaOS</p>
               <p className="text-muted-foreground text-sm md:text-base">
-                Multi-agent simulation framework for autonomous AI characters and social agents
+                Multi-agent simulation framework for autonomous AI characters
+                and social agents
               </p>
             </div>
           </a>
@@ -43,7 +43,9 @@ const Feature64 = () => {
               />
             </div>
             <div className="mt-auto flex flex-col">
-              <p className="mb-2 text-sm font-semibold md:text-base">NEAR Shade Agent</p>
+              <p className="mb-2 text-sm font-semibold md:text-base">
+                NEAR Shade Agent
+              </p>
               <p className="text-muted-foreground text-sm md:text-base">
                 Privacy-preserving agents for NEAR Protocol with TEE protection
               </p>
@@ -52,7 +54,7 @@ const Feature64 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature64 };
+export { Feature64 }

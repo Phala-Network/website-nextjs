@@ -14,7 +14,8 @@ const Casestudies1 = () => {
             />
             <div className="bg-linear-to-t absolute inset-0 from-black/80 to-black/10"></div>
             <h2 className="isolate max-w-sm text-lg font-semibold text-white lg:text-xl lg:font-semibold">
-              Vijil: Automated smart contract audit agent with verifiable security analysis
+              Vijil: Automated smart contract audit agent with verifiable
+              security analysis
             </h2>
           </a>
           <a
@@ -42,7 +43,8 @@ const Casestudies1 = () => {
             />
             <div className="bg-linear-to-t absolute inset-0 from-black/80 to-black/10"></div>
             <h2 className="isolate max-w-sm text-lg font-semibold text-white lg:text-xl lg:font-semibold">
-              Nous Research x Flashbot: Truth of autonomous AI agents with verifiable execution
+              Nous Research x Flashbot: Truth of autonomous AI agents with
+              verifiable execution
             </h2>
           </a>
           <a
@@ -56,7 +58,8 @@ const Casestudies1 = () => {
             />
             <div className="bg-linear-to-t absolute inset-0 from-black/80 to-black/10"></div>
             <h2 className="isolate max-w-sm text-lg font-semibold text-white lg:text-xl lg:font-semibold">
-              NEAR: Financial agent with private DeFi strategies and secure execution
+              NEAR: Financial agent with private DeFi strategies and secure
+              execution
             </h2>
           </a>
           <a
@@ -70,7 +73,8 @@ const Casestudies1 = () => {
             />
             <div className="bg-linear-to-t absolute inset-0 from-black/80 to-black/10"></div>
             <h2 className="isolate max-w-sm text-lg font-semibold text-white lg:text-xl lg:font-semibold">
-              Rabbi: Trading agent with confidential strategies and verifiable execution
+              Rabbi: Trading agent with confidential strategies and verifiable
+              execution
             </h2>
           </a>
           <a
@@ -84,13 +88,14 @@ const Casestudies1 = () => {
             />
             <div className="bg-linear-to-t absolute inset-0 from-black/80 to-black/10"></div>
             <h2 className="isolate max-w-sm text-lg font-semibold text-white lg:text-xl lg:font-semibold">
-              Newton: Payment agent powering verifiable AI for autonomous finance
+              Newton: Payment agent powering verifiable AI for autonomous
+              finance
             </h2>
           </a>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Casestudies1 as Casestudies1Agents };
+export { Casestudies1 as Casestudies1Agents }

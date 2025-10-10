@@ -1,13 +1,13 @@
 interface HowItWorksStep {
-  number: string;
-  title: string;
-  description: string;
+  number: string
+  title: string
+  description: string
 }
 
 interface HowItWorksProps {
-  title: string;
-  description?: string;
-  steps: HowItWorksStep[];
+  title: string
+  description?: string
+  steps: HowItWorksStep[]
 }
 
 export function HowItWorks({ title, description, steps }: HowItWorksProps) {
@@ -39,5 +39,5 @@ export function HowItWorks({ title, description, steps }: HowItWorksProps) {
         </div>
       </div>
     </section>
-  );
+  )
 }

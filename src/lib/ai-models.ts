@@ -97,7 +97,9 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
   const apiData: ApiResponse = await res.json()
 
   // Filter only phala models
-  const phalaModels = apiData.data.filter(model => model.id.startsWith('phala/'))
+  const phalaModels = apiData.data.filter((model) =>
+    model.id.startsWith('phala/'),
+  )
 
   // Transform API response to match expected Model type
   const models: Model[] = phalaModels.map((apiModel, index) => {

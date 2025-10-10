@@ -1,29 +1,27 @@
-import React from "react";
-
-import { EvervaultCard } from "@/components/aceternity/evervault-card";
+import { EvervaultCard } from '@/components/aceternity/evervault-card'
 
 interface Feature282Props {
-  badge?: string;
-  cardSubtitle?: string;
-  cardTitle?: string;
-  title?: string;
-  description1?: string;
-  description2?: string;
-  features?: string[];
+  badge?: string
+  cardSubtitle?: string
+  cardTitle?: string
+  title?: string
+  description1?: string
+  description2?: string
+  features?: string[]
 }
 
 const Feature282 = ({
-  badge = "Confidential Computing",
-  cardSubtitle = "TEE Hardware Encryption",
-  cardTitle = "Zero-Trust Computing",
-  title = "Hardware-Enforced Encryption for AI & Data Workloads",
-  description1 = "TEEs with Intel TDX and AMD SEV provide CPU-level memory encryption—your AI models, datasets, and computations stay encrypted in-use. Not even cloud admins or hypervisors can inspect runtime state. Remote attestation proves the enclave is genuine before you send data.",
-  description2 = "Built on zero-trust principles, our confidential computing infrastructure ensures data remains encrypted throughout the entire computation lifecycle. Hardware root-of-trust, sealed storage, and cryptographic proofs provide verifiable protection against insider threats and infrastructure compromise.",
+  badge = 'Confidential Computing',
+  cardSubtitle = 'TEE Hardware Encryption',
+  cardTitle = 'Zero-Trust Computing',
+  title = 'Hardware-Enforced Encryption for AI & Data Workloads',
+  description1 = 'TEEs with Intel TDX and AMD SEV provide CPU-level memory encryption—your AI models, datasets, and computations stay encrypted in-use. Not even cloud admins or hypervisors can inspect runtime state. Remote attestation proves the enclave is genuine before you send data.',
+  description2 = 'Built on zero-trust principles, our confidential computing infrastructure ensures data remains encrypted throughout the entire computation lifecycle. Hardware root-of-trust, sealed storage, and cryptographic proofs provide verifiable protection against insider threats and infrastructure compromise.',
   features = [
-    "Memory encryption in-use",
-    "Remote attestation proofs",
-    "Hardware root-of-trust"
-  ]
+    'Memory encryption in-use',
+    'Remote attestation proofs',
+    'Hardware root-of-trust',
+  ],
 }: Feature282Props) => {
   return (
     <section className="w-screen overflow-hidden py-32">
@@ -72,6 +70,6 @@ const Feature282 = ({
         </div>
       </div>
     </section>
-  );
-};
-export { Feature282 };
+  )
+}
+export { Feature282 }

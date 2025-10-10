@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import { useId, useState } from 'react'
 
+import { PhalaNodeMap } from '@/components/phala-node-map'
 import {
   Accordion,
   AccordionContent,
@@ -23,7 +24,6 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { PhalaNodeMap } from '@/components/phala-node-map'
 import { cn } from '@/lib/utils'
 
 const DEPLOYMENT_STEPS = [
@@ -280,7 +280,10 @@ function HeroSection() {
               <Separator />
             </div>
           </div>
-          <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden px-6 md:px-8 rounded-lg" style={{backgroundColor: '#F9F9F7'}}>
+          <div
+            className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden px-6 md:px-8 rounded-lg"
+            style={{ backgroundColor: '#F9F9F7' }}
+          >
             <div className="absolute inset-0 border-2 border-slate-400 rounded-lg"></div>
             <img
               src="/core.png"
@@ -578,7 +581,10 @@ function DeploymentSection() {
                     <div className="w-3 h-3 rounded-full bg-green-500" />
                   </div>
                   <span className="text-xs text-slate-400 ml-2 font-mono">
-                    {DEPLOYMENT_STEPS[selectedIndex].title.toLowerCase().replace(/\s+/g, '-')}.sh
+                    {DEPLOYMENT_STEPS[selectedIndex].title
+                      .toLowerCase()
+                      .replace(/\s+/g, '-')}
+                    .sh
                   </span>
                 </div>
                 <pre className="p-6 text-sm leading-relaxed overflow-x-auto">
@@ -683,7 +689,8 @@ function BenefitsSection() {
             Zero-trust confidential computing
           </h2>
           <p className="text-md text-muted-foreground mx-auto max-w-xl text-center lg:text-lg mb-10">
-            Hardware-backed security guarantees with enterprise-grade performance.
+            Hardware-backed security guarantees with enterprise-grade
+            performance.
           </p>
 
           <div className="relative mt-10 grid w-full max-w-4xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -768,7 +775,7 @@ const BenefitCard = ({
   return (
     <div
       className={cn(
-        "bg-muted relative z-20 flex h-full flex-col items-center justify-center gap-4 rounded-2xl p-5 text-center",
+        'bg-muted relative z-20 flex h-full flex-col items-center justify-center gap-4 rounded-2xl p-5 text-center',
         className,
       )}
     >

@@ -24,7 +24,10 @@ export class GlobeErrorBoundary extends React.Component<Props, State> {
     // Only log in development
     if (process.env.NODE_ENV === 'development') {
       // Suppress hydration errors from globe.gl
-      if (error.message.includes('innerHTML') || error.message.includes('Hydration')) {
+      if (
+        error.message.includes('innerHTML') ||
+        error.message.includes('Hydration')
+      ) {
         console.warn('Suppressed globe.gl hydration error:', error.message)
         this.setState({ hasError: false })
         return
@@ -37,7 +40,9 @@ export class GlobeErrorBoundary extends React.Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="w-full h-full flex items-center justify-center bg-muted/20">
-          <div className="text-muted-foreground">Failed to load globe visualization</div>
+          <div className="text-muted-foreground">
+            Failed to load globe visualization
+          </div>
         </div>
       )
     }

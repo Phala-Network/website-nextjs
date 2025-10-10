@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
-import type { BundledLanguage } from "@/components/kibo-ui/code-block";
+import type { BundledLanguage } from '@/components/kibo-ui/code-block'
 import {
   CodeBlock,
   CodeBlockBody,
@@ -12,13 +12,13 @@ import {
   CodeBlockFiles,
   CodeBlockHeader,
   CodeBlockItem,
-} from "@/components/kibo-ui/code-block";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+} from '@/components/kibo-ui/code-block'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
 const Codeexample5Finetune = () => {
-  const [selectedStep, setSelectedStep] = useState("step1");
+  const [selectedStep, setSelectedStep] = useState('step1')
 
-  const currentStep = tutorialSteps.find((step) => step.id === selectedStep);
+  const currentStep = tutorialSteps.find((step) => step.id === selectedStep)
 
   return (
     <section className="py-32 bg-muted/30">
@@ -28,7 +28,8 @@ const Codeexample5Finetune = () => {
             Fine-Tuning LLaMA 3 with Unsloth on Phala Cloud
           </h2>
           <p className="text-lg text-muted-foreground">
-            7-Step Tutorial: Confidential fine-tuning with hardware attestation and encrypted artifacts
+            7-Step Tutorial: Confidential fine-tuning with hardware attestation
+            and encrypted artifacts
           </p>
         </div>
 
@@ -41,23 +42,29 @@ const Codeexample5Finetune = () => {
                   <div
                     key={step.id}
                     className={`cursor-pointer rounded-lg p-4 transition-all ${
-                      selectedStep === step.id ? "bg-primary/10 border-2 border-primary" : "bg-background border-2 border-transparent hover:border-muted-foreground/20"
+                      selectedStep === step.id
+                        ? 'bg-primary/10 border-2 border-primary'
+                        : 'bg-background border-2 border-transparent hover:border-muted-foreground/20'
                     }`}
                     onClick={() => setSelectedStep(step.id)}
                   >
                     <div className="flex items-start gap-3">
-                      <div className={`rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm ${selectedStep === step.id ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`}>
+                      <div
+                        className={`rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm ${selectedStep === step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}
+                      >
                         {step.number}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h3 className="font-semibold text-sm mb-1">{step.title}</h3>
+                        <h3 className="font-semibold text-sm mb-1">
+                          {step.title}
+                        </h3>
                         <p className="text-muted-foreground line-clamp-2 text-xs">
                           {step.description}
                         </p>
                       </div>
                     </div>
                   </div>
-                );
+                )
               })}
             </div>
           </div>
@@ -84,9 +91,9 @@ const Codeexample5Finetune = () => {
                       )}
                     </CodeBlockFiles>
                     <CodeBlockCopyButton
-                      onCopy={() => console.log("Copied code to clipboard")}
+                      onCopy={() => console.log('Copied code to clipboard')}
                       onError={() =>
-                        console.error("Failed to copy code to clipboard")
+                        console.error('Failed to copy code to clipboard')
                       }
                     />
                   </CodeBlockHeader>
@@ -115,21 +122,21 @@ const Codeexample5Finetune = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Codeexample5Finetune };
+export { Codeexample5Finetune }
 
 const tutorialSteps = [
   {
-    id: "step1",
-    number: "1",
-    title: "Environment Setup",
-    description: "Install Unsloth and Hugging Face libraries with GPU support",
+    id: 'step1',
+    number: '1',
+    title: 'Environment Setup',
+    description: 'Install Unsloth and Hugging Face libraries with GPU support',
     code: [
       {
-        language: "python",
-        filename: "setup.sh",
+        language: 'python',
+        filename: 'setup.sh',
         code: `# Install Unsloth and Hugging Face libraries
 pip install unsloth transformers accelerate trl datasets
 
@@ -142,14 +149,15 @@ python -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_
     ],
   },
   {
-    id: "step2",
-    number: "2",
-    title: "Loading Chat Dataset Securely",
-    description: "Mount and load encrypted fine-tuning dataset in conversational format",
+    id: 'step2',
+    number: '2',
+    title: 'Loading Chat Dataset Securely',
+    description:
+      'Mount and load encrypted fine-tuning dataset in conversational format',
     code: [
       {
-        language: "python",
-        filename: "load_dataset.py",
+        language: 'python',
+        filename: 'load_dataset.py',
         code: `import json
 
 # Path to the dataset (mounted securely by dstack)
@@ -167,14 +175,15 @@ print(f"Loaded {len(conversations)} conversations for fine-tuning.")
     ],
   },
   {
-    id: "step3",
-    number: "3",
-    title: "Loading LLaMA 3 with Unsloth",
-    description: "Load base model with 4-bit quantization and memory optimization",
+    id: 'step3',
+    number: '3',
+    title: 'Loading LLaMA 3 with Unsloth',
+    description:
+      'Load base model with 4-bit quantization and memory optimization',
     code: [
       {
-        language: "python",
-        filename: "load_model.py",
+        language: 'python',
+        filename: 'load_model.py',
         code: `import torch
 from unsloth import FastLanguageModel
 
@@ -191,14 +200,14 @@ model, tokenizer = FastLanguageModel.from_pretrained(
     ],
   },
   {
-    id: "step4",
-    number: "4",
-    title: "Applying LoRA Adapters",
-    description: "Add Low-Rank Adapters to attention and feed-forward layers",
+    id: 'step4',
+    number: '4',
+    title: 'Applying LoRA Adapters',
+    description: 'Add Low-Rank Adapters to attention and feed-forward layers',
     code: [
       {
-        language: "python",
-        filename: "apply_lora.py",
+        language: 'python',
+        filename: 'apply_lora.py',
         code: `from unsloth import FastLanguageModel
 
 # Apply LoRA (Low-Rank Adaptation) to the loaded model
@@ -218,14 +227,14 @@ model = FastLanguageModel.get_peft_model(
     ],
   },
   {
-    id: "step5",
-    number: "5",
-    title: "Fine-Tuning with TRL",
-    description: "Supervised fine-tuning using HuggingFace TRL SFTTrainer",
+    id: 'step5',
+    number: '5',
+    title: 'Fine-Tuning with TRL',
+    description: 'Supervised fine-tuning using HuggingFace TRL SFTTrainer',
     code: [
       {
-        language: "python",
-        filename: "train.py",
+        language: 'python',
+        filename: 'train.py',
         code: `from trl import SFTTrainer, SFTConfig
 
 # Configure training hyperparameters
@@ -255,14 +264,14 @@ trainer.train()`,
     ],
   },
   {
-    id: "step6",
-    number: "6",
-    title: "Merging LoRA into FP16 Weights",
-    description: "Merge LoRA adapters into base model for deployment",
+    id: 'step6',
+    number: '6',
+    title: 'Merging LoRA into FP16 Weights',
+    description: 'Merge LoRA adapters into base model for deployment',
     code: [
       {
-        language: "python",
-        filename: "merge_model.py",
+        language: 'python',
+        filename: 'merge_model.py',
         code: `# Merge LoRA weights into the base model and save in 16-bit precision
 merged_model_dir = "./output/merged_model"
 
@@ -277,14 +286,14 @@ model.save_pretrained_merged(
     ],
   },
   {
-    id: "step7",
-    number: "7",
-    title: "Saving and Uploading Model",
-    description: "Push merged model to Hugging Face Hub for inference",
+    id: 'step7',
+    number: '7',
+    title: 'Saving and Uploading Model',
+    description: 'Push merged model to Hugging Face Hub for inference',
     code: [
       {
-        language: "python",
-        filename: "upload_model.py",
+        language: 'python',
+        filename: 'upload_model.py',
         code: `from huggingface_hub import login
 
 login(token="<YOUR_HF_TOKEN>")  # ensure auth for Hugging Face
@@ -300,4 +309,4 @@ model.push_to_hub_merged(
       },
     ],
   },
-];
+]

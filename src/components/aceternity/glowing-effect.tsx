@@ -1,1 +1,1 @@
-export const GlowingEffect = (props: any) => null;
+export const GlowingEffect = (props: any) => null

@@ -1,6 +1,4 @@
-import { Check, ChevronRight } from "lucide-react";
-
-import { Badge } from "@/components/ui/badge";
+import { Check, ChevronRight } from 'lucide-react'
 
 const Feature22 = () => {
   return (
@@ -12,36 +10,46 @@ const Feature22 = () => {
           </h2>
           <ul className="text-muted-foreground flex flex-col gap-3 sm:gap-4">
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> Autonomous trading with cryptographic execution proofs
+              <Check className="text-primary size-4" /> Autonomous trading with
+              cryptographic execution proofs
             </li>
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> Real-time market data analysis in secure enclaves
+              <Check className="text-primary size-4" /> Real-time market data
+              analysis in secure enclaves
             </li>
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> Risk management with verifiable calculations
+              <Check className="text-primary size-4" /> Risk management with
+              verifiable calculations
             </li>
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> Portfolio rebalancing with audit trails
+              <Check className="text-primary size-4" /> Portfolio rebalancing
+              with audit trails
             </li>
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> DeFi protocol integration with privacy
+              <Check className="text-primary size-4" /> DeFi protocol
+              integration with privacy
             </li>
           </ul>
           <ul className="text-muted-foreground flex flex-col gap-4">
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> MEV protection through private transactions
+              <Check className="text-primary size-4" /> MEV protection through
+              private transactions
             </li>
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> Yield optimization across multiple chains
+              <Check className="text-primary size-4" /> Yield optimization
+              across multiple chains
             </li>
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> Smart order routing with confidential strategies
+              <Check className="text-primary size-4" /> Smart order routing with
+              confidential strategies
             </li>
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> Compliance monitoring with private data
+              <Check className="text-primary size-4" /> Compliance monitoring
+              with private data
             </li>
             <li className="flex items-center gap-2">
-              <Check className="text-primary size-4" /> API key security in hardware enclaves
+              <Check className="text-primary size-4" /> API key security in
+              hardware enclaves
             </li>
           </ul>
         </div>
@@ -101,7 +109,8 @@ const Feature22 = () => {
               <div className="mb-3 px-4 pt-5 sm:px-5 md:px-6 md:pt-6">
                 <h3 className="font-medium">ERC-8004 TEE Agent</h3>
                 <p className="text-muted-foreground">
-                  Ethereum standard for verifiable AI agents with TEE attestation
+                  Ethereum standard for verifiable AI agents with TEE
+                  attestation
                 </p>
               </div>
               <div className="h-px border-t border-dashed"></div>
@@ -176,7 +185,7 @@ const Feature22 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature22 };
+export { Feature22 }

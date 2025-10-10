@@ -1,34 +1,33 @@
-"use client";
+'use client'
 
-import React from "react";
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts'
 
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from '@/components/ui/chart'
 
 interface StatItem {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
 const statsData: StatItem[] = [
   {
-    title: "<5%",
-    description: "TEE Overhead",
+    title: '<5%',
+    description: 'TEE Overhead',
   },
   {
-    title: "4.8 TB/s",
-    description: "H200 Memory Bandwidth",
+    title: '4.8 TB/s',
+    description: 'H200 Memory Bandwidth',
   },
   {
-    title: "2x Faster",
-    description: "H200 vs H100",
+    title: '2x Faster',
+    description: 'H200 vs H100',
   },
-];
+]
 
 const Stats18 = () => {
   return (
@@ -41,7 +40,8 @@ const Stats18 = () => {
           Hardware Security Without Compromise
         </h2>
         <p className="text-muted-foreground mx-auto max-w-xl px-5 text-center text-sm lg:text-base">
-          Full-Stack TEE protection delivers near-native performance. Benchmarked with SP1 zkVM generating ZK proofs in GPU TEE environment.
+          Full-Stack TEE protection delivers near-native performance.
+          Benchmarked with SP1 zkVM generating ZK proofs in GPU TEE environment.
         </p>
 
         <div className="my-10 h-[40vh] w-full max-w-xl">
@@ -64,24 +64,24 @@ const Stats18 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 273 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
+  { month: 'January', desktop: 186 },
+  { month: 'February', desktop: 305 },
+  { month: 'March', desktop: 237 },
+  { month: 'April', desktop: 273 },
+  { month: 'May', desktop: 209 },
+  { month: 'June', desktop: 214 },
+]
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
+    label: 'Desktop',
+    color: 'var(--chart-1)',
   },
-} satisfies ChartConfig;
+} satisfies ChartConfig
 
 const ChartRadarDots = () => {
   return (
@@ -104,7 +104,7 @@ const ChartRadarDots = () => {
         />
       </RadarChart>
     </ChartContainer>
-  );
-};
+  )
+}
 
-export { Stats18 };
+export { Stats18 }

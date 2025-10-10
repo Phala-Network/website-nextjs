@@ -1,11 +1,10 @@
-"use client";
+'use client'
 
-import NumberFlow from "@number-flow/react";
-import { motion } from "framer-motion";
-import { CirclePercent } from "lucide-react";
-import React from "react";
+import NumberFlow from '@number-flow/react'
+import { motion } from 'framer-motion'
+import { CirclePercent } from 'lucide-react'
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils'
 
 const css = `
 .candy-bg {
@@ -21,7 +20,7 @@ const css = `
       transparent
     );
     background-size: 10px 10px;
-  }`;
+  }`
 
 const Stats13 = () => {
   return (
@@ -39,16 +38,16 @@ const Stats13 = () => {
         </div>
         <div className="relative mx-auto mt-20 flex h-112 max-w-4xl items-center justify-center gap-2">
           {[
-            { value: 35, label: "competitor 1", delay: 0.2 },
-            { value: 25, label: "competitor 2", delay: 0.4 },
+            { value: 35, label: 'competitor 1', delay: 0.2 },
+            { value: 25, label: 'competitor 2', delay: 0.4 },
             {
               value: 99,
-              label: "shadcnblocks",
-              className: "bg-sky-400",
+              label: 'shadcnblocks',
+              className: 'bg-sky-400',
               showToolTip: true,
               delay: 0.6,
             },
-            { value: 37, label: "competitor 4", delay: 0.8 },
+            { value: 37, label: 'competitor 4', delay: 0.8 },
           ].map((props, index) => (
             <motion.div
               key={index}
@@ -57,7 +56,7 @@ const Stats13 = () => {
               transition={{
                 duration: 0.5,
                 delay: index * 0.2,
-                type: "spring",
+                type: 'spring',
                 damping: 10,
               }}
               className="h-full w-full"
@@ -68,23 +67,23 @@ const Stats13 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Stats13 };
+export { Stats13 }
 
 const BarChart = ({
   value,
   label,
-  className = "",
+  className = '',
   showToolTip = false,
   delay = 0,
 }: {
-  value: number;
-  label: string;
-  className?: string;
-  showToolTip?: boolean;
-  delay?: number;
+  value: number
+  label: string
+  className?: string
+  showToolTip?: boolean
+  delay?: number
 }) => {
   return (
     <div className="group relative h-full w-full">
@@ -92,9 +91,9 @@ const BarChart = ({
         <motion.div
           initial={{ opacity: 0, y: 100, height: 0 }}
           animate={{ opacity: 1, y: 0, height: `${value}%` }}
-          transition={{ duration: 0.5, type: "spring", damping: 20, delay }}
+          transition={{ duration: 0.5, type: 'spring', damping: 20, delay }}
           className={cn(
-            "absolute bottom-0 mt-auto w-full rounded-[40px] bg-primary/80 p-3 text-white",
+            'absolute bottom-0 mt-auto w-full rounded-[40px] bg-primary/80 p-3 text-white',
             className,
           )}
         >
@@ -110,30 +109,30 @@ const BarChart = ({
       <motion.div
         initial={{ opacity: 0, y: 100, height: 0 }}
         animate={{ opacity: 1, y: 0, height: `${value}%` }}
-        transition={{ duration: 0.5, type: "spring", damping: 15, delay }}
+        transition={{ duration: 0.5, type: 'spring', damping: 15, delay }}
         className="absolute bottom-0 w-full"
       >
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: showToolTip ? 1 : 0, y: showToolTip ? 0 : 100 }}
-          transition={{ duration: 0.5, type: "spring", damping: 15, delay }}
+          transition={{ duration: 0.5, type: 'spring', damping: 15, delay }}
           className={cn(
-            "absolute -top-9 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-muted-foreground px-2 py-1 text-white",
+            'absolute -top-9 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-muted-foreground px-2 py-1 text-white',
             className,
           )}
         >
           <div
             className={cn(
-              "absolute -bottom-9 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-muted-foreground transition-all duration-300 ease-in-out",
+              'absolute -bottom-9 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-muted-foreground transition-all duration-300 ease-in-out',
               className,
             )}
           />
           <svg
             className={cn(
-              "absolute -bottom-2 left-1/2 -translate-x-1/2",
-              className.includes("bg-sky-400")
-                ? "text-sky-400"
-                : "text-muted-foreground",
+              'absolute -bottom-2 left-1/2 -translate-x-1/2',
+              className.includes('bg-sky-400')
+                ? 'text-sky-400'
+                : 'text-muted-foreground',
             )}
             width="10"
             height="10"
@@ -153,5 +152,5 @@ const BarChart = ({
         {label}
       </p>
     </div>
-  );
-};
+  )
+}

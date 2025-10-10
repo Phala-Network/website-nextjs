@@ -1,9 +1,5 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react'
 
-export default function SolutionsLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  return <>{children}</>;
+export default function SolutionsLayout({ children }: { children: ReactNode }) {
+  return <>{children}</>
 }

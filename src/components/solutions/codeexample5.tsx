@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
-import type { BundledLanguage } from "@/components/kibo-ui/code-block";
+import type { BundledLanguage } from '@/components/kibo-ui/code-block'
 import {
   CodeBlock,
   CodeBlockBody,
@@ -10,42 +10,43 @@ import {
   CodeBlockCopyButton,
   CodeBlockHeader,
   CodeBlockItem,
-} from "@/components/kibo-ui/code-block";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from '@/components/kibo-ui/code-block'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 interface CodeExample {
-  language: string;
-  filename: string;
-  icon: string;
-  code: string;
+  language: string
+  filename: string
+  icon: string
+  code: string
 }
 
 interface ApiExample {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  code: CodeExample[];
+  id: string
+  title: string
+  description: string
+  image: string
+  code: CodeExample[]
 }
 
 interface Codeexample5Props {
-  title?: string;
-  subtitle?: string;
-  examples?: ApiExample[];
+  title?: string
+  subtitle?: string
+  examples?: ApiExample[]
 }
 
 const defaultExamples: ApiExample[] = [
   {
-    id: "deploy",
-    title: "Deploy Data Enclave",
-    description: "Set up confidential data processing environment",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/symbols/globe.svg",
+    id: 'deploy',
+    title: 'Deploy Data Enclave',
+    description: 'Set up confidential data processing environment',
+    image:
+      'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/symbols/globe.svg',
     code: [
       {
-        language: "yaml",
-        filename: "data-enclave.yaml",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yaml/yaml-original.svg",
+        language: 'yaml',
+        filename: 'data-enclave.yaml',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yaml/yaml-original.svg',
         code: `services:
   dstack-service:
     image: phala/dstack-service:latest
@@ -87,9 +88,9 @@ configs:
     file: ./requirements.txt`,
       },
       {
-        language: "bash",
-        filename: "deploy.sh",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
+        language: 'bash',
+        filename: 'deploy.sh',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg',
         code: `#!/bin/bash
 # Deploy confidential data enclave on Phala
 
@@ -113,9 +114,9 @@ phala attest get --app-name "data-enclave" > attestation.json
 echo "✓ Data enclave deployed with hardware attestation"`,
       },
       {
-        language: "javascript",
-        filename: "deploy.js",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        language: 'javascript',
+        filename: 'deploy.js',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
         code: `// Deploy data enclave using Phala SDK
 import { PhalaCloud } from '@phala/sdk';
 
@@ -162,15 +163,16 @@ deployDataEnclave();`,
     ],
   },
   {
-    id: "process",
-    title: "Process Private Data",
-    description: "Compute on encrypted data inside TEE",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/python-icon.svg",
+    id: 'process',
+    title: 'Process Private Data',
+    description: 'Compute on encrypted data inside TEE',
+    image:
+      'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/python-icon.svg',
     code: [
       {
-        language: "python",
-        filename: "processor.py",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+        language: 'python',
+        filename: 'processor.py',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
         code: `# Process encrypted data inside TEE
 from phala_tee import SealedStorage, Attestation
 import pandas as pd
@@ -252,9 +254,9 @@ insights = processor.compute_insights(df_health, df_finance)
 result = processor.emit_results(insights)`,
       },
       {
-        language: "javascript",
-        filename: "processor.js",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        language: 'javascript',
+        filename: 'processor.js',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
         code: `// Process private data in Node.js TEE
 import { SealedStorage, Attestation } from '@phala/tee-sdk';
 import * as dfd from 'danfojs-node';
@@ -335,9 +337,9 @@ const insights = processor.computeInsights(health, finance);
 await processor.emitResults(insights);`,
       },
       {
-        language: "rust",
-        filename: "processor.rs",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg",
+        language: 'rust',
+        filename: 'processor.rs',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',
         code: `// Process private data in Rust TEE
 use phala_tee::{SealedStorage, Attestation};
 use polars::prelude::*;
@@ -429,15 +431,15 @@ fn main() -> Result<()> {
     ],
   },
   {
-    id: "verify",
-    title: "Verify Attestation",
-    description: "Cryptographically verify TEE execution",
-    image: "https://api.iconify.design/lucide:shield-check.svg",
+    id: 'verify',
+    title: 'Verify Attestation',
+    description: 'Cryptographically verify TEE execution',
+    image: 'https://api.iconify.design/lucide:shield-check.svg',
     code: [
       {
-        language: "typescript",
-        filename: "verify-attestation.ts",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+        language: 'typescript',
+        filename: 'verify-attestation.ts',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
         code: `// Verify attestation quote from data enclave
 import { PhalaAttestationClient } from '@phala/sdk';
 import { readFileSync } from 'fs';
@@ -501,9 +503,9 @@ const result = await verifyDataEnclave();
 console.log('Trusted insights:', result.insights);`,
       },
       {
-        language: "python",
-        filename: "verify_attestation.py",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+        language: 'python',
+        filename: 'verify_attestation.py',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
         code: `# Verify attestation from data enclave
 from phala_sdk import PhalaAttestationClient
 import json
@@ -560,9 +562,9 @@ result = verify_data_enclave()
 print(f"Trusted insights: {result['insights']}")`,
       },
       {
-        language: "bash",
-        filename: "verify.sh",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
+        language: 'bash',
+        filename: 'verify.sh',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg',
         code: `#!/bin/bash
 # Verify attestation using Phala CLI
 
@@ -593,17 +595,19 @@ fi`,
       },
     ],
   },
-];
+]
 
 const Codeexample5 = ({
-  title = "How It Works",
-  subtitle = "Deploy confidential data workloads in three simple steps",
-  examples = defaultExamples
+  title = 'How It Works',
+  subtitle = 'Deploy confidential data workloads in three simple steps',
+  examples = defaultExamples,
 }: Codeexample5Props) => {
-  const [selectedApi, setSelectedApi] = useState(examples[0]?.id || "deploy");
-  const [selectedLanguage, setSelectedLanguage] = useState(examples[0]?.code[0]?.language || "yaml");
+  const [selectedApi, setSelectedApi] = useState(examples[0]?.id || 'deploy')
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    examples[0]?.code[0]?.language || 'yaml',
+  )
 
-  const currentApi = examples.find((api) => api.id === selectedApi);
+  const currentApi = examples.find((api) => api.id === selectedApi)
 
   return (
     <section className="py-32">
@@ -613,9 +617,7 @@ const Codeexample5 = ({
             {title}
           </h2>
           {subtitle && (
-            <p className="text-muted-foreground text-lg">
-              {subtitle}
-            </p>
+            <p className="text-muted-foreground text-lg">{subtitle}</p>
           )}
         </div>
 
@@ -628,11 +630,11 @@ const Codeexample5 = ({
                   <div
                     key={api.id}
                     className={`cursor-pointer rounded-lg p-4 transition-all ${
-                      selectedApi === api.id ? "bg-muted" : "hover:bg-muted"
+                      selectedApi === api.id ? 'bg-muted' : 'hover:bg-muted'
                     }`}
                     onClick={() => {
-                      setSelectedApi(api.id);
-                      setSelectedLanguage(api.code[0]?.language || "yaml");
+                      setSelectedApi(api.id)
+                      setSelectedLanguage(api.code[0]?.language || 'yaml')
                     }}
                   >
                     <div className="flex items-center gap-3">
@@ -651,7 +653,7 @@ const Codeexample5 = ({
                       </div>
                     </div>
                   </div>
-                );
+                )
               })}
             </div>
           </div>
@@ -665,7 +667,9 @@ const Codeexample5 = ({
                 onValueChange={setSelectedLanguage}
               >
                 <div className="overflow-x-auto">
-                  <TabsList className={`grid w-full min-w-max ${currentApi?.code.length === 2 ? 'grid-cols-2' : currentApi?.code.length === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}>
+                  <TabsList
+                    className={`grid w-full min-w-max ${currentApi?.code.length === 2 ? 'grid-cols-2' : currentApi?.code.length === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}
+                  >
                     {currentApi?.code.map((code) => (
                       <TabsTrigger
                         key={code.language}
@@ -696,12 +700,16 @@ const Codeexample5 = ({
                 >
                   <CodeBlockHeader>
                     <div className="text-muted-foreground px-4 py-2 text-sm">
-                      {currentApi?.code.find(c => c.language === selectedLanguage)?.filename}
+                      {
+                        currentApi?.code.find(
+                          (c) => c.language === selectedLanguage,
+                        )?.filename
+                      }
                     </div>
                     <CodeBlockCopyButton
-                      onCopy={() => console.log("Copied code to clipboard")}
+                      onCopy={() => console.log('Copied code to clipboard')}
                       onError={() =>
-                        console.error("Failed to copy code to clipboard")
+                        console.error('Failed to copy code to clipboard')
                       }
                     />
                   </CodeBlockHeader>
@@ -730,7 +738,7 @@ const Codeexample5 = ({
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Codeexample5 };
+export { Codeexample5 }

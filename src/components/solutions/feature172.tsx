@@ -1,130 +1,131 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils'
 
 interface FeatureItem {
-  title: string;
-  description: string;
-  images: { src: string; alt: string; className?: string }[];
-  className?: string;
-  fade: string[];
+  title: string
+  description: string
+  images: { src: string; alt: string; className?: string }[]
+  className?: string
+  fade: string[]
 }
 
 interface Feature172Props {
-  title?: string;
-  topItems?: FeatureItem[];
-  bottomItems?: FeatureItem[];
+  title?: string
+  topItems?: FeatureItem[]
+  bottomItems?: FeatureItem[]
 }
 
 const DEFAULT_TOP_ITEMS: FeatureItem[] = [
   {
-    title: "Deploy your workload.",
+    title: 'Deploy your workload.',
     description:
       "Upload containerized AI models or data pipelines to Phala's TEE infrastructure with a single command.",
     images: [
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-        alt: "Deploy interface",
-        className: "aspect-495/186 max-w-lg rounded-xl",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg',
+        alt: 'Deploy interface',
+        className: 'aspect-495/186 max-w-lg rounded-xl',
       },
     ],
     className:
-      "flex-1 [&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
-    fade: [""] as string[],
+      'flex-1 [&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2',
+    fade: [''] as string[],
   },
   {
-    title: "Verify attestation.",
-    description: "Remote attestation proves your code runs in genuine Intel TDX or AMD SEV hardware enclaves.",
+    title: 'Verify attestation.',
+    description:
+      'Remote attestation proves your code runs in genuine Intel TDX or AMD SEV hardware enclaves.',
     images: [
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/instagram-icon.svg",
-        alt: "Jira logo",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/instagram-icon.svg',
+        alt: 'Jira logo',
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/linkedin-icon.svg",
-        alt: "Excel logo",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/linkedin-icon.svg',
+        alt: 'Excel logo',
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/producthunt-icon.svg",
-        alt: "Notion logo",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/producthunt-icon.svg',
+        alt: 'Notion logo',
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/twitter-icon.svg",
-        alt: "Word logo",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/twitter-icon.svg',
+        alt: 'Word logo',
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-icon.svg",
-        alt: "Astro logo",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-icon.svg',
+        alt: 'Astro logo',
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/figma-icon.svg",
-        alt: "Figma logo",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/figma-icon.svg',
+        alt: 'Figma logo',
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/slack-icon.svg",
-        alt: "Slack logo",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/slack-icon.svg',
+        alt: 'Slack logo',
       },
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg",
-        alt: "Google logo",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg',
+        alt: 'Google logo',
       },
     ],
     className:
-      "flex-1 [&>.title-container]:mb-5 md:[&>.title-container]:mb-8 md:[&>.title-container]:translate-x-2 xl:[&>.title-container]:translate-x-4 [&>.title-container]:translate-x-0",
+      'flex-1 [&>.title-container]:mb-5 md:[&>.title-container]:mb-8 md:[&>.title-container]:translate-x-2 xl:[&>.title-container]:translate-x-4 [&>.title-container]:translate-x-0',
     fade: [],
   },
-];
+]
 
 const DEFAULT_BOTTOM_ITEMS: FeatureItem[] = [
   {
-    title: "Send sensitive data.",
+    title: 'Send sensitive data.',
     description:
-      "Encrypted datasets are transmitted securely to the verified enclave—never exposed to operators or infrastructure.",
+      'Encrypted datasets are transmitted securely to the verified enclave—never exposed to operators or infrastructure.',
     images: [
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg",
-        alt: "Data transmission",
-        className: "aspect-305/280 rounded-t-xl max-w-[305px]",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg',
+        alt: 'Data transmission',
+        className: 'aspect-305/280 rounded-t-xl max-w-[305px]',
       },
     ],
     className:
-      "[&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
-    fade: ["bottom"] as string[],
+      '[&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2',
+    fade: ['bottom'] as string[],
   },
   {
-    title: "Processing happens in-enclave.",
+    title: 'Processing happens in-enclave.',
     description:
-      "AI inference, training, or analytics run inside hardware-encrypted memory with zero-knowledge guarantees.",
+      'AI inference, training, or analytics run inside hardware-encrypted memory with zero-knowledge guarantees.',
     images: [
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg",
-        alt: "Enclave processing",
-        className: "aspect-320/103 rounded-xl",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg',
+        alt: 'Enclave processing',
+        className: 'aspect-320/103 rounded-xl',
       },
     ],
     className:
-      "justify-normal [&>.title-container]:mb-5 md:[&>.title-container]:mb-0 [&>.image-container]:flex-1 md:[&>.image-container]:place-items-center md:[&>.image-container]:-translate-y-3",
-    fade: [""],
+      'justify-normal [&>.title-container]:mb-5 md:[&>.title-container]:mb-0 [&>.image-container]:flex-1 md:[&>.image-container]:place-items-center md:[&>.image-container]:-translate-y-3',
+    fade: [''],
   },
   {
-    title: "Retrieve encrypted results.",
+    title: 'Retrieve encrypted results.',
     description:
-      "Only authorized parties can decrypt outputs. All computation logs remain sealed inside the TEE.",
+      'Only authorized parties can decrypt outputs. All computation logs remain sealed inside the TEE.',
     images: [
       {
-        src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-6.svg",
-        alt: "Encrypted results",
-        className: "aspect-305/280 rounded-t-xl max-w-[305px]",
+        src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-6.svg',
+        alt: 'Encrypted results',
+        className: 'aspect-305/280 rounded-t-xl max-w-[305px]',
       },
     ],
     className:
-      "[&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
-    fade: ["bottom"],
+      '[&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2',
+    fade: ['bottom'],
   },
-];
+]
 
 function Feature172({
-  title = "How It Works",
+  title = 'How It Works',
   topItems = DEFAULT_TOP_ITEMS,
-  bottomItems = DEFAULT_BOTTOM_ITEMS
+  bottomItems = DEFAULT_BOTTOM_ITEMS,
 }: Feature172Props = {}) {
   return (
     <section className="py-32">
@@ -165,26 +166,26 @@ function Feature172({
         />
       </div>
     </section>
-  );
+  )
 }
 
 interface ItemProps {
   item: {
-    title: string;
-    description: string;
-    images: { src: string; alt: string; className?: string }[];
-    className?: string;
-    fade: string[];
-  };
-  isLast?: boolean;
-  className?: string;
+    title: string
+    description: string
+    images: { src: string; alt: string; className?: string }[]
+    className?: string
+    fade: string[]
+  }
+  isLast?: boolean
+  className?: string
 }
 
 const Item = ({ item, isLast, className }: ItemProps) => {
   return (
     <div
       className={cn(
-        "relative flex flex-col px-0 py-6 md:px-6 md:py-8",
+        'relative flex flex-col px-0 py-6 md:px-6 md:py-8',
         className,
         item.className,
       )}
@@ -192,12 +193,12 @@ const Item = ({ item, isLast, className }: ItemProps) => {
       <div className="title-container max-w-md text-balance">
         <h3 className="inline font-semibold">{item.title} </h3>
         <span className="font-medium text-muted-foreground">
-          {" "}
+          {' '}
           {item.description}
         </span>
       </div>
 
-      {item.fade.includes("bottom") && (
+      {item.fade.includes('bottom') && (
         <div className="absolute inset-0 z-10 bg-linear-to-t from-background/80 via-transparent to-transparent md:hidden" />
       )}
       {item.images.length > 4 ? (
@@ -245,7 +246,7 @@ const Item = ({ item, isLast, className }: ItemProps) => {
               src={image.src}
               alt={image.alt}
               className={cn(
-                "w-full overflow-hidden object-cover",
+                'w-full overflow-hidden object-cover',
                 image.className,
               )}
             />
@@ -266,25 +267,25 @@ const Item = ({ item, isLast, className }: ItemProps) => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
 interface DashedLineProps {
-  orientation?: "horizontal" | "vertical";
-  className?: string;
+  orientation?: 'horizontal' | 'vertical'
+  className?: string
 }
 
 const DashedLine = ({
-  orientation = "horizontal",
+  orientation = 'horizontal',
   className,
 }: DashedLineProps) => {
-  const isHorizontal = orientation === "horizontal";
+  const isHorizontal = orientation === 'horizontal'
 
   return (
     <div
       className={cn(
-        "relative text-muted-foreground",
-        isHorizontal ? "h-px w-full" : "h-full w-px",
+        'relative text-muted-foreground',
+        isHorizontal ? 'h-px w-full' : 'h-full w-px',
         className,
       )}
     >
@@ -292,19 +293,19 @@ const DashedLine = ({
         className={cn(
           isHorizontal
             ? [
-                "h-px w-full",
-                "bg-[repeating-linear-gradient(90deg,transparent,transparent_4px,currentColor_4px,currentColor_10px)]",
-                "[mask-image:linear-gradient(90deg,transparent,black_25%,black_75%,transparent)]",
+                'h-px w-full',
+                'bg-[repeating-linear-gradient(90deg,transparent,transparent_4px,currentColor_4px,currentColor_10px)]',
+                '[mask-image:linear-gradient(90deg,transparent,black_25%,black_75%,transparent)]',
               ]
             : [
-                "h-full w-px",
-                "bg-[repeating-linear-gradient(180deg,transparent,transparent_4px,currentColor_4px,currentColor_8px)]",
-                "[mask-image:linear-gradient(180deg,transparent,black_25%,black_75%,transparent)]",
+                'h-full w-px',
+                'bg-[repeating-linear-gradient(180deg,transparent,transparent_4px,currentColor_4px,currentColor_8px)]',
+                '[mask-image:linear-gradient(180deg,transparent,black_25%,black_75%,transparent)]',
               ],
         )}
       />
     </div>
-  );
-};
+  )
+}
 
-export { Feature172 };
+export { Feature172 }

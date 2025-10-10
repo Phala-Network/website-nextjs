@@ -1,17 +1,17 @@
-"use client";
-import { Check, Play, Star, Zap } from "lucide-react";
-import { Fragment, useState } from "react";
+'use client'
+import { Check, Play, Star, Zap } from 'lucide-react'
+import { Fragment, useState } from 'react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog'
 
 const Hero104 = () => {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
 
   return (
     <Fragment>
@@ -44,9 +44,9 @@ const Hero104 = () => {
               </div>
               <div className="mt-6 flex flex-wrap justify-center gap-7 lg:justify-normal">
                 {[
-                  "Remote attestation",
-                  "Cryptographic proofs",
-                  "Verifiable execution",
+                  'Remote attestation',
+                  'Cryptographic proofs',
+                  'Verifiable execution',
                 ].map((text, i) => (
                   <div key={`${i}`} className="flex items-center gap-2">
                     <Check className="stroke-muted-foreground h-3 w-3" />
@@ -172,7 +172,7 @@ const Hero104 = () => {
         </DialogContent>
       </Dialog>
     </Fragment>
-  );
-};
+  )
+}
 
-export { Hero104 };
+export { Hero104 }

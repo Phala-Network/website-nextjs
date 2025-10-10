@@ -1,31 +1,34 @@
-"use client";
+'use client'
 
-import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle } from 'lucide-react'
+
+import { Card, CardContent } from '@/components/ui/card'
 
 export function ModelsShowcasePhala() {
   const models = [
     {
       id: 1,
-      title: "200+ AI Models",
-      description: "Access leading LLMs from OpenAI, Anthropic, Meta, Google, and more—all with hardware-enforced privacy.",
+      title: '200+ AI Models',
+      description:
+        'Access leading LLMs from OpenAI, Anthropic, Meta, Google, and more—all with hardware-enforced privacy.',
       features: [
-        "GPT-4, Claude, Llama, Gemini",
-        "Multimodal & specialized models",
-        "Regular model updates",
-      ]
+        'GPT-4, Claude, Llama, Gemini',
+        'Multimodal & specialized models',
+        'Regular model updates',
+      ],
     },
     {
       id: 2,
-      title: "OpenAI-Compatible API",
-      description: "Drop-in replacement for OpenAI endpoints with zero code changes and full SDK compatibility.",
+      title: 'OpenAI-Compatible API',
+      description:
+        'Drop-in replacement for OpenAI endpoints with zero code changes and full SDK compatibility.',
       features: [
-        "Same request/response format",
-        "Compatible SDKs & libraries",
-        "Seamless migration path",
-      ]
+        'Same request/response format',
+        'Compatible SDKs & libraries',
+        'Seamless migration path',
+      ],
     },
-  ];
+  ]
 
   return (
     <section className="py-24 bg-muted/30">
@@ -35,14 +38,18 @@ export function ModelsShowcasePhala() {
             Private AI Gateway For 200+ Models
           </h2>
           <p className="text-lg text-muted-foreground">
-            One unified interface for all major AI providers with TEE-protected routing and verifiable attestation.
+            One unified interface for all major AI providers with TEE-protected
+            routing and verifiable attestation.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto">
           <div className="grid gap-8 md:grid-cols-2">
             {models.map((model) => (
-              <Card key={model.id} className="border-border/50 hover:border-primary/50 transition-all hover:shadow-lg">
+              <Card
+                key={model.id}
+                className="border-border/50 hover:border-primary/50 transition-all hover:shadow-lg"
+              >
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-semibold mb-3">{model.title}</h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -63,5 +70,5 @@ export function ModelsShowcasePhala() {
         </div>
       </div>
     </section>
-  );
+  )
 }

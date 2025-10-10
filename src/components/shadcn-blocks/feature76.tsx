@@ -1,49 +1,49 @@
-import { Building2, Bot, Shield, Lock, Layers, FileCheck } from "lucide-react";
+import { Bot, Building2, FileCheck, Layers, Lock, Shield } from 'lucide-react'
 
 const features = [
   {
-    id: "private-ai",
-    title: "Private Enterprise AI",
+    id: 'private-ai',
+    title: 'Private Enterprise AI',
     description:
-      "Train and deploy models on sensitive healthcare, financial, or legal data with complete hardware protection. Your data never leaves the TEE.",
+      'Train and deploy models on sensitive healthcare, financial, or legal data with complete hardware protection. Your data never leaves the TEE.',
     icon: <Building2 className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "ai-agents",
-    title: "User-Owned AI Agents",
+    id: 'ai-agents',
+    title: 'User-Owned AI Agents',
     description:
-      "Build autonomous AI agents that securely manage cryptographic keys and digital assets. Powers platforms like Eliza and Virtuals Game Agents.",
+      'Build autonomous AI agents that securely manage cryptographic keys and digital assets. Powers platforms like Eliza and Virtuals Game Agents.',
     icon: <Bot className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "zk-proofs",
-    title: "ZK Proof Generation",
+    id: 'zk-proofs',
+    title: 'ZK Proof Generation',
     description:
-      "Accelerate zkVM and zkRollup proof generation with GPU TEE. SP1 zkVM runs with <5% TEE overhead—verified with dual attestation.",
+      'Accelerate zkVM and zkRollup proof generation with GPU TEE. SP1 zkVM runs with <5% TEE overhead—verified with dual attestation.',
     icon: <Shield className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "fhe-mpc",
-    title: "FHE/MPC Acceleration",
+    id: 'fhe-mpc',
+    title: 'FHE/MPC Acceleration',
     description:
-      "Use GPU TEE as 2FA for FHE and MPC systems. Secure key generation, computation integrity, and attestation in one platform. Powers Fairblock and Mind Network.",
+      'Use GPU TEE as 2FA for FHE and MPC systems. Secure key generation, computation integrity, and attestation in one platform. Powers Fairblock and Mind Network.',
     icon: <Lock className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "multi-proof",
-    title: "Multi-Proof Systems",
+    id: 'multi-proof',
+    title: 'Multi-Proof Systems',
     description:
-      "Combine ZK proofs with TEE attestation for double security. Hedge against cryptographic bugs while maintaining verifiability.",
+      'Combine ZK proofs with TEE attestation for double security. Hedge against cryptographic bugs while maintaining verifiability.',
     icon: <Layers className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "compliance",
-    title: "Regulatory Compliance",
+    id: 'compliance',
+    title: 'Regulatory Compliance',
     description:
-      "Meet GDPR, HIPAA, and SOC 2 requirements with hardware-backed privacy guarantees. Full audit trail with Intel and NVIDIA attestation.",
+      'Meet GDPR, HIPAA, and SOC 2 requirements with hardware-backed privacy guarantees. Full audit trail with Intel and NVIDIA attestation.',
     icon: <FileCheck className="size-10" strokeWidth={1.5} />,
   },
-];
+]
 
 const Feature76 = () => {
   return (
@@ -54,7 +54,8 @@ const Feature76 = () => {
             What You Can Build with GPU TEE
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl text-lg">
-            Real-world applications running on Phala Cloud with complete Intel TDX + NVIDIA Confidential Computing protection
+            Real-world applications running on Phala Cloud with complete Intel
+            TDX + NVIDIA Confidential Computing protection
           </p>
         </div>
         <div className="relative mt-6 md:mt-10">
@@ -88,7 +89,7 @@ const Feature76 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature76 };
+export { Feature76 }

@@ -196,4 +196,4 @@ const Pricing5 = () => {
   )
 }
 
-export { Pricing5 };
+export { Pricing5 }

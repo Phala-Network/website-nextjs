@@ -1,61 +1,62 @@
-"use client";
+'use client'
 
-import { User, Code, Building, CheckCircle, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { ArrowRight, Building, CheckCircle, Code, User } from 'lucide-react'
+import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface Solution {
-  title: string;
-  description: string;
-  features: string[];
-  icon: React.ReactNode;
-  ctaText: string;
-  ctaLink: string;
+  title: string
+  description: string
+  features: string[]
+  icon: React.ReactNode
+  ctaText: string
+  ctaLink: string
 }
 
 const solutions: Solution[] = [
   {
-    title: "Personal",
+    title: 'Personal',
     description:
-      "Private AI assistants for individuals who value data sovereignty and zero-logging guarantees.",
+      'Private AI assistants for individuals who value data sovereignty and zero-logging guarantees.',
     features: [
-      "Private chat with zero data retention",
-      "Encrypted journal & notes",
-      "Personal data analysis",
+      'Private chat with zero data retention',
+      'Encrypted journal & notes',
+      'Personal data analysis',
     ],
     icon: <User className="h-6 w-6" />,
-    ctaText: "Try Models",
-    ctaLink: "https://cloud.phala.network/dashboard/confidential-ai-models",
+    ctaText: 'Try Models',
+    ctaLink: 'https://cloud.phala.network/dashboard/confidential-ai-models',
   },
   {
-    title: "Developer",
+    title: 'Developer',
     description:
-      "OpenAI-compatible APIs with TEE protection—drop-in replacement with hardware-enforced privacy.",
+      'OpenAI-compatible APIs with TEE protection—drop-in replacement with hardware-enforced privacy.',
     features: [
-      "One-line API integration",
-      "Same SDKs & libraries",
-      "Verifiable attestation",
+      'One-line API integration',
+      'Same SDKs & libraries',
+      'Verifiable attestation',
     ],
     icon: <Code className="h-6 w-6" />,
-    ctaText: "Get API Key",
-    ctaLink: "https://cloud.phala.network/dashboard/confidential-ai-api",
+    ctaText: 'Get API Key',
+    ctaLink: 'https://cloud.phala.network/dashboard/confidential-ai-api',
   },
   {
-    title: "Enterprise",
+    title: 'Enterprise',
     description:
-      "Scalable confidential AI infrastructure with compliance, auditability, and flexible deployment options.",
+      'Scalable confidential AI infrastructure with compliance, auditability, and flexible deployment options.',
     features: [
-      "Private RAG & AI copilots",
-      "Confidential fine-tuning",
-      "On-prem or cloud deployment",
-      "HIPAA/SOC2 compliance",
+      'Private RAG & AI copilots',
+      'Confidential fine-tuning',
+      'On-prem or cloud deployment',
+      'HIPAA/SOC2 compliance',
     ],
     icon: <Building className="h-6 w-6" />,
-    ctaText: "Contact Us",
-    ctaLink: "https://phala.com/contact",
+    ctaText: 'Contact Us',
+    ctaLink: 'https://phala.com/contact',
   },
-];
+]
 
 export function SolutionsPhala() {
   return (
@@ -67,7 +68,8 @@ export function SolutionsPhala() {
               Solutions for Every User
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-              Choose the perfect privacy-first AI solution tailored to your needs
+              Choose the perfect privacy-first AI solution tailored to your
+              needs
             </p>
           </div>
 
@@ -88,11 +90,11 @@ export function SolutionsPhala() {
                           {solution.title}
                         </h3>
                         <div className="text-muted-foreground mt-1 text-sm">
-                          {solution.title === "Personal"
-                            ? "Individual"
-                            : solution.title === "Developer"
-                              ? "API"
-                              : "Enterprise"}
+                          {solution.title === 'Personal'
+                            ? 'Individual'
+                            : solution.title === 'Developer'
+                              ? 'API'
+                              : 'Enterprise'}
                         </div>
                       </div>
                     </div>
@@ -125,7 +127,9 @@ export function SolutionsPhala() {
                     <Button
                       asChild
                       className="w-full group"
-                      variant={solution.title === "Enterprise" ? "outline" : "default"}
+                      variant={
+                        solution.title === 'Enterprise' ? 'outline' : 'default'
+                      }
                     >
                       <Link href={solution.ctaLink}>
                         {solution.ctaText}
@@ -140,5 +144,5 @@ export function SolutionsPhala() {
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -8,43 +8,47 @@ import {
   Share2,
   Sparkles,
   Video,
-} from "lucide-react";
+} from 'lucide-react'
 
-import { Marquee } from "@/components/magicui/marquee";
-import { Button } from "@/components/ui/button";
+import { Marquee } from '@/components/magicui/marquee'
+import { Button } from '@/components/ui/button'
 
 const integrations = [
   {
-    name: "LoRA/PEFT",
-    description: "Parameter-efficient fine-tuning with sealed checkpoints in TEEs.",
+    name: 'LoRA/PEFT',
+    description:
+      'Parameter-efficient fine-tuning with sealed checkpoints in TEEs.',
     icon: Sparkles,
   },
   {
-    name: "Per-Tenant Models",
-    description: "Separate fine-tuned models for each customer with data isolation.",
+    name: 'Per-Tenant Models',
+    description:
+      'Separate fine-tuned models for each customer with data isolation.',
     icon: Cloud,
   },
   {
-    name: "Dataset Privacy",
-    description: "Training data never leaves encrypted TEE memory during fine-tuning.",
+    name: 'Dataset Privacy',
+    description:
+      'Training data never leaves encrypted TEE memory during fine-tuning.',
     icon: CloudCog,
   },
   {
-    name: "Model IP Protection",
-    description: "Weights and gradients protected with hardware encryption.",
+    name: 'Model IP Protection',
+    description: 'Weights and gradients protected with hardware encryption.',
     icon: Share2,
   },
   {
-    name: "Attestation Proofs",
-    description: "Cryptographic verification of every fine-tuning job.",
+    name: 'Attestation Proofs',
+    description: 'Cryptographic verification of every fine-tuning job.',
     icon: ChartLine,
   },
   {
-    name: "Zero Data Leakage",
-    description: "Operators cannot access your proprietary training data or weights.",
+    name: 'Zero Data Leakage',
+    description:
+      'Operators cannot access your proprietary training data or weights.',
     icon: Video,
   },
-];
+]
 
 const Hero40 = () => {
   return (
@@ -56,8 +60,9 @@ const Hero40 = () => {
               Fine-Tune Models Without Exposing Data
             </h1>
             <p className="text-muted-foreground text-lg">
-              Customize LLMs on proprietary datasets with hardware-enforced confidentiality.
-              Training data and model weights stay encrypted in Intel TDX/AMD SEV enclaves.
+              Customize LLMs on proprietary datasets with hardware-enforced
+              confidentiality. Training data and model weights stay encrypted in
+              Intel TDX/AMD SEV enclaves.
             </p>
             <div className="flex gap-4">
               <Button variant="outline" size="lg" asChild>
@@ -140,7 +145,7 @@ const Hero40 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Hero40 };
+export { Hero40 }

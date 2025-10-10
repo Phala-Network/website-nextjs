@@ -39,9 +39,7 @@ const H100MetricsBento = () => {
                     21.8K
                   </div>
                   <p className="text-lg font-medium text-white">tokens/sec</p>
-                  <p className="text-sm text-white/80">
-                    Llama 2 70B Inference
-                  </p>
+                  <p className="text-sm text-white/80">Llama 2 70B Inference</p>
                 </div>
               </div>
             </div>

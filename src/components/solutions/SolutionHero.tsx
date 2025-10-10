@@ -1,15 +1,16 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
 
 interface SolutionHeroProps {
-  eyebrow?: string;
-  headline: string;
-  subheadline: string;
-  primaryCTA: { text: string; url: string };
-  secondaryCTA: { text: string; url: string };
-  features?: string[];
+  eyebrow?: string
+  headline: string
+  subheadline: string
+  primaryCTA: { text: string; url: string }
+  secondaryCTA: { text: string; url: string }
+  features?: string[]
 }
 
 export function SolutionHero({
@@ -54,5 +55,5 @@ export function SolutionHero({
         )}
       </div>
     </section>
-  );
+  )
 }

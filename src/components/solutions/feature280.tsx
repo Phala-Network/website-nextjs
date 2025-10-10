@@ -1,42 +1,41 @@
-import { BadgeCheck } from "lucide-react";
-import React from "react";
+import { BadgeCheck } from 'lucide-react'
+import type React from 'react'
 
-import { cn } from "@/lib/utils";
-
-import { CardStack } from "@/components/aceternity/card-stack";
+import { CardStack } from '@/components/aceternity/card-stack'
+import { cn } from '@/lib/utils'
 
 interface Card {
-  id: number;
-  name: string;
-  designation: string;
-  content: React.ReactNode;
+  id: number
+  name: string
+  designation: string
+  content: React.ReactNode
 }
 
 interface Feature280Props {
-  title?: string;
-  subtitle?: string;
-  features?: string[];
-  cards?: Card[];
+  title?: string
+  subtitle?: string
+  features?: string[]
+  cards?: Card[]
 }
 
 const Feature280 = ({
-  title = "What our Users say Proudly",
-  subtitle = "FEATURES",
+  title = 'What our Users say Proudly',
+  subtitle = 'FEATURES',
   features = [
-    "Instant Implementation",
-    "One-Time Payment",
-    "Developer Friendly",
-    "Fully Responsive",
-    "Production Ready",
-    "Premium Support",
-    "Regular Updates",
-    "Customizable Design",
-    "Performance Optimized",
-    "Accessibility Compliant",
-    "Cross-Browser ",
-    "Documentation Included",
+    'Instant Implementation',
+    'One-Time Payment',
+    'Developer Friendly',
+    'Fully Responsive',
+    'Production Ready',
+    'Premium Support',
+    'Regular Updates',
+    'Customizable Design',
+    'Performance Optimized',
+    'Accessibility Compliant',
+    'Cross-Browser ',
+    'Documentation Included',
   ],
-  cards = CARDS
+  cards = CARDS,
 }: Feature280Props) => {
   return (
     <section className="h-full w-screen overflow-hidden py-32">
@@ -67,62 +66,70 @@ const Feature280 = ({
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature280 };
+export { Feature280 }
 
 export const Highlight = ({
   children,
   className,
 }: {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }) => {
   return (
     <span
       className={cn(
-        "bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500",
+        'bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500',
         className,
       )}
     >
       {children}
     </span>
-  );
-};
+  )
+}
 
 const CARDS = [
   {
     id: 0,
-    name: "Anna Kazlauskas",
-    designation: "Founder of Vana",
+    name: 'Anna Kazlauskas',
+    designation: 'Founder of Vana',
     content: (
       <p>
-        A well-designed system (like Vana) uses both crypto consensus where you don't trust hardware, and{" "}
+        A well-designed system (like Vana) uses both crypto consensus where you
+        don't trust hardware, and{' '}
         <Highlight>TEEs for privacy-specific applications</Highlight>
       </p>
     ),
   },
   {
     id: 1,
-    name: "Felix Meng",
-    designation: "Founder of Xtrace",
+    name: 'Felix Meng',
+    designation: 'Founder of Xtrace',
     content: (
       <p>
-        Phala made it possible for us to build an AI retrieval engine that never exposes what it sees. Our users trust Xtrace because{" "}
-        <Highlight>their private data stays encrypted, even while the model is thinking.</Highlight>
+        Phala made it possible for us to build an AI retrieval engine that never
+        exposes what it sees. Our users trust Xtrace because{' '}
+        <Highlight>
+          their private data stays encrypted, even while the model is thinking.
+        </Highlight>
       </p>
     ),
   },
   {
     id: 2,
-    name: "Conan",
-    designation: "Founder of Rena Labs",
+    name: 'Conan',
+    designation: 'Founder of Rena Labs',
     content: (
       <p>
-        I'm totally TEE pilled. From OpenAI to Apple, both top-down and bottom-up,{" "}
-        <Highlight>the focus has shifted to making TEE tech actually usable and easy to integrate</Highlight>
+        I'm totally TEE pilled. From OpenAI to Apple, both top-down and
+        bottom-up,{' '}
+        <Highlight>
+          the focus has shifted to making TEE tech actually usable and easy to
+          integrate
+        </Highlight>
       </p>
     ),
   },
-];
+]

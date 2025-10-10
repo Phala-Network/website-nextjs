@@ -1,43 +1,44 @@
-import { Bot, GitFork, MessageSquare, RefreshCw, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Bot, GitFork, MessageSquare, RefreshCw, Users } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
 
 const features = [
   {
-    id: "feature-1",
-    title: "Curate",
+    id: 'feature-1',
+    title: 'Curate',
     description:
-      "Knowledge retrieval pattern for RAG agents. Query databases, search embeddings, and curate context before responding to user queries.",
+      'Knowledge retrieval pattern for RAG agents. Query databases, search embeddings, and curate context before responding to user queries.',
     icon: <Bot className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "feature-2",
-    title: "Plan-and-Execute",
+    id: 'feature-2',
+    title: 'Plan-and-Execute',
     description:
-      "Break down complex tasks into steps. Agent plans the approach, executes each step, and adjusts based on intermediate results.",
+      'Break down complex tasks into steps. Agent plans the approach, executes each step, and adjusts based on intermediate results.',
     icon: <GitFork className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "feature-3",
-    title: "Multi-Agent",
+    id: 'feature-3',
+    title: 'Multi-Agent',
     description:
-      "Coordinate multiple specialized agents. Divide tasks among expert agents and synthesize their outputs into cohesive responses.",
+      'Coordinate multiple specialized agents. Divide tasks among expert agents and synthesize their outputs into cohesive responses.',
     icon: <Users className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "feature-4",
-    title: "Critique-Revise",
+    id: 'feature-4',
+    title: 'Critique-Revise',
     description:
-      "Self-improving agents that critique their outputs and iterate. Generate, evaluate, refine until meeting quality thresholds.",
+      'Self-improving agents that critique their outputs and iterate. Generate, evaluate, refine until meeting quality thresholds.',
     icon: <MessageSquare className="size-10" strokeWidth={1.5} />,
   },
   {
-    id: "feature-5",
-    title: "Compress-ReAct",
+    id: 'feature-5',
+    title: 'Compress-ReAct',
     description:
-      "Reasoning and Acting pattern with context compression. Agent reasons, takes actions, observes results, and compresses long context.",
+      'Reasoning and Acting pattern with context compression. Agent reasons, takes actions, observes results, and compresses long context.',
     icon: <RefreshCw className="size-10" strokeWidth={1.5} />,
   },
-];
+]
 
 const Feature76 = () => {
   return (
@@ -88,7 +89,7 @@ const Feature76 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature76 as Feature76Agents };
+export { Feature76 as Feature76Agents }

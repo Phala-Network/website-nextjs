@@ -1,9 +1,8 @@
-"use client";
+'use client'
 
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowRightLeft,
   Award,
   Book,
   BookOpen,
@@ -27,15 +26,14 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
-  Trophy,
   Users,
   Wallet,
   X,
   Zap,
-} from "lucide-react";
-import { Fragment, useState } from "react";
+} from 'lucide-react'
+import { useState } from 'react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -43,303 +41,303 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu'
 
 // Products Menu Data
 const productCategories = [
   {
-    title: "Core Products",
+    title: 'Core Products',
     products: [
       {
-        id: "product-1",
-        title: "Confidential VM",
-        description: "Secure virtual machines with hardware-level encryption.",
-        href: "/confidential-vm",
+        id: 'product-1',
+        title: 'Confidential VM',
+        description: 'Secure virtual machines with hardware-level encryption.',
+        href: '/confidential-vm',
         icon: Server,
       },
       {
-        id: "product-2",
-        title: "Confidential AI Models",
-        description: "Run AI models with complete privacy and security.",
-        href: "/confidential-ai-models",
+        id: 'product-2',
+        title: 'Confidential AI Models',
+        description: 'Run AI models with complete privacy and security.',
+        href: '/confidential-ai-models',
         icon: Brain,
       },
       {
-        id: "product-3",
-        title: "GPU TEE",
-        description: "Hardware-enforced confidential computing on GPUs.",
-        href: "/gpu-tee",
+        id: 'product-3',
+        title: 'GPU TEE',
+        description: 'Hardware-enforced confidential computing on GPUs.',
+        href: '/gpu-tee',
         icon: Gpu,
       },
     ],
   },
   {
-    title: "Nvidia Confidential Compute",
+    title: 'Nvidia Confidential Compute',
     products: [
       {
-        id: "gpu-1",
-        title: "H100",
-        description: "NVIDIA H100 with confidential computing.",
-        href: "/gpu-tee/h100",
+        id: 'gpu-1',
+        title: 'H100',
+        description: 'NVIDIA H100 with confidential computing.',
+        href: '/gpu-tee/h100',
         icon: Gpu,
       },
       {
-        id: "gpu-2",
-        title: "H200",
-        description: "NVIDIA H200 with confidential computing.",
-        href: "/gpu-tee/h200",
+        id: 'gpu-2',
+        title: 'H200',
+        description: 'NVIDIA H200 with confidential computing.',
+        href: '/gpu-tee/h200',
         icon: Gpu,
       },
       {
-        id: "gpu-3",
-        title: "B200",
-        description: "NVIDIA B200 with confidential computing.",
-        href: "/gpu-tee/b200",
+        id: 'gpu-3',
+        title: 'B200',
+        description: 'NVIDIA B200 with confidential computing.',
+        href: '/gpu-tee/b200',
         icon: Gpu,
       },
     ],
   },
   {
-    title: "Zero Trust SDK",
+    title: 'Zero Trust SDK',
     products: [
       {
-        id: "product-4",
-        title: "dStack",
-        description: "Decentralized infrastructure for secure computing.",
-        href: "/dstack",
+        id: 'product-4',
+        title: 'dStack',
+        description: 'Decentralized infrastructure for secure computing.',
+        href: '/dstack',
         icon: Layers,
       },
       {
-        id: "product-5",
-        title: "Trust Center",
-        description: "Security and compliance information.",
-        href: "https://trust.phala.com/",
+        id: 'product-5',
+        title: 'Trust Center',
+        description: 'Security and compliance information.',
+        href: 'https://trust.phala.com/',
         icon: ShieldCheck,
       },
     ],
   },
-];
+]
 
 // Solutions Menu Data
 const solutionCategories = [
   {
-    title: "AI Solutions",
+    title: 'AI Solutions',
     solutions: [
       {
-        id: "solution-1",
-        title: "Private AI Data",
-        description: "Keep your AI data private and secure.",
-        href: "/solutions/private-ai-data",
+        id: 'solution-1',
+        title: 'Private AI Data',
+        description: 'Keep your AI data private and secure.',
+        href: '/solutions/private-ai-data',
         icon: Lock,
       },
       {
-        id: "solution-2",
-        title: "Private AI Inference",
-        description: "Run AI inference with complete privacy.",
-        href: "/solutions/private-ai-inference",
+        id: 'solution-2',
+        title: 'Private AI Inference',
+        description: 'Run AI inference with complete privacy.',
+        href: '/solutions/private-ai-inference',
         icon: Brain,
       },
       {
-        id: "solution-3",
-        title: "Fine-Tuned Models",
-        description: "Train and deploy custom AI models securely.",
-        href: "/solutions/fine-tuned-models",
+        id: 'solution-3',
+        title: 'Fine-Tuned Models',
+        description: 'Train and deploy custom AI models securely.',
+        href: '/solutions/fine-tuned-models',
         icon: Sparkles,
       },
       {
-        id: "solution-4",
-        title: "Confidential Training",
-        description: "Train AI models with confidential data.",
-        href: "/solutions/confidential-training",
+        id: 'solution-4',
+        title: 'Confidential Training',
+        description: 'Train AI models with confidential data.',
+        href: '/solutions/confidential-training',
         icon: Database,
       },
       {
-        id: "solution-5",
-        title: "AI Agents",
-        description: "Build intelligent agents with privacy guarantees.",
-        href: "/solutions/ai-agents",
+        id: 'solution-5',
+        title: 'AI Agents',
+        description: 'Build intelligent agents with privacy guarantees.',
+        href: '/solutions/ai-agents',
         icon: Bot,
       },
       {
-        id: "solution-6",
-        title: "AI Wallet Copilot",
-        description: "Intelligent wallet assistance with privacy.",
-        href: "/solutions/ai-wallet-copilot",
+        id: 'solution-6',
+        title: 'AI Wallet Copilot',
+        description: 'Intelligent wallet assistance with privacy.',
+        href: '/solutions/ai-wallet-copilot',
         icon: Wallet,
       },
     ],
   },
   {
-    title: "Use Cases",
+    title: 'Use Cases',
     solutions: [
       {
-        id: "usecase-1",
-        title: "Financial AI",
-        description: "Confidential AI for financial services.",
-        href: "/success-stories/financial-services",
+        id: 'usecase-1',
+        title: 'Financial AI',
+        description: 'Confidential AI for financial services.',
+        href: '/success-stories/financial-services',
         icon: ChartBar,
       },
       {
-        id: "usecase-2",
-        title: "Legal AI",
-        description: "Privacy-preserving AI for legal workflows.",
-        href: "https://phala.com/posts/confidential-ai-for-law-firms",
+        id: 'usecase-2',
+        title: 'Legal AI',
+        description: 'Privacy-preserving AI for legal workflows.',
+        href: 'https://phala.com/posts/confidential-ai-for-law-firms',
         icon: Briefcase,
       },
       {
-        id: "usecase-3",
-        title: "Healthcare AI",
-        description: "Secure AI for healthcare applications.",
-        href: "/success-stories/healthcare-research",
+        id: 'usecase-3',
+        title: 'Healthcare AI',
+        description: 'Secure AI for healthcare applications.',
+        href: '/success-stories/healthcare-research',
         icon: ShieldCheck,
       },
       {
-        id: "usecase-4",
-        title: "AI SaaS",
-        description: "Build privacy-first AI SaaS products.",
-        href: "/success-stories/ai-saas-platform",
+        id: 'usecase-4',
+        title: 'AI SaaS',
+        description: 'Build privacy-first AI SaaS products.',
+        href: '/success-stories/ai-saas-platform',
         icon: Zap,
       },
       {
-        id: "usecase-5",
-        title: "Decentralized AI",
-        description: "Decentralized AI infrastructure.",
-        href: "/success-stories/decentralized-ai",
+        id: 'usecase-5',
+        title: 'Decentralized AI',
+        description: 'Decentralized AI infrastructure.',
+        href: '/success-stories/decentralized-ai',
         icon: Globe,
       },
     ],
   },
-];
+]
 
 // Developers Menu Data
 const developers = [
   {
-    id: "dev-1",
-    title: "Documentation",
-    description: "Complete guides and API references.",
-    href: "https://docs.phala.com/",
+    id: 'dev-1',
+    title: 'Documentation',
+    description: 'Complete guides and API references.',
+    href: 'https://docs.phala.com/',
     icon: Book,
   },
   {
-    id: "dev-2",
-    title: "Guides",
-    description: "Step-by-step tutorials for developers.",
-    href: "/tags/Developers",
+    id: 'dev-2',
+    title: 'Guides',
+    description: 'Step-by-step tutorials for developers.',
+    href: '/tags/Developers',
     icon: BookOpen,
   },
   {
-    id: "dev-3",
-    title: "Templates",
-    description: "Start quickly with ready-made templates.",
-    href: "https://cloud.phala.network/templates",
+    id: 'dev-3',
+    title: 'Templates',
+    description: 'Start quickly with ready-made templates.',
+    href: 'https://cloud.phala.network/templates',
     icon: FileCode,
   },
   {
-    id: "dev-4",
-    title: "Service Status",
-    description: "Check real-time service availability.",
-    href: "https://status.phala.network/",
+    id: 'dev-4',
+    title: 'Service Status',
+    description: 'Check real-time service availability.',
+    href: 'https://status.phala.network/',
     icon: ChartBar,
   },
   {
-    id: "dev-5",
-    title: "Startup Program",
-    description: "Get support for your startup.",
-    href: "/startup-program",
+    id: 'dev-5',
+    title: 'Startup Program',
+    description: 'Get support for your startup.',
+    href: '/startup-program',
     icon: Rocket,
   },
-];
+]
 
 // Resources Menu Data
 const resourcesCommunity = [
   {
-    id: "resource-1",
-    title: "Blog",
-    description: "Latest updates and insights from Phala.",
-    href: "/blog",
+    id: 'resource-1',
+    title: 'Blog',
+    description: 'Latest updates and insights from Phala.',
+    href: '/blog',
     icon: Newspaper,
   },
   {
-    id: "resource-2",
-    title: "Ecosystem/Partnerships",
-    description: "Explore our partner network.",
-    href: "/partnerships",
+    id: 'resource-2',
+    title: 'Ecosystem/Partnerships',
+    description: 'Explore our partner network.',
+    href: '/partnerships',
     icon: Users,
   },
   {
-    id: "resource-3",
-    title: "Ambassador Program",
-    description: "Join our global community.",
-    href: "/ambassador",
+    id: 'resource-3',
+    title: 'Ambassador Program',
+    description: 'Join our global community.',
+    href: '/ambassador',
     icon: Award,
   },
   {
-    id: "resource-4",
-    title: "Changelog",
-    description: "Track product updates and releases.",
-    href: "/changelog",
+    id: 'resource-4',
+    title: 'Changelog',
+    description: 'Track product updates and releases.',
+    href: '/changelog',
     icon: GitBranch,
   },
   {
-    id: "resource-5",
-    title: "Media Kit",
-    description: "Brand assets and press resources.",
-    href: "/media-kit",
+    id: 'resource-5',
+    title: 'Media Kit',
+    description: 'Brand assets and press resources.',
+    href: '/media-kit',
     icon: Package,
   },
   {
-    id: "resource-6",
-    title: "Career",
-    description: "Join the Phala team.",
-    href: "/career",
+    id: 'resource-6',
+    title: 'Career',
+    description: 'Join the Phala team.',
+    href: '/career',
     icon: Briefcase,
   },
-];
+]
 
 const resourcesNetwork = [
   {
-    id: "network-1",
-    title: "About Phala Network",
-    description: "Learn about our mission and vision.",
-    href: "https://docs.phala.com/overview/phala-network",
+    id: 'network-1',
+    title: 'About Phala Network',
+    description: 'Learn about our mission and vision.',
+    href: 'https://docs.phala.com/overview/phala-network',
     icon: Globe,
   },
   {
-    id: "network-2",
-    title: "PHA Token",
-    description: "Understand the PHA token utility.",
-    href: "https://docs.phala.com/overview/pha-token/introduction",
+    id: 'network-2',
+    title: 'PHA Token',
+    description: 'Understand the PHA token utility.',
+    href: 'https://docs.phala.com/overview/pha-token/introduction',
     icon: Target,
   },
   {
-    id: "network-3",
-    title: "Wallet, Stake, Bridge",
-    description: "Manage your PHA tokens.",
-    href: "https://app.phala.network/",
+    id: 'network-3',
+    title: 'Wallet, Stake, Bridge',
+    description: 'Manage your PHA tokens.',
+    href: 'https://app.phala.network/',
     icon: Wallet,
   },
   {
-    id: "network-4",
-    title: "Governance",
-    description: "Participate in network governance.",
-    href: "https://phala.subsquare.io/",
+    id: 'network-4',
+    title: 'Governance',
+    description: 'Participate in network governance.',
+    href: 'https://phala.subsquare.io/',
     icon: Users,
   },
   {
-    id: "network-5",
-    title: "Explorer",
-    description: "Browse blockchain transactions.",
-    href: "https://phala.subscan.io/",
+    id: 'network-5',
+    title: 'Explorer',
+    description: 'Browse blockchain transactions.',
+    href: 'https://phala.subscan.io/',
     icon: Globe,
   },
   {
-    id: "network-6",
-    title: "Compute Provider",
-    description: "Become a compute provider.",
-    href: "https://docs.phala.com/network/compute-providers/basic-info/introduction",
+    id: 'network-6',
+    title: 'Compute Provider',
+    description: 'Become a compute provider.',
+    href: 'https://docs.phala.com/network/compute-providers/basic-info/introduction',
     icon: Cpu,
   },
-];
+]
 
 // Products Menu Component
 const ProductsMenu = () => (
@@ -363,7 +361,8 @@ const ProductsMenu = () => (
               <ArrowRight className="ml-1 size-4 transition-transform group-hover:translate-x-1" />
             </div>
             <p className="text-primary-foreground/70 mt-2 text-xs">
-              Hardware-enforced confidential computing on the most powerful GPUs.
+              Hardware-enforced confidential computing on the most powerful
+              GPUs.
             </p>
           </div>
         </div>
@@ -404,7 +403,7 @@ const ProductsMenu = () => (
       ))}
     </div>
   </div>
-);
+)
 
 // Solutions Menu Component
 const SolutionsMenu = () => (
@@ -439,7 +438,7 @@ const SolutionsMenu = () => (
       </div>
     ))}
   </div>
-);
+)
 
 // Developers Menu Component
 const DevelopersMenu = () => (
@@ -463,7 +462,7 @@ const DevelopersMenu = () => (
       </NavigationMenuLink>
     ))}
   </div>
-);
+)
 
 // Resources Menu Component
 const ResourcesMenu = () => (
@@ -523,46 +522,43 @@ const ResourcesMenu = () => (
       </div>
     </div>
   </div>
-);
+)
 
 const navigationMenuItems = [
   {
-    key: "products",
-    label: "Products",
+    key: 'products',
+    label: 'Products',
     component: ProductsMenu,
   },
   {
-    key: "solutions",
-    label: "Solutions",
+    key: 'solutions',
+    label: 'Solutions',
     component: SolutionsMenu,
   },
   {
-    key: "developers",
-    label: "Developers",
+    key: 'developers',
+    label: 'Developers',
     component: DevelopersMenu,
   },
   {
-    key: "resources",
-    label: "Resources",
+    key: 'resources',
+    label: 'Resources',
     component: ResourcesMenu,
   },
-] as const;
+] as const
 
 const PhalaNavbar4 = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const [submenu, setSubmenu] = useState<
-    "products" | "solutions" | "developers" | "resources" | null
-  >(null);
+    'products' | 'solutions' | 'developers' | 'resources' | null
+  >(null)
 
   return (
     <section className="bg-background inset-x-0 top-0 z-20">
       <div className="container">
         <NavigationMenu className="min-w-full [&>div:last-child]:left-auto">
           <div className="flex w-full justify-between gap-2 py-4">
-            <a
-              href="/"
-              className="flex items-center gap-2"
-            >
+            <a href="/" className="flex items-center gap-2">
               <img
                 src="/home/logo.svg"
                 className="max-h-8"
@@ -613,10 +609,10 @@ const PhalaNavbar4 = () => {
                 className="lg:hidden"
                 onClick={() => {
                   if (open) {
-                    setOpen(false);
-                    setSubmenu(null);
+                    setOpen(false)
+                    setSubmenu(null)
                   } else {
-                    setOpen(true);
+                    setOpen(true)
                   }
                 }}
               >
@@ -662,17 +658,13 @@ const PhalaNavbar4 = () => {
                     href="/pricing"
                     className="border-border flex w-full items-center border-b py-6 text-left"
                   >
-                    <span className="flex-1 text-sm font-medium">
-                      Pricing
-                    </span>
+                    <span className="flex-1 text-sm font-medium">Pricing</span>
                   </a>
                   <a
                     href="/about"
                     className="border-border flex w-full items-center border-b py-6 text-left"
                   >
-                    <span className="flex-1 text-sm font-medium">
-                      About Us
-                    </span>
+                    <span className="flex-1 text-sm font-medium">About Us</span>
                   </a>
                 </div>
               )}
@@ -698,7 +690,7 @@ const PhalaNavbar4 = () => {
         </NavigationMenu>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { PhalaNavbar4 };
+export { PhalaNavbar4 }

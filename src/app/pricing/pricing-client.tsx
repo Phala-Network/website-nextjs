@@ -1,14 +1,20 @@
 'use client'
 
-import Link from 'next/link'
 import { Check } from 'lucide-react'
+import Link from 'next/link'
 import { useState } from 'react'
 
+import { Pricing5 } from '@/components/shadcn-blocks/pricing5'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
-import { Pricing5 } from '@/components/shadcn-blocks/pricing5'
 import { cn } from '@/lib/utils'
 
 const vmInstances = [
@@ -94,7 +100,7 @@ const gpuPlans = [
       bandwidth: '4.8 TB/s',
       tee: 'Intel TDX + NVIDIA CC',
     },
-    priceOnDemand: 3.50,
+    priceOnDemand: 3.5,
     priceReserved: 2.56,
     commitment: '6-month',
     savings: '27%',
@@ -130,16 +136,21 @@ export default function PricingClient() {
             Simple, Transparent Pricing
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Pay-as-you-go pricing for every scale. Only pay for what you use, billed by the hour.
+            Pay-as-you-go pricing for every scale. Only pay for what you use,
+            billed by the hour.
           </p>
 
           {/* Pricing Toggle */}
           <div className="mt-8 flex items-center justify-center gap-3">
-            <span className={`text-sm ${!isMonthly ? 'text-primary font-medium' : 'text-muted-foreground'}`}>
+            <span
+              className={`text-sm ${!isMonthly ? 'text-primary font-medium' : 'text-muted-foreground'}`}
+            >
               Hourly
             </span>
             <Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
-            <span className={`text-sm ${isMonthly ? 'text-primary font-medium' : 'text-muted-foreground'}`}>
+            <span
+              className={`text-sm ${isMonthly ? 'text-primary font-medium' : 'text-muted-foreground'}`}
+            >
               Monthly
             </span>
           </div>
@@ -161,7 +172,7 @@ export default function PricingClient() {
               key={instance.name}
               className={cn(
                 'relative',
-                instance.popular && 'border-2 border-primary shadow-lg'
+                instance.popular && 'border-2 border-primary shadow-lg',
               )}
             >
               {instance.popular && (
@@ -196,7 +207,9 @@ export default function PricingClient() {
               </CardContent>
               <CardFooter>
                 <Button className="w-full" asChild>
-                  <Link href="https://cloud.phala.network/register">Get Started</Link>
+                  <Link href="https://cloud.phala.network/register">
+                    Get Started
+                  </Link>
                 </Button>
               </CardFooter>
             </Card>
@@ -205,12 +218,15 @@ export default function PricingClient() {
           {/* Enterprise Card */}
           <Card>
             <CardHeader>
-              <Badge variant="outline" className="w-fit mb-2">Enterprise</Badge>
+              <Badge variant="outline" className="w-fit mb-2">
+                Enterprise
+              </Badge>
               <CardTitle className="text-xl">Custom Solution</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-muted-foreground">
-                Need a custom solution? Our enterprise plan includes dedicated support, custom configurations, and volume discounts.
+                Need a custom solution? Our enterprise plan includes dedicated
+                support, custom configurations, and volume discounts.
               </p>
 
               <div className="space-y-2">
@@ -262,7 +278,7 @@ export default function PricingClient() {
               key={plan.name}
               className={cn(
                 'relative',
-                plan.popular && 'border-2 border-primary shadow-lg'
+                plan.popular && 'border-2 border-primary shadow-lg',
               )}
             >
               {plan.popular && (
@@ -280,22 +296,33 @@ export default function PricingClient() {
                 {/* Pricing */}
                 <div className="space-y-3">
                   <div>
-                    <div className="text-sm text-muted-foreground mb-1">On-Demand</div>
+                    <div className="text-sm text-muted-foreground mb-1">
+                      On-Demand
+                    </div>
                     <div className="text-3xl font-bold">
                       ${plan.priceOnDemand}
-                      <span className="text-sm font-normal text-muted-foreground">/GPU/hour</span>
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /GPU/hour
+                      </span>
                     </div>
                   </div>
                   <div className="bg-green-50 dark:bg-green-950/20 p-3 rounded-lg">
                     <div className="flex items-center justify-between mb-1">
-                      <div className="text-sm text-muted-foreground">Reserved ({plan.commitment})</div>
-                      <Badge variant="outline" className="text-green-600 border-green-600">
+                      <div className="text-sm text-muted-foreground">
+                        Reserved ({plan.commitment})
+                      </div>
+                      <Badge
+                        variant="outline"
+                        className="text-green-600 border-green-600"
+                      >
                         Save {plan.savings}
                       </Badge>
                     </div>
                     <div className="text-2xl font-bold text-green-600">
                       ${plan.priceReserved}
-                      <span className="text-sm font-normal text-muted-foreground">/GPU/hour</span>
+                      <span className="text-sm font-normal text-muted-foreground">
+                        /GPU/hour
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -339,7 +366,9 @@ export default function PricingClient() {
               The Most Valuable Offer in Confidential Computing
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-              Enterprise-grade security, guaranteed verifiability, unlimited scalability, and comprehensive support—all at market-disrupting prices.
+              Enterprise-grade security, guaranteed verifiability, unlimited
+              scalability, and comprehensive support—all at market-disrupting
+              prices.
             </p>
           </div>
 
@@ -348,7 +377,8 @@ export default function PricingClient() {
               {
                 title: 'Pay Only For Value',
                 highlight: 'From $0.069/hour',
-                description: 'Transparent usage-based pricing that scales with your success. No hidden fees, no surprises.',
+                description:
+                  'Transparent usage-based pricing that scales with your success. No hidden fees, no surprises.',
                 features: [
                   'Per-second billing',
                   'No minimum commitment',
@@ -360,7 +390,8 @@ export default function PricingClient() {
               {
                 title: 'Enterprise-Ready',
                 highlight: '99.9% Uptime SLA',
-                description: 'Production-grade infrastructure with guaranteed reliability for mission-critical workloads.',
+                description:
+                  'Production-grade infrastructure with guaranteed reliability for mission-critical workloads.',
                 features: [
                   'Hardware-enforced security',
                   'Real-time attestation',
@@ -372,7 +403,8 @@ export default function PricingClient() {
               {
                 title: 'Secure GPU Computing',
                 highlight: 'H100/H200/B200',
-                description: 'Lead the market with confidential AI capabilities that ensure complete data privacy.',
+                description:
+                  'Lead the market with confidential AI capabilities that ensure complete data privacy.',
                 features: [
                   'AI model protection',
                   'Secure inference',
@@ -389,8 +421,12 @@ export default function PricingClient() {
                 <div className="text-3xl mb-6">{card.icon}</div>
                 <div className="space-y-2 mb-6">
                   <h3 className="text-xl font-semibold">{card.title}</h3>
-                  <div className="text-primary font-semibold">{card.highlight}</div>
-                  <p className="text-muted-foreground text-sm">{card.description}</p>
+                  <div className="text-primary font-semibold">
+                    {card.highlight}
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    {card.description}
+                  </p>
                 </div>
                 <ul className="space-y-3">
                   {card.features.map((feature) => (
@@ -409,8 +445,12 @@ export default function PricingClient() {
       {/* FAQ/Footer */}
       <div className="container py-16 text-center">
         <p className="text-sm text-muted-foreground max-w-3xl mx-auto">
-          All prices are pay-as-you-go. You only pay for what you use, billed by the hour. Enterprise customers may qualify for volume discounts.{' '}
-          <Link href="/contact" className="text-primary hover:underline">Contact sales</Link> for custom configurations.
+          All prices are pay-as-you-go. You only pay for what you use, billed by
+          the hour. Enterprise customers may qualify for volume discounts.{' '}
+          <Link href="/contact" className="text-primary hover:underline">
+            Contact sales
+          </Link>{' '}
+          for custom configurations.
         </p>
       </div>
     </div>

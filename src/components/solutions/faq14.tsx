@@ -1,91 +1,91 @@
-import { type SVGProps, useId } from "react";
+import { type SVGProps, useId } from 'react'
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+} from '@/components/ui/accordion'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 
 interface FaqItem {
-  question: string;
-  answer: string;
+  question: string
+  answer: string
 }
 
 interface FaqCategory {
-  category: string;
-  items: FaqItem[];
+  category: string
+  items: FaqItem[]
 }
 
 interface Faq14Props {
-  title?: string;
-  subtitle?: string;
-  faqItems?: FaqCategory[];
+  title?: string
+  subtitle?: string
+  faqItems?: FaqCategory[]
 }
 
 const DEFAULT_FAQ_ITEMS: FaqCategory[] = [
   {
-    category: "SUPPORT",
+    category: 'SUPPORT',
     items: [
       {
-        question: "Is there a free version?",
+        question: 'Is there a free version?',
         answer:
-          "Yes! We offer a generous free plan with just enough features except that one feature you really want! Our strategy is to get your credit card details on file then steadily double our prices against inflation rates.",
+          'Yes! We offer a generous free plan with just enough features except that one feature you really want! Our strategy is to get your credit card details on file then steadily double our prices against inflation rates.',
       },
       {
-        question: "How do I update my account without breaking my laptop?",
+        question: 'How do I update my account without breaking my laptop?',
         answer:
-          "Our platform is designed with safety in mind. You can update your account settings through our intuitive dashboard without any risk to your hardware. We have multiple safeguards in place to prevent any system conflicts.",
+          'Our platform is designed with safety in mind. You can update your account settings through our intuitive dashboard without any risk to your hardware. We have multiple safeguards in place to prevent any system conflicts.',
       },
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: 'Is support free, or do I need to Google everything?',
         answer:
           "We provide comprehensive support at no additional cost. Our dedicated support team is available 24/7 to help you with any questions or issues you might encounter. No need to rely on Google - we're here to help!",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: 'Are you going to be subsumed by AI?',
         answer:
-          "While we embrace AI technology to enhance our services, we maintain a strong human element in our operations. Our team works alongside AI to provide the best possible service while ensuring human oversight and decision-making remain central to our operations.",
+          'While we embrace AI technology to enhance our services, we maintain a strong human element in our operations. Our team works alongside AI to provide the best possible service while ensuring human oversight and decision-making remain central to our operations.',
       },
     ],
   },
   {
-    category: "YOUR ACCOUNT",
+    category: 'YOUR ACCOUNT',
     items: [
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: 'Is support free, or do I need to Google everything?',
         answer:
           "We provide comprehensive support at no additional cost. Our dedicated support team is available 24/7 to help you with any questions or issues you might encounter. No need to rely on Google - we're here to help!",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: 'Are you going to be subsumed by AI?',
         answer:
-          "While we embrace AI technology to enhance our services, we maintain a strong human element in our operations. Our team works alongside AI to provide the best possible service while ensuring human oversight and decision-making remain central to our operations.",
+          'While we embrace AI technology to enhance our services, we maintain a strong human element in our operations. Our team works alongside AI to provide the best possible service while ensuring human oversight and decision-making remain central to our operations.',
       },
     ],
   },
   {
-    category: "OTHER QUESTIONS",
+    category: 'OTHER QUESTIONS',
     items: [
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: 'Is support free, or do I need to Google everything?',
         answer:
           "We provide comprehensive support at no additional cost. Our dedicated support team is available 24/7 to help you with any questions or issues you might encounter. No need to rely on Google - we're here to help!",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: 'Are you going to be subsumed by AI?',
         answer:
-          "While we embrace AI technology to enhance our services, we maintain a strong human element in our operations. Our team works alongside AI to provide the best possible service while ensuring human oversight and decision-making remain central to our operations.",
+          'While we embrace AI technology to enhance our services, we maintain a strong human element in our operations. Our team works alongside AI to provide the best possible service while ensuring human oversight and decision-making remain central to our operations.',
       },
     ],
   },
-];
+]
 
 export function Faq14({
-  title = "Frequently Asked Questions",
-  subtitle = "Everything you need to know about Charter",
-  faqItems = DEFAULT_FAQ_ITEMS
+  title = 'Frequently Asked Questions',
+  subtitle = 'Everything you need to know about Charter',
+  faqItems = DEFAULT_FAQ_ITEMS,
 }: Faq14Props) {
   return (
     <section className="relative py-32">
@@ -133,19 +133,19 @@ export function Faq14({
         <PlusSigns className="h-full w-full text-foreground/[0.05]" />
       </div>
     </section>
-  );
+  )
 }
 
 interface PlusSignsProps extends SVGProps<SVGSVGElement> {
-  className?: string;
+  className?: string
 }
 
 const PlusSigns = ({ className, ...props }: PlusSignsProps) => {
-  const GAP = 16;
-  const STROKE_WIDTH = 1;
-  const PLUS_SIZE = 6;
-  const id = useId();
-  const patternId = `plus-pattern-${id}`;
+  const GAP = 16
+  const STROKE_WIDTH = 1
+  const PLUS_SIZE = 6
+  const id = useId()
+  const patternId = `plus-pattern-${id}`
 
   return (
     <svg width={GAP * 2} height={GAP * 2} className={className} {...props}>
@@ -178,5 +178,5 @@ const PlusSigns = ({ className, ...props }: PlusSignsProps) => {
       </defs>
       <rect width="100%" height="100%" fill={`url(#${patternId})`} />
     </svg>
-  );
-};
+  )
+}

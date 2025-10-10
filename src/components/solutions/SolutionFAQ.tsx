@@ -3,24 +3,27 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from '@/components/ui/accordion'
 
 interface FAQ {
-  question: string;
-  answer: string;
+  question: string
+  answer: string
 }
 
 interface FAQCategory {
-  category: string;
-  items: FAQ[];
+  category: string
+  items: FAQ[]
 }
 
 interface SolutionFAQProps {
-  faqs: FAQCategory[];
-  title?: string;
+  faqs: FAQCategory[]
+  title?: string
 }
 
-export function SolutionFAQ({ faqs, title = "Frequently Asked Questions" }: SolutionFAQProps) {
+export function SolutionFAQ({
+  faqs,
+  title = 'Frequently Asked Questions',
+}: SolutionFAQProps) {
   return (
     <section className="py-24">
       <div className="container">
@@ -56,5 +59,5 @@ export function SolutionFAQ({ faqs, title = "Frequently Asked Questions" }: Solu
         </div>
       </div>
     </section>
-  );
+  )
 }
