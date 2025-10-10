@@ -268,7 +268,7 @@ const resourcesCommunity = [
     id: 'resource-3',
     title: 'Ambassador Program',
     description: 'Join our global community.',
-    href: '/ambassador',
+    href: 'https://github.com/Phala-Network/growth-program',
     icon: Award,
   },
   {
@@ -282,14 +282,14 @@ const resourcesCommunity = [
     id: 'resource-5',
     title: 'Media Kit',
     description: 'Brand assets and press resources.',
-    href: '/media-kit',
+    href: 'https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq',
     icon: Package,
   },
   {
     id: 'resource-6',
     title: 'Career',
     description: 'Join the Phala team.',
-    href: '/career',
+    href: 'https://wellfound.com/company/phala-network',
     icon: Briefcase,
   },
 ]
@@ -564,9 +564,6 @@ const PhalaNavbar4 = () => {
                 className="max-h-8"
                 alt="Phala Network"
               />
-              <span className="text-lg font-semibold tracking-tighter">
-                Phala Network
-              </span>
             </a>
             <div className="flex items-center gap-2 xl:gap-8">
               <NavigationMenuList className="hidden gap-0 lg:flex">
