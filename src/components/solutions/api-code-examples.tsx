@@ -1,19 +1,20 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Copy, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Check, Copy } from 'lucide-react'
+import { useState } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 export function ApiCodeExamples() {
-  const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [copiedCode, setCopiedCode] = useState<string | null>(null)
 
   const copyCode = (code: string, id: string) => {
-    navigator.clipboard.writeText(code);
-    setCopiedCode(id);
-    setTimeout(() => setCopiedCode(null), 2000);
-  };
+    navigator.clipboard.writeText(code)
+    setCopiedCode(id)
+    setTimeout(() => setCopiedCode(null), 2000)
+  }
 
   const pythonCode = `# Install OpenAI SDK: pip3 install openai
 from openai import OpenAI
@@ -31,7 +32,7 @@ response = client.chat.completions.create(
     ],
     stream=True
 )
-print(response.choices[0].message.content)`;
+print(response.choices[0].message.content)`
 
   const typescriptCode = `import OpenAI from 'openai';
 
@@ -53,7 +54,7 @@ async function main() {
   console.log(completion.choices[0].message);
 }
 
-main();`;
+main();`
 
   const curlCode = `curl -X 'POST' \\
   'https://api.redpill.ai/v1/chat/completions' \\
@@ -73,7 +74,7 @@ main();`;
   ],
   "stream": true,
   "model": "phala/deepseek-chat-v3-0324"
-}'`;
+}'`
 
   const verifyCode = `import requests
 
@@ -96,7 +97,7 @@ gpu_tokens = gpu_response.json()[1]
 for gpu_id, token in gpu_tokens.items():
     decoded = jwt.decode(token, options={"verify_signature": False})
     assert decoded.get("measres") == "success"
-    print(f"{gpu_id}: Verified ✓")`;
+    print(f"{gpu_id}: Verified ✓")`
 
   return (
     <section className="py-24 bg-muted/30">
@@ -106,7 +107,8 @@ for gpu_id, token in gpu_tokens.items():
             Get Started in Minutes
           </h2>
           <p className="text-lg text-muted-foreground">
-            OpenAI-compatible API with hardware-enforced privacy. Drop-in replacement with zero code changes.
+            OpenAI-compatible API with hardware-enforced privacy. Drop-in
+            replacement with zero code changes.
           </p>
         </div>
 
@@ -114,9 +116,12 @@ for gpu_id, token in gpu_tokens.items():
           {/* API Usage */}
           <Card>
             <CardContent className="p-8">
-              <h3 className="text-2xl font-semibold mb-4">Make Secure Requests</h3>
+              <h3 className="text-2xl font-semibold mb-4">
+                Make Secure Requests
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Use your favorite SDK or curl to access 200+ models with TEE protection
+                Use your favorite SDK or curl to access 200+ models with TEE
+                protection
               </p>
 
               <Tabs defaultValue="python" className="w-full">
@@ -192,9 +197,12 @@ for gpu_id, token in gpu_tokens.items():
           {/* Verification */}
           <Card>
             <CardContent className="p-8">
-              <h3 className="text-2xl font-semibold mb-4">Verify TEE Execution</h3>
+              <h3 className="text-2xl font-semibold mb-4">
+                Verify TEE Execution
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Every response includes cryptographic proof from NVIDIA and Intel TEE hardware
+                Every response includes cryptographic proof from NVIDIA and
+                Intel TEE hardware
               </p>
 
               <div className="relative">
@@ -219,5 +227,5 @@ for gpu_id, token in gpu_tokens.items():
         </div>
       </div>
     </section>
-  );
+  )
 }

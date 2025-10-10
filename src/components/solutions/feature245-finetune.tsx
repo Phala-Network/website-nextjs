@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import React from "react";
+import { motion } from 'framer-motion'
+import React from 'react'
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from '@/components/ui/card'
 
-const handwrittenTextClasses = `flex gap-3 font-caveat text-xs md:text-xl tracking-tight`;
+const handwrittenTextClasses = `flex gap-3 font-caveat text-xs md:text-xl tracking-tight`
 
 const Feature245Finetune = () => {
   const leftFeatures = [
-    "TEE Verified & Unsealed",
-    "QLoRA 2× Faster",
-    "Auto Safety Checks",
-    "Encrypted Export",
-  ];
+    'TEE Verified & Unsealed',
+    'QLoRA 2× Faster',
+    'Auto Safety Checks',
+    'Encrypted Export',
+  ]
 
   const rightFeatures = [
-    "Base Model Loaded",
-    "Dataset Streamed Privately",
-    "Optional DPO/GRPO",
-    "OpenAI Endpoint Ready",
-  ];
+    'Base Model Loaded',
+    'Dataset Streamed Privately',
+    'Optional DPO/GRPO',
+    'OpenAI Endpoint Ready',
+  ]
 
   return (
     <section className="bg-background">
@@ -42,7 +42,8 @@ const Feature245Finetune = () => {
             />
           </div>
           <p className="my-4 tracking-tighter text-muted-foreground/60 md:text-xl">
-            End-to-end confidential fine-tuning with hardware attestation and encrypted artifacts.
+            End-to-end confidential fine-tuning with hardware attestation and
+            encrypted artifacts.
           </p>
         </div>
         <div className="relative z-10 mx-auto mt-12 min-h-full max-w-3xl md:w-1/2">
@@ -60,7 +61,7 @@ const Feature245Finetune = () => {
                 }}
                 className={handwrittenTextClasses}
               >
-                {leftFeatures[i]}{" "}
+                {leftFeatures[i]}{' '}
                 {React.createElement([Line1, Line2, Line3, Line4][i], {
                   className: `mt-4 w-10 md:w-16`,
                 })}
@@ -83,7 +84,7 @@ const Feature245Finetune = () => {
               >
                 {React.createElement([Line1, Line2, Line3, Line4][i], {
                   className: `mt-4 w-10 scale-x-[-1] md:w-16`,
-                })}{" "}
+                })}{' '}
                 {rightFeatures[i]}
               </motion.div>
             ))}
@@ -103,8 +104,12 @@ const Feature245Finetune = () => {
                     <div className="flex flex-col items-center w-full max-w-md">
                       <div className="rounded-lg border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950 px-3 py-2 text-center w-full">
                         <div className="text-base mb-1">🔐</div>
-                        <div className="font-semibold text-emerald-700 dark:text-emerald-300 text-sm">Remote Attestation</div>
-                        <div className="text-[10px] text-muted-foreground mt-0.5">TEE Verified & Keys Unsealed</div>
+                        <div className="font-semibold text-emerald-700 dark:text-emerald-300 text-sm">
+                          Remote Attestation
+                        </div>
+                        <div className="text-[10px] text-muted-foreground mt-0.5">
+                          TEE Verified & Keys Unsealed
+                        </div>
                       </div>
                       <ArrowDown />
                     </div>
@@ -115,16 +120,24 @@ const Feature245Finetune = () => {
                     <div className="flex flex-col items-center flex-1">
                       <div className="rounded-lg border-2 border-blue-400 bg-blue-50 dark:bg-blue-950 px-2 py-2 text-center w-full">
                         <div className="text-base mb-1">📦</div>
-                        <div className="font-semibold text-blue-700 dark:text-blue-300 text-xs">Load Base Model</div>
-                        <div className="text-[10px] text-muted-foreground mt-0.5">Llama / Mistral / Qwen</div>
+                        <div className="font-semibold text-blue-700 dark:text-blue-300 text-xs">
+                          Load Base Model
+                        </div>
+                        <div className="text-[10px] text-muted-foreground mt-0.5">
+                          Llama / Mistral / Qwen
+                        </div>
                       </div>
                       <ArrowDownRight />
                     </div>
                     <div className="flex flex-col items-center flex-1">
                       <div className="rounded-lg border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950 px-2 py-2 text-center w-full">
                         <div className="text-base mb-1">🗂️</div>
-                        <div className="font-semibold text-emerald-700 dark:text-emerald-300 text-xs">Encrypted Dataset</div>
-                        <div className="text-[10px] text-muted-foreground mt-0.5">streamed privately</div>
+                        <div className="font-semibold text-emerald-700 dark:text-emerald-300 text-xs">
+                          Encrypted Dataset
+                        </div>
+                        <div className="text-[10px] text-muted-foreground mt-0.5">
+                          streamed privately
+                        </div>
                       </div>
                       <ArrowDownLeft />
                     </div>
@@ -148,21 +161,33 @@ const Feature245Finetune = () => {
                     </div>
                     <div className="flex flex-col gap-2">
                       <div className="rounded border border-orange-300 bg-orange-100 dark:bg-orange-900/50 px-2 py-1.5 text-center">
-                        <div className="font-medium text-orange-800 dark:text-orange-200 text-xs">Apply QLoRA</div>
+                        <div className="font-medium text-orange-800 dark:text-orange-200 text-xs">
+                          Apply QLoRA
+                        </div>
                       </div>
                       <ArrowDown />
                       <div className="rounded border border-orange-300 bg-orange-100 dark:bg-orange-900/50 px-2 py-1.5 text-center">
-                        <div className="font-medium text-orange-800 dark:text-orange-200 text-xs">Train with Unsloth</div>
-                        <div className="text-[10px] text-muted-foreground">2× Faster · 70% Less VRAM</div>
+                        <div className="font-medium text-orange-800 dark:text-orange-200 text-xs">
+                          Train with Unsloth
+                        </div>
+                        <div className="text-[10px] text-muted-foreground">
+                          2× Faster · 70% Less VRAM
+                        </div>
                       </div>
                       <ArrowDown />
                       <div className="rounded border border-orange-300 bg-orange-100 dark:bg-orange-900/50 px-2 py-1.5 text-center">
-                        <div className="font-medium text-orange-800 dark:text-orange-200 text-xs">Optional DPO/GRPO</div>
+                        <div className="font-medium text-orange-800 dark:text-orange-200 text-xs">
+                          Optional DPO/GRPO
+                        </div>
                       </div>
                       <ArrowDown />
                       <div className="rounded border border-orange-300 bg-orange-100 dark:bg-orange-900/50 px-2 py-1.5 text-center">
-                        <div className="font-medium text-orange-800 dark:text-orange-200 text-xs">Safety Checks</div>
-                        <div className="text-[10px] text-muted-foreground">PII, Toxicity, Bias</div>
+                        <div className="font-medium text-orange-800 dark:text-orange-200 text-xs">
+                          Safety Checks
+                        </div>
+                        <div className="text-[10px] text-muted-foreground">
+                          PII, Toxicity, Bias
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -173,8 +198,12 @@ const Feature245Finetune = () => {
                   <div className="flex flex-col items-center">
                     <div className="rounded-lg border-2 border-purple-400 bg-purple-50 dark:bg-purple-950 px-3 py-2 text-center w-full">
                       <div className="text-base mb-1">🧾</div>
-                      <div className="font-semibold text-purple-700 dark:text-purple-300 text-sm">Export Encrypted LoRA</div>
-                      <div className="text-[10px] text-muted-foreground mt-0.5">+ Attestation Report</div>
+                      <div className="font-semibold text-purple-700 dark:text-purple-300 text-sm">
+                        Export Encrypted LoRA
+                      </div>
+                      <div className="text-[10px] text-muted-foreground mt-0.5">
+                        + Attestation Report
+                      </div>
                     </div>
                     <ArrowDown />
                   </div>
@@ -183,8 +212,12 @@ const Feature245Finetune = () => {
                   <div className="flex flex-col items-center">
                     <div className="rounded-lg border-2 border-purple-400 bg-purple-50 dark:bg-purple-950 px-3 py-2 text-center w-full">
                       <div className="text-base mb-1">🚀</div>
-                      <div className="font-semibold text-purple-700 dark:text-purple-300 text-sm">Deploy on Phala TEE</div>
-                      <div className="text-[10px] text-muted-foreground mt-0.5">OpenAI / HF endpoint</div>
+                      <div className="font-semibold text-purple-700 dark:text-purple-300 text-sm">
+                        Deploy on Phala TEE
+                      </div>
+                      <div className="text-[10px] text-muted-foreground mt-0.5">
+                        OpenAI / HF endpoint
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -194,29 +227,59 @@ const Feature245Finetune = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature245Finetune };
+export { Feature245Finetune }
 
 // Arrow components
 const ArrowDown = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="my-1">
-    <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path
+      d="M12 5V19M12 19L19 12M12 19L5 12"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
-);
+)
 
 const ArrowDownRight = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="my-1 ml-auto mr-4">
-    <path d="M7 7L17 17M17 17V7M17 17H7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    className="my-1 ml-auto mr-4"
+  >
+    <path
+      d="M7 7L17 17M17 17V7M17 17H7"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
-);
+)
 
 const ArrowDownLeft = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="my-1 mr-auto ml-4">
-    <path d="M17 7L7 17M7 17V7M7 17H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    className="my-1 mr-auto ml-4"
+  >
+    <path
+      d="M17 7L7 17M7 17V7M7 17H17"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
-);
+)
 
 const Line1 = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -234,7 +297,7 @@ const Line1 = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
     />
   </svg>
-);
+)
 const Line2 = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
@@ -251,7 +314,7 @@ const Line2 = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
     />
   </svg>
-);
+)
 const Line3 = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
@@ -268,7 +331,7 @@ const Line3 = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
     />
   </svg>
-);
+)
 const Line4 = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
@@ -285,4 +348,4 @@ const Line4 = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
     />
   </svg>
-);
+)

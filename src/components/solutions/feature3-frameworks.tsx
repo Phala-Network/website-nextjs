@@ -1,18 +1,6 @@
-import {
-  Code,
-  GitBranch,
-  List,
-  Play,
-  Sparkles,
-  WandSparkles,
-} from "lucide-react";
+import { Code, GitBranch, List, Play, WandSparkles } from 'lucide-react'
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 
 const Feature3 = () => {
   return (
@@ -29,9 +17,12 @@ const Feature3 = () => {
                 <Code className="size-4" strokeWidth={1} />
               </CardHeader>
               <CardContent className="text-left">
-                <h2 className="mb-1 text-lg font-semibold">LangChain & LangGraph</h2>
+                <h2 className="mb-1 text-lg font-semibold">
+                  LangChain & LangGraph
+                </h2>
                 <p className="text-muted-foreground leading-snug">
-                  Build stateful multi-actor applications with cycles and controllability
+                  Build stateful multi-actor applications with cycles and
+                  controllability
                 </p>
               </CardContent>
               <CardFooter className="justify-end pb-0 pr-0">
@@ -42,7 +33,10 @@ const Feature3 = () => {
                 />
               </CardFooter>
             </Card>
-            <a href="https://cloud.phala.network/templates/n8n-automation" className="block">
+            <a
+              href="https://cloud.phala.network/templates/n8n-automation"
+              className="block"
+            >
               <Card>
                 <CardHeader className="pb-1">
                   <Play className="size-4" strokeWidth={1} />
@@ -50,7 +44,8 @@ const Feature3 = () => {
                 <CardContent className="text-left">
                   <h2 className="mb-1 text-lg font-semibold">N8n</h2>
                   <p className="text-muted-foreground leading-snug">
-                    Low-code automation platform for complex workflows and integrations
+                    Low-code automation platform for complex workflows and
+                    integrations
                   </p>
                 </CardContent>
                 <CardFooter className="justify-end pb-0 pr-0">
@@ -62,7 +57,10 @@ const Feature3 = () => {
                 </CardFooter>
               </Card>
             </a>
-            <a href="https://cloud.phala.network/templates?tag=mcp" className="block">
+            <a
+              href="https://cloud.phala.network/templates?tag=mcp"
+              className="block"
+            >
               <Card>
                 <CardHeader className="pb-1">
                   <GitBranch className="size-4" strokeWidth={1} />
@@ -70,7 +68,8 @@ const Feature3 = () => {
                 <CardContent className="text-left">
                   <h2 className="mb-1 text-lg font-semibold">MCP</h2>
                   <p className="text-muted-foreground leading-snug">
-                    Model Context Protocol for connecting AI models to data sources
+                    Model Context Protocol for connecting AI models to data
+                    sources
                   </p>
                 </CardContent>
                 <CardFooter className="justify-end pb-0 pr-0">
@@ -100,13 +99,18 @@ const Feature3 = () => {
                 />
               </CardFooter>
             </Card>
-            <a href="https://cloud.phala.network/templates/msft-presidio-app" className="block">
+            <a
+              href="https://cloud.phala.network/templates/msft-presidio-app"
+              className="block"
+            >
               <Card>
                 <CardHeader className="pb-1">
                   <WandSparkles className="size-4" strokeWidth={1} />
                 </CardHeader>
                 <CardContent className="text-left">
-                  <h2 className="mb-1 text-lg font-semibold">Microsoft Presidio</h2>
+                  <h2 className="mb-1 text-lg font-semibold">
+                    Microsoft Presidio
+                  </h2>
                   <p className="text-muted-foreground leading-snug">
                     PII detection and anonymization for privacy-preserving AI
                   </p>
@@ -124,7 +128,7 @@ const Feature3 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature3 as Feature3Frameworks };
+export { Feature3 as Feature3Frameworks }

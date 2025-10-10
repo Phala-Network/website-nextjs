@@ -1,42 +1,39 @@
-"use client";
+'use client'
 
-import { ArrowRight } from "lucide-react";
-import React from "react";
+import { ArrowRight } from 'lucide-react'
 
-import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
-import { Button } from "@/components/ui/button";
+import { OrbitingCircles } from '@/components/magicui/orbiting-circles'
+import { Button } from '@/components/ui/button'
 
 const Hero225 = () => {
   const circle1Images = [
-    "https://api.iconify.design/simple-icons:openai.svg",
-    "https://api.iconify.design/simple-icons:anthropic.svg",
-  ];
+    'https://api.iconify.design/simple-icons:openai.svg',
+    'https://api.iconify.design/simple-icons:anthropic.svg',
+  ]
 
   const circle2Images = [
-    "https://api.iconify.design/simple-icons:meta.svg", // Meta for Llama
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg",
-  ];
+    'https://api.iconify.design/simple-icons:meta.svg', // Meta for Llama
+    'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg',
+  ]
 
   const circle3Images = [
-    "https://api.iconify.design/simple-icons:huggingface.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/notion-icon.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-  ];
+    'https://api.iconify.design/simple-icons:huggingface.svg',
+    'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/notion-icon.svg',
+    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+  ]
 
   const circle4Images = [
-    "https://api.iconify.design/simple-icons:openai.svg",
-    "https://api.iconify.design/simple-icons:anthropic.svg",
-    "https://api.iconify.design/simple-icons:meta.svg",
-    "https://api.iconify.design/simple-icons:huggingface.svg",
-  ];
+    'https://api.iconify.design/simple-icons:openai.svg',
+    'https://api.iconify.design/simple-icons:anthropic.svg',
+    'https://api.iconify.design/simple-icons:meta.svg',
+    'https://api.iconify.design/simple-icons:huggingface.svg',
+  ]
 
   return (
     <section className="py-32">
       <div className="container">
         <div className="flex flex-col items-center justify-center gap-4">
-          <p className="text-lg text-muted-foreground">
-            Private AI Inference
-          </p>
+          <p className="text-lg text-muted-foreground">Private AI Inference</p>
           <h1 className="max-w-5xl text-center font-calSans text-5xl lg:text-7xl">
             Serve LLMs without exposing prompts or weights
           </h1>
@@ -86,7 +83,7 @@ const Hero225 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Hero225 };
+export { Hero225 }

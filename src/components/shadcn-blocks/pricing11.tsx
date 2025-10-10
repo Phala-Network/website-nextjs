@@ -1,171 +1,171 @@
-"use client";
+'use client'
 
-import { Check, ChevronDown, Info, X } from "lucide-react";
-import { Fragment, useState } from "react";
+import { Check, ChevronDown, Info, X } from 'lucide-react'
+import { Fragment, useState } from 'react'
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from '@/components/ui/collapsible'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from '@/components/ui/tooltip'
 
 const plans = [
   {
-    title: "Free",
-    price: { monthly: "$9", annually: "$9" },
-    href: "#",
+    title: 'Free',
+    price: { monthly: '$9', annually: '$9' },
+    href: '#',
     recommended: false,
   },
   {
-    title: "Basic",
-    price: { monthly: "$50", annually: "$45" },
-    href: "#",
+    title: 'Basic',
+    price: { monthly: '$50', annually: '$45' },
+    href: '#',
     recommended: false,
   },
   {
-    title: "Team",
-    price: { monthly: "$100", annually: "$90" },
-    href: "#",
+    title: 'Team',
+    price: { monthly: '$100', annually: '$90' },
+    href: '#',
     recommended: true,
   },
   {
-    title: "Enterprise",
-    price: { monthly: "$200", annually: "$160" },
-    href: "#",
+    title: 'Enterprise',
+    price: { monthly: '$200', annually: '$160' },
+    href: '#',
     recommended: false,
   },
-];
+]
 
 const featureMatrix = [
   {
-    title: "Overview",
+    title: 'Overview',
     features: [
       {
-        title: "Always included reature",
+        title: 'Always included reature',
         inclusions: [
           {
-            plan: "Free",
-            content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            plan: 'Free',
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           },
           {
-            plan: "Basic",
-            content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            plan: 'Basic',
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           },
           {
-            plan: "Teams",
-            content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            plan: 'Teams',
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           },
           {
-            plan: "Enterprise",
-            content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            plan: 'Enterprise',
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           },
         ],
       },
       {
-        title: "Number of products",
-        info: "Help text",
+        title: 'Number of products',
+        info: 'Help text',
         inclusions: [
-          { plan: "Free", content: "1" },
-          { plan: "Basic", content: "1" },
-          { plan: "Teams", content: "3" },
-          { plan: "Enterprise", content: "5" },
+          { plan: 'Free', content: '1' },
+          { plan: 'Basic', content: '1' },
+          { plan: 'Teams', content: '3' },
+          { plan: 'Enterprise', content: '5' },
         ],
       },
       {
-        title: "Number of transactions",
-        info: "Help text",
+        title: 'Number of transactions',
+        info: 'Help text',
         inclusions: [
-          { plan: "Free", content: "30 monthly" },
-          { plan: "Basic", content: "Unlimited" },
-          { plan: "Teams", content: "Unlimited" },
-          { plan: "Enterprise", content: "Unlimited" },
+          { plan: 'Free', content: '30 monthly' },
+          { plan: 'Basic', content: 'Unlimited' },
+          { plan: 'Teams', content: 'Unlimited' },
+          { plan: 'Enterprise', content: 'Unlimited' },
         ],
       },
     ],
   },
   {
-    title: "Other features",
+    title: 'Other features',
     features: [
       {
-        title: "Basic feature",
+        title: 'Basic feature',
         inclusions: [
           {
-            plan: "Free",
+            plan: 'Free',
             content: <Check className="size-4 lg:size-5" />,
           },
           {
-            plan: "Basic",
+            plan: 'Basic',
             content: <Check className="size-4 lg:size-5" />,
           },
           {
-            plan: "Teams",
+            plan: 'Teams',
             content: <Check className="size-4 lg:size-5" />,
           },
           {
-            plan: "Enterprise",
+            plan: 'Enterprise',
             content: <Check className="size-4 lg:size-5" />,
           },
         ],
       },
       {
-        title: "Enterprise feature",
-        info: "Hello",
+        title: 'Enterprise feature',
+        info: 'Hello',
         inclusions: [
           {
-            plan: "Free",
+            plan: 'Free',
             content: <X className="size-4 text-muted-foreground lg:size-5" />,
           },
           {
-            plan: "Basic",
+            plan: 'Basic',
             content: <X className="size-4 text-muted-foreground lg:size-5" />,
           },
           {
-            plan: "Teams",
+            plan: 'Teams',
             content: <X className="size-4 text-muted-foreground lg:size-5" />,
           },
           {
-            plan: "Enterprise",
+            plan: 'Enterprise',
             content: <Check className="size-5" />,
           },
         ],
       },
       {
-        title: "Optional feature",
-        info: "Hello",
+        title: 'Optional feature',
+        info: 'Hello',
         inclusions: [
           {
-            plan: "Free",
+            plan: 'Free',
             content: <X className="size-4 text-muted-foreground lg:size-5" />,
           },
           {
-            plan: "Basic",
+            plan: 'Basic',
             content: <X className="size-4 text-muted-foreground lg:size-5" />,
           },
           {
-            plan: "Teams",
+            plan: 'Teams',
             content: <Badge>Add-on</Badge>,
           },
           {
-            plan: "Enterprise",
+            plan: 'Enterprise',
             content: <Badge>Add-on</Badge>,
           },
         ],
       },
     ],
   },
-];
+]
 
 const Pricing11 = () => {
-  const [billing, setBilling] = useState<"monthly" | "annually">("monthly");
+  const [billing, setBilling] = useState<'monthly' | 'annually'>('monthly')
   return (
     <TooltipProvider delayDuration={150}>
       <section className="py-32">
@@ -214,7 +214,7 @@ const Pricing11 = () => {
                       <span className="hidden 2xl:inline"> / monthly</span>
                     </p>
                     <Button
-                      variant={plan.recommended ? "default" : "outline"}
+                      variant={plan.recommended ? 'default' : 'outline'}
                       className="w-full"
                     >
                       <span className="2xl:hidden">Register</span>
@@ -241,7 +241,7 @@ const Pricing11 = () => {
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <h4 className="group flex min-h-6 items-center gap-x-1 font-medium">
-                                {feature.title}{" "}
+                                {feature.title}{' '}
                                 {feature.info && (
                                   <Info className="ml-2 size-4 cursor-pointer text-muted-foreground group-hover:text-accent-foreground" />
                                 )}
@@ -317,7 +317,7 @@ const Pricing11 = () => {
         </div>
       </section>
     </TooltipProvider>
-  );
-};
+  )
+}
 
-export { Pricing11 };
+export { Pricing11 }

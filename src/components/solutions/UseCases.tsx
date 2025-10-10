@@ -1,17 +1,23 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 interface UseCase {
-  title: string;
-  description: string;
-  benefit?: string;
+  title: string
+  description: string
+  benefit?: string
 }
 
 interface UseCasesProps {
-  useCases: UseCase[];
-  title?: string;
+  useCases: UseCase[]
+  title?: string
 }
 
-export function UseCases({ useCases, title = "Use Cases" }: UseCasesProps) {
+export function UseCases({ useCases, title = 'Use Cases' }: UseCasesProps) {
   return (
     <section className="py-24 bg-muted/30">
       <div className="container">
@@ -37,5 +43,5 @@ export function UseCases({ useCases, title = "Use Cases" }: UseCasesProps) {
         </div>
       </div>
     </section>
-  );
+  )
 }

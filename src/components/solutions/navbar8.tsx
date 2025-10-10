@@ -1,8 +1,14 @@
-"use client";
-import { Menu, X } from "lucide-react";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+'use client'
+import { Menu, X } from 'lucide-react'
+import {
+  type Dispatch,
+  type SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,255 +17,263 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu'
 import {
   Sheet,
   SheetClose,
   SheetContent,
   SheetTitle,
-} from "@/components/ui/sheet";
+} from '@/components/ui/sheet'
 
 interface MenuItem {
-  title: string;
-  url?: string;
-  className?: string;
+  title: string
+  url?: string
+  className?: string
   links?: {
-    label: string;
-    description?: string;
-    url: string;
-    image?: string;
-  }[];
+    label: string
+    description?: string
+    url: string
+    image?: string
+  }[]
 }
 
 interface MobileNavigationMenuProps {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
 }
 
 interface DesktopMenuItemProps {
-  item: MenuItem;
-  index: number;
+  item: MenuItem
+  index: number
 }
 
 const LOGO = {
-  url: "https://www.shadcnblocks.com",
-  src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
-  alt: "logo",
-  title: "Shadcnblocks.com",
-};
+  url: 'https://www.shadcnblocks.com',
+  src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg',
+  alt: 'logo',
+  title: 'Shadcnblocks.com',
+}
 
 const NAVIGATION: MenuItem[] = [
   {
-    title: "Products",
+    title: 'Products',
     links: [
       {
-        label: "Company Blog",
-        description: "Explore the latest insights and updates",
-        url: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+        label: 'Company Blog',
+        description: 'Explore the latest insights and updates',
+        url: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg',
       },
       {
-        label: "Our Platform",
-        description: "Innovative tools to empower your workflow",
-        url: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+        label: 'Our Platform',
+        description: 'Innovative tools to empower your workflow',
+        url: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg',
       },
       {
-        label: "Careers at Our Company",
-        description: "Discover open roles and our workplace culture",
-        url: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
+        label: 'Careers at Our Company',
+        description: 'Discover open roles and our workplace culture',
+        url: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg',
       },
       {
-        label: "Customer Support",
-        description: "Reach out or browse community help articles",
-        url: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg",
+        label: 'Customer Support',
+        description: 'Reach out or browse community help articles',
+        url: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg',
       },
       {
-        label: "Product Documentation",
-        description: "In-depth guides, references, and API docs",
-        url: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg",
+        label: 'Product Documentation',
+        description: 'In-depth guides, references, and API docs',
+        url: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg',
       },
     ],
   },
   {
-    title: "Company",
+    title: 'Company',
     links: [
       {
-        label: "About Our Team",
-        url: "#",
-        description: "Learn more about our mission and values",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+        label: 'About Our Team',
+        url: '#',
+        description: 'Learn more about our mission and values',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg',
       },
       {
-        label: "Help & Support Center",
-        url: "#",
-        description: "Search our help center for quick answers",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+        label: 'Help & Support Center',
+        url: '#',
+        description: 'Search our help center for quick answers',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg',
       },
       {
-        label: "Latest News",
-        url: "#",
-        description: "Stay up to date with product announcements",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
+        label: 'Latest News',
+        url: '#',
+        description: 'Stay up to date with product announcements',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg',
       },
     ],
   },
   {
-    title: "Contact",
-    url: "#",
+    title: 'Contact',
+    url: '#',
   },
-];
+]
 
 const MOBILE_NAVIGATION: MenuItem[] = [
   {
-    title: "Products",
-    className: "col-span-2",
+    title: 'Products',
+    className: 'col-span-2',
     links: [
       {
-        label: "Company Blog",
-        url: "#",
+        label: 'Company Blog',
+        url: '#',
       },
       {
-        label: "Our Platform",
-        url: "#",
+        label: 'Our Platform',
+        url: '#',
       },
       {
-        label: "Careers at Our Company",
-        url: "#",
+        label: 'Careers at Our Company',
+        url: '#',
       },
       {
-        label: "Customer Support",
-        url: "#",
+        label: 'Customer Support',
+        url: '#',
       },
       {
-        label: "Product Documentation",
-        url: "#",
+        label: 'Product Documentation',
+        url: '#',
       },
     ],
   },
   {
-    title: "Company",
-    className: "",
+    title: 'Company',
+    className: '',
     links: [
       {
-        label: "About Our Team",
-        url: "#",
+        label: 'About Our Team',
+        url: '#',
       },
       {
-        label: "Help & Support Center",
-        url: "#",
+        label: 'Help & Support Center',
+        url: '#',
       },
       {
-        label: "Latest News",
-        url: "#",
+        label: 'Latest News',
+        url: '#',
       },
     ],
   },
   {
-    title: "Community",
-    className: "",
+    title: 'Community',
+    className: '',
     links: [
       {
-        label: "Forum",
-        url: "#",
+        label: 'Forum',
+        url: '#',
       },
       {
-        label: "Slack Group",
-        url: "#",
+        label: 'Slack Group',
+        url: '#',
       },
       {
-        label: "Contributors",
-        url: "#",
+        label: 'Contributors',
+        url: '#',
       },
       {
-        label: "Meetups",
-        url: "#",
+        label: 'Meetups',
+        url: '#',
       },
     ],
   },
-];
+]
 
 const NAV_BUTTONS: {
-  label: string;
-  url: string;
+  label: string
+  url: string
   variant:
-    | "ghost"
-    | "default"
-    | "link"
-    | "destructive"
-    | "outline"
-    | "secondary";
+    | 'ghost'
+    | 'default'
+    | 'link'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
 }[] = [
   {
-    label: "Log in",
-    url: "#",
-    variant: "ghost",
+    label: 'Log in',
+    url: '#',
+    variant: 'ghost',
   },
   {
-    label: "Sign up",
-    url: "#",
-    variant: "default",
+    label: 'Sign up',
+    url: '#',
+    variant: 'default',
   },
-];
+]
 
 const SOCIAL_LINKS = [
   {
-    label: "Linkedin",
-    url: "#",
+    label: 'Linkedin',
+    url: '#',
   },
   {
-    label: "Twitter",
-    url: "#",
+    label: 'Twitter',
+    url: '#',
   },
   {
-    label: "Facebook",
-    url: "#",
+    label: 'Facebook',
+    url: '#',
   },
-];
+]
 
-const MOBILE_BREAKPOINT = 1024;
+const MOBILE_BREAKPOINT = 1024
 
 const Navbar8 = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const navRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState<boolean>(false)
+  const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > MOBILE_BREAKPOINT) {
-        setOpen(false);
+        setOpen(false)
       }
-    };
+    }
 
     const handleScroll = () => {
-      navRef.current?.classList.toggle("bg-background", window.scrollY > 300);
+      navRef.current?.classList.toggle('bg-background', window.scrollY > 300)
       navRef.current?.classList.toggle(
-        "bg-transparent",
+        'bg-transparent',
         !(window.scrollY > 300),
-      );
-    };
+      )
+    }
 
-    handleResize();
-    handleScroll();
+    handleResize()
+    handleScroll()
 
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
-  }, [open]);
+    document.body.style.overflow = open ? 'hidden' : 'auto'
+  }, [open])
 
   const handleMobileMenu = () => {
-    const nextOpen = !open;
-    setOpen(nextOpen);
-  };
+    const nextOpen = !open
+    setOpen(nextOpen)
+  }
 
   return (
     <section>
@@ -312,29 +326,29 @@ const Navbar8 = () => {
       </div>
       <MobileNavigationMenu open={open} setOpen={setOpen} />
     </section>
-  );
-};
+  )
+}
 
 const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
-  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const imagesRef = useRef<HTMLImageElement[]>([])
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
-    const index = Number(event.currentTarget.getAttribute("data-index"));
+    const index = Number(event.currentTarget.getAttribute('data-index'))
     if (item.links && imagesRef.current[index]) {
       imagesRef.current.forEach((img, i) => {
-        img.classList.toggle("opacity-100", i === index);
-        img.classList.toggle("opacity-0", i !== index);
-      });
+        img.classList.toggle('opacity-100', i === index)
+        img.classList.toggle('opacity-0', i !== index)
+      })
     }
-  };
+  }
 
   const handleMouseLeave = () => {
     imagesRef.current.forEach((img) => {
-      img.classList.remove("opacity-100");
-      img.classList.add("opacity-0");
-    });
-    imagesRef.current[0].classList.add("opacity-100");
-  };
+      img.classList.remove('opacity-100')
+      img.classList.add('opacity-0')
+    })
+    imagesRef.current[0].classList.add('opacity-100')
+  }
 
   if (item.links) {
     return (
@@ -350,12 +364,12 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
                   key={index}
                   ref={(el) => {
                     if (el) {
-                      imagesRef.current[index] = el;
+                      imagesRef.current[index] = el
                     }
                   }}
                   src={link.image}
                   alt={link.label}
-                  className={`absolute left-0 top-0 h-full w-full object-cover transition-opacity duration-300 ${index === 0 ? "opacity-100" : "opacity-0"}`}
+                  className={`absolute left-0 top-0 h-full w-full object-cover transition-opacity duration-300 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
                 />
               ))}
             </div>
@@ -387,7 +401,7 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
           </div>
         </NavigationMenuContent>
       </NavigationMenuItem>
-    );
+    )
   }
 
   return (
@@ -398,8 +412,8 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
     >
       <NavigationMenuLink href={item.url}>{item.title}</NavigationMenuLink>
     </NavigationMenuItem>
-  );
-};
+  )
+}
 
 const MobileNavigationMenu = ({ open, setOpen }: MobileNavigationMenuProps) => {
   return (
@@ -453,8 +467,8 @@ const MobileNavigationMenu = ({ open, setOpen }: MobileNavigationMenuProps) => {
         </div>
       </SheetContent>
     </Sheet>
-  );
-};
+  )
+}
 
 const renderMobileMenuItem = (item: MenuItem, index: number) => {
   return (
@@ -470,7 +484,7 @@ const renderMobileMenuItem = (item: MenuItem, index: number) => {
           <li key={`mobile-nav-link-${i}`}>
             <a
               href={link.url}
-              className={`text-primary-foreground ${index === 0 ? "text-2xl" : "text-base"} font-medium leading-normal`}
+              className={`text-primary-foreground ${index === 0 ? 'text-2xl' : 'text-base'} font-medium leading-normal`}
             >
               {link.label}
             </a>
@@ -478,7 +492,7 @@ const renderMobileMenuItem = (item: MenuItem, index: number) => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export { Navbar8 };
+export { Navbar8 }

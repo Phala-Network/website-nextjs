@@ -1,27 +1,27 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 
 interface Feature161Props {
-  title?: string;
-  description?: string;
-  primaryButtonText?: string;
-  primaryButtonUrl?: string;
-  secondaryButtonText?: string;
-  secondaryButtonUrl?: string;
-  logos?: string[];
+  title?: string
+  description?: string
+  primaryButtonText?: string
+  primaryButtonUrl?: string
+  secondaryButtonText?: string
+  secondaryButtonUrl?: string
+  logos?: string[]
 }
 
 const Feature161 = ({
-  title = "Proof & Compliance",
-  description = "Remote attestation, SOC 2 Type II, and cryptographic audit trails for regulatory compliance.",
-  primaryButtonText = "Get Started",
-  primaryButtonUrl = "https://cloud.phala.network",
-  secondaryButtonText = "Docs",
-  secondaryButtonUrl = "https://docs.phala.network",
+  title = 'Proof & Compliance',
+  description = 'Remote attestation, SOC 2 Type II, and cryptographic audit trails for regulatory compliance.',
+  primaryButtonText = 'Get Started',
+  primaryButtonUrl = 'https://cloud.phala.network',
+  secondaryButtonText = 'Docs',
+  secondaryButtonUrl = 'https://docs.phala.network',
   logos = [
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/ph-daily.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/ph-weekly.svg",
-    "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/ph-kitty.svg",
-  ]
+    'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/ph-daily.svg',
+    'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/ph-weekly.svg',
+    'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/ph-kitty.svg',
+  ],
 }: Feature161Props) => {
   return (
     <section className="py-32">
@@ -34,15 +34,17 @@ const Feature161 = ({
           <div className="relative border-b border-muted-foreground/25 p-6 md:p-16 lg:border-r lg:border-b-0">
             <div className="absolute top-[-16px] right-[-1px] hidden h-4 w-[1px] bg-muted-foreground/25 lg:block" />
             <div className="absolute right-[-1px] bottom-[-16px] h-4 w-[1px] bg-muted-foreground/25" />
-            <h1 className="flex-row text-4xl font-bold">
-              {title}
-            </h1>
+            <h1 className="flex-row text-4xl font-bold">{title}</h1>
             <h3 className="mt-2 mb-6 text-xl text-muted-foreground">
               {description}
             </h3>
             <div className="flex items-center gap-3">
-              <Button asChild><a href={primaryButtonUrl}>{primaryButtonText}</a></Button>
-              <Button variant="outline" asChild><a href={secondaryButtonUrl}>{secondaryButtonText}</a></Button>
+              <Button asChild>
+                <a href={primaryButtonUrl}>{primaryButtonText}</a>
+              </Button>
+              <Button variant="outline" asChild>
+                <a href={secondaryButtonUrl}>{secondaryButtonText}</a>
+              </Button>
             </div>
           </div>
           <div className="grid grid-cols-1 grid-rows-7">
@@ -78,7 +80,7 @@ const Feature161 = ({
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature161 };
+export { Feature161 }

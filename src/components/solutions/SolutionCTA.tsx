@@ -1,15 +1,22 @@
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
 
 interface SolutionCTAProps {
-  title: string;
-  description: string;
-  buttonText: string;
-  buttonUrl: string;
-  items?: string[];
+  title: string
+  description: string
+  buttonText: string
+  buttonUrl: string
+  items?: string[]
 }
 
-export function SolutionCTA({ title, description, buttonText, buttonUrl, items }: SolutionCTAProps) {
+export function SolutionCTA({
+  title,
+  description,
+  buttonText,
+  buttonUrl,
+  items,
+}: SolutionCTAProps) {
   return (
     <section className="py-24 bg-primary text-primary-foreground">
       <div className="container">
@@ -36,5 +43,5 @@ export function SolutionCTA({ title, description, buttonText, buttonUrl, items }
         </div>
       </div>
     </section>
-  );
+  )
 }

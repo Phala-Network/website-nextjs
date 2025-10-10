@@ -3,7 +3,6 @@
 import {
   BarChart3,
   Book,
-  BookOpen,
   Bot,
   Brain,
   Briefcase,
@@ -30,7 +29,6 @@ import {
   Users,
   Vote,
   Wallet,
-  Zap,
 } from 'lucide-react'
 import { useMotionValueEvent, useScroll } from 'motion/react'
 import Link from 'next/link'

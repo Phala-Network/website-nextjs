@@ -67,14 +67,21 @@ export function CompareFullStackTEE() {
     {
       name: 'AI Use Cases',
       values: ['neutral', 'neutral', 'good'],
-      details: ['Agent only', 'Inference/Fine-tune/Train', 'Agent/Inference/Fine-tune/Train'],
+      details: [
+        'Agent only',
+        'Inference/Fine-tune/Train',
+        'Agent/Inference/Fine-tune/Train',
+      ],
     },
   ]
 
   const getStatusIcon = (value: string) => {
     if (value === 'good') return <Check className="h-5 w-5 text-green-600" />
     if (value === 'bad') return <X className="h-5 w-5 text-red-600" />
-    if (value === 'neutral') return <div className="h-5 w-5 rounded-full bg-yellow-600/20 border-2 border-yellow-600" />
+    if (value === 'neutral')
+      return (
+        <div className="h-5 w-5 rounded-full bg-yellow-600/20 border-2 border-yellow-600" />
+      )
   }
 
   const getStatusColor = (value: string) => {

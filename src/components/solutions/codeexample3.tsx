@@ -1,31 +1,28 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface CodeBlock {
-  filename: string;
-  language: string;
-  code: string;
-  title?: string;
-  description?: string;
+  filename: string
+  language: string
+  code: string
+  title?: string
+  description?: string
 }
 
 interface Codeexample3Props {
-  leftCode?: CodeBlock;
-  rightCode?: CodeBlock;
+  leftCode?: CodeBlock
+  rightCode?: CodeBlock
 }
 
-const Codeexample3 = ({
-  leftCode,
-  rightCode
-}: Codeexample3Props) => {
+const Codeexample3 = ({ leftCode, rightCode }: Codeexample3Props) => {
   const defaultLeftCode: CodeBlock = {
-    title: "Deploy Training Jobs in TEEs",
-    description: "Use Docker containers to deploy confidential training jobs on encrypted datasets. Your training data and model weights stay encrypted in hardware TEEs with Intel TDX/AMD SEV. Monitor progress in real-time while maintaining zero-knowledge guarantees.",
-    filename: "deploy-training.sh",
-    language: "bash",
+    title: 'Deploy Training Jobs in TEEs',
+    description:
+      'Use Docker containers to deploy confidential training jobs on encrypted datasets. Your training data and model weights stay encrypted in hardware TEEs with Intel TDX/AMD SEV. Monitor progress in real-time while maintaining zero-knowledge guarantees.',
+    filename: 'deploy-training.sh',
+    language: 'bash',
     code: `# Deploy training job in TEE
 docker run -d \\
   --name phala-training \\
@@ -43,14 +40,15 @@ docker logs -f phala-training
 # Epoch 1/3: Loss 0.524
 # Epoch 2/3: Loss 0.312
 # Epoch 3/3: Loss 0.189
-# Training complete! Model saved to /data/model.bin`
-  };
+# Training complete! Model saved to /data/model.bin`,
+  }
 
   const defaultRightCode: CodeBlock = {
-    title: "Verify Hardware Attestation",
-    description: "Generate cryptographic proofs that your code runs in genuine TEE hardware with Intel DCAP or AMD SEV-SNP. Remote attestation provides zero-trust verification before processing sensitive data.",
-    filename: "verify-attestation.sh",
-    language: "bash",
+    title: 'Verify Hardware Attestation',
+    description:
+      'Generate cryptographic proofs that your code runs in genuine TEE hardware with Intel DCAP or AMD SEV-SNP. Remote attestation provides zero-trust verification before processing sensitive data.',
+    filename: 'verify-attestation.sh',
+    language: 'bash',
     code: `# Verify remote attestation
 curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
   -H "Content-Type: application/json" \\
@@ -67,11 +65,11 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
   "code_hash": "0x1a2b3c4d5e6f...",
   "mrenclave": "a9f8e7d6c5b4...",
   "timestamp": "2025-01-15T10:30:00Z"
-}`
-  };
+}`,
+  }
 
-  const leftCodeBlock = leftCode || defaultLeftCode;
-  const rightCodeBlock = rightCode || defaultRightCode;
+  const leftCodeBlock = leftCode || defaultLeftCode
+  const rightCodeBlock = rightCode || defaultRightCode
 
   return (
     <section className="py-32">
@@ -87,7 +85,9 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
             </p>
             <div className="rounded-lg overflow-hidden bg-[#1e1e1e] dark:bg-[#1e1e1e] border border-neutral-200 dark:border-neutral-800 mt-6">
               <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 px-4 py-2 bg-neutral-50 dark:bg-[#252525]">
-                <span className="text-sm text-neutral-600 dark:text-neutral-400">{leftCodeBlock.filename}</span>
+                <span className="text-sm text-neutral-600 dark:text-neutral-400">
+                  {leftCodeBlock.filename}
+                </span>
               </div>
               <div className="[&_pre]:!bg-[#1e1e1e] [&_code]:!text-[#abb2bf]">
                 <SyntaxHighlighter
@@ -95,11 +95,11 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
                   style={oneDark}
                   customStyle={{
                     margin: 0,
-                    padding: "1.5rem",
-                    background: "#1e1e1e",
-                    fontSize: "0.875rem",
-                    maxHeight: "350px",
-                    color: "#abb2bf",
+                    padding: '1.5rem',
+                    background: '#1e1e1e',
+                    fontSize: '0.875rem',
+                    maxHeight: '350px',
+                    color: '#abb2bf',
                   }}
                   showLineNumbers={false}
                 >
@@ -119,7 +119,9 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
             </p>
             <div className="rounded-lg overflow-hidden bg-[#1e1e1e] dark:bg-[#1e1e1e] border border-neutral-200 dark:border-neutral-800 mt-6">
               <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 px-4 py-2 bg-neutral-50 dark:bg-[#252525]">
-                <span className="text-sm text-neutral-600 dark:text-neutral-400">{rightCodeBlock.filename}</span>
+                <span className="text-sm text-neutral-600 dark:text-neutral-400">
+                  {rightCodeBlock.filename}
+                </span>
               </div>
               <div className="[&_pre]:!bg-[#1e1e1e] [&_code]:!text-[#abb2bf]">
                 <SyntaxHighlighter
@@ -127,11 +129,11 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
                   style={oneDark}
                   customStyle={{
                     margin: 0,
-                    padding: "1.5rem",
-                    background: "#1e1e1e",
-                    fontSize: "0.875rem",
-                    maxHeight: "350px",
-                    color: "#abb2bf",
+                    padding: '1.5rem',
+                    background: '#1e1e1e',
+                    fontSize: '0.875rem',
+                    maxHeight: '350px',
+                    color: '#abb2bf',
                   }}
                   showLineNumbers={false}
                 >
@@ -143,7 +145,7 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Codeexample3 };
+export { Codeexample3 }

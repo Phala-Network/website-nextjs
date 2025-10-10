@@ -3,7 +3,6 @@
 import {
   BarChart3,
   Book,
-  BookOpen,
   Bot,
   Brain,
   Coins,

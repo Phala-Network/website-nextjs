@@ -1,51 +1,51 @@
-import { MoveRight } from "lucide-react";
-import React from "react";
+import { MoveRight } from 'lucide-react'
 
 interface CasestudyItem {
-  logo: string;
-  company: string;
-  tags: string;
-  title: string;
-  subtitle: string;
-  image: string;
-  link?: string;
+  logo: string
+  company: string
+  tags: string
+  title: string
+  subtitle: string
+  image: string
+  link?: string
 }
 
 interface Casestudies3Props {
-  featuredCasestudy: CasestudyItem;
-  casestudies: CasestudyItem[];
+  featuredCasestudy: CasestudyItem
+  casestudies: CasestudyItem[]
 }
 
 const defaultFeaturedCasestudy: CasestudyItem = {
-  logo: "/partnerships/eliza-os.svg",
-  company: "ElizaOS",
-  tags: "ARTIFICIAL INTELLIGENCE / AUTONOMOUS AGENTS",
-  title: "Verifiable AI Agent Framework.",
-  subtitle: "Building decentralized AI agents with cryptographic proofs.",
-  image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-  link: "https://www.elizaos.ai/",
-};
+  logo: '/partnerships/eliza-os.svg',
+  company: 'ElizaOS',
+  tags: 'ARTIFICIAL INTELLIGENCE / AUTONOMOUS AGENTS',
+  title: 'Verifiable AI Agent Framework.',
+  subtitle: 'Building decentralized AI agents with cryptographic proofs.',
+  image:
+    'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg',
+  link: 'https://www.elizaos.ai/',
+}
 
 const defaultCasestudies: CasestudyItem[] = [
   {
-    logo: "/partnerships/rabbi.png",
-    company: "Rabbi",
-    tags: "FINANCIAL AI / TRADING AGENTS",
-    title: "Confidential Trading Agents.",
-    subtitle: "Private key management in TEE enclaves.",
-    image: "",
-    link: "https://koshercapital.net",
+    logo: '/partnerships/rabbi.png',
+    company: 'Rabbi',
+    tags: 'FINANCIAL AI / TRADING AGENTS',
+    title: 'Confidential Trading Agents.',
+    subtitle: 'Private key management in TEE enclaves.',
+    image: '',
+    link: 'https://koshercapital.net',
   },
   {
-    logo: "/partnerships/crossmint.png",
-    company: "Crossmint",
-    tags: "WEB3 INFRASTRUCTURE / ONCHAIN AGENTS",
-    title: "Secure Onchain Operations.",
-    subtitle: "Hardware-protected agent execution.",
-    image: "",
-    link: "https://www.crossmint.com/",
+    logo: '/partnerships/crossmint.png',
+    company: 'Crossmint',
+    tags: 'WEB3 INFRASTRUCTURE / ONCHAIN AGENTS',
+    title: 'Secure Onchain Operations.',
+    subtitle: 'Hardware-protected agent execution.',
+    image: '',
+    link: 'https://www.crossmint.com/',
   },
-];
+]
 
 const Casestudies3 = ({
   featuredCasestudy = defaultFeaturedCasestudy,
@@ -56,7 +56,7 @@ const Casestudies3 = ({
       <div className="container">
         <div className="border-border border">
           <a
-            href={featuredCasestudy.link || "#"}
+            href={featuredCasestudy.link || '#'}
             className="hover:bg-muted/40 group grid gap-4 overflow-hidden px-6 transition-colors duration-500 ease-out lg:grid-cols-2 xl:px-28"
           >
             <div className="flex flex-col justify-between gap-4 pt-8 md:pt-16 lg:pb-16">
@@ -71,7 +71,7 @@ const Casestudies3 = ({
                 <h2 className="mb-5 mt-4 text-balance text-2xl font-semibold sm:text-3xl sm:leading-10">
                   {featuredCasestudy.title}
                   <span className="text-primary group-hover:text-primary/90 font-medium transition-colors duration-500 ease-out">
-                    {" "}
+                    {' '}
                     {featuredCasestudy.subtitle}
                   </span>
                 </h2>
@@ -99,11 +99,11 @@ const Casestudies3 = ({
               {casestudies.map((item, idx) => (
                 <a
                   key={item.company}
-                  href={item.link || "#"}
+                  href={item.link || '#'}
                   className={`border-border bg-background hover:bg-muted/40 group flex flex-col justify-between gap-12 px-6 py-8 transition-colors duration-500 ease-out md:py-16 lg:pb-16 xl:gap-16 ${
                     idx === 0
-                      ? "xl:border-l xl:pl-8"
-                      : "border-t lg:border-l lg:border-t-0 xl:border-r xl:pl-8"
+                      ? 'xl:border-l xl:pl-8'
+                      : 'border-t lg:border-l lg:border-t-0 xl:border-r xl:pl-8'
                   }`}
                 >
                   <div className="flex items-center gap-2 text-2xl font-medium">
@@ -117,7 +117,7 @@ const Casestudies3 = ({
                     <h2 className="mb-5 mt-4 text-balance text-2xl font-semibold sm:text-3xl sm:leading-10">
                       {item.title}
                       <span className="text-primary/80 group-hover:text-primary font-medium transition-colors duration-500 ease-out">
-                        {" "}
+                        {' '}
                         {item.subtitle}
                       </span>
                     </h2>
@@ -134,7 +134,7 @@ const Casestudies3 = ({
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Casestudies3 };
+export { Casestudies3 }

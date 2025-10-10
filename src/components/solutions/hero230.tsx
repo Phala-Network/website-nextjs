@@ -1,86 +1,85 @@
-"use client";
+'use client'
 
-import AutoScroll from "embla-carousel-auto-scroll";
-import { ArrowRight } from "lucide-react";
-import React from "react";
+import AutoScroll from 'embla-carousel-auto-scroll'
+import { ArrowRight } from 'lucide-react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel'
 
 const Hero230 = () => {
   const images = [
-    "/solutions/agents/vijil.png",
-    "/solutions/agents/elizaos banner.png",
-    "/solutions/agents/near banner.png",
-    "/solutions/agents/copilot.png",
-    "/solutions/agents/nous.avif",
-  ];
+    '/solutions/agents/vijil.png',
+    '/solutions/agents/elizaos banner.png',
+    '/solutions/agents/near banner.png',
+    '/solutions/agents/copilot.png',
+    '/solutions/agents/nous.avif',
+  ]
   const logos = [
     {
-      id: "eliza-os",
-      description: "ElizaOS",
-      image: "/partnerships/eliza-os.svg",
-      className: "h-7 w-auto",
+      id: 'eliza-os',
+      description: 'ElizaOS',
+      image: '/partnerships/eliza-os.svg',
+      className: 'h-7 w-auto',
     },
     {
-      id: "near",
-      description: "NEAR",
-      image: "/partnerships/near.svg",
-      className: "h-7 w-auto",
+      id: 'near',
+      description: 'NEAR',
+      image: '/partnerships/near.svg',
+      className: 'h-7 w-auto',
     },
     {
-      id: "newton",
-      description: "Newton",
-      image: "/partnerships/newton.svg",
-      className: "h-7 w-auto",
+      id: 'newton',
+      description: 'Newton',
+      image: '/partnerships/newton.svg',
+      className: 'h-7 w-auto',
     },
     {
-      id: "swarms",
-      description: "Swarms",
-      image: "/partnerships/swarms.png",
-      className: "h-7 w-auto",
+      id: 'swarms',
+      description: 'Swarms',
+      image: '/partnerships/swarms.png',
+      className: 'h-7 w-auto',
     },
     {
-      id: "theoriq",
-      description: "Theoriq",
-      image: "/partnerships/Theoriq.png",
-      className: "h-7 w-auto",
+      id: 'theoriq',
+      description: 'Theoriq',
+      image: '/partnerships/Theoriq.png',
+      className: 'h-7 w-auto',
     },
     {
-      id: "holoworld",
-      description: "Holoworld",
-      image: "/partnerships/holoworld.png",
-      className: "h-7 w-auto",
+      id: 'holoworld',
+      description: 'Holoworld',
+      image: '/partnerships/holoworld.png',
+      className: 'h-7 w-auto',
     },
     {
-      id: "xnomad",
-      description: "xNomadAI",
-      image: "/partnerships/xNomad.png",
-      className: "h-7 w-auto",
+      id: 'xnomad',
+      description: 'xNomadAI',
+      image: '/partnerships/xNomad.png',
+      className: 'h-7 w-auto',
     },
     {
-      id: "morpheus",
-      description: "Morpheus",
-      image: "/partnerships/morpheus.png",
-      className: "h-7 w-auto",
+      id: 'morpheus',
+      description: 'Morpheus',
+      image: '/partnerships/morpheus.png',
+      className: 'h-7 w-auto',
     },
     {
-      id: "flashbots",
-      description: "Flashbots",
-      image: "/partnerships/flashbots.png",
-      className: "h-7 w-auto",
+      id: 'flashbots',
+      description: 'Flashbots',
+      image: '/partnerships/flashbots.png',
+      className: 'h-7 w-auto',
     },
     {
-      id: "nous-research",
-      description: "Nous Research",
-      image: "/partnerships/nous-research.jpg",
-      className: "h-7 w-auto",
+      id: 'nous-research',
+      description: 'Nous Research',
+      image: '/partnerships/nous-research.jpg',
+      className: 'h-7 w-auto',
     },
-  ];
+  ]
   return (
     <section className="py-32">
       <div className="container flex flex-col items-center justify-center gap-4 text-center">
@@ -95,7 +94,9 @@ const Hero230 = () => {
           Build Safe, Private & <br /> Autonomous AI Agents
         </h1>
         <p className="text-muted-foreground/80 mt-3 max-w-xl">
-          Deploy AI agents with cryptographic proofs, verifiable execution, and hardware-enforced privacy. From autonomous trading bots to personal assistants.
+          Deploy AI agents with cryptographic proofs, verifiable execution, and
+          hardware-enforced privacy. From autonomous trading bots to personal
+          assistants.
         </p>
         <div className="mb-12 mt-8 flex gap-4">
           <Button
@@ -123,7 +124,7 @@ const Hero230 = () => {
         <div className="relative mx-auto flex items-center justify-center">
           <Carousel
             plugins={[AutoScroll({ playOnInit: true })]}
-            opts={{ loop: true, align: "start" }}
+            opts={{ loop: true, align: 'start' }}
           >
             <CarouselContent className="ml-0">
               {logos.map((logo, index) => (
@@ -146,9 +147,7 @@ const Hero230 = () => {
           <div className="from-background absolute inset-y-0 right-0 w-32 bg-gradient-to-l to-transparent"></div>
         </div>
         <div className="relative mx-auto -mt-12 flex items-center justify-center">
-          <Carousel
-            opts={{ loop: true, align: "start" }}
-          >
+          <Carousel opts={{ loop: true, align: 'start' }}>
             <CarouselContent>
               {images.map((image, index) => (
                 <CarouselItem
@@ -169,7 +168,7 @@ const Hero230 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Hero230 };
+export { Hero230 }

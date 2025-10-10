@@ -5,10 +5,9 @@ import {
   ReceiptText,
   Timer,
   Vault,
-} from "lucide-react";
+} from 'lucide-react'
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from '@/components/ui/button'
 
 const Hero74 = () => {
   return (
@@ -19,11 +18,15 @@ const Hero74 = () => {
             Fine-Tuned Models: Private Customization
           </h1>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Fine-tune foundation models on proprietary data inside TEEs. Better accuracy, zero data leakage. Keep your training data, gradients, and custom weights encrypted with hardware-enforced privacy.
+            Fine-tune foundation models on proprietary data inside TEEs. Better
+            accuracy, zero data leakage. Keep your training data, gradients, and
+            custom weights encrypted with hardware-enforced privacy.
           </p>
           <div className="mx-auto mt-8 flex w-full max-w-sm items-center space-x-2">
             <Button asChild>
-              <a href="https://cloud.phala.network/dashboard/gpu-tee">Start Fine-Tuning</a>
+              <a href="https://cloud.phala.network/dashboard/gpu-tee">
+                Start Fine-Tuning
+              </a>
             </Button>
             <Button asChild variant="outline">
               <a href="https://phala.com/contact">Contact Us</a>
@@ -34,9 +37,7 @@ const Hero74 = () => {
               <div className="flex h-16 w-24 items-center justify-center rounded-md border">
                 <Package />
               </div>
-              <span className="text-sm text-muted-foreground">
-                LoRA & PEFT
-              </span>
+              <span className="text-sm text-muted-foreground">LoRA & PEFT</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <div className="flex h-16 w-24 items-center justify-center rounded-md border">
@@ -99,7 +100,7 @@ const Hero74 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Hero74 };
+export { Hero74 }

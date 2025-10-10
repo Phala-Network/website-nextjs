@@ -1,186 +1,184 @@
-"use client";
+'use client'
 
 import {
-  Database,
-  Cpu,
-  Sparkles,
-  Layers,
+  ArrowRight,
   Bot,
+  Code2,
+  Cpu,
+  Database,
+  Layers,
   Lock,
   ShieldCheck,
-  Code2,
-  ArrowRight,
-} from "lucide-react";
+  Sparkles,
+} from 'lucide-react'
 
-import {
-  NavigationMenuLink,
-} from "@/components/ui/navigation-menu";
+import { NavigationMenuLink } from '@/components/ui/navigation-menu'
 
 // Solutions configuration for Phala
 const solutions = [
   {
-    id: "private-ai-data",
-    title: "Private AI Data",
-    description: "Compute-to-data on sensitive datasets with TEE isolation.",
-    href: "/solutions/private-ai-data",
+    id: 'private-ai-data',
+    title: 'Private AI Data',
+    description: 'Compute-to-data on sensitive datasets with TEE isolation.',
+    href: '/solutions/private-ai-data',
     icon: Database,
     subpages: [
       {
-        id: "data-marketplace",
-        title: "Data Marketplace",
-        href: "/solutions/private-ai-data#marketplace",
+        id: 'data-marketplace',
+        title: 'Data Marketplace',
+        href: '/solutions/private-ai-data#marketplace',
         icon: Database,
       },
       {
-        id: "sensitive-analytics",
-        title: "Sensitive Analytics",
-        href: "/solutions/private-ai-data#analytics",
+        id: 'sensitive-analytics',
+        title: 'Sensitive Analytics',
+        href: '/solutions/private-ai-data#analytics',
         icon: Layers,
       },
       {
-        id: "private-rag",
-        title: "Private RAG",
-        href: "/solutions/private-ai-data#rag",
+        id: 'private-rag',
+        title: 'Private RAG',
+        href: '/solutions/private-ai-data#rag',
         icon: Code2,
       },
     ],
   },
   {
-    id: "private-ai-inference",
-    title: "Private AI Inference",
-    description: "Confidential LLM serving with zero-logging guarantees.",
-    href: "/solutions/private-ai-inference",
+    id: 'private-ai-inference',
+    title: 'Private AI Inference',
+    description: 'Confidential LLM serving with zero-logging guarantees.',
+    href: '/solutions/private-ai-inference',
     icon: Cpu,
     subpages: [
       {
-        id: "healthcare",
-        title: "Healthcare",
-        href: "/solutions/private-ai-inference#healthcare",
+        id: 'healthcare',
+        title: 'Healthcare',
+        href: '/solutions/private-ai-inference#healthcare',
         icon: ShieldCheck,
       },
       {
-        id: "legal",
-        title: "Legal",
-        href: "/solutions/private-ai-inference#legal",
+        id: 'legal',
+        title: 'Legal',
+        href: '/solutions/private-ai-inference#legal',
         icon: Lock,
       },
       {
-        id: "enterprise",
-        title: "Enterprise",
-        href: "/solutions/private-ai-inference#enterprise",
+        id: 'enterprise',
+        title: 'Enterprise',
+        href: '/solutions/private-ai-inference#enterprise',
         icon: Layers,
       },
     ],
   },
   {
-    id: "fine-tuned",
-    title: "Fine-Tuned Models",
-    description: "Private model customization on proprietary data.",
-    href: "/solutions/fine-tuned",
+    id: 'fine-tuned',
+    title: 'Fine-Tuned Models',
+    description: 'Private model customization on proprietary data.',
+    href: '/solutions/fine-tuned',
     icon: Sparkles,
     subpages: [
       {
-        id: "ai-saas",
-        title: "AI SaaS",
-        href: "/solutions/fine-tuned#saas",
+        id: 'ai-saas',
+        title: 'AI SaaS',
+        href: '/solutions/fine-tuned#saas',
         icon: Layers,
       },
       {
-        id: "ai-sdr",
-        title: "AI SDR",
-        href: "/solutions/fine-tuned#sdr",
+        id: 'ai-sdr',
+        title: 'AI SDR',
+        href: '/solutions/fine-tuned#sdr',
         icon: Bot,
       },
       {
-        id: "ai-support",
-        title: "AI Support",
-        href: "/solutions/fine-tuned#support",
+        id: 'ai-support',
+        title: 'AI Support',
+        href: '/solutions/fine-tuned#support',
         icon: ShieldCheck,
       },
     ],
   },
   {
-    id: "training",
-    title: "Confidential Training",
-    description: "Large-scale model training with encrypted gradients.",
-    href: "/solutions/training",
+    id: 'training',
+    title: 'Confidential Training',
+    description: 'Large-scale model training with encrypted gradients.',
+    href: '/solutions/training',
     icon: Layers,
     subpages: [
       {
-        id: "foundation-models",
-        title: "Foundation Models",
-        href: "/solutions/training#foundation",
+        id: 'foundation-models',
+        title: 'Foundation Models',
+        href: '/solutions/training#foundation',
         icon: Layers,
       },
       {
-        id: "consortium",
-        title: "Consortium Learning",
-        href: "/solutions/training#consortium",
+        id: 'consortium',
+        title: 'Consortium Learning',
+        href: '/solutions/training#consortium',
         icon: Database,
       },
       {
-        id: "multimodal",
-        title: "Multimodal Training",
-        href: "/solutions/training#multimodal",
+        id: 'multimodal',
+        title: 'Multimodal Training',
+        href: '/solutions/training#multimodal',
         icon: Sparkles,
       },
     ],
   },
   {
-    id: "ai-agent",
-    title: "AI Agents",
-    description: "Verifiable agent execution with on-chain attestation.",
-    href: "/solutions/ai-agent",
+    id: 'ai-agent',
+    title: 'AI Agents',
+    description: 'Verifiable agent execution with on-chain attestation.',
+    href: '/solutions/ai-agent',
     icon: Bot,
     subpages: [
       {
-        id: "autonomous",
-        title: "Autonomous Agents",
-        href: "/solutions/ai-agent#autonomous",
+        id: 'autonomous',
+        title: 'Autonomous Agents',
+        href: '/solutions/ai-agent#autonomous',
         icon: Bot,
       },
       {
-        id: "financial",
-        title: "Financial Agents",
-        href: "/solutions/ai-agent#financial",
+        id: 'financial',
+        title: 'Financial Agents',
+        href: '/solutions/ai-agent#financial',
         icon: Lock,
       },
       {
-        id: "personal",
-        title: "Personal Agents",
-        href: "/solutions/ai-agent#personal",
+        id: 'personal',
+        title: 'Personal Agents',
+        href: '/solutions/ai-agent#personal',
         icon: ShieldCheck,
       },
       {
-        id: "erc8004",
-        title: "ERC-8004 Verifiable",
-        href: "/solutions/ai-agent#erc8004",
+        id: 'erc8004',
+        title: 'ERC-8004 Verifiable',
+        href: '/solutions/ai-agent#erc8004',
         icon: Code2,
       },
     ],
   },
-];
+]
 
 const solutionTechnologies = [
   {
-    id: "tee-platform",
-    title: "TEE Platform",
-    href: "/gpu-tee",
+    id: 'tee-platform',
+    title: 'TEE Platform',
+    href: '/gpu-tee',
     icon: Lock,
   },
   {
-    id: "attestation",
-    title: "Remote Attestation",
-    href: "/solutions/private-ai-data#attestation",
+    id: 'attestation',
+    title: 'Remote Attestation',
+    href: '/solutions/private-ai-data#attestation',
     icon: ShieldCheck,
   },
   {
-    id: "developer-sdk",
-    title: "Developer SDK",
-    href: "https://docs.phala.network",
+    id: 'developer-sdk',
+    title: 'Developer SDK',
+    href: 'https://docs.phala.network',
     icon: Code2,
   },
-];
+]
 
 export const SolutionsMenu = () => (
   <div className="grid gap-8 sm:grid-cols-2">
@@ -271,4 +269,4 @@ export const SolutionsMenu = () => (
       ))}
     </div>
   </div>
-);
+)

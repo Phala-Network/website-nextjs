@@ -1,37 +1,37 @@
-import type { FAQ } from "@/types/solutions";
+import type { FAQ } from '@/types/solutions'
 
 /**
  * Generate JSON-LD schema for Product
  */
 export function generateProductSchema(page: {
-  name: string;
-  description: string;
-  url: string;
-  features: string[];
+  name: string
+  description: string
+  url: string
+  features: string[]
 }) {
   return {
-    "@context": "https://schema.org",
-    "@type": "Product",
+    '@context': 'https://schema.org',
+    '@type': 'Product',
     name: page.name,
     description: page.description,
     url: page.url,
     brand: {
-      "@type": "Organization",
-      name: "Phala Network",
-      url: "https://phala.network",
+      '@type': 'Organization',
+      name: 'Phala Network',
+      url: 'https://phala.network',
     },
     offers: {
-      "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      price: "0",
-      priceCurrency: "USD",
-      description: "Free tier available with enterprise pricing",
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      price: '0',
+      priceCurrency: 'USD',
+      description: 'Free tier available with enterprise pricing',
     },
     additionalProperty: page.features.map((feature) => ({
-      "@type": "PropertyValue",
+      '@type': 'PropertyValue',
       name: feature,
     })),
-  };
+  }
 }
 
 /**
@@ -39,26 +39,26 @@ export function generateProductSchema(page: {
  */
 export function generateFAQSchema(faqs: FAQ[]) {
   return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
     mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
+      '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
-        "@type": "Answer",
+        '@type': 'Answer',
         text: faq.answer,
       },
     })),
-  };
+  }
 }
 
 /**
  * Flatten FAQ categories into single array for schema
  */
 export function flattenFAQs(
-  categories: Array<{ category: string; items: FAQ[] }>
+  categories: Array<{ category: string; items: FAQ[] }>,
 ): FAQ[] {
-  return categories.flatMap((cat) => cat.items);
+  return categories.flatMap((cat) => cat.items)
 }
 
 /**

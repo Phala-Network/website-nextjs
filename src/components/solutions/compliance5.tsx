@@ -1,6 +1,6 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from 'lucide-react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 
 const Compliance5 = () => {
   return (
@@ -45,7 +45,7 @@ const Compliance5 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Compliance5 };
+export { Compliance5 }

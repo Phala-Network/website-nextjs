@@ -1,24 +1,23 @@
-"use client";
+'use client'
 
-import { motion } from "motion/react";
-import React, { useRef } from "react";
-import { RefObject, useEffect, useId, useState } from "react";
+import { motion } from 'motion/react'
+import type React from 'react'
+import { type RefObject, useEffect, useId, useRef, useState } from 'react'
 
-import { cn } from "@/lib/utils";
-
-import { Globe } from "@/components/magicui/globe";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Globe } from '@/components/magicui/globe'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 const Feature251Training = () => {
-  const containerRef1 = useRef<HTMLDivElement>(null);
-  const containerRef2 = useRef<HTMLDivElement>(null);
-  const div1Ref = useRef<HTMLDivElement>(null);
-  const div2Ref = useRef<HTMLDivElement>(null);
-  const div3Ref = useRef<HTMLDivElement>(null);
-  const div4Ref = useRef<HTMLDivElement>(null);
-  const div5Ref = useRef<HTMLDivElement>(null);
-  const div6Ref = useRef<HTMLDivElement>(null);
-  const div7Ref = useRef<HTMLDivElement>(null);
+  const containerRef1 = useRef<HTMLDivElement>(null)
+  const containerRef2 = useRef<HTMLDivElement>(null)
+  const div1Ref = useRef<HTMLDivElement>(null)
+  const div2Ref = useRef<HTMLDivElement>(null)
+  const div3Ref = useRef<HTMLDivElement>(null)
+  const div4Ref = useRef<HTMLDivElement>(null)
+  const div5Ref = useRef<HTMLDivElement>(null)
+  const div6Ref = useRef<HTMLDivElement>(null)
+  const div7Ref = useRef<HTMLDivElement>(null)
   return (
     <section className="py-32">
       <div className="container">
@@ -30,7 +29,9 @@ const Feature251Training = () => {
                 Secure Data Loading
               </h3>
               <p className="text-muted-foreground/70 mt-2">
-                Load training datasets directly from private sources inside TEEs. Your sensitive data never leaves the secure enclave during the entire training pipeline.
+                Load training datasets directly from private sources inside
+                TEEs. Your sensitive data never leaves the secure enclave during
+                the entire training pipeline.
               </p>
             </CardHeader>
             <CardContent ref={containerRef1} className="relative ml-5">
@@ -94,7 +95,8 @@ const Feature251Training = () => {
                 Encrypted Gradient Flow
               </h3>
               <p className="text-muted-foreground/70">
-                Training gradients stay encrypted end-to-end. Hardware attestation proves your model updates never leaked.
+                Training gradients stay encrypted end-to-end. Hardware
+                attestation proves your model updates never leaked.
               </p>
             </CardHeader>
             <CardContent
@@ -138,7 +140,8 @@ const Feature251Training = () => {
                 Verifiable Attestation Reports
               </h3>
               <p className="text-muted-foreground/70">
-                Every training run generates cryptographic proof that your data remained confidential throughout the process.
+                Every training run generates cryptographic proof that your data
+                remained confidential throughout the process.
               </p>
             </CardHeader>
           </Card>
@@ -149,7 +152,9 @@ const Feature251Training = () => {
                 Global TEE Infrastructure
               </h3>
               <p className="text-muted-foreground/70">
-                Train on distributed TEE clusters worldwide. Scale your confidential training workloads across secure data centers with hardware-level isolation.
+                Train on distributed TEE clusters worldwide. Scale your
+                confidential training workloads across secure data centers with
+                hardware-level isolation.
               </p>
             </CardHeader>
 
@@ -160,25 +165,25 @@ const Feature251Training = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature251Training };
+export { Feature251Training }
 
 const IconCard = ({
   src,
   className,
   ref,
 }: {
-  src: string;
-  className?: string;
-  ref: React.RefObject<HTMLDivElement>;
+  src: string
+  className?: string
+  ref: React.RefObject<HTMLDivElement>
 }) => {
   return (
     <div
       ref={ref}
       className={cn(
-        "bg-muted relative z-10 flex size-14 items-center justify-center rounded-xl",
+        'bg-muted relative z-10 flex size-14 items-center justify-center rounded-xl',
         className,
       )}
     >
@@ -188,8 +193,8 @@ const IconCard = ({
       <HandleIcon className="absolute -left-3 top-1/2 size-6 -translate-y-1/2 rotate-90" />
       <HandleIcon className="absolute -right-3 top-1/2 size-6 -translate-y-1/2 rotate-90" />
     </div>
-  );
-};
+  )
+}
 
 const HandleIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
@@ -234,8 +239,8 @@ const HandleIcon = (props: React.SVGProps<SVGSVGElement>) => {
         strokeOpacity="0.2"
       />
     </svg>
-  );
-};
+  )
+}
 
 // Below is the modified component from Magic UI
 // Original source: https://magicui.design/docs/components/animated-beam
@@ -243,24 +248,24 @@ const HandleIcon = (props: React.SVGProps<SVGSVGElement>) => {
 // We respect copyright and attribution to the original creators
 
 export interface AnimatedBeamProps {
-  className?: string;
-  containerRef: RefObject<HTMLElement | null>; // Container ref
-  fromRef: RefObject<HTMLElement | null>;
-  toRef: RefObject<HTMLElement | null>;
-  curvature?: number;
-  reverse?: boolean;
-  pathColor?: string;
-  pathWidth?: number;
-  pathOpacity?: number;
-  gradientStartColor?: string;
-  gradientStopColor?: string;
-  delay?: number;
-  duration?: number;
-  startXOffset?: number;
-  startYOffset?: number;
-  endXOffset?: number;
-  endYOffset?: number;
-  direction?: "horizontal" | "vertical";
+  className?: string
+  containerRef: RefObject<HTMLElement | null> // Container ref
+  fromRef: RefObject<HTMLElement | null>
+  toRef: RefObject<HTMLElement | null>
+  curvature?: number
+  reverse?: boolean
+  pathColor?: string
+  pathWidth?: number
+  pathOpacity?: number
+  gradientStartColor?: string
+  gradientStopColor?: string
+  delay?: number
+  duration?: number
+  startXOffset?: number
+  startYOffset?: number
+  endXOffset?: number
+  endYOffset?: number
+  direction?: 'horizontal' | 'vertical'
 }
 
 export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
@@ -272,100 +277,100 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   reverse = false, // Include the reverse prop
   duration = Math.random() * 3 + 4,
   delay = 0,
-  pathColor = "gray",
+  pathColor = 'gray',
   pathWidth = 2,
   pathOpacity = 0.2,
-  gradientStartColor = "#ffaa40",
-  gradientStopColor = "#9c40ff",
+  gradientStartColor = '#ffaa40',
+  gradientStopColor = '#9c40ff',
   startXOffset = 0,
   startYOffset = 0,
   endXOffset = 0,
   endYOffset = 0,
-  direction = "horizontal",
+  direction = 'horizontal',
 }) => {
-  const id = useId();
-  const [pathD, setPathD] = useState("");
-  const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 });
+  const id = useId()
+  const [pathD, setPathD] = useState('')
+  const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 })
 
   // Calculate the gradient coordinates based on the reverse prop
   const gradientCoordinates =
-    direction === "vertical"
+    direction === 'vertical'
       ? reverse
         ? {
-            x1: ["0%", "0%"],
-            x2: ["0%", "0%"],
-            y1: ["90%", "-10%"],
-            y2: ["100%", "0%"],
+            x1: ['0%', '0%'],
+            x2: ['0%', '0%'],
+            y1: ['90%', '-10%'],
+            y2: ['100%', '0%'],
           }
         : {
-            x1: ["0%", "0%"],
-            x2: ["0%", "0%"],
-            y1: ["10%", "110%"],
-            y2: ["0%", "100%"],
+            x1: ['0%', '0%'],
+            x2: ['0%', '0%'],
+            y1: ['10%', '110%'],
+            y2: ['0%', '100%'],
           }
       : reverse
         ? {
             // Horizontal (existing logic)
-            x1: ["90%", "-10%"],
-            x2: ["100%", "0%"],
-            y1: ["0%", "0%"],
-            y2: ["0%", "0%"],
+            x1: ['90%', '-10%'],
+            x2: ['100%', '0%'],
+            y1: ['0%', '0%'],
+            y2: ['0%', '0%'],
           }
         : {
-            x1: ["10%", "110%"],
-            x2: ["0%", "100%"],
-            y1: ["0%", "0%"],
-            y2: ["0%", "0%"],
-          };
+            x1: ['10%', '110%'],
+            x2: ['0%', '100%'],
+            y1: ['0%', '0%'],
+            y2: ['0%', '0%'],
+          }
 
   useEffect(() => {
     const updatePath = () => {
       if (containerRef.current && fromRef.current && toRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const rectA = fromRef.current.getBoundingClientRect();
-        const rectB = toRef.current.getBoundingClientRect();
+        const containerRect = containerRef.current.getBoundingClientRect()
+        const rectA = fromRef.current.getBoundingClientRect()
+        const rectB = toRef.current.getBoundingClientRect()
 
-        const svgWidth = containerRect.width;
-        const svgHeight = containerRect.height;
-        setSvgDimensions({ width: svgWidth, height: svgHeight });
+        const svgWidth = containerRect.width
+        const svgHeight = containerRect.height
+        setSvgDimensions({ width: svgWidth, height: svgHeight })
 
         const startX =
-          rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
+          rectA.left - containerRect.left + rectA.width / 2 + startXOffset
         const startY =
-          rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
+          rectA.top - containerRect.top + rectA.height / 2 + startYOffset
         const endX =
-          rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
+          rectB.left - containerRect.left + rectB.width / 2 + endXOffset
         const endY =
-          rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
+          rectB.top - containerRect.top + rectB.height / 2 + endYOffset
 
-        const controlY = startY - curvature;
+        const controlY = startY - curvature
         const d = `M ${startX},${startY} Q ${
           (startX + endX) / 2
-        },${controlY} ${endX},${endY}`;
-        setPathD(d);
+        },${controlY} ${endX},${endY}`
+        setPathD(d)
       }
-    };
+    }
 
     // Initialize ResizeObserver
     const resizeObserver = new ResizeObserver((entries) => {
       // For all entries, recalculate the path
       for (const entry of entries) {
-        updatePath();
+        updatePath()
       }
-    });
+    })
 
     // Observe the container element
     if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+      resizeObserver.observe(containerRef.current)
     }
 
     // Call the updatePath initially to set the initial path
-    updatePath();
+    updatePath()
 
     // Clean up the observer on component unmount
     return () => {
-      resizeObserver.disconnect();
-    };
+      resizeObserver.disconnect()
+    }
   }, [
     containerRef,
     fromRef,
@@ -375,7 +380,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
     startYOffset,
     endXOffset,
     endYOffset,
-  ]);
+  ])
 
   return (
     <svg
@@ -384,7 +389,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       height={svgDimensions.height}
       xmlns="http://www.w3.org/2000/svg"
       className={cn(
-        "pointer-events-none absolute left-0 top-0 transform-gpu stroke-2",
+        'pointer-events-none absolute left-0 top-0 transform-gpu stroke-2',
         className,
       )}
       viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
@@ -407,12 +412,12 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         <motion.linearGradient
           className="transform-gpu"
           id={id}
-          gradientUnits={"userSpaceOnUse"}
+          gradientUnits={'userSpaceOnUse'}
           initial={{
-            x1: "0%",
-            x2: "0%",
-            y1: "0%",
-            y2: "0%",
+            x1: '0%',
+            x2: '0%',
+            y1: '0%',
+            y2: '0%',
           }}
           animate={{
             x1: gradientCoordinates.x1,
@@ -439,5 +444,5 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         </motion.linearGradient>
       </defs>
     </svg>
-  );
-};
+  )
+}

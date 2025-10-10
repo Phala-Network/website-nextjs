@@ -1,28 +1,28 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check } from 'lucide-react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 
 interface Cta4Props {
-  title?: string;
-  description?: string;
-  buttonText?: string;
-  buttonUrl?: string;
-  items?: string[];
+  title?: string
+  description?: string
+  buttonText?: string
+  buttonUrl?: string
+  items?: string[]
 }
 
 const defaultItems = [
-  "Easy Integration",
-  "24/7 Support",
-  "Customizable Design",
-  "Scalable Performance",
-  "Hundreds of Blocks",
-];
+  'Easy Integration',
+  '24/7 Support',
+  'Customizable Design',
+  'Scalable Performance',
+  'Hundreds of Blocks',
+]
 
 const Cta4 = ({
-  title = "Call to Action",
-  description = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto illo praesentium nisi, accusantium quae.",
-  buttonText = "Get Started",
-  buttonUrl = "https://shadcnblocks.com",
+  title = 'Call to Action',
+  description = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto illo praesentium nisi, accusantium quae.',
+  buttonText = 'Get Started',
+  buttonUrl = 'https://shadcnblocks.com',
   items = defaultItems,
 }: Cta4Props) => {
   return (
@@ -55,7 +55,7 @@ const Cta4 = ({
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Cta4 };
+export { Cta4 }

@@ -1,8 +1,8 @@
-import { Clock, Zap } from "lucide-react";
+import { Clock, Zap } from 'lucide-react'
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 
 const Feature261 = () => {
   return (
@@ -144,7 +144,7 @@ const Feature261 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature261 };
+export { Feature261 }

@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   AppWindow,
@@ -41,10 +41,10 @@ import {
   UserRound,
   Users,
   X,
-} from "lucide-react";
-import { Fragment, useState } from "react";
+} from 'lucide-react'
+import { Fragment, useState } from 'react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -52,485 +52,490 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu'
 
 const solutions = [
   {
-    id: "solution-1",
-    title: "Team Management",
-    description: "Streamline team collaboration and project workflows.",
-    href: "#",
+    id: 'solution-1',
+    title: 'Team Management',
+    description: 'Streamline team collaboration and project workflows.',
+    href: '#',
     subpages: [
       {
-        id: "subpage-1",
-        title: "Task Management",
-        href: "#",
+        id: 'subpage-1',
+        title: 'Task Management',
+        href: '#',
         icon: File,
       },
       {
-        id: "subpage-2",
-        title: "Team Planning",
-        href: "#",
+        id: 'subpage-2',
+        title: 'Team Planning',
+        href: '#',
         icon: Building,
       },
       {
-        id: "subpage-3",
-        title: "Resource Allocation",
-        href: "#",
+        id: 'subpage-3',
+        title: 'Resource Allocation',
+        href: '#',
         icon: Search,
       },
       {
-        id: "subpage-4",
-        title: "Time Tracking",
-        href: "#",
+        id: 'subpage-4',
+        title: 'Time Tracking',
+        href: '#',
         icon: File,
       },
       {
-        id: "subpage-5",
-        title: "Team Analytics",
-        href: "#",
+        id: 'subpage-5',
+        title: 'Team Analytics',
+        href: '#',
         icon: UserPlus,
       },
     ],
   },
   {
-    id: "solution-2",
-    title: "Project Management",
-    description: "Plan, track, and deliver projects with confidence.",
-    href: "#",
+    id: 'solution-2',
+    title: 'Project Management',
+    description: 'Plan, track, and deliver projects with confidence.',
+    href: '#',
     subpages: [
       {
-        id: "subpage-6",
-        title: "Project Templates",
-        href: "#",
+        id: 'subpage-6',
+        title: 'Project Templates',
+        href: '#',
         icon: CheckCircle2,
       },
       {
-        id: "subpage-7",
-        title: "Timeline Views",
-        href: "#",
+        id: 'subpage-7',
+        title: 'Timeline Views',
+        href: '#',
         icon: UserRound,
       },
       {
-        id: "subpage-8",
-        title: "Risk Management",
-        href: "#",
+        id: 'subpage-8',
+        title: 'Risk Management',
+        href: '#',
         icon: ShieldCheck,
       },
       {
-        id: "subpage-9",
-        title: "Budget Tracking",
-        href: "#",
+        id: 'subpage-9',
+        title: 'Budget Tracking',
+        href: '#',
         icon: Scale,
       },
       {
-        id: "subpage-10",
-        title: "Global Teams",
-        href: "#",
+        id: 'subpage-10',
+        title: 'Global Teams',
+        href: '#',
         icon: Globe,
       },
     ],
   },
   {
-    id: "solution-3",
-    title: "Workflow Automation",
-    description: "Automate repetitive tasks and focus on what matters.",
-    href: "#",
+    id: 'solution-3',
+    title: 'Workflow Automation',
+    description: 'Automate repetitive tasks and focus on what matters.',
+    href: '#',
     subpages: [
       {
-        id: "subpage-11",
-        title: "Custom Workflows",
-        href: "#",
+        id: 'subpage-11',
+        title: 'Custom Workflows',
+        href: '#',
         icon: Globe2,
       },
       {
-        id: "subpage-12",
-        title: "Process Templates",
-        href: "#",
+        id: 'subpage-12',
+        title: 'Process Templates',
+        href: '#',
         icon: Clock,
       },
       {
-        id: "subpage-13",
-        title: "Business Rules",
-        href: "#",
+        id: 'subpage-13',
+        title: 'Business Rules',
+        href: '#',
         icon: DollarSign,
       },
       {
-        id: "subpage-14",
-        title: "Integrations",
-        href: "#",
+        id: 'subpage-14',
+        title: 'Integrations',
+        href: '#',
         icon: Phone,
       },
       {
-        id: "subpage-15",
-        title: "API Access",
-        href: "#",
+        id: 'subpage-15',
+        title: 'API Access',
+        href: '#',
         icon: Speech,
       },
     ],
   },
   {
-    id: "solution-4",
-    title: "Enterprise Solutions",
-    description: "Scale your organization with enterprise-grade features.",
-    href: "#",
+    id: 'solution-4',
+    title: 'Enterprise Solutions',
+    description: 'Scale your organization with enterprise-grade features.',
+    href: '#',
     subpages: [
       {
-        id: "subpage-16",
-        title: "Advanced Analytics",
-        href: "#",
+        id: 'subpage-16',
+        title: 'Advanced Analytics',
+        href: '#',
         icon: PieChart,
       },
       {
-        id: "subpage-17",
-        title: "Security Controls",
-        href: "#",
+        id: 'subpage-17',
+        title: 'Security Controls',
+        href: '#',
         icon: Calculator,
       },
       {
-        id: "subpage-18",
-        title: "Custom Reporting",
-        href: "#",
+        id: 'subpage-18',
+        title: 'Custom Reporting',
+        href: '#',
         icon: Table,
       },
     ],
   },
-];
+]
 
 const solutionTechnologies = [
   {
-    id: "technology-1",
-    title: "Integration Platform",
-    href: "#",
+    id: 'technology-1',
+    title: 'Integration Platform',
+    href: '#',
     icon: Puzzle,
   },
   {
-    id: "technology-2",
-    title: "Enterprise Security",
-    href: "#",
+    id: 'technology-2',
+    title: 'Enterprise Security',
+    href: '#',
     icon: Lock,
   },
   {
-    id: "technology-3",
-    title: "Developer API",
-    href: "#",
+    id: 'technology-3',
+    title: 'Developer API',
+    href: '#',
     icon: Code,
   },
-];
+]
 
 const productCategories = [
   {
-    title: "Core Products",
+    title: 'Core Products',
     products: [
       {
-        id: "product-1",
-        title: "Task Management",
-        description: "Organize and track work efficiently.",
-        href: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
+        id: 'product-1',
+        title: 'Task Management',
+        description: 'Organize and track work efficiently.',
+        href: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg',
       },
       {
-        id: "product-2",
-        title: "Team Calendar",
-        description: "Coordinate schedules and deadlines.",
-        href: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg",
+        id: 'product-2',
+        title: 'Team Calendar',
+        description: 'Coordinate schedules and deadlines.',
+        href: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg',
       },
       {
-        id: "product-3",
-        title: "Workflows",
-        description: "Automate your business processes.",
-        href: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg",
+        id: 'product-3',
+        title: 'Workflows',
+        description: 'Automate your business processes.',
+        href: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg',
       },
     ],
   },
   {
-    title: "Advanced Features",
+    title: 'Advanced Features',
     products: [
       {
-        id: "product-4",
-        title: "Portfolio Management",
-        description: "Track and optimize project portfolios at scale.",
-        href: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-4.svg",
+        id: 'product-4',
+        title: 'Portfolio Management',
+        description: 'Track and optimize project portfolios at scale.',
+        href: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-4.svg',
       },
       {
-        id: "product-5",
-        title: "Resource Planning",
-        description: "Optimize team workload and capacity.",
-        href: "#",
-        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-5.svg",
+        id: 'product-5',
+        title: 'Resource Planning',
+        description: 'Optimize team workload and capacity.',
+        href: '#',
+        image:
+          'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-5.svg',
       },
     ],
   },
-];
+]
 
 const globalCategories = [
   {
-    title: "Enterprise Solutions",
+    title: 'Enterprise Solutions',
     features: [
       {
-        id: "feature-1",
-        title: "Digital Transformation",
-        description: "Transform how your organization works with our platform.",
-        href: "#",
+        id: 'feature-1',
+        title: 'Digital Transformation',
+        description: 'Transform how your organization works with our platform.',
+        href: '#',
         icon: Rocket,
       },
       {
-        id: "feature-2",
-        title: "Change Management",
-        description: "Expert guidance for organizational change and adoption.",
-        href: "#",
+        id: 'feature-2',
+        title: 'Change Management',
+        description: 'Expert guidance for organizational change and adoption.',
+        href: '#',
         icon: Building2,
       },
       {
-        id: "feature-3",
-        title: "Global Deployment",
-        description: "Roll out and scale across global teams seamlessly.",
-        href: "#",
+        id: 'feature-3',
+        title: 'Global Deployment',
+        description: 'Roll out and scale across global teams seamlessly.',
+        href: '#',
         icon: Globe2,
       },
     ],
   },
   {
-    title: "Business Solutions",
+    title: 'Business Solutions',
     features: [
       {
-        id: "feature-4",
-        title: "Customer Success",
-        description: "Dedicated support for your business needs.",
-        href: "#",
+        id: 'feature-4',
+        title: 'Customer Success',
+        description: 'Dedicated support for your business needs.',
+        href: '#',
         icon: Phone,
       },
       {
-        id: "feature-5",
-        title: "Compliance",
-        description: "Meet industry standards and regulations.",
-        href: "#",
+        id: 'feature-5',
+        title: 'Compliance',
+        description: 'Meet industry standards and regulations.',
+        href: '#',
         icon: Gavel,
       },
       {
-        id: "feature-6",
-        title: "ROI Calculator",
-        description: "Measure the impact on your business.",
-        href: "#",
+        id: 'feature-6',
+        title: 'ROI Calculator',
+        description: 'Measure the impact on your business.',
+        href: '#',
         icon: DollarSign,
       },
       {
-        id: "feature-7",
-        title: "IT Solutions",
-        description: "Enterprise-grade security and administration tools.",
-        href: "#",
+        id: 'feature-7',
+        title: 'IT Solutions',
+        description: 'Enterprise-grade security and administration tools.',
+        href: '#',
         icon: Computer,
       },
       {
-        id: "feature-8",
-        title: "Strategic Planning",
-        description: "Align teams and track company objectives.",
-        href: "#",
+        id: 'feature-8',
+        title: 'Strategic Planning',
+        description: 'Align teams and track company objectives.',
+        href: '#',
         icon: Flag,
       },
     ],
   },
-];
+]
 
 const regions = [
   {
-    title: "Asia-Pacific",
+    title: 'Asia-Pacific',
     locations: [
       {
-        title: "China",
-        href: "#",
-        icon: "🇨🇳",
+        title: 'China',
+        href: '#',
+        icon: '🇨🇳',
       },
       {
-        title: "India",
-        href: "#",
-        icon: "🇮🇳",
+        title: 'India',
+        href: '#',
+        icon: '🇮🇳',
       },
       {
-        title: "Japan",
-        href: "#",
-        icon: "🇯🇵",
+        title: 'Japan',
+        href: '#',
+        icon: '🇯🇵',
       },
       {
-        title: "Thailand",
-        href: "#",
-        icon: "🇹🇭",
+        title: 'Thailand',
+        href: '#',
+        icon: '🇹🇭',
       },
     ],
   },
   {
-    title: "Europe",
+    title: 'Europe',
     locations: [
       {
-        title: "Italy",
-        href: "#",
-        icon: "🇮🇹",
+        title: 'Italy',
+        href: '#',
+        icon: '🇮🇹',
       },
       {
-        title: "Germany",
-        href: "#",
-        icon: "🇩🇪",
+        title: 'Germany',
+        href: '#',
+        icon: '🇩🇪',
       },
       {
-        title: "Poland",
-        href: "#",
-        icon: "🇵🇱",
+        title: 'Poland',
+        href: '#',
+        icon: '🇵🇱',
       },
       {
-        title: "United Kingdom",
-        href: "#",
-        icon: "🇬🇧",
+        title: 'United Kingdom',
+        href: '#',
+        icon: '🇬🇧',
       },
     ],
   },
   {
-    title: "Americas",
+    title: 'Americas',
     locations: [
       {
-        title: "Brazil",
-        href: "#",
-        icon: "🇧🇷",
+        title: 'Brazil',
+        href: '#',
+        icon: '🇧🇷',
       },
       {
-        title: "Canada",
-        href: "#",
-        icon: "🇨🇦",
+        title: 'Canada',
+        href: '#',
+        icon: '🇨🇦',
       },
       {
-        title: "Mexico",
-        href: "#",
-        icon: "🇲🇽",
+        title: 'Mexico',
+        href: '#',
+        icon: '🇲🇽',
       },
       {
-        title: "United States",
-        href: "#",
-        icon: "🇺🇸",
+        title: 'United States',
+        href: '#',
+        icon: '🇺🇸',
       },
     ],
   },
   {
-    title: "Middle East/Africa",
+    title: 'Middle East/Africa',
     locations: [
       {
-        title: "Egypt",
-        href: "#",
-        icon: "🇸🇦",
+        title: 'Egypt',
+        href: '#',
+        icon: '🇸🇦',
       },
       {
-        title: "Nigeria",
-        href: "#",
-        icon: "🇳🇬",
+        title: 'Nigeria',
+        href: '#',
+        icon: '🇳🇬',
       },
       {
-        title: "Türkiye",
-        href: "#",
-        icon: "🇹🇷",
+        title: 'Türkiye',
+        href: '#',
+        icon: '🇹🇷',
       },
       {
-        title: "United Arab Emirates",
-        href: "#",
-        icon: "🇦🇪",
+        title: 'United Arab Emirates',
+        href: '#',
+        icon: '🇦🇪',
       },
     ],
   },
-];
+]
 
 const resources = [
   {
-    id: "resource-1",
-    title: "Events & Webinars",
-    description: "Learn from industry experts.",
-    href: "#",
+    id: 'resource-1',
+    title: 'Events & Webinars',
+    description: 'Learn from industry experts.',
+    href: '#',
     icon: Calendar,
   },
   {
-    id: "resource-2",
-    title: "Podcasts",
-    description: "Insights on productivity and leadership.",
-    href: "#",
+    id: 'resource-2',
+    title: 'Podcasts',
+    description: 'Insights on productivity and leadership.',
+    href: '#',
     icon: Mic,
   },
   {
-    id: "resource-3",
-    title: "Blog",
-    description: "Latest updates and best practices.",
-    href: "#",
+    id: 'resource-3',
+    title: 'Blog',
+    description: 'Latest updates and best practices.',
+    href: '#',
     icon: Newspaper,
   },
   {
-    id: "resource-4",
-    title: "Video Tutorials",
-    description: "Get started with guided videos.",
-    href: "#",
+    id: 'resource-4',
+    title: 'Video Tutorials',
+    description: 'Get started with guided videos.',
+    href: '#',
     icon: PlayCircle,
   },
   {
-    id: "resource-5",
-    title: "Knowledge Base",
-    description: "Detailed guides and documentation.",
-    href: "#",
+    id: 'resource-5',
+    title: 'Knowledge Base',
+    description: 'Detailed guides and documentation.',
+    href: '#',
     icon: Book,
   },
   {
-    id: "resource-6",
-    title: "Success Stories",
-    description: "See how others achieve more.",
-    href: "#",
+    id: 'resource-6',
+    title: 'Success Stories',
+    description: 'See how others achieve more.',
+    href: '#',
     icon: Lightbulb,
   },
-];
+]
 
 const topicGroups = [
   {
-    title: "Learning Resources",
+    title: 'Learning Resources',
     topics: [
       {
-        id: "topic-1",
-        title: "Getting Started Guide",
-        href: "#",
+        id: 'topic-1',
+        title: 'Getting Started Guide',
+        href: '#',
         icon: Globe,
       },
       {
-        id: "topic-2",
-        title: "Product Updates",
-        href: "#",
+        id: 'topic-2',
+        title: 'Product Updates',
+        href: '#',
         icon: Rocket,
       },
       {
-        id: "topic-3",
-        title: "Best Practices",
-        href: "#",
+        id: 'topic-3',
+        title: 'Best Practices',
+        href: '#',
         icon: Pyramid,
       },
       {
-        id: "topic-4",
-        title: "Integrations",
-        href: "#",
+        id: 'topic-4',
+        title: 'Integrations',
+        href: '#',
         icon: ArrowRightLeft,
       },
       {
-        id: "topic-5",
-        title: "API Documentation",
-        href: "#",
+        id: 'topic-5',
+        title: 'API Documentation',
+        href: '#',
         icon: AppWindow,
       },
     ],
   },
   {
-    title: "Community",
+    title: 'Community',
     topics: [
       {
-        id: "topic-6",
-        title: "Community Forum",
-        href: "#",
+        id: 'topic-6',
+        title: 'Community Forum',
+        href: '#',
         icon: Play,
       },
     ],
   },
-];
+]
 
 const SolutionsMenu = () => (
   <div className="grid gap-8 sm:grid-cols-2">
@@ -617,7 +622,7 @@ const SolutionsMenu = () => (
       ))}
     </div>
   </div>
-);
+)
 
 const ProductsMenu = () => (
   <div className="grid gap-y-12 lg:flex lg:space-x-8">
@@ -684,7 +689,7 @@ const ProductsMenu = () => (
       ))}
     </div>
   </div>
-);
+)
 
 const GlobalGuidanceMenu = () => (
   <div>
@@ -785,7 +790,7 @@ const GlobalGuidanceMenu = () => (
       </div>
     </div>
   </div>
-);
+)
 
 const PartnersMenu = () => (
   <div className="grid gap-y-6 md:grid-cols-2 md:gap-x-6 lg:grid-cols-4">
@@ -875,7 +880,7 @@ const PartnersMenu = () => (
       </NavigationMenuLink>
     </div>
   </div>
-);
+)
 
 const ResourcesMenu = () => (
   <div className="grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-4 lg:gap-6">
@@ -964,41 +969,41 @@ const ResourcesMenu = () => (
       ))}
     </div>
   </div>
-);
+)
 
 const navigationMenuItems = [
   {
-    key: "solutions",
-    label: "Solutions",
+    key: 'solutions',
+    label: 'Solutions',
     component: SolutionsMenu,
   },
   {
-    key: "products",
-    label: "Products",
+    key: 'products',
+    label: 'Products',
     component: ProductsMenu,
   },
   {
-    key: "global",
-    label: "Company",
+    key: 'global',
+    label: 'Company',
     component: GlobalGuidanceMenu,
   },
   {
-    key: "partners",
-    label: "Partners",
+    key: 'partners',
+    label: 'Partners',
     component: PartnersMenu,
   },
   {
-    key: "resources",
-    label: "Resources",
+    key: 'resources',
+    label: 'Resources',
     component: ResourcesMenu,
   },
-] as const;
+] as const
 
 const Navbar4 = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const [submenu, setSubmenu] = useState<
-    "solutions" | "products" | "global" | "partners" | "resources" | null
-  >(null);
+    'solutions' | 'products' | 'global' | 'partners' | 'resources' | null
+  >(null)
 
   return (
     <section className="bg-background inset-x-0 top-0 z-20">
@@ -1041,10 +1046,10 @@ const Navbar4 = () => {
                 className="lg:hidden"
                 onClick={() => {
                   if (open) {
-                    setOpen(false);
-                    setSubmenu(null);
+                    setOpen(false)
+                    setSubmenu(null)
                   } else {
-                    setOpen(true);
+                    setOpen(true)
                   }
                 }}
               >
@@ -1108,7 +1113,7 @@ const Navbar4 = () => {
         </NavigationMenu>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Navbar4 };
+export { Navbar4 }
