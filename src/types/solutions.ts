@@ -44,6 +44,7 @@ export interface UseCase {
   description: string;
   metric?: string;
   benefit?: string;
+  img?: string;
 }
 
 export interface SuccessStory {
