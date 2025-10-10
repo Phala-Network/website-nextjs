@@ -24,6 +24,7 @@ export interface WhyContent {
   description: string;
   points?: string[];
   images?: string[];
+  links?: string[];
 }
 
 export interface HowItWorksStep {
