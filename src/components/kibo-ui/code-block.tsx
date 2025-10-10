@@ -169,8 +169,9 @@ export function CodeBlockContent({ language, children }: CodeBlockContentProps) 
       customStyle={{
         margin: 0,
         padding: "1rem",
-        background: "transparent",
+        background: "#1e1e1e",
         fontSize: "0.875rem",
+        color: "#abb2bf",
       }}
       showLineNumbers={false}
     >

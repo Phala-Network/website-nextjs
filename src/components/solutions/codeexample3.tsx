@@ -85,24 +85,27 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
             <p className="text-muted-foreground text-lg">
               {leftCodeBlock.description}
             </p>
-            <div className="rounded-lg overflow-hidden bg-[#1e1e1e] border border-neutral-800 mt-6">
-              <div className="flex items-center justify-between border-b border-neutral-800 px-4 py-2 bg-[#252525]">
-                <span className="text-sm text-neutral-400">{leftCodeBlock.filename}</span>
+            <div className="rounded-lg overflow-hidden bg-[#1e1e1e] dark:bg-[#1e1e1e] border border-neutral-200 dark:border-neutral-800 mt-6">
+              <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 px-4 py-2 bg-neutral-50 dark:bg-[#252525]">
+                <span className="text-sm text-neutral-600 dark:text-neutral-400">{leftCodeBlock.filename}</span>
               </div>
-              <SyntaxHighlighter
-                language={leftCodeBlock.language}
-                style={oneDark}
-                customStyle={{
-                  margin: 0,
-                  padding: "1.5rem",
-                  background: "#1e1e1e",
-                  fontSize: "0.875rem",
-                  maxHeight: "350px",
-                }}
-                showLineNumbers={false}
-              >
-                {leftCodeBlock.code}
-              </SyntaxHighlighter>
+              <div className="[&_pre]:!bg-[#1e1e1e] [&_code]:!text-[#abb2bf]">
+                <SyntaxHighlighter
+                  language={leftCodeBlock.language}
+                  style={oneDark}
+                  customStyle={{
+                    margin: 0,
+                    padding: "1.5rem",
+                    background: "#1e1e1e",
+                    fontSize: "0.875rem",
+                    maxHeight: "350px",
+                    color: "#abb2bf",
+                  }}
+                  showLineNumbers={false}
+                >
+                  {leftCodeBlock.code}
+                </SyntaxHighlighter>
+              </div>
             </div>
           </div>
 
@@ -114,24 +117,27 @@ curl -X POST https://cloud-api.phala.network/api/v1/attestations/verify \\
             <p className="text-muted-foreground text-lg">
               {rightCodeBlock.description}
             </p>
-            <div className="rounded-lg overflow-hidden bg-[#1e1e1e] border border-neutral-800 mt-6">
-              <div className="flex items-center justify-between border-b border-neutral-800 px-4 py-2 bg-[#252525]">
-                <span className="text-sm text-neutral-400">{rightCodeBlock.filename}</span>
+            <div className="rounded-lg overflow-hidden bg-[#1e1e1e] dark:bg-[#1e1e1e] border border-neutral-200 dark:border-neutral-800 mt-6">
+              <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 px-4 py-2 bg-neutral-50 dark:bg-[#252525]">
+                <span className="text-sm text-neutral-600 dark:text-neutral-400">{rightCodeBlock.filename}</span>
               </div>
-              <SyntaxHighlighter
-                language={rightCodeBlock.language}
-                style={oneDark}
-                customStyle={{
-                  margin: 0,
-                  padding: "1.5rem",
-                  background: "#1e1e1e",
-                  fontSize: "0.875rem",
-                  maxHeight: "350px",
-                }}
-                showLineNumbers={false}
-              >
-                {rightCodeBlock.code}
-              </SyntaxHighlighter>
+              <div className="[&_pre]:!bg-[#1e1e1e] [&_code]:!text-[#abb2bf]">
+                <SyntaxHighlighter
+                  language={rightCodeBlock.language}
+                  style={oneDark}
+                  customStyle={{
+                    margin: 0,
+                    padding: "1.5rem",
+                    background: "#1e1e1e",
+                    fontSize: "0.875rem",
+                    maxHeight: "350px",
+                    color: "#abb2bf",
+                  }}
+                  showLineNumbers={false}
+                >
+                  {rightCodeBlock.code}
+                </SyntaxHighlighter>
+              </div>
             </div>
           </div>
         </div>

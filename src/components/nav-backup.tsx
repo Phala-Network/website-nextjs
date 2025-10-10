@@ -6,20 +6,16 @@ import {
   BookOpen,
   Bot,
   Brain,
-  Briefcase,
   Coins,
   Cpu,
   Database,
-  FileText,
   GitCompare,
   Gpu,
   GraduationCap,
-  ImageIcon,
   Layers,
   Lightbulb,
   Menu,
   Network,
-  Newspaper,
   PackageOpen,
   Play,
   Rocket,
@@ -27,10 +23,8 @@ import {
   Server,
   Sparkles,
   SquareArrowOutUpRight,
-  Users,
   Vote,
   Wallet,
-  Zap,
 } from 'lucide-react'
 import { useMotionValueEvent, useScroll } from 'motion/react'
 import Link from 'next/link'
@@ -74,6 +68,19 @@ const menu = [
     url: '#',
     items: [
       {
+        title: 'Confidential VM',
+        description:
+          'Secure virtual machines with hardware-level privacy protection',
+        icon: <Server className="size-5 shrink-0" />,
+        url: '/confidential-vm',
+      },
+      {
+        title: 'Confidential AI Models',
+        description: 'AI models with end-to-end privacy guarantees',
+        icon: <Brain className="size-5 shrink-0" />,
+        url: '/confidential-ai-models',
+      },
+      {
         title: 'GPU TEE',
         description: 'Most Powerful AI GPUs. Most Secure Platform.',
         icon: <Gpu className="size-5 shrink-0" />,
@@ -97,55 +104,11 @@ const menu = [
         ],
       },
       {
-        title: 'Confidential VM',
-        description:
-          'Secure virtual machines with hardware-level privacy protection',
-        icon: <Server className="size-5 shrink-0" />,
-        url: '/confidential-vm',
-      },
-      {
-        title: 'Confidential AI Models',
-        description: 'AI models with end-to-end privacy guarantees',
-        icon: <Brain className="size-5 shrink-0" />,
-        url: '/confidential-ai-models',
-      },
-      {
-        title: 'dStack',
+        title: 'Open Source, dstack',
         description:
           'Open source, decentralized compute infrastructure for secure cloud computing',
         icon: <PackageOpen className="size-5 shrink-0" />,
         url: '/dstack',
-      },
-      {
-        title: 'Trust Center',
-        description: 'Security certifications and compliance information',
-        icon: <Server className="size-5 shrink-0" />,
-        url: 'https://trust.phala.com/',
-      },
-      {
-        title: 'Compare',
-        description:
-          'See how Phala compares to other confidential computing solutions',
-        icon: <GitCompare className="size-5 shrink-0" />,
-        url: '/compare',
-        items: [
-          {
-            title: 'Phala vs AWS Nitro',
-            description: 'Open-source alternative to AWS Nitro Enclaves',
-            url: '/compare/phala-vs-aws-nitro',
-          },
-          {
-            title: 'Phala vs GCP',
-            description:
-              'Decentralized alternative to Google Cloud confidential computing',
-            url: '/compare/phala-vs-gcp',
-          },
-          {
-            title: 'Phala vs Tinfoil',
-            description: 'Infrastructure control vs managed confidential AI',
-            url: '/compare/phala-vs-tinfoil',
-          },
-        ],
       },
     ],
   },
@@ -190,10 +153,29 @@ const menu = [
         url: '/success-stories',
       },
       {
-        title: 'Apps on Phala',
-        description: 'Explore applications built on Phala Network',
-        icon: <PackageOpen className="size-5 shrink-0" />,
-        url: 'https://cloud.phala.network/explorer',
+        title: 'Compare',
+        description:
+          'See how Phala compares to other confidential computing solutions',
+        icon: <GitCompare className="size-5 shrink-0" />,
+        url: '/compare',
+        items: [
+          {
+            title: 'Phala vs AWS Nitro',
+            description: 'Open-source alternative to AWS Nitro Enclaves',
+            url: '/compare/phala-vs-aws-nitro',
+          },
+          {
+            title: 'Phala vs GCP Confidential VMs',
+            description:
+              'Decentralized alternative to Google Cloud confidential computing',
+            url: '/compare/phala-vs-gcp',
+          },
+          {
+            title: 'Phala vs Tinfoil',
+            description: 'Infrastructure control vs managed confidential AI',
+            url: '/compare/phala-vs-tinfoil',
+          },
+        ],
       },
     ],
   },
@@ -234,45 +216,9 @@ const menu = [
     ],
   },
   {
-    title: 'Resources',
+    title: 'Network',
     url: '#',
     items: [
-      {
-        title: 'Blog',
-        description: 'Latest updates, announcements, and technical insights',
-        icon: <Newspaper className="size-5 shrink-0" />,
-        url: '/blog',
-      },
-      {
-        title: 'Ecosystem/Partnerships',
-        description: 'Partners and integrations in the Phala ecosystem',
-        icon: <Network className="size-5 shrink-0" />,
-        url: '/partnerships',
-      },
-      {
-        title: 'Ambassador Program',
-        description: 'Join our global community of advocates',
-        icon: <Users className="size-5 shrink-0" />,
-        url: '/ambassador',
-      },
-      {
-        title: 'Changelog',
-        description: 'Track updates and new features',
-        icon: <FileText className="size-5 shrink-0" />,
-        url: '/changelog',
-      },
-      {
-        title: 'Media Kit',
-        description: 'Brand assets and guidelines',
-        icon: <ImageIcon className="size-5 shrink-0" />,
-        url: '/media-kit',
-      },
-      {
-        title: 'Career',
-        description: 'Join the Phala team',
-        icon: <Briefcase className="size-5 shrink-0" />,
-        url: '/career',
-      },
       {
         title: 'About Phala Network',
         description: 'Learn about our mission and privacy-first technology',
