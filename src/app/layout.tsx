@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import Footer from '@/components/footer'
-import Nav from '@/components/nav'
+import { PhalaNavbar4 } from '@/components/navbar4-phala'
 import { env } from '@/env'
 import fontVariables from '@/lib/fonts'
 import './globals.css'
@@ -54,11 +54,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables}>
       <body>
+        <PhalaNavbar4 />
         <div className="pt-20">
           {children}
           <Footer />
         </div>
-        <Nav />
       </body>
     </html>
   )
