@@ -596,8 +596,14 @@ const PhalaNavbar4 = () => {
               </NavigationMenuList>
             </div>
             <div className="flex items-center gap-2">
+              <Button variant="ghost" className="hidden md:block" asChild>
+                <a href="/contact">Contact</a>
+              </Button>
+              <Button variant="ghost" className="hidden md:block" asChild>
+                <a href="https://cloud.phala.network/login">Sign in</a>
+              </Button>
               <Button className="hidden md:block" asChild>
-                <a href="https://cloud.phala.network">Dashboard</a>
+                <a href="https://cloud.phala.network/register">Sign up</a>
               </Button>
               <Button
                 variant="outline"
@@ -662,6 +668,24 @@ const PhalaNavbar4 = () => {
                     className="border-border flex w-full items-center border-b py-6 text-left"
                   >
                     <span className="flex-1 text-sm font-medium">About Us</span>
+                  </a>
+                  <a
+                    href="/contact"
+                    className="border-border flex w-full items-center border-b py-6 text-left"
+                  >
+                    <span className="flex-1 text-sm font-medium">Contact</span>
+                  </a>
+                  <a
+                    href="https://cloud.phala.network/login"
+                    className="border-border flex w-full items-center border-b py-6 text-left"
+                  >
+                    <span className="flex-1 text-sm font-medium">Sign in</span>
+                  </a>
+                  <a
+                    href="https://cloud.phala.network/register"
+                    className="border-border flex w-full items-center border-b py-6 text-left"
+                  >
+                    <span className="flex-1 text-sm font-medium">Sign up</span>
                   </a>
                 </div>
               )}
