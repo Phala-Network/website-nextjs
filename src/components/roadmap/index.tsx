@@ -52,37 +52,24 @@ const Roadmap = () => {
   }
 
   const handleFullscreen = () => {
-    // @ts-expect-error
     if (
       document.fullscreenElement === null ||
-      // @ts-expect-error
-      document.webkitIsFullScreen === false
+      (document as any).webkitIsFullScreen === false
     ) {
-      // @ts-expect-error
       document.documentElement.requestFullscreen
         ? document.documentElement.requestFullscreen()
-        : // @ts-expect-error
-          document.documentElement.webkitRequestFullscreen
-          ? // @ts-expect-error
-            document.documentElement.webkitRequestFullscreen()
-          : // @ts-expect-error
-            document.documentElement.mozRequestFullScreen
-            ? // @ts-expect-error
-              document.documentElement.mozRequestFullScreen()
-            : // @ts-expect-error
-              document.documentElement.msRequestFullscreen &&
-              // @ts-expect-error
-              document.documentElement.msRequestFullscreen()
+        : (document.documentElement as any).webkitRequestFullscreen
+          ? (document.documentElement as any).webkitRequestFullscreen()
+          : (document.documentElement as any).mozRequestFullScreen
+            ? (document.documentElement as any).mozRequestFullScreen()
+            : (document.documentElement as any).msRequestFullscreen &&
+              (document.documentElement as any).msRequestFullscreen()
     } else {
-      // @ts-expect-error
       document.exitFullscreen
         ? document.exitFullscreen()
-        : // @ts-expect-error
-          document.webkitExitFullscreen
-          ? // @ts-expect-error
-            document.webkitExitFullscreen()
-          : // @ts-expect-error
-            document.mozCancelFullScreen && document.mozCancelFullScreen()
+        : (document as any).webkitExitFullscreen
+          ? (document as any).webkitExitFullscreen()
+          : (document as any).mozCancelFullScreen && (document as any).mozCancelFullScreen()
     }
   }
 
