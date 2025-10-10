@@ -286,7 +286,7 @@ function HeroSection() {
           >
             <div className="absolute inset-0 border-2 border-slate-400 rounded-lg"></div>
             <img
-              src="/core.png"
+              src="/confidential-vm/cvm-hero.png"
               alt="CVM Architecture"
               className="max-h-[450px] w-full object-contain"
             />
