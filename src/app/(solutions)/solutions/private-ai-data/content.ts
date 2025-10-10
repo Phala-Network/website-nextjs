@@ -152,6 +152,7 @@ export const privateAIDataContent: SolutionContent = {
         tags: "VERIFIABLE AI / zkTLS",
         title: "Verifiable AI responses",
         subtitle: "with proof of data source.",
+        image: "/partnerships/rena.jpg",
         link: "https://x.com/Rena_labs/status/1963602045128093837",
       },
       {
@@ -160,6 +161,7 @@ export const privateAIDataContent: SolutionContent = {
         tags: "LLM OBSERVABILITY / PRIVACY",
         title: "Private LLM observability",
         subtitle: "without exposing prompts.",
+        image: "/partnerships/xtrace.jpg",
         link: "https://docs.xtrace.ai/manual_rst/configuration.html",
       },
     ],
