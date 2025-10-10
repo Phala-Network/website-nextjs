@@ -162,7 +162,7 @@ const solutionCategories = [
         id: 'solution-6',
         title: 'AI Wallet Copilot',
         description: 'Intelligent wallet assistance with privacy.',
-        href: '/solutions/ai-wallet-copilot',
+        href: 'https://d5be0b710ecaa77985cf148109b1591bbc7023d0-3000.dstack-pha-prod8.phala.network/',
         icon: Wallet,
       },
     ],
@@ -341,34 +341,7 @@ const resourcesNetwork = [
 
 // Products Menu Component
 const ProductsMenu = () => (
-  <div className="grid gap-y-12 lg:flex lg:space-x-8">
-    <div className="w-full shrink-0 lg:max-w-[18rem]">
-      <a
-        href="/gpu-tee"
-        className="text-primary-foreground group relative flex h-full flex-row overflow-hidden rounded-lg px-0 lg:rounded-xl"
-      >
-        <div className="relative z-10 flex w-full flex-col text-left">
-          <div className="aspect-2/1 relative flex max-h-[11rem] w-full flex-1 justify-center">
-            <img
-              src="/gpu-tee-featured.svg"
-              alt="GPU TEE"
-              className="h-full w-full object-cover object-center"
-            />
-          </div>
-          <div className="bg-primary relative z-20 flex flex-col rounded-b-xl p-6">
-            <div className="flex items-center space-x-1 text-xs">
-              GPU TEE
-              <ArrowRight className="ml-1 size-4 transition-transform group-hover:translate-x-1" />
-            </div>
-            <p className="text-primary-foreground/70 mt-2 text-xs">
-              Hardware-enforced confidential computing on the most powerful
-              GPUs.
-            </p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div className="grid w-full gap-y-12 lg:gap-y-6">
+  <div className="grid gap-y-12 lg:gap-y-6">
       {productCategories.map((category) => (
         <div key={category.title} className="grid gap-y-2 lg:gap-y-6">
           <div className="border-border text-left lg:border-b lg:pb-3">
@@ -401,7 +374,6 @@ const ProductsMenu = () => (
           </menu>
         </div>
       ))}
-    </div>
   </div>
 )
 
