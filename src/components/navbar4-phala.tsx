@@ -397,20 +397,6 @@ const ProductsMenu = () => (
                   </div>
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 lg:hidden" />
                 </NavigationMenuLink>
-                {product.subpages && (
-                  <menu className="ml-12 mt-2 space-y-2">
-                    {product.subpages.map((subpage) => (
-                      <NavigationMenuLink
-                        key={subpage.id}
-                        href={subpage.href}
-                        className="text-foreground/70 hover:text-foreground group flex items-center space-x-2 text-xs"
-                      >
-                        <span>{subpage.title}</span>
-                        <ArrowRight className="size-3 transition-transform group-hover:translate-x-1" />
-                      </NavigationMenuLink>
-                    ))}
-                  </menu>
-                )}
               </div>
             ))}
           </menu>

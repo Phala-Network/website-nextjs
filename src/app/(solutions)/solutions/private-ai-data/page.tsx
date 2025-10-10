@@ -118,7 +118,7 @@ export default function PrivateAIDataPage() {
       <Compliance5 />
 
       {/* FAQs - faq14 */}
-      <Faq14 faqs={content.faqs} />
+      <Faq14 faqItems={content.faqs} />
       
       {/* Final CTA - cta4 */}
       <Cta4 {...content.cta} />

@@ -114,6 +114,7 @@ export const privateAIInferenceContent: SolutionContent = {
         tags: "ML SDK / VERIFIABLE AGENTS",
         title: "Private ML SDK—",
         subtitle: "verifiable agent inference.",
+        image: "/success-stories/near-logo.svg",
         link: "/success-stories/near-ai",
       },
       {
@@ -122,6 +123,7 @@ export const privateAIInferenceContent: SolutionContent = {
         tags: "ROUTING / ENTERPRISE",
         title: "Confidential route",
         subtitle: "for enterprise prompts.",
+        image: "/success-stories/openrouter-logo.svg",
         link: "/success-stories/openrouter",
       },
     ],

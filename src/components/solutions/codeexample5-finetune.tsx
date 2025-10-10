@@ -78,7 +78,6 @@ const Codeexample5Finetune = () => {
                         <CodeBlockFilename
                           key={item.language}
                           value={item.language}
-                          className="truncate"
                         >
                           {item.filename}
                         </CodeBlockFilename>
