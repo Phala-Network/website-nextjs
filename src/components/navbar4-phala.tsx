@@ -526,7 +526,7 @@ const PhalaNavbar4 = () => {
   >(null)
 
   return (
-    <section className="bg-background inset-x-0 top-0 z-20">
+    <section className="bg-background fixed inset-x-0 top-0 z-50">
       <div className="container">
         <NavigationMenu className="min-w-full [&>div:last-child]:left-auto">
           <div className="flex w-full justify-between gap-2 py-4">
@@ -599,7 +599,7 @@ const PhalaNavbar4 = () => {
 
           {/* Mobile Menu */}
           {open && (
-            <div className="border-border bg-background container fixed inset-0 top-[72px] flex h-[calc(100vh-72px)] w-full flex-col overflow-auto border-t lg:hidden">
+            <div className="border-border bg-background container fixed inset-0 top-[72px] z-40 flex h-[calc(100vh-72px)] w-full flex-col overflow-auto border-t lg:hidden">
               {submenu && (
                 <div className="mt-3">
                   <Button
