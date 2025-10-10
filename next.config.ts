@@ -52,8 +52,8 @@ const withMDX = createMDX({
 })
 
 export default withPostHogConfig(withMDX(nextConfig), {
-  personalApiKey: process.env.POSTHOG_API_KEY!,
-  envId: process.env.POSTHOG_ENV_ID!,
+  personalApiKey: process.env.POSTHOG_API_KEY || '',
+  envId: process.env.POSTHOG_ENV_ID || '',
   host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-  sourcemaps: { enabled: process.env.VERCEL_ENV === 'production' },
+  sourcemaps: { enabled: process.env.VERCEL_ENV === 'production' && !!process.env.POSTHOG_API_KEY },
 })
