@@ -25,8 +25,8 @@ const Hero216 = () => {
           className="group text-md mt-10 flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
           asChild
         >
-          <a href="https://cloud.phala.network">
-            Deploy on Phala
+          <a href="https://phala.com/contact">
+            Contact Us
             <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
           </a>
         </Button>
