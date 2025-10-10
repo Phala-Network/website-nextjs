@@ -123,7 +123,7 @@ const Feature284 = ({ features, useCases }: Feature284Props) => {
               <h3 className="mt-4 text-2xl font-semibold tracking-tight">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground">{feature.desc || feature.description}</p>
+              <p className="text-muted-foreground">{"desc" in feature ? feature.desc : feature.description}</p>
             </div>
           ))}
         </div>
