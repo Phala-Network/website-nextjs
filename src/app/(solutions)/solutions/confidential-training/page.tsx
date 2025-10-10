@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Hero216 } from "@/components/solutions/hero216";
 import { Feature206 } from "@/components/solutions/feature206";
-import { Feature282 } from "@/components/solutions/feature282";
-import { Feature172 } from "@/components/solutions/feature172";
-import { Feature284 } from "@/components/solutions/feature284";
-import { Feature280 } from "@/components/solutions/feature280";
+import { Feature251Training } from "@/components/solutions/feature251-training";
+import { Feature95Training } from "@/components/solutions/feature95-training";
 import { Casestudies3 } from "@/components/solutions/casestudies3";
 import { Codeexample3 } from "@/components/solutions/codeexample3";
-import { Feature161 } from "@/components/solutions/feature161";
+import { Compliance5 } from "@/components/solutions/compliance5";
 import { Faq14 } from "@/components/solutions/faq14";
 import { Cta4 } from "@/components/solutions/cta4";
 
@@ -36,239 +34,15 @@ export default function ConfidentialTrainingPage() {
           "/solutions/train/3.png",
           "/solutions/train/4.png",
         ]}
-      />
-      <Feature282
-        badge="Confidential Training"
-        cardSubtitle="Multi-GPU TEE Clusters"
-        cardTitle="Distributed Pre-Training"
-        title="Large-Scale Model Training with Hardware Encryption"
-        description1="Multi-GPU clusters with Intel TDX and AMD SEV provide hardware-level isolation for distributed training. Pre-train LLMs on sensitive datasets with consortium partners—each party keeps data custody while contributing to shared model development."
-        description2="Confidential scheduler coordinates tensor-parallel and data-parallel jobs across TEE nodes. High-speed interconnect with encrypted RDMA keeps gradient updates sealed. Checkpoints signed with reproducible build IDs for audit trails."
-        features={[
-          "Multi-GPU TEE clusters",
-          "Sealed checkpoint storage",
-          "Consortium learning support"
+        links={[
+          "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240SB1047",
+          "https://www-cdn.anthropic.com/807c59454757214bfd37592d6e048079cd7a7728.pdf#:~:text=Anthropic's%20Responsible%20Scaling%20Policy%20(RSP)%20sets%20forth%20our%20commitment%20not,protecting%20model%20weights%20from%20theft.",
+          "https://www.forbes.com/sites/hessiejones/2024/05/31/will-llm-adoption-demand-more-stringent-data-security-measures/",
+          "https://www.cambridge.org/core/journals/journal-of-law-medicine-and-ethics/article/ai-chatbots-and-challenges-of-hipaa-compliance-for-ai-developers-and-vendors/C873B37AF3901C034FECAEE4598D4A6A",
         ]}
       />
-      <Feature172
-        title="How It Works"
-        topItems={[
-          {
-            title: "Deploy training job.",
-            description: "Submit distributed training configuration to Phala's confidential scheduler with data sources, model architecture, and TEE policies.",
-            images: [
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-                alt: "Training deployment",
-                className: "aspect-495/186 max-w-lg rounded-xl",
-              },
-            ],
-            className: "flex-1 [&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
-            fade: [""],
-          },
-          {
-            title: "Verify cluster attestation.",
-            description: "Each GPU node generates attestation proofs. Verify entire cluster runs in genuine TEE hardware before sending training data.",
-            images: [
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/instagram-icon.svg",
-                alt: "Node 1",
-              },
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/linkedin-icon.svg",
-                alt: "Node 2",
-              },
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/producthunt-icon.svg",
-                alt: "Node 3",
-              },
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/twitter-icon.svg",
-                alt: "Node 4",
-              },
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-icon.svg",
-                alt: "Node 5",
-              },
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/figma-icon.svg",
-                alt: "Node 6",
-              },
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/slack-icon.svg",
-                alt: "Node 7",
-              },
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg",
-                alt: "Node 8",
-              },
-            ],
-            className: "flex-1 [&>.title-container]:mb-5 md:[&>.title-container]:mb-8 md:[&>.title-container]:translate-x-2 xl:[&>.title-container]:translate-x-4 [&>.title-container]:translate-x-0",
-            fade: [],
-          },
-        ]}
-        bottomItems={[
-          {
-            title: "Load confidential datasets.",
-            description: "Encrypted training data streams into sealed storage. Consortium partners maintain data custody—no cross-party data leakage.",
-            images: [
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg",
-                alt: "Dataset loading",
-                className: "aspect-305/280 rounded-t-xl max-w-[305px]",
-              },
-            ],
-            className: "[&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
-            fade: ["bottom"],
-          },
-          {
-            title: "Training runs in TEE cluster.",
-            description: "Distributed training with tensor-parallel and data-parallel execution. Gradient updates encrypted over high-speed RDMA interconnect.",
-            images: [
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg",
-                alt: "Training execution",
-                className: "aspect-320/103 rounded-xl",
-              },
-            ],
-            className: "justify-normal [&>.title-container]:mb-5 md:[&>.title-container]:mb-0 [&>.image-container]:flex-1 md:[&>.image-container]:place-items-center md:[&>.image-container]:-translate-y-3",
-            fade: [""],
-          },
-          {
-            title: "Export sealed checkpoints.",
-            description: "Signed model artifacts with attestation lineage. Only authorized parties decrypt final weights—audit trail for regulators.",
-            images: [
-              {
-                src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-6.svg",
-                alt: "Checkpoint export",
-                className: "aspect-305/280 rounded-t-xl max-w-[305px]",
-              },
-            ],
-            className: "[&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
-            fade: ["bottom"],
-          },
-        ]}
-      />
-      <Feature284
-        features={[
-          {
-            desc: "Multi-institution AI research on pooled datasets. Universities and labs train foundation models without exposing proprietary research data.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img1.jpeg",
-            title: "Consortium Learning",
-            badgeTitle: "USE CASE",
-            gridClass: "md:col-span-1",
-          },
-          {
-            desc: "Pharmaceutical AI trained on confidential molecular data, clinical trial results, and drug discovery datasets with regulatory compliance.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img7.jpeg",
-            title: "Pharma & Healthcare Training",
-            badgeTitle: "USE CASE",
-            gridClass: "lg:col-span-2",
-          },
-          {
-            desc: "Defense and government AI on classified datasets. Meet CMMC, FedRAMP, and national security requirements with hardware isolation.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img11.jpeg",
-            title: "Defense & Classified Training",
-            badgeTitle: "USE CASE",
-            gridClass: "md:col-span-1 lg:row-span-2",
-          },
-          {
-            desc: "Financial institutions training on transaction data, fraud patterns, and customer behavior with zero data leakage to cloud operators.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img2.jpeg",
-            title: "Financial AI Training",
-            badgeTitle: "USE CASE",
-            gridClass: "lg:col-span-2",
-          },
-          {
-            desc: "Enterprise foundation models trained on internal knowledge bases, customer data, and business intelligence with full IP protection.",
-            img: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img4.jpeg",
-            title: "Enterprise Model Pre-Training",
-            badgeTitle: "USE CASE",
-            gridClass: "md:col-span-1",
-          },
-        ]}
-      />
-      <Feature280
-        title="Trusted by Research & Enterprise Teams"
-        subtitle="TESTIMONIALS"
-        features={[
-          "Multi-GPU TEE clusters",
-          "Distributed training",
-          "Tensor parallelism",
-          "Data parallelism",
-          "Sealed checkpoints",
-          "Consortium learning",
-          "Dataset custody",
-          "Reproducible builds",
-          "Audit trails",
-          "Slurm/K8s support",
-          "Enterprise SLA",
-          "24/7 support"
-        ]}
-        cards={[
-          {
-            id: 0,
-            name: "Dr. Michael Zhang",
-            designation: "AI Research Director",
-            content: (
-              <p>
-                Our consortium trained a 70B parameter model on pooled research data. <span className="bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500">Zero data leakage</span> between institutions—TEE isolation gave us the confidence to collaborate.
-              </p>
-            ),
-          },
-          {
-            id: 1,
-            name: "Jennifer Park",
-            designation: "VP of Compliance",
-            content: (
-              <p>
-                Phala's sealed checkpoints and attestation lineage meet our <span className="bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500">FedRAMP requirements</span>. First time we've trained on classified data in cloud infrastructure.
-              </p>
-            ),
-          },
-          {
-            id: 2,
-            name: "Raj Patel",
-            designation: "ML Infrastructure Lead",
-            content: (
-              <p>
-                Multi-GPU TEE training at scale—<span className="bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500">same performance</span> as bare metal with hardware-grade privacy. Game changer for enterprise AI.
-              </p>
-            ),
-          },
-        ]}
-      />
-      <Casestudies3
-        featuredCasestudy={{
-          logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
-          company: "AI Research Consortium",
-          tags: "RESEARCH / CONSORTIUM LEARNING",
-          title: "70B parameter model on pooled datasets.",
-          subtitle: "Multi-institution training with zero data leakage",
-          image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-          link: "#",
-        }}
-        casestudies={[
-          {
-            logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg",
-            company: "Pharma AI",
-            tags: "PHARMACEUTICAL / CONFIDENTIAL TRAINING",
-            title: "Drug discovery model on molecular data.",
-            subtitle: "Regulatory-compliant training with attestation lineage",
-            image: "",
-            link: "#",
-          },
-          {
-            logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg",
-            company: "Defense AI Lab",
-            tags: "DEFENSE / CLASSIFIED TRAINING",
-            title: "Classified dataset training meets CMMC.",
-            subtitle: "Hardware-enforced isolation for national security workloads",
-            image: "",
-            link: "#",
-          },
-        ]}
-      />
+      <Feature95Training />
+      <Feature251Training />
       <Codeexample3
         leftCode={{
           title: "Deploy Multi-GPU Training",
@@ -330,14 +104,7 @@ curl -X POST https://cloud-api.phala.network/api/v1/training/verify \\
 }`
         }}
       />
-      <Feature161
-        title="Reproducible Training Lineage"
-        description="Attestation receipts, dataset custody proofs, and reproducible build IDs for regulatory compliance and consortium audit trails."
-        primaryButtonText="Get Training Report"
-        primaryButtonUrl="https://cloud.phala.network/training-report"
-        secondaryButtonText="Compliance Docs"
-        secondaryButtonUrl="https://docs.phala.network/compliance"
-      />
+      <Compliance5 />
       <Faq14
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about Confidential Training"
