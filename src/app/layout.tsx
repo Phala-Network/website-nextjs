@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
   },
   alternates: {
-    canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
     types: {
       'application/rss+xml': [
         {
