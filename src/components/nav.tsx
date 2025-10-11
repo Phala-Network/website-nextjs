@@ -3,22 +3,30 @@
 import {
   BarChart3,
   Book,
-  BookOpen,
+  Bot,
   Brain,
+  Briefcase,
   Coins,
   Cpu,
+  Database,
+  FileText,
   GitCompare,
   Gpu,
   GraduationCap,
+  ImageIcon,
+  Layers,
   Lightbulb,
   Menu,
   Network,
+  Newspaper,
   PackageOpen,
   Play,
   Rocket,
   Search,
   Server,
+  Sparkles,
   SquareArrowOutUpRight,
+  Users,
   Vote,
   Wallet,
 } from 'lucide-react'
@@ -64,19 +72,6 @@ const menu = [
     url: '#',
     items: [
       {
-        title: 'Confidential VM',
-        description:
-          'Secure virtual machines with hardware-level privacy protection',
-        icon: <Server className="size-5 shrink-0" />,
-        url: '/confidential-vm',
-      },
-      {
-        title: 'Confidential AI Models',
-        description: 'AI models with end-to-end privacy guarantees',
-        icon: <Brain className="size-5 shrink-0" />,
-        url: '/confidential-ai-models',
-      },
-      {
         title: 'GPU TEE',
         description: 'Most Powerful AI GPUs. Most Secure Platform.',
         icon: <Gpu className="size-5 shrink-0" />,
@@ -100,42 +95,30 @@ const menu = [
         ],
       },
       {
-        title: 'Open Source, dstack',
+        title: 'Confidential VM',
+        description:
+          'Secure virtual machines with hardware-level privacy protection',
+        icon: <Server className="size-5 shrink-0" />,
+        url: '/confidential-vm',
+      },
+      {
+        title: 'Confidential AI Models',
+        description: 'AI models with end-to-end privacy guarantees',
+        icon: <Brain className="size-5 shrink-0" />,
+        url: '/confidential-ai-models',
+      },
+      {
+        title: 'dStack',
         description:
           'Open source, decentralized compute infrastructure for secure cloud computing',
         icon: <PackageOpen className="size-5 shrink-0" />,
         url: '/dstack',
       },
-    ],
-  },
-  {
-    title: 'Solutions',
-    url: '#',
-    items: [
       {
-        title: 'Success Stories',
-        description: 'Real-world implementations of privacy-first solutions',
-        icon: <Lightbulb className="size-5 shrink-0" />,
-        url: '/success-stories',
-      },
-      {
-        title: 'Apps Built on Phala',
-        description:
-          'Innovative applications powered by confidential computing',
-        icon: <Rocket className="size-5 shrink-0" />,
-        url: 'https://cloud.phala.network/explorer',
-      },
-      {
-        title: 'AI Wallet Copilot',
-        description: 'Intelligent wallet assistant with confidential AI',
-        icon: <Wallet className="size-5 shrink-0" />,
-        url: 'https://d5be0b710ecaa77985cf148109b1591bbc7023d0-3000.dstack-pha-prod8.phala.network/',
-      },
-      {
-        title: 'Blog',
-        description: 'Latest insights and updates from the Phala ecosystem',
-        icon: <BookOpen className="size-5 shrink-0" />,
-        url: '/blog',
+        title: 'Trust Center',
+        description: 'Security certifications and compliance information',
+        icon: <Server className="size-5 shrink-0" />,
+        url: 'https://trust.phala.com/',
       },
       {
         title: 'Compare',
@@ -150,7 +133,7 @@ const menu = [
             url: '/compare/phala-vs-aws-nitro',
           },
           {
-            title: 'Phala vs GCP Confidential VMs',
+            title: 'Phala vs GCP',
             description:
               'Decentralized alternative to Google Cloud confidential computing',
             url: '/compare/phala-vs-gcp',
@@ -161,6 +144,54 @@ const menu = [
             url: '/compare/phala-vs-tinfoil',
           },
         ],
+      },
+    ],
+  },
+  {
+    title: 'Solutions',
+    url: '#',
+    items: [
+      {
+        title: 'Private AI Data',
+        description: 'Compute-to-data on sensitive datasets with TEE isolation',
+        icon: <Database className="size-5 shrink-0" />,
+        url: '/solutions/private-ai-data',
+      },
+      {
+        title: 'Private AI Inference',
+        description: 'Confidential LLM serving with zero-logging guarantees',
+        icon: <Cpu className="size-5 shrink-0" />,
+        url: '/solutions/private-ai-inference',
+      },
+      {
+        title: 'Fine-Tuned Models',
+        description: 'Private model customization on proprietary data',
+        icon: <Sparkles className="size-5 shrink-0" />,
+        url: '/solutions/fine-tuned-models',
+      },
+      {
+        title: 'Confidential Training',
+        description: 'Large-scale model training with encrypted gradients',
+        icon: <Layers className="size-5 shrink-0" />,
+        url: '/solutions/confidential-training',
+      },
+      {
+        title: 'AI Agents',
+        description: 'Verifiable agent execution with on-chain attestation',
+        icon: <Bot className="size-5 shrink-0" />,
+        url: '/solutions/ai-agents',
+      },
+      {
+        title: 'Success Stories',
+        description: 'Real-world implementations of privacy-first solutions',
+        icon: <Lightbulb className="size-5 shrink-0" />,
+        url: '/success-stories',
+      },
+      {
+        title: 'Apps on Phala',
+        description: 'Explore applications built on Phala Network',
+        icon: <PackageOpen className="size-5 shrink-0" />,
+        url: 'https://cloud.phala.network/explorer',
       },
     ],
   },
@@ -201,9 +232,45 @@ const menu = [
     ],
   },
   {
-    title: 'Network',
+    title: 'Resources',
     url: '#',
     items: [
+      {
+        title: 'Blog',
+        description: 'Latest updates, announcements, and technical insights',
+        icon: <Newspaper className="size-5 shrink-0" />,
+        url: '/blog',
+      },
+      {
+        title: 'Ecosystem/Partnerships',
+        description: 'Partners and integrations in the Phala ecosystem',
+        icon: <Network className="size-5 shrink-0" />,
+        url: '/partnerships',
+      },
+      {
+        title: 'Ambassador Program',
+        description: 'Join our global community of advocates',
+        icon: <Users className="size-5 shrink-0" />,
+        url: '/ambassador',
+      },
+      {
+        title: 'Changelog',
+        description: 'Track updates and new features',
+        icon: <FileText className="size-5 shrink-0" />,
+        url: '/changelog',
+      },
+      {
+        title: 'Media Kit',
+        description: 'Brand assets and guidelines',
+        icon: <ImageIcon className="size-5 shrink-0" />,
+        url: '/media-kit',
+      },
+      {
+        title: 'Career',
+        description: 'Join the Phala team',
+        icon: <Briefcase className="size-5 shrink-0" />,
+        url: '/career',
+      },
       {
         title: 'About Phala Network',
         description: 'Learn about our mission and privacy-first technology',

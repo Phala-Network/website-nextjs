@@ -1,8 +1,8 @@
-import { Terminal, Sparkles, Building } from "lucide-react";
-import Link from "next/link";
+import { Building, Sparkles, Terminal } from 'lucide-react'
+import Link from 'next/link'
 
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from '@/components/ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 const Feature51 = () => {
   return (
@@ -13,7 +13,8 @@ const Feature51 = () => {
             Three Ways to Deploy GPU TEE
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            Choose the deployment model that fits your needs—from full control to instant deployment
+            Choose the deployment model that fits your needs—from full control
+            to instant deployment
           </p>
         </div>
         <Tabs defaultValue="cvm-gpu">
@@ -31,7 +32,8 @@ const Feature51 = () => {
                 </p>
               </div>
               <p className="font-normal text-muted-foreground md:block">
-                Full control with SSH access. Deploy your own Docker containers and custom models.
+                Full control with SSH access. Deploy your own Docker containers
+                and custom models.
               </p>
             </TabsTrigger>
             <TabsTrigger
@@ -47,7 +49,8 @@ const Feature51 = () => {
                 </p>
               </div>
               <p className="font-normal text-muted-foreground md:block">
-                Instant deployment with pre-configured templates. OpenAI-compatible API.
+                Instant deployment with pre-configured templates.
+                OpenAI-compatible API.
               </p>
             </TabsTrigger>
             <TabsTrigger
@@ -69,26 +72,39 @@ const Feature51 = () => {
           </TabsList>
           <TabsContent value="cvm-gpu" className="mt-8">
             <div className="rounded-lg border bg-card p-8">
-              <h3 className="text-2xl font-bold mb-4">CVM + GPU: Maximum Flexibility</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                CVM + GPU: Maximum Flexibility
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Deploy your own Docker containers with SSH access to TEE-protected GPUs. Perfect for developers who need complete control.
+                Deploy your own Docker containers with SSH access to
+                TEE-protected GPUs. Perfect for developers who need complete
+                control.
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
-                  <span>Deploy custom Docker containers with full SSH access</span>
+                  <span>
+                    Deploy custom Docker containers with full SSH access
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
-                  <span>Fine-tune models on private data with complete hardware protection</span>
+                  <span>
+                    Fine-tune models on private data with complete hardware
+                    protection
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
-                  <span>Intel TDX + NVIDIA Confidential Computing protection</span>
+                  <span>
+                    Intel TDX + NVIDIA Confidential Computing protection
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
-                  <span>Dual attestation reports (Intel + NVIDIA) for verification</span>
+                  <span>
+                    Dual attestation reports (Intel + NVIDIA) for verification
+                  </span>
                 </li>
               </ul>
               <Button asChild>
@@ -100,9 +116,12 @@ const Feature51 = () => {
           </TabsContent>
           <TabsContent value="confidential-models" className="mt-8">
             <div className="rounded-lg border bg-card p-8">
-              <h3 className="text-2xl font-bold mb-4">Confidential AI Models: Fast Time-to-Market</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                Confidential AI Models: Fast Time-to-Market
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Pre-configured model templates with one-click deployment. OpenAI-compatible API for easy integration.
+                Pre-configured model templates with one-click deployment.
+                OpenAI-compatible API for easy integration.
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
@@ -131,14 +150,19 @@ const Feature51 = () => {
           </TabsContent>
           <TabsContent value="enterprise" className="mt-8">
             <div className="rounded-lg border bg-card p-8">
-              <h3 className="text-2xl font-bold mb-4">Enterprise Solutions: White-Glove Service</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                Enterprise Solutions: White-Glove Service
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Dedicated GPU clusters with custom SLAs and 24/7 support. Perfect for organizations with specific compliance needs.
+                Dedicated GPU clusters with custom SLAs and 24/7 support.
+                Perfect for organizations with specific compliance needs.
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
-                  <span>Dedicated GPU clusters with guaranteed availability</span>
+                  <span>
+                    Dedicated GPU clusters with guaranteed availability
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
@@ -146,24 +170,26 @@ const Feature51 = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
-                  <span>Private deployment options for sensitive workloads</span>
+                  <span>
+                    Private deployment options for sensitive workloads
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
-                  <span>24/7 technical support with dedicated account manager</span>
+                  <span>
+                    24/7 technical support with dedicated account manager
+                  </span>
                 </li>
               </ul>
               <Button asChild>
-                <Link href="https://phala.com/contact">
-                  Contact Sales
-                </Link>
+                <Link href="https://phala.com/contact">Contact Sales</Link>
               </Button>
             </div>
           </TabsContent>
         </Tabs>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature51 };
+export { Feature51 }

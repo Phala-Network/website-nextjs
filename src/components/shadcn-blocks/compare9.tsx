@@ -1,10 +1,8 @@
-"use client";
+'use client'
 
-import { CheckCircle, Minus, XCircle } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
-
-import { cn } from "@/lib/utils";
+import { CheckCircle, Minus, XCircle } from 'lucide-react'
+import Image from 'next/image'
+import { useState } from 'react'
 
 import {
   Table,
@@ -13,61 +11,62 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table'
+import { cn } from '@/lib/utils'
 
 const Compare9 = () => {
-  const [hoveredModel, setHoveredModel] = useState<string | null>(null);
+  const [hoveredModel, setHoveredModel] = useState<string | null>(null)
 
   const comparisonData = [
     {
-      metric: "Context Window",
-      gpt4: { value: "128K tokens", status: "worst" },
-      claude: { value: "200K tokens", status: "neutral" },
-      gemini: { value: "2M tokens", status: "best" },
+      metric: 'Context Window',
+      gpt4: { value: '128K tokens', status: 'worst' },
+      claude: { value: '200K tokens', status: 'neutral' },
+      gemini: { value: '2M tokens', status: 'best' },
     },
     {
-      metric: "Response Speed",
-      gpt4: { value: "1.2 sec", status: "best" },
-      claude: { value: "1.8 sec", status: "neutral" },
-      gemini: { value: "2.2 sec", status: "worst" },
+      metric: 'Response Speed',
+      gpt4: { value: '1.2 sec', status: 'best' },
+      claude: { value: '1.8 sec', status: 'neutral' },
+      gemini: { value: '2.2 sec', status: 'worst' },
     },
     {
-      metric: "Code Generation",
-      gpt4: { value: "94%", status: "neutral" },
-      claude: { value: "95%", status: "best" },
-      gemini: { value: "88%", status: "worst" },
+      metric: 'Code Generation',
+      gpt4: { value: '94%', status: 'neutral' },
+      claude: { value: '95%', status: 'best' },
+      gemini: { value: '88%', status: 'worst' },
     },
     {
-      metric: "Reasoning Score",
-      gpt4: { value: "91/100", status: "neutral" },
-      claude: { value: "92/100", status: "best" },
-      gemini: { value: "86/100", status: "worst" },
+      metric: 'Reasoning Score',
+      gpt4: { value: '91/100', status: 'neutral' },
+      claude: { value: '92/100', status: 'best' },
+      gemini: { value: '86/100', status: 'worst' },
     },
     {
-      metric: "Input Tokens",
-      gpt4: { value: "$3.50/1M", status: "worst" },
-      claude: { value: "$3.00/1M", status: "neutral" },
-      gemini: { value: "$1.25/1M", status: "best" },
+      metric: 'Input Tokens',
+      gpt4: { value: '$3.50/1M', status: 'worst' },
+      claude: { value: '$3.00/1M', status: 'neutral' },
+      gemini: { value: '$1.25/1M', status: 'best' },
     },
     {
-      metric: "Output Tokens",
-      gpt4: { value: "$14.00/1M", status: "neutral" },
-      claude: { value: "$15.00/1M", status: "worst" },
-      gemini: { value: "$5.00/1M", status: "best" },
+      metric: 'Output Tokens',
+      gpt4: { value: '$14.00/1M', status: 'neutral' },
+      claude: { value: '$15.00/1M', status: 'worst' },
+      gemini: { value: '$5.00/1M', status: 'best' },
     },
     {
-      metric: "Rate Limit",
-      gpt4: { value: "50K RPM", status: "neutral" },
-      claude: { value: "40K RPM", status: "worst" },
-      gemini: { value: "60K RPM", status: "best" },
+      metric: 'Rate Limit',
+      gpt4: { value: '50K RPM', status: 'neutral' },
+      claude: { value: '40K RPM', status: 'worst' },
+      gemini: { value: '60K RPM', status: 'best' },
     },
     {
-      metric: "Free Tier",
-      gpt4: { value: "Very Limited", status: "worst" },
-      claude: { value: "Limited", status: "neutral" },
-      gemini: { value: "Generous", status: "best" },
+      metric: 'Free Tier',
+      gpt4: { value: 'Very Limited', status: 'worst' },
+      claude: { value: 'Limited', status: 'neutral' },
+      gemini: { value: 'Generous', status: 'best' },
     },
-  ];
+  ]
 
   return (
     <section className="py-32">
@@ -129,26 +128,26 @@ const Compare9 = () => {
                     </TableCell>
                     <TableCell
                       className={cn(
-                        "cursor-pointer py-4 text-center font-medium transition-all duration-300",
-                        row.gpt4.status === "best"
-                          ? "bg-green-50 text-green-600 dark:bg-green-950/20"
-                          : row.gpt4.status === "worst"
-                            ? "bg-red-50 text-red-600 dark:bg-red-950/20"
-                            : "text-foreground bg-muted/50",
-                        hoveredModel === "gpt4" &&
-                          "bg-red-50/80 dark:bg-red-950/30",
+                        'cursor-pointer py-4 text-center font-medium transition-all duration-300',
+                        row.gpt4.status === 'best'
+                          ? 'bg-green-50 text-green-600 dark:bg-green-950/20'
+                          : row.gpt4.status === 'worst'
+                            ? 'bg-red-50 text-red-600 dark:bg-red-950/20'
+                            : 'text-foreground bg-muted/50',
+                        hoveredModel === 'gpt4' &&
+                          'bg-red-50/80 dark:bg-red-950/30',
                       )}
-                      onMouseEnter={() => setHoveredModel("gpt4")}
+                      onMouseEnter={() => setHoveredModel('gpt4')}
                       onMouseLeave={() => setHoveredModel(null)}
                     >
                       <div className="flex items-center justify-center gap-2">
-                        {row.gpt4.status === "best" && (
+                        {row.gpt4.status === 'best' && (
                           <CheckCircle className="h-4 w-4 text-green-600" />
                         )}
-                        {row.gpt4.status === "worst" && (
+                        {row.gpt4.status === 'worst' && (
                           <XCircle className="h-4 w-4 text-red-600" />
                         )}
-                        {row.gpt4.status === "neutral" && (
+                        {row.gpt4.status === 'neutral' && (
                           <Minus className="text-muted-foreground h-4 w-4" />
                         )}
                         <span>{row.gpt4.value}</span>
@@ -156,26 +155,26 @@ const Compare9 = () => {
                     </TableCell>
                     <TableCell
                       className={cn(
-                        "cursor-pointer py-4 text-center font-medium transition-all duration-300",
-                        row.claude.status === "best"
-                          ? "bg-green-50 text-green-600 dark:bg-green-950/20"
-                          : row.claude.status === "worst"
-                            ? "bg-red-50 text-red-600 dark:bg-red-950/20"
-                            : "text-foreground bg-muted/50",
-                        hoveredModel === "claude" &&
-                          "bg-blue-50/80 dark:bg-blue-950/30",
+                        'cursor-pointer py-4 text-center font-medium transition-all duration-300',
+                        row.claude.status === 'best'
+                          ? 'bg-green-50 text-green-600 dark:bg-green-950/20'
+                          : row.claude.status === 'worst'
+                            ? 'bg-red-50 text-red-600 dark:bg-red-950/20'
+                            : 'text-foreground bg-muted/50',
+                        hoveredModel === 'claude' &&
+                          'bg-blue-50/80 dark:bg-blue-950/30',
                       )}
-                      onMouseEnter={() => setHoveredModel("claude")}
+                      onMouseEnter={() => setHoveredModel('claude')}
                       onMouseLeave={() => setHoveredModel(null)}
                     >
                       <div className="flex items-center justify-center gap-2">
-                        {row.claude.status === "best" && (
+                        {row.claude.status === 'best' && (
                           <CheckCircle className="h-4 w-4 text-green-600" />
                         )}
-                        {row.claude.status === "worst" && (
+                        {row.claude.status === 'worst' && (
                           <XCircle className="h-4 w-4 text-red-600" />
                         )}
-                        {row.claude.status === "neutral" && (
+                        {row.claude.status === 'neutral' && (
                           <Minus className="text-muted-foreground h-4 w-4" />
                         )}
                         <span>{row.claude.value}</span>
@@ -183,26 +182,26 @@ const Compare9 = () => {
                     </TableCell>
                     <TableCell
                       className={cn(
-                        "cursor-pointer py-4 text-center font-medium transition-all duration-300",
-                        row.gemini.status === "best"
-                          ? "bg-green-50 text-green-600 dark:bg-green-950/20"
-                          : row.gemini.status === "worst"
-                            ? "bg-red-50 text-red-600 dark:bg-red-950/20"
-                            : "text-foreground bg-muted/50",
-                        hoveredModel === "gemini" &&
-                          "bg-green-50/80 dark:bg-green-950/30",
+                        'cursor-pointer py-4 text-center font-medium transition-all duration-300',
+                        row.gemini.status === 'best'
+                          ? 'bg-green-50 text-green-600 dark:bg-green-950/20'
+                          : row.gemini.status === 'worst'
+                            ? 'bg-red-50 text-red-600 dark:bg-red-950/20'
+                            : 'text-foreground bg-muted/50',
+                        hoveredModel === 'gemini' &&
+                          'bg-green-50/80 dark:bg-green-950/30',
                       )}
-                      onMouseEnter={() => setHoveredModel("gemini")}
+                      onMouseEnter={() => setHoveredModel('gemini')}
                       onMouseLeave={() => setHoveredModel(null)}
                     >
                       <div className="flex items-center justify-center gap-2">
-                        {row.gemini.status === "best" && (
+                        {row.gemini.status === 'best' && (
                           <CheckCircle className="h-4 w-4 text-green-600" />
                         )}
-                        {row.gemini.status === "worst" && (
+                        {row.gemini.status === 'worst' && (
                           <XCircle className="h-4 w-4 text-red-600" />
                         )}
-                        {row.gemini.status === "neutral" && (
+                        {row.gemini.status === 'neutral' && (
                           <Minus className="text-muted-foreground h-4 w-4" />
                         )}
                         <span>{row.gemini.value}</span>
@@ -224,9 +223,9 @@ const Compare9 = () => {
                 <div className="grid gap-2 md:grid-cols-3">
                   <div
                     className={cn(
-                      "border-border/30 bg-background/50 rounded border p-3 transition-all duration-300",
-                      hoveredModel === "gpt4" &&
-                        "bg-red-50/20 shadow-lg ring-2 ring-red-500/50 dark:bg-red-950/10",
+                      'border-border/30 bg-background/50 rounded border p-3 transition-all duration-300',
+                      hoveredModel === 'gpt4' &&
+                        'bg-red-50/20 shadow-lg ring-2 ring-red-500/50 dark:bg-red-950/10',
                     )}
                   >
                     <div className="text-foreground mb-1 font-medium">
@@ -242,9 +241,9 @@ const Compare9 = () => {
                   </div>
                   <div
                     className={cn(
-                      "border-border/30 bg-background/50 rounded border p-3 transition-all duration-300",
-                      hoveredModel === "claude" &&
-                        "bg-blue-50/20 shadow-lg ring-2 ring-blue-500/50 dark:bg-blue-950/10",
+                      'border-border/30 bg-background/50 rounded border p-3 transition-all duration-300',
+                      hoveredModel === 'claude' &&
+                        'bg-blue-50/20 shadow-lg ring-2 ring-blue-500/50 dark:bg-blue-950/10',
                     )}
                   >
                     <div className="text-foreground mb-1 font-medium">
@@ -260,9 +259,9 @@ const Compare9 = () => {
                   </div>
                   <div
                     className={cn(
-                      "border-border/30 bg-background/50 rounded border p-3 transition-all duration-300",
-                      hoveredModel === "gemini" &&
-                        "bg-green-50/20 shadow-lg ring-2 ring-green-500/50 dark:bg-green-950/10",
+                      'border-border/30 bg-background/50 rounded border p-3 transition-all duration-300',
+                      hoveredModel === 'gemini' &&
+                        'bg-green-50/20 shadow-lg ring-2 ring-green-500/50 dark:bg-green-950/10',
                     )}
                   >
                     <div className="text-foreground mb-1 font-medium">
@@ -302,7 +301,7 @@ const Compare9 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Compare9 };
+export { Compare9 }

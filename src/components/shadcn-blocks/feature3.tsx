@@ -5,14 +5,9 @@ import {
   Play,
   Sparkles,
   WandSparkles,
-} from "lucide-react";
+} from 'lucide-react'
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 
 const Feature3 = () => {
   return (
@@ -136,7 +131,7 @@ const Feature3 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Feature3 };
+export { Feature3 }

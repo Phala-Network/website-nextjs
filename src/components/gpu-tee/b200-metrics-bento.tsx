@@ -35,13 +35,11 @@ const B200MetricsBento = () => {
               <div className="relative">
                 <div className="absolute inset-0 -m-4 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-2xl" />
                 <div className="relative z-10">
-                  <div className="text-6xl font-bold text-white mb-2">
-                    15x
-                  </div>
-                  <p className="text-lg font-medium text-white">Faster Inference</p>
-                  <p className="text-sm text-white/80">
-                    vs H100 on large LLMs
+                  <div className="text-6xl font-bold text-white mb-2">15x</div>
+                  <p className="text-lg font-medium text-white">
+                    Faster Inference
                   </p>
+                  <p className="text-sm text-white/80">vs H100 on large LLMs</p>
                 </div>
               </div>
             </div>

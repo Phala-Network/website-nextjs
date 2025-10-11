@@ -1,8 +1,9 @@
 'use client'
 
-import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
 import { useRef } from 'react'
+
 import type { PhalaNode } from '@/data/phala-nodes'
 
 interface SimpleGlobeProps {
@@ -15,16 +16,18 @@ function GlobeSphere() {
   return (
     <mesh>
       <sphereGeometry args={[2, 64, 64]} />
-      <meshStandardMaterial
-        color="#1a1a2e"
-        roughness={0.7}
-        metalness={0.2}
-      />
+      <meshStandardMaterial color="#1a1a2e" roughness={0.7} metalness={0.2} />
     </mesh>
   )
 }
 
-function NodeMarkers({ nodes, onNodeClick }: { nodes: PhalaNode[], onNodeClick?: (node: PhalaNode) => void }) {
+function NodeMarkers({
+  nodes,
+  onNodeClick,
+}: {
+  nodes: PhalaNode[]
+  onNodeClick?: (node: PhalaNode) => void
+}) {
   // Convert lat/lon to 3D coordinates on sphere
   const latLonToVector3 = (lat: number, lon: number, radius: number = 2.1) => {
     const phi = (90 - lat) * (Math.PI / 180)
@@ -62,7 +65,11 @@ function NodeMarkers({ nodes, onNodeClick }: { nodes: PhalaNode[], onNodeClick?:
   )
 }
 
-export function SimpleGlobe({ nodes, onNodeClick, onGlobeReady }: SimpleGlobeProps) {
+export function SimpleGlobe({
+  nodes,
+  onNodeClick,
+  onGlobeReady,
+}: SimpleGlobeProps) {
   const controlsRef = useRef<any>(null)
 
   return (

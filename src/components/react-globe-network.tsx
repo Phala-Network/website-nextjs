@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Globe from 'react-globe.gl'
+
 import type { PhalaNode } from '@/data/phala-nodes'
 
 interface ReactGlobeNetworkProps {
@@ -10,7 +11,11 @@ interface ReactGlobeNetworkProps {
   onGlobeReady?: (globe: any) => void
 }
 
-export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlobeNetworkProps) {
+export function ReactGlobeNetwork({
+  nodes,
+  onNodeClick,
+  onGlobeReady,
+}: ReactGlobeNetworkProps) {
   const globeRef = useRef<any>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [countriesData, setCountriesData] = useState<any>(null)
@@ -39,8 +44,10 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
   useEffect(() => {
     if (!isMounted) return
 
-    fetch('https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson')
-      .then(res => res.json())
+    fetch(
+      'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson',
+    )
+      .then((res) => res.json())
       .then(setCountriesData)
   }, [isMounted])
 
@@ -52,7 +59,10 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
 
   if (!isMounted || !countriesData) {
     return (
-      <div ref={containerRef} className="w-full h-full flex items-center justify-center bg-muted/20">
+      <div
+        ref={containerRef}
+        className="w-full h-full flex items-center justify-center bg-muted/20"
+      >
         <div className="text-muted-foreground">Loading globe...</div>
       </div>
     )
@@ -60,7 +70,10 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
 
   if (dimensions.width === 0 || dimensions.height === 0) {
     return (
-      <div ref={containerRef} className="w-full h-full flex items-center justify-center bg-muted/20">
+      <div
+        ref={containerRef}
+        className="w-full h-full flex items-center justify-center bg-muted/20"
+      >
         <div className="text-muted-foreground">Initializing...</div>
       </div>
     )
@@ -78,9 +91,13 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
 
   const locationMeta = new Map<string, any>()
   nodesByLocation.forEach((locationNodes, key) => {
-    const hasGPU = locationNodes.some(n => n.serverType === 'GPU TEE')
-    const gpuCount = locationNodes.filter(n => n.serverType === 'GPU TEE').reduce((sum, n) => sum + (n.gpuCount || 0), 0)
-    const vcpuCount = locationNodes.filter(n => n.serverType !== 'GPU TEE').reduce((sum, n) => sum + (n.cores || 0), 0)
+    const hasGPU = locationNodes.some((n) => n.serverType === 'GPU TEE')
+    const gpuCount = locationNodes
+      .filter((n) => n.serverType === 'GPU TEE')
+      .reduce((sum, n) => sum + (n.gpuCount || 0), 0)
+    const vcpuCount = locationNodes
+      .filter((n) => n.serverType !== 'GPU TEE')
+      .reduce((sum, n) => sum + (n.cores || 0), 0)
 
     locationMeta.set(key, {
       city: locationNodes[0].location.city,
@@ -92,7 +109,7 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
       vcpuCount,
       equivalentVCPUs: gpuCount * GPU_TO_VCPU_RATIO + vcpuCount,
       nodes: locationNodes,
-      color: hasGPU ? '#8DD7FF' : '#BAE730'
+      color: hasGPU ? '#8DD7FF' : '#BAE730',
     })
   })
 
@@ -103,7 +120,7 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
       countryNodeMap.set(countryCode, {
         hasGPU: false,
         hasCPU: false,
-        locations: []
+        locations: [],
       })
     }
     const countryData = countryNodeMap.get(countryCode)!
@@ -114,31 +131,34 @@ export function ReactGlobeNetwork({ nodes, onNodeClick, onGlobeReady }: ReactGlo
 
   const markersData = Array.from(locationMeta.values())
 
-  const ringsData = markersData.map(loc => ({
+  const ringsData = markersData.map((loc) => ({
     lat: loc.lat,
     lng: loc.lon,
     maxR: 5,
     propagationSpeed: 2,
     repeatPeriod: 2000,
-    color: loc.color
+    color: loc.color,
   }))
 
   const arcData: any[] = []
   const locations = Array.from(locationMeta.values())
-  locations.forEach(sourceLocation => {
-    const numConnections = Math.floor(Math.random() * (locations.length - 1)) + 1
+  locations.forEach((sourceLocation) => {
+    const numConnections =
+      Math.floor(Math.random() * (locations.length - 1)) + 1
     const shuffledTargets = locations
-      .filter(loc => loc !== sourceLocation)
+      .filter((loc) => loc !== sourceLocation)
       .sort(() => Math.random() - 0.5)
       .slice(0, numConnections)
 
-    shuffledTargets.forEach(targetLocation => {
+    shuffledTargets.forEach((targetLocation) => {
       arcData.push({
         startLat: sourceLocation.lat,
         startLng: sourceLocation.lon,
         endLat: targetLocation.lat,
         endLng: targetLocation.lon,
-        color: sourceLocation.hasGPU ? ['#8DD7FF', '#6DB7DF'] : ['#BAE730', '#9AC720']
+        color: sourceLocation.hasGPU
+          ? ['#8DD7FF', '#6DB7DF']
+          : ['#BAE730', '#9AC720'],
       })
     })
   })

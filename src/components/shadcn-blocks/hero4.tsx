@@ -1,7 +1,7 @@
-import { ArrowDownRight, Star } from "lucide-react";
+import { ArrowDownRight, Star } from 'lucide-react'
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 
 const Hero4 = () => {
   return (
@@ -80,7 +80,7 @@ const Hero4 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Hero4 };
+export { Hero4 }

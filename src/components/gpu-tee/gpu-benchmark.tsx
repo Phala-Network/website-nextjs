@@ -24,14 +24,14 @@ interface GpuBenchmarkProps {
   title?: string
 }
 
-export function GpuBenchmark({ title = 'MLPerf-Verified Performance' }: GpuBenchmarkProps) {
+export function GpuBenchmark({
+  title = 'MLPerf-Verified Performance',
+}: GpuBenchmarkProps) {
   return (
     <section className="py-32 bg-muted/30">
       <div className="container">
         <div className="mx-auto max-w-5xl text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 lg:text-5xl">
-            {title}
-          </h2>
+          <h2 className="text-4xl font-bold mb-4 lg:text-5xl">{title}</h2>
           <p className="text-lg text-muted-foreground">
             Official benchmarks from MLPerf v5.0 and NVIDIA Technical Labs
           </p>

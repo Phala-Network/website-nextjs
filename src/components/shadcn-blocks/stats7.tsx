@@ -1,8 +1,8 @@
-import { ArrowUp } from "lucide-react";
-import Link from "next/link";
+import { ArrowUp } from 'lucide-react'
+import Link from 'next/link'
 
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
 
 const Stats7 = () => {
   return (
@@ -14,7 +14,8 @@ const Stats7 = () => {
               Performance Benchmarks
             </h2>
             <p className="text-muted-foreground text-lg">
-              TEE Protection with Minimal Overhead. Real-world performance tested with SP1 zkVM.
+              TEE Protection with Minimal Overhead. Real-world performance
+              tested with SP1 zkVM.
             </p>
           </div>
           <div className="rounded-lg border p-6 md:p-10">
@@ -59,7 +60,10 @@ const Stats7 = () => {
             </div>
             <div className="mt-8 pt-6 border-t">
               <Button asChild variant="outline">
-                <Link href="https://phala.network/posts/performance-benchmark-running-sp1-zkvm-in-tee-h200-with-low-overhead" target="_blank">
+                <Link
+                  href="https://phala.network/posts/performance-benchmark-running-sp1-zkvm-in-tee-h200-with-low-overhead"
+                  target="_blank"
+                >
                   Read Full Benchmark Report →
                 </Link>
               </Button>
@@ -68,7 +72,7 @@ const Stats7 = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export { Stats7 };
+export { Stats7 }
