@@ -44,77 +44,93 @@ import {
 } from '@/components/ui/navigation-menu'
 
 // Products Menu Data
-const productCategories = [
+const coreProducts = [
   {
-    title: 'Core Products',
-    products: [
-      {
-        id: 'product-1',
-        title: 'Confidential VM',
-        description: 'Secure virtual machines with hardware-level encryption.',
-        href: '/confidential-vm',
-        icon: Server,
-      },
-      {
-        id: 'product-2',
-        title: 'Confidential AI Models',
-        description: 'Run AI models with complete privacy and security.',
-        href: '/confidential-ai-models',
-        icon: Brain,
-      },
-      {
-        id: 'product-3',
-        title: 'GPU TEE',
-        description: 'Hardware-enforced confidential computing on GPUs.',
-        href: '/gpu-tee',
-        icon: Gpu,
-      },
-    ],
+    id: 'product-1',
+    title: 'Confidential VM',
+    description: 'Secure virtual machines with hardware-level encryption.',
+    href: '/confidential-vm',
+    icon: Server,
   },
   {
-    title: 'Nvidia Confidential Compute',
-    products: [
-      {
-        id: 'gpu-1',
-        title: 'H100',
-        description: 'NVIDIA H100 with confidential computing.',
-        href: '/gpu-tee/h100',
-        icon: Gpu,
-      },
-      {
-        id: 'gpu-2',
-        title: 'H200',
-        description: 'NVIDIA H200 with confidential computing.',
-        href: '/gpu-tee/h200',
-        icon: Gpu,
-      },
-      {
-        id: 'gpu-3',
-        title: 'B200',
-        description: 'NVIDIA B200 with confidential computing.',
-        href: '/gpu-tee/b200',
-        icon: Gpu,
-      },
-    ],
+    id: 'product-2',
+    title: 'Confidential AI Models',
+    description: 'Run AI models with complete privacy and security.',
+    href: '/confidential-ai-models',
+    icon: Brain,
   },
   {
-    title: 'Zero Trust SDK',
-    products: [
-      {
-        id: 'product-4',
-        title: 'dStack',
-        description: 'Decentralized infrastructure for secure computing.',
-        href: '/dstack',
-        icon: Layers,
-      },
-      {
-        id: 'product-5',
-        title: 'Trust Center',
-        description: 'Security and compliance information.',
-        href: 'https://trust.phala.com/',
-        icon: ShieldCheck,
-      },
-    ],
+    id: 'product-3',
+    title: 'GPU TEE',
+    description: 'Hardware-enforced confidential computing on GPUs.',
+    href: '/gpu-tee',
+    icon: Gpu,
+  },
+]
+
+const zeroTrustSDK = [
+  {
+    id: 'product-4',
+    title: 'dStack',
+    description: 'Decentralized infrastructure for secure computing.',
+    href: '/dstack',
+    icon: Layers,
+  },
+]
+
+const trustCenter = {
+  id: 'product-5',
+  title: 'Trust Center',
+  description: 'Security and compliance information.',
+  href: 'https://trust.phala.com/',
+  icon: ShieldCheck,
+}
+
+const nvidiaProducts = [
+  {
+    id: 'gpu-1',
+    title: 'H100',
+    description: 'NVIDIA H100 with confidential computing.',
+    href: '/gpu-tee/h100',
+    icon: Gpu,
+  },
+  {
+    id: 'gpu-2',
+    title: 'H200',
+    description: 'NVIDIA H200 with confidential computing.',
+    href: '/gpu-tee/h200',
+    icon: Gpu,
+  },
+  {
+    id: 'gpu-3',
+    title: 'B200',
+    description: 'NVIDIA B200 with confidential computing.',
+    href: '/gpu-tee/b200',
+    icon: Gpu,
+  },
+]
+
+const comparisons = [
+  {
+    id: 'compare-1',
+    title: 'vs AWS Nitro',
+    description: 'Compare Phala with AWS Nitro Enclaves.',
+    href: '/compare/phala-vs-aws-nitro',
+    icon: ChartBar,
+  },
+  {
+    id: 'compare-2',
+    title: 'vs GCP',
+    description: 'Compare Phala with Google Cloud Platform.',
+    href: '/compare/phala-vs-gcp',
+    icon: ChartBar,
+  },
+  {
+    id: 'compare-3',
+    title: 'vs Tinfoil',
+    description: 'Compare Phala with Tinfoil.',
+    href: '/compare/phala-vs-tinfoil',
+    icon: ChartBar,
   },
 ]
 
@@ -342,38 +358,155 @@ const resourcesNetwork = [
 // Products Menu Component
 const ProductsMenu = () => (
   <div className="grid gap-y-12 lg:gap-y-6">
-      {productCategories.map((category) => (
-        <div key={category.title} className="grid gap-y-2 lg:gap-y-6">
-          <div className="border-border text-left lg:border-b lg:pb-3">
-            <strong className="text-muted-foreground text-left text-xs font-medium uppercase tracking-wider">
-              {category.title}
-            </strong>
-          </div>
-          <menu className="grid md:grid-cols-3 md:gap-x-5 lg:gap-y-7">
-            {category.products.map((product) => (
-              <div key={product.id}>
-                <NavigationMenuLink
-                  href={product.href}
-                  className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
-                >
-                  <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
-                    <product.icon className="size-5" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
-                      {product.title}
-                    </div>
-                    <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
-                      {product.description}
-                    </p>
-                  </div>
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 lg:hidden" />
-                </NavigationMenuLink>
+    {/* Row 1: Core Products */}
+    <div className="grid gap-y-2 lg:gap-y-6">
+      <div className="border-border text-left lg:border-b lg:pb-3">
+        <strong className="text-muted-foreground text-left text-xs font-medium uppercase tracking-wider">
+          Core Products
+        </strong>
+      </div>
+      <menu className="grid md:grid-cols-3 md:gap-x-5 lg:gap-y-7">
+        {coreProducts.map((product) => (
+          <div key={product.id}>
+            <NavigationMenuLink
+              href={product.href}
+              className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
+            >
+              <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
+                <product.icon className="size-5" />
               </div>
-            ))}
-          </menu>
+              <div className="flex-1">
+                <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+                  {product.title}
+                </div>
+                <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
+                  {product.description}
+                </p>
+              </div>
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 lg:hidden" />
+            </NavigationMenuLink>
+          </div>
+        ))}
+      </menu>
+    </div>
+
+    {/* Row 2: Zero Trust SDK + Trust Center */}
+    <div className="grid gap-y-2 lg:gap-y-6">
+      <div className="border-border text-left lg:border-b lg:pb-3">
+        <strong className="text-muted-foreground text-left text-xs font-medium uppercase tracking-wider">
+          Zero Trust SDK
+        </strong>
+      </div>
+      <menu className="grid md:grid-cols-2 md:gap-x-5 lg:gap-y-7">
+        {zeroTrustSDK.map((product) => (
+          <div key={product.id}>
+            <NavigationMenuLink
+              href={product.href}
+              className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
+            >
+              <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
+                <product.icon className="size-5" />
+              </div>
+              <div className="flex-1">
+                <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+                  {product.title}
+                </div>
+                <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
+                  {product.description}
+                </p>
+              </div>
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 lg:hidden" />
+            </NavigationMenuLink>
+          </div>
+        ))}
+        <div key={trustCenter.id}>
+          <NavigationMenuLink
+            href={trustCenter.href}
+            className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
+          >
+            <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
+              <trustCenter.icon className="size-5" />
+            </div>
+            <div className="flex-1">
+              <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+                {trustCenter.title}
+              </div>
+              <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
+                {trustCenter.description}
+              </p>
+            </div>
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 lg:hidden" />
+          </NavigationMenuLink>
         </div>
-      ))}
+      </menu>
+    </div>
+
+    {/* Row 3: Nvidia Confidential Compute (Left) + Comparisons (Right) */}
+    <div className="grid gap-y-6 md:grid-cols-2 md:gap-x-8">
+      {/* Left: Nvidia Confidential Compute */}
+      <div className="grid gap-y-2 lg:gap-y-6">
+        <div className="border-border text-left lg:border-b lg:pb-3">
+          <strong className="text-muted-foreground text-left text-xs font-medium uppercase tracking-wider">
+            Nvidia Confidential Compute
+          </strong>
+        </div>
+        <menu className="grid gap-y-4 lg:gap-y-7">
+          {nvidiaProducts.map((product) => (
+            <div key={product.id}>
+              <NavigationMenuLink
+                href={product.href}
+                className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
+              >
+                <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
+                  <product.icon className="size-5" />
+                </div>
+                <div className="flex-1">
+                  <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+                    {product.title}
+                  </div>
+                  <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
+                    {product.description}
+                  </p>
+                </div>
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 lg:hidden" />
+              </NavigationMenuLink>
+            </div>
+          ))}
+        </menu>
+      </div>
+
+      {/* Right: Comparisons */}
+      <div className="grid gap-y-2 lg:gap-y-6">
+        <div className="border-border text-left lg:border-b lg:pb-3">
+          <strong className="text-muted-foreground text-left text-xs font-medium uppercase tracking-wider">
+            Comparisons
+          </strong>
+        </div>
+        <menu className="grid gap-y-4 lg:gap-y-7">
+          {comparisons.map((comparison) => (
+            <div key={comparison.id}>
+              <NavigationMenuLink
+                href={comparison.href}
+                className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
+              >
+                <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
+                  <comparison.icon className="size-5" />
+                </div>
+                <div className="flex-1">
+                  <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+                    {comparison.title}
+                  </div>
+                  <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
+                    {comparison.description}
+                  </p>
+                </div>
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 lg:hidden" />
+              </NavigationMenuLink>
+            </div>
+          ))}
+        </menu>
+      </div>
+    </div>
   </div>
 )
 
