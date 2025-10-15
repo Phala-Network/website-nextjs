@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 import { validSlugs as comparisonSlugs } from '@/data/comparisons'
+import { successStories } from '@/data/success-stories-data'
 import { env } from '@/env'
 import { getRecentPosts, retrieveTags } from '@/lib/post'
 
@@ -91,6 +92,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    ...successStories.map((story): MetadataRoute.Sitemap[number] => ({
+      url: new URL(`/success-stories/${story.slug}`, BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })),
     ...comparisonSlugs.map((slug): MetadataRoute.Sitemap[number] => ({
       url: new URL(`/compare/${slug}`, BASE_URL).toString(),
       lastModified: new Date(),
@@ -108,6 +115,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: new URL('/solutions/confidential-training', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: new URL('/solutions/ai-agents', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: new URL('/solutions/fine-tuned-models', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: new URL('/solutions/private-ai-data', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: new URL('/solutions/private-ai-inference', BASE_URL).toString(),
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: new URL('/terms', BASE_URL).toString(),
