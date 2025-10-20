@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 
 import SuccessStoriesSection from '@/app/(home)/success-stories'
 import ModelsList from '@/app/confidential-ai-models/models-list'
-import SolutionsCTA from '@/components/solutions-cta'
 import { ApiCodeExamplesPhala } from '@/components/solutions/api-code-examples-phala'
 import { Casestudies3 } from '@/components/solutions/casestudies3'
 import { Compliance5 } from '@/components/solutions/compliance5'
@@ -109,7 +108,6 @@ export default async function PrivateAIInferencePage() {
         ]}
       />
       <Compliance5 />
-      <SolutionsCTA />
       <Faq14
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about Private AI Inference"

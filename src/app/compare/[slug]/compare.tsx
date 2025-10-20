@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { Fragment } from 'react'
 
 import FinalCTA from '@/components/final-cta'
-import { Feature13 } from '@/components/shadcn-blocks/feature13'
 import { Button } from '@/components/ui/button'
 import type { ComparisonData, ComparisonStatus } from '@/data/comparisons'
 
@@ -20,49 +19,9 @@ function StatusIcon({ status }: { status: ComparisonStatus }) {
 
 interface CompareProps {
   data: ComparisonData
-  currentSlug?: string
 }
 
-export default function Compare({ data, currentSlug }: CompareProps) {
-  // Define all comparison pages with Feature13 format using hero banner images
-  const allComparisons = [
-    {
-      id: 'compare-aws',
-      slug: 'phala-vs-aws-nitro',
-      heading: 'Phala vs AWS Nitro',
-      label: 'CONFIDENTIAL COMPUTING',
-      description:
-        'Compare confidential computing features, pricing, and deployment options. See how Phala stacks up against AWS Nitro Enclaves.',
-      image: '/compare/compare-aws.png', // Using hero banner image
-      url: '/compare/phala-vs-aws-nitro',
-    },
-    {
-      id: 'compare-gcp',
-      slug: 'phala-vs-gcp',
-      heading: 'Phala vs Google Cloud',
-      label: 'TEE TECHNOLOGY',
-      description:
-        'See the differences in TEE technology, GPU support, and pricing. Detailed comparison with Google Cloud Confidential Computing.',
-      image: '/compare/compare-gcp.png', // Using hero banner image
-      url: '/compare/phala-vs-gcp',
-    },
-    {
-      id: 'compare-tinfoil',
-      slug: 'phala-vs-tinfoil',
-      heading: 'Phala vs Tinfoil',
-      label: 'INFRASTRUCTURE',
-      description:
-        'Explore the key differences in deployment, features, and infrastructure. Full comparison between Phala and Tinfoil.',
-      image: '/compare/compare-tinfoil.png', // Using hero banner image
-      url: '/compare/phala-vs-tinfoil',
-    },
-  ]
-
-  // Filter out current page from comparisons
-  const otherComparisons = allComparisons.filter(
-    (comp) => comp.slug !== currentSlug,
-  )
-
+export default function Compare({ data }: CompareProps) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -312,17 +271,8 @@ export default function Compare({ data, currentSlug }: CompareProps) {
               </div>
             </section>
           )}
-
         </div>
       </div>
-
-      {/* Compare with Others Section - Cross-linking using Feature13 */}
-      {otherComparisons.length > 0 && (
-        <Feature13
-          title="Compare Phala with Other Providers"
-          features={otherComparisons}
-        />
-      )}
 
       {/* Final CTA */}
       <FinalCTA />

@@ -5,7 +5,6 @@ import { B200Hero } from '@/components/gpu-tee/b200-hero'
 import { B200MetricsBento } from '@/components/gpu-tee/b200-metrics-bento'
 import { B200Pricing } from '@/components/gpu-tee/b200-pricing'
 import { GpuBenchmark } from '@/components/gpu-tee/gpu-benchmark'
-import { Feature13 } from '@/components/shadcn-blocks/feature13'
 import { Feature51 } from '@/components/shadcn-blocks/feature51'
 import { Feature76 } from '@/components/shadcn-blocks/feature76'
 import { Feature107 } from '@/components/shadcn-blocks/feature107'
@@ -17,27 +16,6 @@ export const metadata: Metadata = {
 }
 
 export default function B200Page() {
-  const otherGpuModels = [
-    {
-      id: 'gpu-h100',
-      heading: 'NVIDIA H100',
-      label: 'ENTERPRISE PROVEN',
-      description:
-        '80GB HBM3 memory with proven performance. Enterprise-grade AI workloads with full TEE protection and widespread adoption.',
-      image: '/gpu-h100.png',
-      url: '/gpu-tee/h100',
-    },
-    {
-      id: 'gpu-h200',
-      heading: 'NVIDIA H200',
-      label: 'FLAGSHIP GPU',
-      description:
-        '141GB HBM3e memory with 4.8 TB/s bandwidth. Most powerful GPU available with full TEE protection for enterprise AI workloads.',
-      image: '/gpu-h200.png',
-      url: '/gpu-tee/h200',
-    },
-  ]
-
   return (
     <div className="w-full bg-background">
       {/* 1. Hero - B200 Specific */}
@@ -63,9 +41,6 @@ export default function B200Page() {
 
       {/* 8. Deployment Options (shared with GPU TEE page) */}
       <Feature51 />
-
-      {/* 9. Other GPU Models - Cross-linking */}
-      <Feature13 title="Explore Other GPU TEE Models" features={otherGpuModels} />
     </div>
   )
 }

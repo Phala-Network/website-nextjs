@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 
-import SolutionsCTA from '@/components/solutions-cta'
 import { Casestudies3 } from '@/components/solutions/casestudies3'
 import { Codeexample1 } from '@/components/solutions/codeexample1'
 import { Codeexample5 } from '@/components/solutions/codeexample5'
@@ -119,9 +118,6 @@ export default function PrivateAIDataPage() {
 
       {/* FAQs - faq14 */}
       <Faq14 faqItems={content.faqs} />
-
-      {/* Explore Other Solutions */}
-      <SolutionsCTA />
 
       {/* Final CTA - cta4 */}
       <Cta4 {...content.cta} />
