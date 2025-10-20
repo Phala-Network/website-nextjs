@@ -47,19 +47,19 @@ const ModelCard = ({ model }: { model: Model }) => (
           </AvatarFallback>
         </Avatar>
         <div className="absolute -bottom-0.5 -right-0.5 bg-card border rounded-full p-1">
-          <Lock className="size-3 text-primary-500" />
+          <Lock className="size-3 text-primary" />
         </div>
       </div>
 
       {/* Content - grows to fill available space */}
       <div className="flex-1 flex flex-col">
         {/* Title */}
-        <div className="font-semibold text-lg mb-3 xl:text-xl line-clamp-1">
+        <div className="font-semibold text-lg leading-7 mb-3 xl:text-xl xl:leading-7 line-clamp-1">
           {model.name}
         </div>
 
         {/* Context */}
-        <div className="text-sm font-medium mb-3">
+        <div className="text-sm leading-5 font-medium mb-3">
           {model.contextLength >= 1000000
             ? `${(model.contextLength / 1000000).toFixed(1)}M context`
             : `${(model.contextLength / 1000).toFixed(0)}K context`}
@@ -68,13 +68,13 @@ const ModelCard = ({ model }: { model: Model }) => (
         {/* Pricing */}
         <div className="space-y-1 mb-6">
           {model.promptPrice && model.promptPrice !== '0' && (
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm leading-5 text-muted-foreground">
               ${(parseFloat(model.promptPrice) * 1000000).toFixed(2)}/M input
               tokens
             </div>
           )}
           {model.completionPrice && model.completionPrice !== '0' && (
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm leading-5 text-muted-foreground">
               ${(parseFloat(model.completionPrice) * 1000000).toFixed(2)}/M
               output tokens
             </div>
@@ -84,7 +84,7 @@ const ModelCard = ({ model }: { model: Model }) => (
         {/* Encrypted Badge */}
         {model.verifiable && (
           <div className="mt-auto">
-            <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-50 border border-green-200 text-xs font-medium text-green-700">
+            <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-50 border border-green-200 text-xs leading-4 font-medium text-green-700">
               <Lock className="size-3" />
               Encrypted
             </div>
@@ -122,26 +122,26 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
   return (
     <section className="py-24 container">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
-        <h2 className="mb-2 text-center text-3xl font-semibold text-balance lg:text-4xl">
+        <h2 className="font-display mb-2 text-center text-3xl leading-none font-semibold text-balance lg:text-4xl">
           Confidential AI
         </h2>
-        <p className="text-center text-muted-foreground text-lg md:text-xl font-medium text-balance">
-          Pre-configured secure AI models ready to deploy with hardware-secured
-          GPU servers for instant, private AI computing.
+        <p className="text-center text-muted-foreground font-display text-lg leading-7 md:text-xl font-medium text-balance">
+          Pre-configured AI models ready to deploy on hardware-secured
+          GPU servers for instant, private computing.
         </p>
       </div>
       <div className="mx-auto mt-12 flex grid-cols-1 flex-col gap-5 lg:grid lg:grid-cols-7">
         <div className="col-span-7 grid overflow-hidden rounded-lg bg-card sm:grid-cols-2 lg:grid-cols-[30rem_1fr]">
           <div className="flex flex-col justify-between p-8 lg:p-12">
             <div>
-              <div className="mb-4 text-xs text-muted-foreground lg:text-base">
+              <div className="mb-4 text-xs leading-4 text-muted-foreground lg:text-base lg:leading-6">
                 CONFIDENTIAL AI MODELS
               </div>
-              <h3 className="mb-2 text-xl font-semibold lg:text-3xl">
+              <h3 className="font-display mb-2 text-xl leading-7 font-semibold lg:text-3xl lg:leading-none">
                 <span className="text-muted-foreground">Secure AI models</span>{' '}
                 ready to use
               </h3>
-              <p className="text-sm text-muted-foreground lg:text-base xl:text-lg">
+              <p className="text-sm leading-5 text-muted-foreground lg:text-base lg:leading-6 xl:text-lg xl:leading-7">
                 Access pre-configured confidential AI models with complete
                 privacy protection.
               </p>
@@ -241,15 +241,15 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
           <Image
             width={1520}
             height={852}
-            src="/home/gpu.png"
+            src="/home/gpu-tee.png"
             alt="NVIDIA H200 GPU TEE"
             className="h-64 w-full object-cover bg-card select-none"
           />
           <div className="p-8 lg:p-12">
-            <div className="mb-4 text-xs text-muted-foreground lg:text-base">
+            <div className="mb-4 text-xs leading-4 text-muted-foreground lg:text-base lg:leading-6">
               NVIDIA H200 GPU TEE
             </div>
-            <h3 className="mb-2 text-xl font-semibold lg:text-3xl">
+            <h3 className="font-display mb-2 text-xl leading-7 font-semibold lg:text-3xl lg:leading-none">
               <span className="text-muted-foreground">
                 Deploy Confidential GPUs,
               </span>{' '}
@@ -258,10 +258,10 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
           </div>
         </Link>
         <div className="min-h-96 flex flex-col justify-between overflow-hidden rounded-lg bg-card p-8 lg:col-span-4 lg:p-12">
-          <div className="mb-4 text-xs text-muted-foreground lg:text-base">
+          <div className="mb-4 text-xs leading-4 text-muted-foreground lg:text-base lg:leading-6">
             PERFORMANCE VS PRIVACY
           </div>
-          <h3 className="text-xl font-semibold lg:text-3xl">
+          <h3 className="font-display text-xl leading-7 font-semibold lg:text-3xl lg:leading-none">
             100% privacy{' '}
             <span className="text-muted-foreground">
               with only 5% performance trade-off
@@ -273,23 +273,23 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
               <table className="w-full border-collapse [&_td,th]:py-3 xl:[&_td,th]:py-4 [&_td,th]:px-2 xl:[&_td,th]:px-4">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="text-sm font-medium text-muted-foreground text-left pb-2 min-w-25 xl:min-w-32">
+                    <th className="text-sm leading-5 font-medium text-muted-foreground text-left pb-2 min-w-25 xl:min-w-32">
                       Solution
                     </th>
-                    <th className="text-sm font-medium text-muted-foreground text-center pb-2 w-1/2">
+                    <th className="text-sm leading-5 font-medium text-muted-foreground text-center pb-2 w-1/2">
                       Performance
                     </th>
-                    <th className="text-sm font-medium text-muted-foreground text-center pb-2 w-1/2">
+                    <th className="text-sm leading-5 font-medium text-muted-foreground text-center pb-2 w-1/2">
                       Privacy
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-border">
-                    <td className="font-medium text-sm">Native GPU</td>
+                    <td className="font-medium text-sm leading-5">Native GPU</td>
                     <td>
                       <div className="space-y-1">
-                        <div className="flex items-center justify-between text-xs">
+                        <div className="flex items-center justify-between text-xs leading-4">
                           <span className="text-muted-foreground max-sm:hidden">
                             Native
                           </span>
@@ -300,7 +300,7 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
                     </td>
                     <td>
                       <div className="space-y-1">
-                        <div className="flex items-center justify-between text-xs">
+                        <div className="flex items-center justify-between text-xs leading-4">
                           <div className="text-muted-foreground flex items-center gap-1 max-sm:hidden">
                             <span className="hidden sm:inline">
                               Data exposed
@@ -309,13 +309,13 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
                           </div>
                           <span className="font-medium ml-auto">0%</span>
                         </div>
-                        <div className="bg-primary-200 h-2 rounded-full"></div>
+                        <div className="bg-primary/20 h-2 rounded-full"></div>
                       </div>
                     </td>
                   </tr>
                   <tr className="border-b border-border">
                     <td>
-                      <div className="font-medium text-sm flex items-center gap-1">
+                      <div className="font-medium text-sm leading-5 flex items-center gap-1">
                         {/** biome-ignore lint/performance/noImgElement: svg */}
                         <img
                           src="/home/icon.svg"
@@ -327,7 +327,7 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
                     </td>
                     <td>
                       <div className="space-y-1">
-                        <div className="flex items-center justify-between text-xs">
+                        <div className="flex items-center justify-between text-xs leading-4">
                           <span className="text-muted-foreground max-sm:hidden">
                             Nearly native
                           </span>
@@ -340,13 +340,13 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
                     </td>
                     <td>
                       <div className="space-y-1">
-                        <div className="flex items-center justify-between text-xs">
+                        <div className="flex items-center justify-between text-xs leading-4">
                           <span className="text-muted-foreground max-sm:hidden">
                             Fully private
                           </span>
                           <span className="font-medium ml-auto">100%</span>
                         </div>
-                        <div className="bg-primary-500 h-2 rounded-full"></div>
+                        <div className="bg-primary h-2 rounded-full"></div>
                       </div>
                     </td>
                   </tr>

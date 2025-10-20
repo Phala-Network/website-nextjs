@@ -74,13 +74,13 @@ const FAQ_ITEMS = [
 
 export function Faq14() {
   return (
-    <section className="relative py-32">
+    <section className="relative py-24">
       <div className="container">
         <div className="text-center">
-          <h1 className="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="font-display text-4xl font-semibold leading-none tracking-tight md:text-5xl lg:text-6xl">
             Frequently Asked Questions
           </h1>
-          <p className="mt-4 text-2xl text-muted-foreground md:text-3xl">
+          <p className="mt-4 font-display text-2xl leading-none text-muted-foreground md:text-3xl">
             Everything you need to know about GPU TEE
           </p>
         </div>
@@ -101,10 +101,10 @@ export function Faq14() {
                       value={`${category.category}-${i}`}
                       className="border-b border-muted last:border-0"
                     >
-                      <AccordionTrigger className="text-start text-base font-medium hover:no-underline">
+                      <AccordionTrigger className="text-start font-display text-base leading-6 font-medium hover:no-underline">
                         {item.question}
                       </AccordionTrigger>
-                      <AccordionContent className="text-base font-medium text-muted-foreground">
+                      <AccordionContent className="font-display text-base leading-6 font-medium text-muted-foreground">
                         {item.answer}
                       </AccordionContent>
                     </AccordionItem>

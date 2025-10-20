@@ -50,24 +50,23 @@ const ChatBubble = ({
   children: React.ReactNode
   dim?: boolean
 }) => (
-  <div
+  <motion.div
+    initial={{ opacity: 0, y: 8 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -8 }}
     className={`flex items-end gap-2 ${who === 'ai' ? 'flex-row' : 'flex-row-reverse'}`}
   >
     <Avatar who={who} />
-    <motion.div
-      layout="position"
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
+    <div
       className={`w-[calc(100%-10rem)] rounded-2xl px-3 sm:px-5 py-3 sm:py-4 border text-sm sm:text-base lg:text-lg ${
         // darker light bubble
         `text-foreground ${dim ? 'opacity-60' : ''}`
       }`}
     >
       {children}
-    </motion.div>
+    </div>
     <div className="w-20"></div>
-  </div>
+  </motion.div>
 )
 
 const LockBadge = ({ label }: { label: string }) => (
@@ -209,26 +208,28 @@ const ConfidentialAI = () => {
       <div className="p-3 sm:p-6 lg:p-8 space-y-3 sm:space-y-4 flex-1 flex flex-col">
         <div className="flex-1 space-y-3 sm:space-y-4">
           <AnimatePresence initial={false}>
-            <ChatBubble who="user" dim={step !== 'typing' && step !== 'idle'}>
-              <div className="flex items-center gap-2 mb-2">
-                <div className="font-medium text-sm">You</div>
-                {step === 'encrypting' && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                    <LockBadge label="Sealing conversation…" />
-                  </motion.div>
+            {step !== 'idle' && (
+              <ChatBubble key="user-message" who="user" dim={step !== 'typing'}>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="font-medium text-sm">You</div>
+                  {step === 'encrypting' && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                      <LockBadge label="Sealing conversation…" />
+                    </motion.div>
+                  )}
+                </div>
+                {step === 'done' ? (
+                  <code className="font-mono text-primary-600 text-sm break-all">
+                    {sealedUser}
+                  </code>
+                ) : (
+                  <Typewriter text={typed} cursor={step === 'typing'} />
                 )}
-              </div>
-              {step === 'done' ? (
-                <code className="font-mono text-primary-600 text-sm break-all">
-                  {sealedUser}
-                </code>
-              ) : (
-                <Typewriter text={typed} cursor={step === 'typing'} />
-              )}
-            </ChatBubble>
+              </ChatBubble>
+            )}
 
             {step === 'aiThinking' && (
-              <ChatBubble who="ai">
+              <ChatBubble key="ai-thinking" who="ai">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Spinner />
                   <span>Requesting trusted compute…</span>
@@ -237,7 +238,7 @@ const ConfidentialAI = () => {
             )}
 
             {step !== 'idle' && step !== 'typing' && step !== 'aiThinking' && (
-              <ChatBubble who="ai" dim={step !== 'answer'}>
+              <ChatBubble key="ai-response" who="ai" dim={step !== 'answer'}>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="font-medium text-sm">
                     Confidential AI Model
@@ -295,10 +296,10 @@ const Hero = () => {
       <div className="container">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] items-center">
           <div className="flex flex-col gap-6 lg:gap-10 lg:pl-8">
-            <h1 className="text-3xl/snug sm:text-5xl/snug md:text-6xl/snug font-semibold">
+            <h1 className="font-display text-3xl/snug sm:text-5xl/snug md:text-6xl/snug font-semibold leading-none">
               Confidential <br className="hidden lg:block" /> AI Models
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="font-display text-muted-foreground text-lg leading-7">
               Others claim privacy. We prove it. Access frontier AI models on
               cloud, with proof that your data is protected end-to-end.
             </p>

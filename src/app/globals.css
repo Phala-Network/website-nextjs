@@ -21,7 +21,7 @@
   h1,
   h2,
   h3 {
-    @apply font-display tracking-tight;
+    @apply tracking-tight;
   }
   .prose {
     h1,

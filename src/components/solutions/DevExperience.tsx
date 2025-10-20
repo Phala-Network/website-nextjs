@@ -38,10 +38,10 @@ export function DevExperience({
       <div className="container">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-4">
+            <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl mb-4">
               {title}
             </h2>
-            <p className="text-lg text-muted-foreground">{description}</p>
+            <p className="font-display text-lg leading-7 text-muted-foreground">{description}</p>
           </div>
 
           <Tabs
@@ -68,7 +68,7 @@ export function DevExperience({
               <TabsContent key={example.language} value={example.language}>
                 <div className="rounded-lg border bg-muted/50 overflow-hidden">
                   <div className="flex items-center justify-between border-b px-4 py-3 bg-muted">
-                    <span className="text-sm font-mono text-muted-foreground">
+                    <span className="font-display text-sm font-mono leading-5 text-muted-foreground">
                       {example.filename}
                     </span>
                     <Button
@@ -84,7 +84,7 @@ export function DevExperience({
                     </Button>
                   </div>
                   <pre className="p-4 overflow-x-auto">
-                    <code className="text-sm font-mono">{example.code}</code>
+                    <code className="font-display text-sm font-mono leading-5">{example.code}</code>
                   </pre>
                 </div>
               </TabsContent>
@@ -96,7 +96,7 @@ export function DevExperience({
               {features.map((feature, i) => (
                 <div key={i} className="flex items-start gap-2">
                   <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">
+                  <span className="font-display text-sm leading-5 text-muted-foreground">
                     {feature}
                   </span>
                 </div>

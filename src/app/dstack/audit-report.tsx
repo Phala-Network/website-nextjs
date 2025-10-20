@@ -9,10 +9,10 @@ const AuditReport = () => {
       <div className="container">
         <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.2fr]">
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <h1 className="mb-5 text-pretty text-3xl font-semibold lg:text-4xl">
+            <h1 className="font-display mb-5 text-pretty text-3xl font-semibold leading-none lg:text-4xl">
               Security Audit Report
             </h1>
-            <p className="text-muted-foreground mb-8 max-w-xl text-xl font-medium">
+            <p className="font-display text-muted-foreground mb-8 max-w-xl text-xl leading-7 font-medium">
               Independent security audit by zkSecurity team. Review our
               comprehensive security analysis and recommendations.
             </p>
@@ -34,7 +34,7 @@ const AuditReport = () => {
             </div>
 
             <div className="flex flex-col gap-2 mt-8">
-              <p className="text-muted-foreground text-sm">Sponsored by</p>
+              <p className="font-display text-muted-foreground text-sm leading-5">Sponsored by</p>
               <div className="flex items-center gap-10 mt-2">
                 <a href="https://phala.network" target="_blank" rel="noopener">
                   <img className="h-6" src="/home/logo.svg" alt="Phala" />
@@ -74,10 +74,10 @@ const AuditReport = () => {
               className="max-h-96 w-full object-cover"
             />
             <div className="absolute bottom-0 left-0 w-full bg-linear-to-t from-black/10 to-transparent p-4">
-              <p className="text-black/80 text-sm font-medium mb-1">
+              <p className="font-display text-black/80 text-sm leading-5 font-medium mb-1">
                 zkSecurity Team Audit
               </p>
-              <p className="text-black/50 text-xs">
+              <p className="font-display text-black/50 text-xs leading-4">
                 Comprehensive security analysis and vulnerability assessment
               </p>
             </div>

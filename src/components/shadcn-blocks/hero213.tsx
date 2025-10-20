@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { Figma, GalleryVerticalEnd, Signature } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
@@ -39,7 +39,7 @@ const Hero213 = () => {
     <section className="py-32">
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center justify-center gap-4">
-          <h1 className="text-center font-calSans text-5xl lg:text-6xl">
+          <h1 className="text-center font-display text-5xl font-semibold leading-none lg:text-6xl">
             Blocks Built <br />
             With Shadcn & Tailwind.
           </h1>

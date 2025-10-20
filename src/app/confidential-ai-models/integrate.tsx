@@ -20,17 +20,17 @@ const Integrate = () => {
     <section className="py-24">
       <div className="container">
         <div className="mx-auto mb-20 max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-semibold lg:text-4xl">
+          <h2 className="font-display mb-6 text-3xl font-semibold leading-none lg:text-4xl">
             Integrate in Minutes
           </h2>
-          <p className="text-muted-foreground text-balance">
+          <p className="font-display text-muted-foreground leading-6 text-balance">
             The easiest way to add cryptographic privacy to your AI
             applications. Drop-in replacement for OpenAI, Anthropic, and other
             major providers.
           </p>
         </div>
         <div className="mx-auto grid gap-10 lg:grid-cols-3">
-          <div className="order-1 flex flex-col gap-4 h-full min-h-108 items-center rounded-lg bg-muted p-8 lg:order-none">
+          <div className="order-1 flex flex-col gap-4 h-full min-h-108 items-center rounded-lg bg-background p-8 lg:order-none">
             <div className="flex flex-col gap-4 mb-4 items-center">
               <p className="text-sm text-muted-foreground">
                 Supported providers:
@@ -43,7 +43,7 @@ const Integrate = () => {
               </div>
             </div>
 
-            <div className="bg-card rounded-lg p-4 flex flex-col gap-2 items-start w-full overflow-hidden mt-auto">
+            <div className="bg-muted rounded-lg p-4 flex flex-col gap-2 items-start w-full overflow-hidden mt-auto">
               <div className="text-sm text-muted-foreground flex items-center gap-2">
                 <Unlock className="size-4" /> Traditional AI
               </div>
@@ -54,7 +54,7 @@ const Integrate = () => {
 
             <ArrowDown size={24} className="text-muted-foreground" />
 
-            <div className="bg-card rounded-lg p-4 flex flex-col gap-2 items-start w-full overflow-hidden">
+            <div className="bg-muted rounded-lg p-4 flex flex-col gap-2 items-start w-full overflow-hidden">
               <div className="text-sm text-muted-foreground flex items-center gap-2">
                 {/** biome-ignore lint/performance/noImgElement: svg */}
                 <img
@@ -69,7 +69,7 @@ const Integrate = () => {
               </code>
             </div>
           </div>
-          <div className="order-3 h-full min-h-108 rounded-lg bg-muted lg:order-none relative overflow-hidden p-8">
+          <div className="order-3 h-full min-h-108 rounded-lg bg-background lg:order-none relative overflow-hidden p-8">
             <ul className="flex flex-col gap-2 w-fit mx-auto">
               {[
                 'Real-time proof generation',
@@ -93,7 +93,7 @@ const Integrate = () => {
               ></div>
             </div>
           </div>
-          <div className="order-5 min-h-108 h-full flex flex-col rounded-lg bg-muted p-8 lg:order-none">
+          <div className="order-5 min-h-108 h-full flex flex-col rounded-lg bg-background p-8 lg:order-none">
             <p className="text-muted-foreground text-center">
               Enterprise features
             </p>
@@ -114,7 +114,7 @@ const Integrate = () => {
               ))}
             </ul>
 
-            <div className="flex justify-between items-center bg-card px-4 py-3 mt-auto rounded-lg gap-3">
+            <div className="flex justify-between items-center bg-muted px-4 py-3 mt-auto rounded-lg gap-3">
               {/** biome-ignore lint/performance/noImgElement: svg */}
               <img
                 src={iconMap.get('openai')}
@@ -131,7 +131,7 @@ const Integrate = () => {
                 $0.14 / $0.49
               </div>
             </div>
-            <div className="flex justify-between items-center bg-card px-4 py-3 mt-5 rounded-lg gap-3">
+            <div className="flex justify-between items-center bg-muted px-4 py-3 mt-5 rounded-lg gap-3">
               {/** biome-ignore lint/performance/noImgElement: svg */}
               <img
                 src={iconMap.get('qwen')}
@@ -148,7 +148,7 @@ const Integrate = () => {
                 $0.9 / $1.5
               </div>
             </div>
-            <div className="flex justify-between items-center bg-card px-4 py-3 mt-5 rounded-lg gap-3">
+            <div className="flex justify-between items-center bg-muted px-4 py-3 mt-5 rounded-lg gap-3">
               {/** biome-ignore lint/performance/noImgElement: svg */}
               <img
                 src={iconMap.get('meta')}
@@ -183,7 +183,7 @@ const Integrate = () => {
               Every request generates cryptographic proof. Show customers
               exactly how their data is protected with our Trust Center.{' '}
               <a
-                href="https://tee-visualization.vercel.app/"
+                href="https://trust.phala.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"

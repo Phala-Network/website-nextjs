@@ -18,12 +18,12 @@ const flows: Flow[] = [
   },
   {
     title: 'Financial + AI',
-    className: 'data-[state=active]:bg-[#98DCFF]',
+    className: 'data-[state=active]:bg-[#8DD7FF]',
     time: 13,
   },
   {
     title: 'Data + Model',
-    className: 'data-[state=active]:bg-[#AFBEFE]',
+    className: 'data-[state=active]:bg-[#AABBFF]',
     time: 30,
   },
 ]
@@ -67,16 +67,16 @@ const StepItem = ({ step, isLast }: StepItemProps) => {
           }`}
         />
         <div className="bg-background relative grid size-11 xl:size-14 place-content-center rounded-full border-4">
-          <p className="text-xl font-bold font-display xl:text-2xl">
+          <p className="text-xl leading-7 font-bold font-display xl:text-2xl xl:leading-none">
             {step.id}
           </p>
         </div>
       </div>
       <div className="mt-2 xl:mt-3">
-        <p className="text-xl font-semibold font-display xl:text-2xl">
+        <p className="text-xl leading-7 font-semibold font-display xl:text-2xl xl:leading-none">
           {step.title}
         </p>
-        <p className="text-muted-foreground mt-2 xl:text-lg">
+        <p className="text-muted-foreground text-base leading-6 xl:text-lg xl:leading-7 mt-2">
           {step.description}
         </p>
       </div>
@@ -123,10 +123,10 @@ export default function TrustSteps() {
       <section className="container">
         <div className="grid grid-cols-1 lg:grid-cols-[30rem_1fr] gap-16 xl:grid-cols-[35rem_1fr]">
           <div className="px-4 sm:px-8 lg:pl-16">
-            <h2 className="font-semibold text-2xl md:text-3xl xl:text-4xl">
+            <h2 className="font-display font-semibold text-2xl leading-none md:text-3xl xl:text-4xl">
               When Your Users Trust AI
             </h2>
-            <p className="mt-4 text-muted-foreground text-lg md:text-xl font-medium">
+            <p className="mt-4 text-muted-foreground font-display text-lg leading-7 md:text-xl font-medium">
               Trust creates a powerful cycle that drives business growth and
               market leadership.
             </p>

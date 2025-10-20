@@ -20,14 +20,14 @@ const PhalaMissionValues = () => {
                 value="mission"
                 className="animate-in fade-in flex flex-col gap-4 md:gap-6 duration-300"
               >
-                <span className="text-muted-foreground text-xs uppercase">
+                <span className="font-display text-muted-foreground text-xs leading-5 uppercase">
                   Our Mission
                 </span>
                 <div className="flex flex-col gap-3 md:gap-4">
-                  <h2 className="text-2xl md:text-3xl font-medium">
+                  <h2 className="font-display text-2xl md:text-3xl font-medium leading-tight">
                     Building the Future of Confidential Computing
                   </h2>
-                  <p className="text-sm md:text-base text-muted-foreground">
+                  <p className="font-display text-sm md:text-base leading-7 text-muted-foreground">
                     Phala Network is building the world's largest confidential
                     computing cloud, enabling developers to build privacy-first
                     applications at scale. Founded in 2018, we've grown from a
@@ -41,14 +41,14 @@ const PhalaMissionValues = () => {
                 value="privacy"
                 className="animate-in fade-in flex flex-col gap-4 md:gap-6 duration-300"
               >
-                <span className="text-muted-foreground text-xs uppercase">
+                <span className="font-display text-muted-foreground text-xs leading-5 uppercase">
                   Privacy First
                 </span>
                 <div className="flex flex-col gap-3 md:gap-4">
-                  <h2 className="text-2xl md:text-3xl font-medium">
+                  <h2 className="font-display text-2xl md:text-3xl font-medium leading-tight">
                     Privacy. Security. Trust.
                   </h2>
-                  <p className="text-sm md:text-base text-muted-foreground">
+                  <p className="font-display text-sm md:text-base leading-7 text-muted-foreground">
                     Building the infrastructure for confidential computing where
                     sensitive data remains encrypted even during processing.
                     We're creating a world where privacy isn't a luxury, but a
@@ -60,14 +60,14 @@ const PhalaMissionValues = () => {
                 value="innovation"
                 className="animate-in fade-in flex flex-col gap-4 md:gap-6 duration-300"
               >
-                <span className="text-muted-foreground text-xs uppercase">
+                <span className="font-display text-muted-foreground text-xs leading-5 uppercase">
                   Innovation
                 </span>
                 <div className="flex flex-col gap-3 md:gap-4">
-                  <h2 className="text-2xl md:text-3xl font-medium">
+                  <h2 className="font-display text-2xl md:text-3xl font-medium leading-tight">
                     Open Source. Decentralized. Future.
                   </h2>
-                  <p className="text-sm md:text-base text-muted-foreground">
+                  <p className="font-display text-sm md:text-base leading-7 text-muted-foreground">
                     Contributing to the decentralized ecosystem and pushing the
                     boundaries of TEE and blockchain technology. Our commitment
                     to open source drives innovation and enables developers
@@ -147,10 +147,10 @@ const PhalaMissionValues = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 bg-gradient-to-t from-black/60 to-transparent rounded-b-2xl md:rounded-b-3xl">
                   <div className="flex justify-between items-end text-white">
                     <div className="flex flex-col gap-0.5 md:gap-1.5">
-                      <p className="text-2xl md:text-4xl font-medium lg:text-5xl">
+                      <p className="font-display text-2xl md:text-4xl font-medium leading-none lg:text-5xl">
                         6+
                       </p>
-                      <p className="text-xs md:text-base font-medium">
+                      <p className="font-display text-xs md:text-base font-medium leading-5">
                         years building
                       </p>
                     </div>

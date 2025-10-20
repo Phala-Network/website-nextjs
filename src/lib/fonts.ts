@@ -1,17 +1,10 @@
-import { Inter, Montserrat } from 'next/font/google'
-
-import { cn } from '@/lib/utils'
+import { Montserrat } from 'next/font/google'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
-  variable: '--display-family',
+  variable: '--font-sans',
 })
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--text-family',
-})
-
-const fontVariables = cn(inter.variable, montserrat.variable)
+const fontVariables = montserrat.variable
 
 export default fontVariables

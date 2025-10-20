@@ -34,7 +34,7 @@ const features: ReadonlyArray<{
 
 const Features = () => {
   return (
-    <section className="py-4 md:py-8 mx-auto">
+    <section className="py-24 mx-auto">
       <div className="container">
         <div className="grid gap-4 overflow-hidden rounded-lg md:grid-cols-2 md:gap-6">
           {features.map((feature, index) => {
@@ -46,10 +46,10 @@ const Features = () => {
               >
                 <Icon className="size-6 shrink-0" />
                 <div>
-                  <h2 className="text-sm font-semibold md:text-base">
+                  <h2 className="font-display text-sm font-semibold leading-4 md:text-base">
                     {feature.title}
                   </h2>
-                  <p className="text-sm text-muted-foreground md:text-base">
+                  <p className="font-display text-sm leading-5 text-muted-foreground md:text-base md:leading-6">
                     {feature.description}
                   </p>
                 </div>

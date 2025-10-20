@@ -14,21 +14,21 @@ const Hero74 = () => {
     <section className="py-32">
       <div>
         <div className="container text-center">
-          <h1 className="mb-4 text-5xl font-medium">
+          <h1 className="font-display mb-4 text-5xl font-medium leading-none">
             Fine-Tuned Models: Private Customization
           </h1>
-          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="font-display text-muted-foreground text-lg leading-7 md:text-xl max-w-3xl mx-auto">
             Fine-tune foundation models on proprietary data inside TEEs. Better
             accuracy, zero data leakage. Keep your training data, gradients, and
             custom weights encrypted with hardware-enforced privacy.
           </p>
           <div className="mx-auto mt-8 flex w-full max-w-sm items-center space-x-2">
-            <Button asChild>
+            <Button asChild className="font-medium">
               <a href="https://cloud.phala.network/dashboard/gpu-tee">
                 Start Fine-Tuning
               </a>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="font-medium">
               <a href="https://phala.com/contact">Contact Us</a>
             </Button>
           </div>
@@ -37,13 +37,13 @@ const Hero74 = () => {
               <div className="flex h-16 w-24 items-center justify-center rounded-md border">
                 <Package />
               </div>
-              <span className="text-sm text-muted-foreground">LoRA & PEFT</span>
+              <span className="font-display text-sm leading-5 text-muted-foreground">LoRA & PEFT</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <div className="flex h-16 w-24 items-center justify-center rounded-md border">
                 <AlignCenter />
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="font-display text-sm leading-5 text-muted-foreground">
                 Multi-GPU training
               </span>
             </div>
@@ -51,7 +51,7 @@ const Hero74 = () => {
               <div className="flex h-16 w-24 items-center justify-center rounded-md border">
                 <Vault />
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="font-display text-sm leading-5 text-muted-foreground">
                 Sealed checkpoints
               </span>
             </div>
@@ -59,7 +59,7 @@ const Hero74 = () => {
               <div className="flex h-16 w-24 items-center justify-center rounded-md border">
                 <ReceiptText />
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="font-display text-sm leading-5 text-muted-foreground">
                 Training attestations
               </span>
             </div>
@@ -67,7 +67,7 @@ const Hero74 = () => {
               <div className="flex h-16 w-24 items-center justify-center rounded-md border">
                 <Timer />
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="font-display text-sm leading-5 text-muted-foreground">
                 Fast deployment
               </span>
             </div>
@@ -75,7 +75,7 @@ const Hero74 = () => {
               <div className="flex h-16 w-24 items-center justify-center rounded-md border">
                 <Brain />
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="font-display text-sm leading-5 text-muted-foreground">
                 Gradient privacy
               </span>
             </div>

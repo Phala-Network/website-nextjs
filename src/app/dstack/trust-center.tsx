@@ -29,16 +29,16 @@ const features = [
 
 const TrustCenter = () => {
   return (
-    <section className="py-24 max-w-5xl mx-auto">
-      <div className="container">
-        <div className="flex flex-col justify-between gap-8 lg:flex-row">
+    <section className="py-24">
+      <div className="container max-w-7xl mx-auto">
+        <div className="flex flex-col justify-between gap-8 lg:flex-row max-w-5xl mx-auto">
           {/* Left side - Main content */}
           <div className="flex-1">
-            <h1 className="text-2xl font-semibold sm:text-3xl md:text-4xl">
+            <h1 className="font-display text-2xl font-semibold leading-none sm:text-3xl md:text-4xl">
               Trust Center
             </h1>
 
-            <p className="text-muted-foreground mt-5 font-sans text-xl font-medium">
+            <p className="font-display text-muted-foreground mt-5 text-xl leading-7 font-medium">
               Complete Transparency. Every deployed application comes with a
               comprehensive Trust Center for full verification.
             </p>
@@ -46,7 +46,7 @@ const TrustCenter = () => {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button asChild>
                 <a
-                  href="https://tee-visualization.vercel.app/"
+                  href="https://trust.phala.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -72,10 +72,10 @@ const TrustCenter = () => {
                 <div key={feature.title} className="flex gap-2.5 lg:gap-5">
                   <Icon className="mt-1 size-4 shrink-0 lg:size-5" />
                   <div>
-                    <h2 className="font-inter font-semibold">
+                    <h2 className="font-display font-semibold leading-4">
                       {feature.title}
                     </h2>
-                    <p className="text-muted-foreground max-w-76 text-sm">
+                    <p className="font-display text-muted-foreground max-w-76 text-sm leading-5">
                       {feature.description}
                     </p>
                   </div>
@@ -85,13 +85,15 @@ const TrustCenter = () => {
           </div>
         </div>
 
-        <Image
-          width={858}
-          height={462}
-          src="/dstack/trust-center.png"
-          alt="Trust Center Interface"
-          className="w-full rounded-sm object-cover object-top-left shadow-lg mt-12 border overflow-hidden"
-        />
+        <div className="mt-12 w-full">
+          <Image
+            width={1920}
+            height={1080}
+            src="/dstack/trust-center.png"
+            alt="Trust Center Interface"
+            className="w-full h-auto rounded-sm object-contain shadow-lg border"
+          />
+        </div>
       </div>
     </section>
   )

@@ -56,10 +56,10 @@ const Faq = () => {
     <section className="py-24">
       <div className="container space-y-16">
         <div className="mx-auto flex max-w-3xl flex-col text-left md:text-center">
-          <h2 className="mb-3 text-3xl font-semibold md:mb-4 lg:mb-6 lg:text-4xl">
+          <h2 className="font-display mb-3 text-3xl font-semibold leading-none md:mb-4 lg:mb-6 lg:text-4xl">
             Frequently Asked Questions
           </h2>
-          <p className="text-muted-foreground">
+          <p className="font-display text-muted-foreground leading-6">
             Everything you need to know about Confidential AI
           </p>
         </div>

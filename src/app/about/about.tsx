@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Github, Linkedin, Mail, Rocket, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -153,15 +153,13 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
                   `)}`
                 }
               }}
-              width={350}
-              height={376}
             />
             {/* Overlay with name and role */}
             <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gradient-to-t from-black/60 to-transparent">
-              <h3 className="text-white text-sm md:text-lg font-bold">
+              <h3 className="font-display text-white text-sm md:text-lg font-bold leading-tight">
                 {member.name}
               </h3>
-              <p className="text-white/80 text-xs md:text-sm line-clamp-1">
+              <p className="font-display text-white/80 text-xs md:text-sm leading-5 line-clamp-1">
                 {member.role}
               </p>
             </div>
@@ -201,8 +199,6 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
                     `)}`
                   }
                 }}
-                width={318}
-                height={177}
               />
 
               {/* Floating emojis around the photo */}
@@ -247,10 +243,10 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
 
               {/* Name overlay on photo */}
               <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg">
-                <h3 className="text-white text-sm md:text-lg font-bold">
+                <h3 className="font-display text-white text-sm md:text-lg font-bold leading-tight">
                   {member.name}
                 </h3>
-                <Badge className="mt-0.5 md:mt-1 text-xs" variant="secondary">
+                <Badge className="font-display mt-0.5 md:mt-1 text-xs leading-5" variant="secondary">
                   {member.role}
                 </Badge>
               </div>
@@ -258,7 +254,7 @@ function TeamMemberCard({ member, index }: { member: any; index: number }) {
 
             {/* Description - hide on small mobile */}
             <div className="mb-2 md:mb-3 hidden sm:block">
-              <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2 md:line-clamp-3">
+              <p className="font-display text-muted-foreground text-xs leading-relaxed line-clamp-2 md:line-clamp-3">
                 {member.description ||
                   `${member.name} is a valued member of the Phala Network team, contributing to our mission of building the future of confidential computing.`}
               </p>
@@ -391,10 +387,10 @@ export default function About() {
         className="py-10 md:py-20 container mx-auto px-4 md:px-6"
       >
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">
+          <h2 className="font-display text-2xl md:text-3xl font-bold leading-tight mb-3 md:mb-4">
             Meet Our Team
           </h2>
-          <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8">
+          <p className="font-display text-base md:text-xl leading-7 text-muted-foreground mb-6 md:mb-8">
             Click on any profile to learn more about our talented team members
           </p>
         </div>
@@ -418,20 +414,20 @@ export default function About() {
       <section className="py-20 container mx-auto px-6">
         <Card className="bg-gradient-to-br from-primary/10 via-primary/5 to-background border-primary/20">
           <CardContent className="p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <h2 className="font-display text-3xl font-bold leading-tight mb-4">Join Our Mission</h2>
+            <p className="font-display text-xl leading-7 text-muted-foreground mb-8 max-w-2xl mx-auto">
               We're always looking for talented individuals who share our
               passion for privacy, decentralization, and cutting-edge
               technology.
             </p>
             <div className="flex gap-4 justify-center">
-              <Button size="lg" asChild>
+              <Button size="lg" className="font-medium" asChild>
                 <Link href="https://www.linkedin.com/company/phala-network/jobs/">
                   <Rocket className="mr-2 h-4 w-4" />
                   View Open Positions
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" className="font-medium" asChild>
                 <Link href="mailto:hire@phala.network">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Us

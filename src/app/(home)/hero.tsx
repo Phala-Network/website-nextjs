@@ -30,19 +30,19 @@ export default function Hero() {
           <section className="pt-20">
             <div className="pt-12 lg:pt-24 lg:pl-8">
               <div className="flex flex-col max-sm:items-center max-sm:text-center">
-                <h1 className="font-semibold text-foreground/95 text-3xl/snug sm:text-5xl/snug md:text-6xl/snug">
+                <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl">
                   The New Cloud for
                   <br />
                   Confidential AI
                 </h1>
 
-                <h2 className="font-medium text-xl md:text-2xl mt-8 md:mt-16">
+                <h2 className="font-display font-medium text-xl leading-7 md:text-2xl md:leading-none mt-8 md:mt-16">
                   Build AI People Can Trust
                 </h2>
-                <p className="text-muted-foreground lg:text-lg max-w-2xs sm:max-w-md xl:max-w-xl mt-4 max-sm:text-sm">
+                <p className="text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7 max-w-2xs sm:max-w-md xl:max-w-xl mt-4">
                   Hardware-secured compute platform that delivers verifiable AI
                   with enterprise-grade privacy. Deploy confidential AI models
-                  with TEE protection in minutes, not months.
+                  with TEE protection in minutes.
                 </p>
 
                 <div className="flex gap-4 items-start mt-12 md:mt-16 max-sm:flex-col lg:gap-6">

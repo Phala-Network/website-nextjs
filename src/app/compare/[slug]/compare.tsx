@@ -30,20 +30,20 @@ export default function Compare({ data }: CompareProps) {
           <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:gap-16">
             <div className="flex-1 md:max-w-2xl">
               <div className="flex flex-col items-start">
-                <h1 className="mb-6 text-4xl font-semibold text-foreground sm:text-5xl/tight xl:text-6xl/tight">
+                <h1 className="mb-6 font-display text-5xl font-semibold leading-none text-foreground lg:text-6xl xl:text-7xl">
                   {data.hero.title}
                 </h1>
                 {data.hero.alternativeText && (
-                  <p className="mb-8 text-xl text-muted-foreground leading-relaxed">
+                  <p className="mb-8 font-display text-xl leading-7 text-muted-foreground">
                     {data.hero.alternativeText}
                   </p>
                 )}
                 {data.hero.subtitle && (
-                  <p className="mb-8 text-lg text-muted-foreground leading-relaxed">
+                  <p className="mb-8 font-display text-lg leading-7 text-muted-foreground">
                     {data.hero.subtitle}
                   </p>
                 )}
-                <Button size="lg" asChild>
+                <Button size="lg" className="font-medium" asChild>
                   <a href={data.cta.href}>{data.cta.text}</a>
                 </Button>
               </div>
@@ -70,7 +70,7 @@ export default function Compare({ data }: CompareProps) {
         <div className="mx-auto max-w-4xl">
           {/* Quick Takeaways */}
           <section className="mb-20">
-            <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
+            <h2 className="mb-8 font-display text-3xl font-semibold leading-tight text-foreground">
               Why Choose Phala?
             </h2>
             <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
@@ -80,7 +80,7 @@ export default function Compare({ data }: CompareProps) {
                   className="flex items-start gap-3 rounded-lg border p-4 bg-background"
                 >
                   <CheckCircle className="mt-0.5 size-5 shrink-0 text-green-600" />
-                  <span className="text-base text-foreground leading-relaxed">
+                  <span className="font-display text-base leading-7 text-foreground">
                     {takeaway}
                   </span>
                 </div>
@@ -90,7 +90,7 @@ export default function Compare({ data }: CompareProps) {
 
           {/* Comparison Table */}
           <section className="mb-20">
-            <h2 className="mb-12 text-3xl font-semibold text-foreground leading-tight">
+            <h2 className="mb-12 font-display text-3xl font-semibold leading-tight text-foreground">
               Feature Comparison
             </h2>
             <div className="overflow-x-auto">
@@ -98,16 +98,16 @@ export default function Compare({ data }: CompareProps) {
                 {/* Header Row */}
                 <div className="border-b border-border p-6"></div>
                 <div className="flex flex-col items-center gap-2 rounded-t-2xl border-b border-border bg-muted p-6">
-                  <p className="text-lg font-semibold">Phala</p>
-                  <p className="mt-1 text-center text-sm text-muted-foreground">
+                  <p className="font-display text-lg font-semibold">Phala</p>
+                  <p className="mt-1 font-display text-center text-sm leading-5 text-muted-foreground">
                     Open-source confidential AI
                   </p>
                 </div>
                 <div className="flex flex-col items-center gap-2 border-b border-border p-6">
-                  <p className="text-lg font-semibold">
+                  <p className="font-display text-lg font-semibold">
                     {data.competitor.name}
                   </p>
-                  <p className="mt-1 text-center text-sm text-muted-foreground">
+                  <p className="mt-1 font-display text-center text-sm leading-5 text-muted-foreground">
                     {data.competitor.description}
                   </p>
                 </div>
@@ -118,7 +118,7 @@ export default function Compare({ data }: CompareProps) {
                     <div
                       className={`flex items-center gap-2 p-6 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border'}`}
                     >
-                      <span className="font-semibold text-foreground">
+                      <span className="font-display font-semibold text-foreground">
                         {feature.feature}
                       </span>
                     </div>
@@ -126,7 +126,7 @@ export default function Compare({ data }: CompareProps) {
                       className={`flex flex-col items-center justify-center gap-2 bg-muted p-6 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border'}`}
                     >
                       <StatusIcon status={feature.phala} />
-                      <span className="text-sm text-muted-foreground text-center">
+                      <span className="font-display text-center text-sm leading-5 text-muted-foreground">
                         {feature.phalaText}
                       </span>
                     </div>
@@ -134,7 +134,7 @@ export default function Compare({ data }: CompareProps) {
                       className={`flex flex-col items-center justify-center gap-2 p-6 ${index === data.features.length - 1 ? '' : 'border-b border-border'}`}
                     >
                       <StatusIcon status={feature.competitor} />
-                      <span className="text-sm text-muted-foreground text-center">
+                      <span className="font-display text-center text-sm leading-5 text-muted-foreground">
                         {feature.competitorText}
                       </span>
                     </div>
@@ -144,7 +144,7 @@ export default function Compare({ data }: CompareProps) {
                 {/* CTA Row */}
                 <div className="border-border p-6"></div>
                 <div className="flex items-center justify-center gap-2 rounded-b-2xl border-border bg-muted p-6">
-                  <Button className="w-full" asChild>
+                  <Button className="w-full font-medium" asChild>
                     <a href={data.cta.href}>{data.cta.text}</a>
                   </Button>
                 </div>
@@ -155,11 +155,11 @@ export default function Compare({ data }: CompareProps) {
 
           {/* What does Phala do? */}
           <section className="mb-20">
-            <h2 className="mb-6 text-3xl font-semibold text-foreground leading-tight">
+            <h2 className="mb-6 font-display text-3xl font-semibold leading-tight text-foreground">
               {data.sections.whatIsPhala.title}
             </h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="font-display text-lg leading-7 text-muted-foreground">
                 {data.sections.whatIsPhala.content}
               </p>
             </div>
@@ -167,11 +167,11 @@ export default function Compare({ data }: CompareProps) {
 
           {/* What does Competitor do? */}
           <section className="mb-20">
-            <h2 className="mb-6 text-3xl font-semibold text-foreground leading-tight">
+            <h2 className="mb-6 font-display text-3xl font-semibold leading-tight text-foreground">
               {data.sections.whatIsCompetitor.title}
             </h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="font-display text-lg leading-7 text-muted-foreground">
                 {data.sections.whatIsCompetitor.content}
               </p>
             </div>
@@ -179,7 +179,7 @@ export default function Compare({ data }: CompareProps) {
 
           {/* Key Differentiators */}
           <section className="mb-20">
-            <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
+            <h2 className="mb-8 font-display text-3xl font-semibold leading-tight text-foreground">
               {data.sections.differentiators.title}
             </h2>
 
@@ -189,11 +189,11 @@ export default function Compare({ data }: CompareProps) {
                   key={item.title}
                   className="rounded-lg border bg-background p-6"
                 >
-                  <h3 className="text-xl font-semibold mb-4 text-foreground leading-tight">
+                  <h3 className="mb-4 font-display text-xl font-semibold leading-tight text-foreground">
                     {item.title}
                   </h3>
                   <div className="prose prose-lg max-w-none">
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="font-display leading-7 text-muted-foreground">
                       {item.description}
                     </p>
                   </div>
@@ -204,14 +204,14 @@ export default function Compare({ data }: CompareProps) {
 
           {/* How to Choose */}
           <section className="mb-20">
-            <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
+            <h2 className="mb-8 font-display text-3xl font-semibold leading-tight text-foreground">
               {data.sections.howToChoose.title}
             </h2>
             <ol className="space-y-6 list-decimal list-outside ml-6">
               {data.sections.howToChoose.content.map((item) => (
                 <li key={item} className="pl-2">
                   <div className="prose prose-lg max-w-none">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="font-display text-lg leading-7 text-muted-foreground">
                       {item}
                     </p>
                   </div>
@@ -222,26 +222,26 @@ export default function Compare({ data }: CompareProps) {
 
           {/* Pricing Comparison */}
           <section className="mb-20">
-            <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
+            <h2 className="mb-8 font-display text-3xl font-semibold leading-tight text-foreground">
               {data.sections.pricing.title}
             </h2>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-xl border p-8 bg-background">
-                <h3 className="mb-4 font-semibold text-xl text-foreground">
+                <h3 className="mb-4 font-display text-xl font-semibold text-foreground">
                   Phala Cloud
                 </h3>
                 <div className="prose prose-lg max-w-none">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="font-display text-lg leading-7 text-muted-foreground">
                     {data.sections.pricing.phalaContent}
                   </p>
                 </div>
               </div>
               <div className="rounded-xl border p-8 bg-background">
-                <h3 className="mb-4 font-semibold text-xl text-foreground">
+                <h3 className="mb-4 font-display text-xl font-semibold text-foreground">
                   {data.competitor.name}
                 </h3>
                 <div className="prose prose-lg max-w-none">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="font-display text-lg leading-7 text-muted-foreground">
                     {data.sections.pricing.competitorContent}
                   </p>
                 </div>
@@ -252,7 +252,7 @@ export default function Compare({ data }: CompareProps) {
           {/* Why Choose Section */}
           {data.sections.whyChoose && (
             <section className="mb-20">
-              <h2 className="mb-8 text-3xl font-semibold text-foreground leading-tight">
+              <h2 className="mb-8 font-display text-3xl font-semibold leading-tight text-foreground">
                 {data.sections.whyChoose.title}
               </h2>
               <div className="grid gap-6 md:grid-cols-2">
@@ -262,7 +262,7 @@ export default function Compare({ data }: CompareProps) {
                     className="rounded-lg border p-8 bg-background"
                   >
                     <div className="prose prose-lg max-w-none">
-                      <span className="text-lg text-muted-foreground leading-relaxed">
+                      <span className="font-display text-lg leading-7 text-muted-foreground">
                         {item}
                       </span>
                     </div>

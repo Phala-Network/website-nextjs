@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { Cpu, Gpu, Shield } from 'lucide-react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -46,7 +46,7 @@ const GpuTeeHero = () => {
             <Shield className="size-4" />
             <span className="text-sm font-medium">Full-Stack TEE</span>
           </div>
-          <h1 className="text-balance text-center font-calSans text-5xl lg:text-6xl">
+          <h1 className="text-balance text-center font-display text-5xl font-semibold leading-none lg:text-6xl">
             Most Powerful AI GPUs.
             <br />
             Most Secure Platform.

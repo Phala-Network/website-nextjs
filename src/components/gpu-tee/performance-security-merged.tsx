@@ -35,7 +35,7 @@ const chartConfig = {
 
 const PerformanceSecurityMerged = () => {
   return (
-    <section className="py-32 bg-muted/30">
+    <section className="py-24 bg-white">
       <div className="container">
         <div className="mx-auto max-w-6xl">
           {/* Header */}
@@ -43,10 +43,10 @@ const PerformanceSecurityMerged = () => {
             <p className="bg-muted mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-wider">
               REAL-WORLD PERFORMANCE
             </p>
-            <h2 className="text-3xl font-bold md:text-5xl mb-4">
+            <h2 className="font-display text-3xl font-bold leading-none md:text-5xl mb-4">
               Hardware Security Without Compromise
             </h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+            <p className="text-muted-foreground font-display text-lg leading-7 max-w-3xl mx-auto">
               Full-Stack TEE protection delivers near-native performance.
               Benchmarked with SP1 zkVM generating ZK proofs in GPU TEE
               environment.
@@ -55,16 +55,16 @@ const PerformanceSecurityMerged = () => {
 
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Radar Chart - Full-Stack TEE Comparison */}
-            <div className="rounded-lg border bg-background/50 p-8">
+            <div className="rounded-lg border bg-white p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
                   <Shield className="size-6 text-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">
+                  <h3 className="font-display text-2xl font-bold leading-none">
                     Full-Stack TEE Advantage
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="font-display text-sm leading-5 text-muted-foreground">
                     vs GPU-Only Protection
                   </p>
                 </div>
@@ -114,12 +114,12 @@ const PerformanceSecurityMerged = () => {
             </div>
 
             {/* Performance Benchmarks */}
-            <div className="rounded-lg border bg-background/50 p-8">
+            <div className="rounded-lg border bg-white p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
                   <Zap className="size-6 text-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold">Performance Benchmarks</h3>
+                <h3 className="font-display text-2xl font-bold leading-none">Performance Benchmarks</h3>
               </div>
 
               <div className="flex flex-col gap-6">
@@ -177,12 +177,12 @@ const PerformanceSecurityMerged = () => {
           </div>
 
           {/* Security Guarantees - Bottom Row */}
-          <div className="mt-8 rounded-lg border bg-background/50 p-8">
+          <div className="mt-8 rounded-lg border bg-white p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
                 <Award className="size-6 text-foreground" />
               </div>
-              <h3 className="text-2xl font-bold">Security Guarantees</h3>
+              <h3 className="font-display text-2xl font-bold leading-none">Security Guarantees</h3>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

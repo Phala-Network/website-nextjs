@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import {
   CheckCircle,
   Cpu,
@@ -239,12 +239,12 @@ function HeroSection() {
           <div className="flex flex-col gap-8">
             <div>
               <Badge variant="outline">Enterprise Security</Badge>
-              <h1 className="my-9 text-3xl font-medium md:text-5xl">
+              <h1 className="font-display my-9 text-3xl font-semibold leading-none md:text-5xl md:leading-none">
                 Better Security.
                 <br />
                 <span className="text-muted-foreground">less complexity.</span>
               </h1>
-              <p className="text-muted-foreground">
+              <p className="font-display text-muted-foreground leading-6">
                 Confidential Virtual Machines combine the simplicity of
                 containerization with hardware-level security. Deploy any Docker
                 container to Trusted Execution Environments (TEE) ensuring
@@ -327,11 +327,11 @@ function MultiTEESection() {
         </div>
         <Separator className="mt-3 mb-8" />
         <div className="flex flex-col justify-between gap-6 md:flex-row">
-          <h2 className="text-3xl font-medium md:w-1/2">
+          <h2 className="font-display text-3xl font-semibold leading-none md:w-1/2 md:text-4xl md:leading-none">
             Multi-TEE platform for every confidential computing use case you can
             think of.
           </h2>
-          <p className="md:w-1/2">
+          <p className="font-display md:w-1/2 leading-6">
             From CPU-intensive workloads to GPU-accelerated AI, we support all
             major Trusted Execution Environment technologies.
           </p>
@@ -342,7 +342,7 @@ function MultiTEESection() {
               <p className="mb-1 flex items-center gap-2 font-medium">
                 Performance <Sparkles className="size-4" />
               </p>
-              <p className="text-muted-foreground">
+              <p className="font-display text-muted-foreground leading-6">
                 95% native performance with full security guarantees. 2-5% CPU
                 overhead, 5-7% GPU overhead while maintaining hardware
                 acceleration.
@@ -365,7 +365,7 @@ function MultiTEESection() {
                     Intel TDX Architecture <Sparkles className="size-4" />
                   </p>
                 </div>
-                <p className="text-muted-foreground mb-4">
+                <p className="font-display text-muted-foreground leading-6 mb-4">
                   Trust Domain Extensions for x86 with CPU-generated keys and
                   TDX Report attestation. Best for web services and traditional
                   ML.
@@ -390,7 +390,7 @@ function MultiTEESection() {
                 />
                 <p className="font-medium">AMD SEV</p>
               </div>
-              <p className="text-muted-foreground mb-4">
+              <p className="font-display text-muted-foreground leading-6 mb-4">
                 Secure Encrypted Virtualization technology providing VM-level
                 isolation with encrypted memory for diverse workloads.
               </p>
@@ -421,7 +421,7 @@ function MultiTEESection() {
                   />
                   <p className="font-medium">NVIDIA Confidential Computing</p>
                 </div>
-                <p className="text-muted-foreground mb-4">
+                <p className="font-display text-muted-foreground leading-6 mb-4">
                   H100/H200 GPU TEE for AI workloads with 80GB+ secure memory
                   and hardware memory encryption on GPU.
                 </p>
@@ -440,7 +440,7 @@ function MultiTEESection() {
               <p className="mb-1 flex items-center gap-2 font-medium">
                 Multi-Hardware Support <Sparkles className="size-4" />
               </p>
-              <p className="text-muted-foreground">
+              <p className="font-display text-muted-foreground leading-6">
                 Deploy across Intel Xeon 4th gen (Sapphire Rapids), NVIDIA
                 H100/H200, and AMD EPYC processors from a single unified
                 platform.
@@ -458,7 +458,7 @@ function MultiTEESection() {
                   <Badge variant="outline">Coming soon</Badge>
                 </div>
               </div>
-              <p className="text-muted-foreground">
+              <p className="font-display text-muted-foreground leading-6">
                 Mobile and edge computing support with ARM Confidential Compute
                 Architecture for IoT and edge deployments.
               </p>
@@ -529,7 +529,7 @@ function DeploymentSection() {
             <h3 className="font-mono text-sm font-semibold tracking-widest text-accent-foreground">
               ZERO-TRUST DEPLOYMENT
             </h3>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+            <h2 className="font-display mt-3 text-3xl font-semibold leading-none sm:text-4xl sm:leading-none lg:text-5xl lg:leading-none">
               Deploy confidential containers with cryptographic verification
             </h2>
           </div>
@@ -547,12 +547,12 @@ function DeploymentSection() {
                   className="border-black/20 dark:border-white/20"
                 >
                   <AccordionTrigger className="px-5 text-start hover:no-underline sm:px-0">
-                    <h3 className="text-xl font-bold opacity-80">
+                    <h3 className="font-display text-xl font-semibold leading-6 opacity-80">
                       {step.title}
                     </h3>
                   </AccordionTrigger>
                   <AccordionContent>
-                    <p className="px-5 leading-relaxed font-medium text-muted-foreground sm:px-0">
+                    <p className="font-display px-5 leading-6 font-medium text-muted-foreground sm:px-0">
                       {step.description}
                     </p>
                     {step.link && (
@@ -685,10 +685,10 @@ function BenefitsSection() {
             <Shield className="size-5" />
             <p className="text-sm">Technical Benefits</p>
           </div>
-          <h2 className="relative z-20 py-2 text-center font-sans text-5xl font-semibold tracking-tighter md:py-7 lg:text-6xl">
+          <h2 className="font-display relative z-20 py-2 text-center text-4xl font-semibold leading-none md:py-7 md:text-5xl md:leading-none lg:text-6xl lg:leading-none">
             Zero-trust confidential computing
           </h2>
-          <p className="text-md text-muted-foreground mx-auto max-w-xl text-center lg:text-lg mb-10">
+          <p className="font-display text-md text-muted-foreground mx-auto max-w-xl text-center leading-6 lg:text-lg lg:leading-7 mb-10">
             Hardware-backed security guarantees with enterprise-grade
             performance.
           </p>
@@ -729,10 +729,10 @@ function BenefitsSection() {
         {/* Integration Showcase */}
         <div className="grid w-full grid-cols-1 items-start justify-between overflow-hidden rounded-3xl border border-muted bg-background md:grid-cols-[minmax(18.75rem,28rem)_1fr] md:p-8">
           <div className="order-2 flex flex-col gap-4 p-6 pt-10 md:order-1 md:p-0">
-            <h3 className="text-3xl font-semibold tracking-tight lg:text-4xl">
+            <h3 className="font-display text-3xl font-semibold leading-none lg:text-4xl lg:leading-none">
               Seamlessly integrates with your developer tools
             </h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="font-display text-muted-foreground leading-6">
               Deploy confidential containers using your existing development
               stack. No need to learn new tools or change your workflow.
             </p>
@@ -780,8 +780,8 @@ const BenefitCard = ({
       )}
     >
       <Icon className="text-muted-foreground mt-3 size-8 stroke-1" />
-      <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
-      <p className="text-muted-foreground text-sm">{description}</p>
+      <h1 className="font-display text-2xl font-semibold leading-7">{title}</h1>
+      <p className="font-display text-muted-foreground text-sm leading-5">{description}</p>
     </div>
   )
 }
@@ -790,7 +790,7 @@ function FAQSection() {
   return (
     <section className="bg-background py-32">
       <div className="container">
-        <h2 className="text-foreground mb-10 text-center text-6xl font-bold tracking-tighter">
+        <h2 className="font-display text-foreground mb-10 text-center text-4xl font-semibold leading-none md:text-5xl md:leading-none lg:text-6xl lg:leading-none">
           Technical Q&A
         </h2>
         <div className="border-border bg-background z-20 mx-auto max-w-2xl rounded-2xl border p-3">
@@ -808,7 +808,7 @@ function FAQSection() {
                 <AccordionTrigger className="flex flex-1 justify-between text-left font-semibold transition-all hover:no-underline">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground mt-2">
+                <AccordionContent className="font-display text-muted-foreground leading-6 mt-2">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>

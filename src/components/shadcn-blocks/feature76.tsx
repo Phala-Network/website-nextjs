@@ -47,13 +47,13 @@ const features = [
 
 const Feature76 = () => {
   return (
-    <section className="relative pt-32">
+    <section className="relative pt-24 pb-24">
       <div className="container relative z-10 flex flex-col space-y-14">
         <div className="px-6 lg:px-10">
-          <h2 className="text-3xl font-semibold md:mb-4 md:text-5xl lg:mb-6 lg:max-w-2xl">
+          <h2 className="font-display text-3xl font-semibold leading-none md:mb-4 md:text-5xl lg:mb-6 lg:max-w-2xl">
             What You Can Build with GPU TEE
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-lg">
+          <p className="text-muted-foreground mt-4 max-w-2xl font-display text-lg leading-7">
             Real-world applications running on Phala Cloud with complete Intel
             TDX + NVIDIA Confidential Computing protection
           </p>

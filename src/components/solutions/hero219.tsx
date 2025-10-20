@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Check } from 'lucide-react'
 
 import { Particles } from '@/components/magicui/particles'
@@ -70,7 +70,7 @@ const Hero219 = ({
     <section className="relative py-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
         {eyebrow && <p className="text-muted-foreground z-20">{eyebrow}</p>}
-        <h1 className="realtive z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+        <h1 className="realtive z-15 max-w-3xl text-center font-display text-6xl font-semibold leading-none tracking-tighter md:text-7xl">
           {staticPart}{' '}
           <span
             className="overflow-hidden"

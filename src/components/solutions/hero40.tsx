@@ -56,22 +56,22 @@ const Hero40 = () => {
       <div className="container">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div className="flex flex-col gap-6">
-            <h1 className="text-6xl font-bold">
+            <h1 className="font-display text-6xl font-bold leading-none">
               Fine-Tune Models Without Exposing Data
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="font-display text-muted-foreground text-lg leading-7">
               Customize LLMs on proprietary datasets with hardware-enforced
               confidentiality. Training data and model weights stay encrypted in
               Intel TDX/AMD SEV enclaves.
             </p>
             <div className="flex gap-4">
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" className="font-medium" asChild>
                 <a href="https://docs.phala.network">
                   <span>View Docs</span>
                   <Play />
                 </a>
               </Button>
-              <Button size="lg" asChild>
+              <Button size="lg" className="font-medium" asChild>
                 <a href="https://cloud.phala.network">
                   <span>Deploy on Phala</span>
                   <ArrowRight />
@@ -81,19 +81,19 @@ const Hero40 = () => {
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2">
                 <Check className="size-4 text-green-500" />
-                <p className="text-muted-foreground text-sm">
+                <p className="font-display text-muted-foreground text-sm leading-5">
                   <span className="font-bold">Intel TDX</span> & AMD SEV support
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="size-4 text-green-500" />
-                <p className="text-muted-foreground text-sm">
+                <p className="font-display text-muted-foreground text-sm leading-5">
                   <span className="font-bold">Zero-knowledge</span> guarantees
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="size-4 text-green-500" />
-                <p className="text-muted-foreground text-sm">
+                <p className="font-display text-muted-foreground text-sm leading-5">
                   <span className="font-bold">24/7</span> technical support
                 </p>
               </div>
@@ -114,8 +114,8 @@ const Hero40 = () => {
                   >
                     <integration.icon className="mt-0.5 size-4 shrink-0" />
                     <div className="flex flex-col gap-2">
-                      <p className="text-sm">{integration.name}</p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="font-display text-sm font-semibold leading-5">{integration.name}</p>
+                      <p className="font-display text-muted-foreground text-sm leading-5">
                         {integration.description}
                       </p>
                     </div>
@@ -130,8 +130,8 @@ const Hero40 = () => {
                   >
                     <integration.icon className="mt-0.5 size-4 shrink-0" />
                     <div className="flex flex-col gap-2">
-                      <p className="text-sm">{integration.name}</p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="font-display text-sm font-semibold leading-5">{integration.name}</p>
+                      <p className="font-display text-muted-foreground text-sm leading-5">
                         {integration.description}
                       </p>
                     </div>

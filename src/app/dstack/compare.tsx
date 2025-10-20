@@ -111,13 +111,13 @@ function StatusIcon({ status }: { status: Status }) {
 
 const Compare3 = () => {
   return (
-    <section className="py-16 max-w-6xl mx-auto">
+    <section className="py-24 max-w-6xl mx-auto bg-white">
       <div className="container">
         <div className="flex flex-col items-center gap-5">
-          <h2 className="max-w-2xl text-center text-3xl font-semibold sm:text-4xl">
+          <h2 className="font-display max-w-2xl text-center text-3xl font-semibold leading-none sm:text-4xl">
             dstack vs Others
           </h2>
-          <p className="text-center text-muted-foreground text-xl font-medium">
+          <p className="font-display text-center text-muted-foreground text-xl leading-7 font-medium">
             Compare dstack with traditional cloud providers and other
             confidential computing solutions
           </p>
@@ -141,9 +141,9 @@ const Compare3 = () => {
                     priority
                   />
                 ) : (
-                  <p className="text-center font-semibold">{col.title}</p>
+                  <p className="font-display text-center font-semibold leading-4">{col.title}</p>
                 )}
-                <p className="mt-1 text-center text-xs text-muted-foreground">
+                <p className="font-display mt-1 text-center text-xs leading-4 text-muted-foreground">
                   {col.subtitle}
                 </p>
               </div>
@@ -161,7 +161,7 @@ const Compare3 = () => {
                 <Fragment key={`${row.key}-${row.label}`}>
                   <div className={`flex items-center gap-2 p-4 ${rowBorder}`}>
                     <row.icon className="size-4 shrink-0" />
-                    <span className="font-semibold">{row.label}</span>
+                    <span className="font-display font-semibold leading-4">{row.label}</span>
                   </div>
                   {row.cells.map((cell, idx) => (
                     <div
@@ -169,7 +169,7 @@ const Compare3 = () => {
                       className={`flex flex-col items-center justify-center gap-2 p-4 ${cellBorder} ${idx === 0 ? 'bg-muted' : ''}`}
                     >
                       <StatusIcon status={cell.status} />
-                      <span className="text-xs text-muted-foreground">
+                      <span className="font-display text-xs leading-4 text-muted-foreground">
                         {cell.text}
                       </span>
                     </div>

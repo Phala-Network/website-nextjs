@@ -95,15 +95,15 @@ const Feature221 = () => {
   return (
     <section
       id="pricing"
-      className="bg-muted bg-[url('https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/dot-pattern-2.svg')] bg-[length:3.125rem_3.125rem] bg-repeat py-32"
+      className="bg-muted bg-[url('https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/dot-pattern-2.svg')] bg-[length:3.125rem_3.125rem] bg-repeat py-24"
     >
       <div className="container">
         <div className="flex w-full flex-col items-start justify-between gap-4 pb-16 lg:flex-row lg:items-end">
           <div className="flex w-full max-w-[32rem] flex-1 flex-col items-start gap-5">
-            <h2 className="text-[2rem] font-bold leading-none tracking-tight md:text-[2.75rem] lg:text-5xl">
+            <h2 className="font-display text-[2rem] font-bold leading-none tracking-tight md:text-[2.75rem] lg:text-5xl">
               Available GPU Configurations
             </h2>
-            <p className="text-muted-foreground w-full max-w-[30rem] text-[1.15rem] font-medium leading-normal sm:text-xl">
+            <p className="text-muted-foreground font-display w-full max-w-[30rem] text-[1.15rem] font-medium leading-7 sm:text-xl">
               From single GPU to enterprise clusters. All configurations include{' '}
               <span className="font-semibold text-foreground">
                 Intel TDX + NVIDIA Confidential Computing

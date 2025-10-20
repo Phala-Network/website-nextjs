@@ -19,10 +19,10 @@ const Hero104 = () => {
         <div className="container max-w-[75rem]">
           <div className="flex gap-8">
             <div className="mx-auto max-w-[50rem] lg:max-w-full">
-              <h1 className="font-poppins mb-[0.625rem] text-center text-5xl font-semibold leading-tight tracking-[-1px] sm:text-[3.375rem] md:text-[5.625rem] md:leading-[6.18rem] lg:text-left">
+              <h1 className="font-display mb-[0.625rem] text-center text-5xl font-semibold leading-tight tracking-[-1px] sm:text-[3.375rem] md:text-[5.625rem] md:leading-[6.18rem] lg:text-left">
                 Verifiable AI Agents
               </h1>
-              <p className="mb-10 text-center text-2xl font-medium leading-9 lg:text-left">
+              <p className="font-display mb-10 text-center text-2xl font-medium leading-9 lg:text-left">
                 Deploy autonomous agents with cryptographic proof of execution.
                 Every action is verifiable and tamper-proof.
               </p>
@@ -50,7 +50,7 @@ const Hero104 = () => {
                 ].map((text, i) => (
                   <div key={`${i}`} className="flex items-center gap-2">
                     <Check className="stroke-muted-foreground h-3 w-3" />
-                    <p className="text-muted-foreground text-sm">{text}</p>
+                    <p className="font-display text-muted-foreground text-sm leading-5">{text}</p>
                   </div>
                 ))}
               </div>
@@ -72,11 +72,11 @@ const Hero104 = () => {
                     <div>
                       <div className="flex items-center gap-1">
                         <Zap className="h-4 w-4 fill-violet-600 stroke-violet-600" />
-                        <div className="text-sm font-semibold text-violet-600">
+                        <div className="font-display text-sm font-semibold leading-5 text-violet-600">
                           Rule
                         </div>
                       </div>
-                      <div className="text-muted-foreground text-sm">
+                      <div className="font-display text-muted-foreground text-sm leading-5">
                         Cancel low-performers
                       </div>
                     </div>

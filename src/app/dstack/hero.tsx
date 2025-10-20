@@ -9,23 +9,20 @@ interface Hero24Props {
 
 const Hero24 = ({ starCount }: Hero24Props) => {
   return (
-    <section className="py-20 max-w-6xl mx-auto">
+    <section className="py-24 max-w-6xl mx-auto">
       <div className="container">
         <div className="flex flex-col items-center text-center">
           <Image
             src="/dstack/logo.svg"
             alt="dstack Logo"
-            className="mx-auto mb-5 h-16 md:mb-6"
+            className="mx-auto mb-7 h-16 md:h-24 md:mb-7"
             width={410}
             height={106}
           />
-          {/* <Badge variant="outline" className="mb-3">
-            Linux Foundation Project
-          </Badge> */}
-          <h1 className="mt-12 text-4xl font-semibold text-balance lg:text-5xl">
-            Open-Source Confidential Computing
+          <h1 className="mt-4 font-display text-4xl font-semibold leading-none text-balance lg:text-6xl lg:leading-none">
+            Open-Source<br />Confidential Compute
           </h1>
-          <p className="mt-8 text-muted-foreground max-w-3xl mx-auto text-xl font-medium">
+          <p className="mt-8 font-display text-muted-foreground max-w-3xl mx-auto text-xl leading-7 font-medium">
             Deploy secure applications with hardware-guaranteed privacy using
             TEE technology. Built for confidential AI, private cloud compute,
             and secure data processing.

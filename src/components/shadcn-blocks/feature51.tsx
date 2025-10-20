@@ -6,13 +6,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 const Feature51 = () => {
   return (
-    <section className="py-32">
+    <section className="py-24">
       <div className="container max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold md:text-5xl mb-4 text-foreground">
+          <h2 className="font-display text-3xl font-bold leading-none md:text-5xl mb-4 text-foreground">
             Three Ways to Deploy GPU TEE
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground font-display text-lg leading-7 max-w-3xl mx-auto">
             Choose the deployment model that fits your needs—from full control
             to instant deployment
           </p>

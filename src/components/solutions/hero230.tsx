@@ -90,7 +90,7 @@ const Hero230 = () => {
           <span className="bg-foreground size-2.5 rounded-full" />
           Hardware-Enforced Security
         </Button>
-        <h1 className="font-calSans text-foreground max-w-3xl text-5xl font-medium tracking-tight md:text-7xl">
+        <h1 className="font-display text-foreground max-w-3xl text-5xl font-semibold leading-none tracking-tight md:text-7xl">
           Build Safe, Private & <br /> Autonomous AI Agents
         </h1>
         <p className="text-muted-foreground/80 mt-3 max-w-xl">

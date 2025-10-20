@@ -34,68 +34,65 @@ const ModelCard = ({ model }: ModelCardProps) => {
       rel="noopener noreferrer"
       className="block"
     >
-      <div className="border-border bg-background flex flex-col gap-4 rounded-lg border p-6 hover:border-primary transition-colors h-full">
-        {/* Header with Avatar and Provider */}
-        <div className="flex items-center gap-3">
-          <div className="relative">
-            <Avatar className="size-12 p-1.5">
-              <AvatarImage
-                src={
-                  icons.find((icon) =>
-                    model.name.toLowerCase().includes(icon.name.toLowerCase()),
-                  )?.icon
-                }
-              />
-              <AvatarFallback>
-                {model.provider.slice(0, 2).toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
-            <div className="absolute -bottom-0.5 -right-0.5 bg-card border rounded-full p-1">
-              <Lock className="size-3 text-primary-500" />
-            </div>
-          </div>
-          <div className="flex-1 min-w-0">
-            <h4 className="font-medium line-clamp-1">{model.name}</h4>
-            <div className="flex items-center gap-2 mt-1">
-              {model.verifiable && (
-                <Badge
-                  variant="outline"
-                  className="border-primary-500 text-primary-500"
-                >
-                  Encrypted
-                </Badge>
-              )}
-              <Badge variant="outline">{model.slug}</Badge>
-            </div>
+      <div className="bg-background overflow-hidden rounded-sm flex flex-col p-6 relative h-full hover:shadow-md transition-shadow">
+        {/* Logo/Icon with Lock Badge */}
+        <div className="bg-background rounded-full size-16 flex items-center justify-center border mb-6 sm:mb-12 shrink-0 relative">
+          <Avatar className="size-10">
+            <AvatarImage
+              src={
+                icons.find((icon) =>
+                  model.name.toLowerCase().includes(icon.name.toLowerCase()),
+                )?.icon
+              }
+              alt={model.name}
+            />
+            <AvatarFallback>
+              {model.provider.slice(0, 2).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+          <div className="absolute -bottom-0.5 -right-0.5 bg-white border border-border rounded-full p-1 shadow-sm">
+            <Lock className="size-3 text-primary" />
           </div>
         </div>
 
-        {/* Description */}
-        <p className="text-muted-foreground text-sm line-clamp-2">
-          {model.description}
-        </p>
+        {/* Content - grows to fill available space */}
+        <div className="flex-1 flex flex-col">
+          {/* Title */}
+          <div className="font-semibold text-lg leading-7 mb-3 xl:text-xl xl:leading-7 line-clamp-1">
+            {model.name}
+          </div>
 
-        {/* Model Details */}
-        <div className="space-y-3">
-          {/* Pricing Information */}
-          {(model.promptPrice ||
-            model.completionPrice ||
-            model.imagePrice ||
-            model.requestPrice) && (
-            <div className="text-xs text-muted-foreground">
-              {formatContextLength(model.contextLength)} context
-              {model.promptPrice && model.promptPrice !== '0' && (
-                <span> | ${formatPrice(model.promptPrice)} input tokens</span>
-              )}
-              {model.completionPrice && model.completionPrice !== '0' && (
-                <span>
-                  {' '}
-                  | ${formatPrice(model.completionPrice)} output tokens
-                </span>
-              )}
-              {model.imagePrice && model.imagePrice !== '0' && (
-                <span> | ${formatPrice(model.imagePrice)} image tokens</span>
-              )}
+          {/* Context */}
+          <div className="text-sm leading-5 font-medium mb-3">
+            {formatContextLength(model.contextLength)} context
+          </div>
+
+          {/* Pricing */}
+          <div className="space-y-1 mb-6">
+            {model.promptPrice && model.promptPrice !== '0' && (
+              <div className="text-sm leading-5 text-muted-foreground">
+                ${formatPrice(model.promptPrice)} input tokens
+              </div>
+            )}
+            {model.completionPrice && model.completionPrice !== '0' && (
+              <div className="text-sm leading-5 text-muted-foreground">
+                ${formatPrice(model.completionPrice)} output tokens
+              </div>
+            )}
+            {model.imagePrice && model.imagePrice !== '0' && (
+              <div className="text-sm leading-5 text-muted-foreground">
+                ${formatPrice(model.imagePrice)} image tokens
+              </div>
+            )}
+          </div>
+
+          {/* Encrypted Badge */}
+          {model.verifiable && (
+            <div className="mt-auto">
+              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-50 border border-green-200 text-xs leading-4 font-medium text-green-700">
+                <Lock className="size-3" />
+                Encrypted
+              </div>
             </div>
           )}
         </div>
@@ -112,29 +109,31 @@ const ModelsList = ({ models }: ModelsListProps) => {
   return (
     <section className="py-24">
       <div className="container">
-        <h1 className="text-center text-3xl font-semibold lg:text-4xl mb-6">
+        <h1 className="font-display text-center text-3xl font-semibold leading-none lg:text-4xl mb-6">
           Available Models
         </h1>
-        <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+        <p className="font-display text-center text-muted-foreground leading-6 mb-10 max-w-2xl mx-auto">
           Access the latest frontier AI models with cryptographic privacy
           protection
         </p>
 
         {/* Models Grid */}
         {models.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {models.map((model) => (
-              <ModelCard key={model.id} model={model} />
-            ))}
-          </div>
-        ) : (
-          <div className="mt-16 flex flex-col items-center justify-center text-center">
-            <h3 className="text-xl font-medium">No Models Found</h3>
-            <p className="text-muted-foreground mt-2 max-w-md">
-              No models are currently available. Please check back later.
-            </p>
-          </div>
-        )}
+          <div className="bg-gradient-to-r from-blue-300 to-blue-400 rounded-lg p-8 md:p-12">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {models.map((model) => (
+                  <ModelCard key={model.id} model={model} />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="mt-16 flex flex-col items-center justify-center text-center">
+              <h3 className="text-xl font-medium">No Models Found</h3>
+              <p className="text-muted-foreground mt-2 max-w-md">
+                No models are currently available. Please check back later.
+              </p>
+            </div>
+          )}
 
         {/* View All Models Button */}
         {/* <div className="mt-8 text-center">

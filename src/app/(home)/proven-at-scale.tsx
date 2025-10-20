@@ -4,19 +4,19 @@ import { DashedLine } from '@/components/dashed-line'
 
 const metrics = [
   {
-    description: 'Active developers deploying',
     value: '500+',
-    label: 'teams building',
+    label: 'Active Teams',
+    description: 'Building with confidential AI',
   },
   {
-    description: 'Real-time security verifications',
     value: '10K+',
-    label: 'daily attestations',
+    label: 'Daily Attestations',
+    description: 'Real-time security verifications',
   },
   {
-    description: 'Annual recurring revenue from',
     value: '$2M+',
-    label: 'enterprise clients',
+    label: 'ARR',
+    description: 'From enterprise clients',
   },
 ]
 
@@ -31,14 +31,14 @@ const certifications = [
 
 export default function ProvenAtScaleSection() {
   return (
-    <section className="py-24 w-full max-w-6xl mx-auto">
+    <section className="py-24 w-full max-w-6xl mx-auto bg-white">
       <div className="container">
         {/* Section Header */}
         <div className="mb-4 sm:mb-12">
-          <h1 className="text-center text-3xl font-semibold md:text-4xl mb-4">
+          <h1 className="font-display text-center text-3xl leading-none font-semibold md:text-4xl mb-4">
             Proven at Scale
           </h1>
-          <p className="text-center text-muted-foreground font-medium text-lg md:text-xl">
+          <p className="text-center text-muted-foreground font-display font-medium text-lg leading-7 md:text-xl">
             Built for enterprise security and regulatory requirements.
           </p>
         </div>
@@ -50,13 +50,13 @@ export default function ProvenAtScaleSection() {
               key={metric.value}
               className="text-center relative px-4 lg:px-8 py-8"
             >
-              <p className="text-sm lg:text-base font-medium text-muted-foreground mb-4">
+              <p className="text-sm leading-5 lg:text-base lg:leading-6 font-medium text-muted-foreground mb-4">
                 {metric.description}
               </p>
-              <p className="text-4xl lg:text-5xl font-bold mb-3 leading-none">
+              <p className="font-display text-4xl lg:text-5xl font-bold mb-3 leading-none">
                 {metric.value}
               </p>
-              <p className="text-lg lg:text-2xl font-semibold text-muted-foreground">
+              <p className="font-display text-lg leading-7 lg:text-2xl lg:leading-none font-semibold text-muted-foreground">
                 {metric.label}
               </p>
 
@@ -87,15 +87,15 @@ export default function ProvenAtScaleSection() {
           />
 
           <div className="pt-12 sm:px-8 mx-auto max-w-4xl">
-            <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8">
+            <h3 className="font-display text-xl leading-7 sm:text-2xl sm:leading-none font-semibold text-center mb-8">
               Enterprise Trust & Compliance
             </h3>
 
             <div className="max-sm:max-w-[300px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {certifications.map((cert) => (
                 <div key={cert} className="flex items-center space-x-3">
-                  <CheckCircle className="size-4 text-primary-500" />
-                  <span className="font-medium">{cert}</span>
+                  <CheckCircle className="size-4 text-primary" />
+                  <span className="text-base leading-6 font-medium">{cert}</span>
                 </div>
               ))}
             </div>

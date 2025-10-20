@@ -38,11 +38,11 @@ export default function FAQ() {
     <section className="w-full py-24 max-w-7xl mx-auto">
       <div className="container mx-auto">
         <div className="text-center">
-          <Badge className="text-xs font-medium">FAQ</Badge>
-          <h1 className="mt-4 text-3xl md:text-4xl font-semibold">
+          <Badge className="text-xs leading-4 font-medium">FAQ</Badge>
+          <h1 className="font-display mt-4 text-3xl leading-none md:text-4xl font-semibold">
             Common Questions & Answers
           </h1>
-          <p className="mt-4 text-lg md:text-xl font-medium text-muted-foreground">
+          <p className="mt-4 text-lg leading-7 md:text-xl font-display font-medium text-muted-foreground">
             Find out all the essential details about our platform and how it can
             serve your needs.
           </p>
@@ -50,16 +50,16 @@ export default function FAQ() {
         <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
           {faqs.map((faq, index) => (
             <div key={faq.question} className="flex gap-4">
-              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-sm text-muted-foreground font-semibold">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-sm leading-5 text-muted-foreground font-semibold">
                 {index + 1}
               </span>
               <div>
                 <div className="mb-2 flex items-center justify-between">
-                  <h3 className="font-semibold font-sans text-lg">
+                  <h3 className="font-semibold text-lg leading-7">
                     {faq.question}
                   </h3>
                 </div>
-                <p className="text-muted-foreground">{faq.answer}</p>
+                <p className="text-muted-foreground text-base leading-6">{faq.answer}</p>
               </div>
             </div>
           ))}

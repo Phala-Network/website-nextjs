@@ -15,11 +15,11 @@ export function HowItWorks({ title, description, steps }: HowItWorksProps) {
     <section className="py-24">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-4">
+          <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl mb-4">
             {title}
           </h2>
           {description && (
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="font-display text-lg leading-7 text-muted-foreground max-w-2xl mx-auto">
               {description}
             </p>
           )}
@@ -28,11 +28,11 @@ export function HowItWorks({ title, description, steps }: HowItWorksProps) {
           {steps.map((step, i) => (
             <div key={i} className="relative">
               <div className="flex flex-col h-full p-6 rounded-lg border bg-card">
-                <div className="text-4xl font-bold text-primary/20 mb-4">
+                <div className="font-display text-4xl font-bold leading-none text-primary/20 mb-4">
                   {step.number}
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+                <h3 className="font-display text-xl font-semibold leading-tight mb-3">{step.title}</h3>
+                <p className="font-display leading-7 text-muted-foreground">{step.description}</p>
               </div>
             </div>
           ))}

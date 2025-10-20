@@ -69,17 +69,17 @@ const HeroCommits = () => {
     <section className="relative grid w-full overflow-hidden py-12 md:py-24 lg:py-32">
       <div className="container relative z-10 h-full grid-cols-1 items-center justify-center gap-6 md:gap-8 px-4 md:px-6">
         <div className="flex flex-col items-center justify-center text-center">
-          <div className="text-muted-foreground flex items-center justify-center gap-2 md:gap-3 text-xs md:text-sm font-medium tracking-tight mb-3 md:mb-4">
+          <div className="font-display text-muted-foreground flex items-center justify-center gap-2 md:gap-3 text-xs md:text-sm font-medium leading-5 tracking-tight mb-3 md:mb-4">
             <span className="inline-block size-2 rounded-full bg-green-500 animate-pulse" />
             <span className="uppercase">Building in Public Since 2018</span>
           </div>
-          <h1 className="mt-3 md:mt-4 max-w-4xl text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight">
+          <h1 className="font-display mt-3 md:mt-4 max-w-4xl text-2xl md:text-4xl lg:text-6xl font-bold leading-tight tracking-tight">
             6 Years of Commitment to{' '}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Confidential Computing
             </span>
           </h1>
-          <p className="text-muted-foreground mt-4 md:mt-6 max-w-2xl text-sm md:text-lg px-4">
+          <p className="font-display text-muted-foreground mt-4 md:mt-6 max-w-2xl text-sm md:text-lg leading-7 px-4">
             Over 30,000+ commits from our global team of 25+ engineers, building
             the future of privacy-preserving computation from our offices in San
             Francisco and Singapore.
@@ -91,8 +91,8 @@ const HeroCommits = () => {
           <div className="flex items-center gap-2 md:gap-3">
             <GitCommit className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
-              <div className="text-lg md:text-2xl font-bold">30K+</div>
-              <div className="text-xs md:text-sm text-muted-foreground">
+              <div className="font-display text-lg md:text-2xl font-bold leading-none">30K+</div>
+              <div className="font-display text-xs md:text-sm leading-5 text-muted-foreground">
                 Commits
               </div>
             </div>
@@ -100,8 +100,8 @@ const HeroCommits = () => {
           <div className="flex items-center gap-2 md:gap-3">
             <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
             <div>
-              <div className="text-lg md:text-2xl font-bold">25+</div>
-              <div className="text-xs md:text-sm text-muted-foreground">
+              <div className="font-display text-lg md:text-2xl font-bold leading-none">25+</div>
+              <div className="font-display text-xs md:text-sm leading-5 text-muted-foreground">
                 Team
               </div>
             </div>
@@ -133,10 +133,10 @@ const HeroCommits = () => {
         {/* Commit Chart - Mobile optimized */}
         <div className="h-fit w-full rounded-xl md:rounded-2xl bg-card p-3 md:p-6 lg:h-[400px]">
           <div className="mb-3 md:mb-4">
-            <h3 className="text-base md:text-lg font-semibold">
+            <h3 className="font-display text-base md:text-lg font-semibold leading-tight">
               Commit History
             </h3>
-            <p className="text-xs md:text-sm text-muted-foreground">
+            <p className="font-display text-xs md:text-sm leading-5 text-muted-foreground">
               Consistent development over 6 years
             </p>
           </div>
@@ -196,7 +196,7 @@ const HeroCommits = () => {
 
         {/* Action Buttons - Mobile optimized */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mt-6 md:mt-8">
-          <Button size="lg" className="w-full sm:w-auto min-w-[200px]" asChild>
+          <Button size="lg" className="font-medium w-full sm:w-auto min-w-[200px]" asChild>
             <a
               href="https://github.com/Phala-Network"
               target="_blank"
@@ -209,7 +209,7 @@ const HeroCommits = () => {
           <Button
             size="lg"
             variant="outline"
-            className="w-full sm:w-auto min-w-[200px]"
+            className="font-medium w-full sm:w-auto min-w-[200px]"
             asChild
           >
             <a href="#team">

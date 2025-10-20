@@ -36,16 +36,16 @@ export default function SuccessStoriesSection() {
   }, [carouselApi])
 
   return (
-    <section className="py-24">
+    <section className="py-24 bg-white">
       <div className="container">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4 max-xl:max-w-4xl">
-            <h2 className="text-3xl font-semibold md:text-4xl">
+            <h2 className="font-display text-3xl leading-none font-semibold md:text-4xl">
               Real-World Success Stories
             </h2>
-            <p className="text-muted-foreground font-medium text-lg md:text-xl text-balance">
+            <p className="text-muted-foreground font-display font-medium text-lg leading-7 md:text-xl text-balance">
               Discover how leading companies are leveraging Phala's confidential
-              AI to build exceptional digital experiences while maintaining
+              AI to build exceptional digital experiences, while maintaining
               complete data privacy and regulatory compliance.
             </p>
           </div>

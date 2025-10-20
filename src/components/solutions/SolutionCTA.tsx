@@ -21,13 +21,13 @@ export function SolutionCTA({
     <section className="py-24 bg-primary text-primary-foreground">
       <div className="container">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-4">
+          <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl mb-4">
             {title}
           </h2>
-          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+          <p className="font-display text-lg leading-7 opacity-90 mb-8 max-w-2xl mx-auto">
             {description}
           </p>
-          <Button asChild size="lg" variant="secondary" className="mb-12">
+          <Button asChild size="lg" variant="secondary" className="font-medium mb-12">
             <a href={buttonUrl}>{buttonText}</a>
           </Button>
           {items && items.length > 0 && (
@@ -35,7 +35,7 @@ export function SolutionCTA({
               {items.map((item, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <Check className="h-5 w-5 flex-shrink-0" />
-                  <span className="text-sm">{item}</span>
+                  <span className="font-display text-sm leading-5">{item}</span>
                 </div>
               ))}
             </div>

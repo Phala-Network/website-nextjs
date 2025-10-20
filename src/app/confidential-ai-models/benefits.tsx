@@ -14,22 +14,22 @@ const confidentialAI = [
 
 const Benefits = () => {
   return (
-    <section className="overflow-hidden py-32">
+    <section className="overflow-hidden py-24">
       <div className="relative container">
         <div className="relative gap-16 flex flex-col items-center max-w-5xl mx-auto">
           <div className="h-30 pointer-events-none absolute bg-linear-to-t from-background via-transparent to-transparent bottom-0 left-0 right-0"></div>
 
           <div className="flex flex-col items-center max-w-3xl text-center text-balance">
-            <h2 className="mt-6 mb-3 text-3xl font-semibold lg:text-4xl">
+            <h2 className="font-display mt-6 mb-3 text-3xl font-semibold leading-none lg:text-4xl">
               Win Your Users' Trust
             </h2>
-            <p className="text-muted-foreground mt-4">
+            <p className="font-display text-muted-foreground mt-4 leading-6">
               Differentiate with verifiable privacy, build customer confidence
               with audit-ready cryptographic proofs, and enter regulated markets
               instantly.
             </p>
           </div>
-          <div className="w-full grid lg:grid-cols-2 border rounded-lg p-6 sm:p-12 bg-muted min-h-120 gap-12">
+          <div className="w-full grid lg:grid-cols-2 border rounded-lg p-6 sm:p-12 bg-background min-h-120 gap-12">
             <Image
               src="/confidential-ai-models/before.png"
               alt="Traditional AI"

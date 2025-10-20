@@ -71,10 +71,10 @@ const ForEnterprises = () => {
         <div className="grid items-center gap-20 md:grid-cols-2">
           <div className="flex flex-col items-center gap-6 text-center md:items-start md:text-left">
             <Badge variant="outline">Enterprise</Badge>
-            <h2 className="text-3xl font-semibold md:text-4xl">
+            <h2 className="font-display text-3xl font-semibold leading-none md:text-4xl">
               Build Your Own PCC
             </h2>
-            <p className="text-muted-foreground text-balance">
+            <p className="font-display text-muted-foreground leading-6 text-balance">
               Go beyond shared APIs. With our Confidential GPUs, you can deploy
               private, fully-audited AI clouds, tailored to your business or
               product. It's the same technology behind Apple's Private Compute
@@ -102,12 +102,12 @@ const ForEnterprises = () => {
               <CarouselContent className="max-h-[600px]">
                 {features.map((feature, index) => (
                   <CarouselItem key={index}>
-                    <div className="flex flex-col rounded-xl border p-5 md:p-7">
+                    <div className="flex flex-col rounded-xl border bg-background p-5 md:p-7">
                       {feature.icon}
-                      <h3 className="mt-5 mb-2.5 font-semibold md:text-xl">
+                      <h3 className="font-display mt-5 mb-2.5 font-semibold leading-5 md:text-xl">
                         {feature.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground md:text-base">
+                      <p className="font-display text-sm leading-5 text-muted-foreground md:text-base md:leading-6">
                         {feature.description}
                       </p>
                     </div>
@@ -134,7 +134,7 @@ const ForEnterprises = () => {
                   .slice(0, features.length / 2)
                   .map((feature, index) => (
                     <CarouselItem key={index}>
-                      <div className="flex flex-col rounded-xl border p-4 md:p-7">
+                      <div className="flex flex-col rounded-xl border bg-background p-4 md:p-7">
                         {feature.icon}
                         <h3 className="mt-5 mb-2.5 font-semibold md:text-xl">
                           {feature.title}
@@ -164,12 +164,12 @@ const ForEnterprises = () => {
               <CarouselContent className="max-h-[600px]">
                 {features.slice(features.length / 2).map((feature, index) => (
                   <CarouselItem key={index}>
-                    <div className="flex flex-col rounded-xl border p-4 md:p-7">
+                    <div className="flex flex-col rounded-xl border bg-background p-4 md:p-7">
                       {feature.icon}
-                      <h3 className="mt-5 mb-2.5 font-semibold md:text-xl">
+                      <h3 className="font-display mt-5 mb-2.5 font-semibold leading-5 md:text-xl">
                         {feature.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground md:text-base">
+                      <p className="font-display text-sm leading-5 text-muted-foreground md:text-base md:leading-6">
                         {feature.description}
                       </p>
                     </div>

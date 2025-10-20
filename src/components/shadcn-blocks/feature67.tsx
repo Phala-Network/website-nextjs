@@ -54,13 +54,13 @@ const features = [
 
 const Feature67 = () => {
   return (
-    <section className="py-32">
+    <section className="py-24">
       <div className="container flex flex-col items-start gap-8 lg:gap-12 lg:px-16 xl:flex-row xl:gap-32">
         <div className="xl:max-w-md lg:max-w-xl shrink-0">
-          <h3 className="text-3xl font-semibold md:shrink-0 md:text-4xl lg:text-5xl mb-4">
+          <h3 className="font-display text-3xl font-semibold leading-none md:shrink-0 md:text-4xl lg:text-5xl mb-4">
             What is GPU TEE?
           </h3>
-          <p className="text-muted-foreground text-lg mb-4">
+          <p className="text-muted-foreground font-display text-lg leading-7 mb-4">
             GPU TEE (Trusted Execution Environment) provides{' '}
             <strong className="text-foreground">
               hardware-level isolation
@@ -70,7 +70,7 @@ const Feature67 = () => {
             TEE creates a secure enclave that not even the cloud provider can
             access.
           </p>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground font-display text-lg leading-7">
             Phala Cloud is the only platform combining{' '}
             <strong className="text-foreground">Intel TDX</strong> (CPU/memory
             protection) with{' '}
@@ -93,11 +93,11 @@ const Feature67 = () => {
               className="flex rounded-lg border border-border bg-accent p-6 md:p-8"
             >
               <feature.icon className="mr-3 size-5 shrink-0 lg:mr-6 lg:size-6" />
-              <div>
-                <div className="mb-3 h-5 text-sm font-semibold text-accent-foreground md:text-base">
+              <div className="flex-1 min-w-0">
+                <div className="mb-3 text-sm font-semibold text-accent-foreground md:text-base break-words">
                   {feature.title}
                 </div>
-                <div className="text-sm font-medium text-muted-foreground md:text-base">
+                <div className="text-sm font-medium text-muted-foreground md:text-base break-words">
                   {feature.description}
                 </div>
               </div>

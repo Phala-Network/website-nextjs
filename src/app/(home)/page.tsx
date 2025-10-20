@@ -22,13 +22,13 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-muted">
+    <div className="w-full min-h-screen bg-background">
       <Hero />
       <TrustSteps />
       <Logos />
       <div className="relative flex items-center justify-center max-w-7xl mx-auto mt-12">
         <DashedLine className="text-muted-foreground" />
-        <span className="bg-muted text-muted-foreground absolute px-3 font-mono text-sm font-medium tracking-wide">
+        <span className="bg-background text-muted-foreground absolute px-3 font-mono text-sm leading-5 font-medium tracking-wide">
           Build AI People Can Trust.
         </span>
       </div>
@@ -37,10 +37,8 @@ export default async function HomePage() {
       <ProvenAtScale />
       <SuccessStories />
 
-      <div className="bg-background">
-        <FAQ />
-        <FinalCTA />
-      </div>
+      <FAQ />
+      <FinalCTA />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import FinalCTA from '@/components/final-cta'
+import SolutionsCTA from '@/components/solutions-cta'
 import { fetchAiModels } from '@/lib/ai-models'
 import Benefits from './benefits'
 import Faq from './faq'
@@ -22,13 +23,14 @@ export default async function ConfidentialAiModelsPage() {
   const models = await fetchAiModels(20, 0)
 
   return (
-    <div className="w-full bg-background">
+    <div className="w-full bg-card">
       <div className="mx-auto max-w-(--breakpoint-2xl)">
         <Hero />
         <ModelsMarquee models={models} />
         <Benefits />
         <Integrate />
         <ModelsList models={models.slice(0, 12)} />
+        <SolutionsCTA />
         <ForEnterprises />
         <Faq />
         <FinalCTA />

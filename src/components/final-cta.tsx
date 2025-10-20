@@ -20,23 +20,23 @@ export default function FinalCTA() {
       <div className="container">
         <div
           className={cn(
-            'overflow-hidden rounded-lg relative bg-muted border',
+            'overflow-hidden rounded-lg relative bg-background border',
             'bg-[length:400px_auto] md:bg-[length:auto_440px] bg-right-top bg-no-repeat',
             'before:absolute',
             'max-md:before:left-0 max-md:before:top-[170px] max-md:before:w-full max-md:before:h-[240px]',
             'md:before:top-0 md:before:right-[290px] md:before:h-full md:before:w-[240px]',
-            'before:bg-gradient-to-t before:from-muted max-md:before:via-muted/80 before:to-transparent md:before:bg-gradient-to-r',
+            'before:bg-gradient-to-t before:from-background max-md:before:via-background/80 before:to-transparent md:before:bg-gradient-to-r',
           )}
           style={{ backgroundImage }}
         >
           <div className="relative w-full max-md:mt-[200px]">
             <div className="w-full p-8 lg:px-16 lg:h-80 flex flex-col">
-              <h3 className="mb-3 text-2xl font-semibold md:mb-4 sm:text-4xl lg:mb-6">
+              <h3 className="font-display mb-3 text-2xl leading-none font-semibold md:mb-4 sm:text-4xl lg:mb-6">
                 Ready to Build AI <br className="xl:hidden" />
                 People Trust?
               </h3>
-              <p className="mb-8 text-muted-foreground lg:text-lg">
-                Join <span className="font-medium text-primary-500">500+</span>{' '}
+              <p className="mb-8 text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
+                Join <span className="font-medium text-primary">500+</span>{' '}
                 teams deploying trustworthy AI in production
               </p>
               <div className="flex gap-3 items-center mt-auto">
@@ -47,7 +47,7 @@ export default function FinalCTA() {
                   <Link href="/contact">Request a demo</Link>
                 </Button>
               </div>
-              <p className="text-muted-foreground text-xs mt-4">
+              <p className="text-muted-foreground text-xs leading-4 mt-4">
                 No credit card required. Deploy your first model in 5 minutes.
               </p>
             </div>

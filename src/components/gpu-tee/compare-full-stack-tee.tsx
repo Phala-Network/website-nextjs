@@ -92,15 +92,15 @@ export function CompareFullStackTEE() {
   }
 
   return (
-    <section className="py-32 bg-muted/30">
+    <section className="py-24 bg-white">
       <div className="container mx-auto">
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <h2 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
+          <h2 className="mb-4 font-display text-4xl font-bold leading-none md:text-5xl lg:text-6xl">
             Private GPU like Local,
             <br />
             But No DevOps Troubles
           </h2>
-          <p className="mt-4 text-base text-muted-foreground lg:text-lg">
+          <p className="mt-4 font-display text-base leading-6 text-muted-foreground lg:text-lg lg:leading-7">
             Most clouds offer GPU-only protection or no TEE at all. Phala Cloud
             protects your{' '}
             <span className="font-semibold text-foreground">
@@ -116,7 +116,7 @@ export function CompareFullStackTEE() {
               <Table>
                 <TableHeader>
                   <TableRow className="border-b border-border/50 bg-muted/20">
-                    <TableHead className="w-[200px] text-foreground font-semibold text-base">
+                    <TableHead className="w-[200px] text-foreground font-semibold text-lg">
                       Feature
                     </TableHead>
                     {providers.map((provider, i) => (
@@ -127,10 +127,10 @@ export function CompareFullStackTEE() {
                         }`}
                       >
                         <div className="flex flex-col items-center gap-1 py-2">
-                          <div className="text-sm font-bold">
+                          <div className="text-base font-bold">
                             {provider.name}
                           </div>
-                          <div className="text-xs text-muted-foreground font-normal">
+                          <div className="text-sm text-muted-foreground font-normal">
                             {provider.subtitle}
                           </div>
                         </div>
@@ -141,7 +141,7 @@ export function CompareFullStackTEE() {
                 <TableBody>
                   {metrics.map((metric, i) => (
                     <TableRow key={i} className="border-b border-border/30">
-                      <TableCell className="text-foreground py-5 font-medium">
+                      <TableCell className="text-foreground py-5 font-medium text-base">
                         {metric.name}
                       </TableCell>
                       {metric.values.map((value, j) => (
@@ -153,7 +153,7 @@ export function CompareFullStackTEE() {
                         >
                           <div className="flex flex-col items-center gap-2">
                             {getStatusIcon(value)}
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-sm text-muted-foreground">
                               {metric.details[j]}
                             </span>
                           </div>

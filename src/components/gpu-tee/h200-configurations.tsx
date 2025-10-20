@@ -40,11 +40,11 @@ export function H200Configurations() {
   ]
 
   return (
-    <section className="bg-background py-32">
+    <section className="bg-background py-24">
       <div className="container">
-        <h1 className="mb-10 text-center text-3xl font-bold tracking-tighter text-foreground lg:text-6xl">
+        <h2 className="mb-10 text-center font-display text-5xl font-semibold leading-none text-foreground lg:text-6xl">
           Available H200 Configurations
-        </h1>
+        </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-6xl mx-auto">
           {configurations.map((config, index) => (
             <div
@@ -57,25 +57,25 @@ export function H200Configurations() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <Server className="h-5 w-5 text-primary" />
-                        <h3 className="text-2xl font-bold text-foreground transition-colors duration-200 group-hover:text-primary">
+                        <h3 className="font-display text-2xl font-bold leading-none text-foreground transition-colors duration-200 group-hover:text-primary">
                           {config.name}
                         </h3>
                       </div>
                       <div className="flex items-center space-x-2">
                         <CheckCircle2 className="h-4 w-4 text-green-500" />
-                        <span className="font-mono text-sm text-green-500">
+                        <span className="font-display text-sm leading-5 text-green-500">
                           Available Now
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 space-y-3">
+                  <div className="mt-6 space-y-3 font-display text-sm leading-5">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">
                         Total Memory
                       </span>
-                      <span className="font-mono font-semibold">
+                      <span className="font-semibold">
                         {config.memory}
                       </span>
                     </div>
@@ -83,7 +83,7 @@ export function H200Configurations() {
                       <span className="text-muted-foreground">
                         Total Bandwidth
                       </span>
-                      <span className="font-mono font-semibold">
+                      <span className="font-semibold">
                         {config.bandwidth}
                       </span>
                     </div>
@@ -91,13 +91,13 @@ export function H200Configurations() {
                       <span className="text-muted-foreground">
                         TEE Protection
                       </span>
-                      <span className="font-mono font-semibold">
+                      <span className="font-semibold">
                         {config.tee}
                       </span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Regions</span>
-                      <span className="font-mono font-semibold text-sm">
+                      <span className="font-semibold">
                         {config.regions}
                       </span>
                     </div>
@@ -105,11 +105,11 @@ export function H200Configurations() {
                 </div>
 
                 <div className="border-t pt-4 space-y-3">
-                  <div className="text-sm text-muted-foreground">
+                  <div className="font-display text-sm leading-5 text-muted-foreground">
                     Flagship performance for demanding AI workloads with
                     complete hardware protection
                   </div>
-                  <Button asChild className="w-full" size="sm">
+                  <Button asChild className="w-full font-medium" size="sm">
                     <Link href="https://cloud.phala.network/dashboard/gpu-tee">
                       Configure & Deploy
                     </Link>

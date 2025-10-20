@@ -146,7 +146,7 @@ const Gallery16 = () => {
   }, [api, current])
 
   return (
-    <section className="overflow-hidden py-32">
+    <section className="overflow-hidden py-24">
       <div className="container">
         <Carousel
           setApi={setApi}
@@ -188,13 +188,13 @@ const Gallery16 = () => {
           <CarouselContent className="max-w-4xl">
             {items.map((item, idx) => (
               <CarouselItem key={idx} className="w-fit max-w-4xl">
-                <div className="grid h-full max-w-4xl gap-10 rounded-xl border border-border p-6 shadow-sm select-none sm:p-10 md:min-h-[500px] md:grid-cols-2 lg:gap-20">
+                <div className="grid h-full max-w-4xl gap-10 rounded-xl border border-border bg-white p-6 shadow-sm select-none sm:p-10 md:min-h-[500px] md:grid-cols-2 lg:gap-20">
                   <div className="flex flex-col justify-between gap-4">
                     <div>
-                      <h2 className="text-2xl font-medium sm:text-4xl">
+                      <h2 className="font-display text-2xl font-medium leading-none sm:text-4xl">
                         {item.title}
                       </h2>
-                      <div className="mt-4 text-sm text-muted-foreground sm:mt-6">
+                      <div className="mt-4 font-display text-sm leading-5 text-muted-foreground sm:mt-6">
                         {item.description}
                       </div>
                     </div>
