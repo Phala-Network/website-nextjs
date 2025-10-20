@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import SolutionsCTA from '@/components/solutions-cta'
 import { Codeexample3 } from '@/components/solutions/codeexample3'
 import { Compliance5 } from '@/components/solutions/compliance5'
 import { Cta4 } from '@/components/solutions/cta4'
@@ -116,6 +117,7 @@ curl -X POST https://cloud-api.phala.network/api/v1/training/verify \\
         }}
       />
       <Compliance5 />
+      <SolutionsCTA />
       <Faq14
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about Confidential Training"
