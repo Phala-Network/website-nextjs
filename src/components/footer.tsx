@@ -26,81 +26,70 @@ import {
 
 const navigation = [
   {
-    title: 'Product',
+    title: 'Products',
     links: [
-      { name: 'Models', href: '/confidential-ai-models' },
-      {
-        name: 'GPU TEE Inference',
-        href: '/gpu-tee',
-      },
-      {
-        name: 'MCP Hosting',
-        href: 'https://cloud.phala.network/features/mcp-hosting',
-      },
-      { name: 'Eliza Builder', href: 'https://cloud.phala.network/eliza' },
+      { name: 'Confidential AI Models', href: '/confidential-ai-models' },
+      { name: 'GPU TEE', href: '/gpu-tee' },
+      { name: 'H100 GPU', href: '/gpu-tee/h100' },
+      { name: 'H200 GPU', href: '/gpu-tee/h200' },
+      { name: 'B200 GPU', href: '/gpu-tee/b200' },
+      { name: 'Confidential VM', href: '/confidential-vm' },
+      { name: 'dStack SDK', href: '/dstack' },
+    ],
+  },
+  {
+    title: 'Solutions',
+    links: [
+      { name: 'Private AI Data', href: '/solutions/private-ai-data' },
+      { name: 'Private AI Inference', href: '/solutions/private-ai-inference' },
+      { name: 'Fine-Tuned Models', href: '/solutions/fine-tuned-models' },
+      { name: 'Confidential Training', href: '/solutions/confidential-training' },
+      { name: 'AI Agents', href: '/solutions/ai-agents' },
+    ],
+  },
+  {
+    title: 'Use Cases',
+    links: [
+      { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Financial Services', href: '/success-stories/financial-services' },
+      { name: 'Healthcare', href: '/success-stories/healthcare-research' },
+      { name: 'AI SaaS', href: '/success-stories/ai-saas-platform' },
+      { name: 'Decentralized AI', href: '/success-stories/decentralized-ai' },
+    ],
+  },
+  {
+    title: 'Compare',
+    links: [
+      { name: 'vs AWS Nitro', href: '/compare/phala-vs-aws-nitro' },
+      { name: 'vs Google Cloud', href: '/compare/phala-vs-gcp' },
+      { name: 'vs Tinfoil', href: '/compare/phala-vs-tinfoil' },
     ],
   },
   {
     title: 'Developers',
     links: [
       {
-        name: 'Docs',
+        name: 'Documentation',
         href: 'https://docs.phala.com/?utm_source=phala.network&utm_medium=site-nav',
       },
       {
         name: 'CLI',
         href: 'https://docs.phala.com/phala-cloud/phala-cloud-cli/overview',
       },
-      // TODO: add SDK page
-      // { name: 'SDK', href: '/dstack' },
       { name: 'GitHub', href: 'https://github.com/Phala-Network/' },
       {
         name: 'Community',
         href: 'https://github.com/Phala-Network/phala-cloud-community/?utm_source=phala.network&utm_medium=site-nav',
       },
-      {
-        name: 'Builders Program',
-        href: 'https://docs.phala.com/network/references/archived-projects',
-      },
-      {
-        name: 'Responsible Disclosure',
-        href: 'https://github.com/Phala-Network/phala-blockchain/blob/master/docs/responsible-disclosure.md',
-      },
     ],
   },
   {
-    title: 'Resources',
+    title: 'Company',
     links: [
-      { name: 'Ecosystem', href: '/partnerships' },
+      { name: 'About', href: '/about' },
+      { name: 'Partnerships', href: '/partnerships' },
       { name: 'Blog', href: '/blog' },
-      {
-        name: 'Ambassador Program',
-        href: 'https://github.com/Phala-Network/growth-program',
-      },
-      {
-        name: 'Changelog',
-        href: 'https://docs.phala.com/phala-cloud/changelog',
-      },
-      {
-        name: 'Media Kit',
-        href: 'https://drive.google.com/drive/folders/1u60uDV8CnZBBhySZMJfiMQ0XgdJXkVhq',
-      },
-      { name: 'Career', href: 'https://wellfound.com/company/phala-network' },
-    ],
-  },
-  {
-    title: 'Network',
-    links: [
-      { name: 'Phala App', href: 'https://app.phala.network/' },
-      {
-        name: 'Compute Provider',
-        href: 'https://docs.phala.com/network/compute-providers/basic-info/introduction',
-      },
-      {
-        name: 'Dune Statistics',
-        href: 'https://dune.com/phala_network/phala-analytics?utm_source=phala.network&utm_medium=site-nav',
-      },
-      { name: 'Explorer', href: 'https://phala.subscan.io/' },
+      { name: 'Careers', href: 'https://wellfound.com/company/phala-network' },
     ],
   },
 ]
@@ -220,7 +209,7 @@ const SiteFooter: React.FC = () => {
 
           {/* Navigation Section */}
           <div className="w-full border-t pt-8 lg:border-t-0 lg:pt-0">
-            <nav className="grid w-full gap-x-12 gap-y-8 grid-cols-2 md:w-auto md:grid-cols-4">
+            <nav className="grid w-full gap-x-8 lg:gap-x-12 gap-y-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
               {navigation.map((section) => (
                 <div key={section.title} className="min-w-[140px]">
                   <h2 className="mb-4 font-semibold font-sans">

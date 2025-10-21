@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import SolutionsCTA from '@/components/solutions-cta'
 import { Casestudies3 } from '@/components/solutions/casestudies3'
 import { Codeexample5Finetune } from '@/components/solutions/codeexample5-finetune'
 import { Compliance5 } from '@/components/solutions/compliance5'
@@ -87,6 +88,7 @@ export default function FineTunedModelsPage() {
         ]}
       />
       <Compliance5 />
+      <SolutionsCTA />
       <Faq14
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about Private Fine-Tuning"

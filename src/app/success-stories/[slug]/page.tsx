@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import { Feature13 } from '@/components/shadcn-blocks/feature13'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -56,6 +57,18 @@ export default async function SuccessStoryPage({
   if (!story) {
     notFound()
   }
+
+  // Get other success stories (exclude current one)
+  const otherStories = successStories
+    .filter((s) => s.slug !== slug)
+    .map((s) => ({
+      id: s.id,
+      heading: s.title,
+      label: s.category.replace('\n', ' ').toUpperCase(),
+      description: s.description,
+      image: s.bgImage,
+      url: `/success-stories/${s.slug}`,
+    }))
 
   return (
     <div className="min-h-screen max-w-4xl mx-auto mt-8">
@@ -127,6 +140,14 @@ export default async function SuccessStoryPage({
           />
         </div>
       </div>
+
+      {/* Other Success Stories */}
+      {otherStories.length > 0 && (
+        <Feature13
+          title="Explore Other Success Stories"
+          features={otherStories}
+        />
+      )}
     </div>
   )
 }

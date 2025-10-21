@@ -51,5 +51,5 @@ export default async function ComparePage({ params }: ComparePageProps) {
     notFound()
   }
 
-  return <Compare data={data} />
+  return <Compare data={data} currentSlug={slug} />
 }
