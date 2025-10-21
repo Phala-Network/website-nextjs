@@ -660,6 +660,92 @@ const PhalaNavbar4 = () => {
 
   return (
     <section className="bg-background fixed inset-x-0 top-0 z-50">
+      {/* SEO-friendly hidden static navigation */}
+      <nav className="sr-only" aria-label="Main navigation">
+        <ul>
+          <li>
+            <a href="/">Products</a>
+            <ul>
+              {coreProducts.map((item) => (
+                <li key={item.id}>
+                  <a href={item.href}>{item.title}</a>
+                </li>
+              ))}
+              {zeroTrustSDK.map((item) => (
+                <li key={item.id}>
+                  <a href={item.href}>{item.title}</a>
+                </li>
+              ))}
+              <li>
+                <a href={trustCenter.href}>{trustCenter.title}</a>
+              </li>
+              {nvidiaProducts.map((item) => (
+                <li key={item.id}>
+                  <a href={item.href}>{item.title}</a>
+                </li>
+              ))}
+              {comparisons.map((item) => (
+                <li key={item.id}>
+                  <a href={item.href}>{item.title}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <a href="/">Solutions</a>
+            <ul>
+              {solutionCategories.flatMap((category) =>
+                category.solutions.map((item) => (
+                  <li key={item.id}>
+                    <a href={item.href}>{item.title}</a>
+                  </li>
+                ))
+              )}
+            </ul>
+          </li>
+          <li>
+            <a href="/">Developers</a>
+            <ul>
+              {developers.map((item) => (
+                <li key={item.id}>
+                  <a href={item.href}>{item.title}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <a href="/">Resources</a>
+            <ul>
+              {resourcesCommunity.map((item) => (
+                <li key={item.id}>
+                  <a href={item.href}>{item.title}</a>
+                </li>
+              ))}
+              {resourcesNetwork.map((item) => (
+                <li key={item.id}>
+                  <a href={item.href}>{item.title}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <a href="/pricing">Pricing</a>
+          </li>
+          <li>
+            <a href="/about">About Us</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li>
+            <a href="https://cloud.phala.network/login">Sign in</a>
+          </li>
+          <li>
+            <a href="https://cloud.phala.network/register">Sign up</a>
+          </li>
+        </ul>
+      </nav>
+
       <div className="container">
         <NavigationMenu className="min-w-full [&>div:last-child]:left-auto">
           <div className="flex w-full justify-between gap-2 py-4">
