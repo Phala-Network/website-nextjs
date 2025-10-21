@@ -338,6 +338,46 @@ const Navbar = () => {
         hasScrolled && 'bg-background/75 backdrop-blur-sm',
       )}
     >
+      {/* SEO-friendly hidden static navigation */}
+      <nav className="sr-only" aria-label="Main navigation">
+        <ul>
+          {menu.map((item) => (
+            <li key={item.title}>
+              <a href={item.url !== '#' ? item.url : undefined}>
+                {item.title}
+              </a>
+              {item.items && (
+                <ul>
+                  {item.items.map((subItem) => (
+                    <li key={subItem.title}>
+                      <a href={subItem.url}>{subItem.title}</a>
+                      {subItem.items && (
+                        <ul>
+                          {subItem.items.map((nestedItem) => (
+                            <li key={nestedItem.title}>
+                              <a href={nestedItem.url}>{nestedItem.title}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li>
+            <a href="https://cloud.phala.network/login">Sign in</a>
+          </li>
+          <li>
+            <a href="https://cloud.phala.network/register">Sign up</a>
+          </li>
+        </ul>
+      </nav>
+
       <div className="max-w-(--breakpoint-2xl) mx-auto px-4 sm:px-6">
         <section>
           {/* Desktop Menu */}
