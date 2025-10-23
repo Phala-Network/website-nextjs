@@ -12,7 +12,7 @@ interface ModelCardProps {
 
 const ModelCard = ({ model }: ModelCardProps) => {
   return (
-    <div className="border-border flex max-w-72 gap-4 rounded-lg border p-4 items-center">
+    <div className="border-border flex max-w-72 gap-4 rounded-lg border p-4 items-center min-h-[88px]">
       <div className="relative">
         <Avatar className="size-12 p-1.5">
           <AvatarImage

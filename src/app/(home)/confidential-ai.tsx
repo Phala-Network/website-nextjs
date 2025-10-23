@@ -30,7 +30,7 @@ const ModelCard = ({ model }: { model: Model }) => (
     rel="noopener noreferrer"
     className="block"
   >
-    <div className="bg-background w-[260px] flex-shrink-0 overflow-hidden rounded-sm flex flex-col p-6 relative">
+    <div className="bg-background w-[260px] h-[380px] flex-shrink-0 overflow-hidden rounded-sm flex flex-col p-6 relative">
       {/* Logo/Icon with Lock Badge */}
       <div className="bg-background rounded-full size-16 flex items-center justify-center border mb-6 sm:mb-12 xl:mb-20 shrink-0 relative">
         <Avatar className="size-10">

@@ -34,7 +34,7 @@ const ModelCard = ({ model }: ModelCardProps) => {
       rel="noopener noreferrer"
       className="block"
     >
-      <div className="bg-background overflow-hidden rounded-sm flex flex-col p-6 relative h-full hover:shadow-md transition-shadow">
+      <div className="bg-background overflow-hidden rounded-sm flex flex-col p-6 relative min-h-[380px] hover:shadow-md transition-shadow">
         {/* Logo/Icon with Lock Badge */}
         <div className="bg-background rounded-full size-16 flex items-center justify-center border mb-6 sm:mb-12 shrink-0 relative">
           <Avatar className="size-10">
