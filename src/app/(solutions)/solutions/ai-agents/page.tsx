@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import SolutionsCTA from '@/components/solutions-cta'
+import { makeDescription, makeTitle } from '@/lib/seo'
 import AIAgentsFAQ from '@/components/solutions/ai-agents-faq'
 import { Casestudies1Agents } from '@/components/solutions/casestudies1-agents'
 import { Compliance5 } from '@/components/solutions/compliance5'
@@ -12,20 +13,18 @@ import { Feature76Agents } from '@/components/solutions/feature76-agents'
 import { Feature206 } from '@/components/solutions/feature206'
 import { Hero230 } from '@/components/solutions/hero230'
 
+// Keywords from CSV row 9: private AI agents, payment AI agents, autonomous agents, TEE agents, private LangChain
 export const metadata: Metadata = {
-  title: 'Build Safe, Private & Autonomous AI Agents | Phala Network',
-  description:
-    'Deploy AI agents with hardware-enforced security, cryptographic proofs, and verifiable execution. From autonomous trading to personal assistants.',
+  title: makeTitle('Private AI Agents - Autonomous Agents with TEE'),
+  description: makeDescription(
+    'Build private AI agents with hardware-enforced security. Deploy autonomous agents for payments, trading, and automation. TEE-protected LangChain and agent frameworks with verifiable execution.',
+  ),
   keywords: [
-    'AI agents',
-    'verifiable execution',
+    'private AI agents',
+    'payment AI agents',
     'autonomous agents',
-    'financial agents',
-    'TEE',
-    'ERC-8004',
-    'attestation',
-    'LangChain',
-    'ElizaOS',
+    'TEE agents',
+    'private LangChain',
   ],
 }
 
