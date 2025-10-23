@@ -1,4 +1,5 @@
 import { Badge } from '@/components/ui/badge'
+import { faqPageSchema } from '@/lib/seo'
 
 const faqs = [
   // Architecture & Security
@@ -67,36 +68,47 @@ const faqs = [
 ]
 
 export default function AIAgentsFAQ() {
+  // SEO: Generate FAQPage JSON-LD schema
+  const faqJsonLd = faqPageSchema(faqs)
+
   return (
-    <section className="w-full py-24 max-w-7xl mx-auto">
-      <div className="container mx-auto">
-        <div className="text-center">
-          <Badge className="text-xs leading-4 font-medium">FAQ</Badge>
-          <h2 className="font-display mt-4 font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
-            AI Agent — FAQ
-          </h2>
-          <p className="mt-4 text-lg leading-7 md:text-xl font-display font-medium text-muted-foreground">
-            Everything you need to know about building verifiable AI agents
-          </p>
-        </div>
-        <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
-          {faqs.map((faq, index) => (
-            <div key={faq.question} className="flex gap-4">
-              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-sm leading-5 text-muted-foreground font-semibold">
-                {index + 1}
-              </span>
-              <div>
-                <h3 className="font-semibold text-lg leading-7">
-                  {faq.question}
-                </h3>
-                <p className="text-muted-foreground text-base leading-6 mt-1">
-                  {faq.answer}
-                </p>
+    <>
+      {/* JSON-LD Structured Data for FAQPage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
+      <section className="w-full py-24 max-w-7xl mx-auto">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <Badge className="text-xs leading-4 font-medium">FAQ</Badge>
+            <h2 className="font-display mt-4 font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
+              AI Agent — FAQ
+            </h2>
+            <p className="mt-4 text-lg leading-7 md:text-xl font-display font-medium text-muted-foreground">
+              Everything you need to know about building verifiable AI agents
+            </p>
+          </div>
+          <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
+            {faqs.map((faq, index) => (
+              <div key={faq.question} className="flex gap-4">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-sm leading-5 text-muted-foreground font-semibold">
+                  {index + 1}
+                </span>
+                <div>
+                  <h3 className="font-semibold text-lg leading-7">
+                    {faq.question}
+                  </h3>
+                  <p className="text-muted-foreground text-base leading-6 mt-1">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }

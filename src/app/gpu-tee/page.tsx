@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import { CompareFullStackTEE } from '@/components/gpu-tee/compare-full-stack-tee'
 import { PerformanceSecurityMerged } from '@/components/gpu-tee/performance-security-merged'
+import { makeDescription, makeTitle, productSchema } from '@/lib/seo'
 import { Faq14 } from '@/components/shadcn-blocks/faq14'
 import { Feature51 } from '@/components/shadcn-blocks/feature51'
 import { Feature67 } from '@/components/shadcn-blocks/feature67'
@@ -11,16 +12,42 @@ import { Gallery16 } from '@/components/shadcn-blocks/gallery16'
 import { GpuTeeHero } from '@/components/shadcn-blocks/gpu-tee-hero'
 
 export const metadata: Metadata = {
-  title: 'GPU TEE - Most Powerful AI GPUs. Most Secure Platform.',
-  description:
-    'Deploy B200/H200/H100 with complete hardware protection. The only cloud combining Intel TDX + NVIDIA Confidential Computing for end-to-end security.',
-  keywords:
-    'GPU TEE, NVIDIA B200, NVIDIA H200, NVIDIA H100, Blackwell, Intel TDX, Confidential Computing, Private AI, ZK Proofs, FHE, Secure GPU',
+  title: makeTitle('GPU TEE - Confidential GPU Computing for Private AI'),
+  description: makeDescription(
+    'Deploy NVIDIA H100, H200, and B200 GPUs with TEE protection. Hardware-secured confidential AI training and inference with Intel TDX + NVIDIA Confidential Computing.',
+  ),
+  keywords: [
+    'GPU TEE',
+    'confidential GPU',
+    'private GPU computing',
+    'NVIDIA H100 TEE',
+    'NVIDIA H200 TEE',
+    'NVIDIA B200 TEE',
+    'confidential AI training',
+    'private GPU cloud',
+    'secure GPU inference',
+    'Intel TDX',
+    'NVIDIA Confidential Computing',
+  ],
 }
 
 export default function GpuTeePage() {
+  // SEO: JSON-LD Product Schema
+  const productJsonLd = productSchema(
+    'GPU TEE - Confidential GPU Computing',
+    'Hardware-secured GPU computing with NVIDIA H100/H200/B200 and Intel TDX. Deploy confidential AI training, private inference, and secure GPU workloads with end-to-end TEE protection.',
+    'https://phala.network/gpu-tee',
+  )
+
   return (
-    <div className="w-full bg-background">
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
+      <div className="w-full bg-background">
       {/* 1. Hero - Immediate Impact + Clear Differentiation */}
       <GpuTeeHero />
 
@@ -47,6 +74,7 @@ export default function GpuTeePage() {
 
       {/* 9. FAQ - Handle Objections */}
       <Faq14 />
-    </div>
+      </div>
+    </>
   )
 }

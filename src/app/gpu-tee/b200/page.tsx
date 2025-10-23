@@ -5,18 +5,39 @@ import { B200Hero } from '@/components/gpu-tee/b200-hero'
 import { B200MetricsBento } from '@/components/gpu-tee/b200-metrics-bento'
 import { B200Pricing } from '@/components/gpu-tee/b200-pricing'
 import { GpuBenchmark } from '@/components/gpu-tee/gpu-benchmark'
+import { makeDescription, makeTitle, productSchema } from '@/lib/seo'
 import { Feature13 } from '@/components/shadcn-blocks/feature13'
 import { Feature51 } from '@/components/shadcn-blocks/feature51'
 import { Feature76 } from '@/components/shadcn-blocks/feature76'
 import { Feature107 } from '@/components/shadcn-blocks/feature107'
 
 export const metadata: Metadata = {
-  title: 'NVIDIA B200 Blackwell GPU TEE - Next-Gen AI with Full-Stack Security',
-  description:
-    'Deploy NVIDIA B200 Blackwell GPUs with Intel TDX + NVIDIA Confidential Computing. 192GB HBM3e memory, 8 TB/s bandwidth, up to 15x faster inference.',
+  title: makeTitle('NVIDIA B200 Blackwell GPU TEE - Next-Gen AI'),
+  description: makeDescription(
+    'Deploy NVIDIA B200 Blackwell GPUs with TEE protection. 192GB HBM3e memory, 8 TB/s bandwidth, 15x faster inference. Next-generation confidential AI with Intel TDX + NVIDIA Confidential Computing.',
+  ),
+  keywords: [
+    'B200 GPU TEE',
+    'NVIDIA B200 confidential computing',
+    'B200 private AI',
+    'next-gen GPU TEE',
+    'confidential B200',
+    'B200 GPU security',
+    'B200 with TEE',
+    'private B200 GPU',
+    'B200 Blackwell TEE',
+    'NVIDIA Blackwell encryption',
+  ],
 }
 
 export default function B200Page() {
+  // SEO: JSON-LD Product Schema
+  const productJsonLd = productSchema(
+    'NVIDIA B200 Blackwell GPU TEE',
+    'Next-generation confidential computing with NVIDIA B200 Blackwell GPUs. 192GB HBM3e memory, 8 TB/s bandwidth, up to 15x faster inference with Intel TDX protection and NVIDIA Confidential Computing.',
+    'https://phala.network/gpu-tee/b200',
+  )
+
   const otherGpuModels = [
     {
       id: 'gpu-h100',
@@ -39,9 +60,16 @@ export default function B200Page() {
   ]
 
   return (
-    <div className="w-full bg-background">
-      {/* 1. Hero - B200 Specific */}
-      <B200Hero />
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
+      <div className="w-full bg-background">
+        {/* 1. Hero - B200 Specific */}
+        <B200Hero />
 
       {/* 2. Performance & Specs Bento Grid */}
       <B200MetricsBento />
@@ -64,8 +92,9 @@ export default function B200Page() {
       {/* 8. Deployment Options (shared with GPU TEE page) */}
       <Feature51 />
 
-      {/* 9. Other GPU Models - Cross-linking */}
-      <Feature13 title="Explore Other GPU TEE Models" features={otherGpuModels} />
-    </div>
+        {/* 9. Other GPU Models - Cross-linking */}
+        <Feature13 title="Explore Other GPU TEE Models" features={otherGpuModels} />
+      </div>
+    </>
   )
 }

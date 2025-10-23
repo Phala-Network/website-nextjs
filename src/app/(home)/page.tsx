@@ -1,6 +1,7 @@
 import { DashedLine } from '@/components/dashed-line'
 import FinalCTA from '@/components/final-cta'
 import { fetchAiModels, type Model } from '@/lib/ai-models'
+import { organizationSchema, productSchema } from '@/lib/seo'
 import ConfidentialAI from './confidential-ai'
 import FAQ from './faq'
 import Hero from './hero'
@@ -21,24 +22,45 @@ export default async function HomePage() {
     console.error('Failed to fetch models:', error)
   }
 
-  return (
-    <div className="w-full min-h-screen bg-background">
-      <Hero />
-      <TrustSteps />
-      <Logos />
-      <div className="relative flex items-center justify-center max-w-7xl mx-auto mt-12">
-        <DashedLine className="text-muted-foreground" />
-        <span className="bg-background text-muted-foreground absolute px-3 font-mono text-sm leading-5 font-medium tracking-wide">
-          Build AI People Can Trust.
-        </span>
-      </div>
-      <ConfidentialAI models={models} />
-      <PrivateCloudCompute />
-      <ProvenAtScale />
-      <SuccessStories />
+  // SEO: JSON-LD Structured Data
+  const organizationJsonLd = organizationSchema()
+  const productJsonLd = productSchema(
+    'Phala Cloud - Confidential Computing Platform',
+    'Decentralized confidential computing platform for private AI and secure cloud infrastructure with GPU TEE support. Deploy confidential AI models, private agents, and encrypted workloads.',
+    'https://phala.network',
+    'https://phala.network/opengraph-image.png',
+  )
 
-      <FAQ />
-      <FinalCTA />
-    </div>
+  return (
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
+      <div className="w-full min-h-screen bg-background">
+        <Hero />
+        <TrustSteps />
+        <Logos />
+        <div className="relative flex items-center justify-center max-w-7xl mx-auto mt-12">
+          <DashedLine className="text-muted-foreground" />
+          <span className="bg-background text-muted-foreground absolute px-3 font-mono text-sm leading-5 font-medium tracking-wide">
+            Build AI People Can Trust.
+          </span>
+        </div>
+        <ConfidentialAI models={models} />
+        <PrivateCloudCompute />
+        <ProvenAtScale />
+        <SuccessStories />
+
+        <FAQ />
+        <FinalCTA />
+      </div>
+    </>
   )
 }

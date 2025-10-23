@@ -5,18 +5,39 @@ import { H100Configurations } from '@/components/gpu-tee/h100-configurations'
 import { H100Hero } from '@/components/gpu-tee/h100-hero'
 import { H100MetricsBento } from '@/components/gpu-tee/h100-metrics-bento'
 import { H100Pricing } from '@/components/gpu-tee/h100-pricing'
+import { makeDescription, makeTitle, productSchema } from '@/lib/seo'
 import { Feature13 } from '@/components/shadcn-blocks/feature13'
 import { Feature51 } from '@/components/shadcn-blocks/feature51'
 import { Feature76 } from '@/components/shadcn-blocks/feature76'
 import { Feature107 } from '@/components/shadcn-blocks/feature107'
 
 export const metadata: Metadata = {
-  title: 'NVIDIA H100 GPU TEE - Enterprise AI with Full-Stack Security',
-  description:
-    'Deploy NVIDIA H100 Tensor Core GPUs with Intel TDX + NVIDIA Confidential Computing. 80GB HBM3, proven performance, complete hardware protection.',
+  title: makeTitle('NVIDIA H100 GPU TEE - Confidential AI Computing'),
+  description: makeDescription(
+    'Deploy NVIDIA H100 Tensor Core GPUs with TEE protection. 80GB HBM3 memory, Intel TDX + NVIDIA Confidential Computing. Enterprise-grade confidential AI training and inference.',
+  ),
+  keywords: [
+    'H100 GPU TEE',
+    'NVIDIA H100 confidential computing',
+    'H100 private AI',
+    'H100 secure inference',
+    'confidential H100',
+    'private H100 GPU',
+    'H100 with TEE',
+    'H100 GPU privacy',
+    'H100 Tensor Core TEE',
+    'NVIDIA H100 encryption',
+  ],
 }
 
 export default function H100Page() {
+  // SEO: JSON-LD Product Schema
+  const productJsonLd = productSchema(
+    'NVIDIA H100 GPU TEE',
+    'Enterprise-grade confidential computing with NVIDIA H100 Tensor Core GPUs. 80GB HBM3 memory, Intel TDX protection, and NVIDIA Confidential Computing for private AI training and secure inference.',
+    'https://phala.network/gpu-tee/h100',
+  )
+
   const otherGpuModels = [
     {
       id: 'gpu-h200',
@@ -39,9 +60,16 @@ export default function H100Page() {
   ]
 
   return (
-    <div className="w-full bg-background">
-      {/* 1. Hero - H100 Specific */}
-      <H100Hero />
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
+      <div className="w-full bg-background">
+        {/* 1. Hero - H100 Specific */}
+        <H100Hero />
 
       {/* 2. Performance & Specs Bento Grid */}
       <H100MetricsBento />
@@ -64,8 +92,9 @@ export default function H100Page() {
       {/* 8. Deployment Options (shared with GPU TEE page) */}
       <Feature51 />
 
-      {/* 9. Other GPU Models - Cross-linking */}
-      <Feature13 title="Explore Other GPU TEE Models" features={otherGpuModels} />
-    </div>
+        {/* 9. Other GPU Models - Cross-linking */}
+        <Feature13 title="Explore Other GPU TEE Models" features={otherGpuModels} />
+      </div>
+    </>
   )
 }
