@@ -7,4 +7,5 @@ export default {
         .join('\n')
         .replace('plugin', 'import'),
   },
+  ignoreDependencies: ['@biomejs/biome', 'posthog-node'],
 }
