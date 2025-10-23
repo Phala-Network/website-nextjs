@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import SolutionsCTA from '@/components/solutions-cta'
+import { makeDescription, makeTitle } from '@/lib/seo'
 import { Codeexample3 } from '@/components/solutions/codeexample3'
 import { Compliance5 } from '@/components/solutions/compliance5'
 import { Cta4 } from '@/components/solutions/cta4'
@@ -10,18 +11,18 @@ import { Feature206 } from '@/components/solutions/feature206'
 import { Feature251Training } from '@/components/solutions/feature251-training'
 import { Hero216 } from '@/components/solutions/hero216'
 
+// Keywords from CSV row 10: confidential AI training, private model training, safe fine-tuning, HIPAA AI training, train AI secure
 export const metadata: Metadata = {
-  title: 'Confidential Model Training at Scale',
-  description:
-    'Distributed pre-training and instruction-tuning on sensitive data with confidential GPUs and attestation.',
+  title: makeTitle('Confidential AI Training - Private Model Training'),
+  description: makeDescription(
+    'Train AI models securely on sensitive data with TEE protection. HIPAA-compliant AI training with hardware-enforced encryption. Safe fine-tuning for regulated industries and consortium learning.',
+  ),
   keywords: [
-    'distributed training',
-    'multi-GPU',
-    'pre-training',
-    'consortium learning',
-    'confidential computing',
-    'TEE',
-    'LLM training',
+    'confidential AI training',
+    'private model training',
+    'safe fine-tuning',
+    'HIPAA AI training',
+    'train AI secure',
   ],
 }
 

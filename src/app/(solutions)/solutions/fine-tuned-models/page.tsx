@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import SolutionsCTA from '@/components/solutions-cta'
+import { makeDescription, makeTitle } from '@/lib/seo'
 import { Casestudies3 } from '@/components/solutions/casestudies3'
 import { Codeexample5Finetune } from '@/components/solutions/codeexample5-finetune'
 import { Compliance5 } from '@/components/solutions/compliance5'
@@ -10,18 +11,18 @@ import { Feature206 } from '@/components/solutions/feature206'
 import { Feature245Finetune } from '@/components/solutions/feature245-finetune'
 import { Hero74 } from '@/components/solutions/hero74'
 
+// Keywords from CSV row 11: private fine tune, customize model data, safe AI tuning, on prem fine-tuning, secure data AI
 export const metadata: Metadata = {
-  title: 'Fine-Tuned Models: Private Customization',
-  description:
-    'Fine-tune foundation models on proprietary data inside TEEs. Better accuracy, zero data leakage.',
+  title: makeTitle('Private Fine-Tuning - Customize AI Models Securely'),
+  description: makeDescription(
+    'Fine-tune AI models on proprietary data with TEE protection. On-prem and cloud fine-tuning with secure data handling. Customize models safely without data leakage for enterprise AI.',
+  ),
   keywords: [
-    'fine-tuning',
-    'LoRA',
-    'PEFT',
-    'model customization',
-    'private AI',
-    'TEE',
-    'confidential computing',
+    'private fine tune',
+    'customize model data',
+    'safe AI tuning',
+    'on prem fine-tuning',
+    'secure data AI',
   ],
 }
 
