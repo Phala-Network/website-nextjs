@@ -13,15 +13,13 @@ export const metadata: Metadata = {
   },
   description:
     'Phala is the new cloud for confidential AI helping build AI people can trust.',
+  // Keywords from CSV row 2: confidential compute, confidential AI, private AI cloud, TEE open source, safe AI
   keywords: [
-    'Phala',
-    'TEE',
-    'Confidential AI',
-    'Trusted AI',
-    'Confidential VM',
-    'GPU TEE',
-    'Confidential Computing',
-    'Phala Network',
+    'confidential compute',
+    'confidential AI',
+    'private AI cloud',
+    'TEE open source',
+    'safe AI',
   ],
   twitter: {
     site: '@PhalaNetwork',
