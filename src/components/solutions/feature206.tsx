@@ -15,6 +15,9 @@ const Feature206 = ({
   images,
   links,
 }: Feature206Props) => {
+  // Helper to check if link is external
+  const isExternal = (href: string) => href.startsWith('http')
+
   // Map points to the 8-grid layout (4 cards + 4 images)
   const cards =
     points && points.length >= 4
@@ -111,6 +114,10 @@ const Feature206 = ({
               </p>
               <a
                 href={links?.[0] || '#'}
+                {...(links?.[0] && isExternal(links[0]) && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
                 className={`text-sm underline ${cards[0].textColor === 'text-foreground' ? '' : 'text-primary-foreground/80'}`}
               >
                 More Information
@@ -136,6 +143,10 @@ const Feature206 = ({
               </p>
               <a
                 href={links?.[1] || '#'}
+                {...(links?.[1] && isExternal(links[1]) && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
                 className={`text-sm underline ${cards[1].textColor === 'text-foreground' ? '' : 'text-primary-foreground/80'}`}
               >
                 More Information
@@ -162,6 +173,10 @@ const Feature206 = ({
               </p>
               <a
                 href={links?.[2] || '#'}
+                {...(links?.[2] && isExternal(links[2]) && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
                 className={`text-sm underline ${cards[2].textColor === 'text-foreground' ? '' : 'text-primary-foreground/80'}`}
               >
                 More Information
@@ -187,6 +202,10 @@ const Feature206 = ({
               </p>
               <a
                 href={links?.[3] || '#'}
+                {...(links?.[3] && isExternal(links[3]) && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
                 className={`text-sm underline ${cards[3].textColor === 'text-foreground' ? '' : 'text-primary-foreground/80'}`}
               >
                 More Information

@@ -24,12 +24,12 @@ const Hero74 = () => {
           </p>
           <div className="mx-auto mt-8 flex w-full max-w-sm items-center space-x-2">
             <Button asChild className="font-medium">
-              <a href="https://cloud.phala.network/dashboard/gpu-tee">
+              <a href="https://cloud.phala.network/dashboard/gpu-tee" target="_blank" rel="noopener noreferrer">
                 Start Fine-Tuning
               </a>
             </Button>
             <Button asChild variant="outline" className="font-medium">
-              <a href="https://phala.com/contact">Contact Us</a>
+              <a href="https://phala.com/contact" target="_blank" rel="noopener noreferrer">Contact Us</a>
             </Button>
           </div>
           <div className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">

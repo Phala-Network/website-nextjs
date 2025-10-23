@@ -53,7 +53,7 @@ const Feature76 = () => {
             className="mx-6 w-fit rounded-full px-4 py-1 lg:mx-0 lg:px-6"
             asChild
           >
-            <a href="https://cloud.phala.network/templates?tag=agent">
+            <a href="https://cloud.phala.network/templates?tag=agent" target="_blank" rel="noopener noreferrer">
               Check Templates
             </a>
           </Button>

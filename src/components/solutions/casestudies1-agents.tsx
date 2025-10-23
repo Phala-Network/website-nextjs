@@ -1,10 +1,12 @@
+import Link from 'next/link'
+
 const Casestudies1 = () => {
   return (
     <section className="py-32">
       <div className="container">
         <div className="mx-auto grid max-w-2xl gap-6 lg:max-w-5xl lg:grid-cols-2">
-          <a
-            href="https://phala.com/posts/phala-vijil"
+          <Link
+            href="/posts/phala-vijil"
             className="group relative row-span-2 flex aspect-square h-full flex-col justify-end overflow-hidden rounded-2xl p-6 shadow-md lg:aspect-auto lg:p-10"
           >
             <img
@@ -17,9 +19,9 @@ const Casestudies1 = () => {
               Vijil: Automated smart contract audit agent with verifiable
               security analysis
             </h2>
-          </a>
-          <a
-            href="https://phala.com/posts/phala-vijil"
+          </Link>
+          <Link
+            href="/posts/phala-vijil"
             className="aspect-3/2 md:aspect-2/1 group relative flex h-full flex-col justify-end overflow-hidden rounded-2xl p-6 shadow-md lg:p-10"
           >
             <img
@@ -31,9 +33,9 @@ const Casestudies1 = () => {
             <h2 className="isolate max-w-sm text-lg font-semibold text-white lg:text-xl lg:font-semibold">
               Blormmy: E-commerce agent with private shopping behavior analysis
             </h2>
-          </a>
-          <a
-            href="https://phala.com/posts/truth-of-AI-Agent"
+          </Link>
+          <Link
+            href="/posts/truth-of-AI-Agent"
             className="aspect-3/2 md:aspect-2/1 group relative flex h-full flex-col justify-end overflow-hidden rounded-2xl p-6 shadow-md lg:p-10"
           >
             <img
@@ -46,9 +48,9 @@ const Casestudies1 = () => {
               Nous Research x Flashbot: Truth of autonomous AI agents with
               verifiable execution
             </h2>
-          </a>
-          <a
-            href="https://phala.com/posts/near-shade-agent-template-phala-cloud"
+          </Link>
+          <Link
+            href="/posts/near-shade-agent-template-phala-cloud"
             className="aspect-3/2 md:aspect-2/1 group relative flex h-full flex-col justify-end overflow-hidden rounded-2xl p-6 shadow-md lg:p-10"
           >
             <img
@@ -61,9 +63,9 @@ const Casestudies1 = () => {
               NEAR: Financial agent with private DeFi strategies and secure
               execution
             </h2>
-          </a>
-          <a
-            href="https://phala.com/posts/Rabbi"
+          </Link>
+          <Link
+            href="/posts/Rabbi"
             className="group relative row-span-2 flex aspect-square h-full flex-col justify-end overflow-hidden rounded-2xl p-6 shadow-md lg:aspect-auto lg:p-10"
           >
             <img
@@ -76,9 +78,9 @@ const Casestudies1 = () => {
               Rabbi: Trading agent with confidential strategies and verifiable
               execution
             </h2>
-          </a>
-          <a
-            href="https://phala.com/posts/Newton-x-Phala-Powering-Verifiable-AI-Agents-for-Autonomous-Finance"
+          </Link>
+          <Link
+            href="/posts/Newton-x-Phala-Powering-Verifiable-AI-Agents-for-Autonomous-Finance"
             className="aspect-3/2 md:aspect-2/1 group relative flex h-full flex-col justify-end overflow-hidden rounded-2xl p-6 shadow-md lg:p-10"
           >
             <img
@@ -91,7 +93,7 @@ const Casestudies1 = () => {
               Newton: Payment agent powering verifiable AI for autonomous
               finance
             </h2>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -14,6 +14,8 @@ const Feature64 = () => {
         <div className="grid w-full gap-6 lg:grid-cols-7">
           <a
             href="https://cloud.phala.network/eliza"
+            target="_blank"
+            rel="noopener noreferrer"
             className="border-border bg-accent flex flex-col rounded-lg border p-6 md:p-8 lg:col-span-4 hover:bg-accent/80 transition-colors"
           >
             <div className="flex justify-center items-center rounded-lg mb-6 md:mb-8 overflow-hidden">
@@ -33,6 +35,8 @@ const Feature64 = () => {
           </a>
           <a
             href="https://cloud.phala.network/templates/near-shade-agent"
+            target="_blank"
+            rel="noopener noreferrer"
             className="border-border bg-accent flex flex-col rounded-lg border p-6 md:p-8 lg:col-span-3 hover:bg-accent/80 transition-colors"
           >
             <div className="flex justify-center items-center rounded-lg mb-6 md:mb-8 overflow-hidden">

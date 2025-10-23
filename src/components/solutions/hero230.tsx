@@ -104,7 +104,7 @@ const Hero230 = () => {
             className="group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
             asChild
           >
-            <a href="https://cloud.phala.network/templates?tag=agent">
+            <a href="https://cloud.phala.network/templates?tag=agent" target="_blank" rel="noopener noreferrer">
               <span>Explore Running Apps</span>
               <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
             </a>
@@ -114,7 +114,7 @@ const Hero230 = () => {
             className="group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
             asChild
           >
-            <a href="https://cloud.phala.network">
+            <a href="https://cloud.phala.network" target="_blank" rel="noopener noreferrer">
               <span>Deploy</span>
               <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
             </a>
