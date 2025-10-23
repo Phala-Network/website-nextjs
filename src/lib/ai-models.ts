@@ -101,8 +101,11 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
     model.id.startsWith('phala/'),
   )
 
+  // Sort by created timestamp (newest first)
+  const sortedPhalaModels = phalaModels.sort((a, b) => b.created - a.created)
+
   // Transform API response to match expected Model type
-  const models: Model[] = phalaModels.map((apiModel, index) => {
+  const models: Model[] = sortedPhalaModels.map((apiModel, index) => {
     // Extract model name from ID (e.g., "phala/gpt-oss-20b" -> "gpt-oss-20b")
     const modelName = apiModel.id.replace('phala/', '')
 
