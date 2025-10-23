@@ -14,18 +14,20 @@ import { Hero225 } from '@/components/solutions/hero225'
 import { SolutionsPhala } from '@/components/solutions/solutions-phala'
 import { UnifiedInterfacePhala } from '@/components/solutions/unified-interface-phala'
 import { fetchAiModels } from '@/lib/ai-models'
+import { makeDescription, makeTitle } from '@/lib/seo'
 
+// Keywords from CSV row 13: private AI inference, confidential LLM API, secure AI predictions, encrypted inference, zero trust AI
 export const metadata: Metadata = {
-  title: 'Private AI Inference: Confidential LLM Serving',
-  description:
-    'Keep prompts, outputs, and model weights private with GPU TEEs and verifiable attestation.',
+  title: makeTitle('Private AI Inference - Confidential LLM Serving'),
+  description: makeDescription(
+    'Keep prompts, outputs, and model weights private with GPU TEEs and verifiable attestation. Deploy confidential AI inference with hardware-enforced encryption.',
+  ),
   keywords: [
-    'private AI',
-    'confidential inference',
-    'GPU TEE',
-    'LLM serving',
-    'encrypted prompts',
-    'zero logging',
+    'private AI inference',
+    'confidential LLM API',
+    'secure AI predictions',
+    'encrypted inference',
+    'zero trust AI',
   ],
 }
 

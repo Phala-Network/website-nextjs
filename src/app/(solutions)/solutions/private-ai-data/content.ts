@@ -6,12 +6,11 @@ export const privateAIDataContent: SolutionContent = {
     description:
       'Monetize and analyze sensitive data with TEEs and remote attestation—without exposing the raw data.',
     keywords: [
-      'private data',
-      'compute-to-data',
-      'TEE',
-      'confidential computing',
-      'data privacy',
-      'remote attestation',
+      'private AI data processing',
+      'confidential data analytics',
+      'encrypte AI data',
+      'GDPR AI',
+      'on-prem AI',
     ],
   },
 

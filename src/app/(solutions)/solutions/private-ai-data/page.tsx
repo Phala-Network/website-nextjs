@@ -40,7 +40,7 @@ function generateProductSchema() {
     description: privateAIDataContent.seo.description,
     brand: {
       '@type': 'Organization',
-      name: 'Phala Network',
+      name: 'Phala',
     },
     offers: {
       '@type': 'Offer',
