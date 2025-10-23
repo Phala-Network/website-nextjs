@@ -27,6 +27,13 @@ export default function PartnerCard({
   const cardHeight = isLarge ? 'h-96' : 'h-80'
   const logoSize = isLarge ? 'h-28 w-28' : 'h-20 w-20'
 
+  // Helper to check if link is external
+  const isExternal = (href: string) => href.startsWith('http')
+
+  // The main link (title) - use post if available, otherwise url
+  const mainHref = post || url
+  const isMainExternal = isExternal(mainHref)
+
   return (
     <div
       className={cn(
@@ -57,8 +64,11 @@ export default function PartnerCard({
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Link
-            href={post || url}
-            target="_blank"
+            href={mainHref}
+            {...(isMainExternal && {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            })}
             className={cn(
               'font-normal transition-colors duration-300 hover:underline',
               isLarge ? 'text-xl lg:text-3xl' : 'text-lg lg:text-2xl',
@@ -66,7 +76,13 @@ export default function PartnerCard({
           >
             {title}
           </Link>
-          <Link href={url} target="_blank">
+          <Link
+            href={url}
+            {...(isExternal(url) && {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            })}
+          >
             <FiExternalLink className="h-4 w-4 text-gray-400 group-hover:text-black" />
           </Link>
         </div>

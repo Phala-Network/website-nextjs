@@ -356,8 +356,6 @@ export default function PrivateCloudCompute() {
                 href="/dstack"
                 className="block h-110 rounded-lg bg-card px-6 py-8 relative overflow-hidden bg-[length:210px_auto] bg-no-repeat bg-bottom-right"
                 style={{ backgroundImage: dstackBackgroundImage }}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <h4 className="text-lg font-medium text-muted-foreground text-balance xl:text-xl">
                   <span className="text-foreground">
