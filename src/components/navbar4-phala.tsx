@@ -12,6 +12,7 @@ import {
   ChartBar,
   Cpu,
   Database,
+  ExternalLink,
   FileCode,
   GitBranch,
   Globe,
@@ -355,6 +356,9 @@ const resourcesNetwork = [
   },
 ]
 
+// Helper function to check if link is external
+const isExternalLink = (href: string) => href.startsWith('http')
+
 // Products Menu Component
 const ProductsMenu = () => (
   <div className="grid gap-y-12 lg:gap-y-6">
@@ -428,8 +432,9 @@ const ProductsMenu = () => (
               <trustCenter.icon className="size-5" />
             </div>
             <div className="flex-1">
-              <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+              <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium flex items-center gap-1.5">
                 {trustCenter.title}
+                {isExternalLink(trustCenter.href) && <ExternalLink className="size-3 opacity-50" />}
               </div>
               <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
                 {trustCenter.description}
