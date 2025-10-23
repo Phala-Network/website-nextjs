@@ -534,8 +534,9 @@ const SolutionsMenu = () => (
             >
               <solution.icon className="size-6" />
               <div className="flex-1">
-                <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+                <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium flex items-center gap-1.5">
                   {solution.title}
+                  {isExternalLink(solution.href) && <ExternalLink className="size-3 opacity-50" />}
                 </div>
                 <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
                   {solution.description}
@@ -561,8 +562,9 @@ const DevelopersMenu = () => (
       >
         <item.icon className="size-6 sm:size-7" />
         <div className="ml-4 flex-1">
-          <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+          <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium flex items-center gap-1.5">
             {item.title}
+            {isExternalLink(item.href) && <ExternalLink className="size-3 opacity-50" />}
           </div>
           <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
             {item.description}
@@ -592,8 +594,9 @@ const ResourcesMenu = () => (
           >
             <resource.icon className="size-6" />
             <div className="flex-1">
-              <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+              <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium flex items-center gap-1.5">
                 {resource.title}
+                {isExternalLink(resource.href) && <ExternalLink className="size-3 opacity-50" />}
               </div>
               <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
                 {resource.description}
@@ -619,8 +622,9 @@ const ResourcesMenu = () => (
           >
             <resource.icon className="size-6" />
             <div className="flex-1">
-              <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium">
+              <div className="text-foreground/85 group-hover:text-foreground text-sm font-medium flex items-center gap-1.5">
                 {resource.title}
+                {isExternalLink(resource.href) && <ExternalLink className="size-3 opacity-50" />}
               </div>
               <p className="text-muted-foreground group-hover:text-foreground mt-1 text-xs">
                 {resource.description}
