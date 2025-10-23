@@ -374,6 +374,10 @@ const ProductsMenu = () => (
           <div key={product.id}>
             <NavigationMenuLink
               href={product.href}
+              {...(isExternalLink(product.href) && {
+                target: '_blank',
+                rel: 'noopener noreferrer',
+              })}
               className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
             >
               <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
@@ -406,6 +410,10 @@ const ProductsMenu = () => (
           <div key={product.id}>
             <NavigationMenuLink
               href={product.href}
+              {...(isExternalLink(product.href) && {
+                target: '_blank',
+                rel: 'noopener noreferrer',
+              })}
               className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
             >
               <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
@@ -426,6 +434,10 @@ const ProductsMenu = () => (
         <div key={trustCenter.id}>
           <NavigationMenuLink
             href={trustCenter.href}
+            {...(isExternalLink(trustCenter.href) && {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            })}
             className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
           >
             <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
@@ -460,6 +472,10 @@ const ProductsMenu = () => (
             <div key={product.id}>
               <NavigationMenuLink
                 href={product.href}
+                {...(isExternalLink(product.href) && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
                 className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
               >
                 <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
@@ -492,6 +508,10 @@ const ProductsMenu = () => (
             <div key={comparison.id}>
               <NavigationMenuLink
                 href={comparison.href}
+                {...(isExternalLink(comparison.href) && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
                 className="border-border group flex flex-row items-center space-x-6 border-b py-5 text-left sm:py-7 lg:space-x-4 lg:border-0 lg:py-2"
               >
                 <div className="relative flex aspect-square w-6 shrink-0 items-center justify-center overflow-clip rounded md:size-9">
@@ -530,6 +550,10 @@ const SolutionsMenu = () => (
             <NavigationMenuLink
               key={solution.id}
               href={solution.href}
+              {...(isExternalLink(solution.href) && {
+                target: '_blank',
+                rel: 'noopener noreferrer',
+              })}
               className="border-border bg-accent lg:bg-background group flex flex-row items-center space-x-4 rounded-md px-6 py-5 text-left lg:border lg:p-5"
             >
               <solution.icon className="size-6" />
@@ -558,6 +582,10 @@ const DevelopersMenu = () => (
       <NavigationMenuLink
         key={item.id}
         href={item.href}
+        {...(isExternalLink(item.href) && {
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        })}
         className="border-border bg-accent lg:bg-background group flex flex-row items-center space-x-4 rounded-md px-6 py-5 text-left md:space-x-5 lg:border lg:p-5"
       >
         <item.icon className="size-6 sm:size-7" />
@@ -590,6 +618,10 @@ const ResourcesMenu = () => (
           <NavigationMenuLink
             key={resource.id}
             href={resource.href}
+            {...(isExternalLink(resource.href) && {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            })}
             className="border-border bg-accent lg:bg-background group flex flex-row items-center space-x-4 rounded-md px-6 py-5 text-left lg:border lg:p-5"
           >
             <resource.icon className="size-6" />
@@ -618,6 +650,10 @@ const ResourcesMenu = () => (
           <NavigationMenuLink
             key={resource.id}
             href={resource.href}
+            {...(isExternalLink(resource.href) && {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            })}
             className="border-border bg-accent lg:bg-background group flex flex-row items-center space-x-4 rounded-md px-6 py-5 text-left lg:border lg:p-5"
           >
             <resource.icon className="size-6" />
