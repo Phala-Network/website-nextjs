@@ -31,7 +31,7 @@ const ModelCard = ({ model }: ModelCardProps) => {
         </div>
       </div>
       <div className="flex flex-col overflow-hidden flex-1 gap-1">
-        <p className="font-display font-medium leading-5 line-clamp-1">{model.name}</p>
+        <p className="font-display font-medium leading-5 line-clamp-2">{model.name}</p>
         {model.verifiable && (
           <Badge
             variant="outline"

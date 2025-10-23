@@ -54,7 +54,7 @@ const ModelCard = ({ model }: { model: Model }) => (
       {/* Content - grows to fill available space */}
       <div className="flex-1 flex flex-col">
         {/* Title */}
-        <div className="font-semibold text-lg leading-7 mb-3 xl:text-xl xl:leading-7 line-clamp-1">
+        <div className="font-semibold text-lg leading-7 mb-3 xl:text-xl xl:leading-7 line-clamp-2">
           {model.name}
         </div>
 
