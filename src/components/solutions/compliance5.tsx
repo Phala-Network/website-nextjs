@@ -8,7 +8,7 @@ const Compliance5 = () => {
       <div className="container">
         <div className="flex flex-col gap-16">
           <div className="space-y-4 text-center">
-            <h2 className="text-4xl font-bold tracking-tight">
+            <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
               Industry-Leading Enterprise Compliance
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-xl">

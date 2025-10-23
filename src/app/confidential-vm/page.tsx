@@ -233,13 +233,12 @@ const FAQ_QUESTIONS = [
 function HeroSection() {
   return (
     <section className="relative py-24">
-      <div className="pointer-events-none absolute inset-0 z-10 bg-[50%_0] bg-[url('https://deifkwefumgah.cloudfront.net/shadcnblocks/block/shadow-overlay.png')] bg-no-repeat" />
       <div className="container p-6 md:p-16">
         <div className="grid gap-12 lg:grid-cols-[2fr_3fr]">
           <div className="flex flex-col gap-8">
             <div>
               <Badge variant="outline">Enterprise Security</Badge>
-              <h1 className="font-display my-9 text-3xl font-semibold leading-none md:text-5xl md:leading-none">
+              <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl my-9">
                 Better Security.
                 <br />
                 <span className="text-muted-foreground">less complexity.</span>
@@ -327,7 +326,7 @@ function MultiTEESection() {
         </div>
         <Separator className="mt-3 mb-8" />
         <div className="flex flex-col justify-between gap-6 md:flex-row">
-          <h2 className="font-display text-3xl font-semibold leading-none md:w-1/2 md:text-4xl md:leading-none">
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:w-1/2 md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
             Multi-TEE platform for every confidential computing use case you can
             think of.
           </h2>
@@ -529,7 +528,7 @@ function DeploymentSection() {
             <h3 className="font-mono text-sm font-semibold tracking-widest text-accent-foreground">
               ZERO-TRUST DEPLOYMENT
             </h3>
-            <h2 className="font-display mt-3 text-3xl font-semibold leading-none sm:text-4xl sm:leading-none lg:text-5xl lg:leading-none">
+            <h2 className="font-display font-semibold text-foreground mt-3 text-3xl leading-tight sm:text-4xl sm:leading-tight lg:text-5xl lg:leading-tight">
               Deploy confidential containers with cryptographic verification
             </h2>
           </div>
@@ -547,7 +546,7 @@ function DeploymentSection() {
                   className="border-black/20 dark:border-white/20"
                 >
                   <AccordionTrigger className="px-5 text-start hover:no-underline sm:px-0">
-                    <h3 className="font-display text-xl font-semibold leading-6 opacity-80">
+                    <h3 className="font-display font-semibold text-foreground text-xl leading-7 opacity-80">
                       {step.title}
                     </h3>
                   </AccordionTrigger>
@@ -611,19 +610,9 @@ const integrationsList1: IntegrationItem[] = [
   { src: 'https://cdn.simpleicons.org/anthropic/191919', text: 'Anthropic' },
   { src: 'https://cdn.simpleicons.org/jupyter/F37626', text: 'Jupyter' },
   { src: 'https://cdn.simpleicons.org/databricks/FF3621', text: 'Databricks' },
-  {
-    src: '',
-    text: '',
-    className: 'bg-linear-to-br from-blue-500 to-blue-300',
-  },
 ]
 
 const integrationsList2: IntegrationItem[] = [
-  {
-    src: '',
-    text: '',
-    className: 'bg-linear-to-br from-green-500 to-green-300',
-  },
   { src: 'https://cdn.simpleicons.org/tensorflow/FF6F00', text: 'TensorFlow' },
   { src: 'https://cdn.simpleicons.org/pytorch/EE4C2C', text: 'PyTorch' },
   { src: 'https://cdn.simpleicons.org/kubernetes/326CE5', text: 'Kubernetes' },
@@ -637,11 +626,6 @@ const integrationsList3: IntegrationItem[] = [
   { src: 'https://cdn.simpleicons.org/langchain/1C3C3C', text: 'LangChain' },
   { src: 'https://cdn.simpleicons.org/vercel/000000', text: 'Vercel' },
   { src: 'https://cdn.simpleicons.org/nextdotjs/000000', text: 'Next.js' },
-  {
-    src: '',
-    text: '',
-    className: 'bg-linear-to-br from-purple-500 to-purple-300',
-  },
 ]
 
 const IntegrationList = ({ list }: { list: IntegrationItem[] }) => {
@@ -685,7 +669,7 @@ function BenefitsSection() {
             <Shield className="size-5" />
             <p className="text-sm">Technical Benefits</p>
           </div>
-          <h2 className="font-display relative z-20 py-2 text-center text-4xl font-semibold leading-none md:py-7 md:text-5xl md:leading-none lg:text-6xl lg:leading-none">
+          <h2 className="font-display font-semibold text-foreground relative z-20 py-2 text-center text-3xl leading-tight md:py-7 md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
             Zero-trust confidential computing
           </h2>
           <p className="font-display text-md text-muted-foreground mx-auto max-w-xl text-center leading-6 lg:text-lg lg:leading-7 mb-10">
@@ -729,7 +713,7 @@ function BenefitsSection() {
         {/* Integration Showcase */}
         <div className="grid w-full grid-cols-1 items-start justify-between overflow-hidden rounded-3xl border border-muted bg-background md:grid-cols-[minmax(18.75rem,28rem)_1fr] md:p-8">
           <div className="order-2 flex flex-col gap-4 p-6 pt-10 md:order-1 md:p-0">
-            <h3 className="font-display text-3xl font-semibold leading-none lg:text-4xl lg:leading-none">
+            <h3 className="font-display font-semibold text-foreground text-2xl leading-snug lg:text-3xl lg:leading-snug">
               Seamlessly integrates with your developer tools
             </h3>
             <p className="font-display text-muted-foreground leading-6">
@@ -780,7 +764,7 @@ const BenefitCard = ({
       )}
     >
       <Icon className="text-muted-foreground mt-3 size-8 stroke-1" />
-      <h1 className="font-display text-2xl font-semibold leading-7">{title}</h1>
+      <h3 className="font-display font-semibold text-foreground text-xl leading-7">{title}</h3>
       <p className="font-display text-muted-foreground text-sm leading-5">{description}</p>
     </div>
   )
@@ -788,32 +772,29 @@ const BenefitCard = ({
 
 function FAQSection() {
   return (
-    <section className="bg-background py-32">
-      <div className="container">
-        <h2 className="font-display text-foreground mb-10 text-center text-4xl font-semibold leading-none md:text-5xl md:leading-none lg:text-6xl lg:leading-none">
-          Technical Q&A
-        </h2>
-        <div className="border-border bg-background z-20 mx-auto max-w-2xl rounded-2xl border p-3">
-          <Accordion
-            type="single"
-            collapsible
-            className="flex w-full flex-col items-center justify-center gap-3"
-          >
-            {FAQ_QUESTIONS.map((item, index) => (
-              <AccordionItem
-                value={index.toString()}
-                key={index}
-                className="bg-muted m-0 w-full rounded-xl px-4 py-2"
-              >
-                <AccordionTrigger className="flex flex-1 justify-between text-left font-semibold transition-all hover:no-underline">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="font-display text-muted-foreground leading-6 mt-2">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+    <section className="w-full py-24 max-w-7xl mx-auto">
+      <div className="container mx-auto">
+        <div className="text-center">
+          <Badge className="text-xs leading-4 font-medium">FAQ</Badge>
+          <h1 className="font-display mt-4 text-3xl leading-none md:text-4xl font-semibold">
+            Common Questions & Answers
+          </h1>
+          <p className="mt-4 text-lg leading-7 md:text-xl font-display font-medium text-muted-foreground">
+            Everything you need to know about Confidential VM
+          </p>
+        </div>
+        <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
+          {FAQ_QUESTIONS.map((faq, index) => (
+            <div key={faq.question} className="flex gap-4">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-sm leading-5 text-muted-foreground font-semibold">
+                {index + 1}
+              </span>
+              <div>
+                <h3 className="font-semibold text-lg leading-7">{faq.question}</h3>
+                <p className="text-muted-foreground text-base leading-6">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

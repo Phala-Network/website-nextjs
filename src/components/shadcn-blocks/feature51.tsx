@@ -9,7 +9,7 @@ const Feature51 = () => {
     <section className="py-24">
       <div className="container max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="font-display text-3xl font-bold leading-none md:text-5xl mb-4 text-foreground">
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl mb-4">
             Three Ways to Deploy GPU TEE
           </h2>
           <p className="text-muted-foreground font-display text-lg leading-7 max-w-3xl mx-auto">
@@ -72,7 +72,7 @@ const Feature51 = () => {
           </TabsList>
           <TabsContent value="cvm-gpu" className="mt-8">
             <div className="rounded-lg border bg-card p-8">
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl mb-4">
                 CVM + GPU: Maximum Flexibility
               </h3>
               <p className="text-muted-foreground mb-6">
@@ -116,7 +116,7 @@ const Feature51 = () => {
           </TabsContent>
           <TabsContent value="confidential-models" className="mt-8">
             <div className="rounded-lg border bg-card p-8">
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl mb-4">
                 Confidential AI Models: Fast Time-to-Market
               </h3>
               <p className="text-muted-foreground mb-6">
@@ -150,7 +150,7 @@ const Feature51 = () => {
           </TabsContent>
           <TabsContent value="enterprise" className="mt-8">
             <div className="rounded-lg border bg-card p-8">
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl mb-4">
                 Enterprise Solutions: White-Glove Service
               </h3>
               <p className="text-muted-foreground mb-6">

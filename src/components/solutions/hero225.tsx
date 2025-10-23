@@ -34,7 +34,7 @@ const Hero225 = () => {
       <div className="container">
         <div className="flex flex-col items-center justify-center gap-4">
           <p className="text-lg text-muted-foreground">Private AI Inference</p>
-          <h1 className="max-w-5xl text-center font-display text-5xl font-semibold leading-none lg:text-7xl">
+          <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl max-w-5xl text-center">
             Serve LLMs without exposing prompts or weights
           </h1>
         </div>

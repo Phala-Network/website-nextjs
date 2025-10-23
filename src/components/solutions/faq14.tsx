@@ -1,12 +1,4 @@
-import { type SVGProps, useId } from 'react'
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 
 interface FaqItem {
   question: string
@@ -83,100 +75,39 @@ const DEFAULT_FAQ_ITEMS: FaqCategory[] = [
 ]
 
 export function Faq14({
-  title = 'Frequently Asked Questions',
-  subtitle = 'Everything you need to know about Charter',
+  title = 'Common Questions & Answers',
+  subtitle = 'Find out all the essential details about our platform and how it can serve your needs.',
   faqItems = DEFAULT_FAQ_ITEMS,
 }: Faq14Props) {
+  // Flatten all FAQ items from all categories into a single array
+  const allFaqs = faqItems.flatMap((category) => category.items)
+
   return (
-    <section className="relative py-32">
-      <div className="container">
+    <section className="w-full py-24 max-w-7xl mx-auto">
+      <div className="container mx-auto">
         <div className="text-center">
-          <h1 className="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+          <Badge className="text-xs leading-4 font-medium">FAQ</Badge>
+          <h1 className="font-display mt-4 text-3xl leading-none md:text-4xl font-semibold">
             {title}
           </h1>
-          <p className="mt-4 text-2xl text-muted-foreground md:text-3xl">
+          <p className="mt-4 text-lg leading-7 md:text-xl font-display font-medium text-muted-foreground">
             {subtitle}
           </p>
         </div>
-
-        <div className="mx-auto mt-8 max-w-2xl space-y-12 md:mt-12 lg:mt-20">
-          {faqItems.map((category) => (
-            <Card key={category.category} className="border-hidden bg-muted">
-              <CardHeader className="pb-0">
-                <h3 className="border-b pb-4 font-mono text-sm font-medium tracking-widest text-accent-foreground uppercase">
-                  {category.category}
-                </h3>
-              </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  {category.items.map((item, i) => (
-                    <AccordionItem
-                      key={i}
-                      value={`${category.category}-${i}`}
-                      className="border-b border-muted last:border-0"
-                    >
-                      <AccordionTrigger className="text-start text-base font-medium hover:no-underline">
-                        {item.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-base font-medium text-muted-foreground">
-                        {item.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </CardContent>
-            </Card>
+        <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
+          {allFaqs.map((faq, index) => (
+            <div key={faq.question} className="flex gap-4">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-sm leading-5 text-muted-foreground font-semibold">
+                {index + 1}
+              </span>
+              <div>
+                <h3 className="font-semibold text-lg leading-7">{faq.question}</h3>
+                <p className="text-muted-foreground text-base leading-6">{faq.answer}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
-      <div className="absolute -inset-40 z-[-1] [mask-image:radial-gradient(circle_at_center,black_0%,black_20%,transparent_75%)]">
-        <PlusSigns className="h-full w-full text-foreground/[0.05]" />
-      </div>
     </section>
-  )
-}
-
-interface PlusSignsProps extends SVGProps<SVGSVGElement> {
-  className?: string
-}
-
-const PlusSigns = ({ className, ...props }: PlusSignsProps) => {
-  const GAP = 16
-  const STROKE_WIDTH = 1
-  const PLUS_SIZE = 6
-  const id = useId()
-  const patternId = `plus-pattern-${id}`
-
-  return (
-    <svg width={GAP * 2} height={GAP * 2} className={className} {...props}>
-      <defs>
-        <pattern
-          id={patternId}
-          x="0"
-          y="0"
-          width={GAP}
-          height={GAP}
-          patternUnits="userSpaceOnUse"
-        >
-          <line
-            x1={GAP / 2}
-            y1={(GAP - PLUS_SIZE) / 2}
-            x2={GAP / 2}
-            y2={(GAP + PLUS_SIZE) / 2}
-            stroke="currentColor"
-            strokeWidth={STROKE_WIDTH}
-          />
-          <line
-            x1={(GAP - PLUS_SIZE) / 2}
-            y1={GAP / 2}
-            x2={(GAP + PLUS_SIZE) / 2}
-            y2={GAP / 2}
-            stroke="currentColor"
-            strokeWidth={STROKE_WIDTH}
-          />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill={`url(#${patternId})`} />
-    </svg>
   )
 }

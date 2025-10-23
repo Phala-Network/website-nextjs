@@ -95,7 +95,7 @@ export function CompareFullStackTEE() {
     <section className="py-24 bg-white">
       <div className="container mx-auto">
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <h2 className="mb-4 font-display text-4xl font-bold leading-none md:text-5xl lg:text-6xl">
+          <h2 className="mb-4 font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
             Private GPU like Local,
             <br />
             But No DevOps Troubles

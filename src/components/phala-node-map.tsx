@@ -79,7 +79,7 @@ export function PhalaNodeMap() {
           <p className="bg-muted mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-wider">
             GLOBAL INFRASTRUCTURE
           </p>
-          <h2 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
+          <h2 className="font-display font-semibold text-foreground mb-4 text-3xl leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
             Phala Cloud Worldwide Network
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -95,7 +95,7 @@ export function PhalaNodeMap() {
               <div className="rounded-full bg-primary/10 p-3 mb-3">
                 <Cpu className="h-6 w-6 text-primary" />
               </div>
-              <p className="text-4xl font-bold text-primary mb-1">
+              <p className="text-4xl font-bold text-foreground mb-1">
                 {totalVCPUs}
               </p>
               <p className="text-sm text-muted-foreground">Total vCPUs</p>
@@ -106,7 +106,7 @@ export function PhalaNodeMap() {
               <div className="rounded-full bg-primary/10 p-3 mb-3">
                 <Zap className="h-6 w-6 text-primary" />
               </div>
-              <p className="text-4xl font-bold text-primary mb-1">
+              <p className="text-4xl font-bold text-foreground mb-1">
                 {totalGPUs}
               </p>
               <p className="text-sm text-muted-foreground">Total H200 GPUs</p>
@@ -130,7 +130,7 @@ export function PhalaNodeMap() {
                   />
                 </svg>
               </div>
-              <p className="text-4xl font-bold text-primary mb-1">
+              <p className="text-4xl font-bold text-foreground mb-1">
                 {uniqueLocations}
               </p>
               <p className="text-sm text-muted-foreground">Global Locations</p>

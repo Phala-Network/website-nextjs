@@ -43,7 +43,7 @@ const PerformanceSecurityMerged = () => {
             <p className="bg-muted mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-wider">
               REAL-WORLD PERFORMANCE
             </p>
-            <h2 className="font-display text-3xl font-bold leading-none md:text-5xl mb-4">
+            <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl mb-4">
               Hardware Security Without Compromise
             </h2>
             <p className="text-muted-foreground font-display text-lg leading-7 max-w-3xl mx-auto">

@@ -49,7 +49,7 @@ const GpuTeeHero = () => {
             </span>
           </div>
 
-          <h1 className="text-5xl font-bold tracking-tight lg:text-7xl">
+          <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl">
             Run Powerful AI GPUs,
             <br />
             <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">

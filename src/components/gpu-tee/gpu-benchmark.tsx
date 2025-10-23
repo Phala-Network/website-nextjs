@@ -31,7 +31,7 @@ export function GpuBenchmark({
     <section className="py-32 bg-muted/30">
       <div className="container">
         <div className="mx-auto max-w-5xl text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 lg:text-5xl">{title}</h2>
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl mb-4">{title}</h2>
           <p className="text-lg text-muted-foreground">
             Official benchmarks from MLPerf v5.0 and NVIDIA Technical Labs
           </p>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import SolutionsCTA from '@/components/solutions-cta'
+import AIAgentsFAQ from '@/components/solutions/ai-agents-faq'
 import { Casestudies1Agents } from '@/components/solutions/casestudies1-agents'
 import { Compliance5 } from '@/components/solutions/compliance5'
 import { Feature3Frameworks } from '@/components/solutions/feature3-frameworks'
@@ -55,6 +56,7 @@ export default function AIAgentsPage() {
         ]}
       />
       <Compliance5 />
+      <AIAgentsFAQ />
       <SolutionsCTA />
     </>
   )

@@ -15,7 +15,7 @@ export function H100Hero() {
               <Server className="mr-2 size-4" />
               NVIDIA H100 Tensor Core GPU
             </Badge>
-            <h1 className="mb-8 text-balance font-display text-5xl font-semibold leading-none lg:text-6xl xl:text-7xl">
+            <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl mb-8 text-balance">
               Enterprise AI with H100 GPUs
             </h1>
             <div className="flex w-full justify-center overflow-hidden rounded-xl lg:justify-start">

@@ -5,7 +5,7 @@ const Feature22 = () => {
     <section className="py-16 sm:py-24 md:py-32">
       <div className="container">
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-8 md:gap-12 lg:grid-cols-3 lg:gap-16">
-          <h2 className="mb-4 text-3xl font-medium sm:col-span-2 sm:text-4xl md:mb-0 lg:col-span-1">
+          <h2 className="mb-4 font-display font-semibold text-foreground text-3xl leading-tight sm:col-span-2 md:mb-0 md:text-4xl lg:col-span-1 lg:text-5xl">
             Financial Agents
           </h2>
           <ul className="text-muted-foreground flex flex-col gap-3 sm:gap-4">

@@ -15,11 +15,11 @@ const Hero24 = ({ starCount }: Hero24Props) => {
           <Image
             src="/dstack/logo.svg"
             alt="dstack Logo"
-            className="mx-auto mb-7 h-16 md:h-24 md:mb-7"
+            className="mx-auto mb-7 h-8 md:h-12"
             width={410}
             height={106}
           />
-          <h1 className="mt-4 font-display text-4xl font-semibold leading-none text-balance lg:text-6xl lg:leading-none">
+          <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl mt-4 text-balance">
             Open-Source<br />Confidential Compute
           </h1>
           <p className="mt-8 font-display text-muted-foreground max-w-3xl mx-auto text-xl leading-7 font-medium">

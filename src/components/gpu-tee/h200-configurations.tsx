@@ -42,7 +42,7 @@ export function H200Configurations() {
   return (
     <section className="bg-background py-24">
       <div className="container">
-        <h2 className="mb-10 text-center font-display text-5xl font-semibold leading-none text-foreground lg:text-6xl">
+        <h2 className="mb-10 text-center font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
           Available H200 Configurations
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-6xl mx-auto">
@@ -57,7 +57,7 @@ export function H200Configurations() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <Server className="h-5 w-5 text-primary" />
-                        <h3 className="font-display text-2xl font-bold leading-none text-foreground transition-colors duration-200 group-hover:text-primary">
+                        <h3 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl transition-colors duration-200 group-hover:text-primary">
                           {config.name}
                         </h3>
                       </div>

@@ -9,7 +9,7 @@ const H200MetricsBento = () => {
     <section className="py-24 bg-muted/30">
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="font-display text-5xl font-semibold leading-none mb-4 lg:text-6xl">
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl mb-4">
             Flagship AI Performance
           </h2>
           <p className="font-display text-lg leading-7 text-muted-foreground max-w-2xl mx-auto lg:text-xl">
@@ -97,7 +97,7 @@ const H200MetricsBento = () => {
             <div className="absolute inset-0 flex flex-col justify-between p-6">
               <div>
                 <Shield className="h-10 w-10 text-emerald-600 mb-4" />
-                <h3 className="font-display text-2xl font-bold leading-none mb-2">Full-Stack TEE</h3>
+                <h3 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl mb-2">Full-Stack TEE</h3>
                 <p className="font-display text-sm leading-5 text-muted-foreground">
                   Intel TDX + NVIDIA Confidential Computing with dual
                   attestation

@@ -57,9 +57,9 @@ const Feature67 = () => {
     <section className="py-24">
       <div className="container flex flex-col items-start gap-8 lg:gap-12 lg:px-16 xl:flex-row xl:gap-32">
         <div className="xl:max-w-md lg:max-w-xl shrink-0">
-          <h3 className="font-display text-3xl font-semibold leading-none md:shrink-0 md:text-4xl lg:text-5xl mb-4">
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:shrink-0 md:text-4xl lg:text-5xl mb-4">
             What is GPU TEE?
-          </h3>
+          </h2>
           <p className="text-muted-foreground font-display text-lg leading-7 mb-4">
             GPU TEE (Trusted Execution Environment) provides{' '}
             <strong className="text-foreground">

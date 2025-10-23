@@ -100,7 +100,7 @@ const Feature221 = () => {
       <div className="container">
         <div className="flex w-full flex-col items-start justify-between gap-4 pb-16 lg:flex-row lg:items-end">
           <div className="flex w-full max-w-[32rem] flex-1 flex-col items-start gap-5">
-            <h2 className="font-display text-[2rem] font-bold leading-none tracking-tight md:text-[2.75rem] lg:text-5xl">
+            <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
               Available GPU Configurations
             </h2>
             <p className="text-muted-foreground font-display w-full max-w-[30rem] text-[1.15rem] font-medium leading-7 sm:text-xl">

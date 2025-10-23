@@ -26,9 +26,9 @@ export function H100Configurations() {
   return (
     <section className="bg-background py-32">
       <div className="container">
-        <h1 className="mb-10 text-center text-3xl font-bold tracking-tighter text-foreground lg:text-6xl">
+        <h2 className="mb-10 text-center font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
           Available H100 Configurations
-        </h1>
+        </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-5xl mx-auto">
           {configurations.map((config, index) => (
             <div
@@ -41,7 +41,7 @@ export function H100Configurations() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <Server className="h-5 w-5 text-primary" />
-                        <h3 className="text-2xl font-bold text-foreground transition-colors duration-200 group-hover:text-primary">
+                        <h3 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl transition-colors duration-200 group-hover:text-primary">
                           {config.name}
                         </h3>
                       </div>
