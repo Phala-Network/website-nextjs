@@ -17,16 +17,11 @@ export const metadata: Metadata = {
     'Deploy NVIDIA B200 Blackwell GPUs with TEE protection. 192GB HBM3e memory, 8 TB/s bandwidth, 15x faster inference. Next-generation confidential AI with Intel TDX + NVIDIA Confidential Computing.',
   ),
   keywords: [
-    'B200 GPU TEE',
-    'NVIDIA B200 confidential computing',
-    'B200 private AI',
-    'next-gen GPU TEE',
-    'confidential B200',
-    'B200 GPU security',
-    'B200 with TEE',
-    'private B200 GPU',
-    'B200 Blackwell TEE',
-    'NVIDIA Blackwell encryption',
+    'blackwell on prem',
+    'NVIDIA GPU TEE',
+    'blackwell private AI',
+    'Blackwell TEE',
+    'confidential blackwell',
   ],
 }
 
@@ -35,7 +30,7 @@ export default function B200Page() {
   const productJsonLd = productSchema(
     'NVIDIA B200 Blackwell GPU TEE',
     'Next-generation confidential computing with NVIDIA B200 Blackwell GPUs. 192GB HBM3e memory, 8 TB/s bandwidth, up to 15x faster inference with Intel TDX protection and NVIDIA Confidential Computing.',
-    'https://phala.network/gpu-tee/b200',
+    'https://phala.com/gpu-tee/b200',
   )
 
   const otherGpuModels = [

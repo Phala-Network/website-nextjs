@@ -22,11 +22,6 @@ export const metadata: Metadata = {
     'H200 private AI',
     'H200 secure training',
     'confidential H200',
-    'H200 GPU privacy',
-    'H200 with TEE',
-    'private H200 GPU',
-    'H200 Tensor Core TEE',
-    'NVIDIA H200 encryption',
   ],
 }
 
@@ -35,7 +30,7 @@ export default function H200Page() {
   const productJsonLd = productSchema(
     'NVIDIA H200 GPU TEE',
     'Flagship confidential computing with NVIDIA H200 Tensor Core GPUs. 141GB HBM3e memory, 4.8 TB/s bandwidth, Intel TDX protection, and NVIDIA Confidential Computing for the most demanding private AI workloads.',
-    'https://phala.network/gpu-tee/h200',
+    'https://phala.com/gpu-tee/h200',
   )
 
   const otherGpuModels = [

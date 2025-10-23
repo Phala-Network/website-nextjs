@@ -18,16 +18,10 @@ export const metadata: Metadata = {
   ),
   keywords: [
     'GPU TEE',
-    'confidential GPU',
+    'confidential AI GPU',
     'private GPU computing',
-    'NVIDIA H100 TEE',
-    'NVIDIA H200 TEE',
-    'NVIDIA B200 TEE',
-    'confidential AI training',
-    'private GPU cloud',
-    'secure GPU inference',
-    'Intel TDX',
-    'NVIDIA Confidential Computing',
+    'Nvidia confidential compute',
+    'H200 TEE',
   ],
 }
 
@@ -36,7 +30,7 @@ export default function GpuTeePage() {
   const productJsonLd = productSchema(
     'GPU TEE - Confidential GPU Computing',
     'Hardware-secured GPU computing with NVIDIA H100/H200/B200 and Intel TDX. Deploy confidential AI training, private inference, and secure GPU workloads with end-to-end TEE protection.',
-    'https://phala.network/gpu-tee',
+    'https://phala.com/gpu-tee',
   )
 
   return (

@@ -22,11 +22,6 @@ export const metadata: Metadata = {
     'H100 private AI',
     'H100 secure inference',
     'confidential H100',
-    'private H100 GPU',
-    'H100 with TEE',
-    'H100 GPU privacy',
-    'H100 Tensor Core TEE',
-    'NVIDIA H100 encryption',
   ],
 }
 
@@ -35,7 +30,7 @@ export default function H100Page() {
   const productJsonLd = productSchema(
     'NVIDIA H100 GPU TEE',
     'Enterprise-grade confidential computing with NVIDIA H100 Tensor Core GPUs. 80GB HBM3 memory, Intel TDX protection, and NVIDIA Confidential Computing for private AI training and secure inference.',
-    'https://phala.network/gpu-tee/h100',
+    'https://phala.com/gpu-tee/h100',
   )
 
   const otherGpuModels = [

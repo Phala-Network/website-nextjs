@@ -24,7 +24,7 @@ export function clamp(text: string, maxLength: number): string {
  * @returns Optimized title string
  */
 export function makeTitle(pageTitle: string, includeBrand = true): string {
-  const brandSuffix = ' | Phala Network'
+  const brandSuffix = ' | Phala'
   const maxLength = 60
 
   if (!includeBrand) {
@@ -65,12 +65,12 @@ export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Phala Network',
+    name: 'Phala',
     alternateName: 'Phala Cloud',
-    url: 'https://phala.network',
-    logo: 'https://phala.network/logo.png',
+    url: 'https://phala.com',
+    logo: 'https://phala.com/logo.png',
     description:
-      'Decentralized confidential computing platform for private AI and secure cloud infrastructure with GPU TEE support.',
+      'Confidential computing platform for private AI and secure cloud infrastructure with GPU TEE support.',
     foundingDate: '2019',
     sameAs: [
       'https://twitter.com/PhalaNetwork',
@@ -81,7 +81,7 @@ export function organizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Sales',
-      url: 'https://phala.network/contact',
+      url: 'https://phala.com/contact',
     },
   }
 }
@@ -109,7 +109,7 @@ export function productSchema(
     url,
     brand: {
       '@type': 'Brand',
-      name: 'Phala Network',
+      name: 'Phala',
     },
     ...(imageUrl && { image: imageUrl }),
     offers: {
@@ -177,10 +177,10 @@ export function articleSchema(
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Phala Network',
+      name: 'Phala',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://phala.network/logo.png',
+        url: 'https://phala.com/logo.png',
       },
     },
     ...(imageUrl && {

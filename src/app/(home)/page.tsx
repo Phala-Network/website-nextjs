@@ -26,9 +26,9 @@ export default async function HomePage() {
   const organizationJsonLd = organizationSchema()
   const productJsonLd = productSchema(
     'Phala Cloud - Confidential Computing Platform',
-    'Decentralized confidential computing platform for private AI and secure cloud infrastructure with GPU TEE support. Deploy confidential AI models, private agents, and encrypted workloads.',
-    'https://phala.network',
-    'https://phala.network/opengraph-image.png',
+    'Confidential computing platform for private AI and secure cloud infrastructure with GPU TEE support. Deploy confidential AI models, private agents, and encrypted workloads.',
+    'https://phala.com',
+    'https://phala.com/opengraph-image.png',
   )
 
   return (
