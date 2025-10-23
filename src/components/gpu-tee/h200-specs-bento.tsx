@@ -12,7 +12,7 @@ export function H200SpecsBento() {
             <div className="absolute inset-0 flex flex-col justify-center p-8">
               <div className="flex items-center gap-2 mb-4">
                 <Server className="size-8 text-sky-600" />
-                <h2 className="text-3xl font-bold">NVIDIA H200</h2>
+                <h2 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl">NVIDIA H200</h2>
               </div>
               <p className="text-lg text-muted-foreground mb-6">
                 Flagship AI GPU with industry's largest memory and Full-Stack

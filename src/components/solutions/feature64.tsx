@@ -3,9 +3,9 @@ const Feature64 = () => {
     <section className="py-32">
       <div className="container flex flex-col items-center gap-16 lg:px-16">
         <div className="text-center">
-          <h3 className="mb-3 text-pretty text-3xl font-semibold md:mb-4 md:text-4xl lg:mb-6 lg:max-w-3xl lg:text-5xl">
+          <h2 className="mb-3 text-pretty font-display font-semibold text-foreground text-3xl leading-tight md:mb-4 md:text-4xl lg:mb-6 lg:max-w-3xl lg:text-5xl">
             Autonomous Agents
-          </h3>
+          </h2>
           <p className="text-muted-foreground lg:max-w-3xl lg:text-lg">
             Self-operating agents that make decisions, execute transactions, and
             interact with blockchains autonomously in secure enclaves

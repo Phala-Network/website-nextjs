@@ -9,7 +9,7 @@ const H100MetricsBento = () => {
     <section className="py-32">
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold mb-4 lg:text-5xl">
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl mb-4">
             Proven Enterprise Performance
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -97,7 +97,7 @@ const H100MetricsBento = () => {
             <div className="absolute inset-0 flex flex-col justify-between p-6">
               <div>
                 <Shield className="h-10 w-10 text-emerald-600 mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Full-Stack TEE</h3>
+                <h3 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl mb-2">Full-Stack TEE</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Intel TDX + NVIDIA Confidential Computing protection with
                   cryptographic attestation
@@ -121,7 +121,7 @@ const H100MetricsBento = () => {
             <CardContent className="h-full p-6 flex flex-col justify-between">
               <div>
                 <TrendingUp className="h-8 w-8 text-amber-600 mb-3" />
-                <h3 className="text-xl font-bold mb-2">MLPerf Certified</h3>
+                <h3 className="font-display font-semibold text-foreground text-lg leading-snug mb-2">MLPerf Certified</h3>
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">

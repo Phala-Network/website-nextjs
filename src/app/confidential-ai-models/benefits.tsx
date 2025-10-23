@@ -20,7 +20,7 @@ const Benefits = () => {
           <div className="h-30 pointer-events-none absolute bg-linear-to-t from-background via-transparent to-transparent bottom-0 left-0 right-0"></div>
 
           <div className="flex flex-col items-center max-w-3xl text-center text-balance">
-            <h2 className="font-display mt-6 mb-3 text-3xl font-semibold leading-none lg:text-4xl">
+            <h2 className="font-display mt-6 mb-3 font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
               Win Your Users' Trust
             </h2>
             <p className="font-display text-muted-foreground mt-4 leading-6">

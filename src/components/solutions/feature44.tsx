@@ -28,7 +28,7 @@ const Feature44 = () => {
   return (
     <section className="py-32">
       <div className="container">
-        <h2 className="mb-4 text-2xl font-semibold lg:text-4xl">
+        <h2 className="mb-4 font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
           Personal Agents
         </h2>
         <p className="text-muted-foreground lg:text-lg">

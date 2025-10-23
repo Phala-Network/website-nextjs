@@ -109,9 +109,9 @@ const ModelsList = ({ models }: ModelsListProps) => {
   return (
     <section className="py-24">
       <div className="container">
-        <h1 className="font-display text-center text-3xl font-semibold leading-none lg:text-4xl mb-6">
+        <h2 className="font-display text-center font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl mb-6">
           Available Models
-        </h1>
+        </h2>
         <p className="font-display text-center text-muted-foreground leading-6 mb-10 max-w-2xl mx-auto">
           Access the latest frontier AI models with cryptographic privacy
           protection

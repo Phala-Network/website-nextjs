@@ -1,5 +1,5 @@
 'use client'
-import { Bot, Loader2, Lock, Send, User } from 'lucide-react'
+import { Loader2, Lock, Send } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -35,8 +35,8 @@ function useSealAnimation(on: boolean, src: string) {
 
 // --- UI elements ---
 const Avatar = ({ who }: { who: 'user' | 'ai' }) => (
-  <div className="shrink-0 size-10 rounded-full grid place-items-center border">
-    {who === 'user' ? <User size={16} /> : <Bot size={16} />}
+  <div className="shrink-0 size-10 rounded-full grid place-items-center border text-lg">
+    {who === 'user' ? '👤' : '🤖'}
   </div>
 )
 
@@ -58,7 +58,7 @@ const ChatBubble = ({
   >
     <Avatar who={who} />
     <div
-      className={`w-[calc(100%-10rem)] rounded-2xl px-3 sm:px-5 py-3 sm:py-4 border text-sm sm:text-base lg:text-lg ${
+      className={`w-[calc(100%-10rem)] rounded-2xl px-3 sm:px-5 py-3 sm:py-4 border text-sm sm:text-base lg:text-lg bg-muted/50 ${
         // darker light bubble
         `text-foreground ${dim ? 'opacity-60' : ''}`
       }`}
@@ -205,7 +205,7 @@ const ConfidentialAI = () => {
       </div>
 
       {/* Conversation only */}
-      <div className="p-3 sm:p-6 lg:p-8 space-y-3 sm:space-y-4 flex-1 flex flex-col">
+      <div className="p-3 sm:p-6 lg:p-8 space-y-3 sm:space-y-4 flex-1 flex flex-col bg-white dark:bg-background">
         <div className="flex-1 space-y-3 sm:space-y-4">
           <AnimatePresence initial={false}>
             {step !== 'idle' && (
@@ -296,7 +296,7 @@ const Hero = () => {
       <div className="container">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] items-center">
           <div className="flex flex-col gap-6 lg:gap-10 lg:pl-8">
-            <h1 className="font-display text-3xl/snug sm:text-5xl/snug md:text-6xl/snug font-semibold leading-none">
+            <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl">
               Confidential <br className="hidden lg:block" /> AI Models
             </h1>
             <p className="font-display text-muted-foreground text-lg leading-7">

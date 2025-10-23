@@ -71,7 +71,7 @@ const ForEnterprises = () => {
         <div className="grid items-center gap-20 md:grid-cols-2">
           <div className="flex flex-col items-center gap-6 text-center md:items-start md:text-left">
             <Badge variant="outline">Enterprise</Badge>
-            <h2 className="font-display text-3xl font-semibold leading-none md:text-4xl">
+            <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
               Build Your Own PCC
             </h2>
             <p className="font-display text-muted-foreground leading-6 text-balance">

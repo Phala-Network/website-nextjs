@@ -14,7 +14,7 @@ const Hero74 = () => {
     <section className="py-32">
       <div>
         <div className="container text-center">
-          <h1 className="font-display mb-4 text-5xl font-medium leading-none">
+          <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl mb-4">
             Fine-Tuned Models: Private Customization
           </h1>
           <p className="font-display text-muted-foreground text-lg leading-7 md:text-xl max-w-3xl mx-auto">

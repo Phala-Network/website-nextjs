@@ -71,7 +71,7 @@ const GpuTeeCompare = () => {
     <section className="py-32">
       <div className="container mx-auto">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mb-4 font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
             Full-Stack TEE Protection: Beyond NVIDIA-Only Solutions
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-muted-foreground">

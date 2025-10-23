@@ -7,9 +7,9 @@ const Feature3 = () => {
     <section className="py-32">
       <div className="container">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-          <h1 className="mb-6 text-pretty text-4xl font-semibold lg:text-5xl">
+          <h2 className="mb-6 text-pretty font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
             Popular Frameworks
-          </h1>
+          </h2>
 
           <div className="mt-10 grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <Card>

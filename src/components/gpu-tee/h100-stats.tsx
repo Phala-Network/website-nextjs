@@ -28,9 +28,9 @@ export function H100Stats() {
       <style>{css}</style>
       <div className="gradient container">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="lg::text-6xl w-full font-display text-5xl font-semibold leading-none lg:text-6xl">
+          <h2 className="w-full font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
             H100: Proven Enterprise Performance
-          </h1>
+          </h2>
           <p className="my-4 tracking-tight text-muted-foreground lg:px-15 lg:text-lg">
             Battle-tested GPU delivering exceptional AI performance with
             complete Full-Stack TEE protection. Compare H100 vs competitors.

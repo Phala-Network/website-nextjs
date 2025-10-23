@@ -50,7 +50,7 @@ const Feature76 = () => {
     <section className="relative pt-24 pb-24">
       <div className="container relative z-10 flex flex-col space-y-14">
         <div className="px-6 lg:px-10">
-          <h2 className="font-display text-3xl font-semibold leading-none md:mb-4 md:text-5xl lg:mb-6 lg:max-w-2xl">
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl md:mb-4 lg:text-5xl lg:mb-6 lg:max-w-2xl">
             What You Can Build with GPU TEE
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl font-display text-lg leading-7">
@@ -71,7 +71,7 @@ const Feature76 = () => {
                   {feature.icon}
                 </div>
                 <div>
-                  <h3 className="mb-3 max-w-[14rem] text-lg font-semibold md:mb-4 md:text-2xl lg:mb-6">
+                  <h3 className="mb-3 max-w-[14rem] font-display font-semibold text-foreground text-xl leading-snug md:mb-4 md:text-2xl lg:mb-6">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground">{feature.description}</p>

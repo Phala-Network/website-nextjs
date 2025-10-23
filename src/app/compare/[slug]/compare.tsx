@@ -4,6 +4,7 @@ import { Fragment } from 'react'
 
 import FinalCTA from '@/components/final-cta'
 import { Feature13 } from '@/components/shadcn-blocks/feature13'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import type { ComparisonData, ComparisonStatus } from '@/data/comparisons'
 
@@ -66,21 +67,28 @@ export default function Compare({ data, currentSlug }: CompareProps) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-muted">
-        <div className="container">
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-muted via-background to-muted opacity-60" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+
+        <div className="container relative">
           <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:gap-16">
             <div className="flex-1 md:max-w-2xl">
               <div className="flex flex-col items-start">
+                <Badge variant="outline" className="mb-6 text-xs font-medium uppercase tracking-wider">
+                  Platform Comparison
+                </Badge>
                 <h1 className="mb-6 font-display text-5xl font-semibold leading-none text-foreground lg:text-6xl xl:text-7xl">
                   {data.hero.title}
                 </h1>
                 {data.hero.alternativeText && (
-                  <p className="mb-8 font-display text-xl leading-7 text-muted-foreground">
+                  <p className="mb-8 text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
                     {data.hero.alternativeText}
                   </p>
                 )}
                 {data.hero.subtitle && (
-                  <p className="mb-8 font-display text-lg leading-7 text-muted-foreground">
+                  <p className="mb-8 text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
                     {data.hero.subtitle}
                   </p>
                 )}
@@ -111,17 +119,24 @@ export default function Compare({ data, currentSlug }: CompareProps) {
         <div className="mx-auto max-w-4xl">
           {/* Quick Takeaways */}
           <section className="mb-20">
-            <h2 className="mb-8 font-display text-3xl font-semibold leading-tight text-foreground">
-              Why Choose Phala?
-            </h2>
+            <div className="mb-8">
+              <Badge variant="outline" className="mb-4 text-xs font-medium uppercase tracking-wider">
+                Quick Overview
+              </Badge>
+              <h2 className="font-display text-3xl font-semibold leading-tight text-foreground">
+                Why Choose Phala?
+              </h2>
+            </div>
             <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
               {data.quickTakeaways.map((takeaway) => (
                 <div
                   key={takeaway}
-                  className="flex items-start gap-3 rounded-lg border p-4 bg-background"
+                  className="group flex items-start gap-4 rounded-xl border bg-gradient-to-br from-green-50/50 via-background to-background p-6 transition-all hover:shadow-md hover:border-green-200 dark:from-green-950/10 dark:hover:border-green-800"
                 >
-                  <CheckCircle className="mt-0.5 size-5 shrink-0 text-green-600" />
-                  <span className="font-display text-base leading-7 text-foreground">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900/30">
+                    <CheckCircle className="size-5 text-green-600 dark:text-green-500" />
+                  </div>
+                  <span className="text-foreground text-base leading-6 lg:text-lg lg:leading-7 pt-1.5">
                     {takeaway}
                   </span>
                 </div>
@@ -131,51 +146,71 @@ export default function Compare({ data, currentSlug }: CompareProps) {
 
           {/* Comparison Table */}
           <section className="mb-20">
-            <h2 className="mb-12 font-display text-3xl font-semibold leading-tight text-foreground">
-              Feature Comparison
-            </h2>
-            <div className="overflow-x-auto">
-              <div className="grid min-w-2xl grid-cols-3">
-                {/* Header Row */}
-                <div className="border-b border-border p-6"></div>
-                <div className="flex flex-col items-center gap-2 rounded-t-2xl border-b border-border bg-muted p-6">
-                  <p className="font-display text-lg font-semibold">Phala</p>
-                  <p className="mt-1 font-display text-center text-sm leading-5 text-muted-foreground">
-                    Open-source confidential AI
-                  </p>
-                </div>
-                <div className="flex flex-col items-center gap-2 border-b border-border p-6">
-                  <p className="font-display text-lg font-semibold">
-                    {data.competitor.name}
-                  </p>
-                  <p className="mt-1 font-display text-center text-sm leading-5 text-muted-foreground">
-                    {data.competitor.description}
-                  </p>
-                </div>
+            <div className="mb-12 text-center">
+              <Badge variant="outline" className="mb-4 text-xs font-medium uppercase tracking-wider">
+                Feature Comparison
+              </Badge>
+              <h2 className="font-display text-3xl font-semibold leading-tight text-foreground">
+                See How We Stack Up
+              </h2>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-border bg-background/50 backdrop-blur-sm">
+              <div className="overflow-x-auto">
+                <div className="grid min-w-2xl grid-cols-3">
+                  {/* Header Row */}
+                  <div className="border-b border-border/50 p-6"></div>
+                  <div className="flex flex-col items-center gap-2 border-b border-border/50 bg-green-50/50 p-6 dark:bg-green-950/20">
+                    <CheckCircle className="mb-2 size-8 text-green-600" />
+                    <p className="font-display text-lg font-medium">Phala</p>
+                    <p className="mt-1 text-center text-sm leading-5 text-muted-foreground">
+                      Open-source confidential AI
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 border-b border-border/50 p-6">
+                    <div className="mb-2 size-8" />
+                    <p className="font-display text-lg font-medium">
+                      {data.competitor.name}
+                    </p>
+                    <p className="mt-1 text-center text-sm leading-5 text-muted-foreground">
+                      {data.competitor.description}
+                    </p>
+                  </div>
 
                 {/* Feature Rows */}
                 {data.features.map((feature, index) => (
                   <Fragment key={feature.feature}>
                     <div
-                      className={`flex items-center gap-2 p-6 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border'}`}
+                      className={`flex items-center gap-2 p-6 transition-colors hover:bg-muted/30 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border/50'}`}
                     >
-                      <span className="font-display font-semibold text-foreground">
+                      <span className="font-display font-medium text-foreground">
                         {feature.feature}
                       </span>
                     </div>
                     <div
-                      className={`flex flex-col items-center justify-center gap-2 bg-muted p-6 ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border'}`}
+                      className={`flex flex-col items-center justify-center gap-2 p-6 transition-all hover:shadow-sm ${
+                        feature.phala === 'good'
+                          ? 'bg-green-50/50 dark:bg-green-950/20'
+                          : feature.phala === 'bad'
+                            ? 'bg-red-50/50 dark:bg-red-950/20'
+                            : 'bg-muted/30'
+                      } ${index === data.features.length - 1 ? 'border-border' : 'border-b border-border/50'}`}
                     >
                       <StatusIcon status={feature.phala} />
-                      <span className="font-display text-center text-sm leading-5 text-muted-foreground">
+                      <span className="text-center text-sm leading-5 text-muted-foreground">
                         {feature.phalaText}
                       </span>
                     </div>
                     <div
-                      className={`flex flex-col items-center justify-center gap-2 p-6 ${index === data.features.length - 1 ? '' : 'border-b border-border'}`}
+                      className={`flex flex-col items-center justify-center gap-2 p-6 transition-all hover:bg-muted/30 ${
+                        feature.competitor === 'good'
+                          ? 'bg-green-50/50 dark:bg-green-950/20'
+                          : feature.competitor === 'bad'
+                            ? 'bg-red-50/50 dark:bg-red-950/20'
+                            : ''
+                      } ${index === data.features.length - 1 ? '' : 'border-b border-border/50'}`}
                     >
                       <StatusIcon status={feature.competitor} />
-                      <span className="font-display text-center text-sm leading-5 text-muted-foreground">
+                      <span className="text-center text-sm leading-5 text-muted-foreground">
                         {feature.competitorText}
                       </span>
                     </div>
@@ -183,14 +218,15 @@ export default function Compare({ data, currentSlug }: CompareProps) {
                 ))}
 
                 {/* CTA Row */}
-                <div className="border-border p-6"></div>
-                <div className="flex items-center justify-center gap-2 rounded-b-2xl border-border bg-muted p-6">
-                  <Button className="w-full font-medium" asChild>
+                <div className="p-6"></div>
+                <div className="flex items-center justify-center gap-2 bg-green-50/50 p-6 dark:bg-green-950/20">
+                  <Button className="w-full font-medium" size="lg" asChild>
                     <a href={data.cta.href}>{data.cta.text}</a>
                   </Button>
                 </div>
                 <div className="p-6"></div>
               </div>
+            </div>
             </div>
           </section>
 
@@ -200,7 +236,7 @@ export default function Compare({ data, currentSlug }: CompareProps) {
               {data.sections.whatIsPhala.title}
             </h2>
             <div className="prose prose-lg max-w-none">
-              <p className="font-display text-lg leading-7 text-muted-foreground">
+              <p className="text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
                 {data.sections.whatIsPhala.content}
               </p>
             </div>
@@ -212,7 +248,7 @@ export default function Compare({ data, currentSlug }: CompareProps) {
               {data.sections.whatIsCompetitor.title}
             </h2>
             <div className="prose prose-lg max-w-none">
-              <p className="font-display text-lg leading-7 text-muted-foreground">
+              <p className="text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
                 {data.sections.whatIsCompetitor.content}
               </p>
             </div>
@@ -220,23 +256,36 @@ export default function Compare({ data, currentSlug }: CompareProps) {
 
           {/* Key Differentiators */}
           <section className="mb-20">
-            <h2 className="mb-8 font-display text-3xl font-semibold leading-tight text-foreground">
-              {data.sections.differentiators.title}
-            </h2>
+            <div className="mb-8 text-center">
+              <Badge variant="outline" className="mb-4 text-xs font-medium uppercase tracking-wider">
+                Key Advantages
+              </Badge>
+              <h2 className="font-display text-3xl font-semibold leading-tight text-foreground">
+                {data.sections.differentiators.title}
+              </h2>
+            </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-              {data.sections.differentiators.content.map((item) => (
+              {data.sections.differentiators.content.map((item, index) => (
                 <div
                   key={item.title}
-                  className="rounded-lg border bg-background p-6"
+                  className="group relative overflow-hidden rounded-xl border bg-background/50 p-8 transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 backdrop-blur-sm"
                 >
-                  <h3 className="mb-4 font-display text-xl font-semibold leading-tight text-foreground">
-                    {item.title}
-                  </h3>
-                  <div className="prose prose-lg max-w-none">
-                    <p className="font-display leading-7 text-muted-foreground">
-                      {item.description}
-                    </p>
+                  <div className="absolute -right-4 -top-4 size-24 rounded-full bg-primary/5 blur-2xl transition-all group-hover:bg-primary/10" />
+                  <div className="relative">
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <CheckCircle className="size-5" />
+                      </div>
+                      <h3 className="font-display text-xl font-medium leading-tight text-foreground">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <div className="prose prose-lg max-w-none">
+                      <p className="text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -252,7 +301,7 @@ export default function Compare({ data, currentSlug }: CompareProps) {
               {data.sections.howToChoose.content.map((item) => (
                 <li key={item} className="pl-2">
                   <div className="prose prose-lg max-w-none">
-                    <p className="font-display text-lg leading-7 text-muted-foreground">
+                    <p className="text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
                       {item}
                     </p>
                   </div>
@@ -263,26 +312,35 @@ export default function Compare({ data, currentSlug }: CompareProps) {
 
           {/* Pricing Comparison */}
           <section className="mb-20">
-            <h2 className="mb-8 font-display text-3xl font-semibold leading-tight text-foreground">
-              {data.sections.pricing.title}
-            </h2>
+            <div className="mb-8 text-center">
+              <Badge variant="outline" className="mb-4 text-xs font-medium uppercase tracking-wider">
+                Pricing
+              </Badge>
+              <h2 className="font-display text-3xl font-semibold leading-tight text-foreground">
+                {data.sections.pricing.title}
+              </h2>
+            </div>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-xl border p-8 bg-background">
-                <h3 className="mb-4 font-display text-xl font-semibold text-foreground">
+              <div className="group relative overflow-hidden rounded-xl border-2 border-primary/20 p-8 bg-gradient-to-br from-primary/5 via-background to-background transition-all hover:border-primary/40 hover:shadow-xl">
+                <div className="absolute right-0 top-0">
+                  <Badge className="rounded-bl-lg rounded-tr-xl">Recommended</Badge>
+                </div>
+                <h3 className="mb-4 mt-8 font-display text-xl font-medium text-foreground flex items-center gap-2">
+                  <CheckCircle className="size-5 text-primary" />
                   Phala Cloud
                 </h3>
                 <div className="prose prose-lg max-w-none">
-                  <p className="font-display text-lg leading-7 text-muted-foreground">
+                  <p className="text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
                     {data.sections.pricing.phalaContent}
                   </p>
                 </div>
               </div>
-              <div className="rounded-xl border p-8 bg-background">
-                <h3 className="mb-4 font-display text-xl font-semibold text-foreground">
+              <div className="group rounded-xl border p-8 bg-background/50 backdrop-blur-sm transition-all hover:border-border/60 hover:shadow-lg">
+                <h3 className="mb-4 font-display text-xl font-medium text-foreground">
                   {data.competitor.name}
                 </h3>
                 <div className="prose prose-lg max-w-none">
-                  <p className="font-display text-lg leading-7 text-muted-foreground">
+                  <p className="text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
                     {data.sections.pricing.competitorContent}
                   </p>
                 </div>
@@ -303,7 +361,7 @@ export default function Compare({ data, currentSlug }: CompareProps) {
                     className="rounded-lg border p-8 bg-background"
                   >
                     <div className="prose prose-lg max-w-none">
-                      <span className="font-display text-lg leading-7 text-muted-foreground">
+                      <span className="text-muted-foreground text-base leading-6 lg:text-lg lg:leading-7">
                         {item}
                       </span>
                     </div>

@@ -1,61 +1,45 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
+import { Badge } from '@/components/ui/badge'
 
 interface FAQ {
   question: string
   answer: string
 }
 
-interface FAQCategory {
-  category: string
-  items: FAQ[]
-}
-
 interface SolutionFAQProps {
-  faqs: FAQCategory[]
+  faqs: FAQ[]
   title?: string
+  description?: string
 }
 
 export function SolutionFAQ({
   faqs,
-  title = 'Frequently Asked Questions',
+  title = 'Common Questions & Answers',
+  description = 'Find out all the essential details about our platform and how it can serve your needs.',
 }: SolutionFAQProps) {
   return (
-    <section className="py-24">
-      <div className="container">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl mb-12 text-center">
+    <section className="w-full py-24 max-w-7xl mx-auto">
+      <div className="container mx-auto">
+        <div className="text-center">
+          <Badge className="text-xs leading-4 font-medium">FAQ</Badge>
+          <h1 className="font-display mt-4 text-3xl leading-none md:text-4xl font-semibold">
             {title}
-          </h2>
-          <div className="space-y-8">
-            {faqs.map((category, catIndex) => (
-              <div key={catIndex}>
-                <h3 className="font-display text-sm font-medium leading-5 text-primary uppercase tracking-wider mb-4">
-                  {category.category}
-                </h3>
-                <Accordion type="single" collapsible className="space-y-4">
-                  {category.items.map((faq, faqIndex) => (
-                    <AccordionItem
-                      key={faqIndex}
-                      value={`${catIndex}-${faqIndex}`}
-                      className="border rounded-lg px-6"
-                    >
-                      <AccordionTrigger className="font-display leading-tight text-left hover:no-underline">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="font-display leading-7 text-muted-foreground">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+          </h1>
+          <p className="mt-4 text-lg leading-7 md:text-xl font-display font-medium text-muted-foreground">
+            {description}
+          </p>
+        </div>
+        <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
+          {faqs.map((faq, index) => (
+            <div key={faq.question} className="flex gap-4">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-sm leading-5 text-muted-foreground font-semibold">
+                {index + 1}
+              </span>
+              <div>
+                <h3 className="font-semibold text-lg leading-7">{faq.question}</h3>
+                <p className="text-muted-foreground text-base leading-6">{faq.answer}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

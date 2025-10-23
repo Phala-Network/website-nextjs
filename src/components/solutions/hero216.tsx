@@ -11,7 +11,7 @@ const Hero216 = () => {
     <section className="py-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
         <p className="text-muted-foreground">Confidential Training</p>
-        <h1 className="max-w-3xl text-center font-display text-6xl font-semibold leading-none md:text-7xl">
+        <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl max-w-3xl text-center">
           Train Large-Scale Models in TEEs
         </h1>
 

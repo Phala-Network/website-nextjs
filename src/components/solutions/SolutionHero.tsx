@@ -29,7 +29,7 @@ export function SolutionHero({
             {eyebrow}
           </p>
         )}
-        <h1 className="font-display max-w-4xl text-center text-5xl font-bold leading-none tracking-tight md:text-6xl lg:text-7xl">
+        <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl max-w-4xl text-center">
           {headline}
         </h1>
         <p className="font-display max-w-2xl text-center text-lg leading-7 text-muted-foreground md:text-xl">

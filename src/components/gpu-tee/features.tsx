@@ -56,9 +56,9 @@ const GpuTeeFeatures = () => {
   return (
     <section className="py-32">
       <div className="container flex flex-col items-start gap-8 lg:gap-12 lg:px-16 xl:flex-row xl:gap-32">
-        <h3 className="text-3xl font-semibold md:shrink-0 md:text-4xl lg:max-w-1/3 lg:max-w-3xl lg:text-5xl">
+        <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:shrink-0 md:text-4xl lg:max-w-3xl lg:text-5xl">
           Enterprise-Grade Security Features
-        </h3>
+        </h2>
         <div className="grid w-full gap-6 md:grid-cols-2">
           {features.map((feature) => (
             <div

@@ -9,7 +9,7 @@ const B200MetricsBento = () => {
     <section className="py-32">
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-bold mb-4 lg:text-5xl">
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl mb-4">
             Revolutionary Blackwell Performance
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -95,7 +95,7 @@ const B200MetricsBento = () => {
             <div className="absolute inset-0 flex flex-col justify-between p-6">
               <div>
                 <Shield className="h-10 w-10 text-emerald-600 mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Full-Stack TEE</h3>
+                <h3 className="font-display font-semibold text-foreground text-xl leading-snug md:text-2xl mb-2">Full-Stack TEE</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Intel TDX + NVIDIA Confidential Computing on cutting-edge
                   Blackwell GPUs

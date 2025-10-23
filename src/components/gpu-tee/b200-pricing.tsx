@@ -15,7 +15,7 @@ export function B200Pricing() {
     <section id="pricing" className="py-32">
       <div className="container max-w-5xl">
         <div className="flex flex-col items-center gap-4 text-center">
-          <h2 className="mb-2 text-3xl font-semibold lg:text-5xl">
+          <h2 className="mb-2 font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
             B200 Pricing
           </h2>
           <p className="text-muted-foreground lg:text-lg">

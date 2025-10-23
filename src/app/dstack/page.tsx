@@ -5,6 +5,7 @@ import { getGitHubStars } from '@/lib/github-stars'
 import AuditReport from './audit-report'
 import { Compare3 as Compare } from './compare'
 import { Cta3 as Cta } from './cta'
+import DstackFAQ from './faq'
 import Features from './features'
 import { Hero24 as Hero } from './hero'
 import { Feature102 as Launch } from './launch'
@@ -32,6 +33,7 @@ const DstackPage = async () => {
       {/* <Logos /> */}
 
       <Compare />
+      <DstackFAQ />
       <Cta />
     </>
   )

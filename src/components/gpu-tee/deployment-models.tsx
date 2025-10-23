@@ -9,7 +9,7 @@ const GpuTeeDeploymentModels = () => {
     <section className="py-32">
       <div className="container max-w-5xl">
         <div className="mx-auto mb-12 max-w-2xl text-center">
-          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
+          <h2 className="mb-4 font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">
             Choose Your Deployment Model
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -69,7 +69,7 @@ const GpuTeeDeploymentModels = () => {
           </TabsList>
           <TabsContent value="cvm">
             <div className="mt-6 rounded-xl border p-6">
-              <h3 className="mb-4 text-2xl font-bold">
+              <h3 className="mb-4 font-display font-semibold text-foreground text-xl leading-snug md:text-2xl">
                 Deploy Custom Docker Workloads
               </h3>
               <div className="mb-6 space-y-3 text-muted-foreground">
@@ -98,7 +98,7 @@ const GpuTeeDeploymentModels = () => {
           </TabsContent>
           <TabsContent value="models">
             <div className="mt-6 rounded-xl border p-6">
-              <h3 className="mb-4 text-2xl font-bold">
+              <h3 className="mb-4 font-display font-semibold text-foreground text-xl leading-snug md:text-2xl">
                 One-Click Model Deployment
               </h3>
               <div className="mb-6 space-y-3 text-muted-foreground">
@@ -127,7 +127,7 @@ const GpuTeeDeploymentModels = () => {
           </TabsContent>
           <TabsContent value="enterprise">
             <div className="mt-6 rounded-xl border p-6">
-              <h3 className="mb-4 text-2xl font-bold">
+              <h3 className="mb-4 font-display font-semibold text-foreground text-xl leading-snug md:text-2xl">
                 Enterprise Solutions & Volume Pricing
               </h3>
               <div className="mb-6 space-y-3 text-muted-foreground">

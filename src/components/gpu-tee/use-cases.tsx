@@ -49,7 +49,7 @@ const GpuTeeUseCases = () => {
   return (
     <section className="relative pt-32">
       <div className="container relative z-10 flex flex-col space-y-14">
-        <h2 className="px-6 text-3xl font-semibold md:mb-4 md:text-5xl lg:mb-6 lg:max-w-md lg:px-10">
+        <h2 className="px-6 font-display font-semibold text-foreground text-3xl leading-tight md:mb-4 md:text-4xl lg:mb-6 lg:max-w-md lg:px-10 lg:text-5xl">
           Built for Confidential AI and Advanced Cryptography
         </h2>
         <div className="relative mt-6 md:mt-10">

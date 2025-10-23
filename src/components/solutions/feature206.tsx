@@ -86,7 +86,7 @@ const Feature206 = ({
           <Badge variant="outline" className="rounded-full">
             Why It Matters
           </Badge>
-          <h2 className="text-4xl font-medium md:text-5xl">{title}</h2>
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl lg:text-5xl">{title}</h2>
           <p className="max-w-2xl text-lg text-muted-foreground">
             {description}
           </p>
