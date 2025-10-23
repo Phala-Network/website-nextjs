@@ -228,8 +228,6 @@ export default function ConfidentialAI({ models }: ConfidentialAIProps) {
         <Link
           href="/gpu-tee"
           className="group relative overflow-hidden rounded-lg bg-card lg:col-span-3"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           <Button
             variant="outline"

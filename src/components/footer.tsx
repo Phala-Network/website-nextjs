@@ -216,18 +216,30 @@ const SiteFooter: React.FC = () => {
                     {section.title}
                   </h2>
                   <ul className="space-y-0.5 text-sm">
-                    {section.links.map((link) => (
-                      <li key={link.name}>
-                        <a
-                          href={link.href}
-                          className="inline-block py-1 text-muted-foreground transition-colors duration-200 hover:text-foreground active:text-primary"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.name}
-                        </a>
-                      </li>
-                    ))}
+                    {section.links.map((link) => {
+                      const isExternal = link.href.startsWith('http')
+                      return (
+                        <li key={link.name}>
+                          {isExternal ? (
+                            <a
+                              href={link.href}
+                              className="inline-block py-1 text-muted-foreground transition-colors duration-200 hover:text-foreground active:text-primary"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {link.name}
+                            </a>
+                          ) : (
+                            <Link
+                              href={link.href}
+                              className="inline-block py-1 text-muted-foreground transition-colors duration-200 hover:text-foreground active:text-primary"
+                            >
+                              {link.name}
+                            </Link>
+                          )}
+                        </li>
+                      )
+                    })}
                   </ul>
                 </div>
               ))}
@@ -275,8 +287,6 @@ const SiteFooter: React.FC = () => {
           <Link
             href="/privacy"
             className="text-foreground underline underline-offset-4 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Privacy
           </Link>
@@ -284,8 +294,6 @@ const SiteFooter: React.FC = () => {
           <Link
             href="/terms"
             className="text-foreground underline underline-offset-4 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Terms
           </Link>

@@ -83,8 +83,6 @@ export default function SuccessStoriesSection() {
             <SuccessStoryCard
               key={story.id}
               story={story}
-              target="_blank"
-              rel="noopener noreferrer"
             />
           ))}
         </div>
@@ -107,8 +105,6 @@ export default function SuccessStoriesSection() {
               <CarouselItem key={story.id} className="max-w-[309px]">
                 <SuccessStoryCard
                   story={story}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 />
               </CarouselItem>
             ))}
