@@ -32,25 +32,6 @@ export const metadata: Metadata = {
   },
 }
 
-function generateProductSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: privateAIDataContent.seo.title,
-    description: privateAIDataContent.seo.description,
-    brand: {
-      '@type': 'Organization',
-      name: 'Phala',
-    },
-    offers: {
-      '@type': 'Offer',
-      url: 'https://phala.com/solutions/private-ai-data',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-}
-
 function generateFAQSchema() {
   const allFAQs = privateAIDataContent.faqs.flatMap((cat) => cat.items)
   return {
@@ -72,13 +53,6 @@ export default function PrivateAIDataPage() {
 
   return (
     <>
-      <Script
-        id="product-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateProductSchema()),
-        }}
-      />
       <Script
         id="faq-schema"
         type="application/ld+json"

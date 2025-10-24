@@ -93,41 +93,41 @@ export function organizationSchema() {
  * @param name - Product name
  * @param description - Product description
  * @param url - Product page URL
- * @param imageUrl - Product image URL (optional)
- * @param lowPrice - Minimum price (optional, defaults to 50.37)
- * @param highPrice - Maximum price (optional)
+ * @param imageUrl - Product image URL (optional, defaults to logo)
+ * @param price - Product price (optional, defaults to 50.37)
  */
 export function productSchema(
   name: string,
   description: string,
   url: string,
-  imageUrl?: string,
-  lowPrice = 50.37,
-  highPrice?: number,
+  imageUrl = 'https://phala.com/logo.png',
+  price = 50.37,
 ) {
+  // Calculate price valid until (90 days from now)
+  const priceValidUntil = new Date()
+  priceValidUntil.setDate(priceValidUntil.getDate() + 90)
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name,
     description,
-    url,
-    brand: {
-      '@type': 'Brand',
-      name: 'Phala',
-    },
-    ...(imageUrl && { image: imageUrl }),
+    image: imageUrl,
+    brand: 'Phala',
     offers: {
-      '@type': 'AggregateOffer',
+      '@type': 'Offer',
       availability: 'https://schema.org/InStock',
       priceCurrency: 'USD',
       url,
-      lowPrice: lowPrice.toString(),
-      ...(highPrice && { highPrice: highPrice.toString() }),
+      price: price.toString(),
+      priceValidUntil: priceValidUntil.toISOString().split('T')[0],
     },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.8',
       reviewCount: '127',
+      bestRating: '5',
+      worstRating: '1',
     },
   }
 }
