@@ -3,13 +3,22 @@ import type { MetadataRoute } from 'next'
 import { validSlugs as comparisonSlugs } from '@/data/comparisons'
 import { successStories } from '@/data/success-stories-data'
 import { env } from '@/env'
-import { getRecentPosts, retrieveTags } from '@/lib/post'
+import { getRecentPosts } from '@/lib/post'
 
 const BASE_URL = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const tags = await retrieveTags()
   const posts = await getRecentPosts(100)
+
+  // Get only tags that have actual published posts (not all tag options from schema)
+  const activeTags = new Set<string>()
+  for (const post of posts) {
+    if (post.tags && Array.isArray(post.tags)) {
+      for (const tag of post.tags) {
+        activeTags.add(tag)
+      }
+    }
+  }
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -166,7 +175,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  const tagPages = tags.map((tag): MetadataRoute.Sitemap[number] => ({
+  // Only include tag pages that have actual posts
+  const tagPages = Array.from(activeTags).map((tag): MetadataRoute.Sitemap[number] => ({
     url: new URL(`/tags/${tag}`, BASE_URL).toString(),
     lastModified: new Date(),
     changeFrequency: 'daily',
