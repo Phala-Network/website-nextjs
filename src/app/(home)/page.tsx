@@ -29,6 +29,8 @@ export default async function HomePage() {
     'Confidential computing platform for private AI and secure cloud infrastructure with GPU TEE support. Deploy confidential AI models, private agents, and encrypted workloads.',
     'https://phala.com',
     'https://phala.com/opengraph-image.png',
+    50.37, // lowPrice - starting at $50.37/month for Confidential VM
+    12000, // highPrice - up to ~$12,000/month for GPU TEE H200
   )
 
   return (
