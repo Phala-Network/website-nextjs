@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/api/',
+      disallow: ['/api/', '/cdn-cgi/'],
     },
     sitemap: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/sitemap.xml`,
   }
