@@ -29,6 +29,8 @@ interface Heading {
 interface Props {
   url: string
   page: ParsedPage
+  basePath?: string
+  breadcrumbLabel?: string
 }
 
 const extractHeadings = (blocks: BlockObjectResponse[]) => {
@@ -54,7 +56,7 @@ const extractHeadings = (blocks: BlockObjectResponse[]) => {
   return extractedHeadings
 }
 
-export default function Post({ url, page }: Props) {
+export default function Post({ url, page, basePath = '/blog', breadcrumbLabel = 'Blog' }: Props) {
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [isCopyingForAI, setIsCopyingForAI] = useState(false)
 
@@ -160,7 +162,7 @@ ${page.markdown}`
       <Breadcrumb className="mb-8">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+            <BreadcrumbLink href={basePath}>{breadcrumbLabel}</BreadcrumbLink>
           </BreadcrumbItem>
           {page.publishedTime && (
             <>
@@ -187,12 +189,14 @@ ${page.markdown}`
 
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1">
-              <FiCalendar className="w-4 h-4" />
-              <span suppressHydrationWarning>
-                {format(new Date(page.publishedTime), 'MMMM dd, yyyy')}
-              </span>
-            </div>
+            {page.publishedTime && (
+              <div className="flex items-center gap-1">
+                <FiCalendar className="w-4 h-4" />
+                <span suppressHydrationWarning>
+                  {format(new Date(page.publishedTime), 'MMMM dd, yyyy')}
+                </span>
+              </div>
+            )}
             <div className="flex items-center gap-1">
               <FiClock className="w-4 h-4" />
               <span>5 min read</span>

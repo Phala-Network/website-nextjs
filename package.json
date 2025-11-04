@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "next dev -H phala.localhost",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "publish:learn": "bun scripts/batch-publish-learn.ts"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",

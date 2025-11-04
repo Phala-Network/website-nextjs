@@ -6,7 +6,7 @@ import type { ParsedListPage } from '@/lib/notion-client'
 import { coverRemap } from '@/lib/post-client'
 import { cn } from '@/lib/utils'
 
-export default function PostCard({ page }: { page: ParsedListPage }) {
+export default function PostCard({ page, basePath = '/posts' }: { page: ParsedListPage; basePath?: string }) {
   if (!page) {
     return null
   }
@@ -21,7 +21,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
       )}
     >
       <div className={cn('rounded-sm overflow-hidden')}>
-        <Link href={`/posts/${page.slug}`}>
+        <Link href={`${basePath}/${page.slug}`}>
           {page.cover ? (
             <img
               className="w-full aspect-412/230"
@@ -57,7 +57,7 @@ export default function PostCard({ page }: { page: ParsedListPage }) {
             ))}
           </div>
           <h2 className="font-bold text-lg">
-            <Link href={`/posts/${page.slug}`}>{page.title}</Link>
+            <Link href={`${basePath}/${page.slug}`}>{page.title}</Link>
           </h2>
         </div>
         {page.publishedDate && (
