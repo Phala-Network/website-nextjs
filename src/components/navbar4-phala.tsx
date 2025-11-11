@@ -198,7 +198,7 @@ const solutionCategories = [
         id: 'usecase-2',
         title: 'Legal AI',
         description: 'Privacy-preserving AI for legal workflows.',
-        href: 'https://phala.com/posts/confidential-ai-for-law-firms',
+        href: '/success-stories/legal',
         icon: Briefcase,
       },
       {

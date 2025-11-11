@@ -2,6 +2,7 @@ const story1 = '/home/story-1.png'
 const story2 = '/home/story-2.png'
 const story3 = '/home/story-3.png'
 const story4 = '/home/story-4.png'
+const story5 = '/home/story-5.png'
 
 export interface SuccessStory {
   id: string
@@ -68,6 +69,19 @@ export const successStories: SuccessStory[] = [
     description:
       'Built autonomous trading agents with verifiable execution. Users trust our AI because they can verify every decision on-chain.',
     pdfPath: '/success-stories-reports/2025RealCodeForRealdAGI.pdf',
+  },
+  {
+    id: '5',
+    slug: 'legal',
+    category: 'Legal\nAI',
+    title: 'Law Firm & Legal Tech',
+    stats: ['• Multi-Dimensional Benchmarking', '• LLM Evaluation Framework'],
+    bgColor: 'bg-[#2c5f7c]',
+    bgImage: story5,
+    isDark: true,
+    description:
+      'Comprehensive evaluation of Large Language Models for legal practice. Benchmarking framework for assessing LLM capabilities across multiple dimensions of legal work.',
+    pdfPath: '/success-stories-reports/legal-ai-llm-evaluation.pdf',
   },
 ]
 
