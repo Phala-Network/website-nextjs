@@ -75,12 +75,12 @@ export const successStories: SuccessStory[] = [
     slug: 'legal',
     category: 'Legal\nAI',
     title: 'Law Firm & Legal Tech',
-    stats: ['• Multi-Dimensional Benchmarking', '• LLM Evaluation Framework'],
+    stats: ['• 12 LLM Models Evaluated', '• Safety-Utility Trade-offs Analysis'],
     bgColor: 'bg-[#2c5f7c]',
     bgImage: story5,
     isDark: true,
     description:
-      'Comprehensive evaluation of Large Language Models for legal practice. Benchmarking framework for assessing LLM capabilities across multiple dimensions of legal work.',
+      'Comprehensive evaluation of safety-utility trade-offs in Legal AI across 12 Large Language Models. Analysis of model performance balancing accuracy and risk mitigation for legal practice.',
     pdfPath: '/success-stories-reports/legal-ai-llm-evaluation.pdf',
   },
 ]
