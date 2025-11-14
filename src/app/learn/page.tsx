@@ -55,25 +55,27 @@ async function getLearnData() {
       tagCounts[tag] = (tagCounts[tag] || 0) + 1
     }
 
+    const tags = page.tags as string[]
+
     // Check for highlight/pinned first
-    if (page.tags.some(tag => ['Pinned', 'Weekly report', 'Monthly report'].includes(tag))) {
+    if (tags.some(tag => ['Pinned', 'Weekly report', 'Monthly report'].includes(tag))) {
       highlightArticles.push(page)
     }
 
     // Categorize by primary tag
-    if (page.tags.includes('what is')) {
+    if (tags.includes('what is')) {
       whatIsArticles.push(page)
     }
-    if (page.tags.includes('How to') || page.tags.includes('Tips & Guide')) {
+    if (tags.includes('How to') || tags.includes('Tips & Guide')) {
       howToArticles.push(page)
     }
-    if (page.tags.includes('Usecases')) {
+    if (tags.includes('Usecases')) {
       useCasesArticles.push(page)
     }
-    if (page.tags.includes('VS')) {
+    if (tags.includes('VS')) {
       comparisonsArticles.push(page)
     }
-    if (page.tags.includes('Advanced') || page.tags.includes('Advance')) {
+    if (tags.includes('Advanced') || tags.includes('Advance')) {
       advancedArticles.push(page)
     }
   }
