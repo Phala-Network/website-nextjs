@@ -19,7 +19,7 @@ const Code = ({ block }: { block: ParsedBlock }) => {
   const language = codeBlock.code.language
 
   // Check if this is a Mermaid diagram
-  const isMermaid = language === 'mermaid' || language === 'Mermaid'
+  const isMermaid = language.toLowerCase() === 'mermaid'
 
   const copyCode = async () => {
     if (!code.trim()) return
