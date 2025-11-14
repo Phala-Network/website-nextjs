@@ -46,11 +46,6 @@ export default function WhatIsBlog1({ articles }: WhatIsBlog1Props) {
               <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-2xl lg:pt-4">
                 {article.title}
               </div>
-              {article.description && (
-                <div className="text-muted-foreground mb-8 line-clamp-2 text-sm md:mb-12 md:text-base lg:mb-9">
-                  {article.description}
-                </div>
-              )}
               <div>
                 <Badge variant="outline">Basics</Badge>
               </div>

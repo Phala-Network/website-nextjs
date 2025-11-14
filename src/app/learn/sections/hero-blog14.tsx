@@ -41,11 +41,6 @@ export default function HeroBlog14({ featuredArticle, popularArticles }: HeroBlo
                   {featuredArticle.title}
                 </Link>
               </h2>
-              {featuredArticle.description && (
-                <p className="text-muted-foreground md:max-w-lg">
-                  {featuredArticle.description}
-                </p>
-              )}
             </div>
           </div>
 
@@ -70,11 +65,6 @@ export default function HeroBlog14({ featuredArticle, popularArticles }: HeroBlo
                     {article.title}
                   </Link>
                 </h3>
-                {article.description && (
-                  <p className="text-muted-foreground md:max-w-md line-clamp-2">
-                    {article.description}
-                  </p>
-                )}
               </div>
             ))}
           </div>

@@ -62,11 +62,6 @@ export default function ComparisonsBlog24({ articles }: ComparisonsBlog24Props) 
                       {article.title}
                     </Link>
                   </h3>
-                  {article.description && (
-                    <p className="text-muted-foreground text-base line-clamp-2">
-                      {article.description}
-                    </p>
-                  )}
                   <Link
                     href={`/learn/${article.slug}`}
                     className="text-primary inline-flex items-center hover:underline"
