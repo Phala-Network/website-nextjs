@@ -4,11 +4,29 @@ import { validSlugs as comparisonSlugs } from '@/data/comparisons'
 import { successStories } from '@/data/success-stories-data'
 import { env } from '@/env'
 import { getRecentPosts } from '@/lib/post'
+import { queryDatabase } from '@/lib/notion-client'
+import { retrieveLearnTags } from '@/lib/learn'
 
 const BASE_URL = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getRecentPosts(100)
+
+  // Get Learn articles
+  const { pages: learnArticles } = await queryDatabase({
+    database_id: env.NOTION_LEARN_DATABASE_ID,
+    filter: {
+      and: [
+        { property: 'Status', status: { equals: 'Published' } },
+        { property: 'Tags', multi_select: { does_not_contain: 'Changelog' } },
+        { property: 'Tags', multi_select: { does_not_contain: 'not-listed' } },
+      ],
+    },
+    sorts: [{ property: 'Published Time', direction: 'descending' }],
+    page_size: 100,
+  })
+
+  const learnTags = await retrieveLearnTags()
 
   // Get only tags that have actual published posts (not all tag options from schema)
   const activeTags = new Set<string>()
@@ -88,6 +106,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         posts.length > 0 ? new Date(posts[0].publishedTime) : new Date(),
       changeFrequency: 'daily',
       priority: 0.8,
+    },
+    {
+      url: new URL('/learn', BASE_URL).toString(),
+      lastModified:
+        learnArticles.length > 0 ? new Date(learnArticles[0].publishedTime) : new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
     },
     {
       url: new URL('/partnerships', BASE_URL).toString(),
@@ -192,5 +217,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   )
 
-  return [...staticPages, ...tagPages, ...postPages]
+  // Learn tag pages
+  const learnTagPages = learnTags.map((tag): MetadataRoute.Sitemap[number] => ({
+    url: new URL(`/learn/tags/${tag}`, BASE_URL).toString(),
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }))
+
+  // Learn article pages
+  const learnPages = learnArticles.map(
+    ({ slug, publishedTime }): MetadataRoute.Sitemap[number] => ({
+      url: new URL(`/learn/${slug}`, BASE_URL).toString(),
+      lastModified: publishedTime ? new Date(publishedTime) : new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    }),
+  )
+
+  return [...staticPages, ...tagPages, ...postPages, ...learnTagPages, ...learnPages]
 }
