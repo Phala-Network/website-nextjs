@@ -27,10 +27,10 @@ export default function WhatIsBlog1({ articles }: WhatIsBlog1Props) {
             <Link
               key={article.id}
               href={`/learn/${article.slug}`}
-              className="border-border bg-accent group flex flex-col justify-between rounded-xl border p-6"
+              className="border-border bg-accent group flex flex-col justify-between rounded-xl border overflow-hidden"
             >
               <div>
-                <div className="aspect-3/2 flex overflow-clip rounded-xl">
+                <div className="aspect-3/2 flex overflow-hidden">
                   <div className="flex-1">
                     <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
                       {/** biome-ignore lint/performance/noImgElement: no cdn */}
@@ -43,10 +43,10 @@ export default function WhatIsBlog1({ articles }: WhatIsBlog1Props) {
                   </div>
                 </div>
               </div>
-              <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-2xl lg:pt-4">
+              <div className="mb-2 line-clamp-3 break-words px-6 pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-2xl lg:pt-4">
                 {article.title}
               </div>
-              <div>
+              <div className="px-6 pb-6">
                 <Badge variant="outline">Basics</Badge>
               </div>
             </Link>
