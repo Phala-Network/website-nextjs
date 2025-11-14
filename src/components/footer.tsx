@@ -72,6 +72,7 @@ const navigation = [
         name: 'Documentation',
         href: 'https://docs.phala.com/?utm_source=phala.network&utm_medium=site-nav',
       },
+      { name: 'Learn', href: '/learn' },
       {
         name: 'CLI',
         href: 'https://docs.phala.com/phala-cloud/phala-cloud-cli/overview',
@@ -81,6 +82,35 @@ const navigation = [
         name: 'Community',
         href: 'https://github.com/Phala-Network/phala-cloud-community/?utm_source=phala.network&utm_medium=site-nav',
       },
+    ],
+  },
+  {
+    title: 'Learn',
+    links: [
+      { name: 'Explore', href: '/learn' },
+      { name: 'Browse Topics', href: '/learn#topics' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'Changelog', href: '/changelog' },
+    ],
+  },
+  {
+    title: 'Basics',
+    links: [
+      { name: 'What is Confidential AI?', href: '/learn/what-is-confidential-ai' },
+      { name: 'What is TEE?', href: '/learn/what-is-tee' },
+      { name: 'What is Private AI Cloud?', href: '/learn/what-is-private-ai-cloud' },
+      { name: 'What is Confidential VM?', href: '/learn/what-is-confidential-vm' },
+      { name: 'What is Confidential Computing?', href: '/learn/what-is-confidential-computing' },
+    ],
+  },
+  {
+    title: 'Tips & Guides',
+    links: [
+      { name: 'Getting Started Guide', href: '/learn/getting-started-with-confidential-computing' },
+      { name: 'Deploying Confidential VMs', href: '/learn/deploying-confidential-vms-guide' },
+      { name: 'Private AI Cloud Guide', href: '/learn/phala-private-ai-cloud-guide' },
+      { name: 'TEE Verification', href: '/learn/how-tee-verification-works' },
+      { name: 'CISO Guide', href: '/learn/ciso-guide-to-confidential-computing' },
     ],
   },
   {
@@ -209,7 +239,7 @@ const SiteFooter: React.FC = () => {
 
           {/* Navigation Section */}
           <div className="w-full border-t pt-8 lg:border-t-0 lg:pt-0">
-            <nav className="grid w-full gap-x-8 lg:gap-x-12 gap-y-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+            <nav className="grid w-full gap-x-6 lg:gap-x-8 gap-y-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {navigation.map((section) => (
                 <div key={section.title} className="min-w-[140px]">
                   <h2 className="mb-4 font-semibold font-sans">

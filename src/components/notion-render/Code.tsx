@@ -6,6 +6,7 @@ import { github } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 import type { ParsedBlock } from '@/lib/notion-client'
 import { Button } from '../ui/button'
+import MermaidDiagram from './MermaidDiagram'
 import RichText from './RichText'
 
 const Code = ({ block }: { block: ParsedBlock }) => {
@@ -14,8 +15,13 @@ const Code = ({ block }: { block: ParsedBlock }) => {
     'idle',
   )
 
+  const code = codeBlock.code.rich_text[0]?.plain_text || ''
+  const language = codeBlock.code.language
+
+  // Check if this is a Mermaid diagram
+  const isMermaid = language === 'mermaid' || language === 'Mermaid'
+
   const copyCode = async () => {
-    const code = codeBlock.code.rich_text[0]?.plain_text || ''
     if (!code.trim()) return
 
     try {
@@ -40,12 +46,27 @@ const Code = ({ block }: { block: ParsedBlock }) => {
     }
   }
 
+  // Render Mermaid diagram
+  if (isMermaid) {
+    return (
+      <div className="notion_code">
+        <MermaidDiagram chart={code} />
+        {codeBlock.code.caption && (
+          <div className="text-center text-sm text-muted-foreground mt-2">
+            <RichText rich_text={codeBlock.code.caption} />
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  // Render regular code block
   return (
     <div className="notion_code relative group bg-muted rounded-lg border overflow-hidden">
       <Button
         variant="outline"
         onClick={copyCode}
-        className={`absolute top-2 right-2 p-2 transition-all opacity-0 group-hover:opacity-100`}
+        className={`absolute top-2 right-2 p-2 transition-all opacity-0 group-hover:opacity-100 z-10`}
         title={
           copyState === 'copied'
             ? 'Copied!'
@@ -58,7 +79,7 @@ const Code = ({ block }: { block: ParsedBlock }) => {
         {getCopyIcon()}
       </Button>
       <SyntaxHighlighter
-        language={codeBlock.code.language}
+        language={language}
         className="text-sm"
         customStyle={{
           padding: '1em',
@@ -67,7 +88,7 @@ const Code = ({ block }: { block: ParsedBlock }) => {
         }}
         style={github}
       >
-        {codeBlock.code.rich_text[0].plain_text}
+        {code}
       </SyntaxHighlighter>
       {codeBlock.code.caption && (
         <span className="notion_caption">
