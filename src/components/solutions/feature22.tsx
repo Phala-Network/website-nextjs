@@ -88,7 +88,7 @@ const Feature22 = () => {
               </ul>
               <div className="h-px border-t border-dashed"></div>
               <a
-                href="https://d5be0b710ecaa77985cf148109b1591bbc7023d0-3000.dstack-pha-prod8.phala.network/"
+                href="https://f8606a4be438bbc89cc8d5cce2105490bf1622dc-3000.dstack-pha-prod7.phala.network"
                 className="my-3 flex items-center gap-2 px-4 font-medium sm:my-4 sm:px-5 md:px-6"
               >
                 Try Demo
