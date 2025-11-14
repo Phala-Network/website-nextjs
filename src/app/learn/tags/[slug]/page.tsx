@@ -14,6 +14,8 @@ import { retrieveLearnTags } from '@/lib/learn'
 import LearnTagClient from './learn-tag-client'
 
 export const revalidate = 7200
+export const dynamic = 'force-dynamic'
+export const dynamicParams = true
 
 interface Props {
   params: Promise<{ slug: string }>
