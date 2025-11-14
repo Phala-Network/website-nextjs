@@ -77,11 +77,6 @@ export default function ArticleGrid({
                   {page.title}
                 </Link>
               </h3>
-              {page.description && (
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                  {page.description}
-                </p>
-              )}
               {page.publishedDate && (
                 <div className="text-xs text-muted-foreground">
                   <p suppressHydrationWarning>

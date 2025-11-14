@@ -75,11 +75,6 @@ export default function LearnTagClient({
                 <h3 className="mb-2 text-xl font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
                   {page.title}
                 </h3>
-                {page.description && (
-                  <p className="text-muted-foreground text-sm line-clamp-3">
-                    {page.description}
-                  </p>
-                )}
               </div>
             </Link>
           ))}

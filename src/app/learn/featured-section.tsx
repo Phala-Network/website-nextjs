@@ -39,11 +39,6 @@ export default function FeaturedSection({ page }: FeaturedSectionProps) {
               {page.title}
             </Link>
           </h2>
-          {page.description && (
-            <p className="text-muted-foreground mb-6 line-clamp-3">
-              {page.description}
-            </p>
-          )}
           {page.publishedDate && (
             <div className="text-sm text-muted-foreground">
               <p suppressHydrationWarning>
