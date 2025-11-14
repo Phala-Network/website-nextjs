@@ -202,7 +202,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Only include tag pages that have actual posts
   const tagPages = Array.from(activeTags).map((tag): MetadataRoute.Sitemap[number] => ({
-    url: new URL(`/tags/${tag}`, BASE_URL).toString(),
+    url: new URL(`/tags/${encodeURIComponent(tag)}`, BASE_URL).toString(),
     lastModified: new Date(),
     changeFrequency: 'daily',
     priority: 0.7,
@@ -219,7 +219,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Learn tag pages
   const learnTagPages = learnTags.map((tag): MetadataRoute.Sitemap[number] => ({
-    url: new URL(`/learn/tags/${tag}`, BASE_URL).toString(),
+    url: new URL(`/learn/tags/${encodeURIComponent(tag)}`, BASE_URL).toString(),
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.7,
