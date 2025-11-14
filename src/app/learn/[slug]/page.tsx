@@ -43,8 +43,46 @@ export default async function LearnArticlePage({ params }: Props) {
   const similarPages = getSimilarLearnArticles(page)
   const navigation = getNavigationLearnArticles(page)
 
+  // Generate Article structured data for AI crawlers
+  const articleStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: page.title,
+    description: page.title,
+    image: `https://img0.phala.world/cover/1200x630/${page.id}.jpg`,
+    datePublished: page.publishedTime,
+    dateModified: page.publishedTime,
+    author: {
+      '@type': 'Organization',
+      name: 'Phala Network',
+      url: baseUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Phala Network',
+      url: baseUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${baseUrl}/learn/${page.slug}`,
+    },
+    keywords: page.tags.join(', '),
+    articleSection: 'Confidential Computing Education',
+    inLanguage: 'en-US',
+  }
+
   return (
     <div className="min-h-screen py-12 md:py-24 max-w-7xl mx-auto">
+      {/* Add structured data for AI crawlers */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+
       <div className="container">
         <Post url={baseUrl} page={page} basePath="/learn" breadcrumbLabel="Learn" />
 

@@ -43,8 +43,46 @@ export default async function PostPage({ params }: Props) {
   const similarPages = getSimilarPosts(page)
   const navigation = getNavigationPosts(page)
 
+  // Generate Article structured data for AI crawlers
+  const articleStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: page.title,
+    description: page.title,
+    image: `https://img0.phala.world/cover/1200x630/${page.id}.jpg`,
+    datePublished: page.publishedTime,
+    dateModified: page.publishedTime,
+    author: {
+      '@type': 'Organization',
+      name: 'Phala Network',
+      url: baseUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Phala Network',
+      url: baseUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${baseUrl}/posts/${page.slug}`,
+    },
+    keywords: page.tags.join(', '),
+    articleSection: 'Technology Blog',
+    inLanguage: 'en-US',
+  }
+
   return (
     <div className="min-h-screen py-12 md:py-24 max-w-7xl mx-auto">
+      {/* Add structured data for AI crawlers */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+
       <div className="container">
         <Post url={baseUrl} page={page} />
 
