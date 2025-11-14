@@ -234,20 +234,18 @@ ${page.markdown}`
         </div>
       </header>
 
-      {/* Cover Image - Full Width */}
-      {page.cover && (
-        // biome-ignore lint/performance/noImgElement: Using external CDN image
-        <img
-          src={`https://img0.phala.world/cover/1744x974/${coverImageId}.jpg?z=123`}
-          alt={page.title}
-          className="mb-12 mt-0 aspect-video w-full object-cover"
-        />
-      )}
-
       {/* Main Layout */}
       <div className="flex gap-16 items-start max-lg:flex-col">
         {/* Article Content */}
         <article className="w-full max-w-prose xl:max-w-3xl">
+          {page.cover && (
+            // biome-ignore lint/performance/noImgElement: Using external CDN image
+            <img
+              src={`https://img0.phala.world/cover/1744x974/${coverImageId}.jpg?z=123`}
+              alt={page.title}
+              className="mb-8 mt-0 aspect-video w-full rounded-lg border object-cover"
+            />
+          )}
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-8">
