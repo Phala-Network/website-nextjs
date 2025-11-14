@@ -36,7 +36,7 @@ const AuditReport = () => {
             <div className="flex flex-col gap-2 mt-8">
               <p className="font-display text-muted-foreground text-sm leading-5">Sponsored by</p>
               <div className="flex items-center gap-10 mt-2">
-                <a href="https://phala.network" target="_blank" rel="noopener">
+                <a href="https://phala.com" target="_blank" rel="noopener">
                   <img className="h-6" src="/home/logo.svg" alt="Phala" />
                 </a>
                 <a

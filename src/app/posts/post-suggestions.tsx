@@ -8,9 +8,10 @@ import type { ParsedListPage } from '@/lib/notion-client'
 interface PostSuggestionsProps {
   pages: Promise<ParsedListPage[]>
   type: 'recent' | 'related'
+  basePath?: string
 }
 
-export default function PostSuggestions({ pages, type }: PostSuggestionsProps) {
+export default function PostSuggestions({ pages, type, basePath = '/posts' }: PostSuggestionsProps) {
   const pagesData = use(pages)
 
   if (pagesData.length === 0) {
@@ -18,7 +19,9 @@ export default function PostSuggestions({ pages, type }: PostSuggestionsProps) {
   }
 
   const icon = type === 'recent' ? FiClock : FiTag
-  const title = type === 'recent' ? 'Recent Posts' : 'Related Posts'
+  const isLearn = basePath === '/learn'
+  const contentType = isLearn ? 'Articles' : 'Posts'
+  const title = type === 'recent' ? `Recent ${contentType}` : `Related ${contentType}`
   const Icon = icon
 
   return (
@@ -29,7 +32,7 @@ export default function PostSuggestions({ pages, type }: PostSuggestionsProps) {
       </h3>
       <div className="space-y-4">
         {pagesData.map((page) => (
-          <Link href={`/posts/${page.slug}`} key={page.id} className="block">
+          <Link href={`${basePath}/${page.slug}`} key={page.id} className="block">
             <h4 className="font-medium line-clamp-2 mb-1">{page.title}</h4>
             {page.publishedTime && (
               <p

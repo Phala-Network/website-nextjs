@@ -166,7 +166,7 @@ const PerformanceSecurityMerged = () => {
               <div className="mt-8 pt-6 border-t">
                 <Button asChild variant="outline" className="w-full">
                   <Link
-                    href="https://phala.network/posts/performance-benchmark-running-sp1-zkvm-in-tee-h200-with-low-overhead"
+                    href="https://phala.com/posts/performance-benchmark-running-sp1-zkvm-in-tee-h200-with-low-overhead"
                     target="_blank"
                   >
                     Read Full Benchmark Report →
