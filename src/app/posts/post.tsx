@@ -35,6 +35,8 @@ interface Props {
 
 const extractHeadings = (blocks: BlockObjectResponse[]) => {
   const extractedHeadings: Heading[] = []
+  const idCounts = new Map<string, number>()
+
   for (const block of blocks) {
     if (block.type === 'heading_2') {
       const text = block.heading_2.rich_text
@@ -42,12 +44,19 @@ const extractHeadings = (blocks: BlockObjectResponse[]) => {
         .join('')
       if (!text) continue
 
-      const id = text
+      let id = text
         .toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
         .trim()
+
+      // Handle duplicate IDs by appending a counter
+      const count = idCounts.get(id) || 0
+      if (count > 0) {
+        id = `${id}-${count}`
+      }
+      idCounts.set(id.replace(/-\d+$/, ''), count + 1)
 
       extractedHeadings.push({ id, text, level: 2 })
     }
@@ -225,18 +234,20 @@ ${page.markdown}`
         </div>
       </header>
 
+      {/* Cover Image - Full Width */}
+      {page.cover && (
+        // biome-ignore lint/performance/noImgElement: Using external CDN image
+        <img
+          src={`https://img0.phala.world/cover/1744x974/${coverImageId}.jpg?z=123`}
+          alt={page.title}
+          className="mb-12 mt-0 aspect-video w-full object-cover"
+        />
+      )}
+
       {/* Main Layout */}
       <div className="flex gap-16 items-start max-lg:flex-col">
         {/* Article Content */}
         <article className="w-full max-w-prose xl:max-w-3xl">
-          {page.cover && (
-            // biome-ignore lint/performance/noImgElement: Using external CDN image
-            <img
-              src={`https://img0.phala.world/cover/1744x974/${coverImageId}.jpg?z=123`}
-              alt={page.title}
-              className="mb-8 mt-0 aspect-video w-full rounded-lg border object-cover"
-            />
-          )}
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-8">
