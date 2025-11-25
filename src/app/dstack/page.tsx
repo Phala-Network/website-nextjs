@@ -41,8 +41,8 @@ export async function generateMetadata(): Promise<Metadata> {
       ],
       metadataBase: new URL(`https://${DSTACK_DOMAIN}`),
       icons: {
-        icon: [{ url: '/dstack/favicon.svg', type: 'image/svg+xml' }],
-        apple: [{ url: '/dstack/favicon.svg', type: 'image/svg+xml' }],
+        icon: [{ url: '/dstack-icon.svg', type: 'image/svg+xml' }],
+        apple: [{ url: '/dstack-icon.svg', type: 'image/svg+xml' }],
       },
       manifest: '/dstack/site.webmanifest',
       twitter: {

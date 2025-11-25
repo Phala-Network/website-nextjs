@@ -4,7 +4,7 @@
   "description": "Open Source Confidential Computing Platform",
   "icons": [
     {
-      "src": "/dstack/favicon.svg",
+      "src": "/dstack-icon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
