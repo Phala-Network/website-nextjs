@@ -4,6 +4,10 @@ import Image from 'next/image'
 import { DashedLine } from '@/components/dashed-line'
 import { Button } from '@/components/ui/button'
 
+interface TrustCenterProps {
+  isStandalone?: boolean
+}
+
 const features = [
   {
     title: 'Source Code Verification',
@@ -27,7 +31,11 @@ const features = [
   },
 ]
 
-const TrustCenter = () => {
+const TrustCenter = ({ isStandalone = false }: TrustCenterProps) => {
+  const trustCenterUrl = isStandalone
+    ? 'https://docs.dstack.dev/'
+    : 'https://trust.phala.com'
+
   return (
     <section className="py-24">
       <div className="container max-w-7xl mx-auto">
@@ -46,7 +54,7 @@ const TrustCenter = () => {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button asChild>
                 <a
-                  href="https://trust.phala.com"
+                  href={trustCenterUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

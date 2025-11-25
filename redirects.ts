@@ -1,9 +1,22 @@
 import type { NextConfig } from 'next'
 
 const CLOUD_URL = 'https://cloud.phala.network'
+const DSTACK_DOMAIN = 'dstack.org'
 
 const redirects: NonNullable<NextConfig['redirects']> = async () => {
   return [
+    // dstack.org: redirect all non-dstack pages to /dstack (which shows as /)
+    {
+      source: '/:path((?!dstack|_next|favicon|dstack/.*|relay-ph|relay-ph/.*).*)',
+      has: [
+        {
+          type: 'host',
+          value: DSTACK_DOMAIN,
+        },
+      ],
+      destination: '/',
+      permanent: false,
+    },
     {
       source: '/en',
       destination: '/',

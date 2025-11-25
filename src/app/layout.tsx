@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Footer from '@/components/footer'
 import { PhalaNavbar4 } from '@/components/navbar4-phala'
 import { env } from '@/env'
+import { isDstackDomain } from '@/lib/dstack-domain'
 import fontVariables from '@/lib/fonts'
 import './globals.css'
 
@@ -43,18 +44,20 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const isStandaloneDstack = await isDstackDomain()
+
   return (
     <html lang="en" className={fontVariables}>
       <body>
-        <PhalaNavbar4 />
-        <div className="pt-20">
+        {!isStandaloneDstack && <PhalaNavbar4 />}
+        <div className={isStandaloneDstack ? '' : 'pt-20'}>
           {children}
-          <Footer />
+          {!isStandaloneDstack && <Footer />}
         </div>
       </body>
     </html>
