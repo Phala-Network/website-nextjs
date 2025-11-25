@@ -13,8 +13,6 @@ const nextConfig: NextConfig = {
   redirects,
   async rewrites() {
     return {
-      // beforeFiles rewrites are checked before pages/public files
-      // which allows overriding page matching
       beforeFiles: [
         // dstack.org: rewrite root to /dstack page
         {
@@ -26,19 +24,6 @@ const nextConfig: NextConfig = {
             },
           ],
           destination: '/dstack',
-        },
-        // dstack.org: any other path should 404 (rewrite to non-existent page)
-        // Exclude: _next, favicon, dstack, api, and static assets (svg, png, jpg, ico, webp, woff, woff2, css, js)
-        {
-          source:
-            '/:path((?!_next|favicon|dstack|api)(?!.*\\.(svg|png|jpg|jpeg|gif|ico|webp|woff2?|css|js)$).*)',
-          has: [
-            {
-              type: 'host',
-              value: '(.*\\.)?dstack\\.org',
-            },
-          ],
-          destination: '/404',
         },
       ],
       afterFiles: [
@@ -54,6 +39,17 @@ const nextConfig: NextConfig = {
         {
           source: '/relay-ph/flags',
           destination: 'https://us.i.posthog.com/flags',
+        },
+        // dstack.org: block non-dstack pages (afterFiles runs after static files are matched)
+        {
+          source: '/:path((?!_next|favicon|dstack|api|relay-ph).*)',
+          has: [
+            {
+              type: 'host',
+              value: '(.*\\.)?dstack\\.org',
+            },
+          ],
+          destination: '/404',
         },
       ],
       fallback: [],
