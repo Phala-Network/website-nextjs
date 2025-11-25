@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: {
         template: '%s | dstack',
-        default: 'Open Source Confidential Computing Platform',
+        default: title,
       },
       description,
       keywords: [
@@ -67,7 +67,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: `${title} | Phala`,
+    title,
     description,
     keywords: [
       'TEE open source',

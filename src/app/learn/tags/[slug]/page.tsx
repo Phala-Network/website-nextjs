@@ -9,13 +9,11 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { env } from '@/env'
-import { queryDatabase } from '@/lib/notion-client'
 import { retrieveLearnTags } from '@/lib/learn'
+import { queryDatabase } from '@/lib/notion-client'
 import LearnTagClient from './learn-tag-client'
 
 export const revalidate = 7200
-export const dynamic = 'force-dynamic'
-export const dynamicParams = true
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -114,7 +112,8 @@ export default async function LearnTagPage({ params }: Props) {
                 {tag}
               </h1>
               <p className="text-muted-foreground text-lg">
-                {initialPages.length} {initialPages.length === 1 ? 'article' : 'articles'} about {tag}
+                {initialPages.length}{' '}
+                {initialPages.length === 1 ? 'article' : 'articles'} about {tag}
               </p>
             </div>
           </div>

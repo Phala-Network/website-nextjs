@@ -14,8 +14,6 @@ import { retrieveTags } from '@/lib/post'
 import TagPageClient from './tag-page-client'
 
 export const revalidate = 7200
-export const dynamic = 'force-dynamic'
-export const dynamicParams = true
 
 interface Props {
   params: Promise<{ slug: string }>
