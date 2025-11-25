@@ -16,31 +16,18 @@ export function clamp(text: string, maxLength: number): string {
 /**
  * Creates an optimized page title following SEO best practices
  * - Max 60 characters (Google's display limit)
- * - Includes brand name
  * - Prioritizes important keywords at the start
  *
+ * Note: Brand suffix is handled by Next.js metadata template in layout.tsx
+ * (template: '%s | Phala'), so this function should NOT add a suffix.
+ *
  * @param pageTitle - The main page title
- * @param includeBrand - Whether to append "| Phala Network" (default: true)
- * @returns Optimized title string
+ * @returns Optimized title string (max 50 chars to leave room for " | Phala" suffix)
  */
-export function makeTitle(pageTitle: string, includeBrand = true): string {
-  const brandSuffix = ' | Phala'
-  const maxLength = 60
-
-  if (!includeBrand) {
-    return clamp(pageTitle, maxLength)
-  }
-
-  const fullTitle = pageTitle + brandSuffix
-
-  // If full title fits, return it
-  if (fullTitle.length <= maxLength) {
-    return fullTitle
-  }
-
-  // Otherwise, clamp the page title to fit with brand
-  const availableLength = maxLength - brandSuffix.length
-  return clamp(pageTitle, availableLength) + brandSuffix
+export function makeTitle(pageTitle: string): string {
+  // Leave room for " | Phala" suffix added by layout template
+  const maxLength = 50
+  return clamp(pageTitle, maxLength)
 }
 
 /**
