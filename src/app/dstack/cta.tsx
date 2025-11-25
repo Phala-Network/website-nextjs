@@ -8,9 +8,7 @@ interface Cta3Props {
 }
 
 const Cta3 = ({ isStandalone = false }: Cta3Props) => {
-  const docsUrl = isStandalone
-    ? 'https://docs.dstack.dev/'
-    : 'https://docs.phala.com/dstack/overview'
+  const docsUrl = 'https://docs.phala.com/dstack/overview'
 
   return (
     <section className="py-24 max-w-6xl mx-auto">
@@ -34,15 +32,6 @@ const Cta3 = ({ isStandalone = false }: Cta3Props) => {
                 >
                   Get Started
                   <ArrowRight className="ml-2 size-4" />
-                </a>
-              </Button>
-              <Button variant="outline" className="w-full sm:w-auto" asChild>
-                <a
-                  href="https://t.me/+RF-yUoDduWAzZTUx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Join Community
                 </a>
               </Button>
             </div>

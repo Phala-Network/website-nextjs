@@ -4,10 +4,6 @@ import Image from 'next/image'
 import { DashedLine } from '@/components/dashed-line'
 import { Button } from '@/components/ui/button'
 
-interface TrustCenterProps {
-  isStandalone?: boolean
-}
-
 const features = [
   {
     title: 'Source Code Verification',
@@ -31,10 +27,8 @@ const features = [
   },
 ]
 
-const TrustCenter = ({ isStandalone = false }: TrustCenterProps) => {
-  const trustCenterUrl = isStandalone
-    ? 'https://docs.dstack.dev/'
-    : 'https://trust.phala.com'
+const TrustCenter = () => {
+  const trustCenterUrl = 'https://trust.phala.com'
 
   return (
     <section className="py-24">

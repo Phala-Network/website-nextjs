@@ -1,34 +1,11 @@
 'use client'
 
-import { Book, FileCode, Menu, Users, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
 
 import { Button } from '@/components/ui/button'
-
-const navLinks = [
-  {
-    name: 'Documentation',
-    href: 'https://docs.dstack.dev/',
-    icon: Book,
-  },
-  {
-    name: 'GitHub',
-    href: 'https://github.com/Dstack-TEE/dstack',
-    icon: FaGithub,
-  },
-  {
-    name: 'Examples',
-    href: 'https://github.com/Dstack-TEE/dstack/tree/main/examples',
-    icon: FileCode,
-  },
-  {
-    name: 'Community',
-    href: 'https://t.me/+RF-yUoDduWAzZTUx',
-    icon: Users,
-  },
-]
 
 export function DstackNavbar() {
   const [open, setOpen] = useState(false)
@@ -47,31 +24,17 @@ export function DstackNavbar() {
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-6 md:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm font-medium transition-colors"
-              >
-                <link.icon className="size-4" />
-                {link.name}
-              </a>
-            ))}
-          </nav>
-
           {/* Desktop CTA */}
           <div className="hidden items-center gap-3 md:flex">
-            <Button asChild>
+            <Button variant="outline" asChild>
               <a
                 href="https://github.com/Dstack-TEE/dstack"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center gap-2"
               >
-                Get Started
+                <FaGithub className="size-4" />
+                GitHub
               </a>
             </Button>
           </div>
@@ -92,26 +55,15 @@ export function DstackNavbar() {
         {open && (
           <div className="border-t pb-6 md:hidden">
             <nav className="flex flex-col gap-4 pt-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground flex items-center gap-2 py-2 text-sm font-medium transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  <link.icon className="size-4" />
-                  {link.name}
-                </a>
-              ))}
-              <Button className="mt-2" asChild>
+              <Button variant="outline" className="w-full" asChild>
                 <a
                   href="https://github.com/Dstack-TEE/dstack"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center gap-2"
                 >
-                  Get Started
+                  <FaGithub className="size-4" />
+                  GitHub
                 </a>
               </Button>
             </nav>

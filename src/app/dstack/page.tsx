@@ -111,7 +111,7 @@ const DstackPage = async () => {
       </CreamContainer>
       <Features />
       <Launch />
-      <TrustCenter isStandalone={isStandalone} />
+      <TrustCenter />
       <AuditReport />
       {/* <Logos /> */}
 
