@@ -12,40 +12,50 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   redirects,
   async rewrites() {
-    return [
-      {
-        source: '/relay-ph/static/:path*',
-        destination: 'https://us-assets.i.posthog.com/static/:path*',
-      },
-      {
-        source: '/relay-ph/:path*',
-        destination: 'https://us.i.posthog.com/:path*',
-      },
-      {
-        source: '/relay-ph/flags',
-        destination: 'https://us.i.posthog.com/flags',
-      },
-      {
-        source: '/',
-        has: [
-          {
-            type: 'host',
-            value: 'dstack.org',
-          },
-        ],
-        destination: '/dstack',
-      },
-      {
-        source: '/:path+',
-        has: [
-          {
-            type: 'host',
-            value: 'dstack.org',
-          },
-        ],
-        destination: '/404',
-      },
-    ]
+    return {
+      // beforeFiles rewrites are checked before pages/public files
+      // which allows overriding page matching
+      beforeFiles: [
+        // dstack.org: rewrite root to /dstack page
+        {
+          source: '/',
+          has: [
+            {
+              type: 'host',
+              value: '(.*\\.)?dstack\\.org',
+            },
+          ],
+          destination: '/dstack',
+        },
+        // dstack.org: any other path should 404 (rewrite to non-existent page)
+        {
+          source: '/:path((?!_next|favicon|dstack|api).*)',
+          has: [
+            {
+              type: 'host',
+              value: '(.*\\.)?dstack\\.org',
+            },
+          ],
+          destination: '/404',
+        },
+      ],
+      afterFiles: [
+        // PostHog proxy rewrites
+        {
+          source: '/relay-ph/static/:path*',
+          destination: 'https://us-assets.i.posthog.com/static/:path*',
+        },
+        {
+          source: '/relay-ph/:path*',
+          destination: 'https://us.i.posthog.com/:path*',
+        },
+        {
+          source: '/relay-ph/flags',
+          destination: 'https://us.i.posthog.com/flags',
+        },
+      ],
+      fallback: [],
+    }
   },
   async headers() {
     return [
