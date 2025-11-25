@@ -28,9 +28,10 @@ const nextConfig: NextConfig = {
           destination: '/dstack',
         },
         // dstack.org: any other path should 404 (rewrite to non-existent page)
-        // Exclude: _next (assets), favicon, dstack (page + assets), api, home (logos), partnerships (logos)
+        // Exclude: _next, favicon, dstack, api, and static assets (svg, png, jpg, ico, webp, woff, woff2, css, js)
         {
-          source: '/:path((?!_next|favicon|dstack|api|home|partnerships).*)',
+          source:
+            '/:path((?!_next|favicon|dstack|api)(?!.*\\.(svg|png|jpg|jpeg|gif|ico|webp|woff2?|css|js)$).*)',
           has: [
             {
               type: 'host',
