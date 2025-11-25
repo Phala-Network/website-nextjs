@@ -1,0 +1,16 @@
+{
+  "name": "dstack",
+  "short_name": "dstack",
+  "description": "Open Source Confidential Computing Platform",
+  "icons": [
+    {
+      "src": "/dstack/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#C4F142",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

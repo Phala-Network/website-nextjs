@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: {
         template: '%s | dstack',
-        default: title,
+        default: 'Open Source Confidential Computing Platform',
       },
       description,
       keywords: [
@@ -40,8 +40,15 @@ export async function generateMetadata(): Promise<Metadata> {
         'confidential computing',
       ],
       metadataBase: new URL(`https://${DSTACK_DOMAIN}`),
+      icons: {
+        icon: [{ url: '/dstack/favicon.svg', type: 'image/svg+xml' }],
+        apple: [{ url: '/dstack/favicon.svg', type: 'image/svg+xml' }],
+      },
+      manifest: '/dstack/site.webmanifest',
       twitter: {
         card: 'summary_large_image',
+        title,
+        description,
       },
       openGraph: {
         title,
@@ -49,6 +56,13 @@ export async function generateMetadata(): Promise<Metadata> {
         url: `https://${DSTACK_DOMAIN}`,
         siteName: 'dstack',
         type: 'website',
+      },
+      robots: {
+        index: true,
+        follow: true,
+      },
+      alternates: {
+        canonical: `https://${DSTACK_DOMAIN}`,
       },
     }
   }
