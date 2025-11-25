@@ -5,6 +5,9 @@ export const DSTACK_DOMAIN = 'dstack.org'
 /**
  * Check if the current request is from dstack.org domain
  * This is used server-side to conditionally render Phala branding
+ *
+ * In development, you can test standalone mode by adding
+ * `127.0.0.1 dstack.org` to /etc/hosts and visiting http://dstack.org:3000
  */
 export async function isDstackDomain(): Promise<boolean> {
   const headersList = await headers()
