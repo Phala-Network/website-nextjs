@@ -44,7 +44,6 @@ export async function generateMetadata(): Promise<Metadata> {
         icon: [{ url: '/dstack-icon.svg', type: 'image/svg+xml' }],
         apple: [{ url: '/dstack-icon.svg', type: 'image/svg+xml' }],
       },
-      manifest: '/dstack/site.webmanifest',
       twitter: {
         card: 'summary_large_image',
         title,
