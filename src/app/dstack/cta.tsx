@@ -3,7 +3,13 @@ import { ArrowRight, Book, ChevronRight, File } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 
-const Cta3 = () => {
+interface Cta3Props {
+  isStandalone?: boolean
+}
+
+const Cta3 = ({ isStandalone = false }: Cta3Props) => {
+  const docsUrl = 'https://docs.phala.com/dstack/overview'
+
   return (
     <section className="py-24 max-w-6xl mx-auto">
       <div className="container">
@@ -41,11 +47,7 @@ const Cta3 = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <a
-              href="https://docs.phala.com/dstack/overview"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={docsUrl} target="_blank" rel="noopener noreferrer">
               <Card className="flex flex-row items-center justify-between gap-2 px-6 py-4 shadow-none hover:bg-accent">
                 <div className="flex items-start gap-2">
                   <File className="size-4" />
@@ -61,26 +63,28 @@ const Cta3 = () => {
                 <ChevronRight className="size-6" />
               </Card>
             </a>
-            <a
-              href="https://cloud.phala.network/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Card className="flex flex-row items-center justify-between gap-2 px-6 py-4 shadow-none hover:bg-accent">
-                <div className="flex items-start gap-2">
-                  <Book className="size-4" />
-                  <div>
-                    <h5 className="font-display mb-2 leading-4 font-medium">
-                      Try TEE Cloud
-                    </h5>
-                    <p className="font-display text-sm leading-5 text-muted-foreground">
-                      Start deploying confidential applications today.
-                    </p>
+            {!isStandalone && (
+              <a
+                href="https://cloud.phala.network/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Card className="flex flex-row items-center justify-between gap-2 px-6 py-4 shadow-none hover:bg-accent">
+                  <div className="flex items-start gap-2">
+                    <Book className="size-4" />
+                    <div>
+                      <h5 className="font-display mb-2 leading-4 font-medium">
+                        Try TEE Cloud
+                      </h5>
+                      <p className="font-display text-sm leading-5 text-muted-foreground">
+                        Start deploying confidential applications today.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <ChevronRight className="size-6" />
-              </Card>
-            </a>
+                  <ChevronRight className="size-6" />
+                </Card>
+              </a>
+            )}
           </div>
         </div>
       </div>

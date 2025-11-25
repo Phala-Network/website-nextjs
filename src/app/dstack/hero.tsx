@@ -5,9 +5,10 @@ import { Button } from '@/components/ui/button'
 
 interface Hero24Props {
   starCount: number
+  isStandalone?: boolean
 }
 
-const Hero24 = ({ starCount }: Hero24Props) => {
+const Hero24 = ({ starCount, isStandalone = false }: Hero24Props) => {
   return (
     <section className="py-24 max-w-6xl mx-auto">
       <div className="container">
@@ -52,20 +53,22 @@ const Hero24 = ({ starCount }: Hero24Props) => {
                 )}
               </a>
             </Button>
-            <Button
-              variant="link"
-              className="text-foreground underline"
-              size="lg"
-              asChild
-            >
-              <a
-                href="https://cloud.phala.network/"
-                target="_blank"
-                rel="noopener noreferrer"
+            {!isStandalone && (
+              <Button
+                variant="link"
+                className="text-foreground underline"
+                size="lg"
+                asChild
               >
-                Don't own a TEE yet?
-              </a>
-            </Button>
+                <a
+                  href="https://cloud.phala.network/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Don't own a TEE yet?
+                </a>
+              </Button>
+            )}
           </div>
         </div>
       </div>
