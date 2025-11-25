@@ -34,6 +34,15 @@ const Cta3 = ({ isStandalone = false }: Cta3Props) => {
                   <ArrowRight className="ml-2 size-4" />
                 </a>
               </Button>
+              <Button variant="outline" className="w-full sm:w-auto" asChild>
+                <a
+                  href="https://t.me/+RF-yUoDduWAzZTUx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Join Community
+                </a>
+              </Button>
             </div>
           </div>
 
