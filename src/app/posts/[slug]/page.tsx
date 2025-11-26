@@ -15,6 +15,7 @@ import PostNavigation from '../post-navigation'
 import PostSuggestions from '../post-suggestions'
 import { PostNavigationSkeleton, PostsSectionSkeleton } from '../skeleton'
 
+// Skip build-time generation, render on first request and cache
 export const revalidate = 7200
 
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`

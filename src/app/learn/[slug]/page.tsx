@@ -18,6 +18,7 @@ import {
   PostsSectionSkeleton,
 } from '../../posts/skeleton'
 
+// Skip build-time generation, render on first request and cache
 export const revalidate = 7200
 
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`

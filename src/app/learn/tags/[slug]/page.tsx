@@ -12,6 +12,7 @@ import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 import LearnTagClient from './learn-tag-client'
 
+// Skip build-time generation, render on first request and cache
 export const revalidate = 7200
 
 interface Props {

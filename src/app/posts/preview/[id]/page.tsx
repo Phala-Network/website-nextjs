@@ -15,6 +15,9 @@ import PostNavigation from '../../post-navigation'
 import PostSuggestions from '../../post-suggestions'
 import { PostNavigationSkeleton, PostsSectionSkeleton } from '../../skeleton'
 
+// Preview pages should always be dynamic (no caching)
+export const dynamic = 'force-dynamic'
+
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 interface Props {

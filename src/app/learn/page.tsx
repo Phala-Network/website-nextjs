@@ -11,6 +11,8 @@ import ComparisonsBlog24 from './sections/comparisons-blog24'
 import UseCasesSection from './sections/use-cases'
 import AdvancedSection from './sections/advanced'
 
+// Skip build-time generation, render on first request and cache
+export const dynamic = 'force-dynamic'
 export const revalidate = 7200
 
 async function getLearnData() {
