@@ -10,8 +10,6 @@ import { cn } from '@/lib/utils'
 import Banners from './banner'
 import List from './list'
 
-// Skip build-time generation, render on first request and cache
-export const dynamic = 'force-dynamic'
 export const revalidate = 7200
 
 async function getBlogData() {

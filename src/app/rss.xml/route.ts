@@ -1,7 +1,5 @@
 import { getBlogFeed } from '@/lib/rss_feed'
 
-// Skip build-time generation, render on first request and cache
-export const dynamic = 'force-dynamic'
 export const revalidate = 7200
 
 export async function GET() {
