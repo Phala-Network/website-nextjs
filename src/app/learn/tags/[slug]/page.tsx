@@ -9,7 +9,6 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { env } from '@/env'
-import { retrieveLearnTags } from '@/lib/learn'
 import { queryDatabase } from '@/lib/notion-client'
 import LearnTagClient from './learn-tag-client'
 
@@ -77,11 +76,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ).toString(),
     },
   }
-}
-
-export async function generateStaticParams() {
-  const tags = await retrieveLearnTags()
-  return tags.map((tag) => ({ slug: tag }))
 }
 
 export default async function LearnTagPage({ params }: Props) {

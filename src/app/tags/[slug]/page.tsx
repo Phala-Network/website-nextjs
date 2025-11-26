@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/breadcrumb'
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
-import { retrieveTags } from '@/lib/post'
 import TagPageClient from './tag-page-client'
 
 export const revalidate = 7200
@@ -74,11 +73,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ).toString(),
     },
   }
-}
-
-export async function generateStaticParams() {
-  const tags = await retrieveTags()
-  return tags.map((tag) => ({ slug: tag }))
 }
 
 export default async function TagPage({ params }: Props) {
