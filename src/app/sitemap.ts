@@ -1,5 +1,9 @@
 import type { MetadataRoute } from 'next'
 
+// Skip build-time generation, render on first request and cache
+export const dynamic = 'force-dynamic'
+export const revalidate = 7200
+
 import { validSlugs as comparisonSlugs } from '@/data/comparisons'
 import { successStories } from '@/data/success-stories-data'
 import { env } from '@/env'
