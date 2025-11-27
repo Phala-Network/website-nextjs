@@ -12,8 +12,15 @@ import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 import TagPageClient from './tag-page-client'
 
-// Skip build-time generation, render on first request and cache
+// ISR configuration
 export const revalidate = 7200
+export const dynamicParams = true
+
+// Return empty array to skip build-time generation
+// Pages will be generated on-demand and cached
+export async function generateStaticParams() {
+  return []
+}
 
 interface Props {
   params: Promise<{ slug: string }>

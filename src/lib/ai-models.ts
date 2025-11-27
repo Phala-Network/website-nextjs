@@ -93,7 +93,9 @@ export const iconMap = new Map(icons.map((icon) => [icon.name, icon.icon]))
 export type Icon = (typeof icons)[number]['name']
 
 export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
-  const res = await fetch('https://api.redpill.ai/v1/models')
+  const res = await fetch('https://api.redpill.ai/v1/models', {
+    next: { revalidate: 3600 }, // Cache for 1 hour
+  })
   const apiData: ApiResponse = await res.json()
 
   // Filter only phala models

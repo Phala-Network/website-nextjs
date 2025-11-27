@@ -15,8 +15,15 @@ import PostNavigation from '../post-navigation'
 import PostSuggestions from '../post-suggestions'
 import { PostNavigationSkeleton, PostsSectionSkeleton } from '../skeleton'
 
-// Skip build-time generation, render on first request and cache
+// ISR configuration
 export const revalidate = 7200
+export const dynamicParams = true
+
+// Return empty array to skip build-time generation
+// Pages will be generated on-demand and cached
+export async function generateStaticParams() {
+  return []
+}
 
 const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 

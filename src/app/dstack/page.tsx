@@ -1,104 +1,28 @@
 import type { Metadata } from 'next'
 
-import CreamContainer from '@/components/cream-container'
-import { DSTACK_DOMAIN, isDstackDomain } from '@/lib/dstack-domain'
 import { getGitHubStars } from '@/lib/github-stars'
 import { makeDescription } from '@/lib/seo'
-import AuditReport from './audit-report'
-import { Compare3 as Compare } from './compare'
-import { Cta3 as Cta } from './cta'
-import DstackFAQ from './faq'
-import Features from './features'
-import { Hero24 as Hero } from './hero'
-import { Feature102 as Launch } from './launch'
-// import { Logos9 as Logos } from './logos'
-import TrustCenter from './trust-center'
+import { DstackClient } from './dstack-client'
+
+export const revalidate = 3600 // Cache for 1 hour
 
 // Keywords from CSV row 8: TEE open source, confidential VM, open source private cloud, TDX sdk, TDX docker
-export async function generateMetadata(): Promise<Metadata> {
-  const isStandalone = await isDstackDomain()
-
-  const title = 'dstack - Open Source Confidential Computing'
-  const description = makeDescription(
+export const metadata: Metadata = {
+  title: 'dstack - Open Source Confidential Computing',
+  description: makeDescription(
     'Deploy secure applications with hardware-guaranteed privacy using TEE technology. Built for confidential AI, private cloud compute, and secure data processing.',
-  )
-
-  if (isStandalone) {
-    return {
-      title: {
-        template: '%s | dstack',
-        default: title,
-      },
-      description,
-      keywords: [
-        'TEE open source',
-        'confidential VM',
-        'open source private cloud',
-        'TDX sdk',
-        'TDX docker',
-        'dstack',
-        'confidential computing',
-      ],
-      metadataBase: new URL(`https://${DSTACK_DOMAIN}`),
-      icons: {
-        icon: [{ url: '/dstack-icon.svg', type: 'image/svg+xml' }],
-        apple: [{ url: '/dstack-icon.svg', type: 'image/svg+xml' }],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title,
-        description,
-      },
-      openGraph: {
-        title,
-        description,
-        url: `https://${DSTACK_DOMAIN}`,
-        siteName: 'dstack',
-        type: 'website',
-      },
-      robots: {
-        index: true,
-        follow: true,
-      },
-      alternates: {
-        canonical: `https://${DSTACK_DOMAIN}`,
-      },
-    }
-  }
-
-  return {
-    title,
-    description,
-    keywords: [
-      'TEE open source',
-      'confidential VM',
-      'open source private cloud',
-      'TDX sdk',
-      'TDX docker',
-    ],
-  }
+  ),
+  keywords: [
+    'TEE open source',
+    'confidential VM',
+    'open source private cloud',
+    'TDX sdk',
+    'TDX docker',
+  ],
 }
 
-const DstackPage = async () => {
+export default async function DstackPage() {
   const starCount = await getGitHubStars()
-  const isStandalone = await isDstackDomain()
 
-  return (
-    <>
-      <CreamContainer className="pt-20 -mt-20">
-        <Hero starCount={starCount} isStandalone={isStandalone} />
-      </CreamContainer>
-      <Features />
-      <Launch />
-      <TrustCenter />
-      <AuditReport />
-      {/* <Logos /> */}
-
-      <Compare />
-      <DstackFAQ />
-      <Cta isStandalone={isStandalone} />
-    </>
-  )
+  return <DstackClient starCount={starCount} />
 }
-
-export default DstackPage
