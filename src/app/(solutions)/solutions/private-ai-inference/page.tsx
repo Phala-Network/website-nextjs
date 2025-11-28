@@ -188,7 +188,7 @@ export default async function PrivateAIInferencePage() {
               {
                 question: "What's the maximum prompt/document size I can send?",
                 answer:
-                  'Up to 128k tokens for most models (e.g., Qwen2.5-72B, DeepSeek-V3). For longer documents, use chunking strategies or contact us for enterprise deployments with extended context windows.',
+                  'Up to 128k tokens for most models (e.g., Qwen3 Coder 480B, DeepSeek V3.1). For longer documents, use chunking strategies or contact us for enterprise deployments with extended context windows.',
               },
               {
                 question: 'Are there production deployments using this today?',

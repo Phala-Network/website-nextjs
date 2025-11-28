@@ -92,24 +92,31 @@ export const iconMap = new Map(icons.map((icon) => [icon.name, icon.icon]))
 
 export type Icon = (typeof icons)[number]['name']
 
+// GPU TEE infrastructure providers using NVIDIA Confidential Compute
+const GPU_TEE_INFRA_PROVIDERS = ['phala/', 'nearai/', 'tinfoil/']
+
+// Open-source model providers that can run on GPU TEE
+const GPU_TEE_MODEL_PROVIDERS = ['deepseek/', 'qwen/', 'google/', 'meta-llama/', 'nousresearch/']
+
 export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
   const res = await fetch('https://api.redpill.ai/v1/models', {
     next: { revalidate: 3600 }, // Cache for 1 hour
   })
   const apiData: ApiResponse = await res.json()
 
-  // Filter only phala models
-  const phalaModels = apiData.data.filter((model) =>
-    model.id.startsWith('phala/'),
+  // Filter models from GPU TEE providers (infrastructure + open-source models)
+  const allTeeProviders = [...GPU_TEE_INFRA_PROVIDERS, ...GPU_TEE_MODEL_PROVIDERS]
+  const gpuTeeModels = apiData.data.filter((model) =>
+    allTeeProviders.some((prefix) => model.id.startsWith(prefix)),
   )
 
   // Sort by created timestamp (newest first)
-  const sortedPhalaModels = phalaModels.sort((a, b) => b.created - a.created)
+  const sortedModels = gpuTeeModels.sort((a, b) => b.created - a.created)
 
   // Transform API response to match expected Model type
-  const models: Model[] = sortedPhalaModels.map((apiModel, index) => {
+  const models: Model[] = sortedModels.map((apiModel, index) => {
     // Extract model name from ID (e.g., "phala/gpt-oss-20b" -> "gpt-oss-20b")
-    const modelName = apiModel.id.replace('phala/', '')
+    const modelName = apiModel.id.replace(/^[^/]+\//, '')
 
     // Extract provider and build slug
     let provider: string

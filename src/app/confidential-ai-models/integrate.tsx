@@ -120,6 +120,40 @@ const Integrate = () => {
             <div className="flex justify-between items-center bg-muted px-4 py-3 mt-auto rounded-lg gap-3">
               {/** biome-ignore lint/performance/noImgElement: svg */}
               <img
+                src={iconMap.get('deepseek')}
+                alt="DeepSeek V3.1"
+                className="size-6"
+              />
+              <div className="flex-1">
+                <div className="font-medium text-sm">DeepSeek V3.1</div>
+                <div className="text-muted-foreground text-xs">
+                  Input / Output
+                </div>
+              </div>
+              <div className="font-medium text-muted-foreground text-sm">
+                $0.27 / $1.10
+              </div>
+            </div>
+            <div className="flex justify-between items-center bg-muted px-4 py-3 mt-5 rounded-lg gap-3">
+              {/** biome-ignore lint/performance/noImgElement: svg */}
+              <img
+                src={iconMap.get('qwen')}
+                alt="Qwen3 Coder 480B"
+                className="size-6"
+              />
+              <div className="flex-1">
+                <div className="font-medium text-sm">Qwen3 Coder 480B</div>
+                <div className="text-muted-foreground text-xs">
+                  Input / Output
+                </div>
+              </div>
+              <div className="font-medium text-muted-foreground text-sm">
+                $0.9 / $1.5
+              </div>
+            </div>
+            <div className="flex justify-between items-center bg-muted px-4 py-3 mt-5 rounded-lg gap-3">
+              {/** biome-ignore lint/performance/noImgElement: svg */}
+              <img
                 src={iconMap.get('openai')}
                 alt="GPT OSS 120B"
                 className="size-6"
@@ -132,40 +166,6 @@ const Integrate = () => {
               </div>
               <div className="font-medium text-muted-foreground text-sm">
                 $0.14 / $0.49
-              </div>
-            </div>
-            <div className="flex justify-between items-center bg-muted px-4 py-3 mt-5 rounded-lg gap-3">
-              {/** biome-ignore lint/performance/noImgElement: svg */}
-              <img
-                src={iconMap.get('qwen')}
-                alt="Qwen3 Coder"
-                className="size-6"
-              />
-              <div className="flex-1">
-                <div className="font-medium text-sm">Qwen3 Coder</div>
-                <div className="text-muted-foreground text-xs">
-                  Input / Output
-                </div>
-              </div>
-              <div className="font-medium text-muted-foreground text-sm">
-                $0.9 / $1.5
-              </div>
-            </div>
-            <div className="flex justify-between items-center bg-muted px-4 py-3 mt-5 rounded-lg gap-3">
-              {/** biome-ignore lint/performance/noImgElement: svg */}
-              <img
-                src={iconMap.get('meta')}
-                alt="Llama-3.3-70B"
-                className="size-6"
-              />
-              <div className="flex-1">
-                <div className="font-medium text-sm">Llama 3.3 70B</div>
-                <div className="text-muted-foreground text-xs">
-                  Input / Output
-                </div>
-              </div>
-              <div className="font-medium text-muted-foreground text-sm">
-                $0.1 / $0.25
               </div>
             </div>
           </div>

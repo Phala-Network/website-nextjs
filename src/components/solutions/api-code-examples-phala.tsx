@@ -25,7 +25,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="phala/deepseek-chat-v3-0324",
+    model="deepseek/deepseek-chat-v3.1",
     messages=[
         {"role": "system", "content": "You are a helpful assistant"},
         {"role": "user", "content": "What is your model name?"},
@@ -45,7 +45,7 @@ import jwt
 
 # Fetch attestation report
 response = requests.get(
-    "https://api.redpill.ai/v1/attestation/report?model=phala/deepseek-v3",
+    "https://api.redpill.ai/v1/attestation/report?model=deepseek/deepseek-chat-v3.1",
     headers={"Authorization": f"Bearer {api_key}"}
 )
 report = response.json()
@@ -100,7 +100,7 @@ for gpu_id, token in gpu_tokens.items():
       }
   ],
   "tool_choice": "auto",
-  "model": "phala/qwen3-coder"
+  "model": "qwen/qwen3-coder-480b-a35b-instruct"
 }'`,
       },
       right: {
@@ -132,7 +132,7 @@ for gpu_id, token in gpu_tokens.items():
         "tool_call_id": "chatcmpl-tool-471f2c795ab64a27ab671a9e302c94db"
       }
     ],
-    "model": "phala/qwen3-coder"
+    "model": "qwen/qwen3-coder-480b-a35b-instruct"
   }'`,
       },
     },
@@ -151,7 +151,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="phala/gemma-3-27b-it",
+    model="qwen/qwen3-vl-30b-a3b-instruct",
     messages=[{
         "role": "user",
         "content": [

@@ -36,20 +36,21 @@ const LAYER_2_CARD: CardData = {
 
 const LAYER_3_CARDS: ModelCardData[] = [
   {
-    id: 'openai',
-    title: 'OpenAI o3 120b',
-    provider: 'OpenAI',
-  },
-  {
     id: 'deepseek',
-    title: 'DeepSeek V3',
-    provider: 'DeepSeek',
+    title: 'DeepSeek V3.1',
+    provider: 'Phala',
     badge: 'GPU TEE',
   },
   {
     id: 'qwen',
-    title: 'Qwen2.5 72B',
-    provider: 'Qwen',
+    title: 'Qwen3 Coder 480B',
+    provider: 'NearAI',
+    badge: 'GPU TEE',
+  },
+  {
+    id: 'openai',
+    title: 'GPT OSS 120B',
+    provider: 'Tinfoil',
     badge: 'GPU TEE',
   },
 ]
