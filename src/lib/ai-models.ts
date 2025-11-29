@@ -15,23 +15,29 @@ export type Model = {
   verifiable: boolean
 }
 
-type ApiModel = {
+type ServiceApiModel = {
   id: string
   name: string
   created: number
-  context_length: number
+  description: string
+  specs: {
+    context_length: number
+  }
+  providers: string[]
   pricing: {
     prompt: string
     completion: string
     image: string
     request: string
   }
-  description: string
 }
 
-type ApiResponse = {
-  data: ApiModel[]
+type ServiceApiResponse = {
+  data: ServiceApiModel[]
 }
+
+// GPU TEE infrastructure providers using NVIDIA Confidential Compute
+const GPU_TEE_PROVIDERS = ['phala', 'nearai', 'tinfoil']
 
 export const icons = [
   {
@@ -92,22 +98,15 @@ export const iconMap = new Map(icons.map((icon) => [icon.name, icon.icon]))
 
 export type Icon = (typeof icons)[number]['name']
 
-// GPU TEE infrastructure providers using NVIDIA Confidential Compute
-const GPU_TEE_INFRA_PROVIDERS = ['phala/', 'nearai/', 'tinfoil/']
-
-// Open-source model providers that can run on GPU TEE
-const GPU_TEE_MODEL_PROVIDERS = ['deepseek/', 'qwen/', 'google/', 'meta-llama/', 'nousresearch/']
-
 export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
-  const res = await fetch('https://api.redpill.ai/v1/models', {
+  const res = await fetch('https://service.redpill.ai/api/models', {
     next: { revalidate: 3600 }, // Cache for 1 hour
   })
-  const apiData: ApiResponse = await res.json()
+  const apiData: ServiceApiResponse = await res.json()
 
-  // Filter models from GPU TEE providers (infrastructure + open-source models)
-  const allTeeProviders = [...GPU_TEE_INFRA_PROVIDERS, ...GPU_TEE_MODEL_PROVIDERS]
+  // Filter models that have GPU TEE providers (phala, nearai, tinfoil)
   const gpuTeeModels = apiData.data.filter((model) =>
-    allTeeProviders.some((prefix) => model.id.startsWith(prefix)),
+    model.providers.some((provider) => GPU_TEE_PROVIDERS.includes(provider)),
   )
 
   // Sort by created timestamp (newest first)
@@ -115,29 +114,25 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
 
   // Transform API response to match expected Model type
   const models: Model[] = sortedModels.map((apiModel, index) => {
-    // Extract model name from ID (e.g., "phala/gpt-oss-20b" -> "gpt-oss-20b")
-    const modelName = apiModel.id.replace(/^[^/]+\//, '')
+    // Use the original model ID as slug (e.g., "meta-llama/llama-3.3-70b-instruct")
+    const slug = apiModel.id
 
-    // Extract provider and build slug
+    // Extract provider from model name
     let provider: string
-    let slug: string
 
     if (apiModel.name.includes(':')) {
-      // Format: "OpenAI: GPT OSS 20B" -> provider="OpenAI", slug="openai/gpt-oss-20b"
+      // Format: "OpenAI: GPT OSS 20B" -> provider="OpenAI"
       provider = apiModel.name.split(':')[0]?.trim() || 'Phala'
-      slug = `${provider.toLowerCase()}/${modelName}`
     } else if (apiModel.name.includes('/')) {
-      // Format: "deepseek/deepseek-chat-v3-0324" -> provider="deepseek", slug="deepseek/deepseek-chat-v3-0324"
+      // Format: "deepseek/deepseek-chat-v3-0324" -> provider="deepseek"
       provider = apiModel.name.split('/')[0]?.trim() || 'Phala'
-      slug = apiModel.name.toLowerCase()
     } else {
       // Fallback: extract provider from first word, removing version numbers
-      // e.g., "Qwen2.5 7B Instruct" -> "qwen"
+      // e.g., "Qwen2.5 7B Instruct" -> "Qwen"
       const firstWord = apiModel.name.split(' ')[0]?.trim() || 'Phala'
       // Remove version numbers from provider (e.g., "Qwen2.5" -> "Qwen")
       const providerClean = firstWord.replace(/[0-9.]+$/, '')
       provider = providerClean || firstWord
-      slug = `${providerClean.toLowerCase()}/${modelName}`
     }
 
     return {
@@ -146,7 +141,7 @@ export const fetchAiModels = async (limit: number = 20, skip: number = 0) => {
       name: apiModel.name,
       provider,
       description: apiModel.description,
-      contextLength: apiModel.context_length,
+      contextLength: apiModel.specs.context_length,
       promptPrice: apiModel.pricing.prompt,
       completionPrice: apiModel.pricing.completion,
       imagePrice: apiModel.pricing.image,

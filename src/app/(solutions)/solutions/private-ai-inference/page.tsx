@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 export const revalidate = 3600
 
 export default async function PrivateAIInferencePage() {
-  const models = await fetchAiModels(20)
+  const models = await fetchAiModels(100)
 
   return (
     <>

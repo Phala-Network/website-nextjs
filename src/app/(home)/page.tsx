@@ -17,7 +17,7 @@ export default async function HomePage() {
   // Fetch models for the ConfidentialAI section
   let models: Model[] = []
   try {
-    models = await fetchAiModels(10, 0)
+    models = await fetchAiModels(100, 0)
   } catch (error) {
     console.error('Failed to fetch models:', error)
   }

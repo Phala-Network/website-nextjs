@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 }
 
 export default async function ConfidentialAiModelsPage() {
-  const models = await fetchAiModels(20, 0)
+  const models = await fetchAiModels(100, 0)
 
   // SEO: JSON-LD Product Schema
   const productJsonLd = productSchema(
