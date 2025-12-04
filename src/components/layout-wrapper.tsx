@@ -1,5 +1,7 @@
 'use client'
 
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
+
 import Footer from '@/components/footer'
 import { PhalaNavbar4 } from '@/components/navbar4-phala'
 import { useIsDstack } from '@/hooks/use-is-dstack'
@@ -17,12 +19,12 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
   const isDstack = useIsDstack()
 
   return (
-    <>
+    <NuqsAdapter>
       {!isDstack && <PhalaNavbar4 />}
       <div className={isDstack ? '' : 'pt-20'}>
         {children}
         {!isDstack && <Footer />}
       </div>
-    </>
+    </NuqsAdapter>
   )
 }
