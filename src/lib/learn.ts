@@ -6,9 +6,9 @@ import slugify from 'slugify'
 
 import { env } from '@/env'
 import {
+  createNotionClient,
   getParsedPage,
   getParsedPagesByProperties,
-  notion,
   type ParsedListPage,
   type ParsedPage,
   queryDatabase,
@@ -105,6 +105,7 @@ export async function getLearnArticleBySlug(slug: string): Promise<ParsedPage> {
     properties: {
       'Custom URL': slug.startsWith('/') ? slug : `/${slug}`,
     },
+    tags: ['learn', `learn-${slug}`],
   })
 
   if (pages.length === 0) {
@@ -116,7 +117,7 @@ export async function getLearnArticleBySlug(slug: string): Promise<ParsedPage> {
 
 export async function getLearnArticleById(id: string): Promise<ParsedPage> {
   try {
-    const page = await getParsedPage(id)
+    const page = await getParsedPage(id, { tags: ['learn', `learn-${id}`] })
     if (!page) {
       notFound()
     }
@@ -131,17 +132,20 @@ export async function getRecentLearnArticles(
   size: number = 3,
   excludeSlug?: string,
 ): Promise<ParsedListPage[]> {
-  const { pages } = await queryDatabase({
-    database_id: env.NOTION_LEARN_DATABASE_ID,
-    filter: getBaseFilter(excludeSlug),
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: size,
-  })
+  const { pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_LEARN_DATABASE_ID,
+      filter: getBaseFilter(excludeSlug),
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
+        },
+      ],
+      page_size: size,
+    },
+    { tags: ['learn', 'learn-recent'] },
+  )
 
   return pages
 }
@@ -161,18 +165,22 @@ export async function getSimilarLearnArticles(
     },
   })
 
-  const { pages } = await queryDatabase({
-    database_id: env.NOTION_LEARN_DATABASE_ID,
-    filter,
-    sorts: [{ property: 'Published Time', direction: 'descending' }],
-    page_size: 3,
-  })
+  const { pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_LEARN_DATABASE_ID,
+      filter,
+      sorts: [{ property: 'Published Time', direction: 'descending' }],
+      page_size: 3,
+    },
+    { tags: ['learn', `learn-similar-${page.tags[0]}`] },
+  )
 
   return pages
 }
 
 export async function retrieveLearnTags(): Promise<string[]> {
-  const database = await notion.databases.retrieve({
+  const client = createNotionClient(['learn', 'learn-tags'])
+  const database = await client.databases.retrieve({
     database_id: env.NOTION_LEARN_DATABASE_ID,
   })
   const tags = R.without(
@@ -201,17 +209,20 @@ export async function getNavigationLearnArticles(
         ...(isBefore ? { before: dateString } : { after: dateString }),
       },
     })
-    return queryDatabase({
-      database_id: env.NOTION_LEARN_DATABASE_ID,
-      filter,
-      sorts: [
-        {
-          property: 'Published Time',
-          direction: isBefore ? 'descending' : 'ascending',
-        },
-      ],
-      page_size: 1,
-    })
+    return queryDatabase(
+      {
+        database_id: env.NOTION_LEARN_DATABASE_ID,
+        filter,
+        sorts: [
+          {
+            property: 'Published Time',
+            direction: isBefore ? 'descending' : 'ascending',
+          },
+        ],
+        page_size: 1,
+      },
+      { tags: ['learn', 'learn-nav'] },
+    )
   }
 
   const [beforeResult, nextResult] = await Promise.all([

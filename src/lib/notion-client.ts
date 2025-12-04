@@ -16,7 +16,9 @@ import * as R from 'ramda'
 import { env } from '@/env'
 
 // Create a Notion client with Next.js cache tags
-function createNotionClient(tags: string[] = ['notion']) {
+// Always includes 'notion' as base tag, additional tags are appended
+export function createNotionClient(additionalTags: string[] = []) {
+  const tags = ['notion', ...additionalTags]
   return new Client({
     auth: env.NOTION_TOKEN,
     fetch: (url, init) => {
@@ -74,7 +76,7 @@ export async function getParsedPage(
   page_id: string,
   options?: { tags?: string[] },
 ): Promise<ParsedPage | null> {
-  const client = createNotionClient(options?.tags ?? ['notion', 'page'])
+  const client = createNotionClient(options?.tags ?? ['page'])
   const page = await client.pages.retrieve({ page_id })
   if (!isFullPage(page)) {
     console.warn('Page is not a full page.')
@@ -237,7 +239,7 @@ export async function getParsedPagesByProperties({
   properties: Record<string, any>
   tags?: string[]
 }): Promise<ParsedPage[]> {
-  const client = createNotionClient(tags ?? ['notion', 'pages'])
+  const client = createNotionClient(tags ?? ['pages'])
   const database = await client.databases.query({
     database_id,
     filter: {
@@ -326,7 +328,7 @@ export async function queryDatabase(
   args: QueryDatabaseParameters,
   options?: { tags?: string[] },
 ) {
-  const client = createNotionClient(options?.tags ?? ['notion', 'posts'])
+  const client = createNotionClient(options?.tags ?? ['posts'])
   const database = await client.databases.query(args)
   const { results = [], next_cursor } = database
   const pages = parsePages(results)
@@ -340,7 +342,7 @@ export async function queryAllDatabase(
   args: Omit<QueryDatabaseParameters, 'start_cursor' | 'page_size'>,
   options?: { tags?: string[] },
 ) {
-  const client = createNotionClient(options?.tags ?? ['notion', 'posts'])
+  const client = createNotionClient(options?.tags ?? ['posts'])
   const allResults: PageObjectResponse[] = []
   let cursor: string | undefined
 

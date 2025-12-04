@@ -107,8 +107,8 @@ export const adminPublishPost = async (
   }
 
   try {
-    // Revalidate blog page and related paths using the revalidate API
-    // This is necessary because revalidatePath() doesn't work in API route contexts
+    // Revalidate blog cache using tags via the revalidate API
+    // This is necessary because revalidateTag() doesn't work in API route contexts
     const apiUrl = new URL(
       '/api/revalidate',
       `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
@@ -117,20 +117,20 @@ export const adminPublishPost = async (
     // Set the revalidate token on the base URL for security
     apiUrl.searchParams.set('token', REVALIDATE_TOKEN)
 
-    const getFetch = (path: string) => {
+    const revalidateByTag = (tag: string) => {
       const url = new URL(apiUrl)
-      url.searchParams.set('path', path)
+      url.searchParams.set('tag', tag)
       return fetch(url)
     }
 
+    const slugWithoutSlash = slug.replace(/^\//, '')
     const revalidatePromises = [
-      // Revalidate the main blog listing page
-      getFetch('/blog'),
-      // Revalidate the specific post page
-      getFetch(`/posts/${slug.replace(/^\//, '')}`),
-      getFetch(`/api/posts/[cursor]`),
-      // Revalidate all tag pages for this post
-      ...tags.map((tag) => getFetch(`/tags/${tag}`)),
+      // Revalidate all blog-related caches
+      revalidateByTag('blog'),
+      // Revalidate the specific post cache
+      revalidateByTag(`blog-${slugWithoutSlash}`),
+      // Revalidate tag-specific caches for this post
+      ...tags.map((tag) => revalidateByTag(`tag-${tag}`)),
     ]
 
     // Wait for all revalidation requests to complete
