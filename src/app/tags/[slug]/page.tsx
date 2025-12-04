@@ -27,26 +27,22 @@ interface Props {
 }
 
 async function getTagData(tag: string) {
-  const baseFilters = [
-    {
-      property: 'Status',
-      status: {
-        equals: 'Published',
-      },
-    },
-    {
-      property: 'Post Type',
-      select: {
-        equals: 'Post',
-      },
-    },
-  ]
-
   const { pages, next_cursor } = await queryDatabase({
     database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
       and: [
-        ...baseFilters,
+        {
+          property: 'Status',
+          status: {
+            equals: 'Published',
+          },
+        },
+        {
+          property: 'Post Type',
+          select: {
+            equals: 'Post',
+          },
+        },
         {
           property: 'Tags',
           multi_select: {
@@ -66,7 +62,7 @@ async function getTagData(tag: string) {
 
   return {
     initialPages: pages,
-    nextCursor: next_cursor || '',
+    initialCursor: next_cursor,
   }
 }
 
@@ -86,7 +82,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function TagPage({ params }: Props) {
   const { slug } = await params
   const tag = decodeURIComponent(slug)
-  const { initialPages, nextCursor } = await getTagData(tag)
+  const { initialPages, initialCursor } = await getTagData(tag)
 
   return (
     <div className="min-h-screen">
@@ -116,7 +112,7 @@ export default async function TagPage({ params }: Props) {
           <TagPageClient
             tag={tag}
             initialPages={initialPages}
-            nextCursor={nextCursor}
+            initialCursor={initialCursor}
           />
         </div>
       </section>

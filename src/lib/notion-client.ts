@@ -303,6 +303,34 @@ async function* iteratePaginatedWithRetries<
 export async function queryDatabase(args: QueryDatabaseParameters) {
   const database = await notion.databases.query(args)
   const { results = [], next_cursor } = database
+  const pages = parsePages(results)
+  return {
+    next_cursor,
+    pages,
+  }
+}
+
+export async function queryAllDatabase(
+  args: Omit<QueryDatabaseParameters, 'start_cursor' | 'page_size'>,
+) {
+  const allResults: PageObjectResponse[] = []
+  let cursor: string | undefined
+
+  do {
+    const response = await notion.databases.query({
+      ...args,
+      start_cursor: cursor,
+      page_size: 100,
+    })
+    allResults.push(...(response.results as PageObjectResponse[]))
+    cursor = response.next_cursor ?? undefined
+  } while (cursor)
+
+  return parsePages(allResults)
+}
+
+
+function parsePages(results: unknown[]) {
   const pages = []
   for (const page of results) {
     // @ts-expect-error missing from Notion package
@@ -346,8 +374,5 @@ export async function queryDatabase(args: QueryDatabaseParameters) {
       createdTime,
     })
   }
-  return {
-    next_cursor,
-    pages,
-  }
+  return pages
 }

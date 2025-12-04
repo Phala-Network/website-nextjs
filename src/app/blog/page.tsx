@@ -46,6 +46,7 @@ async function getBlogData() {
     ],
     page_size: 5,
   })
+
   const { next_cursor, pages } = await queryDatabase({
     database_id: env.NOTION_POSTS_DATABASE_ID,
     filter: {
@@ -88,7 +89,7 @@ async function getBlogData() {
   return {
     tags,
     initialPages: pages,
-    nextCursor: next_cursor || '',
+    initialCursor: next_cursor,
     bannerPages: queryBannerPages ? queryBannerPages.pages : [],
   }
 }
@@ -98,7 +99,7 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  const { tags, initialPages, nextCursor, bannerPages } = await getBlogData()
+  const { tags, initialPages, initialCursor, bannerPages } = await getBlogData()
 
   return (
     <div className="min-h-screen">
@@ -124,7 +125,10 @@ export default async function BlogPage() {
           <section className={cn('mt-8')}>
             <Banners pages={bannerPages} />
           </section>
-          <List initialPages={initialPages} nextCursor={nextCursor} />
+          <List
+            initialPages={initialPages}
+            initialCursor={initialCursor}
+          />
           <section
             className={cn(
               'bg-muted rounded-2xl border',
