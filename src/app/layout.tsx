@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
-import { LayoutWrapper } from '@/components/layout-wrapper'
+import Footer from '@/components/footer'
+import { PhalaNavbar4 } from '@/components/navbar4-phala'
 import { env } from '@/env'
 import fontVariables from '@/lib/fonts'
 import './globals.css'
@@ -50,7 +51,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables}>
       <body>
-        <LayoutWrapper>{children}</LayoutWrapper>
+        <PhalaNavbar4 />
+        <div className="pt-20">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   )
