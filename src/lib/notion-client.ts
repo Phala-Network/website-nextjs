@@ -15,9 +15,21 @@ import * as R from 'ramda'
 
 import { env } from '@/env'
 
-export const notion = new Client({
-  auth: env.NOTION_TOKEN,
-})
+// Create a Notion client with Next.js cache tags
+function createNotionClient(tags: string[] = ['notion']) {
+  return new Client({
+    auth: env.NOTION_TOKEN,
+    fetch: (url, init) => {
+      return fetch(url, {
+        ...init,
+        next: { tags },
+      })
+    },
+  })
+}
+
+// Default client for backwards compatibility (will use 'notion' tag)
+export const notion = createNotionClient()
 
 const n2m = new NotionToMarkdown({
   notionClient: notion,
@@ -60,17 +72,21 @@ export function isMediumUrl(url: string): boolean {
 
 export async function getParsedPage(
   page_id: string,
+  options?: { tags?: string[] },
 ): Promise<ParsedPage | null> {
-  const page = await notion.pages.retrieve({ page_id })
+  const client = createNotionClient(options?.tags ?? ['notion', 'page'])
+  const page = await client.pages.retrieve({ page_id })
   if (!isFullPage(page)) {
     console.warn('Page is not a full page.')
     return null
   }
-  const blocks = await collectPaginatedAPI(notion.blocks.children.list, {
+  const blocks = await collectPaginatedAPI(client.blocks.children.list, {
     block_id: page_id,
   })
   const fullBlocks: BlockObjectResponse[] = blocks.filter(isFullBlock)
-  const parsedBlocks = await Promise.all(fullBlocks.map(parsePageBlock))
+  const parsedBlocks = await Promise.all(
+    fullBlocks.map((block) => parsePageBlock(block, client)),
+  )
   const title = R.pipe(
     R.pathOr([], ['Title', 'title']),
     R.map(R.prop('plain_text')),
@@ -115,6 +131,7 @@ export async function getParsedPage(
 
 async function parsePageBlock(
   block: BlockObjectResponse,
+  client: Client,
 ): Promise<ParsedBlock> {
   const commonFields = {
     id: block.id,
@@ -162,7 +179,7 @@ async function parsePageBlock(
     case 'toggle':
     case 'synced_block':
     case 'child_page':
-      return withPotentialChildren(block, commonFields as BlockObjectResponse)
+      return withPotentialChildren(block, commonFields as BlockObjectResponse, client)
 
     default:
       ;((block: never) => {
@@ -180,6 +197,7 @@ async function parsePageBlock(
 async function withPotentialChildren(
   block: BlockObjectResponse,
   commonFields: BlockObjectResponse,
+  client: Client,
 ): Promise<ParsedBlock> {
   if (!block.has_children) {
     return {
@@ -189,13 +207,13 @@ async function withPotentialChildren(
   }
   const parsedChildren: ParsedBlock[] = []
   for await (const child of iteratePaginatedWithRetries(
-    notion.blocks.children.list,
+    client.blocks.children.list,
     {
       block_id: block.id,
     },
   )) {
     if (isFullBlock(child)) {
-      parsedChildren.push(await parsePageBlock(child))
+      parsedChildren.push(await parsePageBlock(child, client))
     }
   }
   return {
@@ -212,11 +230,15 @@ function isParsedPage(page: ParsedPage | null): page is ParsedPage {
 export async function getParsedPagesByProperties({
   database_id,
   properties,
+  tags,
 }: {
   database_id: string
+  // biome-ignore lint/suspicious/noExplicitAny: Notion filter types are complex
   properties: Record<string, any>
+  tags?: string[]
 }): Promise<ParsedPage[]> {
-  const database = await notion.databases.query({
+  const client = createNotionClient(tags ?? ['notion', 'pages'])
+  const database = await client.databases.query({
     database_id,
     filter: {
       and: Object.entries(properties).map(([key, value]) => {
@@ -239,7 +261,7 @@ export async function getParsedPagesByProperties({
   })
   const pages = (
     await Promise.all(
-      database.results.map((result) => getParsedPage(result.id)),
+      database.results.map((result) => getParsedPage(result.id, { tags })),
     )
   ).filter(isParsedPage)
   return pages
@@ -304,18 +326,7 @@ export async function queryDatabase(
   args: QueryDatabaseParameters,
   options?: { tags?: string[] },
 ) {
-  // Create a new client with custom fetch for Next.js cache tags
-  const client = new Client({
-    auth: process.env.NOTION_TOKEN,
-    fetch: (url, init) => {
-      return fetch(url, {
-        ...init,
-        next: {
-          tags: options?.tags ?? ['notion'],
-        },
-      })
-    },
-  })
+  const client = createNotionClient(options?.tags ?? ['notion', 'posts'])
   const database = await client.databases.query(args)
   const { results = [], next_cursor } = database
   const pages = parsePages(results)
@@ -327,12 +338,14 @@ export async function queryDatabase(
 
 export async function queryAllDatabase(
   args: Omit<QueryDatabaseParameters, 'start_cursor' | 'page_size'>,
+  options?: { tags?: string[] },
 ) {
+  const client = createNotionClient(options?.tags ?? ['notion', 'posts'])
   const allResults: PageObjectResponse[] = []
   let cursor: string | undefined
 
   do {
-    const response = await notion.databases.query({
+    const response = await client.databases.query({
       ...args,
       start_cursor: cursor,
       page_size: 100,
