@@ -1,4 +1,4 @@
-import { partnersData } from '@/app/partnerships/partners-data'
+import { partnersData } from '@/app/(main)/partnerships/partners-data'
 
 interface CompanyData {
   name: string

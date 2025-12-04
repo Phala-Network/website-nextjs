@@ -2,8 +2,6 @@ import type { Metadata } from 'next'
 
 import { DstackFooter } from '@/components/dstack/footer'
 import { DstackNavbar } from '@/components/dstack/navbar'
-import fontVariables from '@/lib/fonts'
-import '../globals.css'
 
 export const metadata: Metadata = {
   title: {
@@ -47,14 +45,12 @@ export default function DstackStandaloneLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={fontVariables}>
-      <body>
-        <DstackNavbar />
-        <div className="pt-20">
-          {children}
-          <DstackFooter />
-        </div>
-      </body>
-    </html>
+    <>
+      <DstackNavbar />
+      <div className="pt-20">
+        {children}
+        <DstackFooter />
+      </div>
+    </>
   )
 }

@@ -1,13 +1,13 @@
 import CreamContainer from '@/components/cream-container'
 import { getGitHubStars } from '@/lib/github-stars'
-import AuditReport from '../dstack/audit-report'
-import { Compare3 as Compare } from '../dstack/compare'
-import { Cta3 as Cta } from '../dstack/cta'
-import DstackFAQ from '../dstack/faq'
-import Features from '../dstack/features'
-import { Hero24 as Hero } from '../dstack/hero'
-import { Feature102 as Launch } from '../dstack/launch'
-import TrustCenter from '../dstack/trust-center'
+import AuditReport from '../(main)/dstack/audit-report'
+import { Compare3 as Compare } from '../(main)/dstack/compare'
+import { Cta3 as Cta } from '../(main)/dstack/cta'
+import DstackFAQ from '../(main)/dstack/faq'
+import Features from '../(main)/dstack/features'
+import { Hero24 as Hero } from '../(main)/dstack/hero'
+import { Feature102 as Launch } from '../(main)/dstack/launch'
+import TrustCenter from '../(main)/dstack/trust-center'
 
 export const revalidate = 3600 // Cache for 1 hour
 

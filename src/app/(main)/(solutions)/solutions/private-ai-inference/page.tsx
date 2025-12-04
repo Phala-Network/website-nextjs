@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
-import SuccessStoriesSection from '@/app/(home)/success-stories'
-import ModelsList from '@/app/confidential-ai-models/models-list'
+import SuccessStoriesSection from '@/app/(main)/(home)/success-stories'
+import ModelsList from '@/app/(main)/confidential-ai-models/models-list'
 import SolutionsCTA from '@/components/solutions-cta'
 import { ApiCodeExamplesPhala } from '@/components/solutions/api-code-examples-phala'
 import { Casestudies3 } from '@/components/solutions/casestudies3'
