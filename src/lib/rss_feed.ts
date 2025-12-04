@@ -6,32 +6,35 @@ import { queryDatabase } from '@/lib/notion-client'
 const SITE_URL = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
 
 export async function getBlogFeed() {
-  const { pages } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          status: {
-            equals: 'Published',
+  const { pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: {
+              equals: 'Published',
+            },
           },
-        },
-        {
-          property: 'Post Type',
-          select: {
-            equals: 'Post',
+          {
+            property: 'Post Type',
+            select: {
+              equals: 'Post',
+            },
           },
+        ],
+      },
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
         },
       ],
+      page_size: 200,
     },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 200,
-  })
+    { tags: ['blog', 'blog-rss'] },
+  )
 
   const feed = new Feed({
     title: 'Phala News',

@@ -27,44 +27,47 @@ interface Props {
 }
 
 async function getLearnTagData(tag: string) {
-  const { pages, next_cursor } = await queryDatabase({
-    database_id: env.NOTION_LEARN_DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          status: {
-            equals: 'Published',
+  const { pages, next_cursor } = await queryDatabase(
+    {
+      database_id: env.NOTION_LEARN_DATABASE_ID,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: {
+              equals: 'Published',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            does_not_contain: 'Changelog',
+          {
+            property: 'Tags',
+            multi_select: {
+              does_not_contain: 'Changelog',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            does_not_contain: 'not-listed',
+          {
+            property: 'Tags',
+            multi_select: {
+              does_not_contain: 'not-listed',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: tag,
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: tag,
+            },
           },
+        ],
+      },
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
         },
       ],
+      page_size: 18,
     },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 18,
-  })
+    { tags: ['learn', 'learn-articles', `learn-tag-${tag}`] },
+  )
 
   return {
     initialPages: pages,

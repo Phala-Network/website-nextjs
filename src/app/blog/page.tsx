@@ -14,77 +14,83 @@ export const revalidate = 7200
 
 async function getBlogData() {
   const tags = await retrieveTags()
-  const queryBannerPages = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: {
-      or: [
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: 'Weekly report',
+  const queryBannerPages = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter: {
+        or: [
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: 'Weekly report',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: 'Monthly report',
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: 'Monthly report',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: 'Pinned',
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: 'Pinned',
+            },
           },
+        ],
+      },
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
         },
       ],
+      page_size: 5,
     },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 5,
-  })
+    { tags: ['blog', 'blog-banners'] },
+  )
 
-  const { next_cursor, pages } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          status: {
-            equals: 'Published',
+  const { next_cursor, pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: {
+              equals: 'Published',
+            },
           },
-        },
-        {
-          property: 'Post Type',
-          select: {
-            equals: 'Post',
+          {
+            property: 'Post Type',
+            select: {
+              equals: 'Post',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            does_not_contain: 'Changelog',
+          {
+            property: 'Tags',
+            multi_select: {
+              does_not_contain: 'Changelog',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            does_not_contain: 'not-listed',
+          {
+            property: 'Tags',
+            multi_select: {
+              does_not_contain: 'not-listed',
+            },
           },
+        ],
+      },
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
         },
       ],
+      page_size: 18,
     },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 18,
-  })
+    { tags: ['blog', 'blog-posts'] },
+  )
 
   return {
     tags,

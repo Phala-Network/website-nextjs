@@ -15,18 +15,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getRecentPosts(100)
 
   // Get Learn articles
-  const { pages: learnArticles } = await queryDatabase({
-    database_id: env.NOTION_LEARN_DATABASE_ID,
-    filter: {
-      and: [
-        { property: 'Status', status: { equals: 'Published' } },
-        { property: 'Tags', multi_select: { does_not_contain: 'Changelog' } },
-        { property: 'Tags', multi_select: { does_not_contain: 'not-listed' } },
-      ],
+  const { pages: learnArticles } = await queryDatabase(
+    {
+      database_id: env.NOTION_LEARN_DATABASE_ID,
+      filter: {
+        and: [
+          { property: 'Status', status: { equals: 'Published' } },
+          { property: 'Tags', multi_select: { does_not_contain: 'Changelog' } },
+          { property: 'Tags', multi_select: { does_not_contain: 'not-listed' } },
+        ],
+      },
+      sorts: [{ property: 'Published Time', direction: 'descending' }],
+      page_size: 100,
     },
-    sorts: [{ property: 'Published Time', direction: 'descending' }],
-    page_size: 100,
-  })
+    { tags: ['learn', 'sitemap'] },
+  )
 
   const learnTags = await retrieveLearnTags()
 

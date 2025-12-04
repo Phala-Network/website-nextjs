@@ -31,18 +31,22 @@ export async function getLearnArticles(
     })
   }
 
-  const { next_cursor, pages } = await queryDatabase({
-    database_id: env.NOTION_LEARN_DATABASE_ID,
-    filter,
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size,
-    start_cursor: cursor || undefined,
-  })
+  const tags = tag ? ['learn', 'learn-articles', `learn-tag-${tag}`] : ['learn', 'learn-articles']
+  const { next_cursor, pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_LEARN_DATABASE_ID,
+      filter,
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
+        },
+      ],
+      page_size,
+      start_cursor: cursor || undefined,
+    },
+    { tags },
+  )
 
   return { pages, next_cursor }
 }

@@ -27,38 +27,41 @@ interface Props {
 }
 
 async function getTagData(tag: string) {
-  const { pages, next_cursor } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          status: {
-            equals: 'Published',
+  const { pages, next_cursor } = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: {
+              equals: 'Published',
+            },
           },
-        },
-        {
-          property: 'Post Type',
-          select: {
-            equals: 'Post',
+          {
+            property: 'Post Type',
+            select: {
+              equals: 'Post',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: tag,
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: tag,
+            },
           },
+        ],
+      },
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
         },
       ],
+      page_size: 18,
     },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 18,
-  })
+    { tags: ['blog', 'blog-posts', `blog-tag-${tag}`] },
+  )
 
   return {
     initialPages: pages,

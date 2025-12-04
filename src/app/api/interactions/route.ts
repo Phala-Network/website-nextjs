@@ -56,30 +56,33 @@ export async function POST(request: Request) {
   } else if (type === InteractionType.APPLICATION_COMMAND_AUTOCOMPLETE) {
     const { name, options } = data
     if (name === 'publish' || name === 'update') {
-      const { pages } = await queryDatabase({
-        database_id: NOTION_POSTS_DATABASE_ID,
-        filter:
-          options.length > 0 && options[0].value
-            ? {
-                property: 'Title',
-                rich_text: {
-                  contains: options[0].value,
+      const { pages } = await queryDatabase(
+        {
+          database_id: NOTION_POSTS_DATABASE_ID,
+          filter:
+            options.length > 0 && options[0].value
+              ? {
+                  property: 'Title',
+                  rich_text: {
+                    contains: options[0].value,
+                  },
+                }
+              : {
+                  property: 'Title',
+                  rich_text: {
+                    is_not_empty: true,
+                  },
                 },
-              }
-            : {
-                property: 'Title',
-                rich_text: {
-                  is_not_empty: true,
-                },
-              },
-        sorts: [
-          {
-            property: 'Created Time',
-            direction: 'descending',
-          },
-        ],
-        page_size: 5,
-      })
+          sorts: [
+            {
+              property: 'Created Time',
+              direction: 'descending',
+            },
+          ],
+          page_size: 5,
+        },
+        { tags: ['blog', 'blog-admin'] },
+      )
       return Response.json({
         type: InteractionResponseType.APPLICATION_COMMAND_AUTOCOMPLETE_RESULT,
         data: {

@@ -150,20 +150,23 @@ export async function list(interactionToken: string) {
     throw new Error('Not configured')
   }
 
-  const { pages } = await queryDatabase({
-    database_id: NOTION_POSTS_DATABASE_ID,
-    filter: {
-      property: 'Post Type',
-      select: { equals: 'Post' },
-    },
-    sorts: [
-      {
-        property: 'Last Edited Time',
-        direction: 'descending',
+  const { pages } = await queryDatabase(
+    {
+      database_id: NOTION_POSTS_DATABASE_ID,
+      filter: {
+        property: 'Post Type',
+        select: { equals: 'Post' },
       },
-    ],
-    page_size: 10,
-  })
+      sorts: [
+        {
+          property: 'Last Edited Time',
+          direction: 'descending',
+        },
+      ],
+      page_size: 10,
+    },
+    { tags: ['blog', 'blog-admin'] },
+  )
 
   await fetch(
     `https://discord.com/api/v10/webhooks/${DISCORD_APP_ID}/${interactionToken}/messages/@original`,
