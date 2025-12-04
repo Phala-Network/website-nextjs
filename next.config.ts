@@ -34,7 +34,7 @@ const nextConfig: NextConfig = {
               value: '^(?!.*dstack\\.org).*$',
             },
           ],
-          destination: '/404',
+          destination: '/_not-found',
         },
       ],
       afterFiles: [
@@ -53,14 +53,14 @@ const nextConfig: NextConfig = {
         },
         // dstack.org: block non-dstack pages (afterFiles runs after static files are matched)
         {
-          source: '/:path((?!_next|favicon|dstack|api|relay-ph).*)',
+          source: '/:path*',
           has: [
             {
               type: 'host',
               value: '(.*\\.)?dstack\\.org',
             },
           ],
-          destination: '/404',
+          destination: '/_not-found',
         },
       ],
       fallback: [],

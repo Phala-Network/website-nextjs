@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 
 import { DstackFooter } from '@/components/dstack/footer'
 import { DstackNavbar } from '@/components/dstack/navbar'
@@ -39,11 +39,6 @@ export const metadata: Metadata = {
       'Deploy secure applications with hardware-guaranteed privacy using TEE technology.',
   },
   metadataBase: new URL('https://dstack.org'),
-}
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
 }
 
 export default function DstackStandaloneLayout({
