@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import Image from 'next/image'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { parseAsStringLiteral, useQueryState } from 'nuqs'
 import {
   Check,
@@ -123,6 +124,7 @@ function CategoryAccordion({
   return (
     <div className="border rounded-lg overflow-hidden">
       <button
+        type="button"
         onClick={onToggle}
         className="flex w-full items-center justify-between gap-4 bg-muted/30 px-4 py-3 text-left hover:bg-muted/50 transition-colors"
       >
@@ -394,54 +396,41 @@ function SubprocessorsTab() {
   )
 }
 
-// Main Trust Client Component
-export default function TrustClient() {
+// Inner component that uses useQueryState
+function TrustTabsInner() {
   const [tab, setTab] = useQueryState(
     'tab',
     parseAsStringLiteral(VALID_TABS).withDefault('compliance')
   )
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="border-b bg-gradient-to-b from-muted/50 to-background">
-        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-24">
-          <div className="flex flex-col items-center text-center">
-            <Badge className="mb-4">Trust Center</Badge>
-            <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Security & Compliance
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
-              Transparency is at the core of our security commitment. Explore our compliance
-              certifications, security controls, and data processing practices.
-            </p>
-          </div>
-        </div>
-      </section>
+    <Tabs value={tab} onValueChange={(v) => setTab(v as TabValue)} className="space-y-8">
+      <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
+        <TabsTrigger value="compliance">Compliance</TabsTrigger>
+        <TabsTrigger value="controls">Controls</TabsTrigger>
+        <TabsTrigger value="subprocessors">Subprocessors</TabsTrigger>
+      </TabsList>
 
-      {/* Tabs Section */}
-      <section className="container mx-auto max-w-6xl px-4 py-12">
-        <Tabs value={tab} onValueChange={(v) => setTab(v as TabValue)} className="space-y-8">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
-            <TabsTrigger value="compliance">Compliance</TabsTrigger>
-            <TabsTrigger value="controls">Controls</TabsTrigger>
-            <TabsTrigger value="subprocessors">Subprocessors</TabsTrigger>
-          </TabsList>
+      <TabsContent value="compliance">
+        <ComplianceTab />
+      </TabsContent>
 
-          <TabsContent value="compliance">
-            <ComplianceTab />
-          </TabsContent>
+      <TabsContent value="controls">
+        <ControlsTab />
+      </TabsContent>
 
-          <TabsContent value="controls">
-            <ControlsTab />
-          </TabsContent>
+      <TabsContent value="subprocessors">
+        <SubprocessorsTab />
+      </TabsContent>
+    </Tabs>
+  )
+}
 
-          <TabsContent value="subprocessors">
-            <SubprocessorsTab />
-          </TabsContent>
-        </Tabs>
-      </section>
-
-    </main>
+// Main Tabs Component with NuqsAdapter wrapper
+export default function TrustTabs() {
+  return (
+    <NuqsAdapter>
+      <TrustTabsInner />
+    </NuqsAdapter>
   )
 }
