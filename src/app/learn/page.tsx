@@ -15,28 +15,31 @@ export const revalidate = 7200
 
 async function getLearnData() {
   // Get all published articles
-  const { pages } = await queryDatabase({
-    database_id: env.NOTION_LEARN_DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          status: { equals: 'Published' },
-        },
-        {
-          property: 'Tags',
-          multi_select: { does_not_contain: 'Changelog' },
-        },
-        {
-          property: 'Tags',
-          multi_select: { does_not_contain: 'not-listed' },
-        },
+  const { pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_LEARN_DATABASE_ID,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: { equals: 'Published' },
+          },
+          {
+            property: 'Tags',
+            multi_select: { does_not_contain: 'Changelog' },
+          },
+          {
+            property: 'Tags',
+            multi_select: { does_not_contain: 'not-listed' },
+          },
+        ],
+      },
+      sorts: [
+        { property: 'Published Time', direction: 'descending' },
       ],
     },
-    sorts: [
-      { property: 'Published Time', direction: 'descending' },
-    ],
-  })
+    { tags: ['learn', 'learn-articles'] },
+  )
 
   // Categorize articles by tags
   const whatIsArticles: ParsedListPage[] = []

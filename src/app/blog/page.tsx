@@ -14,81 +14,88 @@ export const revalidate = 7200
 
 async function getBlogData() {
   const tags = await retrieveTags()
-  const queryBannerPages = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: {
-      or: [
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: 'Weekly report',
+  const queryBannerPages = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter: {
+        or: [
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: 'Weekly report',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: 'Monthly report',
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: 'Monthly report',
+            },
           },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: 'Pinned',
+          {
+            property: 'Tags',
+            multi_select: {
+              contains: 'Pinned',
+            },
           },
+        ],
+      },
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
         },
       ],
+      page_size: 5,
     },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
+    { tags: ['blog', 'blog-banners'] },
+  )
+
+  const { next_cursor, pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: {
+              equals: 'Published',
+            },
+          },
+          {
+            property: 'Post Type',
+            select: {
+              equals: 'Post',
+            },
+          },
+          {
+            property: 'Tags',
+            multi_select: {
+              does_not_contain: 'Changelog',
+            },
+          },
+          {
+            property: 'Tags',
+            multi_select: {
+              does_not_contain: 'not-listed',
+            },
+          },
+        ],
       },
-    ],
-    page_size: 5,
-  })
-  const { next_cursor, pages } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: {
-      and: [
+      sorts: [
         {
-          property: 'Status',
-          status: {
-            equals: 'Published',
-          },
-        },
-        {
-          property: 'Post Type',
-          select: {
-            equals: 'Post',
-          },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            does_not_contain: 'Changelog',
-          },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            does_not_contain: 'not-listed',
-          },
+          property: 'Published Time',
+          direction: 'descending',
         },
       ],
+      page_size: 18,
     },
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: 18,
-  })
+    { tags: ['blog', 'blog-posts'] },
+  )
 
   return {
     tags,
     initialPages: pages,
-    nextCursor: next_cursor || '',
+    initialCursor: next_cursor,
     bannerPages: queryBannerPages ? queryBannerPages.pages : [],
   }
 }
@@ -98,7 +105,7 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  const { tags, initialPages, nextCursor, bannerPages } = await getBlogData()
+  const { tags, initialPages, initialCursor, bannerPages } = await getBlogData()
 
   return (
     <div className="min-h-screen">
@@ -124,7 +131,10 @@ export default async function BlogPage() {
           <section className={cn('mt-8')}>
             <Banners pages={bannerPages} />
           </section>
-          <List initialPages={initialPages} nextCursor={nextCursor} />
+          <List
+            initialPages={initialPages}
+            initialCursor={initialCursor}
+          />
           <section
             className={cn(
               'bg-muted rounded-2xl border',

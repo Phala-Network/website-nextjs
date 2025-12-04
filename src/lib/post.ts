@@ -6,9 +6,9 @@ import slugify from 'slugify'
 
 import { env } from '@/env'
 import {
+  createNotionClient,
   getParsedPage,
   getParsedPagesByProperties,
-  notion,
   type ParsedListPage,
   type ParsedPage,
   queryDatabase,
@@ -111,6 +111,7 @@ export async function getPostBySlug(slug: string): Promise<ParsedPage> {
     properties: {
       'Custom URL': slug.startsWith('/') ? slug : `/${slug}`,
     },
+    tags: ['blog', `blog-${slug}`],
   })
 
   if (pages.length === 0) {
@@ -122,7 +123,7 @@ export async function getPostBySlug(slug: string): Promise<ParsedPage> {
 
 export async function getPostById(id: string): Promise<ParsedPage> {
   try {
-    const page = await getParsedPage(id)
+    const page = await getParsedPage(id, { tags: ['blog', `blog-${id}`] })
     if (!page) {
       notFound()
     }
@@ -137,17 +138,20 @@ export async function getRecentPosts(
   size: number = 3,
   excludeSlug?: string,
 ): Promise<ParsedListPage[]> {
-  const { pages } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter: getBaseFilter(excludeSlug),
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: size,
-  })
+  const { pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter: getBaseFilter(excludeSlug),
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
+        },
+      ],
+      page_size: size,
+    },
+    { tags: ['blog', 'blog-recent'] },
+  )
 
   return pages
 }
@@ -167,18 +171,22 @@ export async function getSimilarPosts(
     },
   })
 
-  const { pages } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter,
-    sorts: [{ property: 'Published Time', direction: 'descending' }],
-    page_size: 3,
-  })
+  const { pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter,
+      sorts: [{ property: 'Published Time', direction: 'descending' }],
+      page_size: 3,
+    },
+    { tags: ['blog', `blog-similar-${page.tags[0]}`] },
+  )
 
   return pages
 }
 
 export async function retrieveTags(): Promise<string[]> {
-  const database = await notion.databases.retrieve({
+  const client = createNotionClient(['blog', 'blog-tags'])
+  const database = await client.databases.retrieve({
     database_id: env.NOTION_POSTS_DATABASE_ID,
   })
   const tags = R.without(
@@ -207,17 +215,20 @@ export async function getNavigationPosts(
         ...(isBefore ? { before: dateString } : { after: dateString }),
       },
     })
-    return queryDatabase({
-      database_id: env.NOTION_POSTS_DATABASE_ID,
-      filter,
-      sorts: [
-        {
-          property: 'Published Time',
-          direction: isBefore ? 'descending' : 'ascending',
-        },
-      ],
-      page_size: 1,
-    })
+    return queryDatabase(
+      {
+        database_id: env.NOTION_POSTS_DATABASE_ID,
+        filter,
+        sorts: [
+          {
+            property: 'Published Time',
+            direction: isBefore ? 'descending' : 'ascending',
+          },
+        ],
+        page_size: 1,
+      },
+      { tags: ['blog', 'blog-nav'] },
+    )
   }
 
   const [beforeResult, nextResult] = await Promise.all([

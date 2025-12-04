@@ -1,36 +1,37 @@
 'use client'
 
 import { RefreshCcw } from 'lucide-react'
-import { useState, useTransition } from 'react'
+import { useState } from 'react'
 
 import PostCard from '@/components/post-card'
 import { Button } from '@/components/ui/button'
-import { getPosts } from '@/lib/actions/post'
 import type { ParsedListPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
 
 interface Props {
   initialPages: ParsedListPage[]
-  nextCursor: string
+  initialCursor: string | null
 }
 
-export default function List({ initialPages, nextCursor }: Props) {
+export default function List({ initialPages, initialCursor }: Props) {
   const [pages, setPages] = useState(initialPages)
-  const [cursor, setCursor] = useState(nextCursor)
-  const [isPending, startTransition] = useTransition()
+  const [cursor, setCursor] = useState(initialCursor)
+  const [isPending, setIsPending] = useState(false)
 
-  const loadMore = () => {
-    startTransition(async () => {
-      try {
-        const result = await getPosts({ cursor })
-        startTransition(() => {
-          setPages([...pages, ...result.pages])
-          setCursor(result.next_cursor || '')
-        })
-      } catch (error) {
-        console.error('Failed to load more posts:', error)
-      }
-    })
+  const loadMore = async () => {
+    if (isPending || !cursor) return
+    setIsPending(true)
+    try {
+      const res = await fetch(`/api/posts/${cursor}`)
+      if (!res.ok) throw new Error('Failed to fetch')
+      const result = await res.json()
+      setPages([...pages, ...result.pages])
+      setCursor(result.nextCursor || null)
+    } catch (error) {
+      console.error('Failed to load more posts:', error)
+    } finally {
+      setIsPending(false)
+    }
   }
 
   return (

@@ -1,4 +1,4 @@
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { after } from 'next/server'
 
 import { env } from '@/env'
@@ -7,6 +7,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const token = searchParams.get('token')
+    const tag = searchParams.get('tag')
     const path = searchParams.get('path')
 
     // Validate token
@@ -17,10 +18,10 @@ export async function GET(request: Request) {
       })
     }
 
-    // Validate path parameter
-    if (!path || typeof path !== 'string') {
+    // Either tag or path is required
+    if (!tag && !path) {
       return new Response(
-        JSON.stringify({ error: 'Path parameter is required' }),
+        JSON.stringify({ error: 'Either tag or path parameter is required' }),
         {
           status: 400,
           headers: { 'Content-Type': 'application/json' },
@@ -28,18 +29,23 @@ export async function GET(request: Request) {
       )
     }
 
-    // Revalidate the specified path
-    revalidatePath(path)
-
-    after(() => {
-      const url = new URL(path, `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`)
-      return fetch(url.toString())
-    })
+    // Revalidate by tag (preferred) or path
+    if (tag) {
+      revalidateTag(tag, { expire: 0 })
+    }
+    if (path) {
+      revalidatePath(path)
+      after(() => {
+        const url = new URL(path, `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`)
+        return fetch(url.toString())
+      })
+    }
 
     return new Response(
       JSON.stringify({
         revalidated: true,
-        path,
+        tag: tag || undefined,
+        path: path || undefined,
         timestamp: new Date().toISOString(),
       }),
       {

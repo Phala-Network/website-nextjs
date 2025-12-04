@@ -107,8 +107,8 @@ export const adminPublishPost = async (
   }
 
   try {
-    // Revalidate blog page and related paths using the revalidate API
-    // This is necessary because revalidatePath() doesn't work in API route contexts
+    // Revalidate blog cache using tags via the revalidate API
+    // This is necessary because revalidateTag() doesn't work in API route contexts
     const apiUrl = new URL(
       '/api/revalidate',
       `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
@@ -117,19 +117,22 @@ export const adminPublishPost = async (
     // Set the revalidate token on the base URL for security
     apiUrl.searchParams.set('token', REVALIDATE_TOKEN)
 
-    const getFetch = (path: string) => {
+    const revalidateByTag = (tag: string) => {
       const url = new URL(apiUrl)
-      url.searchParams.set('path', path)
+      url.searchParams.set('tag', tag)
       return fetch(url)
     }
 
+    const slugWithoutSlash = slug.replace(/^\//, '')
     const revalidatePromises = [
-      // Revalidate the main blog listing page
-      getFetch('/blog'),
-      // Revalidate the specific post page
-      getFetch(`/posts/${slug.replace(/^\//, '')}`),
-      // Revalidate all tag pages for this post
-      ...tags.map((tag) => getFetch(`/tags/${tag}`)),
+      // Revalidate blog posts list cache (affects /blog page and /api/posts pagination)
+      revalidateByTag('blog-posts'),
+      // Revalidate banners (in case this post is pinned/weekly/monthly report)
+      revalidateByTag('blog-banners'),
+      // Revalidate the specific post page cache
+      revalidateByTag(`blog-${slugWithoutSlash}`),
+      // Revalidate RSS feed
+      revalidateByTag('blog-rss'),
     ]
 
     // Wait for all revalidation requests to complete
@@ -147,20 +150,23 @@ export async function list(interactionToken: string) {
     throw new Error('Not configured')
   }
 
-  const { pages } = await queryDatabase({
-    database_id: NOTION_POSTS_DATABASE_ID,
-    filter: {
-      property: 'Post Type',
-      select: { equals: 'Post' },
-    },
-    sorts: [
-      {
-        property: 'Last Edited Time',
-        direction: 'descending',
+  const { pages } = await queryDatabase(
+    {
+      database_id: NOTION_POSTS_DATABASE_ID,
+      filter: {
+        property: 'Post Type',
+        select: { equals: 'Post' },
       },
-    ],
-    page_size: 10,
-  })
+      sorts: [
+        {
+          property: 'Last Edited Time',
+          direction: 'descending',
+        },
+      ],
+      page_size: 10,
+    },
+    { tags: ['blog', 'blog-admin'] },
+  )
 
   await fetch(
     `https://discord.com/api/v10/webhooks/${DISCORD_APP_ID}/${interactionToken}/messages/@original`,
