@@ -4,6 +4,8 @@ import { NextResponse } from 'next/server'
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 
+// Enable static caching for route handler (Next.js 15 defaults to dynamic)
+export const dynamic = 'force-static'
 // ISR cache - same as blog page
 export const revalidate = 7200
 export const dynamicParams = true
