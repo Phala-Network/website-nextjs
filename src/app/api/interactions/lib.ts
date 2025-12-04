@@ -127,10 +127,12 @@ export const adminPublishPost = async (
     const revalidatePromises = [
       // Revalidate all blog-related caches
       revalidateByTag('blog'),
+      // Revalidate blog posts list cache
+      revalidateByTag('blog-posts'),
       // Revalidate the specific post cache
       revalidateByTag(`blog-${slugWithoutSlash}`),
       // Revalidate tag-specific caches for this post
-      ...tags.map((tag) => revalidateByTag(`tag-${tag}`)),
+      ...tags.map((tag) => revalidateByTag(`blog-tag-${tag}`)),
     ]
 
     // Wait for all revalidation requests to complete

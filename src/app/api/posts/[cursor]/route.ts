@@ -76,7 +76,7 @@ export async function GET(_: Request, { params }: RouteParams) {
       page_size: PAGE_SIZE,
       start_cursor: cursor,
     },
-    { tags: ['posts'] },
+    { tags: ['blog', 'blog-posts'] },
   )
 
   return NextResponse.json({
