@@ -300,8 +300,23 @@ async function* iteratePaginatedWithRetries<
   } while (nextCursor)
 }
 
-export async function queryDatabase(args: QueryDatabaseParameters) {
-  const database = await notion.databases.query(args)
+export async function queryDatabase(
+  args: QueryDatabaseParameters,
+  options?: { tags?: string[] },
+) {
+  // Create a new client with custom fetch for Next.js cache tags
+  const client = new Client({
+    auth: process.env.NOTION_TOKEN,
+    fetch: (url, init) => {
+      return fetch(url, {
+        ...init,
+        next: {
+          tags: options?.tags ?? ['notion'],
+        },
+      })
+    },
+  })
+  const database = await client.databases.query(args)
   const { results = [], next_cursor } = database
   const pages = parsePages(results)
   return {
@@ -328,7 +343,6 @@ export async function queryAllDatabase(
 
   return parsePages(allResults)
 }
-
 
 function parsePages(results: unknown[]) {
   const pages = []

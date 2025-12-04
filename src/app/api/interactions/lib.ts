@@ -128,6 +128,7 @@ export const adminPublishPost = async (
       getFetch('/blog'),
       // Revalidate the specific post page
       getFetch(`/posts/${slug.replace(/^\//, '')}`),
+      getFetch(`/api/posts/[cursor]`),
       // Revalidate all tag pages for this post
       ...tags.map((tag) => getFetch(`/tags/${tag}`)),
     ]

@@ -75,18 +75,21 @@ export async function GET(_: Request, { params }: RouteParams) {
     ],
   }
 
-  const { next_cursor, pages } = await queryDatabase({
-    database_id: env.NOTION_POSTS_DATABASE_ID,
-    filter,
-    sorts: [
-      {
-        property: 'Published Time',
-        direction: 'descending',
-      },
-    ],
-    page_size: PAGE_SIZE,
-    start_cursor: cursor,
-  })
+  const { next_cursor, pages } = await queryDatabase(
+    {
+      database_id: env.NOTION_POSTS_DATABASE_ID,
+      filter,
+      sorts: [
+        {
+          property: 'Published Time',
+          direction: 'descending',
+        },
+      ],
+      page_size: PAGE_SIZE,
+      start_cursor: cursor,
+    },
+    { tags: ['posts', `tag-${tag}`] },
+  )
 
   return NextResponse.json({
     pages,
