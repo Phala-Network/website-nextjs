@@ -27,8 +27,7 @@ export default function TagPageClient({
     if (isPending || !cursor) return
     setIsPending(true)
     try {
-      const params = new URLSearchParams({ cursor, tag })
-      const res = await fetch(`/api/posts?${params}`)
+      const res = await fetch(`/api/posts/tag/${encodeURIComponent(tag)}/${cursor}`)
       if (!res.ok) throw new Error('Failed to fetch')
       const result = await res.json()
       setPages([...pages, ...result.pages])

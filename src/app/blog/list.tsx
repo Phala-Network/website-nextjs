@@ -22,7 +22,7 @@ export default function List({ initialPages, initialCursor }: Props) {
     if (isPending || !cursor) return
     setIsPending(true)
     try {
-      const res = await fetch(`/api/posts?cursor=${cursor}`)
+      const res = await fetch(`/api/posts/${cursor}`)
       if (!res.ok) throw new Error('Failed to fetch')
       const result = await res.json()
       setPages([...pages, ...result.pages])

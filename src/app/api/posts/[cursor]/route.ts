@@ -1,39 +1,32 @@
 import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 
 // ISR cache - same as blog page
 export const revalidate = 7200
+export const dynamicParams = true
 
-// Fixed page size - not configurable via params
+// Fixed page size - not configurable
 const PAGE_SIZE = 18
 
 // Validate cursor format (Notion cursors are UUIDs)
 const CURSOR_REGEX = /^[a-f0-9-]{36}$/i
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url)
+interface RouteParams {
+  params: Promise<{ cursor: string }>
+}
 
-  const cursorParam = searchParams.get('cursor')
-  const tag = searchParams.get('tag') || undefined
+export async function GET(_request: Request, { params }: RouteParams) {
+  const { cursor } = await params
 
   // Validate cursor format
-  let cursor: string | undefined
-  if (cursorParam) {
-    if (!CURSOR_REGEX.test(cursorParam)) {
-      return NextResponse.json(
-        { error: 'Invalid cursor format' },
-        { status: 400 },
-      )
-    }
-    cursor = cursorParam
-  }
-
-  // Validate tag (allow only alphanumeric, spaces, hyphens, and some special chars)
-  if (tag && !/^[\w\s\-&.]+$/i.test(tag)) {
-    return NextResponse.json({ error: 'Invalid tag format' }, { status: 400 })
+  if (!CURSOR_REGEX.test(cursor)) {
+    return NextResponse.json(
+      { error: 'Invalid cursor format' },
+      { status: 400 },
+    )
   }
 
   const filter: QueryDatabaseParameters['filter'] = {
@@ -63,15 +56,6 @@ export async function GET(request: NextRequest) {
         },
       },
     ],
-  }
-
-  if (tag) {
-    filter.and.push({
-      property: 'Tags',
-      multi_select: {
-        contains: tag,
-      },
-    })
   }
 
   const { next_cursor, pages } = await queryDatabase({
