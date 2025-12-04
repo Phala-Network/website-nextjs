@@ -125,14 +125,14 @@ export const adminPublishPost = async (
 
     const slugWithoutSlash = slug.replace(/^\//, '')
     const revalidatePromises = [
-      // Revalidate all blog-related caches
-      revalidateByTag('blog'),
-      // Revalidate blog posts list cache
+      // Revalidate blog posts list cache (affects /blog page and /api/posts pagination)
       revalidateByTag('blog-posts'),
-      // Revalidate the specific post cache
+      // Revalidate banners (in case this post is pinned/weekly/monthly report)
+      revalidateByTag('blog-banners'),
+      // Revalidate the specific post page cache
       revalidateByTag(`blog-${slugWithoutSlash}`),
-      // Revalidate tag-specific caches for this post
-      ...tags.map((tag) => revalidateByTag(`blog-tag-${tag}`)),
+      // Revalidate RSS feed
+      revalidateByTag('blog-rss'),
     ]
 
     // Wait for all revalidation requests to complete
