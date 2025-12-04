@@ -4,11 +4,14 @@ import { NextResponse } from 'next/server'
 import { env } from '@/env'
 import { queryDatabase } from '@/lib/notion-client'
 
-// Enable static caching for route handler (Next.js 15 defaults to dynamic)
-export const dynamic = 'force-static'
 // ISR cache - same as blog page
 export const revalidate = 7200
 export const dynamicParams = true
+
+// Return empty array - pages will be generated on-demand and cached
+export function generateStaticParams() {
+  return []
+}
 
 // Fixed page size - not configurable
 const PAGE_SIZE = 18
@@ -20,7 +23,7 @@ interface RouteParams {
   params: Promise<{ tag: string; cursor: string }>
 }
 
-export async function GET(_request: Request, { params }: RouteParams) {
+export async function GET(_: Request, { params }: RouteParams) {
   const { tag: encodedTag, cursor } = await params
   const tag = decodeURIComponent(encodedTag)
 
