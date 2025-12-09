@@ -12,6 +12,12 @@ export const env = createEnv({
     IMGPROXY_URL: z.string().optional(),
     VERCEL_PROJECT_PRODUCTION_URL: z.string().default('phala.network'),
 
+    // S3-compatible Storage (e.g. Cloudflare R2)
+    S3_ENDPOINT: z.string().optional(),
+    S3_ACCESS_KEY_ID: z.string().optional(),
+    S3_SECRET_ACCESS_KEY: z.string().optional(),
+    S3_BUCKET: z.string().optional(),
+
     CUSTOMERIO_SITE_ID: z.string().optional(),
     CUSTOMERIO_API_KEY: z.string().optional(),
     CUSTOMERIO_FORM_ID: z.string().optional(),

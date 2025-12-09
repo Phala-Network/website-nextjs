@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
+import { buildVideoUrl } from '@/lib/image-url'
 import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
 
@@ -12,7 +13,7 @@ const Video = ({ block }: { block: ParsedBlock }) => {
     const videoUrl: string =
       videoBlock.video.type === 'external'
         ? videoBlock.video.external.url
-        : `https://img0.phala.world/files/${videoBlock.id}.mp4`
+        : buildVideoUrl(videoBlock.id)
     const url = new URL(videoUrl)
     if (videoUrl.indexOf('youtube.com') !== -1 && url.searchParams.has('v')) {
       return ['youtube', url.searchParams.get('v') as string]

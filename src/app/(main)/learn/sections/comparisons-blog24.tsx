@@ -1,9 +1,10 @@
 import { ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
+import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
-import { coverRemap } from '@/lib/post-client'
 import { format } from 'date-fns'
+import Image from 'next/image'
 import Link from 'next/link'
 
 interface ComparisonsBlog24Props {
@@ -37,10 +38,11 @@ export default function ComparisonsBlog24({ articles }: ComparisonsBlog24Props) 
                     href={`/learn/${article.slug}`}
                     className="block transition-opacity duration-200 hover:opacity-90"
                   >
-                    {/** biome-ignore lint/performance/noImgElement: no cdn */}
-                    <img
-                      src={`https://img0.phala.world/cover/1744x974/${coverRemap[article.id] || article.id}.jpg`}
+                    <Image
+                      src={buildCoverUrl(article.id)}
                       alt={article.title}
+                      width={1744}
+                      height={974}
                       className="aspect-16/9 w-full rounded-lg object-cover object-center sm:w-[260px]"
                     />
                   </Link>

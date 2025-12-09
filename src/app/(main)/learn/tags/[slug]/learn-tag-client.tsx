@@ -2,14 +2,15 @@
 
 import { RefreshCcw } from 'lucide-react'
 import { useState, useTransition } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { format } from 'date-fns'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { getLearnArticles } from '@/lib/actions/learn'
+import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
-import { coverRemap } from '@/lib/post-client'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -52,10 +53,11 @@ export default function LearnTagClient({
               className="group flex flex-col overflow-hidden rounded-xl border border-border bg-background transition-all hover:shadow-lg hover:border-primary/50"
             >
               <div className="aspect-video overflow-hidden">
-                {/** biome-ignore lint/performance/noImgElement: no cdn */}
-                <img
-                  src={`https://img0.phala.world/cover/1744x974/${coverRemap[page.id] || page.id}.jpg`}
+                <Image
+                  src={buildCoverUrl(page.id)}
                   alt={page.title}
+                  width={1744}
+                  height={974}
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>

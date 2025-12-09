@@ -5,6 +5,7 @@ import * as R from 'ramda'
 import slugify from 'slugify'
 
 import { env } from '@/env'
+import { buildCoverUrl } from '@/lib/image-url'
 import {
   createNotionClient,
   getParsedPage,
@@ -13,7 +14,6 @@ import {
   type ParsedPage,
   queryDatabase,
 } from '@/lib/notion-client'
-import { coverRemap } from './post-client'
 
 // Types for posts action
 export type GetPostsParams = {
@@ -36,9 +36,7 @@ export function getPostMetadata(
   page: ParsedPage,
   isPreview: boolean = false,
 ): Metadata {
-  let id = page.id.replace(/-/g, '')
-  id = coverRemap[id] || id
-  const postCover = `https://img0.phala.world/cover/1200x630/${id}.jpg?z=123`
+  const postCover = buildCoverUrl(page.id)
 
   return {
     title: page.title,

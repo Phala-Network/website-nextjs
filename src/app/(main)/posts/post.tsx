@@ -2,6 +2,7 @@
 
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { format } from 'date-fns'
+import Image from 'next/image'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FiCalendar, FiCheck, FiClock, FiCopy } from 'react-icons/fi'
 
@@ -16,8 +17,8 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
+import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedPage } from '@/lib/notion-client'
-import { coverRemap } from '@/lib/post-client'
 import { cn } from '@/lib/utils'
 
 interface Heading {
@@ -130,11 +131,8 @@ ${page.markdown}`
     }
   }, [page.title, page.publishedTime, page.tags, page.slug, page.markdown, url])
 
-  // Get processed cover image ID
-  const coverImageId = (() => {
-    const id = page.id.replace(/-/g, '')
-    return coverRemap[id] || id
-  })()
+  // Get cover image URL
+  const coverImageUrl = buildCoverUrl(page.id)
 
   // Render table of contents
   const renderTableOfContents = () => {
@@ -239,10 +237,11 @@ ${page.markdown}`
         {/* Article Content */}
         <article className="w-full max-w-prose xl:max-w-3xl">
           {page.cover && (
-            // biome-ignore lint/performance/noImgElement: Using external CDN image
-            <img
-              src={`https://img0.phala.world/cover/1744x974/${coverImageId}.jpg?z=123`}
+            <Image
+              src={coverImageUrl}
               alt={page.title}
+              width={1744}
+              height={974}
               className="mb-8 mt-0 aspect-video w-full rounded-lg border object-cover"
             />
           )}

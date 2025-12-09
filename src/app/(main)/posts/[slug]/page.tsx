@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 
 import { Separator } from '@/components/ui/separator'
 import { env } from '@/env'
+import { buildCoverUrl } from '@/lib/image-url'
 import {
   getNavigationPosts,
   getPostBySlug,
@@ -52,7 +53,7 @@ export default async function PostPage({ params }: Props) {
     '@type': 'Article',
     headline: page.title,
     description: page.title,
-    image: `https://img0.phala.world/cover/1200x630/${page.id}.jpg`,
+    image: buildCoverUrl(page.id),
     datePublished: page.publishedTime,
     dateModified: page.publishedTime,
     author: {

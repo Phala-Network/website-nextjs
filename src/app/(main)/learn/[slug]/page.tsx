@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 
 import { Separator } from '@/components/ui/separator'
 import { env } from '@/env'
+import { buildCoverUrl } from '@/lib/image-url'
 import {
   getLearnArticleBySlug,
   getLearnMetadata,
@@ -55,7 +56,7 @@ export default async function LearnArticlePage({ params }: Props) {
     '@type': 'TechArticle',
     headline: page.title,
     description: page.title,
-    image: `https://img0.phala.world/cover/1200x630/${page.id}.jpg`,
+    image: buildCoverUrl(page.id),
     datePublished: page.publishedTime,
     dateModified: page.publishedTime,
     author: {
