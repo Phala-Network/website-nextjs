@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge'
+import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
-import { coverRemap } from '@/lib/post-client'
+import Image from 'next/image'
 import Link from 'next/link'
 
 interface UseCasesSectionProps {
@@ -33,11 +34,11 @@ export default function UseCasesSection({ articles }: UseCasesSectionProps) {
                 <div className="aspect-3/2 flex overflow-hidden">
                   <div className="flex-1">
                     <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
-                      {/** biome-ignore lint/performance/noImgElement: no cdn */}
-                      <img
-                        src={`https://img0.phala.world/cover/1744x974/${coverRemap[article.id] || article.id}.jpg`}
+                      <Image
+                        src={buildCoverUrl(article.id)}
                         alt={article.title}
-                        className="h-full w-full object-cover object-center"
+                        fill
+                        className="object-cover object-center"
                       />
                     </div>
                   </div>

@@ -1,17 +1,16 @@
 import { format } from 'date-fns'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import TagLink from '@/components/tag-link'
+import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
-import { coverRemap } from '@/lib/post-client'
 import { cn } from '@/lib/utils'
 
 export default function PostCard({ page, basePath = '/posts' }: { page: ParsedListPage; basePath?: string }) {
   if (!page) {
     return null
   }
-  let id = page.id.replace(/-/g, '')
-  id = coverRemap[id] || id
   return (
     <article
       className={cn(
@@ -23,24 +22,18 @@ export default function PostCard({ page, basePath = '/posts' }: { page: ParsedLi
       <div className={cn('rounded-sm overflow-hidden')}>
         <Link href={`${basePath}/${page.slug}`}>
           {page.cover ? (
-            <img
+            <Image
               className="w-full aspect-412/230"
-              width={412}
-              height={230}
+              width={824}
+              height={460}
               alt={page.title}
-              src={`https://img0.phala.world/cover/824x460/${id}.jpg?z=123`}
-              // src={`https://img0.phala.world/insecure/resize:fill:824:460:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
-              // src={`https://img0.phala.world/cover/${page.id}.jpg`}
-              // src={ `https://img0.phala.world/notion/resize:fill:824:460:0/plain/https://img0.phala.world/cover/${page.id}.jpg`}
-              // src={
-              //   page.id === '879ccad7-3aaf-4c7e-b043-d98a1b77ee7b'
-              //     ? `https://img0.phala.world/cover/${page.id}.jpg`
-              //     : `https://img0.phala.world/notion/resize:fill:824:460:0/f:jpeg/plain/https://img0.phala.world/cover/${page.id}.jpg`
-              // }
+              src={buildCoverUrl(page.id)}
             />
           ) : (
-            <img
+            <Image
               className="w-full h-full object-cover"
+              width={824}
+              height={460}
               alt={page.title}
               src="/blog/default_cover.jpg"
             />

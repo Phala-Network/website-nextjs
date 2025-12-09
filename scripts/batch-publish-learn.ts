@@ -104,10 +104,9 @@ async function publishArticle(pageId: string): Promise<{ success: boolean; error
         page_id: page.id,
         properties,
       })
-      return { success: true }
     }
 
-    return { success: true, skipped: true }
+    return { success: true, skipped: status === 'Published' && !!slug }
   } catch (error) {
     return {
       success: false,

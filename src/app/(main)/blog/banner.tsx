@@ -1,6 +1,7 @@
 'use client'
 
 import { format } from 'date-fns'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -11,8 +12,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
+import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
-import { coverRemap } from '@/lib/post-client'
 import { cn } from '@/lib/utils'
 
 export default function Banners({ pages }: { pages: ParsedListPage[] }) {
@@ -57,10 +58,11 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                 <div className="p-2">
                   <div className={cn('rounded-sm overflow-hidden')}>
                     <Link href={`/posts/${page.slug}`}>
-                      {/** biome-ignore lint/performance/noImgElement: no cdn */}
-                      <img
+                      <Image
                         className="w-full aspect-872/487"
-                        src={`https://img0.phala.world/cover/1744x974/${coverRemap[page.id] || page.id}.jpg`}
+                        width={1744}
+                        height={974}
+                        src={buildCoverUrl(page.id)}
                         alt={page.title}
                       />
                     </Link>
