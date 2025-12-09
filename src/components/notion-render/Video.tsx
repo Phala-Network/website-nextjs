@@ -10,10 +10,15 @@ import RichText from './RichText'
 const Video = ({ block }: { block: ParsedBlock }) => {
   const videoBlock = block as VideoBlockObjectResponse
   const [provider, id] = useMemo(() => {
-    const videoUrl: string =
-      videoBlock.video.type === 'external'
-        ? videoBlock.video.external.url
-        : buildVideoUrl(videoBlock.id)
+    // For internal videos (file type), use our media proxy
+    if (videoBlock.video.type === 'file') {
+      return [null, buildVideoUrl(videoBlock.id)]
+    }
+
+    // External video URL
+    const videoUrl = videoBlock.video.external.url
+
+    // Parse external URLs for provider detection
     const url = new URL(videoUrl)
     if (videoUrl.indexOf('youtube.com') !== -1 && url.searchParams.has('v')) {
       return ['youtube', url.searchParams.get('v') as string]
@@ -29,10 +34,16 @@ const Video = ({ block }: { block: ParsedBlock }) => {
     <div className="notion_video_container">
       {provider === 'youtube' ? <LiteYouTubeEmbed id={id} title="" /> : null}
       {provider === null ? (
-        <video controls src={id} className={`notion_video`} />
+        // biome-ignore lint/a11y/useMediaCaption: captions not available from Notion
+        <video controls src={id} className="notion_video" />
       ) : null}
       {provider === 'loom' ? (
-        <iframe className="w-full aspect-video" src={id} allowFullScreen />
+        <iframe
+          className="w-full aspect-video"
+          src={id}
+          title="Loom video"
+          allowFullScreen
+        />
       ) : null}
       <span className="notion_caption">
         {videoBlock.video.caption && (
