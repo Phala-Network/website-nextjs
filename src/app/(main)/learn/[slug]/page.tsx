@@ -56,7 +56,7 @@ export default async function LearnArticlePage({ params }: Props) {
     '@type': 'TechArticle',
     headline: page.title,
     description: page.title,
-    image: buildCoverUrl(page.id),
+    image: buildCoverUrl(page.id, page.lastEditedTime),
     datePublished: page.publishedTime,
     dateModified: page.publishedTime,
     author: {

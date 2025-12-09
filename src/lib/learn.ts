@@ -36,7 +36,7 @@ export function getLearnMetadata(
   page: ParsedPage,
   isPreview: boolean = false,
 ): Metadata {
-  const postCover = buildCoverUrl(page.id)
+  const postCover = buildCoverUrl(page.id, page.lastEditedTime)
 
   return {
     title: page.title,

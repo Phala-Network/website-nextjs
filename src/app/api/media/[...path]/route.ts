@@ -3,11 +3,15 @@ import { NextResponse } from 'next/server'
 
 import { checkObjectExists, getObject, uploadBuffer } from '@/lib/s3'
 
+// Enable edge caching - cache successful responses for 1 year
+export const revalidate = 31536000 // 1 year in seconds
+
 /**
  * On-demand media proxy with S3 caching
  *
  * URL format: /api/media/{type}/{id}.{ext}
- * - /api/media/covers/{pageId}.jpg (cover images)
+ * - /api/media/covers/{pageId}-{timestamp}.jpg (cover images with version)
+ * - /api/media/covers/{pageId}.jpg (cover images without version, legacy)
  * - /api/media/files/{blockId}.{ext} (block images/videos)
  *
  * Flow:
@@ -20,8 +24,13 @@ import { checkObjectExists, getObject, uploadBuffer } from '@/lib/s3'
  * - Videos: mp4, webm, mov
  */
 
-// Cache for 1 year (immutable content-addressed storage)
-const CACHE_CONTROL = 'public, max-age=31536000, immutable'
+// Cache headers for immutable content-addressed storage
+const CACHE_HEADERS = {
+  // Browser cache: 1 year
+  'Cache-Control': 'public, max-age=31536000, immutable',
+  // Vercel edge cache: 1 year (separate from browser cache)
+  'CDN-Cache-Control': 'public, max-age=31536000, immutable',
+}
 
 // Supported media types
 const CONTENT_TYPES: Record<string, string> = {
@@ -60,7 +69,7 @@ export async function GET(
     return NextResponse.json({ error: 'Invalid filename' }, { status: 400 })
   }
 
-  const id = filename.substring(0, lastDot)
+  const nameWithoutExt = filename.substring(0, lastDot)
   const ext = filename.substring(lastDot + 1).toLowerCase()
   const contentType = CONTENT_TYPES[ext]
 
@@ -71,15 +80,35 @@ export async function GET(
     )
   }
 
-  // Validate ID format: must be 32 hex characters (Notion UUID without dashes)
-  if (!/^[a-f0-9]{32}$/i.test(id)) {
-    return NextResponse.json(
-      { error: 'Invalid ID format' },
-      { status: 400 },
-    )
-  }
+  // Parse ID and optional timestamp from filename
+  // Format: {pageId}-{timestamp} or just {pageId}
+  // pageId is 32 hex chars, timestamp is digits
+  let notionId: string
+  let s3Key: string
 
-  const s3Key = `${type}/${id}.${ext}`
+  if (type === 'covers') {
+    // Cover format: {pageId}-{timestamp}.jpg or {pageId}.jpg
+    const match = nameWithoutExt.match(/^([a-f0-9]{32})(?:-(\d+))?$/i)
+    if (!match) {
+      return NextResponse.json(
+        { error: 'Invalid cover ID format' },
+        { status: 400 },
+      )
+    }
+    notionId = match[1]
+    // S3 key includes timestamp if present (for versioning)
+    s3Key = `${type}/${nameWithoutExt}.${ext}`
+  } else {
+    // Files format: {blockId}.{ext} (32 hex chars)
+    if (!/^[a-f0-9]{32}$/i.test(nameWithoutExt)) {
+      return NextResponse.json(
+        { error: 'Invalid file ID format' },
+        { status: 400 },
+      )
+    }
+    notionId = nameWithoutExt
+    s3Key = `${type}/${nameWithoutExt}.${ext}`
+  }
 
   try {
     // Check if already in S3
@@ -92,14 +121,14 @@ export async function GET(
         return new NextResponse(buffer as unknown as BodyInit, {
           headers: {
             'Content-Type': contentType,
-            'Cache-Control': CACHE_CONTROL,
+            ...CACHE_HEADERS,
           },
         })
       }
     }
 
     // Not in S3 - fetch from Notion
-    const notionUrl = await getNotionImageUrl(type, id)
+    const notionUrl = await getNotionImageUrl(type, notionId)
 
     if (!notionUrl) {
       return NextResponse.json({ error: 'Media not found' }, { status: 404 })
@@ -125,6 +154,8 @@ export async function GET(
 
     // Upload to S3 in background, return image immediately
     // Note: In serverless, we await to ensure upload completes
+    // skipIfExists: true to avoid duplicate uploads from concurrent requests
+    // For covers, different versions have different S3 keys (includes timestamp)
     const uploadPromise = uploadBuffer(buffer, s3Key, contentType, {
       skipIfExists: true,
     }).then((result) => {
@@ -141,7 +172,7 @@ export async function GET(
     return new NextResponse(new Uint8Array(buffer) as unknown as BodyInit, {
       headers: {
         'Content-Type': contentType,
-        'Cache-Control': CACHE_CONTROL,
+        ...CACHE_HEADERS,
       },
     })
   } catch (error) {

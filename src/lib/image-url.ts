@@ -5,12 +5,23 @@ import { coverRemap } from './post-client'
 
 /**
  * Build a cover image URL
- * Returns: /api/media/covers/{pageId}.jpg
+ * Returns: /api/media/covers/{pageId}-{timestamp}.jpg
+ *
+ * The timestamp is part of the filename to ensure:
+ * 1. Different versions of covers have different S3 keys
+ * 2. Same version can use S3 cache normally
+ * 3. No need to delete old files (they become orphaned but harmless)
  */
-export function buildCoverUrl(pageId: string): string {
+export function buildCoverUrl(pageId: string, lastEditedTime?: string): string {
   // Remove dashes and apply remap if needed
   let id = pageId.replace(/-/g, '')
   id = coverRemap[id] || id
+
+  if (lastEditedTime) {
+    // Include timestamp in filename for versioning
+    const t = new Date(lastEditedTime).getTime()
+    return `/api/media/covers/${id}-${t}.jpg`
+  }
   return `/api/media/covers/${id}.jpg`
 }
 

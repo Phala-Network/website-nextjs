@@ -6,7 +6,6 @@ import * as R from 'ramda'
 import { env } from '@/env'
 import { notion, queryDatabase } from '@/lib/notion-client'
 import { generateSlug } from '@/lib/post'
-import { deleteObject } from '@/lib/s3'
 
 const BATCH_SIZE = 10
 
@@ -39,10 +38,6 @@ async function publishArticle(
   pageId: string,
 ): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
   try {
-    // Delete cover cache to ensure fresh image on next request
-    const id = pageId.replace(/-/g, '')
-    await deleteObject(`covers/${id}.jpg`)
-
     const page = await notion.pages.retrieve({ page_id: pageId })
 
     if (!isFullPage(page)) {

@@ -48,6 +48,7 @@ export interface ParsedPage {
   tags: string[]
   blocks: ParsedBlock[]
   publishedTime: string
+  lastEditedTime: string
   status: 'Published' | 'Hidden' | 'Drafting' | 'Raw Idea'
   markdown: string
 }
@@ -61,6 +62,7 @@ export interface ParsedListPage {
   publishedTime: string
   publishedDate: string
   createdTime: string
+  lastEditedTime: string
 }
 
 export type ParsedBlock = BlockObjectResponse & {
@@ -127,6 +129,7 @@ export async function getParsedPage(
     status,
     blocks: parsedBlocks,
     publishedTime,
+    lastEditedTime: page.last_edited_time,
     markdown,
   }
 }
@@ -363,7 +366,7 @@ function parsePages(results: unknown[]) {
   const pages = []
   for (const page of results) {
     // @ts-expect-error missing from Notion package
-    const { id, properties, cover } = page
+    const { id, properties, cover, last_edited_time } = page
     const title = R.pipe(
       R.pathOr([], ['Title', 'title']),
       R.map(R.prop('plain_text')),
@@ -401,6 +404,7 @@ function parsePages(results: unknown[]) {
       publishedTime,
       publishedDate,
       createdTime,
+      lastEditedTime: last_edited_time,
     })
   }
   return pages

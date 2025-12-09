@@ -62,7 +62,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                         className="w-full aspect-872/487"
                         width={1744}
                         height={974}
-                        src={buildCoverUrl(page.id)}
+                        src={buildCoverUrl(page.id, page.lastEditedTime)}
                         alt={page.title}
                       />
                     </Link>

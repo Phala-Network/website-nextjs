@@ -35,7 +35,7 @@ export default function WhatIsBlog1({ articles }: WhatIsBlog1Props) {
                   <div className="flex-1">
                     <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
                       <Image
-                        src={buildCoverUrl(article.id)}
+                        src={buildCoverUrl(article.id, article.lastEditedTime)}
                         alt={article.title}
                         fill
                         className="object-cover object-center"

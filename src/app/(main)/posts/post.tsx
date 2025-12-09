@@ -132,7 +132,7 @@ ${page.markdown}`
   }, [page.title, page.publishedTime, page.tags, page.slug, page.markdown, url])
 
   // Get cover image URL
-  const coverImageUrl = buildCoverUrl(page.id)
+  const coverImageUrl = buildCoverUrl(page.id, page.lastEditedTime)
 
   // Render table of contents
   const renderTableOfContents = () => {

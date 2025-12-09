@@ -6,7 +6,6 @@ import { env } from '@/env'
 import attempt from '@/lib/attempt-promise'
 import { notion, queryDatabase } from '@/lib/notion-client'
 import { generateSlug } from '@/lib/post'
-import { deleteObject } from '@/lib/s3'
 
 export const verify = async (
   body: string,
@@ -32,10 +31,6 @@ export const adminPublishPost = async (
   if (!DISCORD_APP_ID || !DISCORD_TOKEN || !REVALIDATE_TOKEN) {
     throw new Error('Discord configuration not found')
   }
-
-  // Delete cover cache to ensure fresh image on next request
-  const id = pageId.replace(/-/g, '')
-  await deleteObject(`covers/${id}.jpg`)
 
   const response = (message: string) =>
     fetch(

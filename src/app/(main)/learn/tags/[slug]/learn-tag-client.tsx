@@ -54,7 +54,7 @@ export default function LearnTagClient({
             >
               <div className="aspect-video overflow-hidden">
                 <Image
-                  src={buildCoverUrl(page.id)}
+                  src={buildCoverUrl(page.id, page.lastEditedTime)}
                   alt={page.title}
                   width={1744}
                   height={974}

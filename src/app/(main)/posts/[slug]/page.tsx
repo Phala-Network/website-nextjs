@@ -53,7 +53,7 @@ export default async function PostPage({ params }: Props) {
     '@type': 'Article',
     headline: page.title,
     description: page.title,
-    image: buildCoverUrl(page.id),
+    image: buildCoverUrl(page.id, page.lastEditedTime),
     datePublished: page.publishedTime,
     dateModified: page.publishedTime,
     author: {

@@ -7,7 +7,6 @@ import 'server-only'
  */
 
 import {
-  DeleteObjectCommand,
   GetObjectCommand,
   HeadObjectCommand,
   PutObjectCommand,
@@ -122,21 +121,4 @@ export async function getObject(key: string): Promise<Uint8Array | null> {
   }
 }
 
-/**
- * Delete an object from S3
- */
-export async function deleteObject(key: string): Promise<boolean> {
-  try {
-    const client = createS3Client()
-    await client.send(
-      new DeleteObjectCommand({
-        Bucket: env.S3_BUCKET,
-        Key: key,
-      }),
-    )
-    return true
-  } catch {
-    return false
-  }
-}
 

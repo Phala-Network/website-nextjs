@@ -27,7 +27,7 @@ export default function PostCard({ page, basePath = '/posts' }: { page: ParsedLi
               width={824}
               height={460}
               alt={page.title}
-              src={buildCoverUrl(page.id)}
+              src={buildCoverUrl(page.id, page.lastEditedTime)}
             />
           ) : (
             <Image

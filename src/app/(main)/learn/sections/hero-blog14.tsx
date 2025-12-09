@@ -27,7 +27,7 @@ export default function HeroBlog14({ featuredArticle, popularArticles }: HeroBlo
           <div className="my-16 grid grid-cols-1 items-center gap-8 md:grid-cols-2 lg:gap-16">
             <Link href={`/learn/${featuredArticle.slug}`}>
               <Image
-                src={buildCoverUrl(featuredArticle.id)}
+                src={buildCoverUrl(featuredArticle.id, featuredArticle.lastEditedTime)}
                 alt={featuredArticle.title}
                 width={1744}
                 height={974}
@@ -53,7 +53,7 @@ export default function HeroBlog14({ featuredArticle, popularArticles }: HeroBlo
               <div key={article.id} className="flex flex-col items-start gap-4">
                 <Link href={`/learn/${article.slug}`}>
                   <Image
-                    src={buildCoverUrl(article.id)}
+                    src={buildCoverUrl(article.id, article.lastEditedTime)}
                     alt={article.title}
                     width={1744}
                     height={974}

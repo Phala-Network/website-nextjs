@@ -39,7 +39,7 @@ export default function AdvancedSection({ articles }: AdvancedSectionProps) {
                     className="block transition-opacity duration-200 hover:opacity-90"
                   >
                     <Image
-                      src={buildCoverUrl(article.id)}
+                      src={buildCoverUrl(article.id, article.lastEditedTime)}
                       alt={article.title}
                       width={1744}
                       height={974}
