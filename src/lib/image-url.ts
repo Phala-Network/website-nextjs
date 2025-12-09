@@ -1,70 +1,35 @@
 import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
-import { env } from '@/env'
 import type { ParsedListPage, ParsedPage } from '@/lib/notion-client'
 import { coverRemap } from './post-client'
 
 /**
- * Image URL mode:
- * - 'direct': Direct S3 URLs (requires pre-synced images)
- * - 'proxy': On-demand proxy URLs (auto-caches to S3)
- *
- * Set via NEXT_PUBLIC_IMAGE_MODE env var, defaults to 'proxy'
- */
-const IMAGE_MODE =
-  (process.env.NEXT_PUBLIC_IMAGE_MODE as 'direct' | 'proxy') || 'proxy'
-
-/**
  * Build a cover image URL
- *
- * In 'proxy' mode: /api/image/notion/covers/{pageId}.jpg
- * In 'direct' mode: {S3_PUBLIC_URL}/covers/{pageId}.jpg
+ * Returns: /api/media/covers/{pageId}.jpg
  */
 export function buildCoverUrl(pageId: string): string {
   // Remove dashes and apply remap if needed
   let id = pageId.replace(/-/g, '')
   id = coverRemap[id] || id
-
-  if (IMAGE_MODE === 'proxy') {
-    return `/api/image/notion/covers/${id}.jpg`
-  }
-
-  const baseUrl = env.NEXT_PUBLIC_S3_PUBLIC_URL
-  return `${baseUrl}/covers/${id}.jpg`
+  return `/api/media/covers/${id}.jpg`
 }
 
 /**
  * Build a file/block image URL
- *
- * In 'proxy' mode: /api/image/notion/files/{blockId}.{ext}
- * In 'direct' mode: {S3_PUBLIC_URL}/files/{blockId}.{ext}
+ * Returns: /api/media/files/{blockId}.{ext}
  */
 export function buildFileUrl(blockId: string, extension = 'jpg'): string {
   const id = blockId.replace(/-/g, '')
-
-  if (IMAGE_MODE === 'proxy') {
-    return `/api/image/notion/files/${id}.${extension}`
-  }
-
-  const baseUrl = env.NEXT_PUBLIC_S3_PUBLIC_URL
-  return `${baseUrl}/files/${id}.${extension}`
+  return `/api/media/files/${id}.${extension}`
 }
 
 /**
  * Build a video URL
- *
- * In 'proxy' mode: /api/image/notion/files/{blockId}.mp4
- * In 'direct' mode: {S3_PUBLIC_URL}/files/{blockId}.mp4
+ * Returns: /api/media/files/{blockId}.mp4
  */
 export function buildVideoUrl(blockId: string, extension = 'mp4'): string {
   const id = blockId.replace(/-/g, '')
-
-  if (IMAGE_MODE === 'proxy') {
-    return `/api/image/notion/files/${id}.${extension}`
-  }
-
-  const baseUrl = env.NEXT_PUBLIC_S3_PUBLIC_URL
-  return `${baseUrl}/files/${id}.${extension}`
+  return `/api/media/files/${id}.${extension}`
 }
 
 interface ProxyImageOptions {

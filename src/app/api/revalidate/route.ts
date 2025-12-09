@@ -21,7 +21,9 @@ export async function GET(request: Request) {
     // Either tag or path is required
     if (!tag && !path) {
       return new Response(
-        JSON.stringify({ error: 'Either tag or path parameter is required' }),
+        JSON.stringify({
+          error: 'Either tag or path parameter is required',
+        }),
         {
           status: 400,
           headers: { 'Content-Type': 'application/json' },
@@ -36,7 +38,10 @@ export async function GET(request: Request) {
     if (path) {
       revalidatePath(path)
       after(() => {
-        const url = new URL(path, `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`)
+        const url = new URL(
+          path,
+          `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
+        )
         return fetch(url.toString())
       })
     }

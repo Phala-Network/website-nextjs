@@ -6,6 +6,7 @@ import * as R from 'ramda'
 import { env } from '@/env'
 import { notion, queryDatabase } from '@/lib/notion-client'
 import { generateSlug } from '@/lib/post'
+import { deleteObject } from '@/lib/s3'
 
 const BATCH_SIZE = 10
 
@@ -34,8 +35,14 @@ async function fetchAllLearnArticles() {
   return pages
 }
 
-async function publishArticle(pageId: string): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
+async function publishArticle(
+  pageId: string,
+): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
   try {
+    // Delete cover cache to ensure fresh image on next request
+    const id = pageId.replace(/-/g, '')
+    await deleteObject(`covers/${id}.jpg`)
+
     const page = await notion.pages.retrieve({ page_id: pageId })
 
     if (!isFullPage(page)) {
@@ -151,7 +158,7 @@ async function batchPublish() {
           }
 
           return { ...publishResult, page }
-        })
+        }),
       )
 
       // Count results
@@ -176,7 +183,7 @@ async function batchPublish() {
 
       // Small delay between batches
       if (i + BATCH_SIZE < pages.length) {
-        await new Promise(resolve => setTimeout(resolve, 500))
+        await new Promise((resolve) => setTimeout(resolve, 500))
       }
     }
   } catch (error) {
@@ -212,7 +219,7 @@ console.log('='.repeat(50))
 console.log(`Batch size: ${BATCH_SIZE}`)
 console.log('='.repeat(50) + '\n')
 
-batchPublish().catch(error => {
+batchPublish().catch((error) => {
   console.error('Unhandled error:', error)
   process.exit(1)
 })

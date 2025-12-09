@@ -4,11 +4,11 @@ import { NextResponse } from 'next/server'
 import { checkObjectExists, getObject, uploadBuffer } from '@/lib/s3'
 
 /**
- * On-demand Notion media proxy with S3 caching
+ * On-demand media proxy with S3 caching
  *
- * URL format: /api/image/notion/{type}/{id}.{ext}
- * - /api/image/notion/covers/{pageId}.jpg (cover images)
- * - /api/image/notion/files/{blockId}.{ext} (block images/videos)
+ * URL format: /api/media/{type}/{id}.{ext}
+ * - /api/media/covers/{pageId}.jpg (cover images)
+ * - /api/media/files/{blockId}.{ext} (block images/videos)
  *
  * Flow:
  * 1. Check if media exists in S3
@@ -71,6 +71,14 @@ export async function GET(
     )
   }
 
+  // Validate ID format: must be 32 hex characters (Notion UUID without dashes)
+  if (!/^[a-f0-9]{32}$/i.test(id)) {
+    return NextResponse.json(
+      { error: 'Invalid ID format' },
+      { status: 400 },
+    )
+  }
+
   const s3Key = `${type}/${id}.${ext}`
 
   try {
@@ -78,7 +86,7 @@ export async function GET(
     const exists = await checkObjectExists(s3Key)
 
     if (exists) {
-      // Fetch from S3 and return
+      // Fetch from S3 and return directly
       const buffer = await getObject(s3Key)
       if (buffer) {
         return new NextResponse(buffer as unknown as BodyInit, {
@@ -90,9 +98,7 @@ export async function GET(
       }
     }
 
-    // Not in S3 - need to fetch from Notion
-    // For covers: fetch page and get cover URL
-    // For files: fetch block and get file URL
+    // Not in S3 - fetch from Notion
     const notionUrl = await getNotionImageUrl(type, id)
 
     if (!notionUrl) {
@@ -117,15 +123,21 @@ export async function GET(
 
     const buffer = await response.arrayBuffer()
 
-    // Upload to S3 in background (don't wait)
-    // Use skipIfExists to avoid duplicate uploads from concurrent requests
-    uploadBuffer(buffer, s3Key, contentType, { skipIfExists: true }).catch(
-      (err) => {
-        console.error(`Failed to upload to S3: ${err}`)
-      },
-    )
+    // Upload to S3 in background, return image immediately
+    // Note: In serverless, we await to ensure upload completes
+    const uploadPromise = uploadBuffer(buffer, s3Key, contentType, {
+      skipIfExists: true,
+    }).then((result) => {
+      if (!result.success) {
+        console.error(`Failed to upload to S3: ${result.error}`)
+      }
+    })
 
-    // Return the image
+    // In production, await upload; in dev, fire and forget
+    if (process.env.NODE_ENV === 'production') {
+      await uploadPromise
+    }
+
     return new NextResponse(new Uint8Array(buffer) as unknown as BodyInit, {
       headers: {
         'Content-Type': contentType,
