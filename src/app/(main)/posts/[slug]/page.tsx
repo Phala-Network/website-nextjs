@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 
 import { Separator } from '@/components/ui/separator'
 import { env } from '@/env'
-import { buildCoverUrl } from '@/lib/image-url'
+import { buildCoverUrl, buildOptimizedImageUrl } from '@/lib/image-url'
 import {
   getNavigationPosts,
   getPostBySlug,
@@ -48,12 +48,14 @@ export default async function PostPage({ params }: Props) {
   const navigation = getNavigationPosts(page)
 
   // Generate Article structured data for AI crawlers
+  const coverUrl = buildCoverUrl(page.id, page.lastEditedTime)
+  const optimizedCoverUrl = buildOptimizedImageUrl(coverUrl)
   const articleStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: page.title,
     description: page.title,
-    image: buildCoverUrl(page.id, page.lastEditedTime),
+    image: optimizedCoverUrl,
     datePublished: page.publishedTime,
     dateModified: page.publishedTime,
     author: {

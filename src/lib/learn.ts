@@ -5,7 +5,7 @@ import * as R from 'ramda'
 import slugify from 'slugify'
 
 import { env } from '@/env'
-import { buildCoverUrl } from '@/lib/image-url'
+import { buildCoverUrl, buildOptimizedImageUrl } from '@/lib/image-url'
 import {
   createNotionClient,
   getParsedPage,
@@ -37,6 +37,7 @@ export function getLearnMetadata(
   isPreview: boolean = false,
 ): Metadata {
   const postCover = buildCoverUrl(page.id, page.lastEditedTime)
+  const optimizedCover = buildOptimizedImageUrl(postCover)
 
   return {
     title: page.title,
@@ -45,7 +46,7 @@ export function getLearnMetadata(
       locale: 'en_US',
       images: [
         {
-          url: postCover,
+          url: optimizedCover,
           width: 1200,
           height: 630,
           alt: page.title,
@@ -55,7 +56,7 @@ export function getLearnMetadata(
     },
     twitter: {
       card: 'summary_large_image',
-      images: [postCover],
+      images: [optimizedCover],
     },
     alternates: {
       canonical: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}/learn/${page.slug}`,

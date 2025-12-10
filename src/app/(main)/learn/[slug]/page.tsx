@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 
 import { Separator } from '@/components/ui/separator'
 import { env } from '@/env'
-import { buildCoverUrl } from '@/lib/image-url'
+import { buildCoverUrl, buildOptimizedImageUrl } from '@/lib/image-url'
 import {
   getLearnArticleBySlug,
   getLearnMetadata,
@@ -51,12 +51,14 @@ export default async function LearnArticlePage({ params }: Props) {
   const navigation = getNavigationLearnArticles(page)
 
   // Generate Article structured data for AI crawlers
+  const coverUrl = buildCoverUrl(page.id, page.lastEditedTime)
+  const optimizedCoverUrl = buildOptimizedImageUrl(coverUrl)
   const articleStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
     headline: page.title,
     description: page.title,
-    image: buildCoverUrl(page.id, page.lastEditedTime),
+    image: optimizedCoverUrl,
     datePublished: page.publishedTime,
     dateModified: page.publishedTime,
     author: {

@@ -1,7 +1,7 @@
 import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
+import { env } from '@/env'
 import type { ParsedListPage, ParsedPage } from '@/lib/notion-client'
-import { coverRemap } from './post-client'
 
 /**
  * Build a cover image URL
@@ -14,8 +14,7 @@ import { coverRemap } from './post-client'
  */
 export function buildCoverUrl(pageId: string, lastEditedTime?: string): string {
   // Remove dashes and apply remap if needed
-  let id = pageId.replace(/-/g, '')
-  id = coverRemap[id] || id
+  const id = pageId.replace(/-/g, '')
 
   if (lastEditedTime) {
     // Include timestamp in filename for versioning
@@ -89,6 +88,22 @@ export function buildProxyImageUrl(
 
   // Fallback to S3 files URL
   return buildFileUrl(source.id)
+}
+
+/**
+ * Build an optimized image URL using Next.js Image Optimization
+ * Use this for metadata (openGraph, twitter) and structured data where <Image> component can't be used
+ * @param imageUrl - The original image URL (relative or absolute)
+ * @param width - The desired width (default: 1200)
+ * @param quality - The image quality (default: 75)
+ */
+export function buildOptimizedImageUrl(
+  imageUrl: string,
+  width = 1200,
+  quality = 75,
+): string {
+  const baseUrl = `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
+  return `${baseUrl}/_next/image?url=${encodeURIComponent(imageUrl)}&w=${width}&q=${quality}`
 }
 
 /**
