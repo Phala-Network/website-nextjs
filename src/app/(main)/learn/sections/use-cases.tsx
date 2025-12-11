@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/badge'
+import { CdnImage } from '@/components/ui/cdn-image'
 import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
-import Image from 'next/image'
 import Link from 'next/link'
 
 interface UseCasesSectionProps {
@@ -34,7 +34,7 @@ export default function UseCasesSection({ articles }: UseCasesSectionProps) {
                 <div className="aspect-3/2 flex overflow-hidden">
                   <div className="flex-1">
                     <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
-                      <Image
+                      <CdnImage
                         src={buildCoverUrl(article.id, article.lastEditedTime)}
                         alt={article.title}
                         fill

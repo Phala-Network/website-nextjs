@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/badge'
+import { CdnImage } from '@/components/ui/cdn-image'
 import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
-import Image from 'next/image'
 import Link from 'next/link'
 
 interface HeroBlog14Props {
@@ -26,7 +26,7 @@ export default function HeroBlog14({ featuredArticle, popularArticles }: HeroBlo
           {/* Featured Article */}
           <div className="my-16 grid grid-cols-1 items-center gap-8 md:grid-cols-2 lg:gap-16">
             <Link href={`/learn/${featuredArticle.slug}`}>
-              <Image
+              <CdnImage
                 src={buildCoverUrl(featuredArticle.id, featuredArticle.lastEditedTime)}
                 alt={featuredArticle.title}
                 width={1744}
@@ -52,7 +52,7 @@ export default function HeroBlog14({ featuredArticle, popularArticles }: HeroBlo
             {popularArticles.map((article) => (
               <div key={article.id} className="flex flex-col items-start gap-4">
                 <Link href={`/learn/${article.slug}`}>
-                  <Image
+                  <CdnImage
                     src={buildCoverUrl(article.id, article.lastEditedTime)}
                     alt={article.title}
                     width={1744}

@@ -1,10 +1,7 @@
 import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
+import { after, NextResponse } from 'next/server'
 
 import { checkObjectExists, getObject, uploadBuffer } from '@/lib/s3'
-
-// Enable edge caching - cache successful responses for 1 year
-export const revalidate = 31536000 // 1 year in seconds
 
 /**
  * On-demand media proxy with S3 caching
@@ -116,6 +113,8 @@ export async function GET(
 
     if (exists) {
       // Fetch from S3 and return directly
+      // Note: redirect doesn't work with Next.js Image Optimization
+      // See: https://github.com/vercel/next.js/discussions/36808
       const buffer = await getObject(s3Key)
       if (buffer) {
         return new NextResponse(buffer as unknown as BodyInit, {
@@ -152,22 +151,16 @@ export async function GET(
 
     const buffer = await response.arrayBuffer()
 
-    // Upload to S3 in background, return image immediately
-    // Note: In serverless, we await to ensure upload completes
-    // skipIfExists: true to avoid duplicate uploads from concurrent requests
-    // For covers, different versions have different S3 keys (includes timestamp)
-    const uploadPromise = uploadBuffer(buffer, s3Key, contentType, {
-      skipIfExists: true,
-    }).then((result) => {
+    // Upload to S3 in background using after()
+    // This allows us to return the response immediately while upload continues
+    after(async () => {
+      const result = await uploadBuffer(buffer, s3Key, contentType, {
+        skipIfExists: true,
+      })
       if (!result.success) {
         console.error(`Failed to upload to S3: ${result.error}`)
       }
     })
-
-    // In production, await upload; in dev, fire and forget
-    if (process.env.NODE_ENV === 'production') {
-      await uploadPromise
-    }
 
     return new NextResponse(new Uint8Array(buffer) as unknown as BodyInit, {
       headers: {

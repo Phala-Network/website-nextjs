@@ -2,7 +2,6 @@
 
 import type { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { format } from 'date-fns'
-import Image from 'next/image'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FiCalendar, FiCheck, FiClock, FiCopy } from 'react-icons/fi'
 
@@ -17,6 +16,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
+import { CdnImage } from '@/components/ui/cdn-image'
 import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
@@ -237,7 +237,7 @@ ${page.markdown}`
         {/* Article Content */}
         <article className="w-full max-w-prose xl:max-w-3xl">
           {page.cover && (
-            <Image
+            <CdnImage
               src={coverImageUrl}
               alt={page.title}
               width={1744}

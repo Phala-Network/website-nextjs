@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import TagLink from '@/components/tag-link'
+import { CdnImage } from '@/components/ui/cdn-image'
 import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
@@ -22,7 +23,7 @@ export default function PostCard({ page, basePath = '/posts' }: { page: ParsedLi
       <div className={cn('rounded-sm overflow-hidden')}>
         <Link href={`${basePath}/${page.slug}`}>
           {page.cover ? (
-            <Image
+            <CdnImage
               className="w-full aspect-412/230"
               width={824}
               height={460}
