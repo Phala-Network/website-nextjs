@@ -7,9 +7,6 @@
 
 // Re-export all functions from image-url.ts for backwards compatibility
 export {
-  buildCoverUrl,
-  buildFileUrl,
   buildProxyImageUrl,
-  buildVideoUrl,
   getBackgroundImage,
 } from './image-url'

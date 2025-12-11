@@ -2,13 +2,11 @@ import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-end
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import * as R from 'ramda'
-import slugify from 'slugify'
 
 import { env } from '@/env'
 import { buildCoverUrl, buildOptimizedImageUrl } from '@/lib/image-url'
 import {
   createNotionClient,
-  getParsedPage,
   getParsedPagesByProperties,
   type ParsedListPage,
   type ParsedPage,
@@ -25,11 +23,6 @@ export type GetLearnArticlesParams = {
 export type GetLearnArticlesResult = {
   pages: ParsedListPage[]
   next_cursor: string | null
-}
-
-export function generateSlug(title: string): string {
-  const slug = slugify(title, { lower: true, strict: true })
-  return slug
 }
 
 export function getLearnMetadata(
@@ -112,19 +105,6 @@ export async function getLearnArticleBySlug(slug: string): Promise<ParsedPage> {
   }
 
   return pages[0]
-}
-
-export async function getLearnArticleById(id: string): Promise<ParsedPage> {
-  try {
-    const page = await getParsedPage(id, { tags: ['learn', `learn-${id}`] })
-    if (!page) {
-      notFound()
-    }
-    return page
-  } catch (error) {
-    console.error('Error fetching learn article by ID:', error)
-    notFound()
-  }
 }
 
 export async function getRecentLearnArticles(

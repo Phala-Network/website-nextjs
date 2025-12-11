@@ -247,7 +247,7 @@ const HandleIcon = (props: React.SVGProps<SVGSVGElement>) => {
 // Modified to follow our coding standards and design system
 // We respect copyright and attribution to the original creators
 
-export interface AnimatedBeamProps {
+interface AnimatedBeamProps {
   className?: string
   containerRef: RefObject<HTMLElement | null> // Container ref
   fromRef: RefObject<HTMLElement | null>
@@ -268,7 +268,7 @@ export interface AnimatedBeamProps {
   direction?: 'horizontal' | 'vertical'
 }
 
-export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
+const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   className,
   containerRef,
   fromRef,
