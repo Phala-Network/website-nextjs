@@ -28,7 +28,7 @@ export function buildCoverUrl(pageId: string, lastEditedTime?: string): string {
  * Build a file/block image URL
  * Returns: /api/media/files/{blockId}.{ext}
  */
-export function buildFileUrl(blockId: string, extension = 'jpg'): string {
+function buildFileUrl(blockId: string, extension = 'jpg'): string {
   const id = blockId.replace(/-/g, '')
   return `/api/media/files/${id}.${extension}`
 }

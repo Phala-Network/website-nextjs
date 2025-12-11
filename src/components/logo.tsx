@@ -1,13 +1,3 @@
-'use client'
-
-import { Download } from 'lucide-react'
-
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from '@/components/ui/context-menu'
 import { cn } from '@/lib/utils'
 
 interface LogoProps extends React.HTMLAttributes<HTMLAnchorElement> {
@@ -22,61 +12,6 @@ interface LogoImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   className?: string
 }
 
-interface LogoBrandDownloadProps {
-  children: React.ReactNode
-  files: Array<{
-    name: string
-    path: string
-    format: 'svg' | 'png' | 'jpg' | 'jpeg' | 'webp'
-  }>
-  className?: string
-}
-
-const LogoBrandDownload = ({
-  children,
-  files,
-  className,
-}: LogoBrandDownloadProps) => {
-  const handleDownload = async (file: LogoBrandDownloadProps['files'][0]) => {
-    try {
-      const response = await fetch(file.path)
-      if (!response.ok) throw new Error(`Failed to fetch ${file.name}`)
-
-      const blob = await response.blob()
-      const url = window.URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = file.name
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      window.URL.revokeObjectURL(url)
-    } catch (error) {
-      console.error('Failed to download file:', error)
-    }
-  }
-
-  return (
-    <ContextMenu>
-      <ContextMenuTrigger asChild>
-        <div className={cn('inline-block', className)}>{children}</div>
-      </ContextMenuTrigger>
-      <ContextMenuContent className="w-48">
-        {files.map((file) => (
-          <ContextMenuItem
-            key={file.path}
-            onClick={() => handleDownload(file)}
-            className="cursor-pointer"
-          >
-            <Download className="mr-2 h-4 w-4" />
-            Download {file.format.toUpperCase()}
-          </ContextMenuItem>
-        ))}
-      </ContextMenuContent>
-    </ContextMenu>
-  )
-}
-
 const Logo = ({ url, className, children, ...props }: LogoProps) => {
   return (
     <a href={url} className={cn('max-h-8', className)} {...props}>
@@ -84,10 +19,6 @@ const Logo = ({ url, className, children, ...props }: LogoProps) => {
     </a>
   )
 }
-
-const LogoImage = ({ src, alt, className, ...props }: LogoImageProps) => (
-  <img src={src} alt={alt} className={cn('block h-8', className)} {...props} />
-)
 
 const LogoImageMobile = ({ src, alt, className, ...props }: LogoImageProps) => (
   <img
@@ -112,4 +43,4 @@ const LogoImageDesktop = ({
   />
 )
 
-export { Logo, LogoBrandDownload, LogoImage, LogoImageDesktop, LogoImageMobile }
+export { Logo, LogoImageDesktop, LogoImageMobile }

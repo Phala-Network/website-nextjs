@@ -219,7 +219,7 @@ interface SkiperUiMarqueeProps {
   src: string[]
 }
 
-export function SkiperUiMarquee({
+function SkiperUiMarquee({
   showCard,
   reverse = false,
   className,

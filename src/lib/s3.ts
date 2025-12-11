@@ -120,5 +120,3 @@ export async function getObject(key: string): Promise<Uint8Array | null> {
     return null
   }
 }
-
-

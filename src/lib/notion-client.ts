@@ -69,11 +69,6 @@ export type ParsedBlock = BlockObjectResponse & {
   children?: ParsedBlock[]
 }
 
-export function isMediumUrl(url: string): boolean {
-  const regex = /^https?:\/\/[\w.-]+\.medium\.com/
-  return regex.test(url)
-}
-
 export async function getParsedPage(
   page_id: string,
   options?: { tags?: string[] },
@@ -339,27 +334,6 @@ export async function queryDatabase(
     next_cursor,
     pages,
   }
-}
-
-export async function queryAllDatabase(
-  args: Omit<QueryDatabaseParameters, 'start_cursor' | 'page_size'>,
-  options?: { tags?: string[] },
-) {
-  const client = createNotionClient(options?.tags ?? ['posts'])
-  const allResults: PageObjectResponse[] = []
-  let cursor: string | undefined
-
-  do {
-    const response = await client.databases.query({
-      ...args,
-      start_cursor: cursor,
-      page_size: 100,
-    })
-    allResults.push(...(response.results as PageObjectResponse[]))
-    cursor = response.next_cursor ?? undefined
-  } while (cursor)
-
-  return parsePages(allResults)
 }
 
 function parsePages(results: unknown[]) {

@@ -1,10 +1,10 @@
-export interface SEOContent {
+interface SEOContent {
   title: string
   description: string
   keywords?: string[]
 }
 
-export interface HeroContent {
+interface HeroContent {
   eyebrow?: string
   headline: string
   subheadline: string
@@ -19,7 +19,7 @@ export interface HeroContent {
   features?: string[]
 }
 
-export interface WhyContent {
+interface WhyContent {
   title: string
   description: string
   points?: string[]
@@ -27,19 +27,19 @@ export interface WhyContent {
   links?: string[]
 }
 
-export interface HowItWorksStep {
+interface HowItWorksStep {
   number: string
   title: string
   description: string
 }
 
-export interface HowContent {
+interface HowContent {
   title: string
   description?: string
   steps: HowItWorksStep[]
 }
 
-export interface UseCase {
+interface UseCase {
   title: string
   description: string
   metric?: string
@@ -47,7 +47,7 @@ export interface UseCase {
   img?: string
 }
 
-export interface SuccessStory {
+interface SuccessStory {
   logo: string
   company: string
   tags: string
@@ -57,20 +57,20 @@ export interface SuccessStory {
   link?: string
 }
 
-export interface CodeExample {
+interface CodeExample {
   language: string
   filename: string
   code: string
 }
 
-export interface DevExpContent {
+interface DevExpContent {
   title: string
   description: string
   codeExamples: CodeExample[]
   features?: string[]
 }
 
-export interface ProofContent {
+interface ProofContent {
   title: string
   subtitle: string
   description: string
@@ -81,17 +81,17 @@ export interface ProofContent {
   }
 }
 
-export interface FAQ {
+interface FAQ {
   question: string
   answer: string
 }
 
-export interface FAQCategory {
+interface FAQCategory {
   category: string
   items: FAQ[]
 }
 
-export interface CTAContent {
+interface CTAContent {
   title: string
   description: string
   buttonText: string

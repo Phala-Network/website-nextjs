@@ -1,6 +1,6 @@
 export type ComparisonStatus = 'good' | 'bad' | 'partial'
 
-export type ComparisonFeature = {
+type ComparisonFeature = {
   feature: string
   phala: ComparisonStatus
   phalaText: string
@@ -74,7 +74,7 @@ const isValidSlug = (slug: string): slug is ComparisonSlug => {
   return new Set(validSlugs).has(slug as ComparisonSlug)
 }
 
-export const comparisons: Record<ComparisonSlug, ComparisonData> = {
+const comparisons: Record<ComparisonSlug, ComparisonData> = {
   'phala-vs-aws-nitro': {
     metadata: {
       title: 'Phala Cloud vs AWS Nitro Enclaves - Open Source Alternative',

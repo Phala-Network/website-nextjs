@@ -8,7 +8,7 @@
  * @param maxLength - Maximum character length
  * @returns Clamped text with ellipsis if needed
  */
-export function clamp(text: string, maxLength: number): string {
+function clamp(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text
   return text.slice(0, maxLength - 1).trim() + '…'
 }
@@ -125,7 +125,9 @@ export function productSchema(
  *
  * @param faqs - Array of FAQ items with question and answer
  */
-export function faqPageSchema(faqs: Array<{ question: string; answer: string }>) {
+export function faqPageSchema(
+  faqs: Array<{ question: string; answer: string }>,
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -136,75 +138,6 @@ export function faqPageSchema(faqs: Array<{ question: string; answer: string }>)
         '@type': 'Answer',
         text: faq.answer,
       },
-    })),
-  }
-}
-
-/**
- * Generates JSON-LD schema for Article/BlogPosting
- * Used on blog posts and case studies
- *
- * @param title - Article title
- * @param description - Article description
- * @param url - Article URL
- * @param datePublished - Publication date (ISO format)
- * @param dateModified - Last modified date (ISO format, optional)
- * @param imageUrl - Article image URL (optional)
- * @param author - Author name (optional, defaults to "Phala Network")
- */
-export function articleSchema(
-  title: string,
-  description: string,
-  url: string,
-  datePublished: string,
-  dateModified?: string,
-  imageUrl?: string,
-  author = 'Phala Network',
-) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: title,
-    description,
-    url,
-    datePublished,
-    dateModified: dateModified || datePublished,
-    author: {
-      '@type': 'Organization',
-      name: author,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Phala',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://phala.com/logo.png',
-      },
-    },
-    ...(imageUrl && {
-      image: {
-        '@type': 'ImageObject',
-        url: imageUrl,
-      },
-    }),
-  }
-}
-
-/**
- * Generates JSON-LD schema for BreadcrumbList
- * Used for navigation breadcrumbs
- *
- * @param items - Array of breadcrumb items with name and url
- */
-export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: item.url,
     })),
   }
 }

@@ -71,7 +71,7 @@ const Feature280 = ({
 
 export { Feature280 }
 
-export const Highlight = ({
+const Highlight = ({
   children,
   className,
 }: {

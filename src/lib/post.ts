@@ -15,18 +15,6 @@ import {
   queryDatabase,
 } from '@/lib/notion-client'
 
-// Types for posts action
-export type GetPostsParams = {
-  cursor?: string
-  tag?: string
-  page_size?: number
-}
-
-export type GetPostsResult = {
-  pages: ParsedListPage[]
-  next_cursor: string | null
-}
-
 export function generateSlug(title: string): string {
   const slug = slugify(title, { lower: true, strict: true })
   return slug
