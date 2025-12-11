@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
+import { CdnVideo } from '@/components/ui/cdn-image'
 import { buildVideoUrl } from '@/lib/image-url'
 import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
@@ -30,13 +31,21 @@ const Video = ({ block }: { block: ParsedBlock }) => {
       return [null, videoUrl]
     }
   }, [videoBlock])
+
+  // Check if this is an internal video (uses /api/media)
+  const isInternalVideo = videoBlock.video.type === 'file'
+
   return (
     <div className="notion_video_container">
       {provider === 'youtube' ? <LiteYouTubeEmbed id={id} title="" /> : null}
-      {provider === null ? (
-        // biome-ignore lint/a11y/useMediaCaption: captions not available from Notion
-        <video controls src={id} className="notion_video" />
-      ) : null}
+      {provider === null &&
+        (isInternalVideo ? (
+          // Internal videos use CdnVideo for S3 fallback
+          <CdnVideo controls src={id} className="notion_video" />
+        ) : (
+          // biome-ignore lint/a11y/useMediaCaption: captions not available from Notion
+          <video controls src={id} className="notion_video" />
+        ))}
       {provider === 'loom' ? (
         <iframe
           className="w-full aspect-video"
