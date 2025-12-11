@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   reactStrictMode: false,
   redirects,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.phala.com',
+      },
+    ],
+  },
   async rewrites() {
     return {
       beforeFiles: [

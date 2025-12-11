@@ -1,7 +1,6 @@
 'use client'
 
 import { format } from 'date-fns'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -12,6 +11,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
+import { CdnImage } from '@/components/ui/cdn-image'
 import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
 import { cn } from '@/lib/utils'
@@ -58,7 +58,7 @@ export default function Banners({ pages }: { pages: ParsedListPage[] }) {
                 <div className="p-2">
                   <div className={cn('rounded-sm overflow-hidden')}>
                     <Link href={`/posts/${page.slug}`}>
-                      <Image
+                      <CdnImage
                         className="w-full aspect-872/487"
                         width={1744}
                         height={974}

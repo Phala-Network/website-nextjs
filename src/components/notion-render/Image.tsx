@@ -1,6 +1,6 @@
 import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import NextImage from 'next/image'
 
+import { CdnImage } from '@/components/ui/cdn-image'
 import { buildProxyImageUrl } from '@/lib/image'
 import type { ParsedBlock } from '@/lib/notion-client'
 import RichText from './RichText'
@@ -12,7 +12,7 @@ const Image = ({ block }: { block: ParsedBlock }) => {
   return (
     <div className="notion_image_container">
       <figure>
-        <NextImage
+        <CdnImage
           className="m-auto"
           src={imageUrl}
           alt={caption}

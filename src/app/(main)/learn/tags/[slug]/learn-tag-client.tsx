@@ -2,12 +2,12 @@
 
 import { RefreshCcw } from 'lucide-react'
 import { useState, useTransition } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { format } from 'date-fns'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { CdnImage } from '@/components/ui/cdn-image'
 import { getLearnArticles } from '@/lib/actions/learn'
 import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
@@ -53,7 +53,7 @@ export default function LearnTagClient({
               className="group flex flex-col overflow-hidden rounded-xl border border-border bg-background transition-all hover:shadow-lg hover:border-primary/50"
             >
               <div className="aspect-video overflow-hidden">
-                <Image
+                <CdnImage
                   src={buildCoverUrl(page.id, page.lastEditedTime)}
                   alt={page.title}
                   width={1744}

@@ -1,10 +1,10 @@
 import { ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
+import { CdnImage } from '@/components/ui/cdn-image'
 import { buildCoverUrl } from '@/lib/image-url'
 import type { ParsedListPage } from '@/lib/notion-client'
 import { format } from 'date-fns'
-import Image from 'next/image'
 import Link from 'next/link'
 
 interface ComparisonsBlog24Props {
@@ -38,7 +38,7 @@ export default function ComparisonsBlog24({ articles }: ComparisonsBlog24Props) 
                     href={`/learn/${article.slug}`}
                     className="block transition-opacity duration-200 hover:opacity-90"
                   >
-                    <Image
+                    <CdnImage
                       src={buildCoverUrl(article.id, article.lastEditedTime)}
                       alt={article.title}
                       width={1744}
