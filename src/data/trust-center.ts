@@ -24,20 +24,12 @@ export interface ComplianceReport {
   description: string
   icon: 'hipaa' | 'soc2'
   downloadUrl: string | null
-  status: 'available' | 'coming_soon'
+  reportStatus: 'available' | 'coming_soon'
+  complianceStatus: 'compliant' | 'in_progress'
 }
 
 // Compliance Reports
 export const complianceReports: ComplianceReport[] = [
-  {
-    id: 'hipaa',
-    name: 'HIPAA Compliance',
-    description:
-      'Health Insurance Portability and Accountability Act compliance certification demonstrating our commitment to protecting sensitive patient health information.',
-    icon: 'hipaa',
-    downloadUrl: null, // Report link will be added when available
-    status: 'coming_soon',
-  },
   {
     id: 'soc2-type1',
     name: 'SOC 2 Type I',
@@ -45,7 +37,18 @@ export const complianceReports: ComplianceReport[] = [
       'Service Organization Control 2 Type I report validating our security, availability, and confidentiality controls at a specific point in time.',
     icon: 'soc2',
     downloadUrl: '/phala_soc2_type1_report.pdf',
-    status: 'available',
+    reportStatus: 'available',
+    complianceStatus: 'compliant',
+  },
+  {
+    id: 'hipaa',
+    name: 'HIPAA',
+    description:
+      'Health Insurance Portability and Accountability Act compliance certification demonstrating our commitment to protecting sensitive patient health information.',
+    icon: 'hipaa',
+    downloadUrl: null, // Report link will be added when available
+    reportStatus: 'coming_soon',
+    complianceStatus: 'compliant',
   },
 ]
 
@@ -59,7 +62,8 @@ export const controls: Control[] = [
     description:
       'Phala Network Management has approved all policies that detail how customer data may be made accessible and should be handled. These policies are accessible to all employees and contractors.',
     status: 'implemented',
-    hipaa: '164.306(a), 164.306(b), 164.306(c), 164.306(d), 164.306(e), 164.308(a)(1)(i), 164.316(a)',
+    hipaa:
+      '164.306(a), 164.306(b), 164.306(c), 164.306(d), 164.306(e), 164.308(a)(1)(i), 164.316(a)',
   },
   {
     id: 'DCF-2',
@@ -209,7 +213,8 @@ export const controls: Control[] = [
     id: 'DCF-71',
     category: 'Access Control',
     name: 'Unique User IDs',
-    description: 'Authentication to systems requires the use of unique identities.',
+    description:
+      'Authentication to systems requires the use of unique identities.',
     status: 'implemented',
     soc2: 'CC6.1',
     hipaa: '164.308(a)(3)(ii)(A), 164.308(a)(3)(ii)(B), 164.312(a)(2)(i)',
@@ -371,7 +376,7 @@ export const controls: Control[] = [
     category: 'Vulnerability Management',
     name: 'Penetration Tests',
     description:
-      "An external penetration test of production environments is performed by an independent third party periodically or after any significant infrastructure or application changes. Results are reviewed by management and vulnerabilities are tracked to resolution in accordance with company policies.",
+      'An external penetration test of production environments is performed by an independent third party periodically or after any significant infrastructure or application changes. Results are reviewed by management and vulnerabilities are tracked to resolution in accordance with company policies.',
     status: 'implemented',
     soc2: 'CC4.1, CC5.2, CC7.1',
     hipaa: '164.308(a)(1)(ii)(A), 164.308(a)(1)(ii)(B), 164.308(a)(8)',
@@ -381,7 +386,7 @@ export const controls: Control[] = [
     category: 'Vulnerability Management',
     name: 'Vulnerability Management Policy',
     description:
-      "Phala Network has a defined policy that establishes requirements for vulnerability management across the organization, including monitoring, cataloging, and assigning risk ratings to vulnerabilities to prioritize remediation efforts.",
+      'Phala Network has a defined policy that establishes requirements for vulnerability management across the organization, including monitoring, cataloging, and assigning risk ratings to vulnerabilities to prioritize remediation efforts.',
     status: 'implemented',
     soc2: 'CC5.3, CC7.1',
     hipaa:
@@ -739,7 +744,8 @@ export const controls: Control[] = [
     id: 'DCF-49',
     category: 'Endpoint Security',
     name: 'Password Manager',
-    description: 'A password manager is installed on all company-managed devices.',
+    description:
+      'A password manager is installed on all company-managed devices.',
     status: 'implemented',
     hipaa: '164.308(a)(5)(ii)(D)',
   },
@@ -747,7 +753,8 @@ export const controls: Control[] = [
     id: 'DCF-50',
     category: 'Endpoint Security',
     name: 'Antimalware Software on Devices',
-    description: 'Anti-malware software is installed on all company-managed devices.',
+    description:
+      'Anti-malware software is installed on all company-managed devices.',
     status: 'implemented',
     soc2: 'CC6.8, CC7.1',
     hipaa:
@@ -766,7 +773,8 @@ export const controls: Control[] = [
     id: 'DCF-52',
     category: 'Endpoint Security',
     name: 'Hard-Disk Encryption',
-    description: 'Hard-disk encryption is enabled on all company-managed devices.',
+    description:
+      'Hard-disk encryption is enabled on all company-managed devices.',
     status: 'implemented',
     soc2: 'CC6.1, CC6.7',
     hipaa: '164.312(a)(2)(iv)',
@@ -786,7 +794,8 @@ export const controls: Control[] = [
     id: 'DCF-54',
     category: 'Encryption',
     name: 'Encryption at Rest',
-    description: 'Data at rest is encrypted using strong cryptographic algorithms.',
+    description:
+      'Data at rest is encrypted using strong cryptographic algorithms.',
     status: 'implemented',
     soc2: 'CC6.1, CC6.6',
     hipaa: '164.312(a)(2)(iv), 164.312(e)(2)(ii)',
@@ -795,7 +804,8 @@ export const controls: Control[] = [
     id: 'DCF-55',
     category: 'Encryption',
     name: 'Encryption in Transit',
-    description: 'Data in transit is encrypted using strong cryptographic algorithms.',
+    description:
+      'Data in transit is encrypted using strong cryptographic algorithms.',
     status: 'implemented',
     soc2: 'CC6.1, CC6.6, CC6.7',
     hipaa: '164.312(a)(2)(iv), 164.312(e)(1)',
@@ -1115,7 +1125,7 @@ export const controls: Control[] = [
     category: 'Logging & Monitoring',
     name: 'Continuous Control Monitoring',
     description:
-      "Phala Network uses compliance automation software to identify, select, and continuously monitor internal controls.",
+      'Phala Network uses compliance automation software to identify, select, and continuously monitor internal controls.',
     status: 'implemented',
     soc2: 'CC2.1, CC2.2, CC3.2, CC3.3, CC3.4, CC4.1, CC4.2, CC5.1, CC5.2',
     hipaa: '164.312(b), 164.312(c)(2)',
@@ -1205,7 +1215,8 @@ export const controls: Control[] = [
     id: 'DCF-65',
     category: 'Privacy',
     name: 'Public Privacy Policy',
-    description: 'Phala Network maintains a publicly available privacy policy/notice.',
+    description:
+      'Phala Network maintains a publicly available privacy policy/notice.',
     status: 'implemented',
     hipaa:
       '164.306(a), 164.306(b), 164.306(c), 164.306(d), 164.306(e), 164.316(a)',
@@ -1391,7 +1402,7 @@ export const controls: Control[] = [
     category: 'Third Party Data Sharing',
     name: 'Use of Subprocessors Communicated',
     description:
-      "Phala Network communicates to customers any use of subprocessors to process PII (e.g., through a list of subprocessors in the company website or data processing agreement, etc.). Phala Network obtains authorization from customers for the use of subprocessors (e.g., through executed data processing agreements, accepting the terms in the website, etc.).",
+      'Phala Network communicates to customers any use of subprocessors to process PII (e.g., through a list of subprocessors in the company website or data processing agreement, etc.). Phala Network obtains authorization from customers for the use of subprocessors (e.g., through executed data processing agreements, accepting the terms in the website, etc.).',
     status: 'implemented',
     hipaa:
       '164.306(a), 164.306(b), 164.306(c), 164.306(d), 164.306(e), 164.316(a)',
@@ -1449,7 +1460,7 @@ export const controls: Control[] = [
     category: 'HIPAA Specific',
     name: 'Breach Notification',
     description:
-      "Phala Network information security policies should be augmented by a statement concerning support for and commitment to achieving compliance with applicable PII protection legislation and the contractual terms agreed between the public cloud PII processor and its clients (cloud service customers).",
+      'Phala Network information security policies should be augmented by a statement concerning support for and commitment to achieving compliance with applicable PII protection legislation and the contractual terms agreed between the public cloud PII processor and its clients (cloud service customers).',
     status: 'implemented',
     hipaa:
       '164.402, 164.404(a), 164.404(b), 164.404(c), 164.404(d), 164.406, 164.408, 164.410, 164.412, 164.414(a), 164.414(b)',

@@ -1,9 +1,5 @@
 'use client'
 
-import { useMemo, useState } from 'react'
-import Image from 'next/image'
-import { NuqsAdapter } from 'nuqs/adapters/next/app'
-import { parseAsStringLiteral, useQueryState } from 'nuqs'
 import {
   Check,
   ChevronDown,
@@ -16,12 +12,21 @@ import {
   Search,
   Shield,
 } from 'lucide-react'
+import Image from 'next/image'
+import { parseAsStringLiteral, useQueryState } from 'nuqs'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { useMemo, useState } from 'react'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Table,
   TableBody,
@@ -30,13 +35,14 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
+  type Control,
   complianceReports,
   controls,
   getControlCategories,
   getControlsByCategory,
   subprocessors,
-  type Control,
 } from '@/data/trust-center'
 
 const VALID_TABS = ['compliance', 'controls', 'subprocessors'] as const
@@ -47,16 +53,22 @@ function ComplianceTab() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="font-display text-2xl font-semibold">Compliance Reports</h2>
+        <h2 className="font-display text-2xl font-semibold">
+          Compliance Reports
+        </h2>
         <p className="text-muted-foreground mt-2">
-          Download our compliance certifications and audit reports to verify our security posture.
+          Download our compliance certifications and audit reports to verify our
+          security posture.
         </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         {complianceReports.map((report) => (
-          <Card key={report.id} className="relative overflow-hidden flex flex-col">
-            <CardHeader className="pb-4 flex-1">
+          <Card
+            key={report.id}
+            className="relative overflow-hidden flex flex-col h-full"
+          >
+            <CardHeader className="pb-4 flex-1 flex flex-col items-center">
               <div className="flex justify-center items-center py-4 h-48">
                 {report.icon === 'hipaa' ? (
                   <Image
@@ -78,19 +90,24 @@ function ComplianceTab() {
               </div>
               <div className="text-center">
                 <CardTitle className="text-xl">{report.name}</CardTitle>
-                <div className="h-8 flex items-center justify-center">
-                  {report.status === 'coming_soon' && (
-                    <Badge variant="secondary">
-                      <Clock className="mr-1 size-3" />
-                      Coming Soon
+                <div className="h-8 flex items-center justify-center mt-2">
+                  {report.complianceStatus === 'compliant' && (
+                    <Badge
+                      variant="outline"
+                      className="text-green-500 border-green-500"
+                    >
+                      <Check className="mr-1 size-3" />
+                      Compliant
                     </Badge>
                   )}
                 </div>
               </div>
-              <CardDescription className="text-center">{report.description}</CardDescription>
+              <CardDescription className="text-center flex-1">
+                {report.description}
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              {report.downloadUrl ? (
+              {report.reportStatus === 'available' && report.downloadUrl ? (
                 <Button asChild className="w-full">
                   <a href={report.downloadUrl} download>
                     <Download className="mr-2 size-4" />
@@ -100,7 +117,7 @@ function ComplianceTab() {
               ) : (
                 <Button variant="outline" disabled className="w-full">
                   <Clock className="mr-2 size-4" />
-                  Coming Soon
+                  Report Coming Soon
                 </Button>
               )}
             </CardContent>
@@ -155,10 +172,14 @@ function CategoryAccordion({
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-mono text-xs text-muted-foreground">{control.id}</span>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {control.id}
+                  </span>
                   <span className="font-medium">{control.name}</span>
                 </div>
-                <p className="text-sm text-muted-foreground mt-1">{control.description}</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {control.description}
+                </p>
               </div>
             </div>
           ))}
@@ -172,7 +193,7 @@ function CategoryAccordion({
 function ControlsTab() {
   const [searchQuery, setSearchQuery] = useState('')
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
-    new Set([getControlCategories()[0]])
+    new Set([getControlCategories()[0]]),
   )
 
   const categories = useMemo(() => getControlCategories(), [])
@@ -186,14 +207,14 @@ function ControlsTab() {
             control.name.toLowerCase().includes(query) ||
             control.description.toLowerCase().includes(query) ||
             control.id.toLowerCase().includes(query) ||
-            category.toLowerCase().includes(query)
+            category.toLowerCase().includes(query),
         )
         if (categoryControls.length > 0) {
           acc[category] = categoryControls
         }
         return acc
       },
-      {} as Record<string, Control[]>
+      {} as Record<string, Control[]>,
     )
   }, [categories, searchQuery])
 
@@ -218,14 +239,19 @@ function ControlsTab() {
   }
 
   const totalControls = controls.length
-  const implementedControls = controls.filter((c) => c.status === 'implemented').length
+  const implementedControls = controls.filter(
+    (c) => c.status === 'implemented',
+  ).length
 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="font-display text-2xl font-semibold">Security Controls</h2>
+        <h2 className="font-display text-2xl font-semibold">
+          Security Controls
+        </h2>
         <p className="text-muted-foreground mt-2">
-          Our comprehensive security control framework ensures protection of your data and systems.
+          Our comprehensive security control framework ensures protection of
+          your data and systems.
         </p>
       </div>
 
@@ -274,15 +300,17 @@ function ControlsTab() {
             No controls found matching your search.
           </div>
         ) : (
-          Object.entries(filteredControlsByCategory).map(([category, categoryControls]) => (
-            <CategoryAccordion
-              key={category}
-              category={category}
-              controls={categoryControls}
-              isExpanded={expandedCategories.has(category)}
-              onToggle={() => toggleCategory(category)}
-            />
-          ))
+          Object.entries(filteredControlsByCategory).map(
+            ([category, categoryControls]) => (
+              <CategoryAccordion
+                key={category}
+                category={category}
+                controls={categoryControls}
+                isExpanded={expandedCategories.has(category)}
+                onToggle={() => toggleCategory(category)}
+              />
+            ),
+          )
         )}
       </div>
     </div>
@@ -296,8 +324,9 @@ function SubprocessorsTab() {
       <div>
         <h2 className="font-display text-2xl font-semibold">Subprocessors</h2>
         <p className="text-muted-foreground mt-2">
-          We work with trusted third-party service providers to deliver our services. Below is a
-          list of our current subprocessors and their purposes.
+          We work with trusted third-party service providers to deliver our
+          services. Below is a list of our current subprocessors and their
+          purposes.
         </p>
       </div>
 
@@ -347,7 +376,8 @@ function SubprocessorsTab() {
         <CardHeader>
           <CardTitle>Data Processing Agreement</CardTitle>
           <CardDescription>
-            Our commitment to protecting your data extends to our relationships with subprocessors.
+            Our commitment to protecting your data extends to our relationships
+            with subprocessors.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -357,8 +387,8 @@ function SubprocessorsTab() {
                 <Check className="size-3.5 text-primary" />
               </div>
               <p className="text-sm text-muted-foreground">
-                All subprocessor agreements impose data protection obligations substantially similar
-                to those in our main DPA.
+                All subprocessor agreements impose data protection obligations
+                substantially similar to those in our main DPA.
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -366,8 +396,9 @@ function SubprocessorsTab() {
                 <Check className="size-3.5 text-primary" />
               </div>
               <p className="text-sm text-muted-foreground">
-                We notify customers of any intended additions or replacements to the subprocessor
-                list, allowing opportunity to object on data protection grounds.
+                We notify customers of any intended additions or replacements to
+                the subprocessor list, allowing opportunity to object on data
+                protection grounds.
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -375,7 +406,8 @@ function SubprocessorsTab() {
                 <Check className="size-3.5 text-primary" />
               </div>
               <p className="text-sm text-muted-foreground">
-                Phala remains liable for subprocessor performance in accordance with our DPA terms.
+                Phala remains liable for subprocessor performance in accordance
+                with our DPA terms.
               </p>
             </div>
           </div>
@@ -402,11 +434,15 @@ function SubprocessorsTab() {
 function TrustTabsInner() {
   const [tab, setTab] = useQueryState(
     'tab',
-    parseAsStringLiteral(VALID_TABS).withDefault('compliance')
+    parseAsStringLiteral(VALID_TABS).withDefault('compliance'),
   )
 
   return (
-    <Tabs value={tab} onValueChange={(v) => setTab(v as TabValue)} className="space-y-8">
+    <Tabs
+      value={tab}
+      onValueChange={(v) => setTab(v as TabValue)}
+      className="space-y-8"
+    >
       <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
         <TabsTrigger value="compliance">Compliance</TabsTrigger>
         <TabsTrigger value="controls">Controls</TabsTrigger>
