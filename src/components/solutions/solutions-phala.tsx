@@ -50,7 +50,7 @@ const solutions: Solution[] = [
       'Private RAG & AI copilots',
       'Confidential fine-tuning',
       'On-prem or cloud deployment',
-      'HIPAA/SOC2 compliance',
+      'SOC 2 & HIPAA certified',
     ],
     icon: <Building className="h-6 w-6" />,
     ctaText: 'Contact Us',

@@ -222,7 +222,7 @@ const PerformanceSecurityMerged = () => {
                 </div>
                 <h4 className="font-semibold">Compliance Ready</h4>
                 <p className="text-sm text-muted-foreground">
-                  Meets GDPR, HIPAA, SOC 2 with attestation logs
+                  SOC 2 & HIPAA certified with attestation logs
                 </p>
               </div>
             </div>

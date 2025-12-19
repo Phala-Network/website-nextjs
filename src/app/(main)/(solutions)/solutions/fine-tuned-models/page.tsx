@@ -138,7 +138,7 @@ export default function FineTunedModelsPage() {
                 question:
                   "What compliance frameworks does Phala's training support?",
                 answer:
-                  "Phala's confidential compute model aligns with the technical requirements of GDPR, HIPAA, and SOC 2. Remote attestation and audit logs provide verifiable proofs that your data was processed securely.",
+                  "Phala is SOC 2 Type I certified and HIPAA compliant, with ISO 27001 in progress. Remote attestation and audit logs provide verifiable proofs that your data was processed securely.",
               },
               {
                 question:

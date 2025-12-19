@@ -55,7 +55,7 @@ const defaultFeatures: FeatureData[] = [
     gridClass: 'lg:col-span-2',
   },
   {
-    desc: 'Process regulated data (GDPR, HIPAA) in the cloud while maintaining compliance and zero-trust security.',
+    desc: 'SOC 2 Type I certified and HIPAA compliant. Process regulated data in the cloud with hardware-backed security.',
     img: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/img4.jpeg',
     title: 'Regulatory Compliance',
     badgeTitle: 'USE CASE',

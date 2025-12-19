@@ -177,7 +177,7 @@ export default async function PrivateAIInferencePage() {
                 question:
                   'Can I use this for healthcare/law firm AI assistants?',
                 answer:
-                  'Yes. Private inference is ideal for HIPAA/GDPR-regulated industries. Patient records or legal documents never leave the TEE in plaintext, and attestation proofs provide audit trails for compliance.',
+                  'Yes. Phala is SOC 2 Type I certified and HIPAA compliant, making private inference ideal for regulated industries. Patient records or legal documents never leave the TEE in plaintext, and attestation proofs provide audit trails for compliance.',
               },
               {
                 question:

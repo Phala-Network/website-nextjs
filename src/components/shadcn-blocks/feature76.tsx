@@ -40,7 +40,7 @@ const features = [
     id: 'compliance',
     title: 'Regulatory Compliance',
     description:
-      'Meet GDPR, HIPAA, and SOC 2 requirements with hardware-backed privacy guarantees. Full audit trail with Intel and NVIDIA attestation.',
+      'SOC 2 Type I certified and HIPAA compliant, with ISO 27001 in progress. Hardware-backed privacy guarantees with full audit trail and Intel/NVIDIA attestation.',
     icon: <FileCheck className="size-10" strokeWidth={1.5} />,
   },
 ]

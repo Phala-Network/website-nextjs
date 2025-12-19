@@ -124,8 +124,8 @@ const comparisons: Record<ComparisonSlug, ComparisonData> = {
       },
       {
         feature: 'Compliance Certifications',
-        phala: 'partial',
-        phalaText: 'SOC2 in progress',
+        phala: 'good',
+        phalaText: 'SOC 2, HIPAA, ISO 27001 in progress',
         competitor: 'good',
         competitorText: 'HIPAA, PCI-DSS, SOC',
       },
@@ -337,8 +337,8 @@ const comparisons: Record<ComparisonSlug, ComparisonData> = {
       },
       {
         feature: 'Compliance Suite',
-        phala: 'partial',
-        phalaText: 'SOC2 planned',
+        phala: 'good',
+        phalaText: 'SOC 2, HIPAA, ISO 27001 in progress',
         competitor: 'good',
         competitorText: 'ISO, HIPAA, PCI-DSS',
       },

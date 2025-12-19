@@ -21,12 +21,12 @@ const metrics = [
 ]
 
 const certifications = [
-  'SOC 2 Type II',
+  'SOC 2 Type I Certified',
+  'HIPAA Compliant',
+  'ISO 27001 In Progress',
   '99.9% Uptime SLA',
-  'HIPAA Ready Infrastructure',
   '24/7 Enterprise Support',
   'GDPR Compliant Processing',
-  'Zero Security Breaches',
 ]
 
 export default function ProvenAtScaleSection() {

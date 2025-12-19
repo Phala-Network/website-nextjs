@@ -47,7 +47,7 @@ const features = [
     id: 'compliance',
     title: 'Compliance Ready',
     description:
-      'Hardware-backed security meets GDPR, HIPAA, and SOC 2 requirements. Audit-ready with attestation logs and compliance reports.',
+      'SOC 2 Type I certified and HIPAA compliant. Hardware-backed security meets GDPR requirements. Audit-ready with attestation logs and compliance reports.',
     icon: Award,
   },
 ]

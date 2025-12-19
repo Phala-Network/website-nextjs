@@ -221,7 +221,7 @@ const FAQ_QUESTIONS = [
   {
     question: 'What compliance standards does this meet?',
     answer:
-      'Supports GDPR, HIPAA, SOC 2, FedRAMP requirements with hardware-backed security guarantees and audit trails.',
+      'SOC 2 Type I certified and HIPAA compliant, with ISO 27001 in progress. Supports GDPR and FedRAMP requirements with hardware-backed security guarantees and audit trails.',
   },
   {
     question: 'How do I debug applications running in TEE?',

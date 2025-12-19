@@ -37,7 +37,7 @@ const features = [
     icon: Award,
     title: 'Compliance Ready',
     description:
-      'GDPR, HIPAA, SOC 2 compliant. Hardware-backed security guarantees.',
+      'SOC 2 Type I certified, HIPAA compliant. Hardware-backed security guarantees.',
   },
 ]
 

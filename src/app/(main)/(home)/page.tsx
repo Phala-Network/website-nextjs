@@ -1,3 +1,4 @@
+import { Compliance1 } from '@/components/compliance1'
 import { DashedLine } from '@/components/dashed-line'
 import FinalCTA from '@/components/final-cta'
 import { fetchAiModels, type Model } from '@/lib/ai-models'
@@ -58,7 +59,7 @@ export default async function HomePage() {
         <PrivateCloudCompute />
         <ProvenAtScale />
         <SuccessStories />
-
+        <Compliance1 />
         <FAQ />
         <FinalCTA />
       </div>
