@@ -5,7 +5,6 @@ import {
   ChevronDown,
   ChevronRight,
   Clock,
-  Download,
   ExternalLink,
   FileText,
   Globe,
@@ -109,9 +108,13 @@ function ComplianceTab() {
             <CardContent>
               {report.reportStatus === 'available' && report.downloadUrl ? (
                 <Button asChild className="w-full">
-                  <a href={report.downloadUrl} download>
-                    <Download className="mr-2 size-4" />
-                    Download Report
+                  <a
+                    href={report.downloadUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="mr-2 size-4" />
+                    View Report
                   </a>
                 </Button>
               ) : (
