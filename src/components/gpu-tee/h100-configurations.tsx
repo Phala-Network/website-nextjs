@@ -90,7 +90,7 @@ export function H100Configurations() {
                     performance and complete security
                   </div>
                   <Button asChild className="w-full" size="sm">
-                    <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                    <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                       Configure & Deploy
                     </Link>
                   </Button>

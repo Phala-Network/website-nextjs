@@ -186,7 +186,7 @@ curl -X POST https://cloud-api.phala.network/api/v1/training/verify \\
         title="Start Confidential Training Today"
         description="Train large-scale AI models on sensitive datasets with multi-GPU TEE clusters and hardware-enforced encryption."
         buttonText="Deploy on Phala"
-        buttonUrl="https://cloud.phala.network"
+        buttonUrl="https://cloud.phala.com"
         items={[
           'Multi-GPU TEE clusters',
           'Consortium learning support',

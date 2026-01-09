@@ -61,7 +61,7 @@ const Hero24 = ({ starCount, isStandalone = false }: Hero24Props) => {
                 asChild
               >
                 <a
-                  href="https://cloud.phala.network/"
+                  href="https://cloud.phala.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

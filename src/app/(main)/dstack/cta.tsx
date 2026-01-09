@@ -65,7 +65,7 @@ const Cta3 = ({ isStandalone = false }: Cta3Props) => {
             </a>
             {!isStandalone && (
               <a
-                href="https://cloud.phala.network/"
+                href="https://cloud.phala.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -27,7 +27,7 @@ const solutions: Solution[] = [
     ],
     icon: <User className="h-6 w-6" />,
     ctaText: 'Try Models',
-    ctaLink: 'https://cloud.phala.network/dashboard/confidential-ai-models',
+    ctaLink: 'https://cloud.phala.com/dashboard/confidential-ai-models',
   },
   {
     title: 'Developer',
@@ -40,7 +40,7 @@ const solutions: Solution[] = [
     ],
     icon: <Code className="h-6 w-6" />,
     ctaText: 'Get API Key',
-    ctaLink: 'https://cloud.phala.network/dashboard/confidential-ai-api',
+    ctaLink: 'https://cloud.phala.com/dashboard/confidential-ai-api',
   },
   {
     title: 'Enterprise',

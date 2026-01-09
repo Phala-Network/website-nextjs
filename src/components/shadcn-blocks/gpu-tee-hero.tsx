@@ -65,7 +65,7 @@ const GpuTeeHero = () => {
 
           <div className="flex flex-col gap-4 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+              <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                 Deploy GPU TEE Now
               </Link>
             </Button>

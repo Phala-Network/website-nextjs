@@ -253,7 +253,7 @@ const developers = [
     id: 'dev-4',
     title: 'Templates',
     description: 'Start quickly with ready-made templates.',
-    href: 'https://cloud.phala.network/templates',
+    href: 'https://cloud.phala.com/templates',
     icon: FileCode,
   },
   {
@@ -783,10 +783,10 @@ const PhalaNavbar4 = () => {
             <a href="/contact">Contact</a>
           </li>
           <li>
-            <a href="https://cloud.phala.network/login">Sign in</a>
+            <a href="https://cloud.phala.com/login">Sign in</a>
           </li>
           <li>
-            <a href="https://cloud.phala.network/register">Sign up</a>
+            <a href="https://cloud.phala.com/register">Sign up</a>
           </li>
         </ul>
       </nav>
@@ -836,10 +836,10 @@ const PhalaNavbar4 = () => {
                 <a href="/contact">Contact</a>
               </Button>
               <Button variant="ghost" className="hidden md:block" asChild>
-                <a href="https://cloud.phala.network/login">Sign in</a>
+                <a href="https://cloud.phala.com/login">Sign in</a>
               </Button>
               <Button className="hidden md:block" asChild>
-                <a href="https://cloud.phala.network/register">Sign up</a>
+                <a href="https://cloud.phala.com/register">Sign up</a>
               </Button>
               <Button
                 variant="outline"
@@ -912,13 +912,13 @@ const PhalaNavbar4 = () => {
                     <span className="flex-1 text-sm font-medium">Contact</span>
                   </a>
                   <a
-                    href="https://cloud.phala.network/login"
+                    href="https://cloud.phala.com/login"
                     className="border-border flex w-full items-center border-b py-6 text-left"
                   >
                     <span className="flex-1 text-sm font-medium">Sign in</span>
                   </a>
                   <a
-                    href="https://cloud.phala.network/register"
+                    href="https://cloud.phala.com/register"
                     className="border-border flex w-full items-center border-b py-6 text-left"
                   >
                     <span className="flex-1 text-sm font-medium">Sign up</span>
@@ -939,7 +939,7 @@ const PhalaNavbar4 = () => {
               {/* Mobile menu footer */}
               <div className="mx-[2rem] mt-auto flex flex-col items-center gap-8 py-24">
                 <Button asChild>
-                  <a href="https://cloud.phala.network">Dashboard</a>
+                  <a href="https://cloud.phala.com">Dashboard</a>
                 </Button>
               </div>
             </div>

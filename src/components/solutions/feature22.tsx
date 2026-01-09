@@ -174,7 +174,7 @@ const Feature22 = () => {
               </ul>
               <div className="h-px border-t border-dashed"></div>
               <a
-                href="https://cloud.phala.network/templates/coinbase-x402-tee"
+                href="https://cloud.phala.com/templates/coinbase-x402-tee"
                 className="my-3 flex items-center gap-2 px-4 font-medium sm:my-4 sm:px-5 md:px-6"
               >
                 Deploy Template

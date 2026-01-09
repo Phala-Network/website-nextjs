@@ -110,7 +110,7 @@ export function H200Configurations() {
                     complete hardware protection
                   </div>
                   <Button asChild className="w-full font-medium" size="sm">
-                    <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                    <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                       Configure & Deploy
                     </Link>
                   </Button>

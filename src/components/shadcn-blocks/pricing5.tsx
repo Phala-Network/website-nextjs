@@ -104,7 +104,7 @@ const Pricing5 = () => {
             </CardContent>
             <CardFooter>
               <Button className="w-full" asChild>
-                <Link href="https://cloud.phala.network/register">
+                <Link href="https://cloud.phala.com/register">
                   Get Started
                 </Link>
               </Button>

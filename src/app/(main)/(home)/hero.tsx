@@ -51,7 +51,7 @@ export default function Hero() {
                     className="shrink-0 w-full lg:h-12 lg:text-base sm:w-40"
                     asChild
                   >
-                    <a href="https://cloud.phala.network/register">
+                    <a href="https://cloud.phala.com/register">
                       Get started
                     </a>
                   </Button>

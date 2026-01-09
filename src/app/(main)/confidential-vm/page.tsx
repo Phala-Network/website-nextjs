@@ -292,7 +292,7 @@ function HeroSection() {
             <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-10 flex flex-col sm:flex-row gap-3">
               <Button size="lg" asChild>
                 <a
-                  href="https://cloud.phala.network/dashboard"
+                  href="https://cloud.phala.com/dashboard"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
