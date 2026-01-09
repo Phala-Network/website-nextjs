@@ -24,7 +24,7 @@ const Hero74 = () => {
           </p>
           <div className="mx-auto mt-8 flex w-full max-w-sm items-center space-x-2">
             <Button asChild className="font-medium">
-              <a href="https://cloud.phala.network/dashboard/gpu-tee" target="_blank" rel="noopener noreferrer">
+              <a href="https://cloud.phala.com/dashboard/gpu-tee" target="_blank" rel="noopener noreferrer">
                 Start Fine-Tuning
               </a>
             </Button>

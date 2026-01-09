@@ -58,7 +58,7 @@ export function H100Pricing() {
             </CardContent>
             <CardFooter>
               <Button asChild className="w-full">
-                <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                   Deploy Now
                 </Link>
               </Button>

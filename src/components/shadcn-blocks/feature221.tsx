@@ -49,7 +49,7 @@ const GPU_CONFIGS: Array<GpuConfig> = [
     priceReserved: '$2.56',
     savings: 'Save 27%',
     ctaText: 'Configure H200',
-    ctaUrl: 'https://cloud.phala.network/dashboard/gpu-tee',
+    ctaUrl: 'https://cloud.phala.com/dashboard/gpu-tee',
     gradient: 'bg-gradient-to-r from-[#00C9FF] to-[#92FE9D]',
   },
   {
@@ -67,7 +67,7 @@ const GPU_CONFIGS: Array<GpuConfig> = [
     priceReserved: '$2.38',
     savings: 'Save 23%',
     ctaText: 'Configure H100',
-    ctaUrl: 'https://cloud.phala.network/dashboard/gpu-tee',
+    ctaUrl: 'https://cloud.phala.com/dashboard/gpu-tee',
     gradient: 'bg-gradient-to-r from-[#f8ff00] to-[#3ad59f]',
   },
   {
@@ -86,7 +86,7 @@ const GPU_CONFIGS: Array<GpuConfig> = [
     priceReserved: '$5.63',
     savings: 'Save 29%',
     ctaText: 'Configure B200',
-    ctaUrl: 'https://cloud.phala.network/dashboard/gpu-tee',
+    ctaUrl: 'https://cloud.phala.com/dashboard/gpu-tee',
     gradient: 'bg-gradient-to-r from-[#FC466B] to-[#3F5EFB]',
   },
 ]
@@ -113,7 +113,7 @@ const Feature221 = () => {
           </div>
           <div>
             <Button className="rounded-full" asChild>
-              <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+              <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                 Deploy Now
                 <ArrowRight />
               </Link>

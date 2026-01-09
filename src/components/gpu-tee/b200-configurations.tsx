@@ -90,7 +90,7 @@ export function B200Configurations() {
                     demanding AI workloads
                   </div>
                   <Button asChild className="w-full" size="sm">
-                    <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                    <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                       Configure & Deploy
                     </Link>
                   </Button>

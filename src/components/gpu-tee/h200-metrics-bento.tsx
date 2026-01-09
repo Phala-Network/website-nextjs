@@ -151,7 +151,7 @@ const H200MetricsBento = () => {
               </div>
               <Button asChild className="w-full font-medium">
                 <a
-                  href="https://cloud.phala.network/dashboard/gpu-tee"
+                  href="https://cloud.phala.com/dashboard/gpu-tee"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

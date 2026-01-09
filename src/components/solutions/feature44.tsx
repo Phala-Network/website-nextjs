@@ -6,21 +6,21 @@ const integrations = [
     description:
       'Self-hosted AI chat interface with complete data privacy and TEE protection',
     image: '/solutions/agents/openweb.png',
-    url: 'https://cloud.phala.network/templates/open-webui',
+    url: 'https://cloud.phala.com/templates/open-webui',
   },
   {
     title: 'Bytebot',
     description:
       'Intelligent coding assistant with secure execution and private code analysis',
     image: '/solutions/agents/bytebot.jpeg',
-    url: 'https://cloud.phala.network/templates/bytebot',
+    url: 'https://cloud.phala.com/templates/bytebot',
   },
   {
     title: 'Chatnio',
     description:
       'Privacy-first chat platform with end-to-end encryption in TEE',
     image: '/solutions/agents/chatnio.png',
-    url: 'https://cloud.phala.network/templates/chatnio',
+    url: 'https://cloud.phala.com/templates/chatnio',
   },
 ]
 

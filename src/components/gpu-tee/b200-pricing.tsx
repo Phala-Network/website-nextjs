@@ -58,7 +58,7 @@ export function B200Pricing() {
             </CardContent>
             <CardFooter>
               <Button asChild className="w-full">
-                <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                   Deploy Now
                 </Link>
               </Button>
@@ -105,7 +105,7 @@ export function B200Pricing() {
             </CardContent>
             <CardFooter>
               <Button asChild variant="default" className="w-full">
-                <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                   Deploy Cluster
                 </Link>
               </Button>

@@ -60,7 +60,7 @@ export function B200Hero() {
 
             <div className="flex w-full flex-col justify-center gap-3 sm:flex-row lg:justify-start">
               <Button asChild size="lg" className="font-medium">
-                <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                   Deploy B200 Now
                 </Link>
               </Button>

@@ -203,7 +203,7 @@ export default async function PrivateAIInferencePage() {
         title="Start Private AI Inference Today"
         description="Deploy confidential LLM endpoints with hardware-enforced encryption and zero-knowledge guarantees."
         buttonText="Deploy on Phala"
-        buttonUrl="https://cloud.phala.network"
+        buttonUrl="https://cloud.phala.com"
         items={[
           'Intel TDX & AMD SEV support',
           'Remote attestation built-in',

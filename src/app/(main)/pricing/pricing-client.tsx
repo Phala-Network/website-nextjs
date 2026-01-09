@@ -207,7 +207,7 @@ export default function PricingClient() {
               </CardContent>
               <CardFooter>
                 <Button className="w-full" asChild>
-                  <Link href="https://cloud.phala.network/register">
+                  <Link href="https://cloud.phala.com/register">
                     Get Started
                   </Link>
                 </Button>
@@ -345,7 +345,7 @@ export default function PricingClient() {
                   <Link href={plan.href}>View Details</Link>
                 </Button>
                 <Button className="w-full" variant="outline" asChild>
-                  <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                  <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                     Configure Now
                   </Link>
                 </Button>

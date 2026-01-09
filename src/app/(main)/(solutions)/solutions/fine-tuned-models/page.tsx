@@ -181,7 +181,7 @@ export default function FineTunedModelsPage() {
         title="Start Private Fine-Tuning Today"
         description="Customize LLMs on your proprietary data with hardware-enforced confidentiality and zero-knowledge guarantees."
         buttonText="Deploy on Phala"
-        buttonUrl="https://cloud.phala.network"
+        buttonUrl="https://cloud.phala.com"
         items={[
           'LoRA/PEFT support',
           'Multi-GPU training',

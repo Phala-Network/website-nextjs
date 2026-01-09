@@ -279,7 +279,7 @@ export default function PrivateCloudCompute() {
                 </div>
               </div>
               <a
-                href="https://cloud.phala.network/templates"
+                href="https://cloud.phala.com/templates"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block h-110 rounded-lg bg-card px-6 xl:px-8 py-8 relative overflow-hidden"

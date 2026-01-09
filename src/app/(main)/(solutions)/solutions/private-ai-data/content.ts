@@ -25,7 +25,7 @@ export const privateAIDataContent: SolutionContent = {
     },
     secondaryCTA: {
       text: 'Deploy on Phala',
-      url: 'https://cloud.phala.network',
+      url: 'https://cloud.phala.com',
     },
     features: [
       'Zero-trust architecture',
@@ -371,7 +371,7 @@ if (verification.verified) {
     description:
       "Deploy confidential data workloads on Phala's trusted execution environment. Start with our free tier or talk to our team about enterprise deployments.",
     buttonText: 'Get Started',
-    buttonUrl: 'https://cloud.phala.network',
+    buttonUrl: 'https://cloud.phala.com',
     items: [
       'Deploy in minutes',
       'Remote attestation built-in',

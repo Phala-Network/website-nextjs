@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next'
 
-const CLOUD_URL = 'https://cloud.phala.network'
+const CLOUD_URL = 'https://cloud.phala.com'
 
 const redirects: NonNullable<NextConfig['redirects']> = async () => {
   return [
@@ -277,7 +277,7 @@ const redirects: NonNullable<NextConfig['redirects']> = async () => {
     // New redirects - August 2025
     {
       source: '/confidential-computation-with-tee',
-      destination: 'https://cloud.phala.network/features/gpu-tee',
+      destination: '/gpu-tee',
       statusCode: 301,
     },
     {

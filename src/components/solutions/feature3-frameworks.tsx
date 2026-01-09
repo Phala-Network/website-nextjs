@@ -34,7 +34,7 @@ const Feature3 = () => {
               </CardFooter>
             </Card>
             <a
-              href="https://cloud.phala.network/templates/n8n-automation"
+              href="https://cloud.phala.com/templates/n8n-automation"
               className="block"
             >
               <Card>
@@ -58,7 +58,7 @@ const Feature3 = () => {
               </Card>
             </a>
             <a
-              href="https://cloud.phala.network/templates?tag=mcp"
+              href="https://cloud.phala.com/templates?tag=mcp"
               className="block"
             >
               <Card>
@@ -100,7 +100,7 @@ const Feature3 = () => {
               </CardFooter>
             </Card>
             <a
-              href="https://cloud.phala.network/templates/msft-presidio-app"
+              href="https://cloud.phala.com/templates/msft-presidio-app"
               className="block"
             >
               <Card>

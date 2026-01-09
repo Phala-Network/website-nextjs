@@ -41,7 +41,7 @@ export default function FinalCTA() {
               </p>
               <div className="flex gap-3 items-center mt-auto">
                 <Button asChild size="lg">
-                  <a href="https://cloud.phala.network/register">Get started</a>
+                  <a href="https://cloud.phala.com/register">Get started</a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/contact">Request a demo</Link>

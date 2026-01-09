@@ -108,7 +108,7 @@ const Feature51 = () => {
                 </li>
               </ul>
               <Button asChild>
-                <Link href="https://cloud.phala.network/dashboard/gpu-tee">
+                <Link href="https://cloud.phala.com/dashboard/gpu-tee">
                   Deploy CVM Now
                 </Link>
               </Button>
@@ -142,7 +142,7 @@ const Feature51 = () => {
                 </li>
               </ul>
               <Button asChild>
-                <Link href="https://cloud.phala.network/dashboard/confidential-ai-models">
+                <Link href="https://cloud.phala.com/dashboard/confidential-ai-models">
                   Browse Models
                 </Link>
               </Button>
