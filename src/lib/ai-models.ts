@@ -70,7 +70,7 @@ const PROVIDER_URLS: Record<string, string> = {
   llama: 'https://ai.meta.com/',
   deepseek: 'https://deepseek.com/',
   qwen: 'https://qwenlm.github.io/',
-  minimax: 'https://www.minimax.chat/',
+  minimax: 'https://www.minimaxi.com/',
   moonshotai: 'https://www.moonshot.cn/',
   moonshot: 'https://www.moonshot.cn/',
   kimi: 'https://www.moonshot.cn/',
