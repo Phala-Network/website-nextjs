@@ -37,61 +37,99 @@ type ServiceApiResponse = {
 }
 
 // GPU TEE infrastructure providers using NVIDIA Confidential Compute
-const GPU_TEE_PROVIDERS = ['phala', 'nearai', 'tinfoil']
+const GPU_TEE_PROVIDERS = ['phala', 'nearai', 'tinfoil', 'chutes']
 
+// Local icon overrides - use local SVGs when available for better quality
+const LOCAL_ICONS: Record<string, string> = {
+  openai: '/confidential-ai-models/openai.svg',
+  claude: '/confidential-ai-models/claude.svg',
+  anthropic: '/confidential-ai-models/anthropic.svg',
+  gemini: '/confidential-ai-models/gemini.svg',
+  google: '/confidential-ai-models/google.svg',
+  meta: '/confidential-ai-models/meta.svg',
+  qwen: '/confidential-ai-models/qwen.svg',
+  deepseek: '/confidential-ai-models/deepseek.svg',
+  mistral: '/confidential-ai-models/mistral.svg',
+  openrouter: '/confidential-ai-models/openrouter.svg',
+  huggingface: '/confidential-ai-models/huggingface.svg',
+  phala: '/confidential-ai-models/phala.svg',
+  redpill: '/confidential-ai-models/redpill.svg',
+}
+
+// Provider website URLs for Gstatic favicon fallback
+const PROVIDER_URLS: Record<string, string> = {
+  openai: 'https://openai.com/',
+  anthropic: 'https://anthropic.com/',
+  claude: 'https://anthropic.com/',
+  google: 'https://ai.google/',
+  gemini: 'https://ai.google/',
+  gemma: 'https://ai.google/',
+  mistral: 'https://mistral.ai/',
+  meta: 'https://ai.meta.com/',
+  'meta-llama': 'https://ai.meta.com/',
+  llama: 'https://ai.meta.com/',
+  deepseek: 'https://deepseek.com/',
+  qwen: 'https://qwenlm.github.io/',
+  minimax: 'https://www.minimax.chat/',
+  moonshotai: 'https://www.moonshot.cn/',
+  moonshot: 'https://www.moonshot.cn/',
+  kimi: 'https://www.moonshot.cn/',
+  together: 'https://www.together.xyz/',
+  groq: 'https://groq.com/',
+  phala: 'https://phala.network/',
+  'near-ai': 'https://near.ai/',
+  nearai: 'https://near.ai/',
+  tinfoil: 'https://tinfoil.sh/',
+  chutes: 'https://chutes.ai/',
+  'x-ai': 'https://x.ai/',
+  xai: 'https://x.ai/',
+  huggingface: 'https://huggingface.co/',
+  'sentence-transformers': 'https://huggingface.co/',
+}
+
+/**
+ * Get the icon URL for a model provider
+ * Uses local SVG if available, otherwise falls back to Google's Gstatic favicon service
+ */
+export function getModelProviderIcon(providerName: string): string {
+  const lowercaseName = providerName.toLowerCase()
+
+  // Check for local icon first
+  if (LOCAL_ICONS[lowercaseName]) {
+    return LOCAL_ICONS[lowercaseName]
+  }
+
+  // Check for provider URL to use Gstatic
+  const providerUrl = PROVIDER_URLS[lowercaseName]
+  if (providerUrl) {
+    return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${providerUrl}&size=32`
+  }
+
+  // Default fallback to HuggingFace
+  return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://huggingface.co/&size=32`
+}
+
+// Legacy icons array for backward compatibility
 export const icons = [
-  {
-    name: 'openai',
-    icon: '/confidential-ai-models/openai.svg',
-  },
-  {
-    name: 'claude',
-    icon: '/confidential-ai-models/claude.svg',
-  },
-  {
-    name: 'gemini',
-    icon: '/confidential-ai-models/gemini.svg',
-  },
-  {
-    name: 'meta',
-    icon: '/confidential-ai-models/meta.svg',
-  },
-  {
-    name: 'qwen',
-    icon: '/confidential-ai-models/qwen.svg',
-  },
-  {
-    name: 'deepseek',
-    icon: '/confidential-ai-models/deepseek.svg',
-  },
-  {
-    name: 'mistral',
-    icon: '/confidential-ai-models/mistral.svg',
-  },
-  {
-    name: 'anthropic',
-    icon: '/confidential-ai-models/anthropic.svg',
-  },
-  {
-    name: 'openrouter',
-    icon: '/confidential-ai-models/openrouter.svg',
-  },
-  {
-    name: 'google',
-    icon: '/confidential-ai-models/google.svg',
-  },
-  {
-    name: 'huggingface',
-    icon: '/confidential-ai-models/huggingface.svg',
-  },
-  {
-    name: 'phala',
-    icon: '/confidential-ai-models/phala.svg',
-  },
-  {
-    name: 'redpill',
-    icon: '/confidential-ai-models/redpill.svg',
-  },
+  { name: 'openai', icon: '/confidential-ai-models/openai.svg' },
+  { name: 'claude', icon: '/confidential-ai-models/claude.svg' },
+  { name: 'gemini', icon: '/confidential-ai-models/gemini.svg' },
+  { name: 'meta', icon: '/confidential-ai-models/meta.svg' },
+  { name: 'llama', icon: '/confidential-ai-models/meta.svg' },
+  { name: 'qwen', icon: '/confidential-ai-models/qwen.svg' },
+  { name: 'deepseek', icon: '/confidential-ai-models/deepseek.svg' },
+  { name: 'mistral', icon: '/confidential-ai-models/mistral.svg' },
+  { name: 'anthropic', icon: '/confidential-ai-models/anthropic.svg' },
+  { name: 'openrouter', icon: '/confidential-ai-models/openrouter.svg' },
+  { name: 'google', icon: '/confidential-ai-models/google.svg' },
+  { name: 'gemma', icon: '/confidential-ai-models/google.svg' },
+  { name: 'huggingface', icon: '/confidential-ai-models/huggingface.svg' },
+  { name: 'sentence-transformers', icon: '/confidential-ai-models/huggingface.svg' },
+  { name: 'minimax', icon: getModelProviderIcon('minimax') },
+  { name: 'moonshotai', icon: getModelProviderIcon('moonshotai') },
+  { name: 'kimi', icon: getModelProviderIcon('kimi') },
+  { name: 'phala', icon: '/confidential-ai-models/phala.svg' },
+  { name: 'redpill', icon: '/confidential-ai-models/redpill.svg' },
 ] as const
 
 export const iconMap = new Map(icons.map((icon) => [icon.name, icon.icon]))

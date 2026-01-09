@@ -19,7 +19,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import { type Icon, iconMap, icons, type Model } from '@/lib/ai-models'
+import { type Icon, iconMap, getModelProviderIcon, type Model } from '@/lib/ai-models'
 
 const thumbnails: Icon[] = ['openai', 'google', 'deepseek', 'meta', 'qwen']
 
@@ -35,11 +35,7 @@ const ModelCard = ({ model }: { model: Model }) => (
       <div className="bg-background rounded-full size-16 flex items-center justify-center border mb-6 sm:mb-12 xl:mb-20 shrink-0 relative">
         <Avatar className="size-10">
           <AvatarImage
-            src={
-              icons.find((icon) =>
-                model.name.toLowerCase().includes(icon.name.toLowerCase()),
-              )?.icon
-            }
+            src={getModelProviderIcon(model.slug.split('/')[0] || model.provider)}
             alt={model.name}
           />
           <AvatarFallback>

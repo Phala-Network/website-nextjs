@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'assets.phala.com',
       },
+      {
+        protocol: 'https',
+        hostname: 't0.gstatic.com',
+      },
     ],
   },
   async rewrites() {
