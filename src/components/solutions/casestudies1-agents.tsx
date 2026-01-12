@@ -84,7 +84,7 @@ const Casestudies1 = () => {
             className="aspect-3/2 md:aspect-2/1 group relative flex h-full flex-col justify-end overflow-hidden rounded-2xl p-6 shadow-md lg:p-10"
           >
             <img
-              src="/solutions/agents/copilot.png"
+              src="/solutions/agents/1.png"
               alt="Newton Payment Agent"
               className="absolute inset-0 h-full w-full rounded-2xl object-cover transition-transform duration-700 group-hover:scale-105"
             />

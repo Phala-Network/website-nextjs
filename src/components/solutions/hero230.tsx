@@ -15,7 +15,6 @@ const Hero230 = () => {
     '/solutions/agents/vijil.png',
     '/solutions/agents/elizaos banner.png',
     '/solutions/agents/near banner.png',
-    '/solutions/agents/copilot.png',
     '/solutions/agents/nous.avif',
   ]
   const logos = [

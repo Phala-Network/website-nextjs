@@ -175,13 +175,6 @@ const solutionCategories = [
         href: '/solutions/ai-agents',
         icon: Bot,
       },
-      {
-        id: 'solution-6',
-        title: 'AI Wallet Copilot',
-        description: 'Intelligent wallet assistance with privacy.',
-        href: 'https://f8606a4be438bbc89cc8d5cce2105490bf1622dc-3000.dstack-pha-prod7.phala.network',
-        icon: Wallet,
-      },
     ],
   },
   {

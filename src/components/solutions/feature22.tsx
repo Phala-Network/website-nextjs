@@ -57,49 +57,6 @@ const Feature22 = () => {
           <div className="rounded-lg border">
             <div className="relative p-1">
               <img
-                src="/solutions/agents/copilot.png"
-                alt="AI Wallet Copilot"
-                className="h-64 w-full rounded-t-lg object-cover"
-              />
-            </div>
-            <div>
-              <div className="mb-3 px-4 pt-5 sm:px-5 md:px-6 md:pt-6">
-                <h3 className="font-medium">AI Wallet Copilot</h3>
-                <p className="text-muted-foreground">
-                  Intelligent wallet assistant with secure key management in TEE
-                </p>
-              </div>
-              <div className="h-px border-t border-dashed"></div>
-              <ul className="text-muted-foreground">
-                <li className="flex items-start gap-2 px-4 py-3 sm:px-5 md:px-6">
-                  <Check className="text-primary mt-1 size-4 shrink-0" />
-                  Private key protection in hardware enclave
-                </li>
-                <div className="h-px border-t border-dashed"></div>
-                <li className="flex items-start gap-2 px-4 py-3 sm:px-5 md:px-6">
-                  <Check className="text-primary mt-1 size-4 shrink-0" />
-                  AI-powered transaction insights and recommendations
-                </li>
-                <div className="h-px border-t border-dashed"></div>
-                <li className="flex items-start gap-2 px-4 py-3 sm:px-5 md:px-6">
-                  <Check className="text-primary mt-1 size-4 shrink-0" />
-                  Verifiable execution for all wallet operations
-                </li>
-              </ul>
-              <div className="h-px border-t border-dashed"></div>
-              <a
-                href="https://f8606a4be438bbc89cc8d5cce2105490bf1622dc-3000.dstack-pha-prod7.phala.network"
-                className="my-3 flex items-center gap-2 px-4 font-medium sm:my-4 sm:px-5 md:px-6"
-              >
-                Try Demo
-                <ChevronRight className="mt-0.5 size-4" />
-              </a>
-            </div>
-          </div>
-
-          <div className="rounded-lg border">
-            <div className="relative p-1">
-              <img
                 src="/solutions/agents/8004.png"
                 alt="ERC-8004 TEE Agent"
                 className="h-64 w-full rounded-t-lg object-cover"
