@@ -1,458 +1,618 @@
 'use client'
 
-import { Check } from 'lucide-react'
-import Link from 'next/link'
 import { useState } from 'react'
+import { Check, Clock, HardDrive, Cpu, CirclePause, Zap } from 'lucide-react'
+import Link from 'next/link'
 
-import { Pricing5 } from '@/components/shadcn-blocks/pricing5'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 import { Switch } from '@/components/ui/switch'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 
-const vmInstances = [
+const HOURS_PER_MONTH = 730
+
+const cvmInstances = [
   {
     name: 'tdx.medium',
-    specs: {
-      cpu: '1 vCPU',
-      ram: '2GB RAM',
-      storage: '40GB SSD',
-      traffic: '40GB Network Traffic',
-    },
-    benefits: [
-      'Pay-As-You-Go, scale up and down as needed',
-      'Advanced monitoring',
-      'Premium on-call support',
-      'Premium 99.9% uptime SLA',
-      'Intel TDX hardware security',
-    ],
+    cpu: '1 vCPU',
+    ram: '2GB',
+    storage: '40GB',
     price: 0.069,
-    priceMonthly: (0.069 * 730).toFixed(2),
   },
   {
     name: 'tdx.large',
-    specs: {
-      cpu: '2 vCPU',
-      ram: '4GB RAM',
-      storage: '80GB SSD',
-      traffic: '80GB Network Traffic',
-    },
-    benefits: [
-      'Pay-As-You-Go, scale up and down as needed',
-      'Advanced monitoring',
-      'Premium on-call support',
-      'Premium 99.9% uptime SLA',
-      'Intel TDX hardware security',
-    ],
+    cpu: '2 vCPU',
+    ram: '4GB',
+    storage: '80GB',
     price: 0.139,
-    priceMonthly: (0.139 * 730).toFixed(2),
     popular: true,
   },
   {
     name: 'tdx.2xlarge',
-    specs: {
-      cpu: '4 vCPU',
-      ram: '8GB RAM',
-      storage: '160GB SSD',
-      traffic: '160GB Network Traffic',
-    },
-    benefits: [
-      'Pay-As-You-Go, scale up and down as needed',
-      'Advanced monitoring',
-      'Premium on-call support',
-      'Premium 99.9% uptime SLA',
-      'Intel TDX hardware security',
-    ],
+    cpu: '4 vCPU',
+    ram: '8GB',
+    storage: '160GB',
     price: 0.279,
-    priceMonthly: (0.279 * 730).toFixed(2),
   },
 ]
 
-const gpuPlans = [
+const gpuInstances = [
   {
-    name: 'NVIDIA H100',
-    badge: 'Enterprise Standard',
-    specs: {
-      gpu: 'H100 Tensor Core',
-      memory: '80GB HBM3',
-      bandwidth: '3.35 TB/s',
-      tee: 'Intel TDX + NVIDIA CC',
-    },
+    name: 'H100',
+    memory: '80GB HBM3',
+    bandwidth: '3.35 TB/s',
     priceOnDemand: 3.08,
     priceReserved: 2.38,
-    commitment: '12-month',
     savings: '23%',
-    href: '/gpu-tee/h100',
   },
   {
-    name: 'NVIDIA H200',
-    badge: 'Flagship Performance',
-    specs: {
-      gpu: 'H200 Tensor Core',
-      memory: '141GB HBM3e',
-      bandwidth: '4.8 TB/s',
-      tee: 'Intel TDX + NVIDIA CC',
-    },
+    name: 'H200',
+    memory: '141GB HBM3e',
+    bandwidth: '4.8 TB/s',
     priceOnDemand: 3.5,
     priceReserved: 2.56,
-    commitment: '6-month',
     savings: '27%',
-    href: '/gpu-tee/h200',
     popular: true,
   },
   {
-    name: 'NVIDIA B200',
-    badge: 'Available Now',
-    specs: {
-      gpu: 'B200 Blackwell',
-      memory: '192GB HBM3e',
-      bandwidth: '8 TB/s',
-      tee: 'Intel TDX + NVIDIA CC',
-    },
+    name: 'B200',
+    memory: '192GB HBM3e',
+    bandwidth: '8 TB/s',
     priceOnDemand: 7.99,
     priceReserved: 5.63,
-    commitment: '6-month',
     savings: '29%',
-    href: '/gpu-tee/b200',
   },
 ]
+
+const formatPrice = (price: number, isMonthly: boolean) => {
+  const value = isMonthly ? price * HOURS_PER_MONTH : price
+  if (value >= 1000) {
+    return value.toLocaleString('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })
+  }
+  return value.toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })
+}
 
 export default function PricingClient() {
   const [isMonthly, setIsMonthly] = useState(false)
 
   return (
-    <div>
+    <div className="pb-16">
       {/* Hero Section */}
-      <div className="container py-16 md:py-24">
-        <div className="text-center mb-12">
+      <section className="container py-16 md:py-24">
+        <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Pay-as-you-go pricing for every scale. Only pay for what you use,
-            billed by the hour.
+          <p className="text-lg text-muted-foreground mb-8">
+            Pay only for what you use. Per-minute billing with no minimums,
+            commitments, or hidden fees.
           </p>
 
-          {/* Pricing Toggle */}
-          <div className="mt-8 flex items-center justify-center gap-3">
+          {/* Billing Highlights */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-6 text-sm mb-8">
+            <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4 text-primary" />
+              <span>Per-minute billing</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Cpu className="h-4 w-4 text-primary" />
+              <span>Compute stops when you stop</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <HardDrive className="h-4 w-4 text-primary" />
+              <span>Storage: $0.10/GB/mo</span>
+            </div>
+          </div>
+
+          {/* Time Toggle */}
+          <div className="flex items-center justify-center gap-3">
             <span
-              className={`text-sm ${!isMonthly ? 'text-primary font-medium' : 'text-muted-foreground'}`}
+              className={cn(
+                'text-sm transition-colors',
+                !isMonthly ? 'text-primary font-medium' : 'text-muted-foreground'
+              )}
             >
               Hourly
             </span>
             <Switch checked={isMonthly} onCheckedChange={setIsMonthly} />
             <span
-              className={`text-sm ${isMonthly ? 'text-primary font-medium' : 'text-muted-foreground'}`}
+              className={cn(
+                'text-sm transition-colors',
+                isMonthly ? 'text-primary font-medium' : 'text-muted-foreground'
+              )}
             >
-              Monthly
+              Monthly (730 hrs)
             </span>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Confidential VM Instances */}
-      <div className="container pb-24">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Confidential VM Instances</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Professional-grade secure computing with Intel TDX
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {vmInstances.map((instance) => (
-            <Card
-              key={instance.name}
-              className={cn(
-                'relative',
-                instance.popular && 'border-2 border-primary shadow-lg',
-              )}
-            >
-              {instance.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <Badge className="px-3 py-1">Most Popular</Badge>
-                </div>
-              )}
-              <CardHeader>
-                <CardTitle className="text-xl">{instance.name}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <div className="text-3xl font-bold">
-                    ${isMonthly ? instance.priceMonthly : instance.price}
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    /{isMonthly ? 'month' : 'hour'}
-                  </p>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="text-sm font-medium">Resources</div>
-                  <ul className="space-y-2 text-sm">
-                    {Object.values(instance.specs).map((spec, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-primary shrink-0" />
-                        <span>{spec}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button className="w-full" asChild>
-                  <Link href="https://cloud.phala.com/register">
-                    Get Started
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-
-          {/* Enterprise Card */}
-          <Card>
-            <CardHeader>
-              <Badge variant="outline" className="w-fit mb-2">
-                Enterprise
-              </Badge>
-              <CardTitle className="text-xl">Custom Solution</CardTitle>
+      {/* Main Pricing Cards */}
+      <section className="container max-w-5xl">
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* CVM Card */}
+          <Card className="relative">
+            <CardHeader className="text-center pb-2">
+              <CardTitle className="text-2xl">Confidential VM</CardTitle>
+              <CardDescription>
+                Secure virtual machines with Intel TDX
+              </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-muted-foreground">
-                Need a custom solution? Our enterprise plan includes dedicated
-                support, custom configurations, and volume discounts.
-              </p>
-
-              <div className="space-y-2">
-                <div className="text-sm font-medium">Enterprise Features</div>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary shrink-0" />
-                    <span>Custom resource allocation</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary shrink-0" />
-                    <span>Custom security policies</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary shrink-0" />
-                    <span>24/7 Premium Support</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary shrink-0" />
-                    <span>Dedicated Account Manager</span>
-                  </li>
-                </ul>
+            <CardContent className="text-center pt-4">
+              <div className="text-5xl font-bold">
+                ${formatPrice(0.069, isMonthly)}
               </div>
+              <p className="text-sm text-muted-foreground mt-1">
+                {isMonthly ? 'per month' : 'per hour'} (tdx.medium)
+              </p>
+              {!isMonthly && (
+                <p className="text-xs text-muted-foreground mt-2">
+                  ~${formatPrice(0.069, true)}/month for 730 hours
+                </p>
+              )}
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full" asChild>
+                <Link href="https://cloud.phala.com/register">Get Started</Link>
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* GPU TEE Card */}
+          <Card className="relative border-primary">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <Badge>Most Powerful</Badge>
+            </div>
+            <CardHeader className="text-center pb-2">
+              <CardTitle className="text-2xl">GPU TEE</CardTitle>
+              <CardDescription>
+                Full-stack TEE with NVIDIA Confidential Computing
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-center pt-4">
+              <div className="text-5xl font-bold">
+                ${formatPrice(2.38, isMonthly)}
+              </div>
+              <p className="text-sm text-muted-foreground mt-1">
+                {isMonthly ? 'per GPU/month' : 'per GPU/hour'} (H100, reserved)
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                H200 from ${formatPrice(2.56, isMonthly)}/{isMonthly ? 'mo' : 'hr'} | B200 from ${formatPrice(5.63, isMonthly)}/{isMonthly ? 'mo' : 'hr'}
+              </p>
             </CardContent>
             <CardFooter>
               <Button className="w-full" variant="outline" asChild>
-                <Link href="/contact">Contact Sales</Link>
+                <Link href="/gpu-tee">View GPU Options</Link>
               </Button>
             </CardFooter>
           </Card>
         </div>
-      </div>
+      </section>
 
-      {/* Main Pricing Comparison - Confidential VM vs GPU TEE */}
-      <Pricing5 />
-
-      {/* GPU TEE Detailed Plans */}
-      <div className="container py-24">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">GPU TEE Configurations</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Choose from H100, H200, or B200 GPUs with Full-Stack TEE protection
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {gpuPlans.map((plan) => (
-            <Card
-              key={plan.name}
-              className={cn(
-                'relative',
-                plan.popular && 'border-2 border-primary shadow-lg',
-              )}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <Badge className="px-3 py-1">Most Popular</Badge>
-                </div>
-              )}
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <Badge variant="outline">{plan.badge}</Badge>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {/* Pricing */}
-                <div className="space-y-3">
-                  <div>
-                    <div className="text-sm text-muted-foreground mb-1">
-                      On-Demand
-                    </div>
-                    <div className="text-3xl font-bold">
-                      ${plan.priceOnDemand}
-                      <span className="text-sm font-normal text-muted-foreground">
-                        /GPU/hour
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-green-50 dark:bg-green-950/20 p-3 rounded-lg">
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="text-sm text-muted-foreground">
-                        Reserved ({plan.commitment})
-                      </div>
-                      <Badge
-                        variant="outline"
-                        className="text-green-600 border-green-600"
-                      >
-                        Save {plan.savings}
-                      </Badge>
-                    </div>
-                    <div className="text-2xl font-bold text-green-600">
-                      ${plan.priceReserved}
-                      <span className="text-sm font-normal text-muted-foreground">
-                        /GPU/hour
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Specs */}
-                <div className="space-y-2">
-                  <div className="text-sm font-medium">Specifications</div>
-                  <ul className="space-y-2 text-sm">
-                    {Object.entries(plan.specs).map(([key, value]) => (
-                      <li key={key} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-primary shrink-0" />
-                        <span>{value}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-              <CardFooter className="flex flex-col gap-2">
-                <Button className="w-full" asChild>
-                  <Link href={plan.href}>View Details</Link>
-                </Button>
-                <Button className="w-full" variant="outline" asChild>
-                  <Link href="https://cloud.phala.com/dashboard/gpu-tee">
-                    Configure Now
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      {/* Value Proposition Section */}
-      <div className="w-full bg-muted/30 py-24">
-        <div className="container max-w-7xl">
-          <div className="text-center mb-16">
-            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary mb-4">
-              Why Choose Phala Cloud
-            </div>
-            <h2 className="text-3xl font-bold">
-              The Most Valuable Offer in Confidential Computing
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-              Enterprise-grade security, guaranteed verifiability, unlimited
-              scalability, and comprehensive support—all at market-disrupting
-              prices.
+      {/* How Billing Works */}
+      <section className="mt-24 bg-muted/30 py-16">
+        <div className="container max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-3">How Billing Works</h2>
+            <p className="text-muted-foreground">
+              Two components: Compute and Storage
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Pay Only For Value',
-                highlight: 'From $0.069/hour',
-                description:
-                  'Transparent usage-based pricing that scales with your success. No hidden fees, no surprises.',
-                features: [
-                  'Per-second billing',
-                  'No minimum commitment',
-                  'Volume discounts available',
-                  'Resource autoscaling',
-                ],
-                icon: '💎',
-              },
-              {
-                title: 'Enterprise-Ready',
-                highlight: '99.9% Uptime SLA',
-                description:
-                  'Production-grade infrastructure with guaranteed reliability for mission-critical workloads.',
-                features: [
-                  'Hardware-enforced security',
-                  'Real-time attestation',
-                  '24/7 premium support',
-                  'Custom configurations',
-                ],
-                icon: '🏢',
-              },
-              {
-                title: 'Secure GPU Computing',
-                highlight: 'H100/H200/B200',
-                description:
-                  'Lead the market with confidential AI capabilities that ensure complete data privacy.',
-                features: [
-                  'AI model protection',
-                  'Secure inference',
-                  'High throughput',
-                  'Flexible scaling',
-                ],
-                icon: '⚡',
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="rounded-lg border p-8 bg-background shadow-sm"
-              >
-                <div className="text-3xl mb-6">{card.icon}</div>
-                <div className="space-y-2 mb-6">
-                  <h3 className="text-xl font-semibold">{card.title}</h3>
-                  <div className="text-primary font-semibold">
-                    {card.highlight}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <Card>
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Cpu className="h-5 w-5 text-primary" />
                   </div>
-                  <p className="text-muted-foreground text-sm">
-                    {card.description}
-                  </p>
+                  <CardTitle className="text-xl">Compute</CardTitle>
                 </div>
-                <ul className="space-y-3">
-                  {card.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                    <span>Billed per minute based on instance type</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                    <span>
+                      <strong>Only charged while running</strong>
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                    <span>Stop a CVM = compute billing stops instantly</span>
+                  </li>
                 </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+              </CardContent>
+            </Card>
 
-      {/* FAQ/Footer */}
-      <div className="container py-16 text-center">
-        <p className="text-sm text-muted-foreground max-w-3xl mx-auto">
-          All prices are pay-as-you-go. You only pay for what you use, billed by
-          the hour. Enterprise customers may qualify for volume discounts.{' '}
-          <Link href="/contact" className="text-primary hover:underline">
-            Contact sales
-          </Link>{' '}
-          for custom configurations.
-        </p>
-      </div>
+            <Card>
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <HardDrive className="h-5 w-5 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl">Storage</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                    <span>
+                      <strong>$0.10/GB/month</strong> (~$0.000139/GB/hour)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                    <span>Charged while CVM exists (running or stopped)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                    <span>Delete CVM = storage billing stops</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Pricing Example */}
+          <Card>
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg">
+                Example: tdx.large with 100GB disk
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="bg-green-50 dark:bg-green-950/30 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Cpu className="h-4 w-4 text-green-600" />
+                    <span className="font-medium text-green-700 dark:text-green-400">
+                      Running
+                    </span>
+                  </div>
+                  <div className="space-y-1 text-sm">
+                    <div className="flex justify-between">
+                      <span>Compute</span>
+                      <span>
+                        ${isMonthly ? formatPrice(0.139, true) : '0.139'}/{isMonthly ? 'mo' : 'hr'}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Storage (100GB)</span>
+                      <span>
+                        ${isMonthly ? '10.00' : '0.014'}/{isMonthly ? 'mo' : 'hr'}
+                      </span>
+                    </div>
+                    <Separator className="my-2" />
+                    <div className="flex justify-between font-semibold">
+                      <span>Total</span>
+                      <span>
+                        ~${isMonthly ? formatPrice(0.153, true) : '0.153'}/{isMonthly ? 'mo' : 'hr'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-amber-50 dark:bg-amber-950/30 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <CirclePause className="h-4 w-4 text-amber-600" />
+                    <span className="font-medium text-amber-700 dark:text-amber-400">
+                      Stopped
+                    </span>
+                  </div>
+                  <div className="space-y-1 text-sm">
+                    <div className="flex justify-between">
+                      <span>Compute</span>
+                      <span>$0.00/{isMonthly ? 'mo' : 'hr'}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Storage (100GB)</span>
+                      <span>
+                        ${isMonthly ? '10.00' : '0.014'}/{isMonthly ? 'mo' : 'hr'}
+                      </span>
+                    </div>
+                    <Separator className="my-2" />
+                    <div className="flex justify-between font-semibold">
+                      <span>Total</span>
+                      <span>
+                        ~${isMonthly ? '10.00' : '0.014'}/{isMonthly ? 'mo' : 'hr'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Instance Types with Tabs */}
+      <section className="container py-24 max-w-5xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-3">Instance Types</h2>
+          <p className="text-muted-foreground">
+            Choose the right configuration for your workload
+          </p>
+        </div>
+
+        <Tabs defaultValue="cvm" className="w-full">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+            <TabsTrigger value="cvm">Confidential VM</TabsTrigger>
+            <TabsTrigger value="gpu">GPU TEE</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="cvm">
+            <div className="grid md:grid-cols-3 gap-4">
+              {cvmInstances.map((instance) => (
+                <Card
+                  key={instance.name}
+                  className={cn(
+                    'relative',
+                    instance.popular && 'border-primary ring-1 ring-primary'
+                  )}
+                >
+                  {instance.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <Badge>Popular</Badge>
+                    </div>
+                  )}
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-lg font-mono">
+                      {instance.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <div className="text-3xl font-bold">
+                        ${formatPrice(instance.price, isMonthly)}
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        /{isMonthly ? 'month' : 'hour'}
+                      </p>
+                    </div>
+                    <div className="text-sm space-y-1">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">CPU</span>
+                        <span>{instance.cpu}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">RAM</span>
+                        <span>{instance.ram}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Storage</span>
+                        <span>{instance.storage}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Button className="w-full" size="sm" asChild>
+                      <Link href="https://cloud.phala.com/register">Deploy</Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Card className="inline-block">
+                <CardContent className="py-4 px-6">
+                  <p className="text-sm text-muted-foreground">
+                    Need more resources?{' '}
+                    <Link
+                      href="/contact"
+                      className="text-primary hover:underline"
+                    >
+                      Contact us
+                    </Link>{' '}
+                    for custom enterprise configurations.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+            <p className="text-center text-sm text-muted-foreground mt-6">
+              All instances include Intel TDX hardware security, 99.9% uptime
+              SLA, and premium support.
+            </p>
+          </TabsContent>
+
+          <TabsContent value="gpu">
+            <div className="grid md:grid-cols-3 gap-4">
+              {gpuInstances.map((instance) => (
+                <Card
+                  key={instance.name}
+                  className={cn(
+                    'relative',
+                    instance.popular && 'border-primary ring-1 ring-primary'
+                  )}
+                >
+                  {instance.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <Badge>Popular</Badge>
+                    </div>
+                  )}
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-lg">
+                      NVIDIA {instance.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <div className="text-3xl font-bold">
+                        ${formatPrice(instance.priceReserved, isMonthly)}
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        /GPU/{isMonthly ? 'month' : 'hour'} (reserved)
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        On-demand: ${formatPrice(instance.priceOnDemand, isMonthly)}/{isMonthly ? 'mo' : 'hr'}
+                      </p>
+                    </div>
+                    <div className="text-sm space-y-1">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Memory</span>
+                        <span>{instance.memory}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Bandwidth</span>
+                        <span>{instance.bandwidth}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Savings</span>
+                        <span className="text-green-600">{instance.savings}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Button className="w-full" size="sm" asChild>
+                      <Link href={`/gpu-tee/${instance.name.toLowerCase()}`}>
+                        View Details
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+            <p className="text-center text-sm text-muted-foreground mt-6">
+              All GPUs include Intel TDX + NVIDIA Confidential Computing with
+              dual remote attestation.
+            </p>
+          </TabsContent>
+        </Tabs>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="container max-w-3xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-3">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-muted-foreground">Common billing questions</p>
+        </div>
+
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="partial-month">
+            <AccordionTrigger className="text-left">
+              If I only use for 1 week, do I pay 25% of monthly cost?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              <strong className="text-foreground">Yes!</strong> With per-minute
+              billing, you only pay for exact usage. 1 week (168 hours) out of
+              730 hours = ~23% of monthly compute cost. Storage is also
+              prorated.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="stopped-cvm">
+            <AccordionTrigger className="text-left">
+              What happens when I stop a CVM?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              <strong className="text-foreground">
+                Compute charges stop immediately.
+              </strong>{' '}
+              Storage charges continue (your data is preserved). Delete the CVM
+              to stop all charges.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="free-credits">
+            <AccordionTrigger className="text-left">
+              Do you offer free credits?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              Yes!{' '}
+              <strong className="text-foreground">$20 free credits</strong> when
+              you verify your account. Credits work for CVM usage (not GPU),
+              never expire, and are used before your balance.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="payment">
+            <AccordionTrigger className="text-left">
+              What payment methods do you accept?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              <strong className="text-foreground">Credit Card</strong> (Stripe),{' '}
+              <strong className="text-foreground">Crypto</strong> (Coinbase,
+              ERC20 on Base), and{' '}
+              <strong className="text-foreground">Wire Transfer</strong> for
+              enterprise accounts.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="overdue">
+            <AccordionTrigger className="text-left">
+              What if my balance runs out?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              We&apos;ll notify you. CVMs keep running for{' '}
+              <strong className="text-foreground">14 days</strong>, then stop.
+              Data is kept for{' '}
+              <strong className="text-foreground">3 months</strong> before
+              deletion.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </section>
+
+      {/* CTA */}
+      <section className="container max-w-3xl mt-24 text-center">
+        <Card className="bg-muted/30 border-0">
+          <CardContent className="py-12">
+            <Zap className="h-10 w-10 text-primary mx-auto mb-4" />
+            <h3 className="text-2xl font-bold mb-2">Ready to get started?</h3>
+            <p className="text-muted-foreground mb-6">
+              Start with $20 free credits. No credit card required.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button size="lg" asChild>
+                <Link href="https://cloud.phala.com/register">
+                  Start Free Trial
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/contact">Contact Sales</Link>
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground mt-6">
+              Enterprise? Email{' '}
+              <a
+                href="mailto:cloud@phala.network"
+                className="text-primary hover:underline"
+              >
+                cloud@phala.network
+              </a>{' '}
+              for volume discounts.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   )
 }
