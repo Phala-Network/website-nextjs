@@ -68,6 +68,19 @@ const ContactPage = () => {
                     </li>
                   </ul>
                 </div>
+                <div className="space-y-4">
+                  <p className="text-sm font-semibold">Direct support:</p>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <a
+                        className="underline"
+                        href="mailto:support@phala.network"
+                      >
+                        support@phala.network
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

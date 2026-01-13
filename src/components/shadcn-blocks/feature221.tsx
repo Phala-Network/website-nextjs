@@ -232,7 +232,7 @@ const Feature221 = () => {
             <span className="font-semibold text-foreground">
               Intel TDX + NVIDIA Confidential Computing
             </span>{' '}
-            protection. Volume discounts available.{' '}
+            protection. On-demand includes 24-hour minimum billing. Volume discounts available.{' '}
             <Link
               href="https://phala.com/contact"
               className="text-primary hover:underline"

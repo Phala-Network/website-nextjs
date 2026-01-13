@@ -35,7 +35,7 @@ export function H200Pricing() {
                 <span className="font-display text-base leading-6 text-muted-foreground">/GPU/hr</span>
               </div>
               <p className="mt-3 font-display text-sm leading-5 text-muted-foreground">
-                No commitment required
+                24-hour minimum billing
               </p>
               <div className="mt-6 space-y-2 text-left font-display text-sm leading-5">
                 <div className="flex items-center gap-2">

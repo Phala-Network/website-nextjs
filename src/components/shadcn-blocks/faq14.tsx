@@ -39,7 +39,7 @@ const faqs = [
   {
     question: "What's the pricing?",
     answer:
-      'On-demand: H200 from $3.50/GPU/hr, H100 from $3.08/GPU/hr. Reserved (3+ months): H200 from $2.30/GPU/hr (34% savings), H100 from $2.50/GPU/hr (30% savings). Volume discounts available for enterprise.',
+      'On-demand: H200 from $3.50/GPU/hr, H100 from $3.08/GPU/hr, B200 from $7.99/GPU/hr. On-demand includes 24-hour minimum billing. Reserved (6+ months): H200 from $2.56/GPU/hr (27% savings), H100 from $2.38/GPU/hr (23% savings), B200 from $5.63/GPU/hr (29% savings). Volume discounts available for enterprise.',
   },
   {
     question: 'How do I verify attestation?',

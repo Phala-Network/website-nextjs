@@ -35,7 +35,7 @@ export function B200Pricing() {
                 <span className="text-muted-foreground">/GPU/hr</span>
               </div>
               <p className="mt-3 text-muted-foreground">
-                On-demand availability
+                24-hour minimum billing
               </p>
               <div className="mt-6 space-y-2 text-left text-sm">
                 <div className="flex items-center gap-2">
