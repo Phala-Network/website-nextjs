@@ -120,6 +120,7 @@ const navigation = [
       { name: 'Partnerships', href: '/partnerships' },
       { name: 'Blog', href: '/blog' },
       { name: 'Careers', href: 'https://wellfound.com/company/phala-network' },
+      { name: 'Responsible Disclosure', href: 'https://github.com/Phala-Network/phala-blockchain/blob/master/docs/responsible-disclosure.md' },
     ],
   },
 ]
