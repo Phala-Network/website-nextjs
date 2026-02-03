@@ -29,7 +29,7 @@ const chartConfig = {
   },
   competitor: {
     label: 'GPU-Only TEE',
-    color: '#8DD7FF',
+    color: '#aabbff',
   },
 } satisfies ChartConfig
 
@@ -90,9 +90,9 @@ const PerformanceSecurityMerged = () => {
                   />
                   <Radar
                     dataKey="competitor"
-                    fill="#8DD7FF"
+                    fill="#aabbff"
                     fillOpacity={0.3}
-                    stroke="#8DD7FF"
+                    stroke="#aabbff"
                     strokeWidth={2}
                   />
                 </RadarChart>
@@ -106,7 +106,7 @@ const PerformanceSecurityMerged = () => {
                 <div className="flex items-center gap-2">
                   <div
                     className="h-3 w-3 rounded-full"
-                    style={{ backgroundColor: '#8DD7FF' }}
+                    style={{ backgroundColor: '#aabbff' }}
                   ></div>
                   <span className="text-muted-foreground">GPU-Only TEE</span>
                 </div>

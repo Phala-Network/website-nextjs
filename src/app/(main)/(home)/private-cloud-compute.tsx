@@ -21,16 +21,16 @@ const tabsData = [
     label: 'Easy',
     description: 'Build in minutes',
     icon: Zap,
-    bg: 'bg-[#C0E735]',
-    activeBg: 'data-[state=active]:bg-[#C0E735]/90',
+    bg: 'bg-primary',
+    activeBg: 'data-[state=active]:bg-primary/90',
   },
   {
     id: 'open',
     label: 'Open',
     description: 'Audit everything',
     icon: Globe,
-    bg: 'bg-[#98DCFF]',
-    activeBg: 'data-[state=active]:bg-[#98DCFF]/90',
+    bg: 'bg-phala-blue-300',
+    activeBg: 'data-[state=active]:bg-phala-blue-300/90',
   },
   {
     id: 'private',
@@ -84,7 +84,7 @@ export default function PrivateCloudCompute() {
       {/* Main Content Grid - Phala Cloud Intro */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-12 min-h-[420px]">
         {/* Left Column - Green Card with Animation */}
-        <div className="relative bg-[#c4f144] rounded-xl overflow-hidden flex items-center justify-center min-h-[420px]">
+        <div className="relative bg-primary rounded-xl overflow-hidden flex items-center justify-center min-h-[420px]">
           {/* Ellipse background */}
           <div className="absolute left-1/2 -translate-x-1/2 top-[144px] w-[594px] h-[594px] opacity-30 pointer-events-none">
             <div className="w-full h-full rounded-full bg-gradient-radial from-white/40 to-transparent blur-3xl" />
@@ -315,7 +315,7 @@ export default function PrivateCloudCompute() {
                   <br />
                   in TEE trust center.
                 </h4>
-                <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-[#98DCFF]/50 rounded-3xl h-full">
+                <div className="absolute top-2/5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-md p-3 bg-phala-blue-300/50 rounded-3xl h-full">
                   <div
                     className="bg-background w-full h-full rounded-2xl bg-contain bg-no-repeat bg-top-left border"
                     style={{ backgroundImage: trustCenterBackgroundImage }}
@@ -334,8 +334,8 @@ export default function PrivateCloudCompute() {
                   </span>{' '}
                   for every running workload.
                 </h4>
-                <div className="absolute top-2/5 left-6 xl:left-8 bottom-0 right-0 pt-3 pl-3 bg-[#98DCFF]/50 rounded-tl-3xl">
-                  <div className="text-white bg-[#7FBCFA]/90 h-full w-full rounded-tl-2xl bg-contain bg-no-repeat bg-top-left pt-4 pl-4">
+                <div className="absolute top-2/5 left-6 xl:left-8 bottom-0 right-0 pt-3 pl-3 bg-phala-blue-300/50 rounded-tl-3xl">
+                  <div className="text-white bg-phala-blue-400/90 h-full w-full rounded-tl-2xl bg-contain bg-no-repeat bg-top-left pt-4 pl-4">
                     <div className="max-w-[180px]">
                       <p className="text-lg font-semibold">
                         Real-time Transparency

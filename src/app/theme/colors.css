@@ -26,6 +26,34 @@
   --primary-950: oklch(0.2752 0.0724 126.79);
   --primary-1000: oklch(0.1899 0.0531 127.24);
 
+  /* Brand accent palettes from Figma color exploration */
+  /* Blue (periwinkle) palette */
+  --phala-blue-50: #f0f2ff;
+  --phala-blue-100: #d5dbf8;
+  --phala-blue-200: #bfc8f0;
+  --phala-blue-300: #aabbff;
+  --phala-blue-400: #8b9fe0;
+  --phala-blue-500: #6b80cc;
+  --phala-blue-900: #2d3250;
+
+  /* Purple palette */
+  --phala-purple-50: #f5f0f8;
+  --phala-purple-100: #e7e1eb;
+  --phala-purple-200: #d4c0e8;
+  --phala-purple-300: #b88fd0;
+  --phala-purple-400: #9b6bbf;
+  --phala-purple-500: #7e3daf;
+  --phala-purple-900: #3d2055;
+
+  /* Orange palette */
+  --phala-orange-50: #fff5ec;
+  --phala-orange-100: #f8e7d5;
+  --phala-orange-200: #f0cca0;
+  --phala-orange-300: #f5902c;
+  --phala-orange-400: #d87a20;
+  --phala-orange-500: #a07830;
+  --phala-orange-900: #4a3520;
+
   --background: var(--base-50);
   --foreground: var(--base-800);
   --card: var(--color-white);
@@ -155,6 +183,31 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  /* Brand accent palettes */
+  --color-phala-blue-50: var(--phala-blue-50);
+  --color-phala-blue-100: var(--phala-blue-100);
+  --color-phala-blue-200: var(--phala-blue-200);
+  --color-phala-blue-300: var(--phala-blue-300);
+  --color-phala-blue-400: var(--phala-blue-400);
+  --color-phala-blue-500: var(--phala-blue-500);
+  --color-phala-blue-900: var(--phala-blue-900);
+
+  --color-phala-purple-50: var(--phala-purple-50);
+  --color-phala-purple-100: var(--phala-purple-100);
+  --color-phala-purple-200: var(--phala-purple-200);
+  --color-phala-purple-300: var(--phala-purple-300);
+  --color-phala-purple-400: var(--phala-purple-400);
+  --color-phala-purple-500: var(--phala-purple-500);
+  --color-phala-purple-900: var(--phala-purple-900);
+
+  --color-phala-orange-50: var(--phala-orange-50);
+  --color-phala-orange-100: var(--phala-orange-100);
+  --color-phala-orange-200: var(--phala-orange-200);
+  --color-phala-orange-300: var(--phala-orange-300);
+  --color-phala-orange-400: var(--phala-orange-400);
+  --color-phala-orange-500: var(--phala-orange-500);
+  --color-phala-orange-900: var(--phala-orange-900);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

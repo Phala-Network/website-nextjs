@@ -31,7 +31,7 @@ export default function Hero() {
             <div className="pt-12 lg:pt-24 lg:pl-8">
               <div className="flex flex-col max-sm:items-center max-sm:text-center">
                 <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl">
-                  The New Cloud for
+                  The Neo Cloud for
                   <br />
                   Confidential AI
                 </h1>

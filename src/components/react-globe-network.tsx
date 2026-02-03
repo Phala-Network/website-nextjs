@@ -109,7 +109,7 @@ export function ReactGlobeNetwork({
       vcpuCount,
       equivalentVCPUs: gpuCount * GPU_TO_VCPU_RATIO + vcpuCount,
       nodes: locationNodes,
-      color: hasGPU ? '#8DD7FF' : '#BAE730',
+      color: hasGPU ? '#aabbff' : '#BAE730',
     })
   })
 
@@ -157,7 +157,7 @@ export function ReactGlobeNetwork({
         endLat: targetLocation.lat,
         endLng: targetLocation.lon,
         color: sourceLocation.hasGPU
-          ? ['#8DD7FF', '#6DB7DF']
+          ? ['#aabbff', '#8b9fe0']
           : ['#BAE730', '#9AC720'],
       })
     })
@@ -181,7 +181,7 @@ export function ReactGlobeNetwork({
           }
           const nodeData = countryNodeMap.get(countryCode)
           if (!nodeData) return '#6a6a6a'
-          return nodeData.hasGPU ? '#8DD7FF' : '#BAE730'
+          return nodeData.hasGPU ? '#aabbff' : '#BAE730'
         }}
         htmlElementsData={markersData}
         htmlLat={(d: any) => d.lat}
