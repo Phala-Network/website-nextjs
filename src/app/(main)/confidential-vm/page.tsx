@@ -1,6 +1,9 @@
 'use client'
 
-import { AnimatePresence, motion } from 'motion/react'
+import Lottie from 'lottie-react'
+
+import cvmHeroAnimation from './cvm-hero-animation.json'
+import cvmArchitectureAnimation from './cvm-architecture-animation.json'
 import {
   CheckCircle,
   Cpu,
@@ -24,7 +27,6 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { cn } from '@/lib/utils'
 
 const DEPLOYMENT_STEPS = [
   {
@@ -230,85 +232,79 @@ const FAQ_QUESTIONS = [
   },
 ]
 
+const HERO_FEATURES_ROW1 = [
+  { icon: Shield, label: 'Hardware Memory Encryption' },
+  { icon: Cpu, label: 'Intel TDX + NVIDIA Support' },
+  { icon: Lock, label: 'Cryptographic Attestation' },
+]
+
+const HERO_FEATURES_ROW2 = [
+  { icon: CheckCircle, label: 'Real-time Verification' },
+  { icon: Package, label: 'Zero Code Changes' },
+]
+
 function HeroSection() {
   return (
     <section className="relative py-24">
-      <div className="container p-6 md:p-16">
-        <div className="grid gap-12 lg:grid-cols-[2fr_3fr]">
-          <div className="flex flex-col gap-8">
-            <div>
-              <Badge variant="outline">Enterprise Security</Badge>
-              <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl my-9">
-                Better Security.
-                <br />
-                <span className="text-muted-foreground">less complexity.</span>
-              </h1>
-              <p className="font-display text-muted-foreground leading-6">
-                Confidential Virtual Machines combine the simplicity of
-                containerization with hardware-level security. Deploy any Docker
-                container to Trusted Execution Environments (TEE) ensuring
-                complete data isolation from cloud providers and system
-                administrators.
-              </p>
+      <div className="container">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <Badge variant="outline">Enterprise Security</Badge>
+          <h1 className="font-display font-semibold text-foreground text-3xl leading-none sm:text-5xl md:text-6xl mt-6">
+            Better Security.
+            <br />
+            <span className="text-muted-foreground">Less complexity.</span>
+          </h1>
+          <p className="font-display text-muted-foreground leading-6 mt-6 max-w-xl">
+            Deploy any Docker container into a Trusted Execution Environment
+            with zero code changes. Hardware-level isolation keeps your data
+            private from cloud providers and admins.
+          </p>
+          <div className="flex gap-3 mt-10">
+            <Button size="lg" asChild>
+              <a
+                href="https://cloud.phala.com/dashboard"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Started
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a
+                href="https://docs.phala.com/phala-cloud/getting-started/overview"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Request a demo
+              </a>
+            </Button>
+          </div>
+          <div className="mt-8 flex flex-col items-center gap-4">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              {HERO_FEATURES_ROW1.map((f) => (
+                <div key={f.label} className="flex items-center gap-2 text-muted-foreground text-sm">
+                  <f.icon className="h-auto w-4" />
+                  {f.label}
+                </div>
+              ))}
             </div>
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Shield className="h-auto w-4" />
-                Hardware Memory Encryption
-              </div>
-              <Separator />
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Lock className="h-auto w-4" />
-                Cryptographic Attestation
-              </div>
-              <Separator />
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Package className="h-auto w-4" />
-                Zero Code Changes
-              </div>
-              <Separator />
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Cpu className="h-auto w-4" />
-                Intel TDX + NVIDIA Support
-              </div>
-              <Separator />
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <CheckCircle className="h-auto w-4" />
-                Real-time Verification
-              </div>
-              <Separator />
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              {HERO_FEATURES_ROW2.map((f) => (
+                <div key={f.label} className="flex items-center gap-2 text-muted-foreground text-sm">
+                  <f.icon className="h-auto w-4" />
+                  {f.label}
+                </div>
+              ))}
             </div>
           </div>
-          <div
-            className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden px-6 md:px-8 rounded-lg"
-            style={{ backgroundColor: '#F9F9F7' }}
-          >
-            <div className="absolute inset-0 border-2 border-slate-400 rounded-lg"></div>
-            <img
-              src="/confidential-vm/cvm-hero.png"
-              alt="CVM Architecture"
-              className="max-h-[450px] w-full object-contain"
+        </div>
+        <div className="mx-auto mt-12 max-w-4xl">
+          <div className="flex w-full items-center justify-center overflow-hidden rounded-lg">
+            <Lottie
+              animationData={cvmHeroAnimation}
+              loop={true}
+              className="max-h-[520px] w-full"
             />
-            <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-10 flex flex-col sm:flex-row gap-3">
-              <Button size="lg" asChild>
-                <a
-                  href="https://cloud.phala.com/dashboard"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Start Building
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a
-                  href="https://docs.phala.com/phala-cloud/getting-started/overview"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Read Documentation
-                </a>
-              </Button>
-            </div>
           </div>
         </div>
       </div>
@@ -348,10 +344,10 @@ function MultiTEESection() {
               </p>
             </Card>
             <Card className="overflow-hidden pt-0">
-              <img
-                src="/tdx.webp"
-                alt="Intel TDX Architecture"
-                className="aspect-video w-full object-cover"
+              <Lottie
+                animationData={cvmArchitectureAnimation}
+                loop={true}
+                className="aspect-video w-full"
               />
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
@@ -658,64 +654,44 @@ const IntegrationList = ({ list }: { list: IntegrationItem[] }) => {
 }
 
 function BenefitsSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
   return (
     <section className="overflow-hidden py-32">
-      <div className="container">
+      <div className="container max-w-5xl">
         {/* Benefits Grid */}
-        <div className="flex w-full flex-col items-center justify-center px-4 mb-20">
-          <div className="flex items-center gap-2 text-muted-foreground mb-8">
-            <Shield className="size-5" />
-            <p className="text-sm">Technical Benefits</p>
-          </div>
-          <h2 className="font-display font-semibold text-foreground relative z-20 py-2 text-center text-3xl leading-tight md:py-7 md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
+        <div className="mb-20">
+          <h2 className="font-display font-semibold text-foreground text-3xl leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight">
             Zero-trust confidential computing
           </h2>
-          <p className="font-display text-md text-muted-foreground mx-auto max-w-xl text-center leading-6 lg:text-lg lg:leading-7 mb-10">
+          <p className="font-display text-muted-foreground leading-6 lg:text-lg lg:leading-7 mt-4">
             Hardware-backed security guarantees with enterprise-grade
             performance.
           </p>
 
-          <div className="relative mt-10 grid w-full max-w-4xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {BENEFITS.map((item, idx) => (
-              <div
+              <BenefitCard
                 key={idx}
-                className="group relative block h-full w-full p-2"
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {hoveredIndex === idx && (
-                    <motion.span
-                      className="bg-muted-foreground/20 absolute inset-0 block h-full w-full rounded-2xl"
-                      layoutId="hoverBackground"
-                      key={idx}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </AnimatePresence>
-
-                <BenefitCard
-                  title={item.title}
-                  description={item.description}
-                  icon={item.icon}
-                  className="flex flex-col items-center justify-center"
-                />
-              </div>
+                title={item.title}
+                description={item.description}
+                icon={item.icon}
+              />
             ))}
           </div>
         </div>
+      </div>
+    </section>
+  )
+}
 
-        {/* Integration Showcase */}
-        <div className="grid w-full grid-cols-1 items-start justify-between overflow-hidden rounded-3xl border border-muted bg-background md:grid-cols-[minmax(18.75rem,28rem)_1fr] md:p-8">
-          <div className="order-2 flex flex-col gap-4 p-6 pt-10 md:order-1 md:p-0">
-            <h3 className="font-display font-semibold text-foreground text-2xl leading-snug lg:text-3xl lg:leading-snug">
+function IntegrationSection() {
+  return (
+    <section className="py-24">
+      <div className="container max-w-5xl">
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+          <div className="flex flex-col gap-4 md:max-w-md shrink-0">
+            <h2 className="font-display font-semibold text-foreground text-2xl leading-snug lg:text-3xl lg:leading-snug">
               Seamlessly integrates with your developer tools
-            </h3>
+            </h2>
             <p className="font-display text-muted-foreground leading-6">
               Deploy confidential containers using your existing development
               stack. No need to learn new tools or change your workflow.
@@ -732,7 +708,7 @@ function BenefitsSection() {
               </Button>
             </div>
           </div>
-          <div className="relative order-1 p-4 pb-0 md:order-2 md:p-0 space-y-3">
+          <div className="space-y-3">
             <IntegrationList list={integrationsList1} />
             <div className="ml-8">
               <IntegrationList list={integrationsList2} />
@@ -746,24 +722,17 @@ function BenefitsSection() {
 }
 
 const BenefitCard = ({
-  className,
   title,
   description,
   icon: Icon,
 }: {
-  className?: string
   title: string
   description: string
   icon: React.ComponentType<{ className?: string }>
 }) => {
   return (
-    <div
-      className={cn(
-        'bg-muted relative z-20 flex h-full flex-col items-center justify-center gap-4 rounded-2xl p-5 text-center',
-        className,
-      )}
-    >
-      <Icon className="text-muted-foreground mt-3 size-8 stroke-1" />
+    <div className="bg-muted flex h-full flex-col gap-4 rounded-2xl p-6">
+      <Icon className="text-muted-foreground size-6 stroke-1" />
       <h3 className="font-display font-semibold text-foreground text-xl leading-7">{title}</h3>
       <p className="font-display text-muted-foreground text-sm leading-5">{description}</p>
     </div>
@@ -809,6 +778,7 @@ export default function ConfidentialVmPage() {
       <PhalaNodeMap />
       <DeploymentSection />
       <BenefitsSection />
+      <IntegrationSection />
       <FAQSection />
     </div>
   )

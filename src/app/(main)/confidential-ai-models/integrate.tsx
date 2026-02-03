@@ -1,9 +1,13 @@
-import { ArrowDown, Check, Unlock } from 'lucide-react'
+'use client'
+
+import { Check } from 'lucide-react'
+import Lottie from 'lottie-react'
 import { getImageProps } from 'next/image'
 
-import { Badge } from '@/components/ui/badge'
 import { iconMap } from '@/lib/ai-models'
 import { getBackgroundImage } from '@/lib/image'
+
+import traditionalAiAnimation from './traditional-ai-animation.json'
 
 const Integrate = () => {
   const trustCenterImage = getImageProps({
@@ -30,44 +34,8 @@ const Integrate = () => {
           </p>
         </div>
         <div className="mx-auto grid gap-10 lg:grid-cols-3">
-          <div className="order-1 flex flex-col gap-4 h-full min-h-108 items-center rounded-lg bg-background p-8 lg:order-none">
-            <div className="flex flex-col gap-4 mb-4 items-center">
-              <p className="text-muted-foreground text-center">
-                Supported Providers
-              </p>
-              <div className="flex flex-wrap gap-2 justify-center">
-                <Badge variant="outline">OpenAI</Badge>
-                <Badge variant="outline">Anthropic</Badge>
-                <Badge variant="outline">Google</Badge>
-                <Badge variant="outline">Meta</Badge>
-              </div>
-            </div>
-
-            <div className="bg-muted rounded-lg p-4 flex flex-col gap-2 items-start w-full overflow-hidden mt-auto">
-              <div className="text-sm font-medium flex items-center gap-2">
-                <Unlock className="size-4" /> Traditional AI
-              </div>
-              <code className="text-destructive bg-destructive/10 text-xs p-1 rounded-xs break-all">
-                api.openai.com/v1/chat/completions
-              </code>
-            </div>
-
-            <ArrowDown size={24} className="text-muted-foreground" />
-
-            <div className="bg-muted rounded-lg p-4 flex flex-col gap-2 items-start w-full overflow-hidden">
-              <div className="text-sm font-medium flex items-center gap-2">
-                {/** biome-ignore lint/performance/noImgElement: svg */}
-                <img
-                  src="/confidential-ai-models/phala.svg"
-                  alt="Phala Confidential AI"
-                  className="size-4"
-                />{' '}
-                Phala Confidential AI
-              </div>
-              <code className="text-green-500 bg-green-500/10 text-xs p-1 rounded-xs break-all">
-                encrypted-ai.phala.com/v1/chat/completions
-              </code>
-            </div>
+          <div className="order-1 flex flex-col h-full min-h-108 items-center rounded-lg bg-background p-8 lg:order-none">
+            <Lottie animationData={traditionalAiAnimation} loop={true} />
           </div>
           <div className="order-3 h-full min-h-108 rounded-lg bg-background lg:order-none relative overflow-hidden p-8">
             <p className="text-muted-foreground text-center mb-4">
