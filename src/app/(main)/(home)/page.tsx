@@ -1,5 +1,4 @@
 import { Compliance1 } from '@/components/compliance1'
-import { DashedLine } from '@/components/dashed-line'
 import FinalCTA from '@/components/final-cta'
 import { fetchAiModels, type Model } from '@/lib/ai-models'
 import { organizationSchema, productSchema } from '@/lib/seo'
@@ -49,12 +48,6 @@ export default async function HomePage() {
         <Hero />
         <TrustSteps />
         <Logos />
-        <div className="relative flex items-center justify-center max-w-7xl mx-auto mt-12">
-          <DashedLine className="text-muted-foreground" />
-          <span className="bg-background text-muted-foreground absolute px-3 font-mono text-sm leading-5 font-medium tracking-wide">
-            Build AI People Can Trust.
-          </span>
-        </div>
         <ConfidentialAI models={models} />
         <PrivateCloudCompute />
         <ProvenAtScale />
